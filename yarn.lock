@@ -2454,6 +2454,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@originjs/vite-plugin-federation@npm:^1.1.4":
+  version: 1.1.4
+  resolution: "@originjs/vite-plugin-federation@npm:1.1.4"
+  dependencies:
+    estree-walker: ^1.0.1
+    magic-string: ^0.25.7
+  checksum: 5297937cdc6374ee227f52176e680192efc73abca875f8619a0bbbe24f69aefefb1222b83ec0dbb6c84b3427da31c3687a2e35d87cac5f3089c61acb58d5a15f
+  languageName: node
+  linkType: hard
+
 "@pmmmwh/react-refresh-webpack-plugin@npm:^0.5.1":
   version: 0.5.5
   resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.5"
@@ -4989,6 +4999,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
+    "@originjs/vite-plugin-federation": ^1.1.4
     "@types/eslint": ^8
     "@types/node": ^17.0.25
     "@types/prettier": ^2
@@ -8307,6 +8318,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"estree-walker@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "estree-walker@npm:1.0.1"
+  checksum: 7e70da539691f6db03a08e7ce94f394ce2eef4180e136d251af299d41f92fb2d28ebcd9a6e393e3728d7970aeb5358705ddf7209d52fbcb2dd4693f95dcf925f
+  languageName: node
+  linkType: hard
+
 "estree-walker@npm:^2.0.1":
   version: 2.0.2
   resolution: "estree-walker@npm:2.0.2"
@@ -11619,6 +11637,15 @@ __metadata:
   bin:
     lz-string: bin/bin.js
   checksum: 54e31238a61a84d8f664d9860a9fba7310c5b97a52c444f80543069bc084815eff40b8d4474ae1d93992fdf6c252dca37cf27f6adbeb4dbc3df2f3ac773d0e61
+  languageName: node
+  linkType: hard
+
+"magic-string@npm:^0.25.7":
+  version: 0.25.9
+  resolution: "magic-string@npm:0.25.9"
+  dependencies:
+    sourcemap-codec: ^1.4.8
+  checksum: 9a0e55a15c7303fc360f9572a71cffba1f61451bc92c5602b1206c9d17f492403bf96f946dfce7483e66822d6b74607262e24392e87b0ac27b786e69a40e9b1a
   languageName: node
   linkType: hard
 
