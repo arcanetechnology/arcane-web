@@ -1,7 +1,5 @@
 /** @format */
-
 import { createRoot } from 'react-dom/client';
+import App from './App';
 
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <h1>hello design</h1>
-);
+createRoot(document.getElementById('root') as HTMLElement).render(<App />);
