@@ -12,8 +12,13 @@ export default defineConfig({
       name: 'arcane',
       filename: 'remoteEntry.js',
       remotes: {
-        design: 'http://localhost:60076/remoteEntry.js',
+        design: 'http://localhost:4173/assets/remoteEntry.js',
       },
     }),
   ],
 });
+
+// TODO: deployement strategy (flow) for arcane apps.
+// TODO: make arcane ssg
+// TODO: figure out a way for build time fetch.
+// TODO: try to figure out how to integrate jest
