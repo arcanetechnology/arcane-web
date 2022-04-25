@@ -49,6 +49,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@arcane/flow@workspace:libs/flow":
+  version: 0.0.0-use.local
+  resolution: "@arcane/flow@workspace:libs/flow"
+  languageName: unknown
+  linkType: soft
+
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.10.4, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.16.7, @babel/code-frame@npm:^7.5.5, @babel/code-frame@npm:^7.8.3":
   version: 7.16.7
   resolution: "@babel/code-frame@npm:7.16.7"
