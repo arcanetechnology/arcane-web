@@ -52,6 +52,8 @@ __metadata:
 "@arcane/flow@workspace:libs/flow":
   version: 0.0.0-use.local
   resolution: "@arcane/flow@workspace:libs/flow"
+  dependencies:
+    vite: ^2.9.5
   languageName: unknown
   linkType: soft
 

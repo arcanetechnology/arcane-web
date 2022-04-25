@@ -1,4 +1,8 @@
 {
   "name": "@arcane/flow",
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.0",
+  "author": "Joel D'Souza <joeldsouzax@gmail.com",
+  "devDependencies": {
+    "vite": "^2.9.5"
+  }
 }
