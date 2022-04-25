@@ -11,9 +11,11 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolvePath('./src/index.ts'),
-      name: '@arcane/flow',
-      fileName: (format) => `arcane-flow-${format}.js`,
+      name: 'flow',
+      fileName: (format) => {
+        return format === 'umd' ? 'index.js' : `flow-${format}.js`;
+      },
     },
   },
-  plugins: [typescript()],
+  plugins: [typescript({ sourceMap: true })],
 });

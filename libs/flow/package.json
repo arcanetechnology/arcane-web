@@ -5,12 +5,13 @@
     "dist"
   ],
   "author": "Joel D'Souza <joeldsouzax@gmail.com",
-  "main": "./dist/arcane-flow-umd.js",
-  "module": "./dist/arcane-flow-es.js",
+  "main": "./dist/index.js",
+  "module": "./dist/flow-es.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/arcane-flow.es.js",
-      "require": "./dist/arcane-flow.umd.js"
+      "import": "./dist/flow.es.js",
+      "require": "./dist/index.js"
     }
   },
   "scripts": {
