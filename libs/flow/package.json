@@ -1,7 +1,21 @@
 {
   "name": "@arcane/flow",
   "packageManager": "yarn@3.2.0",
+  "files": [
+    "dist"
+  ],
   "author": "Joel D'Souza <joeldsouzax@gmail.com",
+  "main": "./dist/arcane-flow-umd.js",
+  "module": "./dist/arcane-flow-es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/arcane-flow.es.js",
+      "require": "./dist/arcane-flow.umd.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build"
+  },
   "devDependencies": {
     "vite": "^2.9.5"
   }

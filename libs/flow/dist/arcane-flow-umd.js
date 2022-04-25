@@ -1,0 +1,1 @@
+(function(e,n){typeof exports=="object"&&typeof module!="undefined"?module.exports=n():typeof define=="function"&&define.amd?define(n):(e=typeof globalThis!="undefined"?globalThis:e||self,e["@arcane/flow"]=n())})(this,function(){"use strict";return()=>"this is from flow library"});
