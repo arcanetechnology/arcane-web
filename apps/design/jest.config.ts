@@ -6,7 +6,7 @@ const config: Config.InitialOptions = {
   displayName: '@arcane/design',
   preset: '../../jest.preset.ts',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/apps/arcane',
+  coverageDirectory: '../../coverage/apps/design',
 };
 
 export default config;
