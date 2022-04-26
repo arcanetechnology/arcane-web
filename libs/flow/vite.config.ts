@@ -12,10 +12,8 @@ export default defineConfig({
     lib: {
       entry: resolvePath('./src/index.ts'),
       name: 'flow',
-      fileName: (format) => {
-        return format === 'umd' ? 'index.js' : `flow-${format}.js`;
-      },
+      fileName: (format) => `flow-${format}.js`,
     },
   },
-  plugins: [typescript({ sourceMap: true })],
+  plugins: [typescript({ sourceMap: true, rootDir: 'src' })],
 });

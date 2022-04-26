@@ -1,9 +1,15 @@
 /** @format */
 
-export type Theme = 'light' | 'dark';
-
-const hello = () => {
-  return 'this is from flow library';
+type Config = {
+  name: string;
 };
 
-export default hello;
+const flow = (config: Config) => {
+  return {
+    add() {
+      return config.name;
+    },
+  };
+};
+
+export default flow;
