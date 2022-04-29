@@ -1,24 +1,22 @@
 {
-  "name": "@arcane/flow",
+  "name": "@arcane/senja",
   "packageManager": "yarn@3.2.0",
+  "description": "helper library for react island architecture.",
   "files": [
     "dist"
   ],
   "author": "Joel D'Souza <joeldsouzax@gmail.com",
-  "main": "./dist/index.js",
-  "module": "./dist/flow-es.js",
+  "main": "./dist/senja.umd.js",
+  "module": "./dist/senja-es.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/flow.es.js",
-      "require": "./dist/index.js"
+      "import": "./dist/senja.es.js",
+      "require": "./dist/senja.umd.js"
     }
   },
   "scripts": {
     "build": "yarn run -Tvite build",
     "test": "yarn run -T jest"
-  },
-  "devDependencies": {
-    "vite": "^2.9.5"
   }
 }
