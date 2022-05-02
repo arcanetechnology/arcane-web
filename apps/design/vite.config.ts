@@ -10,10 +10,12 @@ export default defineConfig({
     react(),
     federation({
       name: 'design',
+      remoteType: 'commonjs-module',
       filename: 'remoteEntry.js',
       exposes: {
         './Button': './src/components/Button.tsx',
       },
+      shared: ['react', 'react-dom'],
     }),
   ],
 });

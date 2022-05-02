@@ -1,0 +1,5 @@
+{
+  "name": "@arcane/scripts",
+  "packageManager": "yarn@3.2.0",
+  "description": "contains arcane specific script files for build, running etc"
+}

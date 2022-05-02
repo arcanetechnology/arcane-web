@@ -1,14 +1,10 @@
 {
   "root": true,
   "env": {
-    "browser": true
+    "browser": true,
+    "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
+  "extends": ["eslint:recommended", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -17,10 +13,22 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "no-console": "error",
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
-  }
+    /* "no-console": "error", */
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "excludedFiles": ["prerender.js", "server.js"],
+      "plugins": ["react", "@typescript-eslint"],
+      "extends": [
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off"
+      }
+    }
+  ]
 }
