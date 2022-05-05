@@ -10,7 +10,7 @@ export default defineConfig({
     react(),
     federation({
       name: 'design',
-      remoteType: 'commonjs-module',
+      remoteType: 'var',
       filename: 'remoteEntry.js',
       exposes: {
         './Button': './src/components/Button.tsx',
@@ -18,4 +18,7 @@ export default defineConfig({
       shared: ['react', 'react-dom'],
     }),
   ],
+  build: {
+    target: 'esnext',
+  },
 });

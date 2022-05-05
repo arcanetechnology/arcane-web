@@ -1,7 +1,13 @@
 /** @format */
 
+import { Button } from './components';
+
 const App: React.FC = () => {
-  return <h1>Arcane Design</h1>;
+  return (
+    <div>
+      <Button />
+    </div>
+  );
 };
 
 export default App;

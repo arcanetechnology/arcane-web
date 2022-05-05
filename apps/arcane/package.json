@@ -1,7 +1,0 @@
-{
-  "name": "@arcane/arcane",
-  "packageManager": "yarn@3.2.0",
-  "scripts": {
-    "build": "yarn run -T webpack"
-  }
-}

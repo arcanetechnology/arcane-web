@@ -1,10 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "declaration": true,
-    "outDir": "dist",
-    "rootDir": "src",
-    "allowJs": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,10 +10,10 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
-    "sourceMap": true,
-    "isolatedModules": false,
-    "noEmit": true
+    "isolatedModules": true,
+    "noEmit": true,
+    "types": ["vite/client"]
   },
   "files": [],
-  "include": ["./src", "tests"]
+  "include": ["./src"]
 }
