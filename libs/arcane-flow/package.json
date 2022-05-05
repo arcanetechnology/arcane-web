@@ -14,6 +14,7 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "yarn run -T vite build && tsc --emitDeclarationOnly"
+    "build": "yarn run -T vite build && tsc --emitDeclarationOnly",
+    "test": "yarn run -T jest"
   }
 }
