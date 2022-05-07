@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-07 15:22:05
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-08 00:05:32
+ * @ Modified time: 2022-05-08 00:25:50
  * @ Description: set of utility functions that are useful for core arcane-flow business logic
  *
  * @format
@@ -31,10 +31,10 @@ export const flowNodeMap = <N, D>(nodes: Array<FlowNode<N, D>>) => {
  * @param data data of the node that it carries.
  * @returns
  */
-export const createNode = <N, D>(
-  name: StringLiteral<N>,
-  data: D
-): FlowNode<N, D> => ({
+export const createNode = <Name, Data>(
+  name: StringLiteral<Name>,
+  data: Data
+): FlowNode<Name, Data> => ({
   name,
   data,
 });
@@ -47,11 +47,11 @@ export const createNode = <N, D>(
  * @param logic
  * @returns
  */
-export function createEdge<N, A>(
-  source: StringLiteral<N>,
-  destination: StringLiteral<N>,
-  logic: Logic<A>
-): Edge<N, A> {
+export function createEdge<Name, Answer>(
+  source: StringLiteral<Name>,
+  destination: StringLiteral<Name>,
+  logic: Logic<Answer>
+): Edge<Name, Answer> {
   return {
     source,
     destination,
