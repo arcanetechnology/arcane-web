@@ -8,6 +8,7 @@ const config: Config.InitialOptions = {
     color: 'magentaBright',
   },
   testEnvironment: 'node',
+  roots: ['<rootDir>'],
   transform: {
     '^.+\\.(t|j)sx?$': 'ts-jest',
   },

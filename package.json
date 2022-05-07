@@ -1,11 +1,13 @@
 {
-  "name": "arcane",
+  "name": "arcane-web",
   "packageManager": "yarn@3.2.0",
   "author": "Joel D'Souza <joeldsouzax@gmail.com>",
   "private": true,
   "scripts": {
     "postinstall": "husky install",
     "dev": "yarn workspaces foreach -p -i run dev",
+    "test:apps": "jest --projects ./apps",
+    "test:libs": "jest --projects libs/",
     "test": "jest"
   },
   "workspaces": [
@@ -45,7 +47,6 @@
     "vite-plugin-externals": "^0.4.0"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^0.1.0",
     "fp-ts": "^2.12.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
