@@ -1,19 +1,19 @@
 {
-  "name": "@arcane/arcane-flow",
+  "name": "@arcane/arcane-state",
+  "packageManager": "yarn@3.2.0",
   "author": {
     "email": "joeldsouzax@gmail.com",
     "name": "Joel D'Souza"
   },
-  "packageManager": "yarn@3.2.0",
   "files": [
     "dist"
   ],
-  "main": "./dist/arcane-flow.umd.js",
-  "module": "./dist/arcane-flow.es.js",
+  "main": "./dist/arcane-state.umd.js",
+  "module": "./dist/arcane-state.es.js",
   "exports": {
     ".": {
-      "import": "./dist/arcane-flow.es.js",
-      "require": "./dist/arcane-flow.umd.js"
+      "import": "./dist/arcane-state.es.js",
+      "require": "./dist/arcane-state.umd.js"
     }
   },
   "types": "./dist/index.d.ts",

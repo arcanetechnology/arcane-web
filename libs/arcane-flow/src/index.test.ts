@@ -1,37 +1,32 @@
 /** @format */
 
-import { Flowable, FlowableNode } from './index';
+import { createEdge, createNode, flowNodeMap } from './utilities';
 
-describe('flowable nodes of functions', () => {
-  const entryFunction: Flowable<void> = (callback) => {
-    callback(true);
-    console.log('hello');
-  };
+// important for now.
+type Answers = 'yes' | 'no' | 'A' | 'B' | number | boolean;
+type Nodes = 'A' | 'B' | 'C' | 'D' | 'E';
 
-  const middleFunction: Flowable<void> = (callback) => {
-    callback(true);
-    console.log('Middle');
-  };
-
-  const endFunction: Flowable<void> = (callback) => {
-    callback(false);
-    console.log('bye');
-  };
-
-  it('each flowable node should have an id', () => {
-    const first = new FlowableNode(1, entryFunction);
-    const mid = new FlowableNode(2, middleFunction);
-    const last = new FlowableNode(3, endFunction);
-
-    expect(first.getId()).toBe(1);
-    expect(mid.getId()).toBe(2);
-    expect(last.getId()).toBe(3);
+describe('basic builder user functions', () => {
+  it('should be able to create node using create node', () => {
+    const node = createNode('A', '/a');
+    expect(node).toStrictEqual({ name: 'A', data: '/a' });
   });
 
-  it('should be able to connect to each other', () => {
-    const first = new FlowableNode(1, entryFunction);
-    const second = new FlowableNode(2, middleFunction);
+  it('should be able to create links between nodes with some logic', () => {
+    const logic = (val: Answers) => val < 10;
+    const edge = createEdge('A', 'B', logic);
+    expect(edge).toStrictEqual({ source: 'A', destination: 'B', logic });
+  });
 
-    FlowableNode.joinOnTrue(first, second);
+  it('should be able to normalize the list of nodes into a manageable data structure', () => {
+    const node1 = createNode<Nodes, string>('A', '/a');
+    const node2 = createNode<Nodes, string>('B', '/b');
+    const node3 = createNode<Nodes, string>('C', '/c');
+    const normalized = flowNodeMap([node1, node2, node3]);
+    expect(normalized).toStrictEqual({
+      A: '/a',
+      B: '/b',
+      C: '/c',
+    });
   });
 });

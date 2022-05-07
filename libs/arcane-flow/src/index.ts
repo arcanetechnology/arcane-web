@@ -1,43 +1,51 @@
 /** @format */
 
-import { threadId } from 'worker_threads';
+import { Edge, FlowNode, StringLiteral } from './types';
+import { normalizeData } from './utilities';
 
-type FlowableCallback = (condition: boolean) => void;
+const arcane = <N, D, A>(
+  n: Array<FlowNode<N, D>>,
+  e: Array<Edge<N, A>>,
+  root: StringLiteral<N>
+) => {
+  const { nodes, edges } = normalizeData(n, e);
+  let current = root;
 
-export type Flowable<T> = (callback: FlowableCallback) => T;
+  const next = (val: A): D => {
+    const dest = Object.keys(edges[current]).filter((d) =>
+      edges[current][d](val as StringLiteral<A>)
+    );
+    current = dest[0] as StringLiteral<N>;
+    return nodes[dest[0] as StringLiteral<N>];
+  };
+  return { current, next };
+};
 
-export class FlowableNode<T> {
-  private id: number;
-  private previous: FlowableNode<T> | null = null;
-  private onTrue: FlowableNode<T> | null = null;
-  private onFalse: FlowableNode<T> | null = null;
-  content: T;
+class ArcaneBuilder<Name, Data, Answers> {
+  private nodes: Array<FlowNode<Name, Data>> = [];
+  private edges: Array<Edge<Name, Answers>> = [];
 
-  constructor(id = 0, content: T) {
-    this.id = id;
-    this.content = content;
+  public addNode(...node: Array<FlowNode<Name, Data>>) {
+    Array.prototype.push.apply(this.nodes, node);
+    return this;
   }
 
-  static joinOnTrue<T>(n1: FlowableNode<T>, n2: FlowableNode<T>): void {
-    n1 && (n1.onTrue = n2);
-    n2 && (n2.previous = n1);
+  public addEdge(...edge: Array<Edge<Name, Answers>>) {
+    Array.prototype.push.apply(this.edges, edge);
+    return this;
   }
 
-  static joinOnFalse<T>(n1: FlowableNode<T>, n2: FlowableNode<T>): void {
-    n1 && (n1.onFalse = n2);
-    n2 && (n2.previous = n1);
+  public build(root: StringLiteral<Name>) {
+    return arcane(this.nodes, this.edges, root);
   }
 
-  public getId(): number {
-    return this.id;
+  // TODO: import edge and node creation in arcane builder
+  public static createNode<Name, Data>(
+    name: StringLiteral<Name>,
+    data: Data
+  ): FlowNode<Name, Data> {
+    return { name, data };
   }
 }
 
-export class ArcaneFlow<T> {
-  private flowableNodes: Array<FlowableNode<T>>;
-
-  constructor() {
-    this.flowableNodes = [];
-  }
-  
-}
+export default ArcaneBuilder;

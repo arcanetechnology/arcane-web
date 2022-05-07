@@ -28,6 +28,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@arcane/arcane-state@workspace:libs/arcane-state":
+  version: 0.0.0-use.local
+  resolution: "@arcane/arcane-state@workspace:libs/arcane-state"
+  languageName: unknown
+  linkType: soft
+
 "@arcane/design@workspace:apps/design":
   version: 0.0.0-use.local
   resolution: "@arcane/design@workspace:apps/design"
