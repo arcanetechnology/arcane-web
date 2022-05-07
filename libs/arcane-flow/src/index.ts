@@ -1,9 +1,18 @@
-/** @format */
+/**
+ * @ Author: Joel D'Souza
+ * @ Create Time: 2022-05-05 11:02:31
+ * @ Modified by: Joel D'Souza
+ * @ Modified time: 2022-05-08 00:07:15
+ * @ Description: core business logic of arcane-flow functionality,
+ * arcaneFlow function loops through various nodes on the basis of logic present in the edges.
+ * ArcaneFlowBuilder makes it a bit better to configure that function.
+ * @format
+ */
 
 import { Edge, FlowNode, StringLiteral } from './types';
 import { normalizeData } from './utilities';
 
-const arcane = <N, D, A>(
+const arcaneFlow = <N, D, A>(
   n: Array<FlowNode<N, D>>,
   e: Array<Edge<N, A>>,
   root: StringLiteral<N>
@@ -21,7 +30,7 @@ const arcane = <N, D, A>(
   return { current, next };
 };
 
-class ArcaneBuilder<Name, Data, Answers> {
+class ArcaneFlowBuilder<Name, Data, Answers> {
   private nodes: Array<FlowNode<Name, Data>> = [];
   private edges: Array<Edge<Name, Answers>> = [];
 
@@ -36,7 +45,7 @@ class ArcaneBuilder<Name, Data, Answers> {
   }
 
   public build(root: StringLiteral<Name>) {
-    return arcane(this.nodes, this.edges, root);
+    return arcaneFlow(this.nodes, this.edges, root);
   }
 
   // TODO: import edge and node creation in arcane builder
@@ -48,4 +57,4 @@ class ArcaneBuilder<Name, Data, Answers> {
   }
 }
 
-export default ArcaneBuilder;
+export default ArcaneFlowBuilder;

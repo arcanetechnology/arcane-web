@@ -1,9 +1,10 @@
 /** @format */
 
-import { createEdge, createNode, flowNodeMap } from './utilities';
+import { Logic } from './types';
+import { createEdge, createNode, flowNodeMap, getEdgeMaps } from './utilities';
 
 // important for now.
-type Answers = 'yes' | 'no' | 'A' | 'B' | number | boolean;
+type Answers = 'yes' | 'no' | 'A' | 'B' | true | false | 10 | 11 | 100;
 type Nodes = 'A' | 'B' | 'C' | 'D' | 'E';
 
 describe('basic builder user functions', () => {
@@ -29,4 +30,24 @@ describe('basic builder user functions', () => {
       C: '/c',
     });
   });
+
+  it('should be able to normalize the link between nodes into manageable data structure', () => {
+    const logic1: Logic<Answers> = (val) => val === 'yes';
+    const logic2: Logic<Answers> = (val) => val === 'no';
+    const logic3: Logic<Answers> = (val) => val === 'A';
+    const link1 = createEdge<Nodes, Answers>('A', 'B', logic1);
+    const link2 = createEdge<Nodes, Answers>('B', 'C', logic2);
+    const link3 = createEdge<Nodes, Answers>('C', 'D', logic3);
+    const normalized = getEdgeMaps(link1, link2, link3);
+    expect(normalized).toStrictEqual({
+      A: { B: logic1 },
+      B: { C: logic2 },
+      C: { D: logic3 },
+    });
+  });
+
+  // TODO: write test case to check normalize data function
+  // TODO: write test case to verify arcane builder class
+  // TODO: write test suite for arcane function
+  // TODO: test to check if complicated routes are handled.
 });

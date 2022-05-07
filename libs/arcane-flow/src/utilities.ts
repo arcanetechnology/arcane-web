@@ -1,32 +1,14 @@
-/** @format */
-
-import {
-  FlowNode,
-  Edge,
-  Touple,
-  StringLiteral,
-  Logic,
-  EdgeMap,
-  AllKeys,
-} from './types';
-
 /**
- * utility function which normalizes the edges array into a source - destination map
- * @param {Array<Touple<T>>} touple version of each flows
- * @returns object with keys of sources and array of destinations
+ * @ Author: Joel D'Souza
+ * @ Create Time: 2022-05-07 15:22:05
+ * @ Modified by: Joel D'Souza
+ * @ Modified time: 2022-05-08 00:05:32
+ * @ Description: set of utility functions that are useful for core arcane-flow business logic
+ *
+ * @format
  */
-export const getFlowMaps = <T extends string>(
-  tuple: Array<Touple<T>>
-): Record<T, Array<T>> => {
-  return tuple.reduce((prev, curr) => {
-    const key = curr[0];
-    const val = curr[1];
-    prev[key] = Object.getOwnPropertyDescriptor(prev, key)
-      ? ([] as Array<T>).concat(prev[key], val)
-      : [val];
-    return prev;
-  }, {} as Record<T, Array<T>>);
-};
+
+import { FlowNode, Edge, StringLiteral, Logic, EdgeMap } from './types';
 
 /**
  * utility function to normalize flownode structure into something manageable.
