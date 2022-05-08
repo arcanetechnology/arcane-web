@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 11:02:31
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-08 00:25:59
+ * @ Modified time: 2022-05-08 15:37:06
  * @ Description: core business logic of arcane-flow functionality,
  * arcaneFlow function loops through various nodes on the basis of logic present in the edges.
  * ArcaneFlowBuilder makes it a bit better to configure that function.
@@ -10,7 +10,7 @@
  */
 
 import { Edge, FlowNode, StringLiteral } from './types';
-import { normalizeData } from './utilities';
+import { structureNodesAndEdges } from './utilities';
 
 /**
  *
@@ -24,7 +24,7 @@ const arcaneFlow = <N, D, A>(
   e: Array<Edge<N, A>>,
   root: StringLiteral<N>
 ) => {
-  const { nodes, edges } = normalizeData(n, e);
+  const { nodes, edges } = structureNodesAndEdges(...n)(...e);
   let current = root;
   const data = nodes[root];
 

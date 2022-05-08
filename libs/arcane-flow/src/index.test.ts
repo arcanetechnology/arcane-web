@@ -2,14 +2,19 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 20:00:37
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-08 00:24:42
+ * @ Modified time: 2022-05-08 15:53:07
  * @ Description: arcane-flow test suite
  *
  * @format
  */
 
 import { Logic } from './types';
-import { createEdge, createNode, flowNodeMap, getEdgeMaps } from './utilities';
+import {
+  createEdge,
+  createNode,
+  getFlowNodeMap,
+  getEdgeMaps,
+} from './utilities';
 
 // important for now.
 type Answers = 'yes' | 'no' | 'A' | 'B' | true | false | 10 | 11 | 100;
@@ -31,7 +36,7 @@ describe('basic builder user functions', () => {
     const node1 = createNode<Nodes, string>('A', '/a');
     const node2 = createNode<Nodes, string>('B', '/b');
     const node3 = createNode<Nodes, string>('C', '/c');
-    const normalized = flowNodeMap([node1, node2, node3]);
+    const normalized = getFlowNodeMap(node1, node1, node3);
     expect(normalized).toStrictEqual({
       A: '/a',
       B: '/b',
@@ -54,7 +59,18 @@ describe('basic builder user functions', () => {
     });
   });
 
-  // TODO: write test case to check normalize data function
+  it('should be able to normalize both nodes and edges through normalizeData function', () => {
+    const node1 = createNode<Nodes, string>('A', '/a');
+    const node2 = createNode<Nodes, string>('B', '/b');
+    const node3 = createNode<Nodes, string>('C', '/c');
+    const logic1: Logic<Answers> = (val) => val === 'yes';
+    const logic2: Logic<Answers> = (val) => val === 'no';
+    const logic3: Logic<Answers> = (val) => val === 'A';
+    const link1 = createEdge<Nodes, Answers>('A', 'B', logic1);
+    const link2 = createEdge<Nodes, Answers>('B', 'C', logic2);
+    const link3 = createEdge<Nodes, Answers>('C', 'D', logic3);
+  });
+  // TODO: write test case to check normalize data
   // TODO: write test case to verify arcane builder class
   // TODO: write test suite for arcane function
   // TODO: test to check if complicated routes are handled.

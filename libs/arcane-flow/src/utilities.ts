@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-07 15:22:05
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-08 00:25:50
+ * @ Modified time: 2022-05-08 15:36:29
  * @ Description: set of utility functions that are useful for core arcane-flow business logic
  *
  * @format
@@ -15,7 +15,7 @@ import { FlowNode, Edge, StringLiteral, Logic, EdgeMap } from './types';
  * @param nodes
  * @returns
  */
-export const flowNodeMap = <N, D>(nodes: Array<FlowNode<N, D>>) => {
+export const getFlowNodeMap = <N, D>(...nodes: Array<FlowNode<N, D>>) => {
   return nodes.reduce((prev, curr) => {
     const key = curr.name;
     const val = curr.data;
@@ -81,14 +81,11 @@ export const getEdgeMaps = <N, A>(...edges: Array<Edge<N, A>>): EdgeMap<A> => {
 /**
  *
  * @param nodes
- * @param edges
  * @returns
  */
-export const normalizeData = <N, D, A>(
-  nodes: Array<FlowNode<N, D>>,
-  edges: Array<Edge<N, A>>
-) => {
-  const normalizedNodes = flowNodeMap(nodes);
-  const normalizedEdges = getEdgeMaps(...edges);
-  return { nodes: normalizedNodes, edges: normalizedEdges };
-};
+export const structureNodesAndEdges =
+  <N, D>(...nodes: Array<FlowNode<N, D>>) =>
+  <A>(...edges: Array<Edge<N, A>>) => ({
+    nodes: getFlowNodeMap(...nodes),
+    edges: getEdgeMaps(...edges),
+  });
