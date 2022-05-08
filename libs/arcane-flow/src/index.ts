@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 11:02:31
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-08 16:20:57
+ * @ Modified time: 2022-05-08 16:36:37
  * @ Description: core business logic of arcane-flow functionality,
  * arcaneFlow function loops through various nodes on the basis of logic present in the edges.
  * ArcaneFlowBuilder makes it a bit better to configure that function.
@@ -29,6 +29,7 @@ const arcaneFlow = <N, D, A>(
   const data = nodes[root];
 
   const next = (val: A): D => {
+    //TODO: check for end node condition.
     const dest = Object.keys(edges[current]).filter((d) =>
       edges[current][d](val as StringLiteral<A>)
     );
