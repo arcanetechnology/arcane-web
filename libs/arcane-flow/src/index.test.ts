@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 20:00:37
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-08 16:20:38
+ * @ Modified time: 2022-05-08 16:35:20
  * @ Description: arcane-flow test suite
  *
  * @format
@@ -95,7 +95,7 @@ describe('utility functions', () => {
   // TODO: test to check if complicated routes are handled.
 });
 
-describe('arcane flow builder tests', () => {
+describe('arcane flow builder', () => {
   it('builder should be able to take lists of nodes and edges and give root data and next function', () => {
     const node1 = createNode<Nodes, string>('A', '/a');
     const node2 = createNode<Nodes, string>('B', '/b');
@@ -113,5 +113,68 @@ describe('arcane flow builder tests', () => {
       .build('A');
 
     expect(data).toBe('/a');
+    expect(next).toEqual(expect.any(Function));
   });
+
+  it('next function should give the current data when provided with an a answer', () => {
+    const node1 = createNode<Nodes, string>('A', '/a');
+    const node2 = createNode<Nodes, string>('B', '/b');
+    const node3 = createNode<Nodes, string>('C', '/c');
+    const logic1: Logic<Answers> = (val) => val === 'yes';
+    const logic2: Logic<Answers> = (val) => val === 'no';
+    const logic3: Logic<Answers> = (val) => val === 'A';
+    const link1 = createEdge<Nodes, Answers>('A', 'B', logic1);
+    const link2 = createEdge<Nodes, Answers>('B', 'C', logic2);
+    const link3 = createEdge<Nodes, Answers>('C', 'D', logic3);
+    const flowBuilder = new ArcaneFlowBuilder<Nodes, string, Answers>();
+    const { data, next } = flowBuilder
+      .addNode(node1, node2, node3)
+      .addEdge(link1, link2, link3)
+      .build('A');
+
+    const nextNodeData = next('yes');
+    expect(nextNodeData).toBe('/b');
+  });
+
+  it('next function should be able to iterate over the graph and keep track of the current node automatically', () => {
+    const node1 = createNode<Nodes, string>('A', '/a');
+    const node2 = createNode<Nodes, string>('B', '/b');
+    const node3 = createNode<Nodes, string>('C', '/c');
+    const logic1: Logic<Answers> = (val) => val === 'yes';
+    const logic2: Logic<Answers> = (val) => val === 'no';
+    const logic3: Logic<Answers> = (val) => val === 'A';
+    const link1 = createEdge<Nodes, Answers>('A', 'B', logic1);
+    const link2 = createEdge<Nodes, Answers>('B', 'C', logic2);
+    const link3 = createEdge<Nodes, Answers>('C', 'D', logic3);
+    const flowBuilder = new ArcaneFlowBuilder<Nodes, string, Answers>();
+    const { data, next } = flowBuilder
+      .addNode(node1, node2, node3)
+      .addEdge(link1, link2, link3)
+      .build('A');
+
+    const bNodeData = next('yes');
+    const cNodeData = next('no');
+    expect(cNodeData).toBe('/c');
+  });
+
+  it('next function should be able to choose the right node based on the answer provided', () => {
+    const node1 = createNode<Nodes, string>('A', '/a');
+    const node2 = createNode<Nodes, string>('B', '/b');
+    const node3 = createNode<Nodes, string>('C', '/c');
+    const logic1: Logic<Answers> = (val) => val === 'yes';
+    const logic2: Logic<Answers> = (val) => val === 'no';
+    const link1 = createEdge<Nodes, Answers>('A', 'B', logic1);
+    const link2 = createEdge<Nodes, Answers>('A', 'C', logic2);
+    const flowBuilder = new ArcaneFlowBuilder<Nodes, string, Answers>();
+    const { data, next } = flowBuilder
+      .addNode(node1, node2, node3)
+      .addEdge(link1, link2)
+      .build('A');
+
+    const cNodeData = next('no');
+    expect(cNodeData).toBe('/c');
+  });
+
+  //TODO: case when there is no link further. should arcane builder ask for an end node to show when we reach end of any flow?
+  //TODO: case for navigating to previous nodes
 });
