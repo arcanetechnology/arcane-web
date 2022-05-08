@@ -1,5 +1,5 @@
 {
-  "name": "@arcane/arcane-state",
+  "name": "@arcane-web/arcane-state",
   "packageManager": "yarn@3.2.0",
   "author": {
     "email": "joeldsouzax@gmail.com",
