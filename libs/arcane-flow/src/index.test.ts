@@ -2,12 +2,13 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 20:00:37
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-08 16:09:27
+ * @ Modified time: 2022-05-08 16:20:38
  * @ Description: arcane-flow test suite
  *
  * @format
  */
 
+import ArcaneFlowBuilder from '.';
 import { Logic } from './types';
 import {
   createEdge,
@@ -21,7 +22,7 @@ import {
 type Answers = 'yes' | 'no' | 'A' | 'B' | true | false | 10 | 11 | 100;
 type Nodes = 'A' | 'B' | 'C' | 'D' | 'E';
 
-describe('basic builder user functions', () => {
+describe('utility functions', () => {
   it('should be able to create node using create node', () => {
     const node = createNode('A', '/a');
     expect(node).toStrictEqual({ name: 'A', data: '/a' });
@@ -92,4 +93,25 @@ describe('basic builder user functions', () => {
   // TODO: write test case to verify arcane builder class
   // TODO: write test suite for arcane function
   // TODO: test to check if complicated routes are handled.
+});
+
+describe('arcane flow builder tests', () => {
+  it('builder should be able to take lists of nodes and edges and give root data and next function', () => {
+    const node1 = createNode<Nodes, string>('A', '/a');
+    const node2 = createNode<Nodes, string>('B', '/b');
+    const node3 = createNode<Nodes, string>('C', '/c');
+    const logic1: Logic<Answers> = (val) => val === 'yes';
+    const logic2: Logic<Answers> = (val) => val === 'no';
+    const logic3: Logic<Answers> = (val) => val === 'A';
+    const link1 = createEdge<Nodes, Answers>('A', 'B', logic1);
+    const link2 = createEdge<Nodes, Answers>('B', 'C', logic2);
+    const link3 = createEdge<Nodes, Answers>('C', 'D', logic3);
+    const flowBuilder = new ArcaneFlowBuilder<Nodes, string, Answers>();
+    const { data, next } = flowBuilder
+      .addNode(node1, node2, node3)
+      .addEdge(link1, link2, link3)
+      .build('A');
+
+    expect(data).toBe('/a');
+  });
 });
