@@ -120,6 +120,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@astrojs/sitemap@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@astrojs/sitemap@npm:0.1.0"
+  dependencies:
+    sitemap: ^7.1.1
+  checksum: 3719190bcc86782063f80d9bfc9688d79ee335331696e859ac1f0465a52f7319f451cd07e68967fb1fb8b3c6d6b8ff34e1a1c2439b1f81c4d6a1e5af2e1b161c
+  languageName: node
+  linkType: hard
+
 "@astrojs/svelte-language-integration@npm:^0.1.2":
   version: 0.1.4
   resolution: "@astrojs/svelte-language-integration@npm:0.1.4"
@@ -1528,7 +1537,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:^17.0.25":
+"@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:^17.0.25, @types/node@npm:^17.0.5":
   version: 17.0.31
   resolution: "@types/node@npm:17.0.31"
   checksum: 704618350f8420d5c47db0f7778398e821b7724369946f5c441a7e6b9343295553936400eb8309f0b07d5e39c240988ab3456b983712ca86265dabc9aee4ad3d
@@ -1594,6 +1603,15 @@ __metadata:
   version: 1.20.2
   resolution: "@types/resolve@npm:1.20.2"
   checksum: 61c2cad2499ffc8eab36e3b773945d337d848d3ac6b7b0a87c805ba814bc838ef2f262fc0f109bfd8d2e0898ff8bd80ad1025f9ff64f1f71d3d4294c9f14e5f6
+  languageName: node
+  linkType: hard
+
+"@types/sax@npm:^1.2.1":
+  version: 1.2.4
+  resolution: "@types/sax@npm:1.2.4"
+  dependencies:
+    "@types/node": "*"
+  checksum: 2aa50cbf1d1f0cf8541ef1787f94c7442e58e63900afd3b45c354e4140ed5efc5cf26fca8eb9df9970a74c7ea582293ae2083271bd046dedf4c3cc2689a40892
   languageName: node
   linkType: hard
 
@@ -1954,6 +1972,7 @@ __metadata:
   dependencies:
     "@astrojs/partytown": ^0.1.2
     "@astrojs/react": ^0.1.1
+    "@astrojs/sitemap": ^0.1.0
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
     "@originjs/vite-plugin-federation": ^1.1.4
@@ -2002,6 +2021,13 @@ __metadata:
   version: 4.1.3
   resolution: "arg@npm:4.1.3"
   checksum: 544af8dd3f60546d3e4aff084d451b96961d2267d668670199692f8d054f0415d86fc5497d0e641e91546f0aa920e7c29e5250e99fc89f5552a34b5d93b77f43
+  languageName: node
+  linkType: hard
+
+"arg@npm:^5.0.0":
+  version: 5.0.1
+  resolution: "arg@npm:5.0.1"
+  checksum: 9aefbcb1204f8dbd541a045bfe99b6515b4dc697c2f704ef2bb5e9fe5464575d97571e91e673a6f23ad72dd1cc24d7d8cf2d1d828e72c08e4d4f6f9237adc761
   languageName: node
   linkType: hard
 
@@ -7980,6 +8006,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sax@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "sax@npm:1.2.4"
+  checksum: d3df7d32b897a2c2f28e941f732c71ba90e27c24f62ee918bd4d9a8cfb3553f2f81e5493c7f0be94a11c1911b643a9108f231dd6f60df3fa9586b5d2e3e9e1fe
+  languageName: node
+  linkType: hard
+
 "scheduler@npm:^0.22.0":
   version: 0.22.0
   resolution: "scheduler@npm:0.22.0"
@@ -8127,6 +8160,20 @@ __metadata:
   version: 1.0.5
   resolution: "sisteransi@npm:1.0.5"
   checksum: aba6438f46d2bfcef94cf112c835ab395172c75f67453fe05c340c770d3c402363018ae1ab4172a1026a90c47eaccf3af7b6ff6fa749a680c2929bd7fa2b37a4
+  languageName: node
+  linkType: hard
+
+"sitemap@npm:^7.1.1":
+  version: 7.1.1
+  resolution: "sitemap@npm:7.1.1"
+  dependencies:
+    "@types/node": ^17.0.5
+    "@types/sax": ^1.2.1
+    arg: ^5.0.0
+    sax: ^1.2.4
+  bin:
+    sitemap: dist/cli.js
+  checksum: 87a6d21b0d4a33b8c611d3bb8543d02b813c0ebfce014213ef31849b5c1439005644f19ad1593ec89815f6101355f468c9a02c251d09aa03f6fddd17e23c4be4
   languageName: node
   linkType: hard
 
