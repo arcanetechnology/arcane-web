@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 20:00:37
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-08 15:53:07
+ * @ Modified time: 2022-05-08 16:09:27
  * @ Description: arcane-flow test suite
  *
  * @format
@@ -14,6 +14,7 @@ import {
   createNode,
   getFlowNodeMap,
   getEdgeMaps,
+  structureNodesAndEdges,
 } from './utilities';
 
 // important for now.
@@ -36,7 +37,7 @@ describe('basic builder user functions', () => {
     const node1 = createNode<Nodes, string>('A', '/a');
     const node2 = createNode<Nodes, string>('B', '/b');
     const node3 = createNode<Nodes, string>('C', '/c');
-    const normalized = getFlowNodeMap(node1, node1, node3);
+    const normalized = getFlowNodeMap(node1, node2, node3);
     expect(normalized).toStrictEqual({
       A: '/a',
       B: '/b',
@@ -69,8 +70,25 @@ describe('basic builder user functions', () => {
     const link1 = createEdge<Nodes, Answers>('A', 'B', logic1);
     const link2 = createEdge<Nodes, Answers>('B', 'C', logic2);
     const link3 = createEdge<Nodes, Answers>('C', 'D', logic3);
+
+    const { nodes, edges } = structureNodesAndEdges(node1, node2, node3)(
+      link1,
+      link2,
+      link3
+    );
+
+    expect(nodes).toStrictEqual({
+      A: '/a',
+      B: '/b',
+      C: '/c',
+    });
+
+    expect(edges).toStrictEqual({
+      A: { B: logic1 },
+      B: { C: logic2 },
+      C: { D: logic3 },
+    });
   });
-  // TODO: write test case to check normalize data
   // TODO: write test case to verify arcane builder class
   // TODO: write test suite for arcane function
   // TODO: test to check if complicated routes are handled.
