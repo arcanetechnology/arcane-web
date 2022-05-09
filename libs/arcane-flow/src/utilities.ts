@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-07 15:22:05
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-09 11:09:53
+ * @ Modified time: 2022-05-09 12:57:02
  * @ Description: set of utility functions that are useful for core arcane-flow business logic
  *
  * @format
@@ -23,41 +23,6 @@ export const getFlowNodeMap = <N, D>(...nodes: Array<FlowNode<N, D>>) => {
     return prev;
   }, {} as Record<StringLiteral<N>, D>);
 };
-
-/**
- * utility function to create a node
- *
- * @param name of the node to be created
- * @param data data of the node that it carries.
- * @returns
- */
-export const createNode = <Name, Data>(
-  name: StringLiteral<Name>,
-  data: Data
-): FlowNode<Name, Data> => ({
-  name,
-  data,
-});
-
-/**
- * utility function to create a flow
- *
- * @param source
- * @param destination
- * @param logic
- * @returns
- */
-export function createEdge<Name, Answer>(
-  source: StringLiteral<Name>,
-  destination: StringLiteral<Name>,
-  logic: Logic<Answer>
-): Edge<Name, Answer> {
-  return {
-    source,
-    destination,
-    logic,
-  };
-}
 
 /**
  * utility types to convert edge array to a manageable edge data structure.
