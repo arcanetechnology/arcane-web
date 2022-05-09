@@ -10,13 +10,13 @@
   "type": "module",
   "exports": {
     ".": "./index.js",
-    "./Button": "./Button.astro",
-    "./Heading": "./Heading.astro"
+    "./Header": "./components/Header.astro",
+    "./MainLayout": "./layouts/MainLayout.astro"
   },
   "files": [
     "index.js",
-    "Button.astro",
-    "Heading.jsx"
+    "Header",
+    "MainLayout"
   ],
   "keywords": [
     "astro-component",

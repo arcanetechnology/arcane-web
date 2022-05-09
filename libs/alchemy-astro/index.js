@@ -1,4 +1,4 @@
 /** @format */
 
-export { default as Button } from './Button.astro';
-export { default as Heading } from './Heading.astro';
+export { default as Header } from './components/Header.astro';
+export { default as MainLayout } from './layouts/MainLayout.astro';

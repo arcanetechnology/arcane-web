@@ -1,0 +1,11 @@
+---
+export interface Props {
+  brand: string;
+}
+
+const { brand } = Astro.props;
+---
+
+<header>
+  <nav><ul><li>{brand}</li></ul></nav>
+</header>
