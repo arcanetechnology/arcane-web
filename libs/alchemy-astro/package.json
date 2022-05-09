@@ -1,4 +1,24 @@
 {
   "name": "@arcane-web/alchemy-astro",
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.0",
+  "author": {
+    "email": "joeldsouzax@gmail.com",
+    "name": "Joel D'Souza"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/alchemy-astro.umd.js",
+  "module": "./dist/alchemy-astro.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/alchemy-astro.es.js",
+      "require": "./dist/alchemy-astro.umd.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "yarn run -T vite build && tsc --emitDeclarationOnly",
+    "test": "yarn run -T jest"
+  }
 }
