@@ -2091,6 +2091,8 @@ __metadata:
     jest: ^28.0.3
     magic-string: ^0.26.1
     npm-run-all: ^4.1.5
+    open-props: ^1.3.16
+    postcss-jit-props: ^1.0.6
     prettier: ^2.6.2
     react: ^18.1.0
     react-dom: ^18.1.0
@@ -7255,6 +7257,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"open-props@npm:^1.3.16":
+  version: 1.3.16
+  resolution: "open-props@npm:1.3.16"
+  checksum: 9ec646c6c686ea4b51de74330990c7daab5ede4204b51d88b6c05168bc40f0faafd481c6b0958f6c039e601501a7693724e84fb2508f206e0110d7357787d71f
+  languageName: node
+  linkType: hard
+
 "optionator@npm:^0.9.1":
   version: 0.9.1
   resolution: "optionator@npm:0.9.1"
@@ -7567,6 +7576,15 @@ __metadata:
   dependencies:
     find-up: ^4.0.0
   checksum: 9863e3f35132bf99ae1636d31ff1e1e3501251d480336edb1c211133c8d58906bed80f154a1d723652df1fda91e01c7442c2eeaf9dc83157c7ae89087e43c8d6
+  languageName: node
+  linkType: hard
+
+"postcss-jit-props@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "postcss-jit-props@npm:1.0.6"
+  peerDependencies:
+    postcss: ^8.2.8
+  checksum: de412552c074a54b2e5298a32633e4e1ceb6c7338bc118db78c81086730cfa882316b128c4723a21d51ffbfaa1d59ea0caa8f496e1fa0e9ecf9a6d3a8c5a35c2
   languageName: node
   linkType: hard
 
