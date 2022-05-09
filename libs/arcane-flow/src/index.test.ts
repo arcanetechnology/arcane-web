@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 20:00:37
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-08 16:35:20
+ * @ Modified time: 2022-05-09 11:07:33
  * @ Description: arcane-flow test suite
  *
  * @format
@@ -175,6 +175,23 @@ describe('arcane flow builder', () => {
     expect(cNodeData).toBe('/c');
   });
 
-  //TODO: case when there is no link further. should arcane builder ask for an end node to show when we reach end of any flow?
+  it('should show the same nodes data when we go on next at the end node', () => {
+    const node1 = createNode<Nodes, string>('A', '/a');
+    const node2 = createNode<Nodes, string>('B', '/b');
+    const node3 = createNode<Nodes, string>('C', '/c');
+    const logic1: Logic<Answers> = (val) => val === 'yes';
+    const logic2: Logic<Answers> = (val) => val === 'no';
+    const link1 = createEdge<Nodes, Answers>('A', 'B', logic1);
+    const link2 = createEdge<Nodes, Answers>('A', 'C', logic2);
+    const flowBuilder = new ArcaneFlowBuilder<Nodes, string, Answers>();
+    const { data, next } = flowBuilder
+      .addNode(node1, node2, node3)
+      .addEdge(link1, link2)
+      .build('A');
+    const cNodeData = next('no');
+    const nextData = next('no');
+    expect(nextData).toBe('/c');
+  });
+
   //TODO: case for navigating to previous nodes
 });
