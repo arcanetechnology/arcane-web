@@ -15,6 +15,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@arcane-web/alchemy-astro@workspace:libs/alchemy-astro":
+  version: 0.0.0-use.local
+  resolution: "@arcane-web/alchemy-astro@workspace:libs/alchemy-astro"
+  languageName: unknown
+  linkType: soft
+
 "@arcane-web/alchemy@workspace:libs/alchemy":
   version: 0.0.0-use.local
   resolution: "@arcane-web/alchemy@workspace:libs/alchemy"
