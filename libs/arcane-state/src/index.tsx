@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-06 13:53:50
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-08 16:39:32
+ * @ Modified time: 2022-05-09 12:21:08
  * @ Description: arcane-state management library, which is like redux but made totally in react!
  *
  * @format

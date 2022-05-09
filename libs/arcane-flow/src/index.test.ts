@@ -2,13 +2,12 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 20:00:37
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-09 11:50:52
+ * @ Modified time: 2022-05-09 12:01:46
  * @ Description: arcane-flow test suite
  *
  * @format
  */
 
-import { flow } from 'fp-ts/lib/function';
 import ArcaneFlowBuilder from '.';
 import { Logic } from './types';
 import {
@@ -91,9 +90,6 @@ describe('utility functions', () => {
       C: { D: logic3 },
     });
   });
-  // TODO: write test case to verify arcane builder class
-  // TODO: write test suite for arcane function
-  // TODO: test to check if complicated routes are handled.
 });
 
 describe('arcane flow builder', () => {
@@ -196,5 +192,5 @@ describe('arcane flow builder', () => {
   });
 
   //TODO: case for navigating to previous nodes
-  //TODO: 
+  //TODO: logic based on other previous nodes
 });
