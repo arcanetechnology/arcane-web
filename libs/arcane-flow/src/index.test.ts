@@ -2,12 +2,13 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 20:00:37
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-09 11:07:33
+ * @ Modified time: 2022-05-09 11:50:52
  * @ Description: arcane-flow test suite
  *
  * @format
  */
 
+import { flow } from 'fp-ts/lib/function';
 import ArcaneFlowBuilder from '.';
 import { Logic } from './types';
 import {
@@ -184,6 +185,7 @@ describe('arcane flow builder', () => {
     const link1 = createEdge<Nodes, Answers>('A', 'B', logic1);
     const link2 = createEdge<Nodes, Answers>('A', 'C', logic2);
     const flowBuilder = new ArcaneFlowBuilder<Nodes, string, Answers>();
+
     const { data, next } = flowBuilder
       .addNode(node1, node2, node3)
       .addEdge(link1, link2)
@@ -194,4 +196,5 @@ describe('arcane flow builder', () => {
   });
 
   //TODO: case for navigating to previous nodes
+  //TODO: 
 });
