@@ -5,20 +5,23 @@
     "email": "joeldsouzax@gmail.com",
     "name": "Joel D'Souza"
   },
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/alchemy-astro.umd.js",
-  "module": "./dist/alchemy-astro.es.js",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
   "exports": {
-    ".": {
-      "import": "./dist/alchemy-astro.es.js",
-      "require": "./dist/alchemy-astro.umd.js"
-    }
+    ".": "./index.js",
+    "./Button": "./Button.astro",
+    "./Heading": "./Heading.astro"
   },
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "yarn run -T vite build && tsc --emitDeclarationOnly",
-    "test": "yarn run -T jest"
-  }
+  "files": [
+    "index.js",
+    "Button.astro",
+    "Heading.jsx"
+  ],
+  "keywords": [
+    "astro-component",
+    "button",
+    "heading",
+    "example"
+  ]
 }
