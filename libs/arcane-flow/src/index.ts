@@ -2,14 +2,14 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 11:02:31
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-09 11:16:30
+ * @ Modified time: 2022-05-09 12:56:13
  * @ Description: core business logic of arcane-flow functionality,
  * arcaneFlow function loops through various nodes on the basis of logic present in the edges.
  * ArcaneFlowBuilder makes it a bit better to configure that function.
  * @format
  */
 
-import { Edge, FlowNode, StringLiteral } from './types';
+import { Edge, FlowNode, Logic, StringLiteral } from './types';
 import { structureNodesAndEdges } from './utilities';
 
 /**
@@ -60,6 +60,43 @@ class ArcaneFlowBuilder<Name, Data, Answers> {
 
   public build(root: StringLiteral<Name>) {
     return arcaneFlow(this.nodes, this.edges, root);
+  }
+
+  /**
+   * utility function to create a node
+   *
+   * @param name of the node to be created
+   * @param data data of the node that it carries.
+   * @returns
+   */
+  static createNode<Name, Data>(
+    name: StringLiteral<Name>,
+    data: Data
+  ): FlowNode<Name, Data> {
+    return {
+      name,
+      data,
+    };
+  }
+
+  /**
+   * utility function to create a flow
+   *
+   * @param source
+   * @param destination
+   * @param logic
+   * @returns
+   */
+  static createEdge<Name, Answer>(
+    source: StringLiteral<Name>,
+    destination: StringLiteral<Name>,
+    logic: Logic<Answer>
+  ): Edge<Name, Answer> {
+    return {
+      source,
+      destination,
+      logic,
+    };
   }
 }
 

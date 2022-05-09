@@ -15,7 +15,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@arcane-web/arcane-flow@workspace:libs/arcane-flow":
+"@arcane-web/arcane-flow@workspace:^, @arcane-web/arcane-flow@workspace:libs/arcane-flow":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane-flow@workspace:libs/arcane-flow"
   languageName: unknown
@@ -30,6 +30,8 @@ __metadata:
 "@arcane-web/invest@workspace:apps/invest":
   version: 0.0.0-use.local
   resolution: "@arcane-web/invest@workspace:apps/invest"
+  dependencies:
+    "@arcane-web/arcane-flow": "workspace:^"
   languageName: unknown
   linkType: soft
 
