@@ -15,6 +15,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@arcane-web/alchemy@workspace:libs/alchemy":
+  version: 0.0.0-use.local
+  resolution: "@arcane-web/alchemy@workspace:libs/alchemy"
+  languageName: unknown
+  linkType: soft
+
 "@arcane-web/arcane-flow@workspace:^, @arcane-web/arcane-flow@workspace:libs/arcane-flow":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane-flow@workspace:libs/arcane-flow"
@@ -24,6 +30,12 @@ __metadata:
 "@arcane-web/arcane-state@workspace:libs/arcane-state":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane-state@workspace:libs/arcane-state"
+  languageName: unknown
+  linkType: soft
+
+"@arcane-web/arcane@workspace:apps/arcane":
+  version: 0.0.0-use.local
+  resolution: "@arcane-web/arcane@workspace:apps/arcane"
   languageName: unknown
   linkType: soft
 
