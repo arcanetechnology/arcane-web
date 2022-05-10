@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import Head from '../components/Head.astro';
 export interface Props {
   title: string;
   brand: string;
@@ -9,6 +10,7 @@ const { title, brand } = Astro.props;
 ---
 
 <html class="initial">
-  <head>{title}</head>
+  <Head />
+  <title>{title}</title>
   <body> <Header {brand} /></body>
 </html>

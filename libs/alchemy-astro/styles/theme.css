@@ -1,0 +1,228 @@
+/** @format */
+
+html {
+  /*
+   * Variables with --color-base prefix define
+   * the hue, and saturation values to be used for
+   * hsla colors.
+   *
+   * ex:
+   *
+   * --color-base-{color}: {hue}, {saturation};
+   *
+   */
+
+  --color-base-white: 0, 0%;
+  --color-base-black: 240, 100%;
+  --color-base-gray: 215, 14%;
+  --color-base-blue: 212, 100%;
+  --color-base-blue-dark: 212, 72%;
+  --color-base-green: 158, 79%;
+  --color-base-orange: 22, 100%;
+  --color-base-purple: 269, 79%;
+  --color-base-red: 351, 100%;
+  --color-base-yellow: 41, 100%;
+
+  /*
+   * Color palettes are made using --color-base 
+   * variables, along with a lightness value to
+   * define different variants.
+   *
+   */
+
+  --color-gray-5: var(--color-base-gray), 5%;
+  --color-gray-10: var(--color-base-gray), 10%;
+  --color-gray-20: var(--color-base-gray), 20%;
+  --color-gray-30: var(--color-base-gray), 30%;
+  --color-gray-40: var(--color-base-gray), 40%;
+  --color-gray-50: var(--color-base-gray), 50%;
+  --color-gray-60: var(--color-base-gray), 60%;
+  --color-gray-70: var(--color-base-gray), 70%;
+  --color-gray-80: var(--color-base-gray), 80%;
+  --color-gray-90: var(--color-base-gray), 90%;
+  --color-gray-95: var(--color-base-gray), 95%;
+
+  --color-blue: var(--color-base-blue), 61%;
+  --color-blue-dark: var(--color-base-blue-dark), 39%;
+  --color-green: var(--color-base-green), 42%;
+  --color-orange: var(--color-base-orange), 50%;
+  --color-purple: var(--color-base-purple), 54%;
+  --color-red: var(--color-base-red), 54%;
+  --color-yellow: var(--color-base-yellow), 59%;
+
+  /* light */
+  --theme-light-accent: hsla(var(--color-blue), 1);
+  --theme-light-text-accent: hsla(var(--color-blue), 1);
+  --theme-light-accent-opacity: 0.15;
+  --theme-light-divider: hsla(var(--color-gray-95), 1);
+  --theme-light-text: hsla(var(--color-gray-10), 1);
+  --theme-light-text-light: hsla(var(--color-gray-40), 1);
+  /* @@@: not used anywhere */
+  --theme-light-text-lighter: hsla(var(--color-gray-80), 1);
+  --theme-light-bg: hsla(var(--color-base-white), 100%, 1);
+  --theme-light-bg-hover: hsla(var(--color-gray-95), 1);
+  --theme-light-bg-offset: hsla(var(--color-gray-90), 1);
+  --theme-light-bg-accent: hsla(var(--color-blue), var(--theme-accent-opacity));
+  --theme-light-code-inline-bg: hsla(var(--color-gray-95), 1);
+  --theme-light-code-inline-text: var(--theme-text);
+  --theme-light-code-bg: hsla(217, 19%, 27%, 1);
+  --theme-light-code-text: hsla(var(--color-gray-95), 1);
+  --theme-light-navbar-bg: hsla(var(--color-base-white), 100%, 1);
+  --theme-light-navbar-height: 6rem;
+  --theme-light-selection-color: hsla(var(--color-blue), 1);
+  --theme-light-selection-bg: hsla(
+    var(--color-blue),
+    var(--theme-accent-opacity)
+  );
+
+  /* dark */
+  --theme-dark-accent-opacity: 0.15;
+  --theme-dark-accent: hsla(var(--color-blue), 1);
+  --theme-dark-text-accent: hsla(var(--color-blue), 1);
+  --theme-dark-divider: hsla(var(--color-gray-10), 1);
+  --theme-dark-text: hsla(var(--color-gray-90), 1);
+  --theme-dark-text-light: hsla(var(--color-gray-80), 1);
+
+  /* @@@: not used anywhere */
+  --theme-dark-text-lighter: hsla(var(--color-gray-40), 1);
+  --theme-dark-bg: rgb(33, 32, 32);
+  --theme-dark-bg-hover: hsla(var(--color-gray-40), 1);
+  --theme-dark-bg-offset: hsla(var(--color-gray-5), 1);
+  --theme-dark-code-inline-bg: hsla(var(--color-gray-10), 1);
+  --theme-dark-code-inline-text: hsla(var(--color-base-white), 100%, 1);
+  --theme-dark-code-bg: hsla(var(--color-gray-5), 1);
+  --theme-dark-code-text: hsla(var(--color-base-white), 100%, 1);
+  --theme-dark-navbar-bg: hsla(215, 28%, 17%, 1);
+  --theme-dark-selection-color: hsla(var(--color-base-white), 100%, 1);
+  --theme-dark-selection-bg: hsla(
+    var(--color-purple),
+    var(--theme-accent-opacity)
+  );
+}
+:root {
+  color-scheme: light;
+  /* set defaults */
+  --theme-accent-opacity: var(--theme-light-accent-opacity);
+  --theme-accent: var(--theme-light-accent);
+  --theme-text-accent: var(--theme-light-text-accent);
+  --theme-divider: var(--theme-light-divider);
+  --theme-text: var(--theme-light-text);
+  --theme-text-light: var(--theme-light-text-light);
+
+  /* @@@: not used anywhere */
+  --theme-text-lighter: var(--theme-light-text-lighter);
+  --theme-bg: var(--theme-light-bg);
+  --theme-bg-hover: var(--theme-light-bg-hover);
+  --theme-bg-offset: var(--theme-light-bg-offset);
+  --theme-code-inline-bg: var(--theme-light-code-inline-bg);
+  --theme-code-inline-text: var(--theme-light-code-inline-text);
+  --theme-code-bg: var(--theme-light-code-bg);
+  --theme-code-text: var(--theme-light-code-text);
+  --theme-navbar-bg: var(--theme-light-navbar-bg);
+  --theme-selection-color: var(--theme-light-selection-color);
+  --theme-selection-bg: var(--theme-light-selection-bg);
+}
+@media (color-index: 48) {
+  :root {
+    color-scheme: dark;
+    --theme-accent-opacity: var(--theme-dark-accent-opacity);
+    --theme-accent: var(--theme-dark-accent);
+    --theme-text-accent: var(--theme-dark-text-accent);
+    --theme-divider: var(--theme-dark-divider);
+    --theme-text: var(--theme-dark-text);
+    --theme-text-light: var(--theme-dark-text-light);
+
+    /* @@@: not used anywhere */
+    --theme-text-lighter: var(--theme-dark-text-lighter);
+    --theme-bg: var(--theme-dark-bg);
+    --theme-bg-hover: var(--theme-dark-bg-hover);
+    --theme-bg-offset: var(--theme-dark-bg-offset);
+    --theme-code-inline-bg: var(--theme-dark-code-inline-bg);
+    --theme-code-inline-text: var(--theme-dark-code-inline-text);
+    --theme-code-bg: var(--theme-dark-code-bg);
+    --theme-code-text: var(--theme-dark-code-text);
+    --theme-navbar-bg: var(--theme-dark-navbar-bg);
+    --theme-selection-color: var(--theme-dark-selection-color);
+    --theme-selection-bg: var(--theme-dark-selection-bg);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --theme-accent-opacity: var(--theme-dark-accent-opacity);
+    --theme-accent: var(--theme-dark-accent);
+    --theme-text-accent: var(--theme-dark-text-accent);
+    --theme-divider: var(--theme-dark-divider);
+    --theme-text: var(--theme-dark-text);
+    --theme-text-light: var(--theme-dark-text-light);
+
+    /* @@@: not used anywhere */
+    --theme-text-lighter: var(--theme-dark-text-lighter);
+    --theme-bg: var(--theme-dark-bg);
+    --theme-bg-hover: var(--theme-dark-bg-hover);
+    --theme-bg-offset: var(--theme-dark-bg-offset);
+    --theme-code-inline-bg: var(--theme-dark-code-inline-bg);
+    --theme-code-inline-text: var(--theme-dark-code-inline-text);
+    --theme-code-bg: var(--theme-dark-code-bg);
+    --theme-code-text: var(--theme-dark-code-text);
+    --theme-navbar-bg: var(--theme-dark-navbar-bg);
+    --theme-selection-color: var(--theme-dark-selection-color);
+    --theme-selection-bg: var(--theme-dark-selection-bg);
+  }
+}
+
+[color-scheme='light'] {
+  color-scheme: light;
+  --theme-accent-opacity: var(--theme-light-accent-opacity);
+  --theme-accent: var(--theme-light-accent);
+  --theme-text-accent: var(--theme-light-text-accent);
+  --theme-divider: var(--theme-light-divider);
+  --theme-text: var(--theme-light-text);
+  --theme-text-light: var(--theme-light-text-light);
+
+  /* @@@: not used anywhere */
+  --theme-text-lighter: var(--theme-light-text-lighter);
+  --theme-bg: var(--theme-light-bg);
+  --theme-bg-hover: var(--theme-light-bg-hover);
+  --theme-bg-offset: var(--theme-light-bg-offset);
+  --theme-code-inline-bg: var(--theme-light-code-inline-bg);
+  --theme-code-inline-text: var(--theme-light-code-inline-text);
+  --theme-code-bg: var(--theme-light-code-bg);
+  --theme-code-text: var(--theme-light-code-text);
+  --theme-navbar-bg: var(--theme-light-navbar-bg);
+  --theme-selection-color: var(--theme-light-selection-color);
+  --theme-selection-bg: var(--theme-light-selection-bg);
+}
+
+[color-scheme='dark'] {
+  color-scheme: dark;
+  --theme-accent-opacity: var(--theme-dark-accent-opacity);
+  --theme-accent: var(--theme-dark-accent);
+  --theme-text-accent: var(--theme-dark-text-accent);
+  --theme-divider: var(--theme-dark-divider);
+  --theme-text: var(--theme-dark-text);
+  --theme-text-light: var(--theme-dark-text-light);
+
+  /* @@@: not used anywhere */
+  --theme-text-lighter: var(--theme-dark-text-lighter);
+  --theme-bg: var(--theme-dark-bg);
+  --theme-bg-hover: var(--theme-dark-bg-hover);
+  --theme-bg-offset: var(--theme-dark-bg-offset);
+  --theme-code-inline-bg: var(--theme-dark-code-inline-bg);
+  --theme-code-inline-text: var(--theme-dark-code-inline-text);
+  --theme-code-bg: var(--theme-dark-code-bg);
+  --theme-code-text: var(--theme-dark-code-text);
+  --theme-navbar-bg: var(--theme-dark-navbar-bg);
+  --theme-selection-color: var(--theme-dark-selection-color);
+  --theme-selection-bg: var(--theme-dark-selection-bg);
+}
+
+body {
+  background: var(--theme-bg);
+  color: var(--theme-text);
+}
+
+::selection {
+  color: var(--theme-selection-color);
+  background-color: var(--theme-selection-bg);
+}
