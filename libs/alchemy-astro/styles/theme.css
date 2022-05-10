@@ -96,10 +96,10 @@ html {
   --theme-light-text-accent: hsla(var(--color-blue), 1);
   --theme-light-accent-opacity: 0.15;
   --theme-light-divider: hsla(var(--color-gray-95), 1);
-  --theme-light-text: hsla(var(--color-gray-10), 1);
-  --theme-light-text-light: hsla(var(--color-gray-40), 1);
+  --theme-light-text: var(--arcane-text-dark-grey);
+  --theme-light-text-light: var(--arcane-text-semi-dark-grey);
   /* @@@: not used anywhere */
-  --theme-light-text-lighter: hsla(var(--color-gray-80), 1);
+  --theme-light-text-lighter: var(--arcane-text-base-grey);
   --theme-light-bg: var(--arcane-support-lightest-white);
   --theme-light-bg-hover: hsla(var(--color-gray-95), 1);
   --theme-light-bg-offset: hsla(var(--color-gray-90), 1);
@@ -122,7 +122,7 @@ html {
   --theme-dark-text-light: var(--arcane-text-semi-light-grey);
 
   /* @@@: not used anywhere */
-  --theme-dark-text-lighter: hsla(var(--color-gray-40), 1);
+  --theme-dark-text-lighter: var(--arcane-text-base-grey);
   --theme-dark-bg: var(--arcane-support-light-black);
   --theme-dark-bg-hover: hsla(var(--color-gray-40), 1);
   --theme-dark-bg-offset: hsla(var(--color-gray-5), 1);
@@ -133,6 +133,9 @@ html {
   --theme-dark-navbar-bg: var(--arcane-support-darkest-black);
   --theme-dark-selection-color: var(--arcane-text-dark-grey);
   --theme-dark-selection-bg: var(--arcane-semi-light-grey);
+
+  /* other stuff */
+  --theme-navbar-height: 3rem;
 }
 :root {
   color-scheme: light;
