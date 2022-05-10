@@ -189,6 +189,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@astrojs/turbolinks@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "@astrojs/turbolinks@npm:0.1.2"
+  dependencies:
+    turbolinks: ^5.2.0
+  checksum: 97e03c02832fc871e02f1f70da2b4813d153d4d6dab362e53061c4c34708516b60a44987595407b3ea9ed01fc4d02951bceed11b836530ab3ebe13e7f14376ad
+  languageName: node
+  linkType: hard
+
 "@astrojs/webapi@npm:^0.11.1":
   version: 0.11.1
   resolution: "@astrojs/webapi@npm:0.11.1"
@@ -2103,6 +2112,7 @@ __metadata:
     "@astrojs/partytown": ^0.1.2
     "@astrojs/react": ^0.1.1
     "@astrojs/sitemap": ^0.1.0
+    "@astrojs/turbolinks": ^0.1.2
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
     "@originjs/vite-plugin-federation": ^1.1.4
@@ -9212,6 +9222,13 @@ __metadata:
   peerDependencies:
     typescript: ">=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta"
   checksum: 1843f4c1b2e0f975e08c4c21caa4af4f7f65a12ac1b81b3b8489366826259323feb3fc7a243123453d2d1a02314205a7634e048d4a8009921da19f99755cdc48
+  languageName: node
+  linkType: hard
+
+"turbolinks@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "turbolinks@npm:5.2.0"
+  checksum: df393c321ed19d9761e632ff357d3cb032a9ca32c07f1ef8202e5f5bb9d17fcc93cdec0d9dfcf0fbca56c373a9dffa2c151639383e663a72897ae434a877819b
   languageName: node
   linkType: hard
 
