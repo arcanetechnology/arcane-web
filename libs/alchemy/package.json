@@ -20,5 +20,9 @@
   "scripts": {
     "build": "yarn run -T vite build && tsc --emitDeclarationOnly",
     "test": "yarn run -T jest"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   }
 }

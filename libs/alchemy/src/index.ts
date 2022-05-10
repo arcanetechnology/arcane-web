@@ -1,3 +1,3 @@
 /** @format */
 
-console.log('alchemy');
+export * from './components';

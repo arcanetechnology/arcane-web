@@ -11,14 +11,15 @@ const config = defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'alchemy',
+      formats: ['es', 'umd'],
       fileName: (format) => `alchemy.${format}.js`,
     },
     rollupOptions: {
-      external: ['react'],
+      external: ['react', 'react-dom'],
       output: {
         globals: {
-          React: 'React',
-          ReactDOM: 'ReactDOM',
+          react: 'React',
+          'react-dom': 'ReactDOM',
         },
       },
     },
