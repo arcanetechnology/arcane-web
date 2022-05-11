@@ -32,6 +32,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@arcane-web/arcane-components@workspace:libs/arcane-components":
+  version: 0.0.0-use.local
+  resolution: "@arcane-web/arcane-components@workspace:libs/arcane-components"
+  languageName: unknown
+  linkType: soft
+
 "@arcane-web/arcane-flow@workspace:^, @arcane-web/arcane-flow@workspace:libs/arcane-flow":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane-flow@workspace:libs/arcane-flow"
