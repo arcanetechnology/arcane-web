@@ -6,3 +6,16 @@
 > If you want to improve the performance of your web application, >then use less JavaScript. However, if you must use Javascript, DO >NOT USE VIRTUAL DOM!
 
 This philosophy guides arcanes web development, we have kept the framework lean
+
+
+TODO: remove react from everywhere
+TODO: add solidjs based basic components
+TODO: add themetoggler
+TODO: figure out firebase authentication system
+TODO: add test cases everywhere.
+TODO: connect contentful headless cms to invest.
+TODO: maybe convert arcane-state to solidjs context api? 
+TODO: evaluate arcane-state vs nanostore.
+TODO: alchemy css only design system hosted on cdn.
+TODO: alchemy solidjs based design system with inbuilt style provider.
+
