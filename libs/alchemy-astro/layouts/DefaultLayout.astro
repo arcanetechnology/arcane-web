@@ -34,7 +34,7 @@ const { title, subtitle } = Astro.props;
     <!-- page title -->
     <title>{title} | {subtitle}</title>
   </head>
-  <body>
+  <body dir="rtl">
     <slot name="header" />
     <main id="main-content">
       <slot name="main" />
