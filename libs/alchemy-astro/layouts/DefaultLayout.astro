@@ -1,9 +1,12 @@
 ---
 import '../assets/scss/globals.scss';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-const { title } = Astro.props;
-let subtitle = 'Accessible Astro Starter';
+
+export interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
 ---
 
 <html lang="en" dir="ltr">
@@ -18,10 +21,6 @@ let subtitle = 'Accessible Astro Starter';
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
 
     <!-- open graph -->
     <meta property="og:title" content="Accessible Astro Starter" />
@@ -36,13 +35,15 @@ let subtitle = 'Accessible Astro Starter';
     <title>{title} - {subtitle}</title>
   </head>
   <body>
-    <Header />
+    <slot name="header" />
     <main id="main-content">
-      <slot />
+      <slot name="main" />
     </main>
-    <Footer />
+    <slot name="footer" />
   </body>
 </html>
+
+<!--TODO: fix the color scheme theming-->
 
 <style lang="scss">
   // sticky footer on low content pages
@@ -54,7 +55,7 @@ let subtitle = 'Accessible Astro Starter';
   body {
     display: flex;
     flex-direction: column;
-    background-color: var(--theme-bg);
+    background-color: var(--primary-background);
     main {
       flex: 1 0 auto;
     }

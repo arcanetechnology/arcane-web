@@ -3,16 +3,16 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer>
-  <section class="padding-16 color-neutral">
+  <section class="padding-16">
     <div class="container">
-      <p>footer</p>
+      <slot name="footer-content" />
     </div>
   </section>
 </footer>
 
-<style lang="scss" is:global>
-  .footer {
-    background-color: var(--theme-footer-bg);
-    color: var(--theme-footer-color);
+<style lang="scss" is:inline>
+  footer {
+    background-color: var(--footer-background);
+    color: var(--footer-color);
   }
 </style>

@@ -16,6 +16,7 @@
   --radius-large: 6px;
   --gap-default: 2rem;
   --font-measure: 70ch;
+  --header-height: 8rem;
   --font-family-default: 'Open Sans', sans-serif;
   --font-family-special: 'Open Sans', sans-serif;
   --font-color: var(--neutral-900);
@@ -23,181 +24,59 @@
   --background: var(--neutral-100);
   --primary-background: var(--primary-100);
   --neutral-background: var(--neutral-200);
+  --header-background: var(--neutral-100);
+  --footer-background: var(--primary-400);
+  --footer-color: var(--neutral-100);
+  --selection-color: var(--primary-100);
+  --selection-background: var(--primary-400);
 
-  /* light */
-  --theme-light-accent: var(--secondary-100);
-  --theme-light-text-accent: var(--secondary-100);
-  --theme-light-accent-opacity: 0.15;
-  --theme-light-divider: var(--primary-300);
-  --theme-light-text: var(--neutral-900);
-  --theme-light-text-light: var(--neutral-800);
+  /* theme specific */
+
+  --accent: var(--secondary-100);
+  --text-accent: var(--secondary-100);
+  --accent-opacity: 0.15;
+  --divider: var(--primary-300);
+  --text: var(--neutral-900);
+  --text-light: var(--neutral-800);
   /* @@@: not used anywhere */
-  --theme-light-text-lighter: var(--neutral-700);
-  --theme-light-bg: var(--primary-100);
-  --theme-light-bg-hover: var(--neutral-900);
-  --theme-light-bg-offset: var(--neutral-900);
-  --theme-light-bg-accent: var(--secondary-200);
-  --theme-light-navbar-bg: var(--primary-100);
-  --theme-light-footer-bg: var(--primary-400);
-  --theme-light-footer-color: var(--neutral-100);
-  --theme-light-navbar-height: 6rem;
-  --theme-light-selection-color: var(--primary-100);
-  --theme-light-selection-bg: var(--primary-400);
+  --text-lighter: var(--neutral-700);
+  --bg-hover: var(--neutral-900);
+  --bg-offset: var(--neutral-900);
+  --bg-accent: var(--secondary-200);
+
+  ::selection {
+    color: var(--selection-color);
+    background-color: var(--selection-background);
+  }
+}
+
+.darkmode {
+  --font-color: var(--neutral-100);
+  --action-color: var(--secondary-100);
+  --background: var(--neutral-900);
+  --primary-background: var(--primary-500);
+  --neutral-background: var(--neutral-900);
+  --header-background: var(--neutral-900);
+  --footer-background: var(--primary-100);
+  --footer-color: var(--neutral-900);
+  --selection-color: var(--primary-400);
+  --selection-background: var(--primary-100);
 
   /* dark */
-  --theme-dark-accent-opacity: 0.15;
-  --theme-dark-accent: var(--secondary-500);
-  --theme-dark-text-accent: var(--secondary-500);
-  --theme-dark-divider: var(--primary-200);
-  --theme-dark-text: var(--neutral-100);
-  --theme-dark-text-light: var(--neutral-200);
+  --accent-opacity: 0.15;
+  --accent: var(--secondary-500);
+  --text-accent: var(--secondary-500);
+  --divider: var(--primary-200);
+  --text: var(--neutral-100);
+  --text-light: var(--neutral-200);
 
   /* @@@: not used anywhere */
-  --theme-dark-text-lighter: var(--neutral-300);
-  --theme-dark-bg: var(--darkest-black);
-  --theme-dark-bg-hover: var(--neutral-400);
-  --theme-dark-bg-offset: var(--neutral-300);
-  --theme-dark-navbar-bg: var(--darkest-black);
-  --theme-dark-footer-bg: var(--primary-100);
-  --theme-dark-footer-color: var(--neutral-900);
-  --theme-dark-selection-color: var(--primary-400);
-  --theme-dark-selection-bg: var(--primary-100);
-}
+  --text-lighter: var(--neutral-300);
+  --bg-hover: var(--neutral-400);
+  --bg-offset: var(--neutral-300);
 
-:root {
-  color-scheme: light;
-  /* set defaults */
-  --theme-accent-opacity: var(--theme-light-accent-opacity);
-  --theme-accent: var(--theme-light-accent);
-  --theme-text-accent: var(--theme-light-text-accent);
-  --theme-divider: var(--theme-light-divider);
-  --theme-text: var(--theme-light-text);
-  --theme-text-light: var(--theme-light-text-light);
-
-  /* @@@: not used anywhere */
-  --theme-text-lighter: var(--theme-light-text-lighter);
-  --theme-bg: var(--theme-light-bg);
-  --theme-bg-hover: var(--theme-light-bg-hover);
-  --theme-bg-offset: var(--theme-light-bg-offset);
-  --theme-code-inline-bg: var(--theme-light-code-inline-bg);
-  --theme-code-inline-text: var(--theme-light-code-inline-text);
-  --theme-code-bg: var(--theme-light-code-bg);
-  --theme-code-text: var(--theme-light-code-text);
-  --theme-navbar-bg: var(--theme-light-navbar-bg);
-  --theme-footer-bg: var(--theme-light-footer-bg);
-  --theme-footer-color: var(--theme-light-footer-color);
-  --theme-selection-color: var(--theme-light-selection-color);
-  --theme-selection-bg: var(--theme-light-selection-bg);
-}
-@media (color-index: 48) {
-  :root {
-    color-scheme: dark;
-    --theme-accent-opacity: var(--theme-dark-accent-opacity);
-    --theme-accent: var(--theme-dark-accent);
-    --theme-text-accent: var(--theme-dark-text-accent);
-    --theme-divider: var(--theme-dark-divider);
-    --theme-text: var(--theme-dark-text);
-    --theme-text-light: var(--theme-dark-text-light);
-
-    /* @@@: not used anywhere */
-    --theme-text-lighter: var(--theme-dark-text-lighter);
-    --theme-bg: var(--theme-dark-bg);
-    --theme-bg-hover: var(--theme-dark-bg-hover);
-    --theme-bg-offset: var(--theme-dark-bg-offset);
-    --theme-code-inline-bg: var(--theme-dark-code-inline-bg);
-    --theme-code-inline-text: var(--theme-dark-code-inline-text);
-    --theme-code-bg: var(--theme-dark-code-bg);
-    --theme-code-text: var(--theme-dark-code-text);
-    --theme-navbar-bg: var(--theme-dark-navbar-bg);
-    --theme-footer-bg: var(--theme-dark-footer-bg);
-    --theme-footer-color: var(--theme-dark-footer-color);
-    --theme-selection-color: var(--theme-dark-selection-color);
-    --theme-selection-bg: var(--theme-dark-selection-bg);
+  ::selection {
+    color: var(--selection-color);
+    background-color: var(--selection-background);
   }
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --theme-accent-opacity: var(--theme-dark-accent-opacity);
-    --theme-accent: var(--theme-dark-accent);
-    --theme-text-accent: var(--theme-dark-text-accent);
-    --theme-divider: var(--theme-dark-divider);
-    --theme-text: var(--theme-dark-text);
-    --theme-text-light: var(--theme-dark-text-light);
-
-    /* @@@: not used anywhere */
-    --theme-text-lighter: var(--theme-dark-text-lighter);
-    --theme-bg: var(--theme-dark-bg);
-    --theme-bg-hover: var(--theme-dark-bg-hover);
-    --theme-bg-offset: var(--theme-dark-bg-offset);
-    --theme-code-inline-bg: var(--theme-dark-code-inline-bg);
-    --theme-code-inline-text: var(--theme-dark-code-inline-text);
-    --theme-code-bg: var(--theme-dark-code-bg);
-    --theme-code-text: var(--theme-dark-code-text);
-    --theme-navbar-bg: var(--theme-dark-navbar-bg);
-    --theme-footer-bg: var(--theme-dark-footer-bg);
-    --theme-footer-color: var(--theme-dark-footer-color);
-    --theme-selection-color: var(--theme-dark-selection-color);
-    --theme-selection-bg: var(--theme-dark-selection-bg);
-  }
-}
-
-[color-scheme='light'] {
-  color-scheme: light;
-  --theme-accent-opacity: var(--theme-light-accent-opacity);
-  --theme-accent: var(--theme-light-accent);
-  --theme-text-accent: var(--theme-light-text-accent);
-  --theme-divider: var(--theme-light-divider);
-  --theme-text: var(--theme-light-text);
-  --theme-text-light: var(--theme-light-text-light);
-
-  /* @@@: not used anywhere */
-  --theme-text-lighter: var(--theme-light-text-lighter);
-  --theme-bg: var(--theme-light-bg);
-  --theme-bg-hover: var(--theme-light-bg-hover);
-  --theme-bg-offset: var(--theme-light-bg-offset);
-  --theme-code-inline-bg: var(--theme-light-code-inline-bg);
-  --theme-code-inline-text: var(--theme-light-code-inline-text);
-  --theme-code-bg: var(--theme-light-code-bg);
-  --theme-code-text: var(--theme-light-code-text);
-  --theme-navbar-bg: var(--theme-light-navbar-bg);
-  --theme-footer-bg: var(--theme-light-footer-bg);
-  --theme-footer-color: var(--theme-light-footer-color);
-  --theme-selection-color: var(--theme-light-selection-color);
-  --theme-selection-bg: var(--theme-light-selection-bg);
-}
-
-[color-scheme='dark'] {
-  color-scheme: dark;
-  --theme-accent-opacity: var(--theme-dark-accent-opacity);
-  --theme-accent: var(--theme-dark-accent);
-  --theme-text-accent: var(--theme-dark-text-accent);
-  --theme-divider: var(--theme-dark-divider);
-  --theme-text: var(--theme-dark-text);
-  --theme-text-light: var(--theme-dark-text-light);
-
-  /* @@@: not used anywhere */
-  --theme-text-lighter: var(--theme-dark-text-lighter);
-  --theme-bg: var(--theme-dark-bg);
-  --theme-bg-hover: var(--theme-dark-bg-hover);
-  --theme-bg-offset: var(--theme-dark-bg-offset);
-  --theme-code-inline-bg: var(--theme-dark-code-inline-bg);
-  --theme-code-inline-text: var(--theme-dark-code-inline-text);
-  --theme-code-bg: var(--theme-dark-code-bg);
-  --theme-code-text: var(--theme-dark-code-text);
-  --theme-navbar-bg: var(--theme-dark-navbar-bg);
-  --theme-footer-bg: var(--theme-dark-footer-bg);
-  --theme-footer-color: var(--theme-dark-footer-color);
-  --theme-selection-color: var(--theme-dark-selection-color);
-  --theme-selection-bg: var(--theme-dark-selection-bg);
-}
-
-body {
-  background: var(--theme-bg);
-  color: var(--theme-text);
-}
-
-::selection {
-  color: var(--theme-selection-color);
-  background-color: var(--theme-selection-bg);
 }
