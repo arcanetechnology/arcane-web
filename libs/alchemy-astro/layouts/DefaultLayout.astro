@@ -3,10 +3,9 @@ import '../assets/scss/globals.scss';
 
 export interface Props {
   title: string;
-  subtitle: string;
 }
 
-const { title, subtitle } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <html lang="en" dir="ltr">
@@ -31,10 +30,10 @@ const { title, subtitle } = Astro.props;
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://starter.accessible-astro.dev" />
 
-    <!-- page title -->
-    <title>{title} | {subtitle}</title>
+    <!-- page title hard coded arcane name -->
+    <title>Arcane | {title}</title>
   </head>
-  <body dir="rtl">
+  <body dir="ltr">
     <slot name="header" />
     <main id="main-content">
       <slot name="main" />

@@ -1,11 +1,11 @@
 ---
-import * as Components from '@arcane-web/alchemy-astro';
+import { DefaultLayout, Header, Footer } from '@arcane-web/alchemy-astro';
 ---
 
-<Components.DefaultLayout title="Arcane" subtitle="Platform">
-  <Components.Header slot="header">
+<DefaultLayout title="Platform">
+  <Header slot="header">
     <h1 slot="navigation">Arcane</h1>
-  </Components.Header>
+  </Header>
   <div slot="main">
     <section class="margin-48">
       <div class="container">
@@ -93,7 +93,7 @@ import * as Components from '@arcane-web/alchemy-astro';
       </div>
     </section>
   </div>
-  <Components.Footer slot="footer">
+  <Footer slot="footer">
     <div slot="footer-content">hello</div>
-  </Components.Footer>
-</Components.DefaultLayout>
+  </Footer>
+</DefaultLayout>
