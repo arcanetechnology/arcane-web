@@ -6,11 +6,11 @@
 
 $colors: (
   primary: (
-    100: hsl(194 100% 96%),
-    200: hsl(194 100% 80%),
-    300: hsl(194 100% 70%),
-    400: hsl(194 70% 47%),
-    500: hsl(194 100% 21%),
+    100: #dee2e6,
+    200: #ced4da,
+    300: #6c757d,
+    400: #212529,
+    500: #090a0b,
   ),
   secondary: (
     100: hsl(25 100% 75%),
@@ -73,5 +73,11 @@ $colors: (
     700: hsl(352 90% 35%),
     800: hsl(350 94% 27%),
     900: hsl(347 94% 19%),
+  ),
+  support: (
+    darkest-black: #000000,
+    light-black: #141414,
+    darkest-white: #f9f9f9,
+    lightest-white: #ffffff,
   ),
 );

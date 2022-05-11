@@ -1,5 +1,4 @@
 ---
-import DarkMode from './DarkMode.astro';
 import ResponsiveToggle from './ResponsiveToggle.astro';
 ---
 
@@ -17,7 +16,6 @@ import ResponsiveToggle from './ResponsiveToggle.astro';
           <slot />
         </ul>
       </nav>
-      <DarkMode client:load />
       <ResponsiveToggle client:load />
     </div>
     <nav class="mobile-menu">
@@ -301,7 +299,7 @@ import ResponsiveToggle from './ResponsiveToggle.astro';
         bottom: auto;
         left: 0;
         padding: 1rem;
-        background-color: var(--neutral-background);
+        background-color: var(--theme-navbar-bg);
         border: 2px solid black;
         @include elevation-300;
         @include radius-small;
