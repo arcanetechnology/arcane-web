@@ -6,12 +6,10 @@
     "name": "Joel D'Souza"
   },
   "version": "0.0.1",
-  "private": true,
   "type": "module",
   "exports": {
-    ".": "./index.js",
-    "./Header": "./components/Header.astro",
-    "./MainLayout": "./layouts/MainLayout.astro"
+    ".": "./index.ts",
+    "./astro": "./astro.ts"
   },
   "files": [
     "index.js",
