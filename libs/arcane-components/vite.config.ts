@@ -3,23 +3,21 @@
 
 import path from 'path';
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 
 const config = defineConfig({
-  plugins: [react()],
+  plugins: [],
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'alchemy',
+      name: 'arcane-components',
       formats: ['es', 'umd'],
-      fileName: (format) => `alchemy.${format}.js`,
+      fileName: (format) => `arcane-components.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['solid-js'],
       output: {
         globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
+          'solid-js': 'solid-js',
         },
       },
     },

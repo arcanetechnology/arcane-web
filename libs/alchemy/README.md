@@ -1,3 +1,3 @@
 # @arcane-web/alchemy
 
-design system for arcane-web eco-system.
+solid-js based design system of arcane 

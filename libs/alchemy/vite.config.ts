@@ -27,3 +27,5 @@ const config = defineConfig({
 });
 
 export default config;
+
+// TODO: gotta remove react from everywhere

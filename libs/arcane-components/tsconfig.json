@@ -15,7 +15,7 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "declaration": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "paths": {
       "@components/*": ["src/components/*"]
     }
