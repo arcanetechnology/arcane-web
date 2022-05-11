@@ -1,5 +1,5 @@
 /** @format */
 
-export { default as DefaultLayout } from './layouts/DefaultLayout.astro';
-export { default as Header } from './components/Header.astro';
-export { default as Footer } from './components/Footer.astro';
+export { default as DefaultLayout } from './src/layouts/DefaultLayout.astro';
+export { default as Header } from './src/components/Header.astro';
+export { default as Footer } from './src/components/Footer.astro';

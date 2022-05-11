@@ -33,7 +33,7 @@ const { title } = Astro.props;
     <!-- page title hard coded arcane name -->
     <title>Arcane | {title}</title>
   </head>
-  <body dir="ltr">
+  <body dir="ltr" class="darkmode">
     <slot name="header" />
     <main id="main-content">
       <slot name="main" />
@@ -43,23 +43,3 @@ const { title } = Astro.props;
 </html>
 
 <!--TODO: fix the color scheme theming-->
-
-<style lang="scss">
-  // sticky footer on low content pages
-  html,
-  body {
-    height: 100%;
-    overflow-x: hidden;
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--primary-background);
-    main {
-      flex: 1 0 auto;
-    }
-    footer {
-      flex-shrink: 0;
-    }
-  }
-</style>

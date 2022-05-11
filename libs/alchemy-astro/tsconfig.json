@@ -17,8 +17,8 @@
     "declaration": true,
     "jsx": "react-jsx",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"]
     }
   },
   "files": [],

@@ -20,6 +20,7 @@
   --font-family-default: 'Open Sans', sans-serif;
   --font-family-special: 'Open Sans', sans-serif;
   --font-color: var(--neutral-900);
+  --font-secondary-color: var(--neutral-800);
   --action-color: var(--secondary-500);
   --background: var(--neutral-100);
   --primary-background: var(--primary-100);
@@ -52,6 +53,7 @@
 
 .darkmode {
   --font-color: var(--neutral-100);
+  --font-secondary-color: var(--neutral-200);
   --action-color: var(--secondary-100);
   --background: var(--neutral-900);
   --primary-background: var(--primary-500);
