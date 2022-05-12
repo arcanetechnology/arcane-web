@@ -18,6 +18,8 @@ __metadata:
 "@arcane-web/alchemy-astro@workspace:^, @arcane-web/alchemy-astro@workspace:libs/alchemy-astro":
   version: 0.0.0-use.local
   resolution: "@arcane-web/alchemy-astro@workspace:libs/alchemy-astro"
+  dependencies:
+    "@arcane-web/alchemy": "workspace:^"
   languageName: unknown
   linkType: soft
 
@@ -2019,7 +2021,7 @@ __metadata:
     prettier: ^2.6.2
     prettier-plugin-astro: ^0.0.12
     sass: ^1.51.0
-    solid-js: ^1.3.6
+    solid-js: ^1.3.17
     ts-jest: ^28.0.1
     ts-node: ^10.7.0
     typescript: ^4.6.4
@@ -8412,7 +8414,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solid-js@npm:^1.3.3, solid-js@npm:^1.3.6":
+"solid-js@npm:^1.3.17, solid-js@npm:^1.3.3":
   version: 1.3.17
   resolution: "solid-js@npm:1.3.17"
   checksum: df7787bdd3cce5b8a796c2fdec2c08e481f6435bd30b33d1870f1bafc0775b80d5e0f6271ef78dc2649185486e6bad227704fffa7c970778ea2c24dff94ae118

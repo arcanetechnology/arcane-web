@@ -1,12 +1,13 @@
 /** @format */
 
-import { JSX, splitProps } from 'solid-js';
+import { JSX, mergeProps, splitProps, children } from 'solid-js';
 import { ButtonVariant } from '../types';
 
 type BaseButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const BaseButton = (props: BaseButtonProps) => {
   const [local, others] = splitProps(props, ['class', 'id', 'children']);
+  const child = children(() => local.children);
   return (
     <button
       class={[
@@ -21,7 +22,7 @@ export const BaseButton = (props: BaseButtonProps) => {
       id={`${local.id}-button`}
       {...others}
     >
-      {local.children}
+      {child()}
     </button>
   );
 };
@@ -33,10 +34,12 @@ type OptionalButtonProps = {
 type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
 
 export const Button = (props: ButtonProps) => {
-  const [local, others] = splitProps(props, ['id', 'variant', 'children']);
+  const merged = mergeProps({ variant: 'standard' }, props);
+  const [local, others] = splitProps(merged, ['id', 'variant', 'children']);
+  const child = children(() => local.children);
   return (
     <BaseButton id={`${local.id}-${local.variant}`} {...others}>
-      {local.children}
+      {child()}
     </BaseButton>
   );
 };

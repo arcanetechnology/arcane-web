@@ -1,11 +1,10 @@
 ---
 import { DefaultLayout, Header, Footer } from '@arcane-web/alchemy-astro';
-import ThemeToggle from '../components/ThemeToggle';
 ---
 
 <DefaultLayout title="Platform">
   <Header slot="header">
-    <div slot="navigation"><ThemeToggle client:load /></div>
+    <div slot="navigation">Hello</div>
   </Header>
   <div slot="main">
     <section class="margin-48">
@@ -95,6 +94,6 @@ import ThemeToggle from '../components/ThemeToggle';
     </section>
   </div>
   <Footer slot="footer">
-    <div slot="footer-content">hello</div>
+    <div slot="content">hello</div>
   </Footer>
 </DefaultLayout>

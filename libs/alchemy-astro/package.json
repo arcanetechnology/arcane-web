@@ -8,8 +8,7 @@
   "version": "0.0.1",
   "type": "module",
   "exports": {
-    ".": "./index.ts",
-    "./astro": "./astro.ts"
+    ".": "./index.ts"
   },
   "files": [
     "index.ts"
@@ -19,5 +18,8 @@
     "button",
     "heading",
     "example"
-  ]
+  ],
+  "dependencies": {
+    "@arcane-web/alchemy": "workspace:^"
+  }
 }
