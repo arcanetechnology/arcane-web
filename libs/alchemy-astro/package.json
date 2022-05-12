@@ -9,8 +9,7 @@
   "type": "module",
   "exports": {
     ".": "./index.ts",
-    "./astro": "./astro.ts",
-    "./solid": "./solid.ts"
+    "./astro": "./astro.ts"
   },
   "files": [
     "index.js",
@@ -22,8 +21,5 @@
     "button",
     "heading",
     "example"
-  ],
-  "peerDependencies": {
-    "@arcane-web/alchemy": "workspace:^"
-  }
+  ]
 }

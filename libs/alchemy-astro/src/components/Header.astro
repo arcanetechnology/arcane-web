@@ -1,13 +1,12 @@
 ---
 import Logo from './Logo.astro';
-import ThemeToggle from './ThemeToggle.tsx';
 ---
 
 <header role="banner" class="padding-12">
   <div class="container" data-auto-grid="3">
     <Logo />
     <slot name="navigation" />
-    <ThemeToggle client:visible />
+    <slot name="theme" />
   </div>
 </header>
 
