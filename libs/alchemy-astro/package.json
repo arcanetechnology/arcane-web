@@ -12,9 +12,7 @@
     "./astro": "./astro.ts"
   },
   "files": [
-    "index.js",
-    "Header",
-    "MainLayout"
+    "index.ts"
   ],
   "keywords": [
     "astro-component",

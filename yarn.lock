@@ -21,7 +21,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@arcane-web/alchemy@workspace:libs/alchemy":
+"@arcane-web/alchemy@workspace:^, @arcane-web/alchemy@workspace:libs/alchemy":
   version: 0.0.0-use.local
   resolution: "@arcane-web/alchemy@workspace:libs/alchemy"
   languageName: unknown
@@ -43,6 +43,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane@workspace:apps/arcane"
   dependencies:
+    "@arcane-web/alchemy": "workspace:^"
     "@arcane-web/alchemy-astro": "workspace:^"
   languageName: unknown
   linkType: soft

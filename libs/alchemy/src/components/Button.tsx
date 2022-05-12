@@ -5,9 +5,22 @@ import { ButtonVariant } from '../types';
 
 type BaseButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const BaseButton = ({ children, id, ...props }: BaseButtonProps) => {
+export const BaseButton = (props: BaseButtonProps) => {
+  const { class: className, id, children, ...rest } = props;
   return (
-    <button id={`${id}-button`} {...props}>
+    <button
+      class={[
+        'radius-large',
+        'elevation-100',
+        'color-neutral',
+        'border-medium',
+        className && null,
+      ].join(' ')}
+      data-animation="fade-in"
+      data-animation-delay="0.25s"
+      id={`${id}-button`}
+      {...rest}
+    >
       {children}
     </button>
   );
@@ -19,14 +32,10 @@ type OptionalButtonProps = {
 
 type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
 
-export const Button = ({
-  children,
-  id,
-  variant = 'standard',
-  ...props
-}: ButtonProps) => {
+export const Button = (buttonProps: ButtonProps) => {
+  const { children, id, variant, ...rest } = buttonProps;
   return (
-    <BaseButton id={`${id}-${variant}`} {...props}>
+    <BaseButton id={`${id}-${variant}`} {...rest}>
       {children}
     </BaseButton>
   );
