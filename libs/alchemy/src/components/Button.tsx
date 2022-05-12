@@ -1,17 +1,11 @@
 /** @format */
 
-import { Component, JSX } from 'solid-js';
+import { JSX } from 'solid-js';
 import { ButtonVariant } from '../types';
-
-
 
 type BaseButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const BaseButton: Component<BaseButtonProps> = ({
-  children,
-  id,
-  ...props
-}) => {
+export const BaseButton = ({ children, id, ...props }: BaseButtonProps) => {
   return (
     <button id={`${id}-button`} {...props}>
       {children}
@@ -25,12 +19,12 @@ type OptionalButtonProps = {
 
 type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
 
-export const Button: Component<ButtonProps> = ({
+export const Button = ({
   children,
   id,
   variant = 'standard',
   ...props
-}) => {
+}: ButtonProps) => {
   return (
     <BaseButton id={`${id}-${variant}`} {...props}>
       {children}

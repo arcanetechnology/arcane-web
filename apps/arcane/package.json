@@ -9,6 +9,7 @@
     "preview": "yarn run -T astro preview"
   },
   "dependencies": {
+    "@arcane-web/alchemy": "workspace:^",
     "@arcane-web/alchemy-astro": "workspace:^"
   }
 }

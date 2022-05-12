@@ -1,7 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "jsx": "preserve",
     "esModuleInterop": true,
+    "jsxImportSource": "solid-js",
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": false,
@@ -11,12 +13,9 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+
     "noEmit": true,
-    "types": ["vite/client"],
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"]
-    }
+    "types": ["vite/client"]
   },
   "files": [],
   "include": ["./src"]

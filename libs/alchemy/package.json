@@ -5,24 +5,13 @@
     "email": "joeldsouzax@gmail.com",
     "name": "Joel D'Souza"
   },
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/alchemy.umd.js",
-  "module": "./dist/alchemy.es.js",
   "exports": {
-    ".": {
-      "import": "./dist/alchemy.es.js",
-      "require": "./dist/alchemy.umd.js"
-    }
+    ".": "./index.ts"
   },
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "yarn run -T vite build && tsc --emitDeclarationOnly",
-    "test": "yarn run -T jest"
-  },
-  "peerDependencies": {
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
-  }
+  "files": [
+    "index.ts"
+  ],
+  "keywords": [
+    "solid-components"
+  ]
 }

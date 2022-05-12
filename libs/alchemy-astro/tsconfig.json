@@ -6,6 +6,7 @@
     "rootDir": "./src",
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "jsxImportSource": "solid-js",
     "allowJs": true,
     "strict": true,
     "noImplicitOverride": true,
@@ -15,11 +16,7 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "declaration": true,
-    "jsx": "react-jsx",
-    "paths": {
-      "@components/*": ["./src/components/*"],
-      "@layouts/*": ["./src/layouts/*"]
-    }
+    "jsx": "preserve"
   },
   "files": [],
   "include": ["./src"]

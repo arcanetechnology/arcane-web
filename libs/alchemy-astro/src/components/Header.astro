@@ -1,11 +1,13 @@
 ---
 import Logo from './Logo.astro';
+import ThemeToggle from './ThemeToggle.tsx';
 ---
 
-<header class="padding-12">
-  <div class="container">
+<header role="banner" class="padding-12">
+  <div class="container" data-auto-grid="3">
     <Logo />
     <slot name="navigation" />
+    <ThemeToggle client:visible />
   </div>
 </header>
 
@@ -13,5 +15,8 @@ import Logo from './Logo.astro';
   header {
     background-color: var(--header-background);
     position: sticky;
+    > .div {
+      align-items: center;
+    }
   }
 </style>
