@@ -1,7 +1,7 @@
 /** @format */
 
 import { Button } from '@arcane-web/alchemy';
-import { createSignal, JSXElement } from 'solid-js';
+import { JSXElement } from 'solid-js';
 
 type Theme = 'light' | 'dark';
 
