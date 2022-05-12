@@ -8,9 +8,9 @@
 This philosophy guides arcanes web development, we have kept the framework lean
 
 
-TODO: remove react from everywhere
-TODO: add solidjs based basic components
+
 TODO: add themetoggler
+TODO: create solid js ui library
 TODO: figure out firebase authentication system
 TODO: add test cases everywhere.
 TODO: connect contentful headless cms to invest.

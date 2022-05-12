@@ -1,12 +1,12 @@
 /** @format */
 
-import { JSX } from 'solid-js';
+import { JSX, splitProps } from 'solid-js';
 import { ButtonVariant } from '../types';
 
 type BaseButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const BaseButton = (props: BaseButtonProps) => {
-  const { class: className, id, children, ...rest } = props;
+  const [local, others] = splitProps(props, ['class', 'id', 'children']);
   return (
     <button
       class={[
@@ -14,14 +14,14 @@ export const BaseButton = (props: BaseButtonProps) => {
         'elevation-100',
         'color-neutral',
         'border-medium',
-        className && null,
+        local.class && null,
       ].join(' ')}
       data-animation="fade-in"
       data-animation-delay="0.25s"
-      id={`${id}-button`}
-      {...rest}
+      id={`${local.id}-button`}
+      {...others}
     >
-      {children}
+      {local.children}
     </button>
   );
 };
@@ -32,11 +32,11 @@ type OptionalButtonProps = {
 
 type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
 
-export const Button = (buttonProps: ButtonProps) => {
-  const { children, id, variant, ...rest } = buttonProps;
+export const Button = (props: ButtonProps) => {
+  const [local, others] = splitProps(props, ['id', 'variant', 'children']);
   return (
-    <BaseButton id={`${id}-${variant}`} {...rest}>
-      {children}
+    <BaseButton id={`${local.id}-${local.variant}`} {...others}>
+      {local.children}
     </BaseButton>
   );
 };
