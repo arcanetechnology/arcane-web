@@ -9,7 +9,6 @@ This philosophy guides arcanes web development, we have kept the framework lean
 
 
 
-TODO: add themetoggler
 TODO: create solid js ui library
 TODO: figure out firebase authentication system
 TODO: add test cases everywhere.
