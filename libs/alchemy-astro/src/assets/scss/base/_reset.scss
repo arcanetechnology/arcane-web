@@ -54,6 +54,8 @@ textarea {
   color: inherit;
   letter-spacing: inherit;
   font: inherit;
+  border: none;
+  background: none;
 }
 
 input[type='text'],
@@ -71,10 +73,9 @@ legend {
   max-width: 100%;
 }
 
-button,
 input,
 textarea {
-  border: 1px solid gray;
+  border: 1px solid var(--font-color);
 }
 
 button {

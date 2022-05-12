@@ -31,7 +31,11 @@ const icons = [
 ];
 
 const ThemeToggle = (): JSXElement => {
-  return <Button onClick={(e) => console.log(e)}>{icons[0]}</Button>;
+  return (
+    <Button variant="text" id="theme-toggle" onClick={(e) => console.log(e)}>
+      {icons[0]}
+    </Button>
+  );
 };
 
 export default ThemeToggle;

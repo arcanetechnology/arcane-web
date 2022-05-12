@@ -1,5 +1,25 @@
-<header class="container padding-8">
-  <slot name="brand" />
-  <slot name="navigation" />
-  <slot name="theme" />
+---
+import Logo from './Logo.astro';
+---
+
+<header role="banner">
+  <div class="container align-row">
+    <Logo data-animation="pop-up" data-animation-delay="1s" class="logo" />
+    <div style="flex-grow: 1;"></div>
+    <div class="space-32"><slot name="navigation" /></div>
+    <div class="space-2"><slot name="theme" /></div>
+    <slot name="auth" />
+  </div>
 </header>
+
+<style lang="scss" is:inline>
+  header {
+    z-index: 11;
+    height: var(--header-height);
+    width: 100%;
+    background-color: var(--header-background);
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+  }
+</style>

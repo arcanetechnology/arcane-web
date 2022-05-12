@@ -1,3 +1,12 @@
-<footer>
-  <slot name="content" />
+<footer class="padding-48">
+  <div class="container">
+    <slot name="content" />
+  </div>
 </footer>
+
+<style lang="scss" is:inline>
+  footer {
+    background-color: var(--footer-background);
+    color: var(--footer-color);
+  }
+</style>

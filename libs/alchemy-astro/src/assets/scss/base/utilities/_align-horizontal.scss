@@ -11,3 +11,10 @@
   align-items: center;
   text-align: center;
 }
+
+.align-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}

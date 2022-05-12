@@ -6,19 +6,20 @@ import { ButtonVariant } from '../types';
 type BaseButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const BaseButton = (props: BaseButtonProps) => {
-  const [local, others] = splitProps(props, ['class', 'id', 'children']);
+  const [local, others] = splitProps(props, [
+    'class',
+    'id',
+    'children',
+    'classList',
+  ]);
   const child = children(() => local.children);
   return (
     <button
-      class={[
-        'radius-large',
-        'elevation-100',
-        'color-neutral',
-        'border-medium',
-        local.class && null,
-      ].join(' ')}
-      data-animation="fade-in"
-      data-animation-delay="0.25s"
+      class={local.class}
+      classList={{
+        'radius-large': true,
+        ...local.classList,
+      }}
       id={`${local.id}-button`}
       {...others}
     >
@@ -38,7 +39,13 @@ export const Button = (props: ButtonProps) => {
   const [local, others] = splitProps(merged, ['id', 'variant', 'children']);
   const child = children(() => local.children);
   return (
-    <BaseButton id={`${local.id}-${local.variant}`} {...others}>
+    <BaseButton
+      classList={{
+        'elevation-200': local.variant === 'standard',
+      }}
+      id={`${local.id}-${local.variant}`}
+      {...others}
+    >
       {child()}
     </BaseButton>
   );

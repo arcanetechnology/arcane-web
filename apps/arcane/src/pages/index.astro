@@ -1,15 +1,20 @@
 ---
 import { DefaultLayout, Header, Footer } from '@arcane-web/alchemy-astro';
+import ThemeToggle from '../components/ThemeToggle';
+import Authentication from '../components/Authentication';
+import Navigation from '../components/Navigation';
 ---
 
 <DefaultLayout title="Platform">
   <Header slot="header">
-    <div slot="navigation">Hello</div>
+    <Navigation slot="navigation" />
+    <ThemeToggle client:visible slot="theme" />
+    <Authentication client:visible slot="auth" />
   </Header>
   <div slot="main">
     <section class="margin-48">
       <div class="container">
-        <h1>Accessible Astro <em>Starter</em></h1><br />
+        <h1>Sample Arcane <em>page</em></h1><br />
       </div>
     </section>
     <section class="padding-48">

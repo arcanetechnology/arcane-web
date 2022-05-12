@@ -1,3 +1,3 @@
 /** @format */
 
-export type ButtonVariant = 'standard';
+export type ButtonVariant = 'standard' | 'text';
