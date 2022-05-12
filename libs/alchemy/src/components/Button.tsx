@@ -42,6 +42,7 @@ export const Button = (props: ButtonProps) => {
     <BaseButton
       classList={{
         'elevation-200': local.variant === 'standard',
+        'border-small': local.variant === 'standard',
       }}
       id={`${local.id}-${local.variant}`}
       {...others}

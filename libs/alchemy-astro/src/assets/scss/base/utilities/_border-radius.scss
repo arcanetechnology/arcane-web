@@ -13,3 +13,7 @@
 .radius-large {
   @include radius-large;
 }
+
+.border-small {
+  border: 1px solid var(--font-color);
+}
