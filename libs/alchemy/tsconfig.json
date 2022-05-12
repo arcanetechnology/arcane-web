@@ -6,6 +6,7 @@
     "rootDir": "./src",
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "jsxImportSource": "solid-js",
     "allowJs": true,
     "strict": true,
     "noImplicitOverride": true,
@@ -15,7 +16,8 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "declaration": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
+    "types": ["vite/client"],
     "paths": {
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"]

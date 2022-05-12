@@ -3,11 +3,13 @@
 
 import path from 'path';
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import solidjsplugin from 'vite-plugin-solid';
 
 const config = defineConfig({
-  plugins: [react()],
+  plugins: [solidjsplugin],
   build: {
+    target: 'esnext',
+    polyfillDynamicImport: false,
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'alchemy',
@@ -15,11 +17,10 @@ const config = defineConfig({
       fileName: (format) => `alchemy.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['solid-js'],
       output: {
         globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
+          'solid-js': 'solid-js',
         },
       },
     },

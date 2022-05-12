@@ -1,16 +1,17 @@
 /** @format */
 
-import { FC, ReactNode, DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
+import { Component, JSX } from 'solid-js';
 import { ButtonVariant } from '../types';
 
-type BaseButtonProps = {
-  children: ReactNode;
-} & DetailedHTMLProps<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->;
 
-export const BaseButton: FC<BaseButtonProps> = ({ children, id, ...props }) => {
+
+type BaseButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;
+
+export const BaseButton: Component<BaseButtonProps> = ({
+  children,
+  id,
+  ...props
+}) => {
   return (
     <button id={`${id}-button`} {...props}>
       {children}
@@ -24,7 +25,7 @@ type OptionalButtonProps = {
 
 type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
 
-export const Button: FC<ButtonProps> = ({
+export const Button: Component<ButtonProps> = ({
   children,
   id,
   variant = 'standard',

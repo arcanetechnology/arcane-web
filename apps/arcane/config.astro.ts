@@ -2,12 +2,12 @@
 
 import { defineConfig } from 'astro/config';
 
-import react from '@astrojs/react';
+import solid from '@astrojs/solid-js';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import turbolink from '@astrojs/turbolinks';
 
 export default defineConfig({
   site: 'https://arcane.no',
-  integrations: [react(), partytown(), sitemap(), turbolink()],
+  integrations: [solid(), partytown(), sitemap(), turbolink()],
 });

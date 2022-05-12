@@ -19,16 +19,11 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
-      "excludedFiles": ["prerender.js", "server.js"],
-      "plugins": ["react", "@typescript-eslint"],
+      "plugins": ["solid", "@typescript-eslint"],
       "extends": [
-        "plugin:react/recommended",
+        "plugin:solid/recommended",
         "plugin:@typescript-eslint/recommended"
-      ],
-      "rules": {
-        "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off"
-      }
+      ]
     }
   ]
 }
