@@ -45,3 +45,22 @@ const { title } = Astro.props;
     <slot name="footer" />
   </body>
 </html>
+
+<style lang="scss">
+  html,
+  body {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background);
+    main {
+      flex: 1 0 auto;
+    }
+    footer {
+      flex-shrink: 0;
+    }
+  }
+</style>
