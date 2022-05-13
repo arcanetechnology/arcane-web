@@ -9,3 +9,7 @@ interface ImportMetaEnv {
   readonly ARCANE_CONTENTFUL_LEGAL_SPACE: string;
   readonly ARCANE_CONTENTFUL_LEGAL_ACCESS_TOKEN: string;
 }
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}

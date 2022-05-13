@@ -50,8 +50,12 @@ const ThemeToggle = (): JSXElement => {
 
   onMount(() => {
     if (import.meta.env.SSR) return null;
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      setTheme(localStorage.getItem('theme') as Theme);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setTheme('dark');
+    } else {
+      setTheme('light');
     }
   });
 
@@ -65,10 +69,19 @@ const ThemeToggle = (): JSXElement => {
   });
 
   const themeChangeHandler = () => {
-    setTheme(toggle[theme()]);
+    const newTheme = toggle[theme()];
+    localStorage.setItem('theme', newTheme);
+    setTheme(newTheme);
   };
   return (
-    <Button onClick={themeChangeHandler} variant="text" id="theme-toggle">
+    <Button
+      name="theme-toggle"
+      title={`Use ${theme()} theme`}
+      aria-label={`Use ${theme()} theme`}
+      onClick={themeChangeHandler}
+      variant="text"
+      id="theme-toggle"
+    >
       <Dynamic component={icons[theme()]} />
     </Button>
   );
