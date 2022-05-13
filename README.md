@@ -8,7 +8,7 @@
 This philosophy guides arcanes web development, we have kept the framework lean
 
 
-1. TODO: figure out firebase authentication system
+1. TODO: add firebase authentication system.
 2. TODO: add test cases everywhere.
 3. TODO: connect contentful headless cms to invest.
 4. TODO: convert alchemy to compiled solid-js library instead of direct tsx.
