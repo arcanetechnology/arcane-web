@@ -1,11 +1,16 @@
 /** @format */
 
-import { JSX, mergeProps, splitProps, children } from 'solid-js';
+import { JSX, mergeProps, splitProps, children, FlowComponent } from 'solid-js';
 import { ButtonVariant } from '../types';
 
 type BaseButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const BaseButton = (props: BaseButtonProps) => {
+/**
+ * low level base button without any custom style, all styles are inherited from css files.
+ * @param @type {BaseButtonProps} accepst all types of button properties of an html button.
+ * @returns @type {JSX.Element} renders and html button
+ */
+export const BaseButton: FlowComponent<BaseButtonProps> = (props) => {
   const [local, others] = splitProps(props, [
     'class',
     'id',
@@ -33,7 +38,12 @@ type OptionalButtonProps = {
 
 type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
 
-export const Button = (props: ButtonProps) => {
+/**
+ * mid level button wrapped in arcane design languge css based on prop values
+ * @param @type {ButtonProps} accepst all types of button properties of an html button.
+ * @returns @type {BaseButton} renders base button.
+ */
+export const Button: FlowComponent<ButtonProps> = (props) => {
   const merged = mergeProps({ variant: 'standard' }, props);
   const [local, others] = splitProps(merged, ['id', 'variant', 'children']);
   const child = children(() => local.children);
