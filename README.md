@@ -8,11 +8,10 @@
 This philosophy guides arcanes web development, we have kept the framework lean
 
 
-
-TODO: create solid js ui library
 TODO: figure out firebase authentication system
 TODO: add test cases everywhere.
 TODO: connect contentful headless cms to invest.
+TODO: convert alchemy to compiled solid-js library instead of direct tsx.
 TODO: maybe convert arcane-state to solidjs context api? 
 TODO: evaluate arcane-state vs nanostore.
 TODO: alchemy css only design system hosted on cdn.
