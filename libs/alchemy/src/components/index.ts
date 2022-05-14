@@ -1,6 +1,6 @@
 /** @format */
 
-export * from './Button';
+export * from './button/Button';
 
 //TODO: input element
 //TODO: Modals / Dialog elements

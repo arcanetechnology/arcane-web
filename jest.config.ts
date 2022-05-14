@@ -3,6 +3,7 @@ import { Config } from '@jest/types';
 
 const config: Config.InitialOptions = {
   verbose: true,
+
   displayName: {
     name: 'arcane-web',
     color: 'black',
@@ -17,6 +18,7 @@ const config: Config.InitialOptions = {
       lines: 90,
     },
   },
+  
   projects: ['<rootDir>', '<rootDir>/apps/*', '<rootDir>/libs/*'],
 };
 
