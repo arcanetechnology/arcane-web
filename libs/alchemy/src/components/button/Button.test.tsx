@@ -22,7 +22,7 @@ describe('alchemy button element', () => {
 
   test('text button should be rendered when we pass the text variant', () => {
     render(() => (
-      <Button data-testid="test-button" variant="text">
+      <Button data-testid="test-button" variant="text"> 
         Test
       </Button>
     ));
