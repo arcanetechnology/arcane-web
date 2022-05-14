@@ -16,7 +16,8 @@ This philosophy guides arcanes web development, we have kept the framework lean
 6. TODO: alchemy css only design system hosted on cdn.
 7. TODO: alchemy solidjs based design system with inbuilt style provider.
 8. TODO: create an alchemy icon library for arcane.
-
+9. TODO: contentful library integration.
+10. TODO: service injection mechanism so i can have cross cutting services across the system.
 
 
 ### Quirks

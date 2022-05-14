@@ -79,7 +79,7 @@ const ThemeToggle: Component = () => {
   return (
     <Button
       name="theme-toggle"
-      title={`Use ${theme()} theme`}
+      title={'Toggle theme'}
       aria-label={`Use ${theme()} theme`}
       onClick={themeChangeHandler}
       variant="text"

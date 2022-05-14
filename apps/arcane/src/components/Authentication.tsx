@@ -5,7 +5,12 @@ import { Component } from 'solid-js';
 
 const Authentication: Component = () => {
   return (
-    <Button variant="standard" id="auth" onClick={(e) => console.log(e)}>
+    <Button
+      title="sign into arcane platform"
+      variant="standard"
+      id="auth"
+      onClick={(e) => console.log(e)}
+    >
       Signin
     </Button>
   );
