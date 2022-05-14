@@ -2,8 +2,6 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "esModuleInterop": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "jsxImportSource": "solid-js",
@@ -17,12 +15,12 @@
     "isolatedModules": false,
     "declaration": true,
     "jsx": "preserve",
-    "types": ["vite/client", "jest"],
+    "types": ["vite/client", "jest", "@testing-library/jest-dom"],
     "paths": {
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"]
     }
   },
   "files": [],
-  "include": ["./src"]
+  "include": ["./src", "./jest-setup.ts"]
 }

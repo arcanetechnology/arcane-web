@@ -19,7 +19,7 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
-      "plugins": ["solid", "@typescript-eslint"],
+      "plugins": ["solid", "@typescript-eslint", "jest-dom"],
       "extends": [
         "plugin:solid/recommended",
         "plugin:@typescript-eslint/recommended"

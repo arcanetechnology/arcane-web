@@ -44,7 +44,7 @@ type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
  * @returns @type {BaseButton} renders base button.
  */
 export const Button: FlowComponent<ButtonProps> = (props) => {
-  const merged = mergeProps({ variant: 'standard' }, props);
+  const merged = mergeProps({ variant: 'standard', id: 'arcane' }, props);
   const [local, others] = splitProps(merged, ['id', 'variant', 'children']);
   const child = children(() => local.children);
   return (
