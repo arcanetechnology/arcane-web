@@ -12,22 +12,10 @@ type BaseButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;
  * @returns @type {JSX.Element} renders and html button
  */
 export const BaseButton: FlowComponent<BaseButtonProps> = (props) => {
-  const [local, others] = splitProps(props, [
-    'class',
-    'id',
-    'children',
-    'classList',
-  ]);
+  const [local, others] = splitProps(props, ['id', 'children']);
   const child = children(() => local.children);
   return (
-    <button
-      class={local.class}
-      classList={{
-        ...local.classList,
-      }}
-      id={`${local.id}-button`}
-      {...others}
-    >
+    <button id={`${local.id}-button`} {...others}>
       {child()}
     </button>
   );

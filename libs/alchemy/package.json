@@ -28,6 +28,19 @@
   },
   "scripts": {
     "test": "yarn run -T jest",
-    "build": "yarn run -T rollup -c"
+    "build": "yarn run -T rollup -c",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-docs": "^6.4.22",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/html": "^6.4.22",
+    "@types/babel__core": "^7",
+    "babel-loader": "^8.2.5",
+    "babel-preset-solid": "^1.4.0"
   }
 }
