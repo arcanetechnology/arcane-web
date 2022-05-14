@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-07 15:22:05
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-14 15:46:59
+ * @ Modified time: 2022-05-14 15:48:03
  * @ Description: set of utility functions that are useful for core arcane-flow business logic
  *
  * @format
@@ -31,7 +31,9 @@ export const getFlowNodeMap = <Name, Data>(
  * @param edges
  * @returns
  */
-export const getEdgeMaps = <N, A>(...edges: Array<Edge<N, A>>): EdgeMap<A> => {
+export const getEdgeMaps = <Name, Answer>(
+  ...edges: Array<Edge<Name, Answer>>
+): EdgeMap<Answer> => {
   return edges.reduce((prev, curr) => {
     const key = curr.source;
     const logic = curr.logic;
@@ -42,7 +44,7 @@ export const getEdgeMaps = <N, A>(...edges: Array<Edge<N, A>>): EdgeMap<A> => {
     };
     prev[key] = newObject;
     return prev;
-  }, {} as EdgeMap<A>);
+  }, {} as EdgeMap<Answer>);
 };
 
 /**
