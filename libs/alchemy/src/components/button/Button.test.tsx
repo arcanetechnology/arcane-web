@@ -9,9 +9,24 @@ describe('alchemy button element', () => {
     const button = screen.getByTestId('test-button');
     expect(button).toHaveAttribute('id', 'arcane-standard-button');
   });
-  /*  test('standard button should have a border');
-  test('standard button should have elevation');
+  test('standard button should have a border', () => {
+    render(() => <Button data-testid="test-button">Test</Button>);
+    const button = screen.getByTestId('test-button');
+    expect(button).toHaveClass('border-small');
+  });
+  test('standard button should have elevation', () => {
+    render(() => <Button data-testid="test-button">Test</Button>);
+    const button = screen.getByTestId('test-button');
+    expect(button).toHaveClass('elevation-200');
+  });
 
-  test('text button has no border');
-  test('text button has no elevation'); */
+  test('text button should be rendered when we pass the text variant', () => {
+    render(() => (
+      <Button data-testid="test-button" variant="text">
+        Test
+      </Button>
+    ));
+    const button = screen.getByTestId('test-button');
+    expect(button).toHaveAttribute('id', 'arcane-text-button');
+  });
 });
