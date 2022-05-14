@@ -5,16 +5,29 @@
     "email": "joeldsouzax@gmail.com",
     "name": "Joel D'Souza"
   },
-  "exports": {
-    ".": "./index.ts"
-  },
+  "source": "src/index.tsx",
   "files": [
-    "index.ts"
+    "dist"
   ],
   "keywords": [
-    "solid-components"
+    "solid-components",
+    "design-systen",
+    "arcane-design-system"
   ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "solid": "./dist/source/index.jsx",
+      "import": "./dist/esm/index.js",
+      "browser": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "node": "./dist/cjs/index.js"
+    }
+  },
   "scripts": {
-    "test": "yarn run -T jest"
+    "test": "yarn run -T jest",
+    "build": "yarn run -T rollup -c"
   }
 }

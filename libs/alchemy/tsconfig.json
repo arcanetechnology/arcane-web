@@ -4,7 +4,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "jsxImportSource": "solid-js",
+    "jsx": "react-jsx",
+    "jsxImportSource": "solid-js/h",
     "allowJs": false,
     "strict": true,
     "noImplicitOverride": true,
@@ -14,13 +15,11 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "declaration": true,
-    "jsx": "preserve",
     "types": ["vite/client", "jest", "@testing-library/jest-dom"],
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "@components/*": ["src/components/*"]
     }
   },
   "files": [],
-  "include": ["./src", "./jest-setup.ts"]
+  "include": ["./src"]
 }

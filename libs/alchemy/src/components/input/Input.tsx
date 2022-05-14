@@ -8,5 +8,3 @@ type BaseInputProps = JSX.InputHTMLAttributes<HTMLInputElement>;
 export const BaseInput: FlowComponent<BaseInputProps> = (props) => {
   return <input {...props} />;
 };
-
-
