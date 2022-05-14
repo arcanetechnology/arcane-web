@@ -2,8 +2,11 @@
 
 import { Button } from '@arcane-web/alchemy';
 import { Dynamic } from 'solid-js/web';
-import { createEffect, createSignal, JSXElement, onMount } from 'solid-js';
+import { createEffect, createSignal, Component, onMount } from 'solid-js';
 
+// Theme toggle should get the local storage state incase there is some.
+// Theme Toggle should be write to that localstorage. in essence, accessing entries and updating entries in a localstorage is a service.
+// arcane needs its own icon pack I suppose?
 type Theme = 'light' | 'dark';
 const toggle: Record<Theme, Theme> = {
   light: 'dark',
@@ -45,7 +48,7 @@ const icons = {
   dark: Dark,
 };
 
-const ThemeToggle = (): JSXElement => {
+const ThemeToggle: Component = () => {
   const [theme, setTheme] = createSignal<Theme>('light');
 
   onMount(() => {

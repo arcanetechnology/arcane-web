@@ -17,3 +17,8 @@ This philosophy guides arcanes web development, we have kept the framework lean
 7. TODO: alchemy solidjs based design system with inbuilt style provider.
 8. TODO: create an alchemy icon library for arcane.
 
+
+### Quirks
+
+wasn't able to figure out how to build a compiled solid-js component library, so I was forced to use rollup. I really hate it when I have to use multiple build tools.
+

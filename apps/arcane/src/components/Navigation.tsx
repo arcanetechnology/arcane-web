@@ -1,9 +1,9 @@
 /** @format */
 
 import { Button } from '@arcane-web/alchemy';
-import { JSXElement } from 'solid-js';
+import { Component } from 'solid-js';
 
-const Navigation = (): JSXElement => {
+const Navigation: Component = () => {
   return (
     <Button variant="text" id="navigation" onClick={(e) => console.log(e)}>
       navigate

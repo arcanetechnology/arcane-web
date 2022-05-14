@@ -18,8 +18,5 @@
     "button",
     "heading",
     "example"
-  ],
-  "dependencies": {
-    "@arcane-web/alchemy": "workspace:^"
-  }
+  ]
 }

@@ -27,7 +27,7 @@
     "@types/testing-library__jest-dom": "^5",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
-    "astro": "^1.0.0-beta.27",
+    "astro": "^1.0.0-beta.28",
     "autoprefixer": "^10.4.7",
     "cross-env": "^7.0.3",
     "eslint": "^8.15.0",

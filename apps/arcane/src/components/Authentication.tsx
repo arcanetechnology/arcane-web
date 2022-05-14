@@ -1,9 +1,9 @@
 /** @format */
 
 import { Button } from '@arcane-web/alchemy';
-import { JSXElement } from 'solid-js';
+import { Component } from 'solid-js';
 
-const Authentication = (): JSXElement => {
+const Authentication: Component = () => {
   return (
     <Button variant="standard" id="auth" onClick={(e) => console.log(e)}>
       Signin
