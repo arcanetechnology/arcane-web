@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 17:26:29
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-14 15:41:45
+ * @ Modified time: 2022-05-14 15:42:16
  * @ Description: type declaration for arcan-flow functions
  *
  * @format

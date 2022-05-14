@@ -2,26 +2,28 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-07 15:22:05
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-09 12:57:02
+ * @ Modified time: 2022-05-14 15:46:59
  * @ Description: set of utility functions that are useful for core arcane-flow business logic
  *
  * @format
  */
 
-import { FlowNode, Edge, StringLiteral, Logic, EdgeMap } from './types';
+import { FlowNode, Edge, StringLiteral, EdgeMap } from './types';
 
 /**
  * utility function to normalize flownode structure into something manageable.
  * @param nodes
  * @returns
  */
-export const getFlowNodeMap = <N, D>(...nodes: Array<FlowNode<N, D>>) => {
+export const getFlowNodeMap = <Name, Data>(
+  ...nodes: Array<FlowNode<Name, Data>>
+) => {
   return nodes.reduce((prev, curr) => {
     const key = curr.name;
     const val = curr.data;
     prev[key] = val;
     return prev;
-  }, {} as Record<StringLiteral<N>, D>);
+  }, {} as Record<StringLiteral<Name>, Data>);
 };
 
 /**
