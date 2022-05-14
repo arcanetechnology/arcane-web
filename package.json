@@ -40,13 +40,13 @@
     "prettier-plugin-astro": "^0.0.12",
     "sass": "^1.51.0",
     "solid-jest": "^0.2.0",
+    "solid-start": "^0.1.0-alpha.0",
     "solid-testing-library": "^0.3.0",
     "ts-jest": "^28.0.2",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4",
     "vite": "^2.9.9",
-    "vite-plugin-externals": "^0.4.0",
-    "vite-plugin-solid": "^2.2.6"
+    "vite-plugin-externals": "^0.4.0"
   },
   "dependencies": {
     "solid-js": "^1.4.0"
