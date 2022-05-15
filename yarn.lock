@@ -48,6 +48,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@arcane-web/invest@workspace:apps/invest":
+  version: 0.0.0-use.local
+  resolution: "@arcane-web/invest@workspace:apps/invest"
+  languageName: unknown
+  linkType: soft
+
 "@astrojs/compiler@npm:^0.14.2":
   version: 0.14.2
   resolution: "@astrojs/compiler@npm:0.14.2"

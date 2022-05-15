@@ -1,1 +1,3 @@
-# @arcane-web/arcane
+# arcane
+
+The entry point into arcane ecosystem.
