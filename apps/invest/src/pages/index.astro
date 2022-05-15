@@ -1,4 +1,26 @@
-<html>
-  <head><title>invest</title></head>
-  <body><h1>invest landing page</h1></body>
-</html>
+---
+import { DefaultLayout, Header, Footer } from '@arcane-web/alchemy-astro';
+import {
+  ThemeToggle,
+  Navigation,
+  Authentication,
+} from '@arcane-web/arcane-components';
+---
+
+<DefaultLayout title="Invest">
+  <Header slot="header">
+    <Navigation slot="navigation" />
+    <ThemeToggle client:visible slot="theme" />
+    <Authentication client:visible slot="auth" />
+  </Header>
+  <div slot="main">
+    <section class="margin-48">
+      <div class="container">
+        <h1><em>TODO: invest landing page get from contentful</em></h1><br />
+      </div>
+    </section>
+  </div>
+  <Footer slot="footer">
+    <div slot="content">TODO: get from contentful</div>
+  </Footer>
+</DefaultLayout>
