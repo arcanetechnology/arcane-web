@@ -51,6 +51,9 @@ __metadata:
 "@arcane-web/invest@workspace:apps/invest":
   version: 0.0.0-use.local
   resolution: "@arcane-web/invest@workspace:apps/invest"
+  dependencies:
+    "@arcane-web/alchemy": "workspace:^"
+    "@arcane-web/alchemy-astro": "workspace:^"
   languageName: unknown
   linkType: soft
 
