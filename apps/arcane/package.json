@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@arcane-web/alchemy": "workspace:^",
-    "@arcane-web/alchemy-astro": "workspace:^",
-    "@arcane-web/arcane-components": "workspace:^"
+    "@arcane-web/arcane-components": "workspace:^",
+    "@arcane-web/arcane-layouts": "workspace:^"
   }
 }

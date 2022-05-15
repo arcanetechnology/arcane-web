@@ -1,5 +1,5 @@
 {
-  "name": "@arcane-web/alchemy-astro",
+  "name": "@arcane-web/arcane-layouts",
   "packageManager": "yarn@3.2.0",
   "author": {
     "email": "joeldsouzax@gmail.com",
@@ -15,8 +15,7 @@
   ],
   "keywords": [
     "astro-component",
-    "button",
-    "heading",
-    "example"
+    "header",
+    "layouts"
   ]
 }

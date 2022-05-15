@@ -15,12 +15,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@arcane-web/alchemy-astro@workspace:^, @arcane-web/alchemy-astro@workspace:libs/alchemy-astro":
-  version: 0.0.0-use.local
-  resolution: "@arcane-web/alchemy-astro@workspace:libs/alchemy-astro"
-  languageName: unknown
-  linkType: soft
-
 "@arcane-web/alchemy@workspace:^, @arcane-web/alchemy@workspace:libs/alchemy":
   version: 0.0.0-use.local
   resolution: "@arcane-web/alchemy@workspace:libs/alchemy"
@@ -41,6 +35,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@arcane-web/arcane-layouts@workspace:^, @arcane-web/arcane-layouts@workspace:libs/arcane-layouts":
+  version: 0.0.0-use.local
+  resolution: "@arcane-web/arcane-layouts@workspace:libs/arcane-layouts"
+  languageName: unknown
+  linkType: soft
+
 "@arcane-web/arcane-state@workspace:libs/arcane-state":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane-state@workspace:libs/arcane-state"
@@ -52,8 +52,8 @@ __metadata:
   resolution: "@arcane-web/arcane@workspace:apps/arcane"
   dependencies:
     "@arcane-web/alchemy": "workspace:^"
-    "@arcane-web/alchemy-astro": "workspace:^"
     "@arcane-web/arcane-components": "workspace:^"
+    "@arcane-web/arcane-layouts": "workspace:^"
   languageName: unknown
   linkType: soft
 
@@ -62,8 +62,8 @@ __metadata:
   resolution: "@arcane-web/invest@workspace:apps/invest"
   dependencies:
     "@arcane-web/alchemy": "workspace:^"
-    "@arcane-web/alchemy-astro": "workspace:^"
     "@arcane-web/arcane-components": "workspace:^"
+    "@arcane-web/arcane-layouts": "workspace:^"
   languageName: unknown
   linkType: soft
 
@@ -2165,16 +2165,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@originjs/vite-plugin-federation@npm:^1.1.4":
-  version: 1.1.6
-  resolution: "@originjs/vite-plugin-federation@npm:1.1.6"
-  dependencies:
-    estree-walker: ^1.0.1
-    magic-string: ^0.25.7
-  checksum: b5de39252c99934e97c2a32995d5f8e9a408e86550217993249d0b1a5628fc9b3b9c2467405f8a8b6b9bfc8e315b5a075e96dc158b677cff24adff5303cd4080
-  languageName: node
-  linkType: hard
-
 "@polka/url@npm:^1.0.0-next.20":
   version: 1.0.0-next.21
   resolution: "@polka/url@npm:1.0.0-next.21"
@@ -2424,7 +2414,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:^8":
+"@types/eslint@npm:^8.4.2":
   version: 8.4.2
   resolution: "@types/eslint@npm:8.4.2"
   dependencies:
@@ -2653,6 +2643,15 @@ __metadata:
   version: 1.20.2
   resolution: "@types/resolve@npm:1.20.2"
   checksum: 61c2cad2499ffc8eab36e3b773945d337d848d3ac6b7b0a87c805ba814bc838ef2f262fc0f109bfd8d2e0898ff8bd80ad1025f9ff64f1f71d3d4294c9f14e5f6
+  languageName: node
+  linkType: hard
+
+"@types/sass@npm:^1.43.1":
+  version: 1.43.1
+  resolution: "@types/sass@npm:1.43.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: 19eb71acc4b0d7db2170732a51ad18a34007021f42069652a5be8a3e3a448a470d2f970b9e85f734d1896bf3a25e48fb5132b4a989c101eb5df21cc171d426c5
   languageName: node
   linkType: hard
 
@@ -3058,12 +3057,12 @@ __metadata:
     "@astrojs/solid-js": ^0.1.2
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
-    "@originjs/vite-plugin-federation": ^1.1.4
     "@testing-library/jest-dom": ^5.16.4
-    "@types/eslint": ^8
+    "@types/eslint": ^8.4.2
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.25
     "@types/prettier": ^2
+    "@types/sass": ^1.43.1
     "@types/testing-library__jest-dom": ^5
     "@typescript-eslint/eslint-plugin": ^5.20.0
     "@typescript-eslint/parser": ^5.20.0
