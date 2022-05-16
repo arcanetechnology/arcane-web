@@ -21,4 +21,3 @@ This philosophy guides arcanes web development, we have kept the framework lean
 ### Quirks
 
 wasn't able to figure out how to build a compiled solid-js component library in vite, so I was forced to use rollup. I really hate it when I have to use multiple build tools.
-

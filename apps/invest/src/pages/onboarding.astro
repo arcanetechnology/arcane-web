@@ -1,26 +1,18 @@
 ---
-import { DefaultLayout, Header, Footer } from '@arcane-web/arcane-layouts';
-import {
-  ThemeToggle,
-  Navigation,
-  Authentication,
-} from '@arcane-web/arcane-components';
+import Main from '../layouts/Main.astro';
+import client from '../contentful.config';
+import { Onboarding, OnboardingNodes } from '../components';
+
+// yay top level awaits
+const contents: OnboardingNodes = (await client
+  .getEntries()
+  .then((entries) => entries.items)
+  .then((items) => items.map((item) => item.fields))
+  .then((items) => items)) as OnboardingNodes;
 ---
 
-<DefaultLayout title="Platform">
-  <Header slot="header">
-    <Navigation slot="navigation" />
-    <ThemeToggle client:visible slot="theme" />
-    <Authentication client:visible slot="auth" />
-  </Header>
-  <div slot="main">
-    <section class="margin-48">
-      <div class="container">
-        <h1><em>TODO: invest onboarding page</em></h1><br />
-      </div>
-    </section>
-  </div>
-  <Footer slot="footer">
-    <div slot="content">TODO: get from contentful</div>
-  </Footer>
-</DefaultLayout>
+<Main>
+  <div class="space-32 radius-large elevation-500" slot="main"
+    ><Onboarding client:visible nodes={contents} /></div
+  >
+</Main>

@@ -11,7 +11,7 @@ const Authentication: Component = () => {
       id="auth"
       onClick={(e) => console.log(e)}
     >
-      Signin
+      <span>Sign-in</span>
     </Button>
   );
 };
