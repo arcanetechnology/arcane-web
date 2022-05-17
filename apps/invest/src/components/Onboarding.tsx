@@ -12,7 +12,7 @@ type OnboardingProps = {
 };
 
 const Onboarding: VoidComponent<OnboardingProps> = (props) => {
-  const { curr, next } = ArcaneFlow(onboardingConfig, 'intro');
+  const { curr, next, previous } = ArcaneFlow(onboardingConfig, 'intro');
   const [question, setQuestion] = createSignal<Questions>(curr);
   return (
     <div>
@@ -26,7 +26,11 @@ const Onboarding: VoidComponent<OnboardingProps> = (props) => {
         </For>
       </Switch>
       <div>
-        <Button>
+        <Button
+          onClick={() => {
+            setQuestion(previous());
+          }}
+        >
           <span>Cancel</span>
         </Button>
         <Button

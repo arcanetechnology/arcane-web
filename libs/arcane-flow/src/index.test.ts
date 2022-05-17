@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 20:00:37
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-17 20:29:42
+ * @ Modified time: 2022-05-17 21:51:58
  * @ Description: arcane-flow test suite
  *
  * @format
@@ -81,5 +81,41 @@ describe('arcane flow function', () => {
     expect(dNode).toBe('D');
     const cNode = next('yes');
     expect(cNode).toBe('D');
+  });
+
+  it('should be able to give the root node name if we use the previous function on root node', () => {
+    const config: ArcaneFlowConfig<NodeName, Answers> = {
+      A: {
+        B: (val) => val === 'no',
+        C: (val) => val === 'yes',
+      },
+
+      B: {
+        D: (val) => val === 'maybe',
+      },
+    };
+    const { previous } = ArcaneFlow(config, 'A');
+
+    const nodeName = previous();
+    expect(nodeName).toBe('A');
+  });
+
+  it('should be able to give the previous node name when we use previous function', () => {
+    const config: ArcaneFlowConfig<NodeName, Answers> = {
+      A: {
+        B: (val) => val === 'no',
+        C: (val) => val === 'yes',
+      },
+
+      B: {
+        D: (val) => val === 'maybe',
+      },
+    };
+    const { next, previous } = ArcaneFlow(config, 'A');
+    next('no');
+    const nextNode = next('maybe');
+    expect(nextNode).toBe('D');
+    const prevNode = previous();
+    expect(prevNode).toBe('B');
   });
 });
