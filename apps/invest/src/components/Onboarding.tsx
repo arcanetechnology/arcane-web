@@ -5,14 +5,17 @@ import { OnboardingNodes } from '.';
 import OnboardingNode from './OnboardingNodes';
 import { Button } from '@arcane-web/alchemy';
 import ArcaneFlow from '@arcane-web/arcane-flow';
-import onboardingConfig, { Questions } from '../config/onboarding';
+import onboardingConfig, { Questions, Answers } from '../config/onboarding';
 
 type OnboardingProps = {
   nodes: OnboardingNodes;
 };
 
 const Onboarding: VoidComponent<OnboardingProps> = (props) => {
-  const { curr, next, previous } = ArcaneFlow(onboardingConfig, 'intro');
+  const { curr, next, previous } = ArcaneFlow<Questions, Answers>(
+    onboardingConfig,
+    'intro'
+  );
   const [question, setQuestion] = createSignal<Questions>(curr);
   return (
     <div>

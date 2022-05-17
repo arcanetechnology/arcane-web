@@ -8,14 +8,11 @@
 This philosophy guides arcanes web development, we have kept the framework lean
 
 
-1. TODO: add firebase authentication system.
-2. TODO: connect contentful headless cms to invest.
-3. TODO: maybe convert arcane-state to solidjs context api? 
+1. TODO: add firebase authentication system using service workers.
+2. TODO: integrate contentful rich text in invest
 4. TODO: evaluate arcane-state vs nanostore.
 5. TODO: alchemy css only design system hosted on cdn.
 6. TODO: alchemy solidjs based design system with inbuilt style provider.
-7. TODO: contentful library integration.
-8.  TODO: service injection mechanism so i can have cross cutting services across the system.
 
 
 ### Quirks
