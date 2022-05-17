@@ -4,14 +4,16 @@ import { VoidComponent, For, Switch, createSignal, Match } from 'solid-js';
 import { OnboardingNodes } from '.';
 import OnboardingNode from './OnboardingNodes';
 import { Button } from '@arcane-web/alchemy';
-import Flow, { Questions } from '../config';
+import ArcaneFlow from '@arcane-web/arcane-flow';
+import onboardingConfig, { Questions } from '../config/onboarding';
 
 type OnboardingProps = {
   nodes: OnboardingNodes;
 };
 
 const Onboarding: VoidComponent<OnboardingProps> = (props) => {
-  const [question, setQuestion] = createSignal<Questions>(Flow.data);
+  const { curr, next } = ArcaneFlow(onboardingConfig, 'intro');
+  const [question, setQuestion] = createSignal<Questions>(curr);
   return (
     <div>
       <Switch fallback={'...loading onboarding questions'}>
@@ -24,13 +26,15 @@ const Onboarding: VoidComponent<OnboardingProps> = (props) => {
         </For>
       </Switch>
       <div>
-        <Button>Cancel</Button>
+        <Button>
+          <span>Cancel</span>
+        </Button>
         <Button
           onClick={() => {
-            setQuestion(Flow.next('yes'));
+            setQuestion(next('yes'));
           }}
         >
-          Next
+          <span>Next</span>
         </Button>
       </div>
     </div>

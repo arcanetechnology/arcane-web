@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "contentful": "^9.1.28",
+    "fp-ts": "^2.12.1",
     "solid-js": "^1.4.1"
   }
 }
