@@ -18,7 +18,7 @@ type RadioButtonProps = {
   Omit<InputProps, 'type' | 'id' | 'label'>;
 
 export const RadioButton: VoidComponent<RadioButtonProps> = (props) => {
-  const merged = mergeProps(props, { position: 'up' });
+  const merged = mergeProps({ position: 'up' }, props);
   const [local, others] = splitProps(merged, [
     'label',
     'name',

@@ -48,4 +48,20 @@ describe('alchemy radio button element', () => {
     expect(input).toHaveAttribute('id', 'test-input');
     expect(input).toHaveAttribute('type', 'radio');
   });
+
+  it('renders label below radio element if position is set down', () => {
+    render(() => (
+      <RadioButton
+        name="test-input"
+        label="test-input"
+        id="test-input"
+        data-testid="test-input"
+        position="down"
+      />
+    ));
+
+    const input = screen.getByText('test-input').previousSibling;
+    expect(input).toHaveAttribute('id', 'test-input');
+    expect(input).toHaveAttribute('type', 'radio');
+  });
 });
