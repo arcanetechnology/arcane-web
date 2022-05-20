@@ -1,8 +1,9 @@
 /** @format */
-
 import { VoidComponent } from 'solid-js';
-import { BaseInput } from '../input/Input';
+import { Input } from '../input/Input';
 
-export const CheckBox: VoidComponent = (props) => {
-  return <BaseInput type={'checkbox'} />;
+type CheckBoxProps = any;
+
+export const CheckBox: VoidComponent<CheckBoxProps> = (props) => {
+  return <Input type="checkbox" />;
 };

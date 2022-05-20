@@ -12,19 +12,16 @@ describe('alchemy input element', () => {
     expect(input).not.toHaveClass('w-full');
   });
 
-  it('renders input with full width if we specify props with full width', () => {
-    render(() => (
-      <Input name="test-input" data-testid="test-input" fullWidth />
-    ));
+  it('renders input element with default id', () => {
+    render(() => <Input name="test-input" data-testid="test-input" />);
     const input = screen.getByTestId('test-input');
-    expect(input).toHaveClass('w-full');
+    expect(input).toHaveAttribute('id');
   });
 
-  it('renders label element if label string is passed to the component', () => {
-    const tree = render(() => (
-      <Input name="test-input" data-testid="test" label="test-input" />
-    )).baseElement;
-
-    expect(tree).toMatchSnapshot();
+  it('renders input element with padding and rounded border', () => {
+    render(() => <Input name="test-input" data-testid="test-input" />);
+    const input = screen.getByTestId('test-input');
+    expect(input).toHaveClass('radius-small');
+    expect(input).toHaveClass('padding-2');
   });
 });

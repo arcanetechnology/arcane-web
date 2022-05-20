@@ -1,14 +1,13 @@
 /** @format */
 
-import { FlowComponent, JSX, splitProps, mergeProps } from 'solid-js';
+import { FlowComponent, JSX, splitProps, createUniqueId } from 'solid-js';
 
 type LabelProps = JSX.LabelHTMLAttributes<HTMLLabelElement>;
 
 export const Label: FlowComponent<LabelProps> = (props) => {
-  const merged = mergeProps({ id: 'arcane' }, props);
-  const [local, others] = splitProps(merged, ['children', 'id']);
+  const [local, others] = splitProps(props, ['children', 'id']);
   return (
-    <label {...others} id={`${local.id}-label`}>
+    <label {...others} id={local.id ?? `${createUniqueId()}-label`}>
       {local.children}
     </label>
   );
