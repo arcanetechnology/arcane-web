@@ -1,6 +1,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Strict TypeScript Checked](https://badgen.net/badge/TS/Strict "Strict TypeScript Checked")](https://www.typescriptlang.org) ![](https://badges.aleen42.com/src/vitejs.svg "Vite Powered") 
 
+
+[![Test](https://github.com/arcanetechnology/arcane-web/actions/workflows/test.yml/badge.svg)](https://github.com/arcanetechnology/arcane-web/actions/workflows/test.yml)
+
+
 # `@arcane-web`
 
 > If you want to improve the performance of your web application, then use less JavaScript. However, if you must use Javascript, DO NOT USE VIRTUAL DOM!
