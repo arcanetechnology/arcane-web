@@ -12,5 +12,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: yarn
-    - run: yarn build --if-present
     - run: yarn test
