@@ -15,24 +15,27 @@ const OnboardingNode: VoidComponent<OnboardingNodesProps> = (props) => {
   return (
     <>
       <SolidRichText document={props.node.content} />
-      <FieldSet>
-        <RadioButton
-          position="down"
-          id="test-radio"
-          name="test-checkbox"
-          label="yes"
-          value="yes"
-          onChange={(e) => props.onAnswer(e.currentTarget.value as Answers)}
-        />
-        <RadioButton
-          position="down"
-          id="test-2"
-          name="test-checkbox"
-          label="no"
-          value={'no'}
-          onChange={(e) => props.onAnswer(e.currentTarget.value as Answers)}
-        />
-      </FieldSet>
+      <div class="margin-16">
+        <FieldSet>
+          <RadioButton
+            position="down"
+            id="test-radio"
+            name="test-checkbox"
+            label="yes"
+            value="yes"
+            onChange={(e) => props.onAnswer(e.currentTarget.value as Answers)}
+          />
+          <br />
+          <RadioButton
+            position="down"
+            id="test-2"
+            name="test-checkbox"
+            label="no"
+            value={'no'}
+            onChange={(e) => props.onAnswer(e.currentTarget.value as Answers)}
+          />
+        </FieldSet>
+      </div>
     </>
   );
 };
