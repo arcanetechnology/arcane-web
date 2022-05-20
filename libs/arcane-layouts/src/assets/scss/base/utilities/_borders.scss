@@ -1,0 +1,5 @@
+/** @format */
+
+.border-small {
+  @include border-medium(--font-color);
+}

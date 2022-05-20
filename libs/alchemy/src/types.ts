@@ -1,3 +1,6 @@
 /** @format */
 
-export type ButtonVariant = 'standard' | 'text';
+export type Variants = 'standard' | 'text';
+
+export type ButtonVariant = Variants;
+export type InputVariant = Variants;

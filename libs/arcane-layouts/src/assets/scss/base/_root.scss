@@ -12,11 +12,13 @@
       --#{$color}-#{$shade}: #{$value};
     }
   }
+  // global variables
   --radius-small: 3px;
   --radius-large: 6px;
   --gap-default: 2rem;
   --font-measure: 70ch;
   --header-height: 6rem;
+
   --font-family-default: 'Poppins', sans-serif;
   --font-family-special: 'Poppins', sans-serif;
   --font-color: var(--neutral-900);

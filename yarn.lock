@@ -65,8 +65,6 @@ __metadata:
     "@arcane-web/arcane-components": "workspace:^"
     "@arcane-web/arcane-flow": "workspace:^"
     "@arcane-web/arcane-layouts": "workspace:^"
-    "@contentful/rich-text-types": ^15.12.1
-    rich-text-solid-renderer: ^1.6.0
   languageName: unknown
   linkType: soft
 
@@ -1692,13 +1690,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@contentful/rich-text-types@npm:^15.12.1":
-  version: 15.12.1
-  resolution: "@contentful/rich-text-types@npm:15.12.1"
-  checksum: 2a0f7b2e39f04dcf00847a61b8497fe8849033180adc76102aed1fa84db9ce0523c9b2321b7949cfa2c0ed7b698d727c44d6be3cd720d5687aeff147e1db085b
-  languageName: node
-  linkType: hard
-
 "@cspotcode/source-map-consumer@npm:0.8.0":
   version: 0.8.0
   resolution: "@cspotcode/source-map-consumer@npm:0.8.0"
@@ -3102,6 +3093,7 @@ __metadata:
     jest-environment-jsdom: ^28.1.0
     prettier: ^2.6.2
     prettier-plugin-astro: ^0.0.12
+    rich-text-solid-renderer: ^1.7.0
     rollup: ^2.73.0
     rollup-preset-solid: ^1.4.0
     sass: ^1.51.0
@@ -9873,14 +9865,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rich-text-solid-renderer@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "rich-text-solid-renderer@npm:1.6.0"
-  dependencies:
-    "@contentful/rich-text-types": ^15.12.1
+"rich-text-solid-renderer@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "rich-text-solid-renderer@npm:1.7.0"
   peerDependencies:
     solid-js: ^1.4.0
-  checksum: e2bca70d506b9022b138ed6db03f1fd1063a17551e2756ac41fdb6f68f5be59353c9f151109e45e6470cebe45848393f4dc81cd2aa9b337a5566fa926581a4c4
+  checksum: e1833b2955110e0ff5b9f247fafe42af53b54650844eb58c2052cfe792fecc238e622df805d1df3c3bda9915f320a03450533fd4f0a7605d547379597de0a305
   languageName: node
   linkType: hard
 

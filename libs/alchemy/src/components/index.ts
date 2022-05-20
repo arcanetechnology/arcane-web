@@ -2,6 +2,8 @@
 
 export * from './button/Button';
 export * from './input/Input';
+export * from './label/Label';
+export * from './checkbox/Checkbox';
 
 //TODO: input element
 //TODO: Modals / Dialog elements

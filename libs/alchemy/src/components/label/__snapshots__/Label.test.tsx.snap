@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`alchemy label renders label element 1`] = `
+<body>
+  <div>
+    <label
+      id="arcane-label"
+    >
+      test-label
+    </label>
+  </div>
+</body>
+`;

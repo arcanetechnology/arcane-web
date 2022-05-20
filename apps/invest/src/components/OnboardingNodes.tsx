@@ -3,16 +3,19 @@
 import { VoidComponent } from 'solid-js';
 import { OnboardingNode } from '.';
 import SolidRichText from 'rich-text-solid-renderer';
+import type { Answers } from '../config/onboarding';
 
 type OnboardingNodesProps = {
   node: OnboardingNode;
+  onAnswer: (answer: Answers) => void;
 };
 
 const OnboardingNode: VoidComponent<OnboardingNodesProps> = (props) => {
   return (
-    <div data-animation="fade-in" data-animation-delay="0.5s">
+    <>
       <SolidRichText document={props.node.content} />
-    </div>
+      <div class="padding-8"></div>
+    </>
   );
 };
 

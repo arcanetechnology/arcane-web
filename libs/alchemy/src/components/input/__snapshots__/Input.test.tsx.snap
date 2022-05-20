@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`alchemy input element renders label element if label string is passed to the component 1`] = `
+<body>
+  <div>
+    <label
+      for="test-input"
+      id="test-input-arcane-label"
+    >
+      test-input
+    </label>
+    <input
+      class="radius-small padding-2"
+      data-testid="test"
+      id="test-input-arcane-input"
+      name="test-input"
+      type="text"
+    />
+  </div>
+</body>
+`;

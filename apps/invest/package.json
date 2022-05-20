@@ -12,8 +12,6 @@
     "@arcane-web/alchemy": "workspace:^",
     "@arcane-web/arcane-components": "workspace:^",
     "@arcane-web/arcane-flow": "workspace:^",
-    "@arcane-web/arcane-layouts": "workspace:^",
-    "@contentful/rich-text-types": "^15.12.1",
-    "rich-text-solid-renderer": "^1.6.0"
+    "@arcane-web/arcane-layouts": "workspace:^"
   }
 }
