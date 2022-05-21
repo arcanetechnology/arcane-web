@@ -1,6 +1,6 @@
 /** @format */
 
-import { createContext, useContext, VoidComponent } from 'solid-js';
+import { createContext, useContext, VoidComponent, lazy } from 'solid-js';
 import { Countries, OnboardingNodes } from '../types';
 import OnboardingForm from './OnboardingForm';
 import OnboardingSurvey from './OnboardingSurvey';

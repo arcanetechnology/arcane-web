@@ -1,6 +1,7 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "esModuleInterop": true,
     "rootDir": ".",
     "sourceMap": true,
     "incremental": true,

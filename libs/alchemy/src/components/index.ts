@@ -7,6 +7,7 @@ export * from './fieldSet';
 export * from './checkbox';
 export * from './textFIeld';
 export * from './radio';
+export * from './dialog';
 
 //TODO: Modals / Dialog elements
 //TODO: add css provider incase we are using this as a standalone library
