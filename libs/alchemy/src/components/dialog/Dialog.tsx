@@ -1,23 +1,14 @@
 /** @format */
 
-import {
-  JSX,
-  mergeProps,
-  onCleanup,
-  ParentComponent,
-  splitProps,
-} from 'solid-js';
+import { JSX, onCleanup, ParentComponent, splitProps } from 'solid-js';
 
-type DialogProps = { isOpen?: boolean } & JSX.DialogHtmlAttributes<HTMLElement>;
+type DialogProps = {
+  id: string;
+} & Omit<JSX.DialogHtmlAttributes<HTMLElement>, 'id'>;
 
 const Dialog: ParentComponent<DialogProps> = (props) => {
-  const merged = mergeProps({ id: 'arcane-dialog' }, props);
-  const [local, others] = splitProps(merged, ['children', 'id']);
-  return (
-    <dialog id={local.id} {...others}>
-      {local.children}
-    </dialog>
-  );
+  const [local, others] = splitProps(props, ['children']);
+  return <dialog {...others}>{local.children}</dialog>;
 };
 
 //TODO this will go in special dialogs which need to be a bit more interactive

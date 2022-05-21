@@ -21,7 +21,7 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
     <OnboardingContext.Provider
       value={{ questions: props.questions, countries: props.countries }}
     >
-      <OnboardingSurvey />
+      {/* <OnboardingSurvey /> */}
       <OnboardingForm />
     </OnboardingContext.Provider>
   );

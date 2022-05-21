@@ -1,19 +1,27 @@
 /** @format */
 
-import { VoidComponent } from 'solid-js';
-import { TextField } from '@arcane-web/alchemy';
+import { VoidComponent, For } from 'solid-js';
+import { TextField, Form } from '@arcane-web/alchemy';
+import { useOnboarding } from './Onboarding';
 
-const OnboardingForm: VoidComponent = (props) => {
+const OnboardingForm: VoidComponent = () => {
+  const { countries } = useOnboarding();
+
   return (
-    <form>
+    <Form>
       <TextField name="name" label="What is your name?" />
       <TextField
         name="inform"
         label="Inform us your companys name in case you are responding in their behalf"
       />
-      <TextField name="residence" label="residence" />
+      <TextField list="countries" name="residence" label="residence" />
       <TextField name="number" label="number for future contact" />
-    </form>
+      <datalist id="countries">
+        <For each={countries}>
+          {(country) => <option value={country.name} />}
+        </For>
+      </datalist>
+    </Form>
   );
 };
 
