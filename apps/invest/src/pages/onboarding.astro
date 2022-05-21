@@ -1,7 +1,8 @@
 ---
 import Main from '../layouts/Main.astro';
 import client from '../contentful.config';
-import { Onboarding, OnboardingNodes } from '../components';
+import { Countries, OnboardingNodes } from '../types';
+import { Onboarding } from '../components';
 
 // yay top level awaits
 const contents: OnboardingNodes = (await client
@@ -9,10 +10,27 @@ const contents: OnboardingNodes = (await client
   .then((entries) => entries.items)
   .then((items) => items.map((item) => item.fields))
   .then((items) => items)) as OnboardingNodes;
+
+const residences: Countries = await fetch('https://restcountries.com/v3.1/all')
+  .then((d) => d.json())
+  .then((countries) =>
+    countries.map((country) => ({
+      name: country.name.official,
+      flag: country.flag,
+    }))
+  );
 ---
 
 <Main>
-  <div class="space-32 radius-large elevation-500" slot="main"
-    ><Onboarding client:visible nodes={contents} /></div
-  >
+  <div slot="main"
+    ><button onclick="window.dialog.showModal();">Show Notification</button>
+    <dialog id="dialog">
+      <form method="dialog">
+        <Onboarding client:load questions={contents} countries={residences} />
+        <menu>
+          <button>Yah.</button>
+        </menu>
+      </form>
+    </dialog>
+  </div>
 </Main>

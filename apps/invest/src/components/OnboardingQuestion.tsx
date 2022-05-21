@@ -1,20 +1,20 @@
 /** @format */
 
 import { VoidComponent } from 'solid-js';
-import { OnboardingNode } from '.';
+import { OnboardingNode } from '../types';
 import SolidRichText from 'rich-text-solid-renderer';
 import type { Answers } from '../config/onboarding';
 import { RadioButton, FieldSet } from '@arcane-web/alchemy';
 
-type OnboardingNodesProps = {
-  node: OnboardingNode;
+type OnboardingQuestionProps = {
+  question: OnboardingNode;
   onAnswer: (answer: Answers) => void;
 };
 
-const OnboardingNode: VoidComponent<OnboardingNodesProps> = (props) => {
+const OnboardingQuestion: VoidComponent<OnboardingQuestionProps> = (props) => {
   return (
     <>
-      <SolidRichText document={props.node.content} />
+      <SolidRichText document={props.question.content} />
       <div class="margin-16">
         <FieldSet>
           <RadioButton
@@ -40,4 +40,4 @@ const OnboardingNode: VoidComponent<OnboardingNodesProps> = (props) => {
   );
 };
 
-export default OnboardingNode;
+export default OnboardingQuestion;

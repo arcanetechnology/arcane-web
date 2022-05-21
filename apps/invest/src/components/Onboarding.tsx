@@ -1,38 +1,32 @@
 /** @format */
 
-import { VoidComponent, For, Switch, createSignal, Match } from 'solid-js';
-import { OnboardingNodes } from '.';
-import OnboardingNode from './OnboardingNodes';
-import ArcaneFlow from '@arcane-web/arcane-flow';
-import onboardingConfig, { Questions, Answers } from '../config/onboarding';
+import { createContext, useContext, VoidComponent } from 'solid-js';
+import { Countries, OnboardingNodes } from '../types';
+import OnboardingForm from './OnboardingForm';
+import OnboardingSurvey from './OnboardingSurvey';
 
-type OnboardingProps = {
-  nodes: OnboardingNodes;
+type OnboardingConextValue = {
+  questions: OnboardingNodes;
+  countries: Countries;
 };
 
-const Onboarding: VoidComponent<OnboardingProps> = (props) => {
-  const { curr, next } = ArcaneFlow<Questions, Answers>(
-    onboardingConfig,
-    'intro'
-  );
-  const [question, setQuestion] = createSignal<Questions>(curr);
+const OnboardingContext = createContext<OnboardingConextValue>({
+  questions: [],
+  countries: [],
+});
 
-  const onAnswer = (answer: Answers) => {
-    setQuestion(next(answer));
-  };
+type OnboardingProps = OnboardingConextValue;
+export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   return (
-    <div>
-      <Switch fallback={'...loading onboarding questions'}>
-        <For each={props.nodes}>
-          {(node) => (
-            <Match when={question() === node.name}>
-              <OnboardingNode node={node} onAnswer={onAnswer} />
-            </Match>
-          )}
-        </For>
-      </Switch>
-    </div>
+    <OnboardingContext.Provider
+      value={{ questions: props.questions, countries: props.countries }}
+    >
+      <OnboardingSurvey />
+      <OnboardingForm />
+    </OnboardingContext.Provider>
   );
 };
 
-export default Onboarding;
+export const useOnboarding = () => {
+  return useContext(OnboardingContext);
+};
