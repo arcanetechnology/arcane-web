@@ -8,6 +8,7 @@
     "jsxImportSource": "solid-js",
     "allowJs": false,
     "strict": true,
+    "rootDir": "src",
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

@@ -1,72 +1,38 @@
 /** @format */
 
-import { ParentComponent } from 'solid-js';
-import { Form } from '../../components';
+import { children, createEffect, JSXElement, ParentComponent } from 'solid-js';
+import { Form, Button } from '../../components';
 
-const StepperForm: ParentComponent = (props) => {
+const StepperConstants = ['Tab', 'Action'] as const;
+type StepperKeys = typeof StepperConstants[number];
+type StepperStaticProps = { [key in StepperKeys]: ParentComponent };
+
+type StepperFormProps = {
+  children: JSXElement;
+};
+
+const StepperForm: ParentComponent<StepperFormProps> & StepperStaticProps = (
+  props
+) => {
+  const memo = children(() => props.children);
+
+  return <Form id="stepperForm">{props.children}</Form>;
+};
+
+const StepperTab: ParentComponent = (props) => {
+  return <div class="stepper-tab">{props.children}</div>;
+};
+
+const StepperAction: ParentComponent = (props) => {
   return (
-    <Form id="stepperForm">
-      <div class="tab">
-        Name:
-        <p>
-          <input placeholder="First name..." />
-        </p>
-        <p>
-          <input placeholder="Last name..." />
-        </p>
-      </div>
-
-      <div class="tab">
-        Contact Info:
-        <p>
-          <input placeholder="E-mail..." />
-        </p>
-        <p>
-          <input placeholder="Phone..." />
-        </p>
-      </div>
-
-      <div class="tab">
-        Birthday:
-        <p>
-          <input placeholder="dd" />
-        </p>
-        <p>
-          <input placeholder="mm" />
-        </p>
-        <p>
-          <input placeholder="yyyy" />
-        </p>
-      </div>
-
-      <div class="tab">
-        Login Info:
-        <p>
-          <input placeholder="Username..." />
-        </p>
-        <p>
-          <input placeholder="Password..." />
-        </p>
-      </div>
-
-      <div style="overflow:auto;">
-        <div style="float:right;">
-          <button type="button" id="prevBtn">
-            Previous
-          </button>
-          <button type="button" id="nextBtn">
-            Next
-          </button>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:40px;">
-        <span class="step"></span>
-        <span class="step"></span>
-        <span class="step"></span>
-        <span class="step"></span>
-      </div>
-    </Form>
+    <div class="space-component">
+      <Button>Previous</Button>
+      <Button>Next</Button>
+    </div>
   );
 };
+
+StepperForm.Tab = StepperTab;
+StepperForm.Action = StepperAction;
 
 export default StepperForm;

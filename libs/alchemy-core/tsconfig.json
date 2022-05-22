@@ -1,9 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "esModuleInterop": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
@@ -14,8 +11,7 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "declaration": true,
-    "jsx": "react-jsx"
+    "declaration": true
   },
   "files": [],
   "include": ["./src"]

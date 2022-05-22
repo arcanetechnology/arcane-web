@@ -1,19 +1,28 @@
 /** @format */
 
 import { VoidComponent } from 'solid-js';
-import { TextField, Form } from '@arcane-web/alchemy';
+import { TextField, StepperForm } from '@arcane-web/alchemy';
 
 const OnboardingForm: VoidComponent = () => {
   return (
-    <Form>
-      <TextField name="name" label="What is your name?" />
-      <TextField
-        name="inform"
-        label="Inform us your companys name in case you are responding in their behalf"
-      />
-      <TextField list="countries" name="residence" label="residence" />
-      <TextField name="number" label="number for future contact" />
-    </Form>
+    <StepperForm>
+      <StepperForm.Tab>
+        <TextField name="name" label="What is your name?" />
+      </StepperForm.Tab>
+      <StepperForm.Tab>
+        <TextField
+          name="inform"
+          label="Inform us your companys name in case you are responding in their behalf"
+        />
+      </StepperForm.Tab>
+      <StepperForm.Tab>
+        <TextField list="countries" name="residence" label="residence" />
+      </StepperForm.Tab>
+      <StepperForm.Tab>
+        <TextField name="number" label="number for future contact" />
+      </StepperForm.Tab>
+      <StepperForm.Action />
+    </StepperForm>
   );
 };
 

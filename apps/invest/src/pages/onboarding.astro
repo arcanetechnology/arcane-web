@@ -18,9 +18,6 @@ const contents: OnboardingNodes = (await client
   <div slot="main">
     <Dialog client:load id="dialog">
       <Onboarding client:load questions={contents} />
-      <Form method="dialog">
-        <Button class="text-primary-100">Cancel</Button>
-      </Form>
     </Dialog>
     <CountriesList />
   </div>
