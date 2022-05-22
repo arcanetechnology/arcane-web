@@ -1,8 +1,9 @@
 ---
 import Main from '../layouts/Main.astro';
 import client from '../contentful.config';
-import { Countries, OnboardingNodes } from '../types';
+import { OnboardingNodes } from '../types';
 import { Onboarding } from '../components';
+import CountriesList from '../components/CountriesList.astro';
 import { Dialog, Button, Form } from '@arcane-web/alchemy';
 
 // yay top level awaits
@@ -11,25 +12,17 @@ const contents: OnboardingNodes = (await client
   .then((entries) => entries.items)
   .then((items) => items.map((item) => item.fields))
   .then((items) => items)) as OnboardingNodes;
-
-const residences: Countries = await fetch('https://restcountries.com/v3.1/all')
-  .then((d) => d.json())
-  .then((countries) =>
-    countries.map((country) => ({
-      name: country.name.official,
-      flag: country.flag,
-    }))
-  );
 ---
 
 <Main>
   <div slot="main">
     <Dialog client:load id="dialog">
-      <Onboarding client:load questions={contents} countries={residences} />
+      <Onboarding client:load questions={contents} />
       <Form method="dialog">
         <Button class="text-primary-100">Cancel</Button>
       </Form>
     </Dialog>
+    <CountriesList />
   </div>
 </Main>
 

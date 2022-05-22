@@ -1,0 +1,16 @@
+---
+import { Countries } from '../types';
+
+const countries: Countries = await fetch('https://restcountries.com/v3.1/all')
+  .then((d) => d.json())
+  .then((countries) =>
+    countries.map((country) => ({
+      name: country.name.official,
+      flag: country.flag,
+    }))
+  );
+---
+
+<datalist id="countries"> 
+{countries.map(country => <option value={country.name}/>)}
+</datalist>

@@ -13,3 +13,8 @@ declare module 'solid-js' {
     }
   }
 }
+
+// TODO: find the right balance between global css and component based.
+// TODO: button can have primary or secondary colors.
+// TODO: create one more dialog for totally interactive shit
+// TODO: check box when need arises?
