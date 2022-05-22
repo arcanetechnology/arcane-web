@@ -6,12 +6,26 @@ export type ButtonVariant = Variants;
 export type InputVariant = Extract<Variants, 'standard'>;
 export type TextFieldTypes = 'text' | 'password';
 
+interface FormAccessor {
+  (element: HTMLFormElement): void;
+}
+
+interface InputAccessor {
+  (element: HTMLInputElement): void;
+}
+
 declare module 'solid-js' {
   namespace JSX {
     interface Directives {
       clickOutside: (el: HTMLDialogElement) => void;
-      formSubmit: (element: HTMLFormElement) => void;
-      validate: (element: HTMLInputElement) => void;
+      formSubmit: (
+        element: HTMLFormElement,
+        accessor: () => FormAccessor
+      ) => void;
+      validate: (
+        element: HTMLInputElement,
+        accessor: () => InputAccessor
+      ) => void;
     }
   }
 }

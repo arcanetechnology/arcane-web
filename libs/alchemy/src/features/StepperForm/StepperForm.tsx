@@ -14,15 +14,19 @@ type StepperFormProps = {
 const StepperForm: ParentComponent<StepperFormProps> & StepperStaticProps = (
   props
 ) => {
-  return <div>{props.children}</div>;
+  return (
+    <div>
+      {props.children}
+      <Button>Next</Button>
+      <Button>Previous</Button>
+    </div>
+  );
 };
 
 const StepperTab: ParentComponent = (props) => {
   return (
     <div class="stepper-tab" id="stepper-tab">
       {props.children}
-      <Button>Next</Button>
-      <Button>Previous</Button>
     </div>
   );
 };
