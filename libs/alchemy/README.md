@@ -1,6 +1,6 @@
 # @arcane-web/alchemy
 
-solid-js based design system of arcane 
+solid-js based component library for arcane. This component library is highly composable and uses Html5 native components to do as much work as possible.  
 
 
 ## SolidJS Typescript CheatSheet
