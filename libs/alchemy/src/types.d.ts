@@ -10,6 +10,8 @@ declare module 'solid-js' {
   namespace JSX {
     interface Directives {
       clickOutside: (el: HTMLDialogElement) => void;
+      formSubmit: (element: HTMLFormElement) => void;
+      validate: (element: HTMLInputElement) => void;
     }
   }
 }

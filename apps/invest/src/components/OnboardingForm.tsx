@@ -21,7 +21,6 @@ const OnboardingForm: VoidComponent = () => {
       <StepperForm.Tab>
         <TextField name="number" label="number for future contact" />
       </StepperForm.Tab>
-      <StepperForm.Action />
     </StepperForm>
   );
 };

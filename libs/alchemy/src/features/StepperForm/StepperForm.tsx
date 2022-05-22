@@ -1,38 +1,32 @@
 /** @format */
 
-import { children, createEffect, JSXElement, ParentComponent } from 'solid-js';
-import { Form, Button } from '../../components';
+import { ParentComponent } from 'solid-js';
+import { Button } from '../../components';
 
-const StepperConstants = ['Tab', 'Action'] as const;
+const StepperConstants = ['Tab'] as const;
 type StepperKeys = typeof StepperConstants[number];
 type StepperStaticProps = { [key in StepperKeys]: ParentComponent };
 
 type StepperFormProps = {
-  children: JSXElement;
+  children: Array<Element>;
 };
 
 const StepperForm: ParentComponent<StepperFormProps> & StepperStaticProps = (
   props
 ) => {
-  const memo = children(() => props.children);
-
-  return <Form id="stepperForm">{props.children}</Form>;
+  return <div>{props.children}</div>;
 };
 
 const StepperTab: ParentComponent = (props) => {
-  return <div class="stepper-tab">{props.children}</div>;
-};
-
-const StepperAction: ParentComponent = (props) => {
   return (
-    <div class="space-component">
-      <Button>Previous</Button>
+    <div class="stepper-tab" id="stepper-tab">
+      {props.children}
       <Button>Next</Button>
+      <Button>Previous</Button>
     </div>
   );
 };
 
 StepperForm.Tab = StepperTab;
-StepperForm.Action = StepperAction;
 
 export default StepperForm;
