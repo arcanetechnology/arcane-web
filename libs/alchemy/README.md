@@ -1,7 +1,18 @@
-# @arcane-web/alchemy
+# `@arcane-web/alchemy`
 
 solid-js based component library for arcane. This component library is highly composable and uses Html5 native components to do as much work as possible.  
 
+Basic Components:
+- **Button**
+- **TextField**
+- **Input**
+- **RadioButton**
+- **FieldSet**
+- **Dialog**
+- **Label**
+
+Feature Components:
+- **StepperForm**
 
 ## SolidJS Typescript CheatSheet
 ---
