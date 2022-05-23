@@ -1,15 +1,11 @@
 /** @format */
 import type { Accessor } from 'solid-js';
-
+import type { FormSubmitter, Validator } from './utilities';
 // components
 export type Variants = 'standard' | 'text';
 export type ButtonVariant = Variants;
 export type InputVariant = Extract<Variants, 'standard'>;
 export type TextFieldTypes = 'text' | 'password';
-
-interface FormAccessor {
-  (element: HTMLFormElement): void;
-}
 
 declare module 'solid-js' {
   namespace JSX {
@@ -17,11 +13,11 @@ declare module 'solid-js' {
       clickOutside: (el: HTMLDialogElement) => void;
       formSubmit: (
         element: HTMLFormElement,
-        accessor: Accessor<FormAccessor>
+        accessor: Accessor<FormSubmitter>
       ) => void;
       validate: (
         element: HTMLInputElement,
-        accessor: Accessor<InputAccessor>
+        accessor: Accessor<Validator>
       ) => void;
     }
   }

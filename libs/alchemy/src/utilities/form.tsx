@@ -1,8 +1,7 @@
 /** @format */
 
-import { FormAccessor } from '../types';
 import { createStore } from 'solid-js/store';
-import { Accessor } from 'solid-js';
+import type { Accessor } from 'solid-js';
 
 // types related to validation in forms
 type ValidatorProps = {
@@ -12,12 +11,12 @@ export type Validator = (props: ValidatorProps) => string;
 
 // form operation types
 
-
+export type FormSubmitter = (value: HTMLFormElement) => void;
 
 // use form types
 type FormField = {
   element: HTMLInputElement;
-  validators: Validator;
+  validators: Array<Validator>;
 };
 
 type UseFormProps = {
@@ -29,18 +28,18 @@ const useForm = ({ errorClass }: UseFormProps) => {
     fields: Record<string, FormField> = {};
   const validate = (
     element: HTMLInputElement,
-    accessor: Accessor<Validator>
+    accessor: Accessor<Array<Validator>>
   ) => {
-    const validators: Validator = accessor() || [];
+    const validators: Array<Validator> = accessor() || [];
     let config;
     fields[element.name] = config = { element, validators };
   };
 
   const formSubmit = (
     element: HTMLFormElement,
-    accessor: () => FormAccessor
+    accessor: Accessor<FormSubmitter>
   ) => {
-    const callback: FormAccessor = accessor() || (() => null);
+    const callback: FormSubmitter = accessor() || (() => null);
     element.onsubmit = (e) => {
       e.preventDefault();
       callback(element);
