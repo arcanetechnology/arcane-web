@@ -1,32 +1,25 @@
 /** @format */
 
-import { ParentComponent } from 'solid-js';
-import { Button } from '../../components';
+import { FlowComponent, FlowProps } from 'solid-js';
+import { StaticProps } from '../../types';
 
-const StepperConstants = ['Tab'] as const;
+const StepperConstants = ['Tab', 'Actions'] as const;
 type StepperKeys = typeof StepperConstants[number];
-type StepperStaticProps = { [key in StepperKeys]: ParentComponent };
 
-type StepperFormProps = {
-  children: Array<any>;
+const Tab: FlowComponent<FlowProps> = (props) => {
+  return <div>{props.children}</div>;
 };
 
-const StepperForm: ParentComponent<StepperFormProps> & StepperStaticProps = (
-  props
-) => {
-  return (
-    <div>
-      {props.children}
-      <Button>Next</Button>
-      <Button>Previous</Button>
-    </div>
-  );
+const Actions: FlowComponent<FlowProps> = (props) => {
+  return <div>{props.children}</div>;
 };
 
-const StepperTab: ParentComponent = (props) => {
-  return <div id="stepper-tab">{props.children}</div>;
+const StepperForm: FlowComponent<FlowProps> &
+  StaticProps<StepperKeys, FlowProps> = (props) => {
+  return <div>hello</div>;
 };
 
-StepperForm.Tab = StepperTab;
+StepperForm.Tab = Tab;
+StepperForm.Actions = Actions;
 
 export default StepperForm;

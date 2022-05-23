@@ -12,6 +12,7 @@
     "@arcane-web/alchemy": "workspace:^",
     "@arcane-web/arcane-components": "workspace:^",
     "@arcane-web/arcane-flow": "workspace:^",
-    "@arcane-web/arcane-layouts": "workspace:^"
+    "@arcane-web/arcane-layouts": "workspace:^",
+    "dev": "^0.1.3"
   }
 }
