@@ -8,7 +8,7 @@ type StepperKeys = typeof StepperConstants[number];
 type StepperStaticProps = { [key in StepperKeys]: ParentComponent };
 
 type StepperFormProps = {
-  children: Array<Element>;
+  children: Array<any>;
 };
 
 const StepperForm: ParentComponent<StepperFormProps> & StepperStaticProps = (
@@ -24,11 +24,7 @@ const StepperForm: ParentComponent<StepperFormProps> & StepperStaticProps = (
 };
 
 const StepperTab: ParentComponent = (props) => {
-  return (
-    <div class="stepper-tab" id="stepper-tab">
-      {props.children}
-    </div>
-  );
+  return <div id="stepper-tab">{props.children}</div>;
 };
 
 StepperForm.Tab = StepperTab;

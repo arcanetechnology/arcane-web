@@ -7,10 +7,10 @@ const countries: Countries = await fetch('https://restcountries.com/v3.1/all')
     countries.map((country) => ({
       name: country.name.official,
       flag: country.flag,
+      code: country.cca3
     }))
   );
 ---
-
 <datalist id="countries"> 
-{countries.map(country => <option value={country.name}/>)}
+{countries.map(country => <option value={country.code} label={`${country.flag} - ${country.name}`}/>)}
 </datalist>
