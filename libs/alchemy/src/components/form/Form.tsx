@@ -2,7 +2,7 @@
 
 import { ParentComponent, JSX, splitProps } from 'solid-js';
 
-type FormProps = JSX.FormHTMLAttributes<HTMLFormElement>;
+export type FormProps = JSX.FormHTMLAttributes<HTMLFormElement>;
 
 const Form: ParentComponent<FormProps> = (props) => {
   const [local, others] = splitProps(props, ['children']);
