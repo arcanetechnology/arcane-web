@@ -16,7 +16,8 @@ const contents: OnboardingNodes = (await client
 
 <Main>
   <div slot="main">
-    <Dialog id="dialog" open>
+    <button onclick="window.dialog.showModal();">open dialog</button>
+    <Dialog client:load id="dialog">
       <Onboarding client:visible questions={contents} />
     </Dialog>
     <CountriesList />

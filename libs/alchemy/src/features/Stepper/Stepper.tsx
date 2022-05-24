@@ -25,7 +25,7 @@ const Stepper: FlowComponent<StepperProps & FlowProps> = (props) => {
       <Show
         when={props.actions !== undefined}
         fallback={
-          <div>
+          <div class="align-row space-content">
             <Button onClick={previous} type="button">
               Back
             </Button>

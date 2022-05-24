@@ -3,6 +3,7 @@
 // | -------------------------------------------------------------
 // | > Reset
 // | -------------------------------------------------------------
+@use './breakpoint' as *;
 
 html {
   box-sizing: border-box;
@@ -137,7 +138,21 @@ dialog::backdrop {
 dialog {
   border: none;
   border-radius: var(--radius-small);
-  min-width: 20%;
-  max-width: 50%;
-  max-height: calc(100vh - 120px);
+  transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+
+  height: 95%;
+  width: 100%;
+
+  @include breakpoint(small) {
+    height: 95%;
+    width: 100%;
+  }
+
+  @include breakpoint(medium) {
+    height: 40%;
+    width: 50%;
+  }
 }
