@@ -2,10 +2,16 @@
 
 import { VoidComponent } from 'solid-js';
 import { TextField, Stepper } from '@arcane-web/alchemy';
+import OnboardingSurvey from './OnboardingSurvey';
+import { useOnboarding } from './Onboarding';
 
 const OnboardingForm: VoidComponent = () => {
+  const { store } = useOnboarding();
   return (
     <Stepper>
+      <Stepper.Tab>
+        <OnboardingSurvey />
+      </Stepper.Tab>
       <Stepper.Tab>
         <TextField name="name" label="What is your name?" />
       </Stepper.Tab>
@@ -21,9 +27,6 @@ const OnboardingForm: VoidComponent = () => {
       <Stepper.Tab>
         <TextField name="number" label="number for future contact" />
       </Stepper.Tab>
-      <Stepper.Actions>
-        <button>next</button>
-      </Stepper.Actions>
     </Stepper>
   );
 };

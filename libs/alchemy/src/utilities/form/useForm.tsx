@@ -91,8 +91,8 @@ type UseForm = (props: UseFormProps) => {
 };
 
 const useForm: UseForm = ({ errorClass }: UseFormProps) => {
-  const [errors, setErrors] = createStore<Errors>({}),
-    fields: Record<string, FormField> = {};
+  const [errors, setErrors] = createStore<Errors>({});
+  const fields: Record<string, FormField> = {};
   const validate = (
     element: HTMLInputElement,
     accessor: Accessor<Array<Validator>>

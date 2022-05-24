@@ -21,6 +21,7 @@ const config: Config.InitialOptions = {
   projects: [
     {
       testEnvironment: 'jsdom',
+
       globals: {
         'ts-jest': {
           tsconfig: '<rootDir>/libs/alchemy/tsconfig.json',
