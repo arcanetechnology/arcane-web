@@ -1,6 +1,6 @@
 /** @format */
 
-import { Stepper } from '.';
+import { Stepper, StepperTab } from '.';
 import { cleanup, render } from 'solid-testing-library';
 
 describe('alchemy stepper element', () => {
@@ -8,12 +8,12 @@ describe('alchemy stepper element', () => {
   it('should be able to render form element and functional children', () => {
     const tree = render(() => (
       <Stepper>
-        <Stepper.Tab>
+        <StepperTab>
           <h1>Hello</h1>
-        </Stepper.Tab>
-        <Stepper.Tab>
+        </StepperTab>
+        <StepperTab>
           <h1>world</h1>
-        </Stepper.Tab>
+        </StepperTab>
       </Stepper>
     )).baseElement;
 

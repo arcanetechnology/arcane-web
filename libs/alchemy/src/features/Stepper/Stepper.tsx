@@ -4,51 +4,47 @@ import {
   FlowComponent,
   FlowProps,
   splitProps,
-  createContext,
-  createUniqueId,
-  useContext,
+  JSXElement,
+  Show,
 } from 'solid-js';
-import { FormProps, Form } from '../../components';
-import { StaticProps } from '../../types';
+import { FormProps, Form, Button } from '../../components';
+import { Next, Previous, useStepper } from '../../utilities';
 
-const StepperConstants = ['Tab', 'Actions'] as const;
-type StepperKeys = typeof StepperConstants[number];
+type Actions = (next: Next, previous: Previous) => JSXElement;
 
-type StepperContextProps = {
-  id: string;
-};
+interface StepperProps extends FormProps {
+  actions?: Actions;
+}
+const Stepper: FlowComponent<StepperProps & FlowProps> = (props) => {
+  const [local, others] = splitProps(props, ['children', 'actions']);
+  const { next, previous, childElements } = useStepper(0);
 
-const StepperContext = createContext<StepperContextProps>();
-
-type StepperProps = FormProps;
-const Stepper: FlowComponent<StepperProps> &
-  StaticProps<StepperKeys, FlowProps> = (props) => {
-  const [local, others] = splitProps(props, ['children']);
-  const id = createUniqueId();
   return (
-    <StepperContext.Provider value={{ id }}>
-      <Form {...others}>{local.children}</Form>
-    </StepperContext.Provider>
+    <Form {...others}>
+      <div use:childElements>{local.children}</div>
+      <Show
+        when={props.actions !== undefined}
+        fallback={
+          <div>
+            <Button onClick={previous} type="button">
+              Back
+            </Button>
+            <Button onClick={next} type="button">
+              Next
+            </Button>
+            <Button id={others.id} type="submit">
+              Submit
+            </Button>
+            <Button id={others.id} type="reset">
+              Reset
+            </Button>
+          </div>
+        }
+      >
+        {local.actions!(next, previous)}
+      </Show>
+    </Form>
   );
 };
-
-const Tab: FlowComponent = (props) => {
-  const context = useContext(StepperContext);
-  if (!context) {
-    throw new Error('cannot use stepper tab outside of stepper!!');
-  }
-  return <div id={`stepper-${context.id}-tab`}>{props.children}</div>;
-};
-
-const Actions: FlowComponent<FlowProps> = (props) => {
-  const context = useContext(StepperContext);
-  if (!context) {
-    throw new Error('cannot use actions tab outside of stepper!!');
-  }
-  return <div id={`stapper-${context.id}-actions`}>{props.children}</div>;
-};
-
-Stepper.Tab = Tab;
-Stepper.Actions = Actions;
 
 export default Stepper;

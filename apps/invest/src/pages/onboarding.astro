@@ -4,7 +4,7 @@ import client from '../contentful.config';
 import { OnboardingNodes } from '../types';
 import { Onboarding } from '../components';
 import CountriesList from '../components/CountriesList.astro';
-import { Dialog, Button, Form } from '@arcane-web/alchemy';
+import { Dialog } from '@arcane-web/alchemy';
 
 // yay top level awaits
 const contents: OnboardingNodes = (await client
@@ -16,11 +16,9 @@ const contents: OnboardingNodes = (await client
 
 <Main>
   <div slot="main">
-    <Dialog client:load id="dialog">
-      <Onboarding client:load questions={contents} />
+    <Dialog id="dialog" open>
+      <Onboarding client:visible questions={contents} />
     </Dialog>
     <CountriesList />
   </div>
 </Main>
-
-<script> window.dialog.showModal(); </script>

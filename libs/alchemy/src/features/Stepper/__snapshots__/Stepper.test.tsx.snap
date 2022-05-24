@@ -19,6 +19,22 @@ exports[`alchemy stepper element should be able to render form element and funct
         </h1>
       </div>
     </form>
+    <div
+      id="stapper-cl-0-actions"
+    >
+      <button
+        class="elevation-200 border-small radius-large"
+        id="arcane-standard-button"
+      >
+        Back
+      </button>
+      <button
+        class="elevation-200 border-small radius-large"
+        id="arcane-standard-button"
+      >
+        Next
+      </button>
+    </div>
   </div>
 </body>
 `;

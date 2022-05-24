@@ -1,5 +1,6 @@
 /** @format */
 import type { Accessor, FlowComponent, FlowProps } from 'solid-js';
+import { ChildElementsDirectives } from './features';
 import type { FormSubmitter, Validator } from './utilities';
 // components
 export type Variants = 'standard' | 'text';
@@ -19,6 +20,7 @@ export declare module 'solid-js' {
         element: HTMLInputElement,
         accessor: Accessor<Validator>
       ) => void;
+      childElements: ChildElementsDirectives;
     }
   }
 }

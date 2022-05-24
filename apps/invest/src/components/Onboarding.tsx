@@ -27,7 +27,9 @@ const OnboardingContext = createContext<OnboardingConextValue>({
   store: [] as unknown as OnboardingStore,
 });
 
-type OnboardingProps = OnboardingConextValue;
+type OnboardingProps = {
+  questions: OnboardingNodes;
+};
 export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   const { curr, next } = ArcaneFlow<Questions, Answers>(
     onboardingConfig,

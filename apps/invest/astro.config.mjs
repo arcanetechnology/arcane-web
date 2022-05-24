@@ -7,10 +7,4 @@ export default defineConfig({
   integrations: [solid()],
   site: 'https://arcane.no/',
   base: '/invest',
-  vite: {
-    build: {
-      target: 'esnext',
-      polyfillModulePreload: false,
-    },
-  },
 });
