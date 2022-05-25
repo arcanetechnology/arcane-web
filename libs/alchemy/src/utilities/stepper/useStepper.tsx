@@ -10,6 +10,7 @@ export type UseStepper = (initialStep: number) => {
   next: Next;
   previous: Previous;
   childElements: ChildElementsDirectives;
+  getLast: () => boolean;
 };
 export type ChildElementsDirectives = (element: HTMLDivElement) => void;
 
@@ -42,7 +43,11 @@ const useStepper: UseStepper = (initialStep = 0) => {
     setElements(children);
   };
 
-  return { next, previous, step, childElements };
+  const getLast = () => {
+    return step() === elements().length - 1;
+  };
+
+  return { next, previous, step, childElements, getLast };
 };
 
 export default useStepper;
