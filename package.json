@@ -55,6 +55,7 @@
     "vite-plugin-solid": "^2.2.6"
   },
   "dependencies": {
+    "astro-icon": "^0.7.1",
     "contentful": "^9.1.29",
     "fp-ts": "^2.12.1",
     "rich-text-solid-renderer": "^1.7.0",

@@ -5,6 +5,7 @@ import { OnboardingNodes } from '../types';
 import { Onboarding } from '../components';
 import CountriesList from '../components/CountriesList.astro';
 import { Dialog } from '@arcane-web/alchemy';
+import { Icon } from 'astro-icon';
 
 // yay top level awaits
 const contents: OnboardingNodes = (await client
@@ -17,14 +18,16 @@ const contents: OnboardingNodes = (await client
 <Main>
   <div slot="main">
     <button onclick="window.dialog.showModal();">open dialog</button>
-    <Dialog client:load id="dialog">
+    <Dialog client:visible id="dialog">
+      <Icon name="onboarding" />
       <Onboarding client:visible questions={contents} />
     </Dialog>
     <CountriesList />
   </div>
 </Main>
 
-<style is:inline>
+<style is:inline lang="scss">
+  @import '@arcane-web/arcane-layout/assets/scss/base/breakpoint' as *;
   .onboarding-form {
     height: 100%;
     width: 100%;
@@ -37,6 +40,9 @@ const contents: OnboardingNodes = (await client
   }
   .onboarding-actions {
     width: 100%;
+    @include breakpoint(small) {
+      flex-direction: column;
+    }
   }
 
   .onboarding-tab {
@@ -45,5 +51,10 @@ const contents: OnboardingNodes = (await client
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+  }
+
+  [astro-icon='onboarding'] {
+    width: 72px;
+    height: 72px;
   }
 </style>
