@@ -1,5 +1,7 @@
 /** @format */
 
+import type { ChildElementsDirectives } from '@arcane-web/alchemy';
+
 interface ImportMetaEnv {
   readonly ARCANE_WEB_APPLICATION_NAME: string;
   readonly INVEST_CONTENTFUL_SPACE: string;
@@ -24,6 +26,7 @@ export declare module 'solid-js' {
         element: HTMLInputElement,
         accessor: Accessor<Validator>
       ) => void;
+      childElements: ChildElementsDirectives;
     }
   }
 }
