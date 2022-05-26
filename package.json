@@ -28,7 +28,7 @@
     "@types/testing-library__jest-dom": "^5",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
-    "astro": "^1.0.0-beta.31",
+    "astro": "^1.0.0-beta.33",
     "autoprefixer": "^10.4.7",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
@@ -59,6 +59,6 @@
     "contentful": "^9.1.29",
     "fp-ts": "^2.12.1",
     "rich-text-solid-renderer": "^1.7.0",
-    "solid-js": "^1.4.2"
+    "solid-js": "^1.4.3"
   }
 }

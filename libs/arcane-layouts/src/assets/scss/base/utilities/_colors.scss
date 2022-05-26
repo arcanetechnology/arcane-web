@@ -11,7 +11,11 @@
 }
 
 .color-primary {
-  background-color: var(--primary-background);
+  background-color: var(--primary-500);
+}
+
+.color-secondary {
+  background-color: var(--neutral-background);
 }
 
 @each $color, $shades in $colors {

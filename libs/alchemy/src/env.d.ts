@@ -1,12 +1,7 @@
 /** @format */
-import type { Accessor, FlowComponent, FlowProps } from 'solid-js';
 import { ChildElementsDirectives } from './features';
 import type { FormSubmitter, Validator } from './utilities';
-// components
-export type Variants = 'standard' | 'text';
-export type ButtonVariant = Variants;
-export type InputVariant = Extract<Variants, 'standard'>;
-export type TextFieldTypes = 'text' | 'password';
+import type { Accessor } from 'solid-js';
 
 export declare module 'solid-js' {
   namespace JSX {
@@ -24,7 +19,3 @@ export declare module 'solid-js' {
     }
   }
 }
-
-export type StaticProps<StaticKeys, ComponentProps extends FlowProps> = {
-  [key in StaticKeys]: FlowComponent<ComponentProps>;
-};

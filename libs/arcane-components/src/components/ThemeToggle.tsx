@@ -82,7 +82,7 @@ const ThemeToggle: Component = () => {
       title={'Toggle theme'}
       aria-label={`Use ${theme()} theme`}
       onClick={themeChangeHandler}
-      variant="text"
+      variant="tertiary"
       id="theme-toggle"
     >
       <Dynamic component={icons[theme()]} />

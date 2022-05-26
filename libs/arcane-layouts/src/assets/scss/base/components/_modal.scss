@@ -1,0 +1,105 @@
+/** @format */
+
+@use '../space' as *;
+@use '../breakpoint' as *;
+@use '../border' as *;
+@use '../keyframes/fade-in' as *;
+@use '../font' as *;
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  overflow: auto;
+  backdrop-filter: url(filters.svg#filter) blur(4px) saturate(150%);
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  opacity: 0;
+  animation: fade-in 0.5s ease-in-out forwards;
+}
+
+.modal {
+  margin: 0 auto;
+  display: table;
+  position: absolute;
+  height: 70%;
+  width: 50%;
+  left: 0;
+  right: 0;
+  top: 50%;
+  padding: $space-16;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-color: var(--neutral-background);
+  @include radius-small;
+  animation: fade-in 0.5s ease-in-out forwards;
+  transition: all 0.25s ease-in-out;
+
+  @include breakpoint(default) {
+    width: 100%;
+    height: 90%;
+  }
+
+  @include breakpoint(small) {
+    width: 100%;
+    height: 90%;
+  }
+
+  @include breakpoint(medium) {
+    width: 70%;
+    height: 80%;
+  }
+
+  @include breakpoint(large) {
+    width: 40%;
+    height: 50%;
+  }
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.modal-content {
+  padding: 10px 0;
+  flex-grow: 1;
+}
+
+.modal-close {
+  position: absolute;
+  color: var(--font-secondary-color);
+  top: 0px;
+  right: 0px;
+}
+
+.modal-actions {
+  padding: $space-12;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  @include breakpoint(default) {
+    flex-direction: column;
+  }
+
+  @include breakpoint(small) {
+    flex-direction: column;
+  }
+
+  @include breakpoint(medium) {
+    flex-direction: row;
+  }
+
+  @include breakpoint(large) {
+    flex-direction: row;
+  }
+}

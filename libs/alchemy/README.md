@@ -25,3 +25,4 @@ type CustomProps = ...
 type ButtonProps = CustomProps & JSX.ButtonHTMLAttributes<HTMLButtonElement> // piggyback on inbuild jsx button props for better control and flexibility
 ```
 
+

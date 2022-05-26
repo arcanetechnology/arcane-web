@@ -7,7 +7,7 @@ const Authentication: Component = () => {
   return (
     <Button
       title="sign into arcane platform"
-      variant="standard"
+      variant="secondary"
       id="auth"
       onClick={(e) => console.log(e)}
     >

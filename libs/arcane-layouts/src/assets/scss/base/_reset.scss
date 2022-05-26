@@ -92,13 +92,6 @@ button * {
 
 button:hover {
   cursor: pointer;
-  background-color: var(--selection-background);
-  color: var(--selection-color);
-}
-
-button:active {
-  background-color: var(--selection-background);
-  color: var(--selection-color);
 }
 
 embed,

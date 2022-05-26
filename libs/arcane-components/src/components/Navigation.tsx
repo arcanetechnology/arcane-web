@@ -5,7 +5,7 @@ import { Component } from 'solid-js';
 
 const Navigation: Component = () => {
   return (
-    <Button variant="text" id="navigation" onClick={(e) => console.log(e)}>
+    <Button variant="tertiary" id="navigation" onClick={(e) => console.log(e)}>
       navigate
     </Button>
   );

@@ -22,7 +22,7 @@ export const BaseButton: FlowComponent<BaseButtonProps> = (props) => {
 };
 
 type OptionalButtonProps = {
-  variant: ButtonVariant;
+  variant: ButtonVariant; // type
 };
 
 type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
@@ -33,15 +33,18 @@ type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
  * @returns @type {BaseButton} renders base button.
  */
 export const Button: FlowComponent<ButtonProps> = (props) => {
-  const merged = mergeProps({ variant: 'standard', id: 'arcane' }, props);
+  const merged = mergeProps({ variant: 'primary', id: 'arcane' }, props);
   const [local, others] = splitProps(merged, ['id', 'variant', 'children']);
   const child = children(() => local.children);
   return (
     <BaseButton
+      class={([] as Array<string>)
+        .concat(props.class ?? '', 'button')
+        .join(' ')}
       classList={{
-        'elevation-200': local.variant === 'standard',
-        'border-small': local.variant === 'standard',
-        'radius-large': true,
+        'button-primary': props.variant === 'primary',
+        'button-secondary': props.variant === 'secondary',
+        'button-tertiary': props.variant === 'tertiary',
       }}
       id={`${local.id}-${local.variant}`}
       {...others}
