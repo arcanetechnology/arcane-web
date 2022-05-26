@@ -64,6 +64,9 @@
 
 .modal-title {
   text-align: center;
+  > button {
+    position: absolute;
+  }
 }
 
 .modal-content {

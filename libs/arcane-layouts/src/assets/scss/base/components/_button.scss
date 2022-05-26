@@ -57,6 +57,19 @@
   background-color: var(--neutral-background);
   @include elevation-100;
   @include border-small(var(--primary-400));
+
+  @include breakpoint(default) {
+    &:focus {
+      color: var(--font-color);
+      background-color: var(--neutral-background);
+    }
+  }
+  @include breakpoint(small) {
+    &:focus {
+      color: var(--font-color);
+      background-color: var(--neutral-background);
+    }
+  }
 }
 
 .button-tertiary {

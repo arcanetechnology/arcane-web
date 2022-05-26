@@ -14,8 +14,17 @@ type OnboardingQuestionProps = {
 const OnboardingQuestion: VoidComponent<OnboardingQuestionProps> = (props) => {
   return (
     <>
-      <SolidRichText document={props.question.content} />
-      <div class="margin-16">
+      <div>
+        <SolidRichText document={props.question.content} />
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '150px',
+          'z-index': 2,
+          'margin-top': 10,
+        }}
+      >
         <FieldSet>
           <RadioButton
             position="down"
