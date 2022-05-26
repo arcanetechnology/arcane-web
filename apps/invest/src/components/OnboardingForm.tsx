@@ -24,7 +24,15 @@ const OnboardingForm: VoidComponent = () => {
   };
 
   return (
-    <Form id="onboardingForm">
+    <Form
+      onChange={(e) => {
+        if (e.target.getAttribute('name') === 'dynamic-onboarding') {
+          //TODO: store it and then send it on next.
+          console.log(e.target.getAttribute('value'));
+        }
+      }}
+      id="onboardingForm"
+    >
       <Button type="button" onClick={() => setModal(true)}>
         open modal
       </Button>

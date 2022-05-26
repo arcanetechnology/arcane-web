@@ -6,7 +6,7 @@ import { useOnboarding } from './Onboarding';
 
 const OnboardingSurvey: VoidComponent = () => {
   const { questions, store } = useOnboarding();
-  const [question, { setAnswer }] = store;
+  const [question] = store;
 
   return (
     <div>
@@ -14,7 +14,7 @@ const OnboardingSurvey: VoidComponent = () => {
         <For each={questions}>
           {(node) => (
             <Match when={question() === node.name}>
-              <OnboardingQuestion question={node} onAnswer={setAnswer} />
+              <OnboardingQuestion question={node} />
             </Match>
           )}
         </For>
