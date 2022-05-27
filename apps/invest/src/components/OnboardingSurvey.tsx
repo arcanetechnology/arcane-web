@@ -8,17 +8,15 @@ const OnboardingSurvey: VoidComponent = () => {
   const [form] = useOnboarding();
 
   return (
-    <div>
-      <Switch>
-        <For each={form.questions}>
-          {(node) => (
-            <Match when={form.currAnswer === node.name}>
-              <OnboardingQuestion question={node} />
-            </Match>
-          )}
-        </For>
-      </Switch>
-    </div>
+    <Switch>
+      <For each={form.questions}>
+        {(node) => (
+          <Match when={form.currAnswer === node.name}>
+            <OnboardingQuestion question={node} />
+          </Match>
+        )}
+      </For>
+    </Switch>
   );
 };
 

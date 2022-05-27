@@ -24,6 +24,7 @@ export const RadioButton: VoidComponent<RadioButtonProps> = (props) => {
     'name',
     'id',
     'position',
+    'class',
   ]);
 
   return (
@@ -33,7 +34,13 @@ export const RadioButton: VoidComponent<RadioButtonProps> = (props) => {
           {local.label}
         </Label>
       </Show>
-      <Input type="radio" name={local.name} id={local.id} {...others} />
+      <Input
+        class={(['radio'] as Array<string>).concat(local.class ?? '').join(' ')}
+        type="radio"
+        name={local.name}
+        id={local.id}
+        {...others}
+      />
       <Show when={local.position === 'down'}>
         <Label id={`${local.id}-label`} for={local.id}>
           {local.label}

@@ -39,6 +39,7 @@ export const Button: FlowComponent<ButtonProps> = (props) => {
     'variant',
     'children',
     'class',
+    'classList',
   ]);
   const child = children(() => local.children);
   return (
@@ -48,6 +49,7 @@ export const Button: FlowComponent<ButtonProps> = (props) => {
         'button-primary': props.variant === 'primary',
         'button-secondary': props.variant === 'secondary',
         'button-tertiary': props.variant === 'tertiary',
+        ...local.classList,
       }}
       id={`${local.id}-${local.variant}`}
       {...others}

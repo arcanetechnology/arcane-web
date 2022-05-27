@@ -22,7 +22,7 @@ describe('alchemy button element', () => {
 
   test('text button should be rendered when we pass the text variant', () => {
     render(() => (
-      <Button data-testid="test-button" variant="text">
+      <Button data-testid="test-button" variant="tertiary">
         Test
       </Button>
     ));
@@ -32,7 +32,7 @@ describe('alchemy button element', () => {
 
   test('text button should not have elevation', () => {
     render(() => (
-      <Button variant="text" data-testid="test-button">
+      <Button variant="tertiary" data-testid="test-button">
         Test
       </Button>
     ));
@@ -42,7 +42,7 @@ describe('alchemy button element', () => {
 
   test('text button should not have border', () => {
     render(() => (
-      <Button variant="text" data-testid="test-button">
+      <Button variant="tertiary" data-testid="test-button">
         Test
       </Button>
     ));
