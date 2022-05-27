@@ -1,6 +1,6 @@
 /** @format */
 
-import { createEffect, createSignal, VoidComponent } from 'solid-js';
+import { createSignal, VoidComponent } from 'solid-js';
 import {
   TextField,
   Form,
@@ -62,7 +62,7 @@ const OnboardingForm: VoidComponent = () => {
         </Modal.Content>
         <Modal.Action toggleModal={setModal}>
           <Button
-            variant="secondary"
+            variant="tertiary"
             hidden={step() === 0}
             onClick={previous}
             type="button"

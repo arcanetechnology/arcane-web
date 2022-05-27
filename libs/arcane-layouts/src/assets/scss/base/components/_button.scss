@@ -90,4 +90,18 @@
 .button-tertiary {
   color: var(--font-color);
   border: none;
+  @include breakpoint(default) {
+    &:focus {
+      color: var(--font-color);
+      border: none;
+      background-color: inherit;
+    }
+  }
+  @include breakpoint(small) {
+    &:focus {
+      color: var(--font-color);
+      border: none;
+      background-color: inherit;
+    }
+  }
 }

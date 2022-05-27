@@ -12,27 +12,16 @@ type OnboardingQuestionProps = {
 const OnboardingQuestion: VoidComponent<OnboardingQuestionProps> = (props) => {
   return (
     <>
-      <div
-        style={{
-          'overflow-y': 'scroll',
-          height: '250px',
-        }}
-      >
+      <div style={{ overflow: 'scroll' }}>
         <SolidRichText document={props.question.content} />
       </div>
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '110px',
-          'z-index': 2,
-        }}
-      >
+      <div>
         <FieldSet>
           <RadioButton
             position="down"
             id={props.question.name}
             name="dynamic-onboarding"
-            label="yes"
+            label="Yes"
             value="yes"
           />
           <br />
@@ -40,7 +29,7 @@ const OnboardingQuestion: VoidComponent<OnboardingQuestionProps> = (props) => {
             position="down"
             id={props.question.name}
             name="dynamic-onboarding"
-            label="no"
+            label="No"
             value={'no'}
           />
         </FieldSet>
