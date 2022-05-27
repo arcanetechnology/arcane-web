@@ -11,7 +11,7 @@ const OnboardingSurvey: VoidComponent = () => {
     <Switch>
       <For each={form.questions}>
         {(node) => (
-          <Match when={form.currAnswer === node.name}>
+          <Match when={form.route === node.name}>
             <OnboardingQuestion question={node} />
           </Match>
         )}

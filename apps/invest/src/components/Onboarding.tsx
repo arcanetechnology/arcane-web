@@ -11,12 +11,11 @@ type OnboardingStore = [
   {
     questions: OnboardingNodes;
     route: Questions;
-    currAnswer: Questions;
     disable: boolean;
   },
   {
-    setRouting: (answer: Answers) => void;
-    setAnswer: (question: Questions) => void;
+    setRoute: () => void;
+    setAnswer: (answer: Answers) => void;
   }
 ];
 
@@ -26,27 +25,27 @@ type OnboardingProps = {
   questions: OnboardingNodes;
 };
 export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
-  const { curr, next } = ArcaneFlow<Questions, Answers>(
+  const { getCurrent, next } = ArcaneFlow<Questions, Answers>(
     onboardingConfig,
     'intro'
   );
 
   const [form, setForm] = createStore({
     questions: [],
-    route: curr,
-    currAnswer: curr,
+    route: getCurrent(),
     disable: true,
   });
 
   const store: OnboardingStore = [
     form,
     {
-      setRouting(answer: Answers) {
-        setForm({ route: next(answer), disable: false });
+      setRoute() {
+        setForm({ route: getCurrent(), disable: true });
       },
 
-      setAnswer(question: Questions) {
-        setForm({ currAnswer: question, disable: true });
+      setAnswer(answers: Answers) {
+        next(answers);
+        setForm({ disable: false });
       },
     },
   ];

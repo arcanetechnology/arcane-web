@@ -21,7 +21,7 @@ const OnboardingForm: VoidComponent = () => {
     <Form
       onChange={(e) => {
         if (e.target.getAttribute('name') === 'dynamic-onboarding') {
-          actions.setRouting(e.target.getAttribute('value') as Answers);
+          actions.setAnswer(e.target.getAttribute('value') as Answers);
         }
       }}
       id="onboardingForm"
@@ -89,7 +89,7 @@ const OnboardingForm: VoidComponent = () => {
               if (form.route === 'pro.4') {
                 next();
               } else {
-                actions.setAnswer(form.route);
+                actions.setRoute();
               }
             }}
             type="button"

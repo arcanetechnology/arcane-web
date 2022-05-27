@@ -3,6 +3,8 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "src",
     "allowJs": true,
     "strict": true,
     "noImplicitOverride": true,

@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 20:00:37
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-17 21:51:58
+ * @ Modified time: 2022-05-28 00:05:58
  * @ Description: arcane-flow test suite
  *
  * @format
@@ -21,8 +21,8 @@ describe('arcane flow function', () => {
       },
     };
 
-    const { curr, next } = ArcaneFlow(config, 'A');
-    expect(curr).toBe('A');
+    const { getCurrent } = ArcaneFlow(config, 'A');
+    expect(getCurrent()).toBe('A');
   });
 
   it('should be able to go to next node when next function is given the answer', () => {
