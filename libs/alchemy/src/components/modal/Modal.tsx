@@ -48,7 +48,7 @@ const Title: FlowComponent<TitleProps> = (props) => {
 };
 
 const Action: FlowComponent = (props) => {
-  return <div class="modal-actions gap-big">{props.children}</div>;
+  return <div class="modal-actions">{props.children}</div>;
 };
 
 Modal.Action = Action;

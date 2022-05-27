@@ -1,6 +1,6 @@
 /** @format */
 
-import { createSignal, VoidComponent } from 'solid-js';
+import { createEffect, createSignal, VoidComponent } from 'solid-js';
 import {
   TextField,
   Form,
@@ -10,25 +10,18 @@ import {
 } from '@arcane-web/alchemy';
 import OnboardingSurvey from './OnboardingSurvey';
 import { useOnboarding } from './Onboarding';
+import { Answers } from '../config/onboarding';
 
 const OnboardingForm: VoidComponent = () => {
-  const { store } = useOnboarding();
+  const [form, actions] = useOnboarding();
   const [isOpen, setModal] = createSignal<boolean>(false);
-  const [question] = store;
   const { step, next, previous, childElements, getLast } = useStepper(0);
-
-  const handleNextWithSurvey = () => {
-    if (question() === 'pro.4') {
-      next();
-    }
-  };
 
   return (
     <Form
       onChange={(e) => {
         if (e.target.getAttribute('name') === 'dynamic-onboarding') {
-          //TODO: store it and then send it on next.
-          console.log(e.target.getAttribute('value'));
+          actions.setRouting(e.target.getAttribute('value') as Answers);
         }
       }}
       id="onboardingForm"
@@ -90,9 +83,15 @@ const OnboardingForm: VoidComponent = () => {
             Submit
           </Button>
           <Button
-            disabled={!(question() === 'pro.4')}
+            disabled={form.disable}
             hidden={getLast()}
-            onClick={handleNextWithSurvey}
+            onClick={() => {
+              if (form.route === 'pro.4') {
+                next();
+              } else {
+                actions.setAnswer(form.route);
+              }
+            }}
             type="button"
             variant="primary"
           >

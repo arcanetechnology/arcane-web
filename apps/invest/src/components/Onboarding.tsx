@@ -1,31 +1,26 @@
 /** @format */
 
-import {
-  createContext,
-  useContext,
-  VoidComponent,
-  createSignal,
-} from 'solid-js';
-import type { Accessor } from 'solid-js';
+import { createContext, useContext, VoidComponent, onMount } from 'solid-js';
+import { createStore } from 'solid-js/store';
 import { OnboardingNodes } from '../types';
 import OnboardingForm from './OnboardingForm';
 import ArcaneFlow from '@arcane-web/arcane-flow';
 import onboardingConfig, { Questions, Answers } from '../config/onboarding';
 
 type OnboardingStore = [
-  Accessor<Questions>,
-  { setAnswer: (answer: Answers) => void }
+  {
+    questions: OnboardingNodes;
+    route: Questions;
+    currAnswer: Questions;
+    disable: boolean;
+  },
+  {
+    setRouting: (answer: Answers) => void;
+    setAnswer: (question: Questions) => void;
+  }
 ];
 
-type OnboardingConextValue = {
-  questions: OnboardingNodes;
-  store: OnboardingStore;
-};
-
-const OnboardingContext = createContext<OnboardingConextValue>({
-  questions: [],
-  store: [] as unknown as OnboardingStore,
-});
+const OnboardingContext = createContext<OnboardingStore>();
 
 type OnboardingProps = {
   questions: OnboardingNodes;
@@ -36,18 +31,32 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
     'intro'
   );
 
-  const [question, setQuestion] = createSignal<Questions>(curr),
-    store: OnboardingStore = [
-      question,
-      {
-        setAnswer(answer: Answers) {
-          setQuestion(next(answer));
-        },
+  const [form, setForm] = createStore({
+    questions: [],
+    route: curr,
+    currAnswer: curr,
+    disable: true,
+  });
+
+  const store: OnboardingStore = [
+    form,
+    {
+      setRouting(answer: Answers) {
+        setForm({ route: next(answer), disable: false });
       },
-    ];
+
+      setAnswer(question: Questions) {
+        setForm({ currAnswer: question, disable: true });
+      },
+    },
+  ];
+
+  onMount(() => {
+    setForm({ questions: props.questions });
+  });
 
   return (
-    <OnboardingContext.Provider value={{ questions: props.questions, store }}>
+    <OnboardingContext.Provider value={store}>
       <OnboardingForm />
     </OnboardingContext.Provider>
   );

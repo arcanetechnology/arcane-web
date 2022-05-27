@@ -5,15 +5,14 @@ import OnboardingQuestion from './OnboardingQuestion';
 import { useOnboarding } from './Onboarding';
 
 const OnboardingSurvey: VoidComponent = () => {
-  const { questions, store } = useOnboarding();
-  const [question] = store;
+  const [form] = useOnboarding();
 
   return (
     <div>
       <Switch>
-        <For each={questions}>
+        <For each={form.questions}>
           {(node) => (
-            <Match when={question() === node.name}>
+            <Match when={form.currAnswer === node.name}>
               <OnboardingQuestion question={node} />
             </Match>
           )}
