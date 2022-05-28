@@ -17,14 +17,14 @@ const Info: VoidComponent<InfoProps> = (props) => {
   const merged = mergeProps({ variant: 'primary' }, props);
   return (
     <div
-      class="space-8 radius-large align-center elevation-300"
+      class="align-center card"
       classList={{
         'bg-primary-500': merged.variant === 'primary',
         'text-primary-100': merged.variant === 'primary',
       }}
     >
       <h3>{props.title}</h3>
-      <p>{props.description}</p>
+      <p class="description">{props.description}</p>
     </div>
   );
 };

@@ -35,17 +35,33 @@ const Doughnut: VoidComponent<DoughnutProps> = (props) => {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        aspectRatio: 4 / 3,
+        maintainAspectRatio: true,
         plugins: {
           legend: {
             position: 'right',
             display: true,
+            labels: {
+              pointStyle: 'circle',
+              usePointStyle: true,
+              /*  generateLabels(chart) {
+                const datasets = chart.data.datasets;
+                return datasets[0].data.map((data, i) => ({
+                  text: `${chart.data.labels[i]} (${data}%)`,
+                  datasetIndex: i,
+                  fillStyle: datasets[0].backgroundColor[i],
+                  hidden: false,
+                  textAlign: 'left',
+                }));
+              }, */
+            },
           },
 
           title: {
             display: true,
             text: props.title,
-            position: 'left',
+            position: 'top',
+            align: 'start',
           },
           tooltip: {
             callbacks: {
@@ -55,7 +71,7 @@ const Doughnut: VoidComponent<DoughnutProps> = (props) => {
             },
           },
         },
-        cutout: 120,
+        cutout: 80,
       },
       plugins: [
         {
@@ -65,13 +81,13 @@ const Doughnut: VoidComponent<DoughnutProps> = (props) => {
               height = chart.height,
               ctx = chart.ctx;
             ctx.restore();
-            const fontSize = (height / 50).toFixed(2);
+            const fontSize = (height / 100).toFixed(2);
             ctx.font = fontSize + 'em sans-serif';
             ctx.textBaseline = 'middle';
 
             const text = props.value,
-              textX = Math.floor((width - ctx.measureText(text).width) / 2.5),
-              textY = height / 2;
+              textX = Math.floor((width - ctx.measureText(text).width) / 2.4),
+              textY = height / 1.75;
 
             ctx.fillText(text, textX, textY);
             ctx.save();
@@ -82,11 +98,20 @@ const Doughnut: VoidComponent<DoughnutProps> = (props) => {
     chart.update();
   });
 
+  // TODO: extract this definition as a card component or paper?
   return (
-    <div class="space-8 radius-large align-center elevation-300">
-      <canvas ref={canvas} />
+    <div class="space-8 radius-large align-center elevation-200">
+      <canvas
+        ref={canvas}
+        style={{
+          'max-height': '250px',
+          width: '100%',
+        }}
+      />
     </div>
   );
 };
 
 export default Doughnut;
+
+// TODO: move to arcane-charts

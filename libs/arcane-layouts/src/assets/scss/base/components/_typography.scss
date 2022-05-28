@@ -1,0 +1,19 @@
+/** @format */
+@use '../breakpoint' as *;
+@use '../size' as *;
+@use '../space' as *;
+
+.description {
+  color: var(--font-secondary-color);
+  @include breakpoint(default) {
+    @include size-10;
+  }
+
+  @include breakpoint(default) {
+    @include size-10;
+  }
+
+  @include breakpoint(medium) {
+    @include size-12;
+  }
+}
