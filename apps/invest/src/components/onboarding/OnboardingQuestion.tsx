@@ -1,7 +1,7 @@
 /** @format */
 
 import { VoidComponent } from 'solid-js';
-import { OnboardingNode } from '../types';
+import { OnboardingNode } from '../../types';
 import SolidRichText from 'rich-text-solid-renderer';
 import { RadioButton, FieldSet } from '@arcane-web/alchemy';
 

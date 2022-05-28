@@ -1,6 +1,6 @@
 ---
 import Main from '../layouts/Main.astro';
-import { Info, DonutInfo } from '../components/';
+import { Info, Donut } from '../components';
 ---
 
 <Main>
@@ -22,7 +22,17 @@ import { Info, DonutInfo } from '../components/';
         />
       </div>
       <div id="invest-chart">
-        <DonutInfo client:visible />
+        <Donut
+          value={'35%'}
+          title={'Usage overview'}
+          data={{
+            Bitcoin: { value: 35, color: '#090A0B' },
+            Etherium: { value: 15, color: '#5AC8FA' },
+            Dodegcoin: { value: 20, color: '#5856D6' },
+            Solano: { value: 30, color: '#AEAEB2' },
+          }}
+          client:visible
+        />
       </div>
     </div>
   </div>

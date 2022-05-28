@@ -10,7 +10,7 @@ import {
 } from '@arcane-web/alchemy';
 import OnboardingSurvey from './OnboardingSurvey';
 import { useOnboarding } from './Onboarding';
-import { Answers } from '../config/onboarding';
+import { Answers } from '../../config/onboarding';
 
 const OnboardingForm: VoidComponent = () => {
   const [form, actions] = useOnboarding();
@@ -27,7 +27,7 @@ const OnboardingForm: VoidComponent = () => {
       id="onboardingForm"
     >
       <Button type="button" onClick={() => setModal(true)}>
-        open modal
+        <span>open modal</span>
       </Button>
       <Modal isOpen={isOpen()}>
         <Modal.Title toggleModal={setModal}>

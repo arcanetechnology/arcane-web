@@ -1,0 +1,39 @@
+{
+  "name": "arcane-charts",
+  "packageManager": "yarn@3.2.0",
+  "author": {
+    "email": "joeldsouzax@gmail.com",
+    "name": "Joel D'Souza"
+  },
+  "source": "src/index.tsx",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "solid-charts",
+    "chart.js",
+    "chart"
+  ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "solid": "./dist/source/index.jsx",
+      "import": "./dist/esm/index.js",
+      "browser": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "node": "./dist/cjs/index.js"
+    }
+  },
+  "scripts": {
+    "test": "yarn run -T jest",
+    "build": "yarn run -T rollup -c"
+  },
+  "peerDependencies": {
+    "chart.js": "*"
+  },
+  "devDependencies": {
+    "chart.js": "^3.8.0"
+  }
+}

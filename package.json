@@ -54,11 +54,11 @@
   },
   "dependencies": {
     "apexcharts": "^3.35.3",
+    "chart.js": "^3.8.0",
     "contentful": "^9.1.29",
     "firebase": "^9.8.2",
     "fp-ts": "^2.12.1",
     "rich-text-solid-renderer": "^1.7.0",
-    "solid-apexcharts": "^0.1.6",
     "solid-js": "^1.4.3"
   }
 }
