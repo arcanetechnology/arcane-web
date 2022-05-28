@@ -21,4 +21,11 @@
       margin-bottom: #{$space-medium};
     }
   }
+
+  .margin-top-#{$nr} {
+    margin-top: #{$space-small};
+    @include breakpoint(medium) {
+      margin-top: #{$space-medium};
+    }
+  }
 }

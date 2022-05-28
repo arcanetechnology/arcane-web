@@ -1,7 +1,29 @@
 ---
 import Main from '../layouts/Main.astro';
+import { Info, DonutInfo } from '../components/';
 ---
 
 <Main>
-  <div slot="main">dashboard</div>
+  <div slot="main" class="margin-top-48">
+    <h1>Investor Dashboard</h1>
+    <div id="invest-stats" class="margin-top-32" data-auto-grid="2">
+      <div id="invest-home-info-cards" class="gap-small" data-auto-grid="2">
+        <Info
+          title="$16m"
+          variant="secondary"
+          description="Assets Under Management"
+        />
+        <Info title="55%" description="Bitcoin Holdings" />
+        <Info title="25%" description="Fund Performance YTD" />
+        <Info
+          title="8%"
+          variant="secondary"
+          description="Fund Performance x Benchmark YTD"
+        />
+      </div>
+      <div id="invest-chart">
+        <DonutInfo client:visible />
+      </div>
+    </div>
+  </div>
 </Main>

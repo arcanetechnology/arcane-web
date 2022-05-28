@@ -1,0 +1,27 @@
+{
+  "name": "@arcane-web/arcane-auth",
+  "packageManager": "yarn@3.2.0",
+  "author": {
+    "email": "joeldsouzax@gmail.com",
+    "name": "Joel D'Souza"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/arcane-auth.umd.js",
+  "module": "./dist/arcane-auth.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/arcane-auth.es.js",
+      "require": "./dist/arcane-auth.umd.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "yarn run -T vite build && tsc --emitDeclarationOnly",
+    "test": "yarn run -T jest"
+  },
+  "devDependencies": {
+    "firebase": "^9.8.2"
+  }
+}

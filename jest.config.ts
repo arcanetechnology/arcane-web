@@ -36,7 +36,7 @@ const config: Config.InitialOptions = {
       },
       displayName: {
         name: 'alchemy',
-        color: 'magentaBright',
+        color: 'yellowBright',
       },
       transform: {
         '^.+\\.(t|j)sx?$': 'ts-jest',
@@ -55,6 +55,17 @@ const config: Config.InitialOptions = {
         '^.+\\.(t|j)sx?$': 'ts-jest',
       },
       testMatch: ['<rootDir>/libs/arcane-flow/**/?(*.)+(spec|test).[jt]s?(x)'],
+    },
+    {
+      displayName: {
+        name: 'arcane-auth',
+        color: 'magentaBright',
+      },
+      testEnvironment: 'node',
+      transform: {
+        '^.+\\.(t|j)sx?$': 'ts-jest',
+      },
+      testMatch: ['<rootDir>/libs/arcane-auth/**/?(*.)+(spec|test).[jt]s?(x)'],
     },
   ],
 };

@@ -7,7 +7,11 @@ import * as Components from '@arcane-web/arcane-components';
   <Layouts.Header slot="header">
     <Components.Navigation slot="navigation" />
     <Components.ThemeToggle client:visible slot="theme" />
-    <Components.Authentication client:visible slot="auth" />
+    <Components.Authentication
+      onClick={(e) => console.log('helo')}
+      client:visible
+      slot="auth"
+    />
   </Layouts.Header>
   <div slot="main">
     <section>

@@ -4,8 +4,6 @@ import client from '../contentful.config';
 import { OnboardingNodes } from '../types';
 import { Onboarding } from '../components';
 import CountriesList from '../components/CountriesList.astro';
-import { Modal } from '@arcane-web/alchemy';
-import { Icon } from 'astro-icon';
 
 // yay top level awaits
 const contents: OnboardingNodes = (await client
@@ -18,6 +16,7 @@ const contents: OnboardingNodes = (await client
 <Main>
   <div slot="main">
     <Onboarding client:visible questions={contents} />
+    <CountriesList />
   </div>
 </Main>
 

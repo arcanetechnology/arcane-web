@@ -2,10 +2,10 @@
 
 import { createContext, useContext, VoidComponent, onMount } from 'solid-js';
 import { createStore } from 'solid-js/store';
-import { OnboardingNodes } from '../types';
+import { OnboardingNodes } from '../../types';
 import OnboardingForm from './OnboardingForm';
 import ArcaneFlow from '@arcane-web/arcane-flow';
-import onboardingConfig, { Questions, Answers } from '../config/onboarding';
+import onboardingConfig, { Questions, Answers } from '../../config/onboarding';
 
 type OnboardingStore = [
   {
