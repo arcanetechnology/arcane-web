@@ -1,7 +1,27 @@
 ---
 import Main from '../layouts/Main.astro';
+import { Button } from '@arcane-web/alchemy';
+import Apology from '../components/apology/Apology.astro';
 ---
 
 <Main>
-  <div slot="main">apology</div>
+  <div slot="main">
+    <div id="apology-message" class="margin-top-32" data-auto-grid="2">
+      <div class="space-8"> <Apology /> </div>
+      <div class="space-8 align-vertical"
+        ><h4 class="secondary-text"
+          >We unfortunalety can not offer you a spot in our fund right now.
+        </h4>
+        <h4 class="secondary-text"
+          >Feel free to contact us if you have any question.
+        </h4>
+        <h4 class="secondary-text"
+          >In the meatime, check our Research Platform.
+        </h4>
+        <div class="margin-top-16"
+          ><Button type="button" variant="primary">Go To Research</Button></div
+        >
+      </div>
+    </div>
+  </div>
 </Main>

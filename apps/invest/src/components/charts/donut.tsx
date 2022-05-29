@@ -1,6 +1,6 @@
 /** @format */
 
-import Chart from 'chart.js/auto';
+import Chart from 'chart.js/auto/auto.esm';
 import { VoidComponent, onMount } from 'solid-js';
 
 type DoughnutData = {
