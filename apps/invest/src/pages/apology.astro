@@ -1,13 +1,13 @@
 ---
 import Main from '../layouts/Main.astro';
 import { Button } from '@arcane-web/alchemy';
-import Apology from '../components/apology/Apology.astro';
+import Invest from '../components/invest/Invest.astro';
 ---
 
 <Main>
-  <div slot="main">
-    <div id="apology-message" class="margin-top-32" data-auto-grid="2">
-      <div class="space-8"> <Apology /> </div>
+  <section slot="main" class="margin-48">
+    <div id="apology-message" class="container" data-auto-grid="2">
+      <div class="space-8"> <Invest /> </div>
       <div class="space-8 align-vertical"
         ><h4 class="secondary-text"
           >We unfortunalety can not offer you a spot in our fund right now.
@@ -23,5 +23,5 @@ import Apology from '../components/apology/Apology.astro';
         >
       </div>
     </div>
-  </div>
+  </section>
 </Main>

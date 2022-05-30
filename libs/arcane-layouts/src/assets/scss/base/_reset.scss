@@ -124,6 +124,10 @@ noscript {
   box-shadow: none !important;
 }
 
+main {
+  clear: both;
+}
+
 dialog::backdrop {
   backdrop-filter: url(filters.svg#filter) blur(4px) saturate(150%);
 }

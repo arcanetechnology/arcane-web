@@ -1,6 +1,7 @@
 /** @format */
 
 import { mergeProps, VoidComponent } from 'solid-js';
+import { Card } from '@arcane-web/alchemy';
 
 type InfoVariant = 'primary' | 'secondary';
 
@@ -16,8 +17,8 @@ type InfoProps = {
 const Info: VoidComponent<InfoProps> = (props) => {
   const merged = mergeProps({ variant: 'primary' }, props);
   return (
-    <div
-      class="align-center card"
+    <Card
+      class="align-center"
       classList={{
         'bg-primary-500': merged.variant === 'primary',
         'text-primary-100': merged.variant === 'primary',
@@ -25,7 +26,7 @@ const Info: VoidComponent<InfoProps> = (props) => {
     >
       <h3>{props.title}</h3>
       <p class="description">{props.description}</p>
-    </div>
+    </Card>
   );
 };
 

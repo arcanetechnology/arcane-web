@@ -10,3 +10,4 @@ export * from './radio';
 export * from './dialog';
 export * from './form';
 export * from './modal';
+export * from './card';

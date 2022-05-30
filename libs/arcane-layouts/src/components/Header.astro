@@ -12,12 +12,11 @@ import Logo from './Logo.astro';
   </div>
 </header>
 
-<style lang="scss" is:inline>
+<style lang="scss">
   header {
-    height: var(--header-height);
+    height: var(--header-height) !important;
     width: 100%;
     background-color: var(--header-background);
-    overflow: hidden;
     position: sticky;
     top: 0;
   }
