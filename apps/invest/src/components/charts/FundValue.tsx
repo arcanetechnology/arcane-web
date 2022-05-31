@@ -12,6 +12,7 @@ type FundValueProps = {
   labels: Array<string>;
   datasets: Array<DataSet>;
   max: number;
+  title: string;
 };
 
 // TODO: add max and min value
@@ -44,6 +45,14 @@ const FundValue: VoidComponent<FundValueProps> = (props) => {
       },
       options: {
         responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: props.title,
+            position: 'top',
+            align: 'start',
+          },
+        },
         scales: {
           x: {
             grid: {
@@ -60,13 +69,7 @@ const FundValue: VoidComponent<FundValueProps> = (props) => {
   });
   return (
     <Card class="align-center">
-      <canvas
-        ref={canvas}
-        style={{
-          'max-height': '400px',
-          width: '100%',
-        }}
-      />
+      <canvas ref={canvas} />
     </Card>
   );
 };
