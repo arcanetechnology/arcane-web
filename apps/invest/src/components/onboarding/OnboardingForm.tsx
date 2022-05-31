@@ -2,11 +2,14 @@
 
 import { createSignal, VoidComponent } from 'solid-js';
 import {
-  TextField,
   Form,
   Button,
   useStepper,
   Modal,
+  FieldSet,
+  RadioButton,
+  Label,
+  Input,
 } from '@arcane-web/alchemy';
 import OnboardingSurvey from './OnboardingSurvey';
 import { useOnboarding } from './Onboarding';
@@ -15,7 +18,7 @@ import { Answers } from '../../config/onboarding';
 const OnboardingForm: VoidComponent = () => {
   const [form, actions] = useOnboarding();
   const [isOpen, setModal] = createSignal<boolean>(false);
-  const { step, next, previous, childElements, getLast } = useStepper(0);
+  const { next, previous, childElements, getLast } = useStepper(0);
 
   return (
     <Form
@@ -35,7 +38,6 @@ const OnboardingForm: VoidComponent = () => {
         </Modal.Title>
         <Modal.Content toggleModal={setModal}>
           <div
-            class="onboarding-tabs"
             use:childElements={(e) => {
               console.log('');
             }}
@@ -44,26 +46,75 @@ const OnboardingForm: VoidComponent = () => {
               <OnboardingSurvey />
             </div>
             <div class="onboarding-tab">
-              <TextField name="name" label="What is your name?" />
+              <FieldSet class="padding-16">
+                <Label for="company-behalf">
+                  <h4>
+                    Are you making this request on your company’s behalf ?
+                  </h4>
+                </Label>
+                <RadioButton
+                  position="down"
+                  id="company-behalf"
+                  name=""
+                  label="Yes"
+                  value="yes"
+                />
+                <br />
+                <RadioButton
+                  position="down"
+                  id="company-behalf"
+                  name=""
+                  label="No"
+                  value={'no'}
+                />
+              </FieldSet>
             </div>
             <div class="onboarding-tab">
-              <TextField
-                name="inform"
-                label="Inform us your companys name in case you are responding in their behalf"
-              />
+              <FieldSet>
+                <Label for="name">
+                  <h4>What is your name?</h4>
+                </Label>
+                <div class="padding-16">
+                  <Input class="w-full" name="name" />
+                </div>
+              </FieldSet>
             </div>
             <div class="onboarding-tab">
-              <TextField list="countries" name="residence" label="residence" />
+              <FieldSet>
+                <Label for="company">
+                  <h4>What is your company's name? </h4>
+                </Label>
+                <div class="padding-16">
+                  <Input class="w-full" name="company" />
+                </div>
+              </FieldSet>
             </div>
             <div class="onboarding-tab">
-              <TextField name="number" label="number for future contact" />
+              <FieldSet>
+                <Label for="residence">
+                  <h4>What is the country of your residence?</h4>
+                </Label>
+                <div class="padding-16">
+                  <Input class="w-full" list="countries" name="residence" />
+                </div>
+              </FieldSet>
+            </div>
+            <div class="onboarding-tab">
+              <FieldSet>
+                <Label for="number">
+                  <h4>Could you inform a number for future contact?</h4>
+                </Label>
+                <div class="padding-16">
+                  <Input class="w-full" list="number" name="residence" />
+                </div>
+              </FieldSet>
             </div>
           </div>
         </Modal.Content>
         <Modal.Action toggleModal={setModal}>
           <Button
             variant="tertiary"
-            hidden={step() === 0}
+            hidden={form.route === 'intro'}
             onClick={previous}
             type="button"
           >
@@ -104,3 +155,5 @@ const OnboardingForm: VoidComponent = () => {
 };
 
 export default OnboardingForm;
+
+//TODO: add full-width capability in input not text-field

@@ -27,7 +27,7 @@ export type InputProps = {
   BaseInputProps;
 
 export const Input: VoidComponent<InputProps> = (props) => {
-  const merged = mergeProps({ variant: 'standard' }, props);
+  const merged = mergeProps({ variant: 'primary' }, props);
   const [local, others] = splitProps(merged, [
     'variant',
     'children',

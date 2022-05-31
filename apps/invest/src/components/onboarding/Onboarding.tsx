@@ -25,7 +25,7 @@ type OnboardingProps = {
   questions: OnboardingNodes;
 };
 export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
-  const { getCurrent, next } = ArcaneFlow<Questions, Answers>(
+  const { getCurrent, next, previous } = ArcaneFlow<Questions, Answers>(
     onboardingConfig,
     'intro'
   );

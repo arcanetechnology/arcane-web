@@ -21,3 +21,31 @@
 .secondary-text {
   color: var(--primary-300);
 }
+
+.title {
+  @include breakpoint(default) {
+    @include size-24;
+  }
+
+  @include breakpoint(default) {
+    @include size-24;
+  }
+
+  @include breakpoint(medium) {
+    @include size-30;
+  }
+}
+
+.subtitle {
+  @include breakpoint(default) {
+    @include size-18;
+  }
+
+  @include breakpoint(default) {
+    @include size-18;
+  }
+
+  @include breakpoint(medium) {
+    @include size-20;
+  }
+}
