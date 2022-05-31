@@ -18,7 +18,7 @@ import { Answers } from '../../config/onboarding';
 const OnboardingForm: VoidComponent = () => {
   const [form, actions] = useOnboarding();
   const [isOpen, setModal] = createSignal<boolean>(false);
-  const { next, previous, childElements, getLast } = useStepper(0);
+  const { step, next, previous, childElements, getLast } = useStepper(0);
 
   return (
     <Form
@@ -42,6 +42,13 @@ const OnboardingForm: VoidComponent = () => {
               console.log('');
             }}
           >
+            <div class="onboarding-tab">
+              <h4>
+                Thanks for your insterest in our fund. Before we proceed, we
+                will ask you some questions that will help customize this
+                solution to meet your own needs.
+              </h4>
+            </div>
             <div class="onboarding-tab">
               <OnboardingSurvey />
             </div>
@@ -114,7 +121,7 @@ const OnboardingForm: VoidComponent = () => {
         <Modal.Action toggleModal={setModal}>
           <Button
             variant="tertiary"
-            hidden={form.route === 'intro'}
+            hidden={step() === 0}
             onClick={previous}
             type="button"
           >
@@ -134,8 +141,17 @@ const OnboardingForm: VoidComponent = () => {
             Submit
           </Button>
           <Button
+            hidden={step() > 0}
+            onClick={next}
+            class="w-full"
+            type="button"
+            variant="primary"
+          >
+            Start
+          </Button>
+          <Button
             disabled={form.disable}
-            hidden={getLast()}
+            hidden={getLast() || step() === 0}
             onClick={() => {
               if (form.route === 'pro.4') {
                 next();

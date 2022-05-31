@@ -3705,7 +3705,7 @@ __metadata:
     "@types/testing-library__jest-dom": ^5
     "@typescript-eslint/eslint-plugin": ^5.20.0
     "@typescript-eslint/parser": ^5.20.0
-    astro: ^1.0.0-beta.36
+    astro: ^1.0.0-beta.37
     autoprefixer: ^10.4.7
     chart.js: ^3.8.0
     contentful: ^9.1.29
@@ -3862,9 +3862,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^1.0.0-beta.36":
-  version: 1.0.0-beta.36
-  resolution: "astro@npm:1.0.0-beta.36"
+"astro@npm:^1.0.0-beta.37":
+  version: 1.0.0-beta.37
+  resolution: "astro@npm:1.0.0-beta.37"
   dependencies:
     "@astrojs/compiler": ^0.15.1
     "@astrojs/language-server": ^0.13.4
@@ -3925,7 +3925,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: 1d4d32e6e7485a0968b3a7838c78e1a575ab2c074e14e04cec6f47b7154193bbc64fad6189f60cc7e876c683ce951d6d25d39495c2a5d0aad30625d82676f267
+  checksum: 9be0bfb9c72c4ba576886eb8388ee145ca9bbaf7586e7f2541f0343d379150822f680f706b27d4695d511e8a22cd1ce6d758a10aaeee0b3f90c76dd03829aff0
   languageName: node
   linkType: hard
 
