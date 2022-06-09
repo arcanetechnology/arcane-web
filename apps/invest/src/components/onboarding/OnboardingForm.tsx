@@ -1,6 +1,6 @@
 /** @format */
 
-import { createSignal, VoidComponent } from 'solid-js';
+import { createEffect, createSignal, VoidComponent } from 'solid-js';
 import {
   Form,
   Button,
@@ -10,6 +10,7 @@ import {
   RadioButton,
   Label,
   Input,
+  useForm,
 } from '@arcane-web/alchemy';
 import OnboardingSurvey from './OnboardingSurvey';
 import { useOnboarding } from './Onboarding';
@@ -19,6 +20,18 @@ const OnboardingForm: VoidComponent = () => {
   const [form, actions] = useOnboarding();
   const [isOpen, setModal] = createSignal<boolean>(false);
   const { step, next, previous, childElements, getLast } = useStepper(0);
+  const { errors, resetError, validate, formSubmit } = useForm({
+    errorClass: '',
+    onSubmit: (e) => {
+      console.log(e);
+    },
+  });
+
+  // TODO: USE SOLID-JS FIREBASE TO OPEN THE FORM.
+
+  createEffect(() => {
+    console.log(errors);
+  });
 
   return (
     <Form
@@ -27,6 +40,7 @@ const OnboardingForm: VoidComponent = () => {
           actions.setAnswer(e.target.getAttribute('value') as Answers);
         }
       }}
+      onSubmit={formSubmit}
       id="onboardingForm"
     >
       <Button type="button" onClick={() => setModal(true)}>
@@ -37,11 +51,7 @@ const OnboardingForm: VoidComponent = () => {
           <h3>Investment Onboarding</h3>
         </Modal.Title>
         <Modal.Content toggleModal={setModal}>
-          <div
-            use:childElements={(e) => {
-              console.log('');
-            }}
-          >
+          <div use:childElements={() => null}>
             <div class="onboarding-tab">
               <h4>
                 Thanks for your insterest in our fund. Before we proceed, we
@@ -53,27 +63,29 @@ const OnboardingForm: VoidComponent = () => {
               <OnboardingSurvey />
             </div>
             <div class="onboarding-tab">
-              <FieldSet class="padding-16">
+              <FieldSet>
                 <Label for="company-behalf">
                   <h4>
                     Are you making this request on your company’s behalf ?
                   </h4>
                 </Label>
-                <RadioButton
-                  position="down"
-                  id="company-behalf"
-                  name=""
-                  label="Yes"
-                  value="yes"
-                />
-                <br />
-                <RadioButton
-                  position="down"
-                  id="company-behalf"
-                  name=""
-                  label="No"
-                  value={'no'}
-                />
+                <div class="padding-16">
+                  <RadioButton
+                    position="down"
+                    id="company-behalf"
+                    name=""
+                    label="Yes"
+                    value="yes"
+                  />
+                  <br />
+                  <RadioButton
+                    position="down"
+                    id="company-behalf"
+                    name=""
+                    label="No"
+                    value={'no'}
+                  />
+                </div>
               </FieldSet>
             </div>
             <div class="onboarding-tab">
@@ -112,7 +124,13 @@ const OnboardingForm: VoidComponent = () => {
                   <h4>Could you inform a number for future contact?</h4>
                 </Label>
                 <div class="padding-16">
-                  <Input class="w-full" list="number" name="residence" />
+                  <Input
+                    onBlur={validate}
+                    oninput={resetError}
+                    class="w-full"
+                    list="number"
+                    name="residence"
+                  />
                 </div>
               </FieldSet>
             </div>

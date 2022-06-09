@@ -1,5 +1,5 @@
 {
-  "name": "@arcane-web/invest",
+  "name": "@arcane-web/trade",
   "packageManager": "yarn@3.2.0",
   "author": "Joel D'Souza <joeldsouzax@gmail.com>",
   "scripts": {
@@ -13,5 +13,8 @@
     "@arcane-web/arcane-components": "workspace:^",
     "@arcane-web/arcane-flow": "workspace:^",
     "@arcane-web/arcane-layouts": "workspace:^"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

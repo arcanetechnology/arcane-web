@@ -1,0 +1,19 @@
+---
+import Main from '../layouts/Main.astro';
+import { Trade } from '../components';
+---
+
+<Main>
+  <section slot="main">
+    <section class="margin-48">
+      <div class="container">
+        <h1>Users</h1>
+      </div>
+    </section>
+    <section class="margin-48">
+      <div id="trade-app" class="container"
+        ><Trade client:only="solid-js" />
+      </div>
+    </section>
+  </section>
+</Main>

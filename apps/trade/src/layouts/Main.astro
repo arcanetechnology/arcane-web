@@ -1,10 +1,10 @@
 ---
-import { DefaultLayout, Header, Footer } from '@arcane-web/arcane-layouts';
+import * as Layouts from '@arcane-web/arcane-layouts';
 import * as Components from '@arcane-web/arcane-components';
 ---
 
-<DefaultLayout title="Platform">
-  <Header slot="header">
+<Layouts.DefaultLayout title="Trade">
+  <Layouts.Header slot="header">
     <Components.Navigation slot="navigation" />
     <Components.ThemeToggle client:visible slot="theme" />
     <Components.Authentication
@@ -12,15 +12,15 @@ import * as Components from '@arcane-web/arcane-components';
       client:visible
       slot="auth"
     />
-  </Header>
+  </Layouts.Header>
   <div slot="main">
-    <section class="margin-48">
+    <section>
       <div class="container">
-        <h1><em>TODO: landing page</em></h1><br />
+        <slot name="main" />
       </div>
     </section>
   </div>
-  <Footer slot="footer">
+  <Layouts.Footer slot="footer">
     <div slot="content">TODO: get from contentful</div>
-  </Footer>
-</DefaultLayout>
+  </Layouts.Footer>
+</Layouts.DefaultLayout>

@@ -1,7 +1,6 @@
 /** @format */
 
-import { initializeApp, FirebaseOptions } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { FirebaseOptions } from 'firebase/app';
 
 const config: FirebaseOptions = {
   apiKey: import.meta.env.ARCANE_WEB_API_KEY,
@@ -12,8 +11,4 @@ const config: FirebaseOptions = {
   appId: import.meta.env.ARCANE_APP_ID,
 };
 
-const app = initializeApp(config, import.meta.env.APPLICATION_NAME);
-
-const auth = getAuth(app);
-
-export default auth;
+export default config;
