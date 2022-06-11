@@ -12,6 +12,11 @@
 This philosophy guides arcanes web development, we have kept the framework lean
 
 
+### pre-requisite 
+
+https://yarnpkg.com/getting-started/install
+
+
 1. TODO: add firebase authentication system using service workers.
 2. TODO: make native html form based request calls.
 3. TODO: evaluate arcane-state vs nanostore.

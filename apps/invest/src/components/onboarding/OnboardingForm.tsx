@@ -125,8 +125,10 @@ const OnboardingForm: VoidComponent = () => {
                 </Label>
                 <div class="padding-16">
                   <Input
-                    onBlur={validate}
-                    oninput={resetError}
+                    onBlur={(e) => console.log('validate' + e.target.localName)}
+                    onFocusOut={(e) =>
+                      console.log('reset validate' + e.target.localName)
+                    }
                     class="w-full"
                     list="number"
                     name="residence"

@@ -4,10 +4,10 @@ import Logo from './Logo.astro';
 
 <header role="banner">
   <div class="container align-row">
-    <Logo data-animation="pop-up" data-animation-delay="1s" class="logo" />
+    <Logo data-animation="pop-up" data-animation-delay="1s" svgId="header-logo"
+    />
     <div style="flex-grow: 1;"></div>
     <div class="space-32"><slot name="navigation" /></div>
-    <div class="space-4"><slot name="theme" /></div>
     <slot name="auth" />
   </div>
 </header>
@@ -19,5 +19,9 @@ import Logo from './Logo.astro';
     background-color: var(--header-background);
     position: sticky;
     top: 0;
+  }
+
+  #header-logo {
+    fill: var(--font-color);
   }
 </style>

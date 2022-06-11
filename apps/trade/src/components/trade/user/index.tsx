@@ -2,11 +2,12 @@
 
 import { createResource, VoidComponent } from 'solid-js';
 import { Table } from '../../table/Table';
+import { User } from '../Trade.types';
 
 const fetchUsers = async () => (await fetch('/users')).json();
 
 const Users: VoidComponent = () => {
-  const [users] = createResource(fetchUsers);
+  const [users] = createResource<Array<User>>(fetchUsers);
 
   return (
     <div>

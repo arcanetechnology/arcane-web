@@ -6,7 +6,6 @@ import * as Components from '@arcane-web/arcane-components';
 <Layouts.DefaultLayout title="Invest">
   <Layouts.Header slot="header">
     <Components.Navigation slot="navigation" />
-    <Components.ThemeToggle client:visible slot="theme" />
     <Components.Authentication
       onClick={(e) => console.log('helo')}
       client:visible
@@ -20,7 +19,4 @@ import * as Components from '@arcane-web/arcane-components';
       </div>
     </section>
   </div>
-  <Layouts.Footer slot="footer">
-    <div slot="content">TODO: get from contentful</div>
-  </Layouts.Footer>
 </Layouts.DefaultLayout>

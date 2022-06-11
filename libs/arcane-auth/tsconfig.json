@@ -1,20 +1,25 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "rootDir": "src",
-    "allowJs": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "allowJs": false,
     "strict": true,
+    "rootDir": "src",
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "declaration": true
+    "types": ["vite/client", "jest", "@testing-library/jest-dom"],
+    "paths": {
+      "@components/*": ["src/components/*"]
+    }
   },
   "files": [],
-  "include": ["./src"]
+  "include": ["./src", "src/components/index.d.ts"]
 }

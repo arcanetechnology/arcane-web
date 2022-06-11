@@ -97,8 +97,14 @@ const Doughnut: VoidComponent<DoughnutProps> = (props) => {
 
   // TODO: extract this definition as a card component or paper?
   return (
-    <Card class="align-center">
-      <canvas ref={canvas} style={{ 'max-height': '250px' }} />
+    <Card class="w-full">
+      <canvas
+        ref={canvas}
+        style={{
+          'max-height': '200px',
+          'min-width': '400px',
+        }}
+      />
     </Card>
   );
 };

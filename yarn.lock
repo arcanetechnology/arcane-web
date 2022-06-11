@@ -30,8 +30,6 @@ __metadata:
 "@arcane-web/arcane-auth@workspace:libs/arcane-auth":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane-auth@workspace:libs/arcane-auth"
-  dependencies:
-    firebase: ^9.8.2
   languageName: unknown
   linkType: soft
 
@@ -3828,7 +3826,7 @@ __metadata:
     rollup-preset-solid: ^1.4.0
     sass: ^1.51.0
     solid-jest: ^0.2.0
-    solid-js: ^1.4.3
+    solid-js: ^1.4.4
     solid-testing-library: ^0.3.0
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
@@ -11352,10 +11350,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solid-js@npm:^1.3.3, solid-js@npm:^1.4.3":
+"solid-js@npm:^1.3.3":
   version: 1.4.3
   resolution: "solid-js@npm:1.4.3"
   checksum: c542491e4d91054f0781eddd6a54254da1272c888c0559dbadac47293b573234906ebdf0e9c1a45e23fa6fed35bc380aaff24663fa1b114760715ff3e99ceaa2
+  languageName: node
+  linkType: hard
+
+"solid-js@npm:^1.4.4":
+  version: 1.4.4
+  resolution: "solid-js@npm:1.4.4"
+  checksum: 8daeac24ef87b228e00c1080ba307a969cfd01812ece13f43bfedbcbc7f4ad9c0d7e4bd0cf5e279ef5342d4e0e8a9dcfc4f789ae669ad5e5d759639a5a917275
   languageName: node
   linkType: hard
 

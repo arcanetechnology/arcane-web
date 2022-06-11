@@ -7,13 +7,14 @@
 
 .arcane-table {
   @include border-small(--font-color);
-  @include radius-large;
+
   text-align: left;
   border-collapse: collapse;
 
   th,
   td {
     padding: $space-8;
+    cursor: pointer;
   }
 
   th {

@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "husky install",
     "dev": "yarn workspaces foreach -p -i run dev",
-    "build:libs": "yarn workspaces libs -p -i build",
+    "build:libs": "yarn workspaces libs -p -i run build",
     "test:apps": "jest --projects ./apps",
     "test:libs": "jest --projects libs/",
     "test": "jest"
@@ -61,6 +61,6 @@
     "firebase": "^9.8.2",
     "fp-ts": "^2.12.1",
     "rich-text-solid-renderer": "^1.7.0",
-    "solid-js": "^1.4.3"
+    "solid-js": "^1.4.4"
   }
 }
