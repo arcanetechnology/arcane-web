@@ -1,6 +1,22 @@
 <nav class="gap-small" data-auto-grid="2">
-  <img src="https://www.arcane.no/favicon.png" alt="lah" />
-  <a class="third after" href="/trade">Trade</a>
-  <a class="third after" href="/invest">Invest</a>
-  <a class="third after" href="/research">Research</a>
+  <div class="item">
+    <img src="https://www.arcane.no/favicon.png" />
+    <span class="caption">Trade</span>
+  </div>
 </nav>
+
+<style lang="scss" is:inline>
+  div.item {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+  }
+  img {
+    width: 60px;
+    height: 60px;
+  }
+  .caption {
+    display: block;
+  }
+</style>
