@@ -29,7 +29,7 @@ a.after:after {
   height: 1px;
   height: 0.2rem;
   width: 0;
-  background: var(--action-color);
+  background: var(--link-contrast-color);
 }
 a.third:after {
   left: 50%;
@@ -39,3 +39,4 @@ a.third:after {
 a.after:hover:after {
   width: 100%;
 }
+

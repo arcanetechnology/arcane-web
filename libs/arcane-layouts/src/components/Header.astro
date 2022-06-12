@@ -1,5 +1,7 @@
 ---
 import Logo from './Logo.astro';
+import Navigation from './Navigation.astro';
+import * as Components from '@arcane-web/arcane-components';
 ---
 
 <header role="banner">
@@ -8,7 +10,7 @@ import Logo from './Logo.astro';
     />
     <div style="flex-grow: 1;"></div>
     <div id="menu-container" class="menu-container" data-is-closed="true">
-      <div id="menu-btn" class="menu-btn circle-hover pointer">
+      <div id="menu-btn" class="menu-btn circle-hover">
         <abbr class="clear-df-abbr" title="Google applications">
           <svg viewBox="0 0 24 24">
             <path
@@ -17,13 +19,65 @@ import Logo from './Logo.astro';
           </svg>
         </abbr>
       </div>
-      <div id="menu" class="menu margin-12">
-        <h1>hello</h1>
-      </div>
+      <div id="menu" class="menu margin-12 container"> <Navigation /></div>
     </div>
-    <slot name="auth" />
+    <Components.Authentication
+      onClick={(e) => console.log('helo')}
+      client:visible
+      slot="auth"
+    />
   </div>
 </header>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', main);
+
+  function main() {
+    document.addEventListener('click', handleBgClick);
+
+    const menuContainer = document.querySelector('#menu-container');
+    const isMenuClosedAttrName = 'data-is-closed';
+
+    const menuBtn = document.querySelector('#menu-btn');
+    const menu = document.querySelector('#menu');
+
+    menuBtn.addEventListener('click', toggleMenu);
+    menuBtn.addEventListener('click', preventDefault);
+
+    menu.addEventListener('click', preventDefault);
+
+    function preventDefault(e) {
+      e.preventDefault();
+    }
+
+    function toggleMenu(e) {
+      const isMenuClosed = menuContainer.getAttribute(isMenuClosedAttrName);
+      if (isMenuClosed === 'true') {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+    }
+
+    function openMenu() {
+      menu.scrollTop = 0;
+      menuContainer.setAttribute(isMenuClosedAttrName, 'false');
+    }
+
+    function closeMenu() {
+      menuContainer.setAttribute(isMenuClosedAttrName, 'true');
+    }
+
+    //   Click on background closes menu.
+    function handleBgClick(e) {
+      const wentEventNotThroughMenu = !e.path.includes(menu);
+      const wentEventNotThroughMenuBtn = !e.path.includes(menuBtn);
+      if (wentEventNotThroughMenu && wentEventNotThroughMenuBtn) {
+        closeMenu();
+      }
+    }
+  }
+</script>
 
 <style lang="scss" is:global>
   @use '../assets/scss/base/border' as *;
@@ -31,6 +85,7 @@ import Logo from './Logo.astro';
   @use '../assets/scss/base/elevation' as *;
   @use '../assets/scss/base/outline' as *;
   @use '../assets/scss/base/size' as *;
+  @use '../assets/scss/base/space' as *;
   header {
     height: var(--header-height) !important;
     width: 100%;
@@ -50,10 +105,14 @@ import Logo from './Logo.astro';
   .menu-container {
     width: 30px;
     position: relative;
+    cursor: pointer;
+    margin-right: $space-16;
   }
 
   .menu {
     position: absolute;
+    min-width: 200px;
+    padding: $space-16;
     transform: translateX(-50%);
     overflow-y: scroll;
     background-color: var(--background);
@@ -63,16 +122,16 @@ import Logo from './Logo.astro';
 
   .menu-btn > svg {
     text-align: center;
-    height: 48px;
-    width: 48px;
+    height: $space-4;
+    width: $space-4;
     position: relative;
     display: block;
-    color: #5f6368;
+    color: var(--primary-500);
   }
 
   [data-is-closed='false'] .menu-btn:before {
     content: '';
-    background-color: rgba(60, 64, 67, 0.2);
+    background-color: var(--primary-200);
     border-radius: 50%;
     position: absolute;
     left: 0;
@@ -86,7 +145,7 @@ import Logo from './Logo.astro';
 
   [data-is-closed='true'] .circle-hover:hover:before {
     content: '';
-    background-color: rgba(60, 64, 67, 0.08);
+    background-color: var(--primary-100);
     border-radius: 50%;
     position: absolute;
     left: 0;
@@ -104,31 +163,30 @@ import Logo from './Logo.astro';
   }
 
   .divider {
-    height: 1px;
-    background-color: #e8eaed;
-  }
-
-  .menu-btn:hover ~ .menu {
-    display: block;
+    height: $space-2;
+    background-color: var(--divider);
   }
 
   /* ----------------- SCROLLBAR -------------- */
 
+  /* width */
   ::-webkit-scrollbar {
-    width: 16px;
+    width: 5px;
   }
 
-  ::-webkit-scrollbar-thumb {
-    background: #dadce0;
-    background-clip: padding-box;
-    border: 4px solid transparent;
-    border-radius: 8px;
-    box-shadow: none;
-    min-height: 50px;
-  }
-
+  /* Track */
   ::-webkit-scrollbar-track {
-    background: none;
-    border: none;
+    background-color: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-200);
+    border-radius: 8px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-300);
   }
 </style>

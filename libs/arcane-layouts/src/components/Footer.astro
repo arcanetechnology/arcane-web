@@ -10,17 +10,19 @@ import Logo from './Logo.astro';
     <div>
       <h5>Navigation</h5>
       <nav id="arcane-application-navigation" class="align-vertical">
-        <a class="third after" href="/trade">Trade</a>
-        <a class="third after" href="/invest">Invest</a>
-        <a class="third after" href="/research">Research</a>
+        <a class="third after footer-link" href="/trade">Trade</a>
+        <a class="third after footer-link" href="/invest">Invest</a>
+        <a class="third after footer-link" href="/research">Research</a>
       </nav>
     </div>
     <div>
       <h5>Company</h5>
       <nav id="arcane-static" class="align-vertical">
-        <a class="third after" href="/people">People</a>
-        <a class="third after" href="/relations">Investor Relations</a>
-        <a class="third after" href="/privacy">Privacy</a>
+        <a class="third after footer-link" href="/people">People</a>
+        <a class="third after footer-link" href="/relations"
+          >Investor Relations</a
+        >
+        <a class="third after footer-link" href="/privacy">Privacy</a>
       </nav>
     </div>
   </div>
@@ -42,5 +44,9 @@ import Logo from './Logo.astro';
 
   #footer-logo {
     fill: var(--footer-color);
+  }
+
+  .footer-link {
+    color: var(--link-contrast-color);
   }
 </style>

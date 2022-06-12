@@ -50,6 +50,8 @@ __metadata:
 "@arcane-web/arcane-layouts@workspace:^, @arcane-web/arcane-layouts@workspace:libs/arcane-layouts":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane-layouts@workspace:libs/arcane-layouts"
+  dependencies:
+    "@arcane-web/arcane-components": "workspace:^"
   languageName: unknown
   linkType: soft
 
@@ -68,7 +70,6 @@ __metadata:
   resolution: "@arcane-web/invest@workspace:apps/invest"
   dependencies:
     "@arcane-web/alchemy": "workspace:^"
-    "@arcane-web/arcane-components": "workspace:^"
     "@arcane-web/arcane-flow": "workspace:^"
     "@arcane-web/arcane-layouts": "workspace:^"
   languageName: unknown
@@ -79,8 +80,6 @@ __metadata:
   resolution: "@arcane-web/trade@workspace:apps/trade"
   dependencies:
     "@arcane-web/alchemy": "workspace:^"
-    "@arcane-web/arcane-components": "workspace:^"
-    "@arcane-web/arcane-flow": "workspace:^"
     "@arcane-web/arcane-layouts": "workspace:^"
   languageName: unknown
   linkType: soft

@@ -1,11 +1,11 @@
 ---
-import Main from '../layouts/Main.astro';
 import { Button } from '@arcane-web/alchemy';
 import Invest from '../components/invest/Invest.astro';
+import * as Layouts from '@arcane-web/arcane-layouts';
 ---
 
-<Main>
-  <section slot="main" class="margin-48">
+<Layouts.DefaultLayout title="Apology">
+  <section class="margin-48">
     <div id="apology-message" class="container" data-auto-grid="2">
       <div class="space-8"> <Invest /> </div>
       <div class="space-8 align-vertical"
@@ -24,4 +24,4 @@ import Invest from '../components/invest/Invest.astro';
       </div>
     </div>
   </section>
-</Main>
+</Layouts.DefaultLayout>

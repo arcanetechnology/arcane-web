@@ -17,5 +17,8 @@
     "astro-component",
     "header",
     "layouts"
-  ]
+  ],
+  "dependencies": {
+    "@arcane-web/arcane-components": "workspace:^"
+  }
 }
