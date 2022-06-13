@@ -19,9 +19,8 @@ const contents: OnboardingNodes = (await client
   <section class="margin-48">
     <div class="container align-center">
       <h1
-        ><b>Build generational wealth with our actively managed crypto fund.</b
-        ></h1
-      >
+        ><b>Build generational wealth with our actively managed crypto fund.</b>
+      </h1>
     </div>
   </section>
   <section class="margin-48">
@@ -33,12 +32,11 @@ const contents: OnboardingNodes = (await client
           >Get managed exposure to cryptocurrencies as an asset class.
         </h4>
         <div class="margin-top-16"
-          ><Button type="button" variant="primary">Go To Research</Button></div
+          ><Onboarding client:visible questions={contents} /></div
         >
       </div>
     </div>
   </section>
-  <Onboarding client:visible questions={contents} />
   <CountriesList />
 </Layouts.DefaultLayout>
 

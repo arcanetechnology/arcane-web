@@ -16,9 +16,8 @@ export const FirebaseProvider: ParentComponent<FirebaseProviderProps> = (
   props
 ) => {
   return (
-    <FirebaseContext.Provider
-      value={initializeApp(props.config)}
-      children={props.children}
-    />
+    <FirebaseContext.Provider value={initializeApp(props.config)}>
+      {props.children}
+    </FirebaseContext.Provider>
   );
 };

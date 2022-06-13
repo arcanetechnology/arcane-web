@@ -43,8 +43,8 @@ const OnboardingForm: VoidComponent = () => {
       onSubmit={formSubmit}
       id="onboardingForm"
     >
-      <Button type="button" onClick={() => setModal(true)}>
-        <span>open modal</span>
+      <Button type="button" variant="primary" onClick={() => setModal(true)}>
+        Contact Us
       </Button>
       <Modal isOpen={isOpen()}>
         <Modal.Title toggleModal={setModal}>

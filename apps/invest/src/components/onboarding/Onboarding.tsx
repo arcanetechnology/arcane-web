@@ -6,6 +6,8 @@ import { OnboardingNodes } from '../../types';
 import OnboardingForm from './OnboardingForm';
 import ArcaneFlow from '@arcane-web/arcane-flow';
 import onboardingConfig, { Questions, Answers } from '../../config/onboarding';
+import { FirebaseProvider } from '@arcane-web/arcane-auth';
+import firebaseConfig from '../../firebase.config';
 
 type OnboardingStore = [
   {
@@ -55,9 +57,11 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   });
 
   return (
-    <OnboardingContext.Provider value={store}>
-      <OnboardingForm />
-    </OnboardingContext.Provider>
+    <FirebaseProvider config={firebaseConfig}>
+      <OnboardingContext.Provider value={store}>
+        <OnboardingForm />
+      </OnboardingContext.Provider>
+    </FirebaseProvider>
   );
 };
 

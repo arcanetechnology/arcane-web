@@ -1,6 +1,6 @@
 /** @format */
 
-import { FirebaseOptions } from 'firebase/app';
+import type { FirebaseOptions } from 'firebase/app';
 
 const config: FirebaseOptions = {
   apiKey: import.meta.env.ARCANE_WEB_API_KEY,

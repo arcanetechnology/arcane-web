@@ -17,7 +17,7 @@
 
   @include breakpoint(large) {
     padding: 0 calc(var(--gap-default) / 2);
-    max-width: 1200px;
+    max-width: 1440px;
   }
 
   &.stretch {

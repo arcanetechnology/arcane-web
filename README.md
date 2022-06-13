@@ -17,11 +17,10 @@ This philosophy guides arcanes web development, we have kept the framework lean
 https://yarnpkg.com/getting-started/install
 
 
-1. TODO: add firebase authentication system using service workers.
-2. TODO: make native html form based request calls.
-3. TODO: evaluate arcane-state vs nanostore.
-4. TODO: alchemy css only design system hosted on cdn.
-5. TODO: alchemy solidjs based design system with inbuilt style provider.
+1. TODO: make native html form based request calls.
+2. TODO: evaluate arcane-state vs nanostore.
+3. TODO: alchemy css only design system hosted on cdn.
+4. TODO: alchemy solidjs based design system with inbuilt style provider.
 
 
 ### Quirks
