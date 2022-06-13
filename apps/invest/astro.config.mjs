@@ -7,7 +7,7 @@ export default defineConfig({
   integrations: [solid()],
   site: 'https://arcane.no/',
   base: '/invest',
-  trailingSlash: "never",
+  trailingSlash: 'never',
   vite: {
     ssr: {
       external: ['svgo'],

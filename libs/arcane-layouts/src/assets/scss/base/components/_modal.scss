@@ -19,6 +19,7 @@
   animation-fill-mode: both;
   opacity: 0;
   animation: fade-in 0.5s ease-in-out forwards;
+  z-index: 20;
 }
 
 .modal {
@@ -28,6 +29,7 @@
   left: 0;
   right: 0;
   top: 50%;
+  z-index: 21;
 
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);

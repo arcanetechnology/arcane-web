@@ -7,4 +7,9 @@ export default defineConfig({
   integrations: [solid()],
   site: 'https://arcane.no/',
   base: '/research',
+  vite: {
+    ssr: {
+      external: ['svgo'],
+    },
+  },
 });

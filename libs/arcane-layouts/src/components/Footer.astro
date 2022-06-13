@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import { Icon } from 'astro-icon';
 ---
 
 <footer>
@@ -32,7 +33,16 @@ import Logo from './Logo.astro';
     <p>© All rights reserved to Arcane.</p>
     <p>Made with ❤️ in Norway</p>
     <div style="flex-grow: 1;"></div>
-    <div>Follow us</div>
+    <div class="footer-follow gap-small">
+      <p>Follow us</p>
+      <a href="https://twitter.com/arcane_crypto" class="footer=link"
+        ><Icon name="fa:twitter" /></a
+      >
+      <a
+        href="https://www.linkedin.com/company/arcane-crypto/"
+        class="footer=link"><Icon name="fa:linkedin" /></a
+      >
+    </div>
   </div>
 </footer>
 
@@ -48,5 +58,17 @@ import Logo from './Logo.astro';
 
   .footer-link {
     color: var(--link-contrast-color);
+  }
+
+  .footer-follow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  [astro-icon] {
+    width: 20px;
+    z-index: 10;
   }
 </style>

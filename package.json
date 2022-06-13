@@ -30,6 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "astro": "^1.0.0-beta.44",
+    "astro-icon": "^0.7.1",
     "astro-seo": "^0.5.0",
     "autoprefixer": "^10.4.7",
     "eslint": "^8.15.0",
