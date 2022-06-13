@@ -1,5 +1,5 @@
 {
-  "name": "@arcane-web/arcane",
+  "name": "@arcane-web/research",
   "packageManager": "yarn@3.2.0",
   "author": "Joel D'Souza <joeldsouzax@gmail.com>",
   "scripts": {
@@ -11,5 +11,8 @@
   "dependencies": {
     "@arcane-web/alchemy": "workspace:^",
     "@arcane-web/arcane-layouts": "workspace:^"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

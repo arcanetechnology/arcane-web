@@ -41,7 +41,7 @@ const Title: FlowComponent<TitleProps> = (props) => {
         onClick={() => props.toggleModal(false)}
         class="modal-close"
       >
-        X
+        x
       </Button>
     </div>
   );

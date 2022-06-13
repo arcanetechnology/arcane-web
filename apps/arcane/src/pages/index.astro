@@ -1,26 +1,30 @@
 ---
-import { DefaultLayout, Header, Footer } from '@arcane-web/arcane-layouts';
-import * as Components from '@arcane-web/arcane-components';
+import * as Layouts from '@arcane-web/arcane-layouts';
 ---
 
-<DefaultLayout title="Platform">
-  <Header slot="header">
-    <Components.Navigation slot="navigation" />
-    <Components.ThemeToggle client:visible slot="theme" />
-    <Components.Authentication
-      onClick={(e) => console.log('helo')}
-      client:visible
-      slot="auth"
-    />
-  </Header>
-  <div slot="main">
-    <section class="margin-48">
-      <div class="container">
-        <h1><em>TODO: landing page</em></h1><br />
+<Layouts.DefaultLayout title="Invest">
+  <section class="margin-48">
+    <div class="container align-center">
+      <h1
+        ><b>Build generational wealth with our actively managed crypto fund.</b>
+      </h1>
+    </div>
+  </section>
+  <section class="margin-48">
+    <div id="apology-message" class="container" data-auto-grid="2">
+      <div class="space-8"> Platform</div>
+      <div class="space-8 align-vertical"
+        ><h1>The fund. </h1>
+        <h4 class="secondary-text"
+          >Get managed exposure to cryptocurrencies as an asset class.
+        </h4>
       </div>
-    </section>
-  </div>
-  <Footer slot="footer">
-    <div slot="content">TODO: get from contentful</div>
-  </Footer>
-</DefaultLayout>
+    </div>
+  </section>
+</Layouts.DefaultLayout>
+
+<style is:inline lang="scss">
+  .onboarding-tab {
+    display: none;
+  }
+</style>

@@ -19,7 +19,7 @@ import * as Components from '@arcane-web/arcane-components';
           </svg>
         </abbr>
       </div>
-      <div id="menu" class="menu margin-12 container"> <Navigation /></div>
+      <div id="menu" class="menu margin-12"> <Navigation /></div>
     </div>
     <Components.Authentication
       onClick={(e) => console.log('helo')}
@@ -107,11 +107,11 @@ import * as Components from '@arcane-web/arcane-components';
     position: relative;
     cursor: pointer;
     margin-right: $space-16;
+    transition: all 1ms ease-in-out;
   }
 
   .menu {
     position: absolute;
-    min-width: 200px;
     padding: $space-16;
     transform: translateX(-50%);
     overflow-y: scroll;
