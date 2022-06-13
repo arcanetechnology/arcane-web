@@ -44,7 +44,7 @@ import * as Components from '@arcane-web/arcane-components';
     menuBtn.addEventListener('click', toggleMenu);
     menuBtn.addEventListener('click', preventDefault);
 
-    menu.addEventListener('click', preventDefault);
+    menu.addEventListener('click');
 
     function preventDefault(e) {
       e.preventDefault();

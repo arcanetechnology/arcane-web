@@ -5,13 +5,17 @@ import apps from '../registry/apps.json';
 
 <nav class="gap-small" data-auto-grid="2">
   {apps.map(app => (
-    <div class="app-nav"><a href={app.source} target="_blank"> <img src={app.logo} alt={`${app.name} logo`}/> <p class="description">{app.name}</p></a></div>
+    <div class="app-nav"><a href={app.source}><img src={app.logo} alt={`${app.name} logo`}/> </a><p class="description">{app.name}</p></div>
     ))}
 </nav>
 
-<style lang="scss" is:inline>
+<style is:inline>
   .app-nav {
     width: 60px;
     text-align: center;
+  }
+
+  .app-nav > a {
+    z-index: 999;
   }
 </style>
