@@ -10,6 +10,7 @@ export default defineConfig({
   experimental: { integrations: true },
   site: 'https://arcane.no/',
   base: '/invest',
+  outDir: './dist/invest',
   trailingSlash: 'never',
   vite: {
     ssr: {

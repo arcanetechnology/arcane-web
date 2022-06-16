@@ -4209,7 +4209,7 @@ __metadata:
     eslint-plugin-jest-dom: ^4.0.1
     eslint-plugin-solid: ^0.4.7
     firebase: ^9.8.3
-    firebase-tools: ^11.0.1
+    firebase-tools: ^11.1.0
     firebaseui: ^6.0.1
     fp-ts: ^2.12.1
     husky: ^7.0.4
@@ -7897,7 +7897,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:^11.0.1":
+"firebase-tools@npm:^11.1.0":
   version: 11.1.0
   resolution: "firebase-tools@npm:11.1.0"
   dependencies:

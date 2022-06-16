@@ -6,6 +6,7 @@
   "scripts": {
     "postinstall": "husky install",
     "dev": "yarn workspaces foreach -p -i run dev",
+    "build": "yarn workspaces foreach -i -t run build",
     "build:libs": "yarn workspaces libs -p -i run build",
     "test:apps": "jest --projects ./apps",
     "test:libs": "jest --projects libs/",
@@ -40,7 +41,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest-dom": "^4.0.1",
     "eslint-plugin-solid": "^0.4.7",
-    "firebase-tools": "^11.0.1",
+    "firebase-tools": "^11.1.0",
     "husky": "^7.0.4",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",

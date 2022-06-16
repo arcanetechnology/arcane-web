@@ -1,0 +1,35 @@
+name: Deploy invest app from main branch to prod
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-build-deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: 'node:18-alpine'
+      # needed for firebase deploy to create ~/.config folder, whose owner is user `1001`
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v3
+      - name: Load github env secrets
+        env:
+          INVEST_ENV_FILE: ${{ secrets.INVEST_ENV_FILE }}
+        run: |
+          echo "${INVEST_ENV_FILE}" >> apps/invest/.env
+      - run: yarn
+        # TODO add 'yarn test &&' to yarn build script in package.json
+      - run: yarn run build
+      - name: Firebase hosting deploy
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.GCP_SA_KEY }}"
+          expires: 30d
+          projectId: "${{ secrets.GCP_PROJECT_ID }}"
+          channelId: live
+          # removing target will deploy all targets defined in .firebaserc
+          target: "arcane-invest"
