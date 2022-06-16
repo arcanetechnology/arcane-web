@@ -1,9 +1,9 @@
 ---
 import { Info, Donut, FundValue } from '../components';
-import * as Layouts from '@arcane-web/arcane-layouts';
+import { DefaultLayout } from '@arcane-web/arcane-core/layouts';
 ---
 
-<Layouts.DefaultLayout title="Dashboard">
+<DefaultLayout title="Invest" description="Arcane Invest Child app">
   <section class="margin-48">
     <div class="container">
       <h1>Investor Dashboard</h1>
@@ -73,7 +73,7 @@ import * as Layouts from '@arcane-web/arcane-layouts';
       /></div
     >
   </section>
-</Layouts.DefaultLayout>
+</DefaultLayout>
 
 <style>
   .parent {

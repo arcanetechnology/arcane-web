@@ -12,7 +12,7 @@ interface FirebaseProviderProps {
   children: JSX.Element;
 }
 
-export const FirebaseProvider: ParentComponent<FirebaseProviderProps> = (
+export const ArcaneAuthProvider: ParentComponent<FirebaseProviderProps> = (
   props
 ) => {
   return (

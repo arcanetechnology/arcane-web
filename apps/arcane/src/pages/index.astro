@@ -1,8 +1,8 @@
 ---
-import * as Layouts from '@arcane-web/arcane-layouts';
+import { DefaultLayout } from '@arcane-web/arcane-core/layouts';
 ---
 
-<Layouts.DefaultLayout title="Invest">
+<DefaultLayout title="Invest" description="Arcane Invest Child app">
   <section class="margin-48">
     <div class="container align-center">
       <h1
@@ -21,7 +21,7 @@ import * as Layouts from '@arcane-web/arcane-layouts';
       </div>
     </div>
   </section>
-</Layouts.DefaultLayout>
+</DefaultLayout>
 
 <style is:inline lang="scss">
   .onboarding-tab {

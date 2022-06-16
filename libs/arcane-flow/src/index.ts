@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 11:02:31
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-28 00:06:02
+ * @ Modified time: 2022-06-14 12:02:25
  * @ Description: core business logic of arcane-flow functionality,
  * arcaneFlow function loops through various nodes on the basis of logic present in the edges.
  * ArcaneFlowBuilder makes it a bit better to configure that function.
@@ -17,12 +17,18 @@ import * as O from 'fp-ts/lib/Option';
  */
 export type StringLiteral<T> = T extends `${string & T}` ? T : never;
 
-type Logic<T> = (val: T) => boolean;
+type History<NodeName extends string, Answer> = {
+  node: NodeName;
+  answer: Answer;
+};
+
+type Logic<NodeName extends string, Answer> = (
+  val: Answer,
+  history: Array<History<NodeName, Answer>>
+) => NodeName;
 
 export type ArcaneFlowConfig<NodeName extends string, Answers> = {
-  [P in NodeName]?: {
-    [T in NodeName]?: Logic<Answers>;
-  };
+  [P in NodeName]?: Logic<NodeName, Answers>;
 };
 
 const ArcaneFlow = <NodeName extends string, Answer>(
@@ -30,36 +36,24 @@ const ArcaneFlow = <NodeName extends string, Answer>(
   node: NodeName
 ) => {
   let curr = node;
-  const history: Array<NodeName> = [];
+  const history: Array<History<NodeName, Answer>> = [];
   const next = (val: Answer) => {
     const dest = pipe(
       config[curr],
       O.fromNullable,
-      O.map(
-        (d) =>
-          Object.entries(d).find((v) => (v[1] as Logic<Answer>)(val)) as [
-            NodeName,
-            Logic<Answer>
-          ]
-      ),
-      O.chain(
-        flow(
-          O.fromNullable,
-          O.map((d) => d[0])
-        )
-      ),
+      O.map((d) => d(val, history)),
       O.getOrElse(() => curr)
     );
 
     if (dest !== curr) {
-      history.push(curr);
+      history.push({ node: curr, answer: val });
       curr = dest;
     }
     return curr;
   };
 
   const previous = () => {
-    curr = history.pop() ?? curr;
+    curr = history.pop()?.node ?? curr;
     return curr;
   };
 

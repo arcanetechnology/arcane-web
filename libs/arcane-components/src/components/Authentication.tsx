@@ -7,14 +7,9 @@ type AuthenticationProps = {
   onClick: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent>;
 };
 
-const Authentication: VoidComponent<AuthenticationProps> = (props) => {
+const Authentication: VoidComponent<AuthenticationProps> = () => {
   return (
-    <Button
-      title="sign into arcane platform"
-      variant="secondary"
-      id="auth"
-      onClick={props.onClick}
-    >
+    <Button title="sign into arcane platform" variant="secondary" id="auth">
       <span>Sign-in</span>
     </Button>
   );

@@ -1,11 +1,11 @@
 ---
 import Invest from '../components/invest/Invest.astro';
-import { Button } from '@arcane-web/alchemy';
+import firebaseConfig from '../firebase.config';
 import client from '../contentful.config';
 import { OnboardingNodes } from '../types';
 import { Onboarding } from '../components';
 import CountriesList from '../components/CountriesList.astro';
-import * as Layouts from '@arcane-web/arcane-layouts';
+import { DefaultLayout } from '@arcane-web/arcane-core/layouts';
 
 // yay top level awaits
 const contents: OnboardingNodes = (await client
@@ -15,7 +15,7 @@ const contents: OnboardingNodes = (await client
   .then((items) => items)) as OnboardingNodes;
 ---
 
-<Layouts.DefaultLayout title="Invest">
+<DefaultLayout title="Invest" description="Arcane Invest Child app">
   <section class="margin-48">
     <div class="container align-center">
       <h1
@@ -38,7 +38,7 @@ const contents: OnboardingNodes = (await client
     </div>
   </section>
   <CountriesList />
-</Layouts.DefaultLayout>
+</DefaultLayout>
 
 <style is:inline lang="scss">
   .onboarding-tab {

@@ -173,7 +173,7 @@ const OnboardingForm: VoidComponent = () => {
             disabled={form.disable}
             hidden={getLast() || step() === 0}
             onClick={() => {
-              if (form.route === 'pro.4') {
+              if (form.route === 'question.1') {
                 next();
               } else {
                 actions.setRoute();

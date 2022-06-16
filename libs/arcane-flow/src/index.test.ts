@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 20:00:37
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-05-28 00:05:58
+ * @ Modified time: 2022-06-14 12:12:12
  * @ Description: arcane-flow test suite
  *
  * @format
@@ -16,8 +16,9 @@ type Answers = 'yes' | 'no' | 'maybe' | '1';
 describe('arcane flow function', () => {
   it('should be able to take object based configuration file with root node', () => {
     const config: ArcaneFlowConfig<NodeName, Answers> = {
-      A: {
-        B: (val) => val === 'no',
+      A: (val, history) => {
+        if (val === 'yes') return 'B';
+        return 'A';
       },
     };
 
@@ -27,11 +28,19 @@ describe('arcane flow function', () => {
 
   it('should be able to go to next node when next function is given the answer', () => {
     const config: ArcaneFlowConfig<NodeName, Answers> = {
-      A: {
-        B: (val) => val === 'no',
-        C: (val) => val === 'yes',
-        D: (val) => val === '1',
-        E: (val) => val === 'maybe',
+      A: (val, history) => {
+        switch (val) {
+          case 'no':
+            return 'B';
+          case '1':
+            return 'D';
+          case 'yes':
+            return 'C';
+          case 'maybe':
+            return 'E';
+          default:
+            return 'A';
+        }
       },
     };
 
@@ -42,20 +51,33 @@ describe('arcane flow function', () => {
 
   it('should be able to traverse the chain with the help of next function', () => {
     const config: ArcaneFlowConfig<NodeName, Answers> = {
-      A: {
-        B: (val) => val === 'no',
-        C: (val) => val === 'yes',
+      A: (val, history) => {
+        switch (val) {
+          case 'no':
+            return 'B';
+          case 'yes':
+            return 'C';
+          default:
+            return 'A';
+        }
       },
-
-      B: {
-        D: (val) => val === 'maybe',
+      B: (val, history) => {
+        switch (val) {
+          case 'maybe':
+            return 'D';
+          default:
+            return 'B';
+        }
       },
-
-      D: {
-        C: (val) => val === 'yes',
+      D: (val, history) => {
+        switch (val) {
+          case 'yes':
+            return 'C';
+          default:
+            return 'D';
+        }
       },
     };
-
     const { next } = ArcaneFlow(config, 'A');
     next('no');
     next('maybe');
@@ -65,13 +87,23 @@ describe('arcane flow function', () => {
 
   it('should be able to give the same node name when we are at the end of the chain', () => {
     const config: ArcaneFlowConfig<NodeName, Answers> = {
-      A: {
-        B: (val) => val === 'no',
-        C: (val) => val === 'yes',
+      A: (val, history) => {
+        switch (val) {
+          case 'no':
+            return 'B';
+          case 'yes':
+            return 'C';
+          default:
+            return 'A';
+        }
       },
-
-      B: {
-        D: (val) => val === 'maybe',
+      B: (val, history) => {
+        switch (val) {
+          case 'maybe':
+            return 'D';
+          default:
+            return 'B';
+        }
       },
     };
 
@@ -85,13 +117,23 @@ describe('arcane flow function', () => {
 
   it('should be able to give the root node name if we use the previous function on root node', () => {
     const config: ArcaneFlowConfig<NodeName, Answers> = {
-      A: {
-        B: (val) => val === 'no',
-        C: (val) => val === 'yes',
+      A: (val, history) => {
+        switch (val) {
+          case 'no':
+            return 'B';
+          case 'yes':
+            return 'C';
+          default:
+            return 'A';
+        }
       },
-
-      B: {
-        D: (val) => val === 'maybe',
+      B: (val, history) => {
+        switch (val) {
+          case 'maybe':
+            return 'D';
+          default:
+            return 'B';
+        }
       },
     };
     const { previous } = ArcaneFlow(config, 'A');
@@ -102,13 +144,23 @@ describe('arcane flow function', () => {
 
   it('should be able to give the previous node name when we use previous function', () => {
     const config: ArcaneFlowConfig<NodeName, Answers> = {
-      A: {
-        B: (val) => val === 'no',
-        C: (val) => val === 'yes',
+      A: (val, history) => {
+        switch (val) {
+          case 'no':
+            return 'B';
+          case 'yes':
+            return 'C';
+          default:
+            return 'A';
+        }
       },
-
-      B: {
-        D: (val) => val === 'maybe',
+      B: (val, history) => {
+        switch (val) {
+          case 'maybe':
+            return 'D';
+          default:
+            return 'B';
+        }
       },
     };
     const { next, previous } = ArcaneFlow(config, 'A');

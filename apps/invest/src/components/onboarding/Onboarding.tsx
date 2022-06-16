@@ -6,8 +6,6 @@ import { OnboardingNodes } from '../../types';
 import OnboardingForm from './OnboardingForm';
 import ArcaneFlow from '@arcane-web/arcane-flow';
 import onboardingConfig, { Questions, Answers } from '../../config/onboarding';
-import { FirebaseProvider } from '@arcane-web/arcane-auth';
-import firebaseConfig from '../../firebase.config';
 
 type OnboardingStore = [
   {
@@ -29,7 +27,7 @@ type OnboardingProps = {
 export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   const { getCurrent, next, previous } = ArcaneFlow<Questions, Answers>(
     onboardingConfig,
-    'intro'
+    'question.1'
   );
 
   const [form, setForm] = createStore({
@@ -57,11 +55,9 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   });
 
   return (
-    <FirebaseProvider config={firebaseConfig}>
-      <OnboardingContext.Provider value={store}>
-        <OnboardingForm />
-      </OnboardingContext.Provider>
-    </FirebaseProvider>
+    <OnboardingContext.Provider value={store}>
+      <OnboardingForm />
+    </OnboardingContext.Provider>
   );
 };
 

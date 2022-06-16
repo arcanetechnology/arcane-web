@@ -15,7 +15,7 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "types": ["vite/client", "jest", "@testing-library/jest-dom"],
+    "types": ["vite/client", "jest", "@testing-library/jest-dom", "node"],
     "paths": {
       "@components/*": ["src/components/*"]
     }

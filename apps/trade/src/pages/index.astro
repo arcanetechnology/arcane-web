@@ -1,9 +1,12 @@
 ---
-import * as Layouts from '@arcane-web/arcane-layouts';
+import {
+  DefaultLayout,
+  DashboardLayout,
+} from '@arcane-web/arcane-core/layouts';
 import { Trade } from '../components';
 ---
 
-<Layouts.DashboardLayout title="Trade">
+<DashboardLayout title="Trade">
   <section class="margin-48">
     <div class="container">
       <h1>Users</h1>
@@ -14,4 +17,4 @@ import { Trade } from '../components';
       ><Trade client:only="solid-js" />
     </div>
   </section>
-</Layouts.DashboardLayout>
+</DashboardLayout>

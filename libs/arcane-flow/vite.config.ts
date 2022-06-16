@@ -2,6 +2,7 @@
 
 import path from 'path';
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
 const config = defineConfig({
   build: {
@@ -11,6 +12,7 @@ const config = defineConfig({
       fileName: (format) => `arcane-flow.${format}.js`,
     },
   },
+  plugins: [dts()],
 });
 
 export default config;

@@ -3,35 +3,48 @@
 import type { ArcaneFlowConfig } from '@arcane-web/arcane-flow';
 
 export type Questions =
-  | 'elective-professional.2'
-  | 'elective-professional.1'
-  | 'pro.2'
-  | 'pro.4'
-  | 'pro.3'
-  | 'pro.1'
-  | 'intro';
+  | 'question.1'
+  | 'question.2'
+  | 'question.3'
+  | 'question.4'
+  | 'question.5'
+  | 'question.6'
+  | 'warning';
 
 export type Answers = 'yes' | 'no';
 
 const config: ArcaneFlowConfig<Questions, Answers> = {
-  intro: {
-    'elective-professional.1': (val) => val === 'yes',
-    'elective-professional.2': (val) => val === 'no',
+  'question.1': (val, history) => {
+    if (val === 'yes') return 'warning';
+    return 'question.2';
   },
-  'elective-professional.1': {
-    'pro.1': (val) => val === 'yes',
+  'question.2': (val, history) => {
+    if (val === 'yes') return 'warning';
+    return 'question.3';
   },
-  'elective-professional.2': {
-    'pro.2': (val) => val === 'yes',
+  'question.3': (val, history) => {
+    if (val === 'yes') return 'warning';
+    return 'question.4';
   },
-  'pro.1': {
-    'pro.2': (val) => val === 'yes',
+  'question.4': (val, history) => {
+    if (val === 'yes') return 'question.5';
+    return 'question.5';
   },
-  'pro.2': {
-    'pro.3': (val) => val === 'yes',
+  'question.5': (val, history) => {
+    const question4 = history.find(
+      (question) => question.node === 'question.4'
+    );
+
+    if (question4.answer === 'yes' && val === 'yes') return 'warning';
+    return 'question.6';
   },
-  'pro.3': {
-    'pro.4': (val) => val === 'yes',
+  'question.6': (val, history) => {
+    const question5 = history.find(
+      (question) => question.node === 'question.5'
+    );
+
+    if (question5.answer === 'yes' && val === 'yes') return 'warning';
+    return 'warning';
   },
 };
 
