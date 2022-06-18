@@ -11,16 +11,29 @@ import ArcaneFlow from '@arcane-web/arcane-flow';
 
 const OnboardingWelcome: VoidComponent<OnboardingFormPages> = (props) => {
   return (
-    <>
-      <h1>Welcome</h1>
-      <Button
-        type="button"
-        variant="primary"
-        onClick={() => props.onSubmit({})}
-      >
-        Start
-      </Button>
-    </>
+    <div
+      style={{
+        display: 'grid',
+        'grid-template-rows': '90% 10%',
+        height: '100%',
+      }}
+    >
+      <h4>
+        Thanks for your insterest in our fund. Before we proceed, we will ask
+        you some questions that will help customize this solution to meet your
+        own needs.
+      </h4>
+      <div class="w-full">
+        <Button
+          class="w-full"
+          type="button"
+          variant="primary"
+          onClick={() => props.onSubmit({})}
+        >
+          Start
+        </Button>
+      </div>
+    </div>
   );
 };
 

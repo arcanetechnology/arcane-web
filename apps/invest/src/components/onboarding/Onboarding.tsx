@@ -17,7 +17,7 @@ type OnboardingProps = {
   questions: OnboardingNodes;
 };
 
-// TODO: update the modal component and make it simple damnit
+// TODO: update the action part make it look good.
 export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   const [isOpen, setModal] = createSignal<boolean>(false);
   return (
@@ -26,13 +26,17 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
         <Button type="button" variant="primary" onClick={() => setModal(true)}>
           Contact Us
         </Button>
-        <Modal isOpen={isOpen()}>
-          <Modal.Title toggleModal={setModal}>
+        <Modal isOpen={isOpen()} toggleModal={setModal}>
+          <article
+            class="align-center"
+            style={{
+              'grid-template-rows': '20% 80%',
+              height: '100%',
+            }}
+          >
             <h3>Investment Onboarding</h3>
-          </Modal.Title>
-          <Modal.Content toggleModal={setModal}>
             <OnboardingForm />
-          </Modal.Content>
+          </article>
         </Modal>
       </>
     </OnboardingContext.Provider>

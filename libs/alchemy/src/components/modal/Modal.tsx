@@ -3,56 +3,30 @@
 import { FlowComponent, Show } from 'solid-js';
 import { Button } from '../button';
 
-const modalKeys = ['Title', 'Action', 'Content'] as const;
-type ModalKeys = typeof modalKeys[number];
-
-type TitleProps = {
+type ModalProps = {
+  isOpen: boolean;
   toggleModal: (val: boolean) => void;
 };
 
-type ModalFunction = {
-  [key in ModalKeys]: FlowComponent<TitleProps>;
-};
-
-type ModalProps = {
-  isOpen: boolean;
-};
-
-const Modal: FlowComponent<ModalProps> & ModalFunction = (props) => {
+const Modal: FlowComponent<ModalProps> = (props) => {
   return (
     <Show when={props.isOpen} fallback={null}>
       <div class="modal-background">
-        <div class="elevation-300 radius-small modal">{props.children}</div>
+        <div class="elevation-300 radius-small modal">
+          <div class="modal-close">
+            <Button
+              type="button"
+              onClick={() => props.toggleModal(false)}
+              class="modal-close"
+            >
+              x
+            </Button>
+          </div>
+          {props.children}
+        </div>
       </div>
     </Show>
   );
 };
-
-const Content: FlowComponent = (props) => {
-  return <div class="modal-content">{props.children}</div>;
-};
-
-const Title: FlowComponent<TitleProps> = (props) => {
-  return (
-    <div class="modal-title">
-      {props.children}
-      <Button
-        type="button"
-        onClick={() => props.toggleModal(false)}
-        class="modal-close"
-      >
-        x
-      </Button>
-    </div>
-  );
-};
-
-const Action: FlowComponent = (props) => {
-  return <div class="modal-actions">{props.children}</div>;
-};
-
-Modal.Action = Action;
-Modal.Title = Title;
-Modal.Content = Content;
 
 export default Modal;
