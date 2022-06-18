@@ -1,5 +1,5 @@
 /** @format */
-
+import { Show } from 'solid-js';
 import {
   Form,
   FieldSet,
@@ -9,18 +9,18 @@ import {
   Button,
 } from '@arcane-web/alchemy';
 import { createForm } from '@felte/solid';
-import type { Customer } from './customer.types';
-import { schema, initialValue } from './customer.types';
+
+import { formConfig } from './customer.types';
 import { validator } from '@felte/validator-zod';
 import reporter from '@felte/reporter-tippy';
 import type { OnboardingFormPages } from '../Onboarding.types';
 
-const CustomerFormPages = Object.keys(initialValue).map(
+const CustomerFormPages = formConfig.map(
   (field) => (props: OnboardingFormPages) => {
-    const { form, data } = createForm<Customer>({
+    const { form, data } = createForm({
       onSubmit: props.onSubmit,
       extend: [
-        validator({ schema: schema }),
+        validator({ schema: field.validation, level: 'error' }),
         reporter({
           tippyProps: {
             animation: 'shift-away-extreme',
@@ -32,32 +32,50 @@ const CustomerFormPages = Object.keys(initialValue).map(
       <Form ref={form}>
         <FieldSet>
           <Label>
-            <h4>Are you making this request on your company’s behalf ?</h4>
+            <h4>{field.label}</h4>
           </Label>
           <div class="padding-16">
-            <RadioButton
-              position="down"
-              id="company-behalf"
-              name={field}
-              label="Yes"
-              value="yes"
-            />
-            <br />
-            <RadioButton
-              position="down"
-              id="company-behalf"
-              name={field}
-              label="No"
-              value={'no'}
-            />
+            <Show
+              when={!(field.name === 'companyBehalf')}
+              fallback={
+                <>
+                  <RadioButton
+                    position="down"
+                    id={field.name}
+                    name={field.name}
+                    label="Yes"
+                    value="yes"
+                  />
+                  <br />
+                  <RadioButton
+                    position="down"
+                    id={field.name}
+                    name={field.name}
+                    label="No"
+                    value={'no'}
+                  />
+                </>
+              }
+            >
+              <Input
+                name={field.name}
+                placeholder={field.initialValue}
+                id={field.name}
+              />
+            </Show>
           </div>
         </FieldSet>
         <Button type="button" onClick={() => props.onBack(data)}>
           Back
         </Button>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Show
+          when={field.name === 'number'}
+          fallback={<Button variant="primary">Next</Button>}
+        >
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Show>
       </Form>
     );
   }
