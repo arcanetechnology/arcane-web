@@ -2,30 +2,20 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 20:00:37
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-06-14 12:12:12
+ * @ Modified time: 2022-06-16 16:45:31
  * @ Description: arcane-flow test suite
  *
  * @format
  */
 
 import ArcaneFlow, { ArcaneFlowConfig } from './index';
+import { cleanup } from 'solid-testing-library';
 
 type NodeName = 'A' | 'B' | 'C' | 'D' | 'E';
 type Answers = 'yes' | 'no' | 'maybe' | '1';
 
 describe('arcane flow function', () => {
-  it('should be able to take object based configuration file with root node', () => {
-    const config: ArcaneFlowConfig<NodeName, Answers> = {
-      A: (val, history) => {
-        if (val === 'yes') return 'B';
-        return 'A';
-      },
-    };
-
-    const { getCurrent } = ArcaneFlow(config, 'A');
-    expect(getCurrent()).toBe('A');
-  });
-
+  afterEach(cleanup);
   it('should be able to go to next node when next function is given the answer', () => {
     const config: ArcaneFlowConfig<NodeName, Answers> = {
       A: (val, history) => {
@@ -44,8 +34,8 @@ describe('arcane flow function', () => {
       },
     };
 
-    const { next } = ArcaneFlow(config, 'A');
-    const nextNode = next('no');
+    const { next } = ArcaneFlow(config);
+    const nextNode = next('A', 'no');
     expect(nextNode).toBe('B');
   });
 
@@ -78,10 +68,11 @@ describe('arcane flow function', () => {
         }
       },
     };
-    const { next } = ArcaneFlow(config, 'A');
-    next('no');
-    next('maybe');
-    const cNode = next('yes');
+    const { next } = ArcaneFlow(config);
+    const node1 = next('A', 'no');
+    expect(node1).toBe('B');
+    const node2 = next(node1, 'maybe');
+    const cNode = next(node2, 'yes');
     expect(cNode).toBe('C');
   });
 
@@ -107,15 +98,15 @@ describe('arcane flow function', () => {
       },
     };
 
-    const { next } = ArcaneFlow(config, 'A');
-    next('no');
-    const dNode = next('maybe');
-    expect(dNode).toBe('D');
-    const cNode = next('yes');
+    const { next } = ArcaneFlow(config);
+    const node1 = next('A', 'no');
+    expect(node1).toBe('B');
+    const node2 = next(node1, 'maybe');
+    const cNode = next(node2, 'yes');
     expect(cNode).toBe('D');
   });
 
-  it('should be able to give the root node name if we use the previous function on root node', () => {
+  it('should give undefined if we use the previous function on root node', () => {
     const config: ArcaneFlowConfig<NodeName, Answers> = {
       A: (val, history) => {
         switch (val) {
@@ -136,10 +127,10 @@ describe('arcane flow function', () => {
         }
       },
     };
-    const { previous } = ArcaneFlow(config, 'A');
+    const { previous } = ArcaneFlow(config);
 
-    const nodeName = previous();
-    expect(nodeName).toBe('A');
+    const node = previous();
+    expect(node?.node).toBe(undefined);
   });
 
   it('should be able to give the previous node name when we use previous function', () => {
@@ -163,11 +154,11 @@ describe('arcane flow function', () => {
         }
       },
     };
-    const { next, previous } = ArcaneFlow(config, 'A');
-    next('no');
-    const nextNode = next('maybe');
+    const { next, previous } = ArcaneFlow(config);
+    const node1 = next('A', 'no');
+    const nextNode = next(node1, 'maybe');
     expect(nextNode).toBe('D');
     const prevNode = previous();
-    expect(prevNode).toBe('B');
+    expect(prevNode?.node).toBe('B');
   });
 });

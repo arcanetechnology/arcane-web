@@ -31,7 +31,7 @@ describe('alchemy useStepper utility function', () => {
     previous();
     expect(step()).toBe(3);
   });
-
+  /* 
   it('should increment by 1 whenever we execute next step', () => {
     const { step, next } = useStepper(0);
     next();
@@ -63,7 +63,7 @@ describe('alchemy useStepper utility function', () => {
     next();
     expect(step()).toBe(1);
   });
-
+ */
   it('should give an error if totalSteps are less than initialStep', () => {
     try {
       useStepper(3);

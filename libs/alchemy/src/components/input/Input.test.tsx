@@ -22,6 +22,6 @@ describe('alchemy input element', () => {
     render(() => <Input name="test-input" data-testid="test-input" />);
     const input = screen.getByTestId('test-input');
     expect(input).toHaveClass('radius-small');
-    expect(input).toHaveClass('padding-2');
+    expect(input).toHaveClass('padding-4');
   });
 });

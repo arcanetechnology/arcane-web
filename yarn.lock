@@ -1837,6 +1837,55 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@felte/common@npm:1.1.1":
+  version: 1.1.1
+  resolution: "@felte/common@npm:1.1.1"
+  checksum: f598d12b2773a65b70fbdea3f68aedc417d1f4b03048f1f40a47d8a98e2e21e0dc10e0634f0df63329f44e018686241b1ab193a95dfd35d94bf6c6e824f26022
+  languageName: node
+  linkType: hard
+
+"@felte/core@npm:1.3.2":
+  version: 1.3.2
+  resolution: "@felte/core@npm:1.3.2"
+  dependencies:
+    "@felte/common": 1.1.1
+  checksum: 308ce6ff81b7ff18990caaeb71b672bef1014b968e50c7fdcd5b11b722d949a94fec8ddea29a5fbd12d034bde243dc5edbaff95c6c5770226dd88895fcf0b67b
+  languageName: node
+  linkType: hard
+
+"@felte/reporter-tippy@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@felte/reporter-tippy@npm:1.1.2"
+  dependencies:
+    "@felte/common": 1.1.1
+  peerDependencies:
+    tippy.js: ^6.0.0
+  checksum: 34c2f222fef14ea8fccc68bf6efaac452da90e5072a580954647b1b73069207705520b602783bce7b18182b9d5a9499b6bacf62a678b15ac1a13dd2c67c12256
+  languageName: node
+  linkType: hard
+
+"@felte/solid@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@felte/solid@npm:1.2.2"
+  dependencies:
+    "@felte/core": 1.3.2
+  peerDependencies:
+    solid-js: ^1.2.0
+  checksum: 74e8610d435d947ca4cfd00c66924694886ccae80f638e3faeb8aa57ff063fc7bf6e71628e09e9f91707d17c434a6da0506737c6628806d15387f32898a63cf5
+  languageName: node
+  linkType: hard
+
+"@felte/validator-zod@npm:^1.0.10":
+  version: 1.0.10
+  resolution: "@felte/validator-zod@npm:1.0.10"
+  dependencies:
+    "@felte/common": 1.1.1
+  peerDependencies:
+    zod: ^3.2.0
+  checksum: f45d738c28ce877faa4f8723bceea5d1689e7c32742027956840d40d35f1d43dafcc7eb4b74319bde11a2519526debfe550f095c4e30866b3ad29630f6b3f134
+  languageName: node
+  linkType: hard
+
 "@firebase/analytics-compat@npm:0.1.11":
   version: 0.1.11
   resolution: "@firebase/analytics-compat@npm:0.1.11"
@@ -2977,6 +3026,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@popperjs/core@npm:^2.9.0":
+  version: 2.11.5
+  resolution: "@popperjs/core@npm:2.11.5"
+  checksum: fd7f9dca3fb716d7426332b6ee283f88d2724c0ab342fb678865a640bad403dfb9eeebd8204a406986162f7e2b33394f104320008b74d0e9066d7322f70ea35d
+  languageName: node
+  linkType: hard
+
 "@proload/core@npm:^0.3.2":
   version: 0.3.2
   resolution: "@proload/core@npm:0.3.2"
@@ -3754,6 +3810,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/yup@npm:^0":
+  version: 0.29.14
+  resolution: "@types/yup@npm:0.29.14"
+  checksum: 291b6c2f06761bfb2be4c551e2c675a0b48512192850ca547837389de8422707b2a2cf50f50e64ea3caf5ddf41cfa36f0ce4bdb820f86ba1f074eabd0e272c2b
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/eslint-plugin@npm:^5.20.0":
   version: 5.28.0
   resolution: "@typescript-eslint/eslint-plugin@npm:5.28.0"
@@ -4185,6 +4248,9 @@ __metadata:
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
     "@faker-js/faker": ^7.2.0
+    "@felte/reporter-tippy": ^1.1.2
+    "@felte/solid": ^1.2.2
+    "@felte/validator-zod": ^1.0.10
     "@testing-library/jest-dom": ^5.16.4
     "@types/eslint": ^8.4.2
     "@types/jest": ^27.5.1
@@ -4192,14 +4258,13 @@ __metadata:
     "@types/prettier": ^2
     "@types/sass": ^1.43.1
     "@types/testing-library__jest-dom": ^5
+    "@types/yup": ^0
     "@typescript-eslint/eslint-plugin": ^5.20.0
     "@typescript-eslint/parser": ^5.20.0
-    astro: ^1.0.0-beta.46
+    astro: ^1.0.0-beta.47
     astro-icon: ^0.7.1
-    astro-seo: ^0.5.0
     autoprefixer: ^10.4.7
     chart.js: ^3.8.0
-    comlink: ^4.3.1
     contentful: ^9.1.32
     esbuild: ^0.14.43
     esbuild-copy-plugin: ^1.0.0
@@ -4210,7 +4275,6 @@ __metadata:
     eslint-plugin-solid: ^0.4.7
     firebase: ^9.8.3
     firebase-tools: ^11.0.1
-    firebaseui: ^6.0.1
     fp-ts: ^2.12.1
     husky: ^7.0.4
     jest: ^28.1.0
@@ -4226,6 +4290,7 @@ __metadata:
     solid-jest: ^0.2.0
     solid-js: ^1.4.4
     solid-testing-library: ^0.3.0
+    tippy.js: ^6.3.7
     ts-jest: ^28.0.2
     ts-node: ^10.8.1
     typescript: ^4.7.3
@@ -4233,6 +4298,7 @@ __metadata:
     vite-plugin-dts: ^1.2.0
     vite-plugin-externals: ^0.4.0
     vite-plugin-solid: ^2.2.6
+    zod: ^3.17.3
   languageName: unknown
   linkType: soft
 
@@ -4457,16 +4523,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-seo@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "astro-seo@npm:0.5.0"
-  checksum: ab9f6b1534bbf36db73df7e9eb64df630b190ddad46cdc63b231c8a98fc7058acb0a3d889aced174ac946acf86d47a047ceba5cec0cd64d16109d74bb96c5df6
-  languageName: node
-  linkType: hard
-
-"astro@npm:^1.0.0-beta.46":
-  version: 1.0.0-beta.46
-  resolution: "astro@npm:1.0.0-beta.46"
+"astro@npm:^1.0.0-beta.47":
+  version: 1.0.0-beta.47
+  resolution: "astro@npm:1.0.0-beta.47"
   dependencies:
     "@astrojs/compiler": ^0.15.2
     "@astrojs/language-server": ^0.13.4
@@ -4512,7 +4571,6 @@ __metadata:
     resolve: ^1.22.0
     rollup: ^2.75.5
     semver: ^7.3.7
-    serialize-javascript: ^6.0.0
     shiki: ^0.10.1
     sirv: ^2.0.2
     slash: ^4.0.0
@@ -4526,7 +4584,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: 5f8a2ac6bba8af8ee093005c0379de92dd563aa717af7b0fcd299212ead51b437423f10bc551589e7c8a15dd324d1f2db9822efc52919b12ac0c4cb100f93dde
+  checksum: e8a211ec50fe59ee85c1b29a224768f37710669f4197c09eddc98583372dc85327b876ab46981585303cce7b75df3b0fba80a1c9b725fe2035dfaee94a7c8284
   languageName: node
   linkType: hard
 
@@ -5657,13 +5715,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"comlink@npm:^4.3.1":
-  version: 4.3.1
-  resolution: "comlink@npm:4.3.1"
-  checksum: 557360a6558708c55aff74a25f834bfb9bfca8a42444682c4d5aead57681534a0206202be2a2760b4de124c3ba6d485b08978b6d5469cb3d26bf1438ee28a4f1
-  languageName: node
-  linkType: hard
-
 "comma-separated-tokens@npm:^2.0.0":
   version: 2.0.2
   resolution: "comma-separated-tokens@npm:2.0.2"
@@ -6418,13 +6469,6 @@ __metadata:
   version: 3.1.0
   resolution: "detect-newline@npm:3.1.0"
   checksum: ae6cd429c41ad01b164c59ea36f264a2c479598e61cba7c99da24175a7ab80ddf066420f2bec9a1c57a6bead411b4655ff15ad7d281c000a89791f48cbe939e7
-  languageName: node
-  linkType: hard
-
-"dialog-polyfill@npm:^0.4.7":
-  version: 0.4.10
-  resolution: "dialog-polyfill@npm:0.4.10"
-  checksum: f5f472542a059ade7f1f19bc7bf7acf19210a1d89f9dda99cc67027f58709307c8c8faff9e4217cf9ef4d06ef0be3bf9885d48a7304e0f5b01b4f36c0e4570e1
   languageName: node
   linkType: hard
 
@@ -7997,18 +8041,6 @@ __metadata:
     "@firebase/storage-compat": 0.1.15
     "@firebase/util": 1.6.1
   checksum: 6e422e182946cf5e35d20402bb2dee33ae51c6e4816ac1ff1711d7ff6ae82cf3a6bff08aab80d0d3dbdaa1dd958d91cff381b4bfb9af17c68e5cbbb87f160c6c
-  languageName: node
-  linkType: hard
-
-"firebaseui@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "firebaseui@npm:6.0.1"
-  dependencies:
-    dialog-polyfill: ^0.4.7
-    material-design-lite: ^1.2.0
-  peerDependencies:
-    firebase: ^9.1.3
-  checksum: 584cf1a1f5b4991c40946c728052b11d23ae38c483de22b6153f594df22dd44e21e09abe789b718a424f7c752e5a5a4e4d39f79b7028b481fbac1781bc87bf7a
   languageName: node
   linkType: hard
 
@@ -11371,13 +11403,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"material-design-lite@npm:^1.2.0":
-  version: 1.3.0
-  resolution: "material-design-lite@npm:1.3.0"
-  checksum: f5d45f84408feb11c6e6da2389b69f73cbef3954b9259eced1f25070ad6e299f59782ca7e63e37635bdc177aea69a58aaa7b03fb9f74070a9dd6a44364d6bc9a
-  languageName: node
-  linkType: hard
-
 "mdast-util-definitions@npm:^5.0.0":
   version: 5.1.0
   resolution: "mdast-util-definitions@npm:5.1.0"
@@ -14465,15 +14490,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"serialize-javascript@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "serialize-javascript@npm:6.0.0"
-  dependencies:
-    randombytes: ^2.1.0
-  checksum: 56f90b562a1bdc92e55afb3e657c6397c01a902c588c0fe3d4c490efdcc97dcd2a3074ba12df9e94630f33a5ce5b76a74784a7041294628a6f4306e0ec84bf93
-  languageName: node
-  linkType: hard
-
 "serve-static@npm:1.15.0":
   version: 1.15.0
   resolution: "serve-static@npm:1.15.0"
@@ -15404,6 +15420,15 @@ __metadata:
   version: 0.3.0
   resolution: "timsort@npm:0.3.0"
   checksum: 1a66cb897dacabd7dd7c91b7e2301498ca9e224de2edb9e42d19f5b17c4b6dc62a8d4cbc64f28be82aaf1541cb5a78ab49aa818f42a2989ebe049a64af731e2a
+  languageName: node
+  linkType: hard
+
+"tippy.js@npm:^6.3.7":
+  version: 6.3.7
+  resolution: "tippy.js@npm:6.3.7"
+  dependencies:
+    "@popperjs/core": ^2.9.0
+  checksum: cac955318a65288e8d2dca05059878b003c6e66f92c94f7810f5bc5448eb6646abdf7dacc9bd00020e2611592598d0aae3a28ec9a45349a159603c3fdddce5fb
   languageName: node
   linkType: hard
 

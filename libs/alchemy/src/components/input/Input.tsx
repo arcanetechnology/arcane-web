@@ -33,15 +33,17 @@ export const Input: VoidComponent<InputProps> = (props) => {
     'children',
     'name',
     'classList',
+    'class',
   ]);
 
   return (
     <>
       <BaseInput
         name={local.name}
+        class={(['input'] as Array<string>).concat(local.class ?? '').join(' ')}
         classList={{
           'radius-small': true,
-          'padding-2': true,
+          'padding-4': true,
           ...local.classList,
         }}
         {...others}

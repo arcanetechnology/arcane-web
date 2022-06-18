@@ -9,6 +9,7 @@ type OptionalTextFieldProps = {
   type: TextFieldTypes;
   label: string;
   fullWidth: boolean;
+  variant: InputVariant;
 };
 
 type TextFieldProps = Partial<OptionalTextFieldProps> &
@@ -16,7 +17,7 @@ type TextFieldProps = Partial<OptionalTextFieldProps> &
 
 export const TextField: VoidComponent<TextFieldProps> = (props) => {
   const merged = mergeProps(
-    { variant: 'standard', type: 'text', fullWidth: false },
+    { variant: 'primary', type: 'text', fullWidth: false },
     props
   );
 

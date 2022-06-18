@@ -1,62 +1,40 @@
 /** @format */
 
-import { createContext, useContext, VoidComponent, onMount } from 'solid-js';
-import { createStore } from 'solid-js/store';
+import {
+  createContext,
+  useContext,
+  VoidComponent,
+  createSignal,
+} from 'solid-js';
 import { OnboardingNodes } from '../../types';
 import OnboardingForm from './OnboardingForm';
-import ArcaneFlow from '@arcane-web/arcane-flow';
-import onboardingConfig, { Questions, Answers } from '../../config/onboarding';
+import { Button, Modal } from '@arcane-web/alchemy';
+import 'tippy.js/dist/tippy.css';
 
-type OnboardingStore = [
-  {
-    questions: OnboardingNodes;
-    route: Questions;
-    disable: boolean;
-  },
-  {
-    setRoute: () => void;
-    setAnswer: (answer: Answers) => void;
-  }
-];
-
-const OnboardingContext = createContext<OnboardingStore>();
+const OnboardingContext = createContext<OnboardingNodes>([]);
 
 type OnboardingProps = {
   questions: OnboardingNodes;
 };
+
+// TODO: update the modal component and make it simple damnit
 export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
-  const { getCurrent, next, previous } = ArcaneFlow<Questions, Answers>(
-    onboardingConfig,
-    'question.1'
-  );
-
-  const [form, setForm] = createStore({
-    questions: [],
-    route: getCurrent(),
-    disable: true,
-  });
-
-  const store: OnboardingStore = [
-    form,
-    {
-      setRoute() {
-        setForm({ route: getCurrent(), disable: true });
-      },
-
-      setAnswer(answers: Answers) {
-        next(answers);
-        setForm({ disable: false });
-      },
-    },
-  ];
-
-  onMount(() => {
-    setForm({ questions: props.questions });
-  });
-
+  const [isOpen, setModal] = createSignal<boolean>(false);
   return (
-    <OnboardingContext.Provider value={store}>
-      <OnboardingForm />
+    <OnboardingContext.Provider value={props.questions}>
+      <>
+        <Button type="button" variant="primary" onClick={() => setModal(true)}>
+          Contact Us
+        </Button>
+        <Modal isOpen={isOpen()}>
+          <Modal.Title toggleModal={setModal}>
+            <h3>Investment Onboarding</h3>
+          </Modal.Title>
+          <Modal.Content toggleModal={setModal}>
+            <OnboardingForm />
+          </Modal.Content>
+        </Modal>
+      </>
     </OnboardingContext.Provider>
   );
 };
