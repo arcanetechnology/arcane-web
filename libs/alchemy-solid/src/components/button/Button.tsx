@@ -1,6 +1,6 @@
 /** @format */
 
-import { JSX, mergeProps, splitProps, children, FlowComponent } from 'solid-js';
+import { JSX, mergeProps, splitProps, FlowComponent } from 'solid-js';
 import { ButtonVariant } from '../../types';
 
 // just incase we want to add a use defined base button props :)
@@ -13,10 +13,10 @@ type BaseButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;
  */
 export const BaseButton: FlowComponent<BaseButtonProps> = (props) => {
   const [local, others] = splitProps(props, ['id', 'children']);
-  const child = children(() => local.children);
+
   return (
     <button id={`${local.id}-button`} {...others}>
-      {child()}
+      {local.children}
     </button>
   );
 };
@@ -41,7 +41,6 @@ export const Button: FlowComponent<ButtonProps> = (props) => {
     'class',
     'classList',
   ]);
-  const child = children(() => local.children);
   return (
     <BaseButton
       class={(['button'] as Array<string>).concat(local.class ?? '').join(' ')}
@@ -54,7 +53,7 @@ export const Button: FlowComponent<ButtonProps> = (props) => {
       id={`${local.id}-${local.variant}`}
       {...others}
     >
-      {child()}
+      {local.children}
     </BaseButton>
   );
 };

@@ -22,23 +22,21 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   const [isOpen, setModal] = createSignal<boolean>(false);
   return (
     <OnboardingContext.Provider value={props.questions}>
-      <>
-        <Button type="button" variant="primary" onClick={() => setModal(true)}>
-          Contact Us
-        </Button>
-        <Modal isOpen={isOpen()} toggleModal={setModal}>
-          <article
-            class="align-center"
-            style={{
-              'grid-template-rows': '20% 80%',
-              height: '100%',
-            }}
-          >
-            <h3>Investment Onboarding</h3>
-            <OnboardingForm />
-          </article>
-        </Modal>
-      </>
+      <button class="button button-primary" onClick={(e) => setModal(true)}>
+        Contact Us
+      </button>
+      <Modal isOpen={isOpen()} toggleModal={setModal}>
+        <article
+          class="align-center"
+          style={{
+            'grid-template-rows': '20% 80%',
+            height: '100%',
+          }}
+        >
+          <h3>Investment Onboarding</h3>
+          <OnboardingForm />
+        </article>
+      </Modal>
     </OnboardingContext.Provider>
   );
 };

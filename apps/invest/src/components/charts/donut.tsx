@@ -95,7 +95,6 @@ const Doughnut: VoidComponent<DoughnutProps> = (props) => {
     chart.update();
   });
 
-  // TODO: extract this definition as a card component or paper?
   return (
     <Card class="w-full">
       <canvas
