@@ -1,7 +1,7 @@
 /** @format */
 
 import Chart from 'chart.js/auto/auto.esm';
-import { Card } from '@arcane-web/alchemy';
+import { Card } from '@arcane-web/alchemy-solid';
 import { VoidComponent, onMount } from 'solid-js';
 
 type DoughnutData = {

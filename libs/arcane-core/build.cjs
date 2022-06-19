@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 /** @format */
 
-const fs = require('fs');
-const path = require('path');
-
 require('esbuild')
   .build({
     bundle: true,
@@ -27,27 +24,9 @@ require('esbuild')
     allowOverwrite: true,
     loader: {
       '.astro': 'file',
-      '.scss': 'file',
       '.json': 'file',
     },
     assetNames: '[dir]/[name]',
-    plugins: [
-      {
-        name: 'copy',
-        setup: (build) =>
-          build.onEnd(() => {
-            fs.cpSync(
-              './src/assets/',
-              path.join(path.join(build.initialOptions.outdir, '/assets/')),
-              {
-                recursive: true,
-                force: true,
-                dereference: true,
-              }
-            );
-          }),
-      },
-    ],
   })
   .then(() => console.log('⚡ Done'))
   .catch(() => process.exit(1));

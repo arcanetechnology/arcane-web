@@ -3,7 +3,7 @@
 import { VoidComponent, For, Switch, Match } from 'solid-js';
 import Question from './Question';
 import { useOnboarding } from '../Onboarding';
-import { Form, Button } from '@arcane-web/alchemy';
+import { Form, Button } from '@arcane-web/alchemy-solid';
 import type { OnboardingFormPages } from '../Onboarding.types';
 import { createForm } from '@felte/solid';
 import { Questions } from '../config';
@@ -26,22 +26,20 @@ const OnboardingSurvey: VoidComponent<
         display: 'grid',
         'grid-template-rows': '90% 10%',
         height: '100%',
-        overflow: 'scroll',
       }}
     >
-      <div>
-        <Switch>
-          <For each={questions}>
-            {(node) => {
-              return (
-                <Match when={props.route === node.name}>
-                  <Question question={node} />
-                </Match>
-              );
-            }}
-          </For>
-        </Switch>
-      </div>
+      <Switch>
+        <For each={questions}>
+          {(node) => {
+            return (
+              <Match when={props.route === node.name}>
+                <Question question={node} />
+              </Match>
+            );
+          }}
+        </For>
+      </Switch>
+
       <div class="align-row w-full">
         <Button type="button" onClick={() => props.onBack(data)}>
           Back

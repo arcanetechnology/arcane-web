@@ -1,7 +1,7 @@
 /** @format */
 import Chart from 'chart.js/auto/auto.esm';
-import { mergeProps, onMount, splitProps, VoidComponent } from 'solid-js';
-import { Card } from '@arcane-web/alchemy';
+import { onMount, VoidComponent } from 'solid-js';
+import { Card } from '@arcane-web/alchemy-solid';
 
 type DataSet = {
   label: string;

@@ -1,5 +1,5 @@
 ---
-import '../assets/scss/globals.scss';
+
 export interface Props {
   title: string;
   description: string;
@@ -29,6 +29,7 @@ const { title, description, canonical } = Astro.props;
 </html>
 
 <style lang="scss" is:global>
+  @import '@arcane-web/alchemy/lib/core';
   html,
   body {
     height: 100%;

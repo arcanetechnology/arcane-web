@@ -8,7 +8,7 @@ import {
 } from 'solid-js';
 import { OnboardingNodes } from '../../types';
 import OnboardingForm from './OnboardingForm';
-import { Button, Modal } from '@arcane-web/alchemy';
+import { Button, Modal } from '@arcane-web/alchemy-solid';
 import 'tippy.js/dist/tippy.css';
 
 const OnboardingContext = createContext<OnboardingNodes>([]);

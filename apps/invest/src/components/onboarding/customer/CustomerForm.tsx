@@ -7,7 +7,7 @@ import {
   Label,
   Input,
   Button,
-} from '@arcane-web/alchemy';
+} from '@arcane-web/alchemy-solid';
 import { createForm } from '@felte/solid';
 
 import { formConfig } from './customer.types';

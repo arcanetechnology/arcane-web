@@ -1,7 +1,7 @@
 /** @format */
 
 import { createSignal, onMount, VoidComponent } from 'solid-js';
-import { Button } from '@arcane-web/alchemy';
+import { Button } from '@arcane-web/alchemy-solid';
 import { Dynamic } from 'solid-js/web';
 import { Survey } from './survey';
 import { CustomerFormPages } from './customer';

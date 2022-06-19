@@ -1,7 +1,7 @@
 /** @format */
 
 import { mergeProps, VoidComponent } from 'solid-js';
-import { Card } from '@arcane-web/alchemy';
+import { Card } from '@arcane-web/alchemy-solid';
 
 type InfoVariant = 'primary' | 'secondary';
 
