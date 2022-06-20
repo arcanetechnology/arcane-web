@@ -45,7 +45,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@arcane-web/arcane-components@workspace:libs/arcane-components":
+"@arcane-web/arcane-components@workspace:^, @arcane-web/arcane-components@workspace:libs/arcane-components":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane-components@workspace:libs/arcane-components"
   dependencies:
@@ -60,6 +60,7 @@ __metadata:
   resolution: "@arcane-web/arcane-core@workspace:libs/arcane-core"
   dependencies:
     "@arcane-web/alchemy": "workspace:^"
+    "@arcane-web/arcane-components": "workspace:^"
   languageName: unknown
   linkType: soft
 

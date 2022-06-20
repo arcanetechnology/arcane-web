@@ -16,7 +16,8 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./components": "./dist/components/index.d.mts",
-    "./layouts": "./dist/layouts/index.d.mts"
+    "./layouts": "./dist/layouts/index.d.mts",
+    "./service": "./dist/service/service-worker.d.mts"
   },
   "keywords": [
     "bootstrapping",
@@ -30,6 +31,7 @@
     "typecheck:emit": "yarn run -T tsc --declaration --emitDeclarationOnly --outDir dist"
   },
   "dependencies": {
-    "@arcane-web/alchemy": "workspace:^"
+    "@arcane-web/alchemy": "workspace:^",
+    "@arcane-web/arcane-components": "workspace:^"
   }
 }
