@@ -17,7 +17,7 @@
     ".": "./dist/index.mjs",
     "./components": "./dist/components/index.d.mts",
     "./layouts": "./dist/layouts/index.d.mts",
-    "./service": "./dist/service/service-worker.d.mts"
+    "./service.js": "./dist/service/service-worker.mjs"
   },
   "keywords": [
     "bootstrapping",
