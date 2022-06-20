@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "skipLibCheck": true,
+    "module": "ESNext",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "baseUrl": "src",
