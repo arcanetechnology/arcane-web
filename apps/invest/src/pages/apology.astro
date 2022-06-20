@@ -1,10 +1,12 @@
 ---
-import { Button } from '@arcane-web/alchemy';
+import { Button } from '@arcane-web/alchemy-solid';
 import Invest from '../components/invest/Invest.astro';
 import { DefaultLayout } from '@arcane-web/arcane-core/layouts';
+import { Authentication } from '@arcane-web/arcane-components';
 ---
 
 <DefaultLayout title="Invest" description="Arcane Invest Child app">
+  <Authentication client:load slot="auth" />
   <section class="margin-48">
     <div id="apology-message" class="container" data-auto-grid="2">
       <div class="space-8"> <Invest /> </div>

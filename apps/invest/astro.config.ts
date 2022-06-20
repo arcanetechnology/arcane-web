@@ -12,6 +12,9 @@ export default defineConfig({
   base: '/invest',
   outDir: './dist/invest',
   trailingSlash: 'never',
+  build: {
+    format: 'file',
+  },
   vite: {
     ssr: {
       external: ['svgo'],

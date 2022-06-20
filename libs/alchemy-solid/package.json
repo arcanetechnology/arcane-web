@@ -1,5 +1,5 @@
 {
-  "name": "@arcane-web/arcane-components",
+  "name": "@arcane-web/alchemy-solid",
   "packageManager": "yarn@3.2.0",
   "author": {
     "email": "joeldsouzax@gmail.com",
@@ -10,9 +10,11 @@
     "dist"
   ],
   "keywords": [
+    "alchemy-solid",
     "solid-components",
     "design-systen",
-    "arcane-design-system"
+    "arcane-design-system",
+    "alchemy"
   ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -29,11 +31,5 @@
   "scripts": {
     "test": "yarn run -T jest",
     "build": "yarn run -T rollup -c"
-  },
-  "peerDependencies": {
-    "firebase": "*"
-  },
-  "dependencies": {
-    "@arcane-web/alchemy-solid": "workspace:^"
   }
 }

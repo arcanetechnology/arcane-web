@@ -6,7 +6,7 @@ export default (): AstroIntegration => {
     name: '@arcane-web/arcane',
     hooks: {
       'astro:config:setup': async ({ injectScript }) => {
-        injectScript('head-inline', `console.log("hello world")`);
+        injectScript('head-inline', '');
       },
     },
   };

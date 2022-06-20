@@ -1,11 +1,10 @@
 ---
-import '../assets/scss/globals.scss';
-import { SEO } from 'astro-seo';
 export interface Props {
   title: string;
   description: string;
+  canonical?: string;
 }
-const { title, description } = Astro.props;
+const { title, description, canonical } = Astro.props;
 ---
 
 <html lang="en" dir="ltr">
@@ -19,7 +18,9 @@ const { title, description } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,100&display=swap"
       rel="stylesheet"
     />
-    <SEO {title} {description} />
+  {title ? <title set:html={title}></title> : null}
+  <link rel="canonical" href={canonical || Astro.canonicalURL.href} />
+  {description ? <meta name="description" content={description} /> : null}
   </head>
   <body>
     <slot />
@@ -27,6 +28,7 @@ const { title, description } = Astro.props;
 </html>
 
 <style lang="scss" is:global>
+  @import '@arcane-web/alchemy/lib/core';
   html,
   body {
     height: 100%;

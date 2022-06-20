@@ -1,9 +1,11 @@
 ---
 import { Info, Donut, FundValue } from '../components';
 import { DefaultLayout } from '@arcane-web/arcane-core/layouts';
+import { Authentication } from '@arcane-web/arcane-components';
 ---
 
 <DefaultLayout title="Invest" description="Arcane Invest Child app">
+  <Authentication client:load slot="auth" />
   <section class="margin-48">
     <div class="container">
       <h1>Investor Dashboard</h1>
@@ -39,14 +41,13 @@ import { DefaultLayout } from '@arcane-web/arcane-core/layouts';
             Dodegcoin: { value: 20, color: '#5856D6' },
             Solano: { value: 30, color: '#AEAEB2' },
           }}
-          client:visible
+          client:only="solid-js"
         />
       </div>
     </div>
     <div id="fund-value" class="padding-48"
       ><FundValue
         title="Fund Value Overtime"
-        client:visible
         labels={[
           '00:00',
           '01:00',
@@ -70,6 +71,7 @@ import { DefaultLayout } from '@arcane-web/arcane-core/layouts';
             data: [38, 31, 40, 28, 39, 10, 50, 30, 35, 21],
           },
         ]}
+        client:only="solid-js"
       /></div
     >
   </section>

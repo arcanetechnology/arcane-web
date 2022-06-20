@@ -39,8 +39,6 @@ import Navigation from './Navigation.astro';
     menuBtn.addEventListener('click', toggleMenu);
     menuBtn.addEventListener('click', preventDefault);
 
-    menu.addEventListener('click');
-
     function preventDefault(e) {
       e.preventDefault();
     }
@@ -75,12 +73,11 @@ import Navigation from './Navigation.astro';
 </script>
 
 <style lang="scss" is:global>
-  @use '../assets/scss/base/border' as *;
-  @use '../assets/scss/base/breakpoint' as *;
-  @use '../assets/scss/base/elevation' as *;
-  @use '../assets/scss/base/outline' as *;
-  @use '../assets/scss/base/size' as *;
-  @use '../assets/scss/base/space' as *;
+  @import '@arcane-web/alchemy/lib/base/border';
+  @import '@arcane-web/alchemy/lib/base/breakpoint';
+  @import '@arcane-web/alchemy/lib/base/elevation';
+  @import '@arcane-web/alchemy/lib/base/size';
+  @import '@arcane-web/alchemy/lib/base/space';
   header {
     height: var(--header-height) !important;
     width: 100%;
@@ -92,10 +89,6 @@ import Navigation from './Navigation.astro';
   #header-logo {
     fill: var(--font-color);
   }
-
-  /**
-   * navigation
-   */
 
   .menu-container {
     width: 30px;

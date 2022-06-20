@@ -1,7 +1,7 @@
 /** @format */
 
 import Chart from 'chart.js/auto/auto.esm';
-import { Card } from '@arcane-web/alchemy';
+import { Card } from '@arcane-web/alchemy-solid';
 import { VoidComponent, onMount } from 'solid-js';
 
 type DoughnutData = {
@@ -95,7 +95,6 @@ const Doughnut: VoidComponent<DoughnutProps> = (props) => {
     chart.update();
   });
 
-  // TODO: extract this definition as a card component or paper?
   return (
     <Card class="w-full">
       <canvas

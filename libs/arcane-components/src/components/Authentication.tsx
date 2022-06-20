@@ -1,13 +1,9 @@
 /** @format */
 
-import { Button } from '@arcane-web/alchemy';
+import { Button } from '@arcane-web/alchemy-solid';
 import { JSX, VoidComponent } from 'solid-js';
 
-type AuthenticationProps = {
-  onClick: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent>;
-};
-
-const Authentication: VoidComponent<AuthenticationProps> = () => {
+const Authentication: VoidComponent = () => {
   return (
     <Button title="sign into arcane platform" variant="secondary" id="auth">
       <span>Sign-in</span>

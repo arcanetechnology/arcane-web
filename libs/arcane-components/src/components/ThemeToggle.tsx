@@ -1,6 +1,6 @@
 /** @format */
 
-import { Button } from '@arcane-web/alchemy';
+import { Button } from '@arcane-web/alchemy-solid';
 import { Dynamic } from 'solid-js/web';
 import { createEffect, createSignal, Component, onMount } from 'solid-js';
 

@@ -2,7 +2,7 @@
  * @ Author: Joel D'Souza
  * @ Create Time: 2022-05-05 11:02:31
  * @ Modified by: Joel D'Souza
- * @ Modified time: 2022-06-14 12:02:25
+ * @ Modified time: 2022-06-16 16:46:38
  * @ Description: core business logic of arcane-flow functionality,
  * arcaneFlow function loops through various nodes on the basis of logic present in the edges.
  * ArcaneFlowBuilder makes it a bit better to configure that function.
@@ -32,36 +32,28 @@ export type ArcaneFlowConfig<NodeName extends string, Answers> = {
 };
 
 const ArcaneFlow = <NodeName extends string, Answer>(
-  config: ArcaneFlowConfig<NodeName, Answer>,
-  node: NodeName
+  config: ArcaneFlowConfig<NodeName, Answer>
 ) => {
-  let curr = node;
   const history: Array<History<NodeName, Answer>> = [];
-  const next = (val: Answer) => {
+  const next = (node: NodeName, val: Answer) => {
     const dest = pipe(
-      config[curr],
+      config[node],
       O.fromNullable,
       O.map((d) => d(val, history)),
-      O.getOrElse(() => curr)
+      O.getOrElse(() => node)
     );
 
-    if (dest !== curr) {
-      history.push({ node: curr, answer: val });
-      curr = dest;
+    if (dest !== node) {
+      history.push({ node: node, answer: val });
     }
-    return curr;
+    return dest;
   };
 
   const previous = () => {
-    curr = history.pop()?.node ?? curr;
-    return curr;
+    return history.pop();
   };
 
-  const getCurrent = () => {
-    return curr;
-  };
-
-  return { getCurrent, next, previous };
+  return { next, previous };
 };
 
 export default ArcaneFlow;
