@@ -5,6 +5,7 @@ import { OnboardingNodes } from '../types';
 import { Onboarding } from '../components';
 import CountriesList from '../components/CountriesList.astro';
 import { DefaultLayout } from '@arcane-web/arcane-core/layouts';
+import { Authentication } from '@arcane-web/arcane-components';
 
 // yay top level awaits
 const contents: OnboardingNodes = (await client
@@ -15,6 +16,7 @@ const contents: OnboardingNodes = (await client
 ---
 
 <DefaultLayout title="Invest" description="Arcane Invest Child app">
+  <Authentication client:load slot="auth" />
   <section class="margin-48">
     <div class="container align-center">
       <h1

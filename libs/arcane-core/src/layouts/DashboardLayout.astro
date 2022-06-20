@@ -10,7 +10,9 @@ const { title, description } = Astro.props;
 ---
 
 <Arcane title={`Arcane | ${title}`} {description}>
-  <Header />
+  <Header>
+    <slot name="auth" />
+  </Header>
   <main id="main-content">
     <slot />
   </main>

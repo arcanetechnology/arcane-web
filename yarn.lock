@@ -60,7 +60,6 @@ __metadata:
   resolution: "@arcane-web/arcane-core@workspace:libs/arcane-core"
   dependencies:
     "@arcane-web/alchemy": "workspace:^"
-    "@arcane-web/arcane-components": "workspace:^"
   languageName: unknown
   linkType: soft
 
@@ -84,6 +83,7 @@ __metadata:
   resolution: "@arcane-web/invest@workspace:apps/invest"
   dependencies:
     "@arcane-web/alchemy-solid": "workspace:^"
+    "@arcane-web/arcane-components": "workspace:^"
     "@arcane-web/arcane-core": "workspace:^"
     "@arcane-web/arcane-flow": "workspace:^"
   languageName: unknown

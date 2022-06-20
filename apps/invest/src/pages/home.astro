@@ -1,9 +1,11 @@
 ---
 import { Info, Donut, FundValue } from '../components';
 import { DefaultLayout } from '@arcane-web/arcane-core/layouts';
+import { Authentication } from '@arcane-web/arcane-components';
 ---
 
 <DefaultLayout title="Invest" description="Arcane Invest Child app">
+  <Authentication client:load slot="auth" />
   <section class="margin-48">
     <div class="container">
       <h1>Investor Dashboard</h1>

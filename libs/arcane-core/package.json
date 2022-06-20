@@ -31,7 +31,6 @@
     "typecheck:emit": "yarn run -T tsc --declaration --emitDeclarationOnly --outDir dist"
   },
   "dependencies": {
-    "@arcane-web/alchemy": "workspace:^",
-    "@arcane-web/arcane-components": "workspace:^"
+    "@arcane-web/alchemy": "workspace:^"
   }
 }
