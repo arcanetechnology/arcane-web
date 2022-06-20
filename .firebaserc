@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "arcane-platform-prod"
+  },
+  "targets": {
+    "arcane-platform-prod": {
+      "hosting": {
+        "arcane-invest": [
+          "arcane-invest"
+        ]
+      }
+    }
+  }
+}
