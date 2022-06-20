@@ -1,4 +1,4 @@
-name: Deploy invest app from main branch to prod
+name: Build
 
 on:
   workflow_dispatch:

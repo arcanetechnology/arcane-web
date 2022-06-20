@@ -2,8 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Strict TypeScript Checked](https://badgen.net/badge/TS/Strict "Strict TypeScript Checked")](https://www.typescriptlang.org) ![](https://badges.aleen42.com/src/vitejs.svg "Vite Powered") 
 
 
-[![Test](https://github.com/arcanetechnology/arcane-web/actions/workflows/test.yml/badge.svg)](https://github.com/arcanetechnology/arcane-web/actions/workflows/test.yml)
-
+[![Build](https://github.com/arcanetechnology/arcane-web/actions/workflows/deploy-invest.yml/badge.svg)](https://github.com/arcanetechnology/arcane-web/actions/workflows/deploy-invest.yml)
 
 # `@arcane-web`
 
