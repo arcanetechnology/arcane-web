@@ -21,7 +21,7 @@ jobs:
         run: |
           echo "${INVEST_ENV_FILE}" >> apps/invest/.env
       - run: yarn
-        # TODO add 'yarn test &&' to yarn build script in package.json
+      - run: yarn test
       - run: yarn run build
       - name: Firebase hosting deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
