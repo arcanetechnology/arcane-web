@@ -1,0 +1,15 @@
+{
+  "name": "@arcane-web/arcane",
+  "packageManager": "yarn@3.2.0",
+  "author": "Joel D'Souza <joeldsouzax@gmail.com>",
+  "scripts": {
+    "dev": "yarn run -T astro dev",
+    "start": "yarn run -T astro dev",
+    "build": "yarn run -T astro build",
+    "preview": "yarn run -T astro preview"
+  },
+  "dependencies": {
+    "@arcane-web/alchemy-solid": "workspace:^",
+    "@arcane-web/arcane-core": "workspace:^"
+  }
+}

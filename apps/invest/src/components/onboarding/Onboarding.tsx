@@ -27,6 +27,9 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   const auth = getAuth();
   const state = useAuth(auth);
 
+// TODO: update the action part make it look good.
+export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
+  const [isOpen, setModal] = createSignal<boolean>(false);
   return (
     <OnboardingContext.Provider value={props.questions}>
       <Show when={state.data} fallback={<Authentication />}>
