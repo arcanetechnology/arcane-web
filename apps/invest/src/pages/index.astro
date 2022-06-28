@@ -1,14 +1,15 @@
 ---
 import Invest from '../components/invest/Invest.astro';
-import client from '../contentful.config';
+import { investClient } from '../contentful.config';
 import { OnboardingNodes } from '../types';
-import { Onboarding } from '../components';
+import { AuthOnboarding } from '../components';
 import CountriesList from '../components/CountriesList.astro';
 import { DefaultLayout } from '@arcane-web/arcane-core/layouts';
 import { Authentication } from '@arcane-web/arcane-components';
+import firebaseConfig from '../firebase.config';
 
 // yay top level awaits
-const contents: OnboardingNodes = (await client
+const contents: OnboardingNodes = (await investClient
   .getEntries()
   .then((entries) => entries.items)
   .then((items) => items.map((item) => item.fields))
@@ -33,7 +34,11 @@ const contents: OnboardingNodes = (await client
           >Get managed exposure to cryptocurrencies as an asset class.
         </h4>
         <div class="margin-top-16">
-          <Onboarding questions={contents} client:load />
+          <AuthOnboarding
+            config={firebaseConfig}
+            questions={contents}
+            client:load
+          />
         </div>
       </div>
     </div>

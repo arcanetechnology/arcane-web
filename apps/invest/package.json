@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@arcane-web/alchemy-solid": "workspace:^",
+    "@arcane-web/arcane-auth": "workspace:^",
     "@arcane-web/arcane-components": "workspace:^",
     "@arcane-web/arcane-core": "workspace:^",
     "@arcane-web/arcane-flow": "workspace:^"
