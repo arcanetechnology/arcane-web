@@ -1,0 +1,10 @@
+{
+  "name": "@arcane-web/trade",
+  "packageManager": "yarn@3.2.1",
+  "author": "Joel D'Souza <joeldsouzax@gmail.com>",
+  "scripts": {
+    "build": "yarn run -T tsc",
+    "start": "node dist/index.js",
+    "dev": "yarn run -T concurrently \"yarn run -T tsc --watch\" \"yarn run -T nodemon -q dist/index.js\""
+  }
+}

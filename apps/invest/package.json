@@ -13,6 +13,7 @@
     "@arcane-web/arcane-auth": "workspace:^",
     "@arcane-web/arcane-components": "workspace:^",
     "@arcane-web/arcane-core": "workspace:^",
-    "@arcane-web/arcane-flow": "workspace:^"
+    "@arcane-web/arcane-flow": "workspace:^",
+    "@arcane-web/podium": "workspace:^"
   }
 }
