@@ -70,15 +70,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@arcane-web/arcane@workspace:apps/arcane":
-  version: 0.0.0-use.local
-  resolution: "@arcane-web/arcane@workspace:apps/arcane"
-  dependencies:
-    "@arcane-web/alchemy-solid": "workspace:^"
-    "@arcane-web/arcane-core": "workspace:^"
-  languageName: unknown
-  linkType: soft
-
 "@arcane-web/invest@workspace:apps/invest":
   version: 0.0.0-use.local
   resolution: "@arcane-web/invest@workspace:apps/invest"
@@ -91,23 +82,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@arcane-web/research@workspace:apps/research":
-  version: 0.0.0-use.local
-  resolution: "@arcane-web/research@workspace:apps/research"
+"@astrojs/compiler@npm:^0.15.2":
+  version: 0.15.2
+  resolution: "@astrojs/compiler@npm:0.15.2"
   dependencies:
-    "@arcane-web/alchemy-solid": "workspace:^"
-    "@arcane-web/arcane-core": "workspace:^"
-  languageName: unknown
-  linkType: soft
-
-"@arcane-web/trade@workspace:apps/trade":
-  version: 0.0.0-use.local
-  resolution: "@arcane-web/trade@workspace:apps/trade"
-  dependencies:
-    "@arcane-web/alchemy-solid": "workspace:^"
-    "@arcane-web/arcane-core": "workspace:^"
-  languageName: unknown
-  linkType: soft
+    tsm: ^2.2.1
+    uvu: ^0.5.3
+  checksum: 696038fb74012cc24986a7cc6a58c9a2c7bd2bbb35b860971a75153e5a506953a82aabe5b167265cb61cd89ff4d6bb1043759e6d6c33a3de162b0347b62e0814
+  languageName: node
+  linkType: hard
 
 "@astrojs/compiler@npm:^0.17.0":
   version: 0.17.1
@@ -184,18 +167,6 @@ __metadata:
     uvu: ^0.5.0
     vfile-message: ^3.0.0
   checksum: a020aa43e08f54b5aaf1ceee2609e2da6cecb088eed9abf7017f998cd84c6aecb9b1c0349bffd6bc11f245bfb6ba89fdbc2fe3e694f92e446fedde93e6d49fba
-  languageName: node
-  linkType: hard
-
-"@astrojs/parser@npm:^0.22.0":
-  version: 0.22.2
-  resolution: "@astrojs/parser@npm:0.22.2"
-  dependencies:
-    "@types/node": ^14.18.12
-    acorn: ^8.7.0
-    locate-character: ^2.0.5
-    magic-string: ^0.25.9
-  checksum: 05bcae2d086fa15c5fce97167de39d1ba555c34382b989a40e2b80c52f38f9809c0bef69b0198f486ee44fb1a92434412f409a4fab076ae527703a7e84147d70
   languageName: node
   linkType: hard
 
@@ -3042,6 +3013,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pkgr/utils@npm:^2.1.0":
+  version: 2.2.0
+  resolution: "@pkgr/utils@npm:2.2.0"
+  dependencies:
+    cross-spawn: ^7.0.3
+    is-glob: ^4.0.3
+    open: ^8.4.0
+    picocolors: ^1.0.0
+    tiny-glob: ^0.2.9
+    tslib: ^2.4.0
+  checksum: 0ae76a6b92ca581388cedb8433bd5becdab2b226781d1ff4fafa30104c2f8e3227d982f39f66f7109df95122491973af8335f15e82818dc346ec6ae1a36e63bf
+  languageName: node
+  linkType: hard
+
 "@polka/url@npm:^1.0.0-next.20":
   version: 1.0.0-next.21
   resolution: "@polka/url@npm:1.0.0-next.21"
@@ -3707,13 +3692,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.18.12":
-  version: 14.18.21
-  resolution: "@types/node@npm:14.18.21"
-  checksum: 4ed35b76609647a4e36a194702e31cdda9ed42174ddaf7937bc5498984e98a99e8a42ea895ea17dd9c5ec18080112c29ab670c34f90eb9f7a4703b85b31e34fa
-  languageName: node
-  linkType: hard
-
 "@types/normalize-package-data@npm:^2.4.0":
   version: 2.4.1
   resolution: "@types/normalize-package-data@npm:2.4.1"
@@ -4322,7 +4300,7 @@ __metadata:
     msw: ^0.42.1
     postcss-cli: ^9.1.0
     prettier: ^2.6.2
-    prettier-plugin-astro: ^0.0.12
+    prettier-plugin-astro: ^0.1.1
     rich-text-solid-renderer: ^1.7.0
     rollup: ^2.75.5
     rollup-plugin-dotenv: ^0.3.0
@@ -6672,6 +6650,13 @@ __metadata:
   version: 1.1.3
   resolution: "defer-to-connect@npm:1.1.3"
   checksum: 9491b301dcfa04956f989481ba7a43c2231044206269eb4ab64a52d6639ee15b1252262a789eb4239fb46ab63e44d4e408641bae8e0793d640aee55398cb3930
+  languageName: node
+  linkType: hard
+
+"define-lazy-prop@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "define-lazy-prop@npm:2.0.0"
+  checksum: 0115fdb065e0490918ba271d7339c42453d209d4cb619dfe635870d906731eff3e1ade8028bb461ea27ce8264ec5e22c6980612d332895977e89c1bbc80fcee2
   languageName: node
   linkType: hard
 
@@ -9077,6 +9062,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"globalyzer@npm:0.1.0":
+  version: 0.1.0
+  resolution: "globalyzer@npm:0.1.0"
+  checksum: 419a0f95ba542534fac0842964d31b3dc2936a479b2b1a8a62bad7e8b61054faa9b0a06ad9f2e12593396b9b2621cac93358d9b3071d33723fb1778608d358a1
+  languageName: node
+  linkType: hard
+
 "globby@npm:^11.1.0":
   version: 11.1.0
   resolution: "globby@npm:11.1.0"
@@ -9102,6 +9094,13 @@ __metadata:
     merge2: ^1.4.1
     slash: ^4.0.0
   checksum: 2539379a7fff3473d3e7c68b4540ba38f36970f43f760e36e301515d5cb98a0c5736554957d90390906bee632327beb2f9518d1acd6911f61e436db11b0da5b5
+  languageName: node
+  linkType: hard
+
+"globrex@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "globrex@npm:0.1.2"
+  checksum: adca162494a176ce9ecf4dd232f7b802956bb1966b37f60c15e49d2e7d961b66c60826366dc2649093cad5a0d69970cfa8875bd1695b5a1a2f33dcd2aa88da3c
   languageName: node
   linkType: hard
 
@@ -10120,7 +10119,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-docker@npm:^2.0.0":
+"is-docker@npm:^2.0.0, is-docker@npm:^2.1.1":
   version: 2.2.1
   resolution: "is-docker@npm:2.2.1"
   bin:
@@ -11796,13 +11795,6 @@ __metadata:
     pify: ^4.0.1
     strip-bom: ^3.0.0
   checksum: d86d7ec7b15a1c35b40fb0d8abe710a7de83e0c1186c1d35a7eaaf8581611828089a3e706f64560c2939762bc73f18a7b85aed9335058c640e033933cf317f11
-  languageName: node
-  linkType: hard
-
-"locate-character@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "locate-character@npm:2.0.5"
-  checksum: dbc4c62bb98ba95626d5533c6d45d480b2536bb500d1453efdd19d0797e75ba92abf8d0432966990a1567a3b591b0fa6067f0ce93808cbf8b55beedd7bd28a78
   languageName: node
   linkType: hard
 
@@ -13724,6 +13716,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"open@npm:^8.4.0":
+  version: 8.4.0
+  resolution: "open@npm:8.4.0"
+  dependencies:
+    define-lazy-prop: ^2.0.0
+    is-docker: ^2.1.1
+    is-wsl: ^2.2.0
+  checksum: e9545bec64cdbf30a0c35c1bdc310344adf8428a117f7d8df3c0af0a0a24c513b304916a6d9b11db0190ff7225c2d578885080b761ed46a3d5f6f1eebb98b63c
+  languageName: node
+  linkType: hard
+
 "openapi3-ts@npm:^2.0.1":
   version: 2.0.2
   resolution: "openapi3-ts@npm:2.0.2"
@@ -14336,18 +14339,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-astro@npm:^0.0.12":
-  version: 0.0.12
-  resolution: "prettier-plugin-astro@npm:0.0.12"
+"prettier-plugin-astro@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "prettier-plugin-astro@npm:0.1.1"
   dependencies:
-    "@astrojs/parser": ^0.22.0
-    prettier: ^2.4.1
+    "@astrojs/compiler": ^0.15.2
+    prettier: ^2.6.2
     sass-formatter: ^0.7.2
-  checksum: cad4552e6b1b18a83f69a82d9f53963cbdbd37e41e4619cb00c6ec8abd514d22aa45ce7dc6c15f93c5a407bbf51bce52b37ce50f1dfebc6b65b0457c2e127fe1
+    synckit: ^0.7.0
+  checksum: e94bb13e548502b9f306f8e3daacf1930f2e6c930b58e854121237905dff8b6a414975c4a54b996716fcb44d5d89002bc3a2da117198e2f5c1c4be7422740623
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.4.1, prettier@npm:^2.6.2":
+"prettier@npm:^2.6.2":
   version: 2.7.1
   resolution: "prettier@npm:2.7.1"
   bin:
@@ -16567,6 +16571,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"synckit@npm:^0.7.0":
+  version: 0.7.1
+  resolution: "synckit@npm:0.7.1"
+  dependencies:
+    "@pkgr/utils": ^2.1.0
+    tslib: ^2.4.0
+  checksum: 6a3587b7fa2b822755ab3651843e2e68dd28cf203e104cf7f8bf7fc0806ccac77cbb35d583e2a8ae5fc296e6c1068801829a2338be3fc32e1807a1ca28ef3826
+  languageName: node
+  linkType: hard
+
 "tapable@npm:^1.0.0":
   version: 1.1.3
   resolution: "tapable@npm:1.1.3"
@@ -16718,6 +16732,16 @@ __metadata:
   version: 0.3.0
   resolution: "timsort@npm:0.3.0"
   checksum: 1a66cb897dacabd7dd7c91b7e2301498ca9e224de2edb9e42d19f5b17c4b6dc62a8d4cbc64f28be82aaf1541cb5a78ab49aa818f42a2989ebe049a64af731e2a
+  languageName: node
+  linkType: hard
+
+"tiny-glob@npm:^0.2.9":
+  version: 0.2.9
+  resolution: "tiny-glob@npm:0.2.9"
+  dependencies:
+    globalyzer: 0.1.0
+    globrex: ^0.1.2
+  checksum: aea5801eb6663ddf77ebb74900b8f8bd9dfcfc9b6a1cc8018cb7421590c00bf446109ff45e4b64a98e6c95ddb1255a337a5d488fb6311930e2a95334151ec9c6
   languageName: node
   linkType: hard
 
@@ -17022,14 +17046,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.1":
+"tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0":
   version: 2.4.0
   resolution: "tslib@npm:2.4.0"
   checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
   languageName: node
   linkType: hard
 
-"tsm@npm:^2.1.4":
+"tsm@npm:^2.1.4, tsm@npm:^2.2.1":
   version: 2.2.1
   resolution: "tsm@npm:2.2.1"
   dependencies:
@@ -17632,7 +17656,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uvu@npm:^0.5.0":
+"uvu@npm:^0.5.0, uvu@npm:^0.5.3":
   version: 0.5.4
   resolution: "uvu@npm:0.5.4"
   dependencies:
