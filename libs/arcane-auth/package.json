@@ -1,6 +1,6 @@
 {
   "name": "@arcane-web/arcane-auth",
-  "packageManager": "yarn@3.2.0",
+  "packageManager": "yarn@3.2.1",
   "author": {
     "email": "joeldsouzax@gmail.com",
     "name": "Joel D'Souza"
