@@ -39,25 +39,41 @@ const OnboardingWelcome: VoidComponent<OnboardingFormPages> = (props) => {
 
 const pages = [OnboardingWelcome, Survey, ...CustomerFormPages];
 
+const getFirstKeyOfObject = (obj: Record<string, string>) => {
+  return Object.keys(obj)[0];
+};
+
+const updateOnboardingState = () => {
+  const [onboardingState, setOnboardingState] = createSignal([]);
+
+  const addOnboardingState = (newValue: Record<string, string>) => {
+    const values = onboardingState();
+    const filteredValues = values.filter(
+      (i) => getFirstKeyOfObject(i) !== getFirstKeyOfObject(newValue)
+    );
+    setOnboardingState([...filteredValues, newValue]);
+  };
+
+  return { onboardingState, addOnboardingState };
+};
+
 const OnboardingForm: VoidComponent = () => {
   const { next, previous } = ArcaneFlow<Questions, Answers>(onboardingConfig);
   const [route, setRoute] = createSignal<Questions>();
   const [page, setPage] = createSignal(0);
   const [pagesState, setPagesState] = createSignal([]);
+  const { onboardingState, addOnboardingState } = updateOnboardingState();
 
   function onSubmit(values) {
     try {
       if (page() === pages.length - 1) {
+        console.log('form state:', onboardingState());
         console.log('Submitted:', pagesState());
       } else {
         const nextState = [...pagesState()];
-        console.log(nextState);
         if (page() === 1 && route() !== 'warning') {
-          const onboardingState = nextState[page()] ?? [];
-          const newOboardingState = [...onboardingState, values];
-          nextState[page()] = newOboardingState;
-          setPagesState(nextState);
-          setRoute(next(route(), values[Object.keys(values)[0]]));
+          addOnboardingState(values);
+          setRoute(next(route(), values[getFirstKeyOfObject(values)]));
         } else {
           nextState[page()] = values;
           setPagesState(nextState);
