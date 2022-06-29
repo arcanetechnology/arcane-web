@@ -1,6 +1,7 @@
 ---
-import Header from '../components/Header.astro';
 import Arcane from './Arcane.astro';
+import Header from '../components/Header.astro';
+
 export interface Props {
   title: string;
   description: string;
@@ -10,9 +11,7 @@ const { title, description } = Astro.props;
 ---
 
 <Arcane title={`Arcane | ${title}`} {description}>
-  <Header>
-    <slot name='auth'></slot>
-  </Header>
+  <Header />
   <main id='main-content'>
     <slot></slot>
   </main>

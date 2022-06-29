@@ -74,10 +74,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@arcane-web/invest@workspace:apps/invest"
   dependencies:
+    "@arcane-web/alchemy": "workspace:^"
     "@arcane-web/alchemy-solid": "workspace:^"
     "@arcane-web/arcane-auth": "workspace:^"
     "@arcane-web/arcane-components": "workspace:^"
-    "@arcane-web/arcane-core": "workspace:^"
     "@arcane-web/arcane-flow": "workspace:^"
   languageName: unknown
   linkType: soft

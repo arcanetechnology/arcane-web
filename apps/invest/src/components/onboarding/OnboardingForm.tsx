@@ -40,7 +40,7 @@ const OnboardingWelcome: VoidComponent<OnboardingFormPages> = (props) => {
 const pages = [OnboardingWelcome, Survey, ...CustomerFormPages];
 
 const OnboardingForm: VoidComponent = () => {
-  const { next } = ArcaneFlow<Questions, Answers>(onboardingConfig);
+  const { next, previous } = ArcaneFlow<Questions, Answers>(onboardingConfig);
   const [route, setRoute] = createSignal<Questions>();
   const [page, setPage] = createSignal(0);
   const [pagesState, setPagesState] = createSignal([]);
@@ -69,7 +69,11 @@ const OnboardingForm: VoidComponent = () => {
     const nextState = [...pagesState()];
     nextState[page()] = values;
     setPagesState(nextState);
-    setPage(page() - 1);
+    if (page() === 1 && route() !== 'question1') {
+      setRoute(previous().node);
+    } else {
+      setPage(page() - 1);
+    }
   }
 
   return (

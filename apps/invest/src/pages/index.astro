@@ -4,8 +4,7 @@ import { investClient } from '../contentful.config';
 import { OnboardingNodes } from '../types';
 import { AuthOnboarding } from '../components';
 import CountriesList from '../components/CountriesList.astro';
-import { DefaultLayout } from '@arcane-web/arcane-core/layouts';
-import { Authentication } from '@arcane-web/arcane-components';
+import DefaultLayout from '../layouts/DefaultLayout.astro';
 import firebaseConfig from '../firebase.config';
 
 // yay top level awaits
@@ -16,24 +15,23 @@ const contents: OnboardingNodes = (await investClient
   .then((items) => items)) as OnboardingNodes;
 ---
 
-<DefaultLayout title="Invest" description="Arcane Invest Child app">
-  <Authentication client:load slot="auth" />
-  <section class="margin-48">
-    <div class="container align-center">
+<DefaultLayout title='Invest' description='Arcane Invest Child app'>
+  <section class='margin-48'>
+    <div class='container align-center'>
       <h1
         ><b>Build generational wealth with our actively managed crypto fund.</b>
       </h1>
     </div>
   </section>
-  <section class="margin-48">
-    <div id="apology-message" class="container" data-auto-grid="2">
-      <div class="space-8"> <Invest /> </div>
-      <div class="space-8 align-vertical"
-        ><h1>The fund. </h1>
-        <h4 class="secondary-text"
+  <section class='margin-48'>
+    <div id='apology-message' class='container' data-auto-grid='2'>
+      <div class='space-8'> <Invest /></div>
+      <div class='space-8 align-vertical'
+        ><h1>The fund.</h1>
+        <h4 class='secondary-text'
           >Get managed exposure to cryptocurrencies as an asset class.
         </h4>
-        <div class="margin-top-16">
+        <div class='margin-top-16'>
           <AuthOnboarding
             config={firebaseConfig}
             questions={contents}

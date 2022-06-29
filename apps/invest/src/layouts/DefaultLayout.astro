@@ -1,4 +1,5 @@
 ---
+import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Arcane from './Arcane.astro';
 export interface Props {
@@ -10,20 +11,14 @@ const { title, description } = Astro.props;
 ---
 
 <Arcane title={`Arcane | ${title}`} {description}>
-  <Header>
-    <slot name='auth'></slot>
-  </Header>
+  <Header />
   <main id='main-content'>
     <slot></slot>
   </main>
+  <Footer />
 </Arcane>
 
 <style lang='scss' is:global>
-  html,
-  body {
-    height: 100%;
-    overflow-x: hidden;
-  }
   body {
     display: flex;
     flex-direction: column;

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "name": "invest",
+    "source": "http://localhost:3000/invest/",
+    "logo": "http://localhost:3000/invest/favicon.svg"
+  },
+  {
+    "id": "2",
+    "name": "trade",
+    "source": "http://dev.arcane.no/trade/",
+    "logo": "http://localhost:3002/trade/favicon.svg"
+  },
+  {
+    "id": "3",
+    "name": "research",
+    "source": "http://dev.arcane.no/research/",
+    "logo": "http://localhost:3001/research/favicon.svg"
+  }
+]

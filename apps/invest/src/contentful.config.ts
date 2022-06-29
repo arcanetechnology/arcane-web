@@ -7,5 +7,3 @@ export const investClient = contentful.createClient({
   accessToken: import.meta.env.INVEST_CONTENTFUL_ACCESS_TOKEN,
   environment: import.meta.env.INVEST_CONTENTFUL_ENVIRONMENT,
 });
-
-

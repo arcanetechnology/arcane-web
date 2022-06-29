@@ -1,0 +1,73 @@
+---
+import Logo from './Logo.astro';
+import { Icon } from 'astro-icon';
+---
+
+<footer>
+  <div class="container align-row margin-48 gap-big">
+    <div><Logo svgId="footer-logo" /></div>
+    <div style="flex-grow: 1;"></div>
+
+    <div>
+      <h5>Navigation</h5>
+      <nav id="arcane-application-navigation" class="align-vertical">
+        <a class="third after footer-link" href="/trade">Trade</a>
+        <a class="third after footer-link" href="/invest">Invest</a>
+        <a class="third after footer-link" href="/research">Research</a>
+      </nav>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <nav id="arcane-static" class="align-vertical">
+        <a class="third after footer-link" href="/people">People</a>
+        <a class="third after footer-link" href="/relations"
+          >Investor Relations</a
+        >
+        <a class="third after footer-link" href="/privacy">Privacy</a>
+      </nav>
+    </div>
+  </div>
+
+  <hr />
+  <div class="container align-row margin-12 gap-big">
+    <p>© All rights reserved to Arcane.</p>
+    <p>Made with ❤️ in Norway</p>
+    <div style="flex-grow: 1;"></div>
+    <div class="footer-follow gap-small">
+      <p>Follow us</p>
+      <a href="https://twitter.com/arcane_crypto" class="footer-link"
+        ><Icon name="fa:twitter" /></a
+      >
+      <a
+        href="https://www.linkedin.com/company/arcane-crypto/"
+        class="footer-link"><Icon name="fa:linkedin" /></a
+      >
+    </div>
+  </div>
+</footer>
+
+<style lang="scss" is:inline>
+  footer {
+    background-color: var(--footer-background);
+    color: var(--footer-color);
+  }
+
+  #footer-logo {
+    fill: var(--footer-color);
+  }
+
+  .footer-link {
+    color: var(--link-contrast-color);
+  }
+
+  .footer-follow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  [astro-icon] {
+    width: 20px;
+  }
+</style>

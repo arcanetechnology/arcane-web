@@ -32,7 +32,6 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
         <button
           class="button button-primary"
           onClick={(e) => {
-            console.log(state.error);
             if (state.error) {
               console.log('hello');
             } else {
@@ -43,6 +42,18 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
           Contact Us
         </button>
       </Show>
+      <button
+        class="button button-primary"
+        onClick={(e) => {
+          if (state.error) {
+            console.log('hello');
+          } else {
+            setModal(true);
+          }
+        }}
+      >
+        Contact Us
+      </button>
 
       <Modal isOpen={isOpen()} toggleModal={setModal}>
         <article
