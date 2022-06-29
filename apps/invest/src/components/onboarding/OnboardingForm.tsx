@@ -46,17 +46,26 @@ const OnboardingForm: VoidComponent = () => {
   const [pagesState, setPagesState] = createSignal([]);
 
   function onSubmit(values) {
-    if (page() === pages.length - 1) {
-      console.log('Submitted:', pagesState());
-    } else {
-      const nextState = [...pagesState()];
-      nextState[page()] = values;
-      setPagesState(nextState);
-      if (page() === 1 && route() !== 'warning') {
-        setRoute(next(route(), nextState[page()][route()]));
+    try {
+      if (page() === pages.length - 1) {
+        console.log('Submitted:', pagesState());
       } else {
-        setPage(page() + 1);
+        const nextState = [...pagesState()];
+        console.log(nextState);
+        if (page() === 1 && route() !== 'warning') {
+          const onboardingState = nextState[page()] ?? [];
+          const newOboardingState = [...onboardingState, values];
+          nextState[page()] = newOboardingState;
+          setPagesState(nextState);
+          setRoute(next(route(), values[Object.keys(values)[0]]));
+        } else {
+          nextState[page()] = values;
+          setPagesState(nextState);
+          setPage(page() + 1);
+        }
       }
+    } catch (err) {
+      window.location.href = '/invest/error';
     }
   }
 

@@ -19,7 +19,9 @@ import DefaultLayout from '../layouts/DefaultLayout.astro';
           >In the meatime, check our Research Platform.
         </h4>
         <div class='margin-top-16'
-          ><Button type='button' variant='primary'>Go To Research</Button>
+          ><Button type='button' variant='primary' client:load
+            ><span>Go To Research</span>
+          </Button>
         </div>
       </div>
     </div>

@@ -34,13 +34,14 @@ const config: ArcaneFlowConfig<Questions, Answers> = {
     const question4 = history.find((question) => question.node === 'question4');
 
     if (question4.answer === 'yes' && val === 'yes') return 'warning';
-    return 'question6';
+    if (val === 'yes') return 'question6';
+    throw new Error('you are not qualified');
   },
   question6: (val, history) => {
     const question5 = history.find((question) => question.node === 'question5');
 
     if (question5.answer === 'yes' && val === 'yes') return 'warning';
-    return 'warning';
+    throw new Error('you are not qualified');
   },
 };
 
