@@ -3,7 +3,6 @@ import Invest from '../components/invest/Invest.astro';
 import { investClient } from '../contentful.config';
 import { OnboardingNodes } from '../types';
 import { AuthOnboarding } from '../components';
-import CountriesList from '../components/CountriesList.astro';
 import DefaultLayout from '../layouts/DefaultLayout.astro';
 import firebaseConfig from '../firebase.config';
 
@@ -41,7 +40,6 @@ const contents: OnboardingNodes = (await investClient
       </div>
     </div>
   </section>
-  <CountriesList />
 </DefaultLayout>
 
 <style is:global>

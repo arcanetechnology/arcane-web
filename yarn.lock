@@ -198,9 +198,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/telemetry@npm:^0.1.3":
-  version: 0.1.3
-  resolution: "@astrojs/telemetry@npm:0.1.3"
+"@astrojs/telemetry@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "@astrojs/telemetry@npm:0.2.2"
   dependencies:
     ci-info: ^3.3.1
     debug: ^4.3.4
@@ -211,7 +211,7 @@ __metadata:
     is-docker: ^3.0.0
     is-wsl: ^2.2.0
     node-fetch: ^3.2.5
-  checksum: d5592de3ce942d1e95dd3adbc1a191527d934b8806f45ea2110d2eaa4d6160e4c88e9e737fbff60be1e4a37d8fc0f1d3904707e5fa6992d3bbe0a83618d74c1c
+  checksum: 3ed1dec8f28802e0c85e35b4ed786cfbcacf1bb987acdee1ddb52bc437711760beb361bb7cfd60e1aa01bae9734bd4a2b00b5a42fd1f6c7909e86ffc3933bcaf
   languageName: node
   linkType: hard
 
@@ -4279,7 +4279,7 @@ __metadata:
     "@types/yup": ^0
     "@typescript-eslint/eslint-plugin": ^5.20.0
     "@typescript-eslint/parser": ^5.20.0
-    astro: ^1.0.0-beta.47
+    astro: ^1.0.0-beta.59
     astro-icon: ^0.7.1
     autoprefixer: ^10.4.7
     chart.js: ^3.8.0
@@ -4598,15 +4598,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^1.0.0-beta.47":
-  version: 1.0.0-beta.57
-  resolution: "astro@npm:1.0.0-beta.57"
+"astro@npm:^1.0.0-beta.59":
+  version: 1.0.0-beta.59
+  resolution: "astro@npm:1.0.0-beta.59"
   dependencies:
     "@astrojs/compiler": ^0.17.0
     "@astrojs/language-server": ^0.13.4
     "@astrojs/markdown-remark": ^0.11.3
     "@astrojs/prism": 0.4.1
-    "@astrojs/telemetry": ^0.1.3
+    "@astrojs/telemetry": ^0.2.2
     "@astrojs/webapi": ^0.12.0
     "@babel/core": ^7.18.2
     "@babel/generator": ^7.18.2
@@ -4623,7 +4623,7 @@ __metadata:
     diff: ^5.1.0
     eol: ^0.9.1
     es-module-lexer: ^0.10.5
-    esbuild: ^0.14.42
+    esbuild: ^0.14.43
     estree-walker: ^3.0.1
     execa: ^6.1.0
     fast-glob: ^3.2.11
@@ -4644,7 +4644,7 @@ __metadata:
     prompts: ^2.4.2
     recast: ^0.20.5
     resolve: ^1.22.0
-    rollup: ^2.75.5
+    rollup: ^2.75.6
     semver: ^7.3.7
     shiki: ^0.10.1
     sirv: ^2.0.2
@@ -4659,7 +4659,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: 411066972578b68b5dd2d36ab8e7f6b35f277afdf1ec39d6352afdb7d7050b3d5754f47f01ea3c10d34868490efcc63a86b62b8752e86d9479539ca4d2062dac
+  checksum: 208256f4022b60e8be237c02674c5b8d3b505c2f4b687bda6f6f6278bf1757b8680f038083227fc469c9041c4ecb56c05f1de57666f6f46be5a74fdd49bccc0e
   languageName: node
   linkType: hard
 
@@ -7361,7 +7361,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.14.0, esbuild@npm:^0.14.23, esbuild@npm:^0.14.27, esbuild@npm:^0.14.42, esbuild@npm:^0.14.43":
+"esbuild@npm:^0.14.0, esbuild@npm:^0.14.23, esbuild@npm:^0.14.27, esbuild@npm:^0.14.43":
   version: 0.14.47
   resolution: "esbuild@npm:0.14.47"
   dependencies:
@@ -15438,7 +15438,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.59.0, rollup@npm:^2.68.0, rollup@npm:^2.75.5":
+"rollup@npm:^2.59.0, rollup@npm:^2.68.0, rollup@npm:^2.75.5, rollup@npm:^2.75.6":
   version: 2.75.7
   resolution: "rollup@npm:2.75.7"
   dependencies:
