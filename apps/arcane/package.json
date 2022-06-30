@@ -3,8 +3,12 @@
   "packageManager": "yarn@3.2.1",
   "author": "Joel D'Souza <joeldsouzax@gmail.com>",
   "scripts": {
-    "build": "yarn run -T tsc",
-    "start": "node dist/index.js",
-    "dev": "yarn run -T concurrently \"yarn run -T tsc --watch\" \"yarn run -T nodemon -q dist/index.js\""
+    "dev": "yarn run -T tsx watch src/server.ts",
+    "start": "NODE_ENV=production yarn run -T tsx src/server.ts",
+    "build": "yarn run -T npm-run-all build:*",
+    "build:client": "yarn run -T vite build --outDir dist/client",
+    "build:ssr": "yarn run -T vite build --ssr src/entry.server.tsx --outDir dist/ssr",
+    "check": "npm-run-all check:*",
+    "check:ts": "tsc --noEmit"
   }
 }
