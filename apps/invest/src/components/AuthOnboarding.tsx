@@ -13,7 +13,7 @@ type AuthOnboardingProps = {
 
 const AuthOnboarding: VoidComponent<AuthOnboardingProps> = (props) => {
   return (
-    <ArcaneAuthProvider config={props.config}>
+    <ArcaneAuthProvider config={props.config} name="onboarding">
       <Onboarding questions={props.questions} />
     </ArcaneAuthProvider>
   );

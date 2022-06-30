@@ -11,7 +11,7 @@ type AuthSigninProps = {
 
 const AuthSigin: VoidComponent<AuthSigninProps> = (props) => {
   return (
-    <ArcaneAuthProvider config={props.config}>
+    <ArcaneAuthProvider config={props.config} name="auth">
       <Authentication />
     </ArcaneAuthProvider>
   );
