@@ -102,6 +102,7 @@ const CustomerFormPages = formConfig.map(
                   name={field.name}
                   placeholder={field.initialValue}
                   id={field.name}
+                  type={field.name === 'phoneNumber' ? 'tel' : 'text'}
                   list={field.name}
                 />
               </div>
