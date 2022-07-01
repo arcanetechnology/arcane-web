@@ -31,5 +31,5 @@ jobs:
           expires: 30d
           projectId: "${{ secrets.GCP_PROJECT_ID }}"
           channelId: live
-          # removing target will deploy all targets defined in .firebaserc
+          # removing target will deploy all targets defined in .firebaser
           target: "arcane-invest"

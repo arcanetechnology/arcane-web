@@ -1,17 +1,12 @@
 /** @format */
 
-import type { FirebaseOptions } from 'firebase/app';
 import { Authentication } from '@arcane-web/arcane-components';
-import { ArcaneAuthProvider } from '@arcane-web/arcane-auth';
+import { ArcaneAuthProvider } from '../components/auth';
 import { VoidComponent } from 'solid-js';
 
-type AuthSigninProps = {
-  config: FirebaseOptions;
-};
-
-const AuthSigin: VoidComponent<AuthSigninProps> = (props) => {
+const AuthSigin: VoidComponent = () => {
   return (
-    <ArcaneAuthProvider config={props.config} name="auth">
+    <ArcaneAuthProvider>
       <Authentication />
     </ArcaneAuthProvider>
   );

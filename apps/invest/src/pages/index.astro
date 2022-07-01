@@ -4,7 +4,6 @@ import { investClient } from '../contentful.config';
 import { OnboardingNodes } from '../types';
 import { AuthOnboarding } from '../components';
 import DefaultLayout from '../layouts/DefaultLayout.astro';
-import firebaseConfig from '../firebase.config';
 
 // yay top level awaits
 const contents: OnboardingNodes = (await investClient
@@ -31,11 +30,7 @@ const contents: OnboardingNodes = (await investClient
           >Get managed exposure to cryptocurrencies as an asset class.
         </h4>
         <div class='margin-top-16'>
-          <AuthOnboarding
-            config={firebaseConfig}
-            questions={contents}
-            client:load
-          />
+          <AuthOnboarding questions={contents} client:only='solid-js' />
         </div>
       </div>
     </div>
