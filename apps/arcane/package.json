@@ -6,7 +6,7 @@
     "dev": "yarn run -T tsx watch src/server.ts",
     "start": "NODE_ENV=production yarn run -T tsx src/server.ts",
     "build": "yarn run -T npm-run-all build:*",
-    "build:client": "yarn run -T vite build --outDir dist/client",
+    "build:client": "yarn run -T vite build --outDir dist/client --ssrManifest",
     "build:ssr": "yarn run -T vite build --ssr src/entry.server.tsx --outDir dist/ssr",
     "check": "npm-run-all check:*",
     "check:ts": "tsc --noEmit"

@@ -3,7 +3,6 @@
 import type { Component } from 'solid-js';
 import { Router } from 'solid-app-router';
 import { useRoutes } from 'solid-app-router';
-
 import { routes } from './routes';
 
 const App: Component = () => {

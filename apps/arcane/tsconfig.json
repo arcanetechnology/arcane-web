@@ -4,8 +4,14 @@
     "moduleResolution": "node",
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "types": ["vite/client"],
+    "types": ["vite/client", "vite-plugin-pwa/client"],
+    "lib": ["ESNext", "DOM", "WebWorker"],
     "noEmit": true,
-    "isolatedModules": true
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "isolatedModules": true,
+    "resolveJsonModule": true
   }
 }
