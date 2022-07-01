@@ -6,8 +6,6 @@ import { precacheAndRoute } from 'workbox-precaching';
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-console.log(config);
-
 initializeApp(config);
 
 const auth = getAuth();
@@ -38,6 +36,18 @@ const getIdTokenPromise = () => {
       }
     });
   });
+};
+
+/**
+ * @param {string} url The URL whose origin is to be returned.
+ * @return {string} The origin corresponding to given URL.
+ */
+const getOriginFromUrl = (url: string) => {
+  // https://stackoverflow.com/questions/1420881/how-to-extract-base-url-from-a-string-in-javascript
+  const pathArray = url.split('/');
+  const protocol = pathArray[0];
+  const host = pathArray[2];
+  return protocol + '//' + host;
 };
 
 self.addEventListener('install', (event) => {

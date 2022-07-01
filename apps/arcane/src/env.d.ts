@@ -2,13 +2,13 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly PORT: string;
-  readonly apiKey: string;
-  readonly authDomain: string;
-  readonly databaseURL: string;
-  readonly storageBucket: string;
-  readonly messagingSenderId: string;
-  readonly appId: string;
+  readonly VITE_PORT: string;
+  readonly VITE_API_KEY: string;
+  readonly VITE_AUTH_DOMAIN: string;
+  readonly VITE_DATABASE_URL: string;
+  readonly VITE_STORAGE_BUCKET: string;
+  readonly VITE_MESSAGING_SENDER_ID: string;
+  readonly VITE_APP_ID: string;
 }
 
 interface ImportMeta {
