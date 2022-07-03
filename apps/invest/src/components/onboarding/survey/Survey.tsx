@@ -19,6 +19,7 @@ const OnboardingSurvey: VoidComponent<
   const { form, data } = createForm({
     onSubmit: props.onSubmit,
   });
+
   return (
     <Form
       ref={form}

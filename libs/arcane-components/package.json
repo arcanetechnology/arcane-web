@@ -34,7 +34,6 @@
     "firebase": "*"
   },
   "dependencies": {
-    "@arcane-web/alchemy-solid": "workspace:^",
-    "@arcane-web/arcane-core": "workspace:^"
+    "@arcane-web/alchemy-solid": "workspace:^"
   }
 }

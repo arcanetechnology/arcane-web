@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "arcane-invest",
-      "public": "apps/invest-new/dist",
+      "public": "apps/invest/dist",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     }
   ]
