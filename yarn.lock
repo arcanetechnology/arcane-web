@@ -50,17 +50,8 @@ __metadata:
   resolution: "@arcane-web/arcane-components@workspace:libs/arcane-components"
   dependencies:
     "@arcane-web/alchemy-solid": "workspace:^"
-    "@arcane-web/arcane-core": "workspace:^"
   peerDependencies:
     firebase: "*"
-  languageName: unknown
-  linkType: soft
-
-"@arcane-web/arcane-core@workspace:^, @arcane-web/arcane-core@workspace:libs/arcane-core":
-  version: 0.0.0-use.local
-  resolution: "@arcane-web/arcane-core@workspace:libs/arcane-core"
-  dependencies:
-    "@arcane-web/alchemy": "workspace:^"
   languageName: unknown
   linkType: soft
 
@@ -70,21 +61,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@arcane-web/invest-new@workspace:apps/invest-new":
+"@arcane-web/invest-new@workspace:apps/invest":
   version: 0.0.0-use.local
-  resolution: "@arcane-web/invest-new@workspace:apps/invest-new"
-  dependencies:
-    "@arcane-web/alchemy": "workspace:^"
-    "@arcane-web/alchemy-solid": "workspace:^"
-    "@arcane-web/arcane-auth": "workspace:^"
-    "@arcane-web/arcane-components": "workspace:^"
-    "@arcane-web/arcane-flow": "workspace:^"
-  languageName: unknown
-  linkType: soft
-
-"@arcane-web/invest@workspace:apps/invest":
-  version: 0.0.0-use.local
-  resolution: "@arcane-web/invest@workspace:apps/invest"
+  resolution: "@arcane-web/invest-new@workspace:apps/invest"
   dependencies:
     "@arcane-web/alchemy": "workspace:^"
     "@arcane-web/alchemy-solid": "workspace:^"
@@ -2462,15 +2441,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-typed-document-node/core@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "@graphql-typed-document-node/core@npm:3.1.1"
-  peerDependencies:
-    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-  checksum: 87ff4cee308f1075f4472b80f9f9409667979940f8f701e87f0aa35ce5cf104d94b41258ea8192d05a0893475cd0f086a3929a07663b4fe8d0e805a277f07ed5
-  languageName: node
-  linkType: hard
-
 "@grpc/grpc-js@npm:^1.3.2, @grpc/grpc-js@npm:~1.6.0":
   version: 1.6.7
   resolution: "@grpc/grpc-js@npm:1.6.7"
@@ -4012,18 +3982,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@urql/core@npm:^2.4.3":
-  version: 2.5.0
-  resolution: "@urql/core@npm:2.5.0"
-  dependencies:
-    "@graphql-typed-document-node/core": ^3.1.1
-    wonka: ^4.0.14
-  peerDependencies:
-    graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-  checksum: 925b495c0b572f6f072a269921792caebf074d10c5bd9fca0433c65b80a81859bc7e889403a9e6d4008affaddb74d9a2dd11dd017e522005307374d591d41aca
-  languageName: node
-  linkType: hard
-
 "@vscode/emmet-helper@npm:^2.8.4":
   version: 2.8.4
   resolution: "@vscode/emmet-helper@npm:2.8.4"
@@ -4392,7 +4350,6 @@ __metadata:
     ts-jest: ^28.0.5
     ts-node: ^10.8.1
     typescript: ^4.7.4
-    urql: ^2.2.2
     vite: ^2.9.13
     vite-plugin-dts: ^1.2.0
     vite-plugin-solid: ^2.2.6
@@ -17744,19 +17701,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"urql@npm:^2.2.2":
-  version: 2.2.2
-  resolution: "urql@npm:2.2.2"
-  dependencies:
-    "@urql/core": ^2.4.3
-    wonka: ^4.0.14
-  peerDependencies:
-    graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-    react: ">= 16.8.0"
-  checksum: 5069d50ebcbe2634903b491bb0a2585fbf9cacb953e80349cafec5f6aff348c75e18b1dd37b1353531ea28d9df6490ebe597f6e6c536c53a0660d514c080fdb4
-  languageName: node
-  linkType: hard
-
 "use@npm:^3.1.0":
   version: 3.1.1
   resolution: "use@npm:3.1.1"
@@ -18380,13 +18324,6 @@ __metadata:
     triple-beam: ^1.3.0
     winston-transport: ^4.5.0
   checksum: a091fe4959c04cdab5be823b702c5231a9e5eaec2a892e865dae8cb296e5ab0ac4bba004714b3e48e1efc5679355bbbad2f9fc4db1a23d8ebb22f9025831be2d
-  languageName: node
-  linkType: hard
-
-"wonka@npm:^4.0.14":
-  version: 4.0.15
-  resolution: "wonka@npm:4.0.15"
-  checksum: afbee7359ed2d0a9146bf682f3953cb093f47d5f827e767e6ef33cb70ca6f30631afe5fe31dbb8d6c7eaed26c4ac6426e7c13568917c017ef6f42c71139b38f7
   languageName: node
   linkType: hard
 
