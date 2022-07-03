@@ -31,6 +31,7 @@
     "@types/node": "^18.0.0",
     "@types/prettier": "^2",
     "@types/sass": "^1.43.1",
+    "@types/svgo": "^2",
     "@types/testing-library__jest-dom": "^5",
     "@types/yup": "^0",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
@@ -62,6 +63,7 @@
     "sass": "^1.52.3",
     "solid-jest": "^0.2.0",
     "solid-testing-library": "^0.3.0",
+    "svgo": "^2.8.0",
     "ts-jest": "^28.0.5",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.4",
@@ -69,6 +71,7 @@
     "vite-plugin-dts": "^1.2.0",
     "vite-plugin-pwa": "^0.12.1",
     "vite-plugin-solid": "^2.2.6",
+    "vite-plugin-solid-svg": "^0.2.0",
     "workbox-precaching": "^6.5.3"
   },
   "dependencies": {
@@ -88,6 +91,7 @@
     "fp-ts": "^2.12.1",
     "rich-text-solid-renderer": "^1.7.0",
     "solid-app-router": "^0.4.1",
+    "solid-icons": "^0.4.13",
     "solid-js": "^1.4.4",
     "tippy.js": "^6.3.7",
     "tsx": "^3.6.0",

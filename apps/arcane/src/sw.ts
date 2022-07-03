@@ -1,6 +1,6 @@
 /** @format */
 import { initializeApp } from 'firebase/app';
-import config from './config';
+import config from './firebase.config';
 import { getAuth, getIdToken, onAuthStateChanged } from 'firebase/auth';
 import { precacheAndRoute } from 'workbox-precaching';
 

@@ -1,0 +1,13 @@
+/** @format */
+
+header {
+  height: var(--header-height) !important;
+  width: 100%;
+  background-color: var(--header-background);
+  position: sticky;
+  top: 0;
+}
+
+#header-logo {
+  fill: var(--font-color);
+}

@@ -1,7 +1,7 @@
 /** @format */
 /* @refresh reload */
 import { hydrate } from 'solid-js/web';
-import { createApp } from './app';
+import { createApp } from './App';
 
 hydrate(
   () => createApp(window.hydration),

@@ -52,13 +52,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@arcane-web/arcane-auth@workspace:^, @arcane-web/arcane-auth@workspace:libs/arcane-auth":
+"@arcane-web/arcane-auth@workspace:libs/arcane-auth":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane-auth@workspace:libs/arcane-auth"
   languageName: unknown
   linkType: soft
 
-"@arcane-web/arcane-components@workspace:^, @arcane-web/arcane-components@workspace:libs/arcane-components":
+"@arcane-web/arcane-components@workspace:libs/arcane-components":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane-components@workspace:libs/arcane-components"
   dependencies:
@@ -77,7 +77,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@arcane-web/arcane-flow@workspace:^, @arcane-web/arcane-flow@workspace:libs/arcane-flow":
+"@arcane-web/arcane-flow@workspace:libs/arcane-flow":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane-flow@workspace:libs/arcane-flow"
   languageName: unknown
@@ -86,23 +86,12 @@ __metadata:
 "@arcane-web/arcane@workspace:apps/arcane":
   version: 0.0.0-use.local
   resolution: "@arcane-web/arcane@workspace:apps/arcane"
-  languageName: unknown
-  linkType: soft
-
-"@arcane-web/invest@workspace:apps/invest":
-  version: 0.0.0-use.local
-  resolution: "@arcane-web/invest@workspace:apps/invest"
   dependencies:
-    "@arcane-web/alchemy-solid": "workspace:^"
-    "@arcane-web/arcane-auth": "workspace:^"
-    "@arcane-web/arcane-components": "workspace:^"
-    "@arcane-web/arcane-core": "workspace:^"
-    "@arcane-web/arcane-flow": "workspace:^"
-    "@arcane-web/podium": "workspace:^"
+    "@arcane-web/alchemy": "workspace:^"
   languageName: unknown
   linkType: soft
 
-"@arcane-web/podium@workspace:^, @arcane-web/podium@workspace:libs/podium":
+"@arcane-web/podium@workspace:libs/podium":
   version: 0.0.0-use.local
   resolution: "@arcane-web/podium@workspace:libs/podium"
   languageName: unknown
@@ -4102,6 +4091,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/svgo@npm:^2":
+  version: 2.6.3
+  resolution: "@types/svgo@npm:2.6.3"
+  dependencies:
+    "@types/node": "*"
+  checksum: d72714e565790f247be23065d071b1733021e1dc80358d1ca68a42362ca31d96b42aeeb3799b8e960a44a14cee658093344e6e14f36d0827903307cbeb78db0a
+  languageName: node
+  linkType: hard
+
 "@types/testing-library__jest-dom@npm:^5, @types/testing-library__jest-dom@npm:^5.9.1":
   version: 5.14.5
   resolution: "@types/testing-library__jest-dom@npm:5.14.5"
@@ -4631,6 +4629,7 @@ __metadata:
     "@types/node": ^18.0.0
     "@types/prettier": ^2
     "@types/sass": ^1.43.1
+    "@types/svgo": ^2
     "@types/testing-library__jest-dom": ^5
     "@types/yup": ^0
     "@typescript-eslint/eslint-plugin": ^5.20.0
@@ -4668,9 +4667,11 @@ __metadata:
     rollup-preset-solid: ^1.4.0
     sass: ^1.52.3
     solid-app-router: ^0.4.1
+    solid-icons: ^0.4.13
     solid-jest: ^0.2.0
     solid-js: ^1.4.4
     solid-testing-library: ^0.3.0
+    svgo: ^2.8.0
     tippy.js: ^6.3.7
     ts-jest: ^28.0.5
     ts-node: ^10.8.1
@@ -4680,6 +4681,7 @@ __metadata:
     vite-plugin-dts: ^1.2.0
     vite-plugin-pwa: ^0.12.1
     vite-plugin-solid: ^2.2.6
+    vite-plugin-solid-svg: ^0.2.0
     workbox-precaching: ^6.5.3
     zod: ^3.17.3
   languageName: unknown
@@ -17084,6 +17086,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"solid-icons@npm:^0.4.13":
+  version: 0.4.13
+  resolution: "solid-icons@npm:0.4.13"
+  peerDependencies:
+    solid-js: "*"
+  checksum: dfa815b90b08d64f51770f66eaa4957140277095505887ac32b475ccb5745e9c2ab73f38844fb10ff610b3e0b47ba52ed71f13649c18a45e0a7752e2ecce36a4
+  languageName: node
+  linkType: hard
+
 "solid-jest@npm:^0.2.0":
   version: 0.2.0
   resolution: "solid-jest@npm:0.2.0"
@@ -17802,7 +17813,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svgo@npm:^2.8.0":
+"svgo@npm:^2.3.1, svgo@npm:^2.8.0":
   version: 2.8.0
   resolution: "svgo@npm:2.8.0"
   dependencies:
@@ -19186,6 +19197,18 @@ __metadata:
     workbox-build: ^6.4.0
     workbox-window: ^6.4.0
   checksum: 5f1a60ed2a02f5aaeb7f7a130612e45585547d27aa0c51f484ccbca4b74a3392a6245f8bc6c735fecda4a759682b2bd7a846c4bf6a0febe2dfcdae6ec789318b
+  languageName: node
+  linkType: hard
+
+"vite-plugin-solid-svg@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "vite-plugin-solid-svg@npm:0.2.0"
+  dependencies:
+    fast-glob: ^3.2.7
+    svgo: ^2.3.1
+  peerDependencies:
+    vite: ^2.4.4
+  checksum: b028c14e74ad66366f6c1a3d1fe0d4d410b0eed9eb1d2fea326ad7753001895703c3cf5515f879928b24361902f0adfaa5e0ccd7523af86651749400692a6d00
   languageName: node
   linkType: hard
 

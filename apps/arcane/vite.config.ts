@@ -3,14 +3,11 @@
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
 import { VitePWA } from 'vite-plugin-pwa';
+import solidSvg from 'vite-plugin-solid-svg';
 
 import path from 'path';
 
 export default defineConfig({
-  build: {
-    target: 'esnext',
-    polyfillDynamicImport: false,
-  },
   plugins: [
     solidPlugin({ ssr: true }),
     VitePWA({
@@ -21,7 +18,16 @@ export default defineConfig({
       filename: 'sw.ts',
       injectRegister: null,
     }),
+    solidSvg({ defaultExport: 'url' }),
   ],
+  build: {
+    target: 'esnext',
+    polyfillDynamicImport: false,
+  },
+  // @ts-ignore
+  ssr: {
+    noExternal: ['solid-icons'],
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

@@ -2,7 +2,7 @@
 
 import { renderToStringAsync, generateHydrationScript } from 'solid-js/web';
 import devalue from 'devalue';
-import { createApp } from './app';
+import { createApp } from './App';
 
 export async function render(url: string) {
   const renderPromise = renderToStringAsync(() => createApp({ url }));

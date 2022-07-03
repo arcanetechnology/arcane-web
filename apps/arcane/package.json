@@ -10,5 +10,8 @@
     "build:ssr": "yarn run -T vite build --ssr src/entry.server.tsx --outDir dist/ssr",
     "check": "npm-run-all check:*",
     "check:ts": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@arcane-web/alchemy": "workspace:^"
   }
 }
