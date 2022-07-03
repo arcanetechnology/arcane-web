@@ -17,10 +17,8 @@
     "libs/*"
   ],
   "devDependencies": {
-    "@astrojs/solid-js": "^0.1.4",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
-    "@faker-js/faker": "^7.2.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@types/cpx": "^1",
     "@types/eslint": "^8.4.2",
@@ -30,14 +28,10 @@
     "@types/sass": "^1.43.1",
     "@types/svgo": "^2",
     "@types/testing-library__jest-dom": "^5",
-    "@types/yup": "^0",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
-    "astro": "^1.0.0-beta.59",
-    "astro-icon": "^0.7.1",
     "autoprefixer": "^10.4.7",
     "cpx": "^1.5.0",
-    "esbuild": "^0.14.43",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
@@ -47,7 +41,6 @@
     "husky": "^7.0.4",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
-    "msw": "^0.42.1",
     "postcss-cli": "^9.1.0",
     "prettier": "^2.6.2",
     "prettier-plugin-astro": "^0.1.1",
@@ -79,7 +72,7 @@
     "rich-text-solid-renderer": "^1.7.0",
     "solid-app-router": "^0.4.1",
     "solid-icons": "^0.4.13",
-    "solid-js": "^1.4.4",
+    "solid-js": "^1.4.6",
     "tippy.js": "^6.3.7",
     "zod": "^3.17.3"
   }
