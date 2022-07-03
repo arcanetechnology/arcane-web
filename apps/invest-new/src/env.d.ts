@@ -13,6 +13,8 @@ interface ImportMetaEnv {
   readonly VITE_CONTENTFUL_ACCESS_TOKEN: string;
   readonly VITE_CONTENTFUL_ONBOARDING_ID: string;
   readonly VITE_CONTENTFUL_ENVIRONMENT: string;
+  readonly VITE_PLATFORM_CONTENTFUL_SPACE: string;
+  readonly VITE_PLATFORM_CONTENTFUL_ACCESS_TOKEN: string;
 }
 
 interface ImportMeta {

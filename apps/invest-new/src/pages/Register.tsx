@@ -1,20 +1,29 @@
 /** @format */
 
-import { createResource, onMount, VoidComponent } from 'solid-js';
+import { VoidComponent, Show } from 'solid-js';
 import Invest from '../assets/invest.svg';
-import { investClient } from '../contentful.config';
+import { gql } from '@solid-primitives/graphql';
+import queryClient from '../invest-contentful';
+import { Onboarding, OnboardingNodes } from '../components';
 
-const getQuestions = async () =>
-  await investClient
-    .getEntries()
-    .then((entries) => entries.items)
-    .then((items) => items.map((item) => item.fields))
-    .then((items) => items);
+const Register: VoidComponent = () => {
+  const [questions] = queryClient<{
+    onboardingStepCollection: { items: OnboardingNodes };
+  }>(
+    gql`
+      query {
+        onboardingStepCollection {
+          items {
+            name
+            content {
+              json
+            }
+          }
+        }
+      }
+    `
+  );
 
-const Landing: VoidComponent = () => {
-  onMount(() => {
-    getQ
-  })
   return (
     <>
       <section class="margin-48">
@@ -36,7 +45,13 @@ const Landing: VoidComponent = () => {
             <h4 class="secondary-text">
               Get managed exposure to cryptocurrencies as an asset class.
             </h4>
-            <div class="margin-top-16"></div>
+            <div class="margin-top-16">
+              <Show when={questions()}>
+                <Onboarding
+                  questions={questions().onboardingStepCollection.items}
+                />
+              </Show>
+            </div>
           </div>
         </div>
       </section>
@@ -44,4 +59,4 @@ const Landing: VoidComponent = () => {
   );
 };
 
-export default Landing;
+export default Register;

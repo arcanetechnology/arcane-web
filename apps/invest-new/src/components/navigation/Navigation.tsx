@@ -1,9 +1,33 @@
 /** @format */
 
-import { createSignal, Show, VoidComponent } from 'solid-js';
+import { createSignal, Show, VoidComponent, For } from 'solid-js';
+import { gql } from '@solid-primitives/graphql';
+import client from '../../platform-contentful';
+
+type NavItems = {
+  logo: { url: string; description: string };
+  name: string;
+  path: null | string;
+};
 
 const Navigation: VoidComponent = () => {
   const [navigation, setNavigation] = createSignal(false);
+  const [nav] = client<{ applicationCollection: { items: Array<NavItems> } }>(
+    gql`
+      query {
+        applicationCollection {
+          items {
+            name
+            logo {
+              url
+              description
+            }
+            path
+          }
+        }
+      }
+    `
+  );
 
   const toggleNavigation = (isHovering: boolean) => setNavigation(isHovering);
 
@@ -23,7 +47,23 @@ const Navigation: VoidComponent = () => {
       </div>
       <Show when={navigation()}>
         <div id="menu" class="menu margin-12">
-          navigation
+          <Show when={nav()}>
+            <nav class="gap-small" data-auto-grid="2">
+              <For each={nav().applicationCollection.items}>
+                {(n) => (
+                  <div class="app-nav">
+                    <a href={n.path}>
+                      <img
+                        src={n.logo.url}
+                        alt={`${n.logo.description} logo`}
+                      />
+                    </a>
+                    <p class="description">{n.name}</p>
+                  </div>
+                )}
+              </For>
+            </nav>
+          </Show>
         </div>
       </Show>
     </div>
