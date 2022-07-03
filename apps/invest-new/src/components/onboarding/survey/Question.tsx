@@ -17,7 +17,7 @@ const Question: VoidComponent<QuestionProps> = (props) => {
         height: props.question.name === 'warning' ? '400px' : '100%',
       }}
     >
-      <SolidRichText document={props.question.content} />
+      <SolidRichText document={props.question.content.json} />
       <FieldSet class="padding-16">
         <RadioButton
           position="down"
