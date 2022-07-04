@@ -1,6 +1,6 @@
 /** @format */
 
-import { createSignal, onMount, VoidComponent } from 'solid-js';
+import { createSignal, onMount, VoidComponent, createResource } from 'solid-js';
 import { Button } from '@arcane-web/alchemy-solid';
 import { Dynamic } from 'solid-js/web';
 import { Survey } from './survey';
@@ -39,24 +39,49 @@ const OnboardingWelcome: VoidComponent<OnboardingFormPages> = (props) => {
 
 const pages = [OnboardingWelcome, Survey, ...CustomerFormPages];
 
+const getFirstKeyOfObject = (obj: Record<string, string>) => {
+  return Object.keys(obj)[0];
+};
+
+const updateOnboardingState = () => {
+  const [onboardingState, setOnboardingState] = createSignal([]);
+
+  const addOnboardingState = (newValue: Record<string, string>) => {
+    const values = onboardingState();
+    const filteredValues = values.filter(
+      (i) => getFirstKeyOfObject(i) !== getFirstKeyOfObject(newValue)
+    );
+    setOnboardingState([...filteredValues, newValue]);
+  };
+
+  return { onboardingState, addOnboardingState };
+};
+
 const OnboardingForm: VoidComponent = () => {
-  const { next } = ArcaneFlow<Questions, Answers>(onboardingConfig);
+  const { next, previous } = ArcaneFlow<Questions, Answers>(onboardingConfig);
   const [route, setRoute] = createSignal<Questions>();
   const [page, setPage] = createSignal(0);
   const [pagesState, setPagesState] = createSignal([]);
+  const { onboardingState, addOnboardingState } = updateOnboardingState();
 
   function onSubmit(values) {
-    if (page() === pages.length - 1) {
-      console.log('Submitted:', pagesState());
-    } else {
-      const nextState = [...pagesState()];
-      nextState[page()] = values;
-      setPagesState(nextState);
-      if (page() === 1 && route() !== 'warning') {
-        setRoute(next(route(), nextState[page()][route()]));
+    try {
+      if (page() === pages.length - 1) {
+        console.log('form state:', onboardingState());
+        console.log('Submitted:', pagesState());
       } else {
-        setPage(page() + 1);
+        const nextState = [...pagesState()];
+        if (page() === 1 && route() !== 'warning') {
+          addOnboardingState(values);
+          setRoute(next(route(), values[getFirstKeyOfObject(values)]));
+        } else {
+          nextState[page()] = values;
+          setPagesState(nextState);
+          setPage(page() + 1);
+        }
       }
+    } catch (err) {
+      window.location.href = '/invest/error';
     }
   }
 
@@ -69,7 +94,11 @@ const OnboardingForm: VoidComponent = () => {
     const nextState = [...pagesState()];
     nextState[page()] = values;
     setPagesState(nextState);
-    setPage(page() - 1);
+    if (page() === 1 && route() !== 'question1') {
+      setRoute(previous().node);
+    } else {
+      setPage(page() - 1);
+    }
   }
 
   return (

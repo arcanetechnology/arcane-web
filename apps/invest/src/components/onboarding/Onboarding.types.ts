@@ -7,3 +7,10 @@ export type OnboardingFormPages = {
   onBack: (values: any) => void;
   route: Questions;
 };
+
+export type OnboardingNode = {
+  name: string;
+  content: any;
+};
+
+export type OnboardingNodes = Array<OnboardingNode>;

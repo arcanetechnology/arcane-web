@@ -6,8 +6,9 @@ import {
   VoidComponent,
   createSignal,
   Show,
+  onMount,
 } from 'solid-js';
-import { OnboardingNodes } from '../../types';
+import { OnboardingNodes } from './Onboarding.types';
 import OnboardingForm from './OnboardingForm';
 import { Modal } from '@arcane-web/alchemy-solid';
 import { Authentication } from '@arcane-web/arcane-components';
@@ -26,13 +27,21 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   const [isOpen, setModal] = createSignal<boolean>(false);
   const auth = getAuth();
   const state = useAuth(auth);
+  console.log(state);
+  onMount(() => {
+    if (state.error) {
+      console.log('redirect to landing page');
+    } else {
+      setModal(true);
+    }
+  });
+
   return (
     <OnboardingContext.Provider value={props.questions}>
-      <Show when={state.data} fallback={<Authentication />}>
+      <Show when={state.data}>
         <button
           class="button button-primary"
           onClick={(e) => {
-            console.log(state.error);
             if (state.error) {
               console.log('hello');
             } else {

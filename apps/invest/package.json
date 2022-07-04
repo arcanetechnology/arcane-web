@@ -1,18 +1,18 @@
 {
-  "name": "@arcane-web/invest",
+  "name": "@arcane-web/invest-new",
   "packageManager": "yarn@3.2.1",
   "author": "Joel D'Souza <joeldsouzax@gmail.com>",
   "scripts": {
-    "dev": "yarn run -T astro dev",
-    "start": "yarn run -T astro dev",
-    "build": "yarn run -T astro build",
-    "preview": "yarn run -T astro preview"
+    "start": "yarn run -T vite",
+    "dev": "yarn run -T vite",
+    "build": "yarn run -T vite build",
+    "serve": "yarn run -T vite preview"
   },
   "dependencies": {
+    "@arcane-web/alchemy": "workspace:^",
     "@arcane-web/alchemy-solid": "workspace:^",
     "@arcane-web/arcane-auth": "workspace:^",
     "@arcane-web/arcane-components": "workspace:^",
-    "@arcane-web/arcane-core": "workspace:^",
     "@arcane-web/arcane-flow": "workspace:^"
   }
 }
