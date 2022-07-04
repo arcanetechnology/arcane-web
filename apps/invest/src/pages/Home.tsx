@@ -1,12 +1,15 @@
 /** @format */
 
+import { useNavigate } from 'solid-app-router';
 import type { VoidComponent } from 'solid-js';
-import { Shell, Info, Donut, FundValue } from '../components';
+import { Private, Info, Donut, FundValue } from '../components';
 
 const Home: VoidComponent = () => {
+  const navigate = useNavigate();
+  // TODO: do a get user Call
+  navigate('/invest/register', { replace: true });
   return (
-    <>
-      {' '}
+    <Private>
       <section class="margin-48">
         <div class="container">
           <h1>Investor Dashboard</h1>
@@ -74,7 +77,7 @@ const Home: VoidComponent = () => {
           />
         </div>
       </section>
-    </>
+    </Private>
   );
 };
 
