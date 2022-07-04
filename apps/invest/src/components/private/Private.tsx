@@ -3,7 +3,7 @@
 import { getAuth } from 'firebase/auth';
 import { useAuth } from '@arcane-web/arcane-auth';
 import { useNavigate } from 'solid-app-router';
-import type { JSXElement, FlowComponent } from 'solid-js';
+import { JSXElement, FlowComponent, createEffect, Show } from 'solid-js';
 
 type PrivateProps = {
   children: JSXElement;
@@ -13,10 +13,17 @@ const Private: FlowComponent<PrivateProps> = (props) => {
   const navigate = useNavigate();
   const auth = getAuth();
   const state = useAuth(auth);
-  if (state.error) {
-    navigate('/invest', { replace: true });
-  }
-  return <>{props.children}</>;
+
+  createEffect(() => {
+    if (!state.loading && !state.data) {
+      navigate('/', { replace: true });
+    }
+  });
+  return (
+    <Show when={state.loading} fallback={'...LOADING'}>
+      <>{props.children}</>
+    </Show>
+  );
 };
 
 export default Private;

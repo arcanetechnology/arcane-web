@@ -4,7 +4,7 @@ import { Authentication } from '@arcane-web/arcane-components';
 import { getAuth } from 'firebase/auth';
 import { useAuth } from '@arcane-web/arcane-auth';
 import { useNavigate } from 'solid-app-router';
-import { onMount, VoidComponent } from 'solid-js';
+import { createEffect, VoidComponent } from 'solid-js';
 import Invest from '../assets/invest.svg';
 
 const Landing: VoidComponent = () => {
@@ -12,9 +12,8 @@ const Landing: VoidComponent = () => {
   const auth = getAuth();
   const state = useAuth(auth);
 
-  onMount(() => {
+  createEffect(() => {
     if (state.data) {
-      console.log(state.data);
       navigate('/home', { replace: true });
     }
   });

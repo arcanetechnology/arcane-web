@@ -63,6 +63,7 @@
     "@felte/reporter-tippy": "^1.1.2",
     "@felte/solid": "^1.2.2",
     "@felte/validator-zod": "^1.0.10",
+    "@solid-primitives/fetch": "^1.2.0",
     "@solid-primitives/graphql": "^1.1.1",
     "chart.js": "^3.8.0",
     "contentful": "^9.1.32",

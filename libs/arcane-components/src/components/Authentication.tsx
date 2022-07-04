@@ -10,7 +10,17 @@ const Authentication: VoidComponent = () => {
   const state = useAuth(auth);
 
   const signin = () => {
-    window.location.href = '/auth';
+    const width = 512;
+    const height = 563;
+    const left = window.screen.width / 2 - width / 2;
+    const top = window.screen.height / 2 - height / 2;
+    window.open(
+      `${window.location.origin}/auth?redirect=${
+        window.location.href
+      }&t=${Date.now()}`,
+      'authentication',
+      `width=${width},height=${height},left=${left},top=${top},menubar=no,toolbar=no,location=no,status=no`
+    );
   };
 
   const signOut = () => {
