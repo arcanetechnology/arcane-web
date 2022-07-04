@@ -15,7 +15,7 @@ const Landing: VoidComponent = () => {
   onMount(() => {
     if (state.data) {
       console.log(state.data);
-      navigate('/invest/home', { replace: true });
+      navigate('/home', { replace: true });
     }
   });
   return (

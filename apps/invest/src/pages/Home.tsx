@@ -7,7 +7,7 @@ import { Private, Info, Donut, FundValue } from '../components';
 const Home: VoidComponent = () => {
   const navigate = useNavigate();
   // TODO: do a get user Call
-  navigate('/invest/register', { replace: true });
+  navigate('/register', { replace: true });
   return (
     <Private>
       <section class="margin-48">
