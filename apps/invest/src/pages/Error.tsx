@@ -3,11 +3,11 @@
 import type { VoidComponent } from 'solid-js';
 import { Button } from '@arcane-web/alchemy-solid';
 import Invest from '../assets/invest.svg';
+import { Private } from '../components';
 
 const Error: VoidComponent = () => {
   return (
-    <>
-      {' '}
+    <Private>
       <section class="margin-48">
         <div id="apology-message" class="container" data-auto-grid="2">
           <div class="space-8">
@@ -31,7 +31,7 @@ const Error: VoidComponent = () => {
           </div>
         </div>
       </section>
-    </>
+    </Private>
   );
 };
 

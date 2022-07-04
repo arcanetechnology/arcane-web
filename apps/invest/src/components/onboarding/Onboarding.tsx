@@ -27,7 +27,6 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   const [isOpen, setModal] = createSignal<boolean>(false);
   const auth = getAuth();
   const state = useAuth(auth);
-  console.log(state);
   onMount(() => {
     if (state.error) {
       console.log('redirect to landing page');

@@ -4,7 +4,7 @@ import { VoidComponent, Show } from 'solid-js';
 import Invest from '../assets/invest.svg';
 import { gql } from '@solid-primitives/graphql';
 import queryClient from '../invest-contentful';
-import { Onboarding, OnboardingNodes } from '../components';
+import { Onboarding, OnboardingNodes, Private } from '../components';
 
 const Register: VoidComponent = () => {
   const [questions] = queryClient<{
@@ -25,7 +25,7 @@ const Register: VoidComponent = () => {
   );
 
   return (
-    <>
+    <Private>
       <section class="margin-48">
         <div class="container align-center">
           <h1>
@@ -55,7 +55,7 @@ const Register: VoidComponent = () => {
           </div>
         </div>
       </section>
-    </>
+    </Private>
   );
 };
 
