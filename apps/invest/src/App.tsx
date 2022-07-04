@@ -10,7 +10,7 @@ export function createApp() {
   const Routes = useRoutes(routes);
   return (
     <ArcaneAuthProvider config={config} name="invest">
-      <Router>
+      <Router base="invest">
         <Shell>
           <Routes />
         </Shell>
