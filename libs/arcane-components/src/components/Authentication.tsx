@@ -13,6 +13,10 @@ const Authentication: VoidComponent = () => {
     window.location.href = '/auth';
   };
 
+  const signOut = () => {
+    auth.signOut();
+  };
+
   return (
     <Show
       when={state.data}
@@ -27,7 +31,12 @@ const Authentication: VoidComponent = () => {
         </Button>
       }
     >
-      <Button title="sign into arcane platform" variant="secondary" id="auth">
+      <Button
+        onClick={signOut}
+        title="sign into arcane platform"
+        variant="secondary"
+        id="auth"
+      >
         <span>Sign Out</span>
       </Button>
     </Show>
