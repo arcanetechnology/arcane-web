@@ -8,11 +8,21 @@ import { getAuth } from 'firebase/auth';
 const Authentication: VoidComponent = () => {
   const auth = getAuth();
   const state = useAuth(auth);
+
+  const signin = () => {
+    window.location.href = '/auth';
+  };
+
   return (
     <Show
       when={state.data}
       fallback={
-        <Button title="sign into arcane platform" variant="secondary" id="auth">
+        <Button
+          onClick={signin}
+          title="sign into arcane platform"
+          variant="secondary"
+          id="auth"
+        >
           <span>Sign In</span>
         </Button>
       }
