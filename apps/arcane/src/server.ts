@@ -4,6 +4,7 @@ import fastify from 'fastify';
 import middie from '@fastify/middie';
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
+import Layout from '@podium/layout';
 import type { ViteDevServer } from 'vite';
 
 async function createServer(

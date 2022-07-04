@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
 import { VitePWA } from 'vite-plugin-pwa';
 import solidSvg from 'vite-plugin-solid-svg';
+import federation from '@originjs/vite-plugin-federation';
 
 import path from 'path';
 
@@ -19,6 +20,11 @@ export default defineConfig({
       injectRegister: null,
     }),
     solidSvg({ defaultExport: 'url' }),
+    federation({
+      remotes: {
+        trade: 'http://localhost:3000/remoteEntry.js',
+      },
+    }),
   ],
   build: {
     target: 'esnext',

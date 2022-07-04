@@ -3146,6 +3146,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@originjs/vite-plugin-federation@npm:^1.1.6":
+  version: 1.1.6
+  resolution: "@originjs/vite-plugin-federation@npm:1.1.6"
+  dependencies:
+    estree-walker: ^1.0.1
+    magic-string: ^0.25.7
+  checksum: b5de39252c99934e97c2a32995d5f8e9a408e86550217993249d0b1a5628fc9b3b9c2467405f8a8b6b9bfc8e315b5a075e96dc158b677cff24adff5303cd4080
+  languageName: node
+  linkType: hard
+
 "@pkgr/utils@npm:^2.1.0":
   version: 2.2.0
   resolution: "@pkgr/utils@npm:2.2.0"
@@ -3191,6 +3201,16 @@ __metadata:
     decamelize: ^5.0.0
     lru-cache: ^6.0.0
   checksum: b42c0cc6f443e8a2ace1525b755388bacb30c2c7881c8e1b25f5dfdf3ddf46b69558a7984d1093c1b8166f5e7e4a6a7d6fc92afa779e4c3a7ec4304313097fda
+  languageName: node
+  linkType: hard
+
+"@podium/fastify-layout@npm:^2.2.40":
+  version: 2.2.40
+  resolution: "@podium/fastify-layout@npm:2.2.40"
+  dependencies:
+    "@podium/utils": 4.4.36
+    fastify-plugin: ^3.0.0
+  checksum: d55b791f0cce4b4f80510aef74f6479585d3a9dc91d2fe61514e5c8fd33bfb69db9bc6f02c39efd447c3b3f102618a39bdcebb796f3aa2c48942ec5044d3b864
   languageName: node
   linkType: hard
 
@@ -4618,6 +4638,8 @@ __metadata:
     "@felte/reporter-tippy": ^1.1.2
     "@felte/solid": ^1.2.2
     "@felte/validator-zod": ^1.0.10
+    "@originjs/vite-plugin-federation": ^1.1.6
+    "@podium/fastify-layout": ^2.2.40
     "@podium/layout": ^4.6.111
     "@podium/podlet": ^4.4.64
     "@testing-library/jest-dom": ^5.16.4

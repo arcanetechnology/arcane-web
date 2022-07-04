@@ -1,16 +1,23 @@
 /** @format */
 
-import type { Component, VoidComponent } from 'solid-js';
+import { Component, lazy, Suspense, VoidComponent } from 'solid-js';
 import { Router } from 'solid-app-router';
 import { useRoutes } from 'solid-app-router';
 import { routes } from './routes';
+
 import '@arcane-web/alchemy';
+
+//@ts-ignore
+const Box = lazy(() => import('trade/Box'));
 
 const App: Component = () => {
   const Route = useRoutes(routes);
 
   return (
     <>
+      <Suspense>
+        <Box />
+      </Suspense>
       <Route />
     </>
   );

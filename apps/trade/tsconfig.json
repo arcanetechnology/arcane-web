@@ -1,12 +1,17 @@
 {
+  "extends": "@tsconfig/node16-strictest-esm/tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "types": ["vite/client", "vite-plugin-pwa/client"],
+    "lib": ["ESNext", "DOM", "WebWorker"],
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "target": "ES2016",
-    "module": "CommonJS",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src"]
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "isolatedModules": true,
+    "resolveJsonModule": true
+  }
 }
