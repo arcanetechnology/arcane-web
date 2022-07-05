@@ -8,6 +8,7 @@ export default defineConfig({
   base: '/invest/',
   plugins: [solidPlugin(), solidSvg({ defaultExport: 'component' })],
   build: {
+    sourcemap: true,
     outDir: './dist/invest',
     target: 'esnext',
     polyfillDynamicImport: false,

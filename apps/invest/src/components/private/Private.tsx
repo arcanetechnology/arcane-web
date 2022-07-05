@@ -20,8 +20,8 @@ const Private: FlowComponent<PrivateProps> = (props) => {
     }
   });
   return (
-    <Show when={state.loading} fallback={'...LOADING'}>
-      <>{props.children}</>
+    <Show when={state.data} fallback={'...LOADING'}>
+      {props.children}
     </Show>
   );
 };

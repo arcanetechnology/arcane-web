@@ -1,4 +1,5 @@
 /** @format */
+import { Outlet } from 'solid-app-router';
 import type { FlowComponent, JSXElement } from 'solid-js';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
