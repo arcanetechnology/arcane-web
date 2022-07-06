@@ -17,7 +17,7 @@ const OnboardingSurvey: VoidComponent<
 > = (props) => {
   const questions = useOnboarding();
   const [disableNext, setDiabledNext] = createSignal(true);
-  const { form, data, touched } = createForm({
+  const { form, data } = createForm({
     onSubmit: props.onSubmit,
     validate: (data) => {
       setDiabledNext(Object.keys(data).length === 0);

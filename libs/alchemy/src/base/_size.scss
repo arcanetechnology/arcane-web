@@ -3,29 +3,33 @@
 // | -------------------------------------------------------------
 // | Size
 // | -------------------------------------------------------------
+@mixin size-8 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
 
 @mixin size-10 {
-  font-size: 0.625rem;
-  line-height: 0.9375rem;
+  font-size: 0.875rem;
+  line-height: 1rem;
 }
 
 @mixin size-12 {
-  font-size: 0.75rem;
-  line-height: 1.125rem;
-}
-
-@mixin size-14 {
-  font-size: 0.875rem;
-  line-height: 1.3125rem;
-}
-
-@mixin size-16 {
   font-size: 1rem;
   line-height: 1.5rem;
 }
 
+@mixin size-14 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin size-16 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
 @mixin size-18 {
-  font-size: 2.5rem;
+  font-size: 2.5-rem;
   line-height: 3rem;
 }
 

@@ -55,8 +55,8 @@ const Navigation: VoidComponent = () => {
                   <div class="app-nav">
                     <a href={n.path}>
                       <img
-                        width={60}
-                        height={60}
+                        width={40}
+                        height={40}
                         src={n.logo.url}
                         alt={`${n.logo.description} logo`}
                       />

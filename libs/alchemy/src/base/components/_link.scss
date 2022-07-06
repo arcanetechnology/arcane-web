@@ -12,7 +12,6 @@ a:active {
   transition: 0.2s color ease;
   text-decoration: none;
   padding-top: $space-4;
-  @include size-16;
 }
 
 a.after:after {
@@ -26,7 +25,6 @@ a.after:after {
   bottom: -0.1em;
 }
 a.after:after {
-  height: 1px;
   height: 0.2rem;
   width: 0;
   background: var(--link-contrast-color);

@@ -16,32 +16,32 @@ const Footer: VoidComponent = () => {
           style={{
             'flex-grow': 1,
           }}
-        ></div>
+        />
 
         <div>
-          <h5>Navigation</h5>
+          <p class="heading8">Navigation</p>
           <nav id="arcane-application-navigation" class="align-vertical">
-            <a class="third after footer-link" href="/trade">
+            <a class="third after footer-link body1" href="/trade">
               Trade
             </a>
-            <a class="third after footer-link" href="/invest">
+            <a class="third after footer-link body1" href="/invest">
               Invest
             </a>
-            <a class="third after footer-link" href="/research">
+            <a class="third after footer-link body1" href="/research">
               Research
             </a>
           </nav>
         </div>
         <div>
-          <h5>Company</h5>
+          <p class="heading8">Company</p>
           <nav id="arcane-static" class="align-vertical">
-            <a class="third after footer-link" href="/people">
+            <a class="third after footer-link body1" href="/people">
               People
             </a>
-            <a class="third after footer-link" href="/relations">
+            <a class="third after footer-link body1" href="/relations">
               Investor Relations
             </a>
-            <a class="third after footer-link" href="/privacy">
+            <a class="third after footer-link body1" href="/privacy">
               Privacy
             </a>
           </nav>
@@ -50,21 +50,21 @@ const Footer: VoidComponent = () => {
 
       <hr />
       <div class="container align-row margin-12 gap-big">
-        <p>© All rights reserved to Arcane.</p>
-        <p>Made with ❤️ in Norway</p>
+        <p class="body3">© All rights reserved to Arcane.</p>
+        <p class="body3">Made with ❤️ in Norway</p>
         <div
           style={{
             'flex-grow': 1,
           }}
-        ></div>
+        />
         <div class="footer-follow gap-small">
-          <p>Follow us</p>
-          <a href="https://twitter.com/arcane_crypto" class="footer-link">
+          <p class="body3">Follow us</p>
+          <a href="https://twitter.com/arcane_crypto" class="footer-link body3">
             <FaBrandsTwitter size={20} />
           </a>
           <a
             href="https://www.linkedin.com/company/arcane-crypto/"
-            class="footer-link"
+            class="footer-link body3"
           >
             <FaBrandsLinkedinIn size={20} />
           </a>

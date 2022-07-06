@@ -25,7 +25,8 @@ type OnboardingProps = {
 // TODO: update the action part make it look good.
 export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   const [isOpen, setModal] = createSignal<boolean>(false);
-  onMount(() => setModal(true));
+  // TODO: check if we need this auto trigger
+  // onMount(() => setModal(true));
   return (
     <OnboardingContext.Provider value={props.questions}>
       <button class="button button-primary" onClick={(e) => setModal(true)}>
@@ -39,7 +40,7 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
             height: '100%',
           }}
         >
-          <h3>Investment Onboarding</h3>
+          <p class="heading8">Investment Onboarding</p>
           <OnboardingForm />
         </article>
       </Modal>

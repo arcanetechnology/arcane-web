@@ -18,11 +18,11 @@ const OnboardingWelcome: VoidComponent<OnboardingFormPages> = (props) => {
         height: '100%',
       }}
     >
-      <h4>
+      <p class="heading8">
         Thanks for your insterest in our fund. Before we proceed, we will ask
         you some questions that will help customize this solution to meet your
         own needs.
-      </h4>
+      </p>
       <div class="w-full">
         <Button
           class="w-full"

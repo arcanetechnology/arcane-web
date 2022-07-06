@@ -1,0 +1,36 @@
+[debug] [2022-07-06T11:00:11.854Z] ----------------------------------------------------------------------
+[debug] [2022-07-06T11:00:11.857Z] Command:       /usr/local/Cellar/node/18.4.0/bin/node /usr/local/bin/firebase deploy
+[debug] [2022-07-06T11:00:11.857Z] CLI Version:   11.2.0
+[debug] [2022-07-06T11:00:11.857Z] Platform:      darwin
+[debug] [2022-07-06T11:00:11.857Z] Node Version:  v18.4.0
+[debug] [2022-07-06T11:00:11.858Z] Time:          Wed Jul 06 2022 13:00:11 GMT+0200 (Central European Summer Time)
+[debug] [2022-07-06T11:00:11.859Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-07-06T11:00:11.934Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-07-06T11:00:11.935Z] > authorizing via signed-in user (joel@arcane.no)
+[debug] [2022-07-06T11:00:11.935Z] [iam] checking project arcane-platform-prod for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-07-06T11:00:11.938Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/arcane-platform-prod:testIamPermissions [none]
+[debug] [2022-07-06T11:00:11.938Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/arcane-platform-prod:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-07-06T11:00:12.845Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/arcane-platform-prod:testIamPermissions 200
+[debug] [2022-07-06T11:00:12.845Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/arcane-platform-prod:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-07-06T11:00:12.846Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod [none]
+[debug] [2022-07-06T11:00:13.100Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod 200
+[debug] [2022-07-06T11:00:13.100Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod {"projectId":"arcane-platform-prod","projectNumber":"648199467896","displayName":"Arcane Platform Production","name":"projects/arcane-platform-prod","resources":{"hostingSite":"arcane-platform-prod"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'arcane-platform-prod'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-07-06T11:00:13.102Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod [none]
+[debug] [2022-07-06T11:00:13.506Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod 200
+[debug] [2022-07-06T11:00:13.506Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod {"projectId":"arcane-platform-prod","projectNumber":"648199467896","displayName":"Arcane Platform Production","name":"projects/arcane-platform-prod","resources":{"hostingSite":"arcane-platform-prod"},"state":"ACTIVE"}
+[debug] [2022-07-06T11:00:13.508Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/648199467896/sites/arcane-invest/versions [none]
+[debug] [2022-07-06T11:00:13.508Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/648199467896/sites/arcane-invest/versions {"config":{"rewrites":[{"glob":"**","path":"/invest/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-07-06T11:00:15.013Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/648199467896/sites/arcane-invest/versions 200
+[debug] [2022-07-06T11:00:15.013Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/648199467896/sites/arcane-invest/versions {"name":"projects/648199467896/sites/arcane-invest/versions/8fef3815be4db18a","status":"CREATED","config":{"rewrites":[{"glob":"**","path":"/invest/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[arcane-invest]: beginning deploy... 
+[info] i  hosting[arcane-invest]: found 12 files in apps/invest/dist 
+[debug] [2022-07-06T11:00:15.022Z] [hosting] uploading with 200 concurrency
+[debug] [2022-07-06T11:00:15.707Z] [hosting] hash cache [YXBwcy9pbnZlc3QvZGlzdA] stored for 12 files
+[debug] [2022-07-06T11:00:15.708Z] [hosting][hash queue][FINAL] {"max":680,"min":8,"avg":69.41666666666667,"active":0,"complete":12,"success":12,"errored":0,"retried":0,"total":12,"elapsed":685}
+[debug] [2022-07-06T11:00:15.708Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/648199467896/sites/arcane-invest/versions/8fef3815be4db18a:populateFiles [none]
+[debug] [2022-07-06T11:00:15.708Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/648199467896/sites/arcane-invest/versions/8fef3815be4db18a:populateFiles {"files":{"/invest/index.html":"cc91922deb6dcb03641bf3147025d5982e84d7e38c8e2056389861f9659f5e56","/invest/assets/Error.cdce61d2.js":"445f98e4b0a44dd4ffee02c705c7c1c552d49d8b8f24d99eaa6fda39705e638e","/invest/assets/Private.b6f537c3.js":"5b74cc669b0bf20296584db5782c3224c35423d90a5e49f4df685c18a9886895","/invest/assets/Error.cdce61d2.js.map":"178e9635629407166b57a94a27a6dd19fe7e56eeeef5e174c9676994de209d7c","/invest/assets/Home.3e18aa1b.js":"7c49a538e87de6a8fdf0b2649047d68f591f2d2c0078e5a11b2fc19f4e1c3f6b","/invest/assets/Register.7d14ce84.js":"03168a2257f70b44652653eabf6afa84a10c8102d58fde2324aa6bbf72ab8a9e","/invest/assets/Register.7d14ce84.js.map":"b93d4833c486c23e53a14e9eec1be5ff7d7dd13506405eb9f1226bb0a069d4cd","/invest/assets/Private.b6f537c3.js.map":"8652bf776581bfb192a357871cd3fa1b18bdd699c0b07b1bb159edea21b52839","/invest/assets/Home.3e18aa1b.js.map":"8e21bd7e71ab968718db3a4f9cf174b774a8fe397264d6bfc33102729f8350dd","/invest/assets/index.06f7bbbc.css":"51a7be619df1e0b93ab7c8c0aac390eb174a81ed13123b1cb5ecc2844de0e4ca","/invest/assets/index.13ec44ea.js":"0e495c6114bd30de011ff56cf5051fbeab0762c4965272ddb36c1e4f76ac861d","/invest/assets/index.13ec44ea.js.map":"c36dd93292bc6383dc12a46989f33b45c6b3df30185e7dbc48964eaccc56b261"}}
