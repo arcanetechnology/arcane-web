@@ -16,7 +16,7 @@ const Header: VoidComponent = () => {
           style={{
             'flex-grow': 1,
           }}
-        ></div>
+        />
         <Navigation />
         <Authentication />
       </div>
