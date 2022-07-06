@@ -1,6 +1,6 @@
 /** @format */
 
-import { VoidComponent, For, Switch, Match } from 'solid-js';
+import { VoidComponent, For, Switch, Match, createSignal } from 'solid-js';
 import Question from './Question';
 import { useOnboarding } from '../Onboarding';
 import { Form, Button } from '@arcane-web/alchemy-solid';
@@ -16,8 +16,12 @@ const OnboardingSurvey: VoidComponent<
   OnboardingFormPages & OnboardingSurveyProps
 > = (props) => {
   const questions = useOnboarding();
-  const { form, data } = createForm({
+  const [disableNext, setDiabledNext] = createSignal(true);
+  const { form, data, touched } = createForm({
     onSubmit: props.onSubmit,
+    validate: (data) => {
+      setDiabledNext(Object.keys(data).length === 0);
+    },
   });
 
   return (
@@ -45,8 +49,12 @@ const OnboardingSurvey: VoidComponent<
         <Button type="button" onClick={() => props.onBack(data)}>
           Back
         </Button>
-        <div style="flex-grow: 1;"></div>
-        <Button type="submit" variant="primary">
+        <div
+          style={{
+            'flex-grow': 1,
+          }}
+        />
+        <Button disabled={disableNext()} type="submit" variant="primary">
           Next
         </Button>
       </div>

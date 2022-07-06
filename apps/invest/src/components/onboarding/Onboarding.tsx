@@ -25,33 +25,12 @@ type OnboardingProps = {
 // TODO: update the action part make it look good.
 export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   const [isOpen, setModal] = createSignal<boolean>(false);
-  const auth = getAuth();
-  const state = useAuth(auth);
-  onMount(() => {
-    if (state.error) {
-      console.log('redirect to landing page');
-    } else {
-      setModal(true);
-    }
-  });
-
+  onMount(() => setModal(true));
   return (
     <OnboardingContext.Provider value={props.questions}>
-      <Show when={state.data}>
-        <button
-          class="button button-primary"
-          onClick={(e) => {
-            if (state.error) {
-              console.log('hello');
-            } else {
-              setModal(true);
-            }
-          }}
-        >
-          Contact Us
-        </button>
-      </Show>
-
+      <button class="button button-primary" onClick={(e) => setModal(true)}>
+        Contact Us
+      </button>
       <Modal isOpen={isOpen()} toggleModal={setModal}>
         <article
           class="align-center"
