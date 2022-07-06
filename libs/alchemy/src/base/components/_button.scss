@@ -114,7 +114,8 @@
     @include size-14;
   }
 }
-.button-medium {
+.button-medium,
+.label {
   font-weight: 500;
   @include size-10;
   @include breakpoint(medium) {

@@ -54,13 +54,13 @@
   }
 
   @include breakpoint(medium) {
-    width: 70%;
+    width: 50%;
     height: 80%;
     padding: $space-32;
   }
 
   @include breakpoint(large) {
-    width: 50%;
+    width: 40%;
     height: 60%;
     padding: $space-32;
   }

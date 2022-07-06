@@ -18,14 +18,13 @@ const Landing: VoidComponent = () => {
     }
   });
   return (
-    <>
-      <LandingComponent>
-        <Authentication
-          loggedOutTitle="Sign in to Contact Us..."
-          title="Sign out"
-        />
-      </LandingComponent>
-    </>
+    <LandingComponent>
+      <Authentication
+        loggedOutTitle="Sign in to Contact Us..."
+        title="Sign out"
+        size="large"
+      />
+    </LandingComponent>
   );
 };
 

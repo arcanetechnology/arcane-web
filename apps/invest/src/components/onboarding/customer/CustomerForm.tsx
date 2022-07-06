@@ -48,7 +48,7 @@ const CustomerFormPages = formConfig.map(
         <div>
           <FieldSet>
             <Label for={field.name}>
-              <h4>{field.label}</h4>
+              <h6>{field.label}</h6>
             </Label>
             <Show
               when={!(field.name === 'companyBehalf')}

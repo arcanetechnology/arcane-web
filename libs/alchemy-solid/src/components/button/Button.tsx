@@ -26,7 +26,7 @@ type OptionalButtonProps = {
   size: ButtonSize;
 };
 
-type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
+export type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
 
 /**
  * mid level button wrapped in arcane design languge css based on prop values

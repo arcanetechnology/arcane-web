@@ -4,6 +4,7 @@
 export type Variants = 'primary' | 'secondary' | 'tertiary';
 export type Size = 'large' | 'medium' | 'small';
 
+export type LoadingSize = Size;
 export type ButtonSize = Size;
 export type ButtonVariant = Variants;
 export type InputVariant = Extract<Variants, 'primary'>;

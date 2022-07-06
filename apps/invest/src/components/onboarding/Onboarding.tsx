@@ -5,16 +5,12 @@ import {
   useContext,
   VoidComponent,
   createSignal,
-  Show,
-  onMount,
 } from 'solid-js';
 import { OnboardingNodes } from './Onboarding.types';
 import OnboardingForm from './OnboardingForm';
-import { Modal } from '@arcane-web/alchemy-solid';
-import { Authentication } from '@arcane-web/arcane-components';
+import { Modal, Button } from '@arcane-web/alchemy-solid';
+import OnboardingLogo from '../../assets/onboarding.svg';
 import 'tippy.js/dist/tippy.css';
-import { useAuth } from '@arcane-web/arcane-auth';
-import { getAuth } from 'firebase/auth';
 
 const OnboardingContext = createContext<OnboardingNodes>([]);
 
@@ -29,9 +25,15 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   // onMount(() => setModal(true));
   return (
     <OnboardingContext.Provider value={props.questions}>
-      <button class="button button-primary" onClick={(e) => setModal(true)}>
+      <Button
+        size={'large'}
+        onClick={(e) => setModal(true)}
+        title="sign into arcane platform"
+        variant="primary"
+        id="auth"
+      >
         Contact Us
-      </button>
+      </Button>
       <Modal isOpen={isOpen()} toggleModal={setModal}>
         <article
           class="align-center"
@@ -40,7 +42,11 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
             height: '100%',
           }}
         >
-          <p class="heading8">Investment Onboarding</p>
+          <div class="align-row gap-big">
+            <OnboardingLogo />
+            <p class="heading8">Investment Onboarding</p>
+          </div>
+
           <OnboardingForm />
         </article>
       </Modal>

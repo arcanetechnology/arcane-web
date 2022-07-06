@@ -4,11 +4,13 @@ import { Button } from '@arcane-web/alchemy-solid';
 import { VoidComponent, Show } from 'solid-js';
 import { useAuth } from '@arcane-web/arcane-auth';
 import { getAuth } from 'firebase/auth';
+import type { ButtonProps } from '@arcane-web/alchemy-solid';
 
+// TODO: export the button types too
 type AuthenticationProps = {
   title: string;
   loggedOutTitle: string;
-};
+} & ButtonProps;
 
 const Authentication: VoidComponent<AuthenticationProps> = (props) => {
   const auth = getAuth();
@@ -37,7 +39,7 @@ const Authentication: VoidComponent<AuthenticationProps> = (props) => {
       when={state.data}
       fallback={
         <Button
-          size="large"
+          size={props.size}
           onClick={signin}
           title="sign into arcane platform"
           variant="secondary"
@@ -48,6 +50,7 @@ const Authentication: VoidComponent<AuthenticationProps> = (props) => {
       }
     >
       <Button
+        size={props.size}
         onClick={signOut}
         title="sign into arcane platform"
         variant="secondary"

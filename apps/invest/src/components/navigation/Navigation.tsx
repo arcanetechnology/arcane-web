@@ -4,6 +4,7 @@ import { createSignal, Show, VoidComponent, For } from 'solid-js';
 import { gql } from '@solid-primitives/graphql';
 import client from '../../platform-contentful';
 import './Navigation.scss';
+import { Card } from '@arcane-web/alchemy-solid';
 
 type NavItems = {
   logo: { url: string; description: string };
@@ -53,7 +54,7 @@ const Navigation: VoidComponent = () => {
               <For each={nav().applicationCollection.items}>
                 {(n) => (
                   <div class="app-nav">
-                    <a href={n.path}>
+                    <a class="app-nav-link" href={n.path}>
                       <img
                         width={40}
                         height={40}
@@ -61,7 +62,8 @@ const Navigation: VoidComponent = () => {
                         alt={`${n.logo.description} logo`}
                       />
                     </a>
-                    <p class="description">{n.name}</p>
+
+                    <p class="button-small">{n.name}</p>
                   </div>
                 )}
               </For>

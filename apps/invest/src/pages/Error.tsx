@@ -22,7 +22,7 @@ const Error: VoidComponent = () => {
             </p>
             <p class="heading7">In the meatime, check our Research Platform.</p>
             <div class="margin-top-16">
-              <Button type="button" variant="primary">
+              <Button size="large" variant="primary" id="error">
                 Go To Research
               </Button>
             </div>
