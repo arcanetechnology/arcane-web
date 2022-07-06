@@ -85,26 +85,42 @@ const CustomerFormPages = formConfig.map(
                     </For>
                   </datalist>
                 ) : null}
-                {field.name === 'phoneNumber' ? (
-                  <datalist id={field.name}>
-                    <For
-                      each={[...new Set([].concat(...countries.map((c) => c)))]}
-                    >
-                      {(code) => (
-                        <option value={code.countryCode} label={code.flag} />
-                      )}
-                    </For>
-                  </datalist>
-                ) : null}
 
-                <Input
-                  class="w-full"
-                  name={field.name}
-                  placeholder={field.initialValue}
-                  id={field.name}
-                  type={field.name === 'phoneNumber' ? 'tel' : 'text'}
-                  list={field.name}
-                />
+                <div class="align-row gap-medium">
+                  {field.name === 'phoneNumber' ? (
+                    <>
+                      <datalist id="countryCode">
+                        <For
+                          each={[
+                            ...new Set([].concat(...countries.map((c) => c))),
+                          ]}
+                        >
+                          {(code) => (
+                            <option
+                              value={code.countryCode}
+                              label={code.flag}
+                            />
+                          )}
+                        </For>
+                      </datalist>
+                      <Input
+                        class="w-full"
+                        name="countryCode"
+                        id="countryCode"
+                        type="tel"
+                        list="countryCode"
+                      />
+                    </>
+                  ) : null}
+                  <Input
+                    class="w-full"
+                    name={field.name}
+                    placeholder={field.initialValue}
+                    id={field.name}
+                    type={field.name === 'phoneNumber' ? 'tel' : 'text'}
+                    list={field.name}
+                  />
+                </div>
               </div>
             </Show>
           </FieldSet>

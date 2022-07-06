@@ -77,7 +77,12 @@ const OnboardingForm: VoidComponent = () => {
         } else {
           nextState[page()] = values;
           setPagesState(nextState);
-          setPage(page() + 1);
+          const key = Object.keys(values)[0];
+          if (key === 'companyBehalf' && values[key] === 'no') {
+            setPage(page() + 2);
+          } else {
+            setPage(page() + 1);
+          }
         }
       }
     } catch (err) {

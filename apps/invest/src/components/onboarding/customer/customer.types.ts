@@ -1,21 +1,23 @@
 /** @format */
 import { z } from 'zod';
 
+// READ THIS BEFORE EDITING
+// IMPORTANT: company should always be after company behalf!!!
 export const formConfig = [
-  {
-    name: 'companyBehalf',
-    label: "Are you making this request on your company's behalf?",
-    initialValue: '',
-    validation: z.object({
-      companyBehalf: z.string().nonempty('please select one option'),
-    }),
-  },
   {
     name: 'name',
     label: 'What is your name?',
     initialValue: '',
     validation: z.object({
       name: z.string().nonempty('please write your name'),
+    }),
+  },
+  {
+    name: 'companyBehalf',
+    label: "Are you making this request on your company's behalf?",
+    initialValue: '',
+    validation: z.object({
+      companyBehalf: z.string().nonempty('please select one option'),
     }),
   },
   {
@@ -40,6 +42,7 @@ export const formConfig = [
     name: 'phoneNumber',
     label: 'Could your inform a number for future contact?',
     validation: z.object({
+      countryCode: z.number().nonnegative('please select the country code'),
       phoneNumber: z
         .string()
         .trim()
