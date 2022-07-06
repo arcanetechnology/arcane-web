@@ -18,7 +18,7 @@ const Header: VoidComponent = () => {
           }}
         />
         <Navigation />
-        <Authentication />
+        <Authentication loggedOutTitle="Sign In" title="Sign Out" />
       </div>
     </header>
   );

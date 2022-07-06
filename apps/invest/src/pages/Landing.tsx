@@ -20,7 +20,10 @@ const Landing: VoidComponent = () => {
   return (
     <>
       <LandingComponent>
-        <Authentication />
+        <Authentication
+          loggedOutTitle="Sign in to Contact Us..."
+          title="Sign out"
+        />
       </LandingComponent>
     </>
   );

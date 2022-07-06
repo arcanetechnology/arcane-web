@@ -2,6 +2,7 @@
 
 @use '../elevation' as *;
 @use '../space' as *;
+@use '../size' as *;
 @use '../border' as *;
 @use '../breakpoint' as *;
 
@@ -103,5 +104,27 @@
       border: none;
       background-color: inherit;
     }
+  }
+}
+
+.button-large {
+  @include size-12;
+  font-weight: 500;
+  @include breakpoint(medium) {
+    @include size-14;
+  }
+}
+.button-medium {
+  font-weight: 500;
+  @include size-10;
+  @include breakpoint(medium) {
+    @include size-12;
+  }
+}
+.button-small {
+  font-weight: 500;
+  @include size-8;
+  @include breakpoint(medium) {
+    @include size-10;
   }
 }

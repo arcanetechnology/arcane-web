@@ -5,7 +5,12 @@ import { VoidComponent, Show } from 'solid-js';
 import { useAuth } from '@arcane-web/arcane-auth';
 import { getAuth } from 'firebase/auth';
 
-const Authentication: VoidComponent = () => {
+type AuthenticationProps = {
+  title: string;
+  loggedOutTitle: string;
+};
+
+const Authentication: VoidComponent<AuthenticationProps> = (props) => {
   const auth = getAuth();
   const state = useAuth(auth);
 
@@ -32,12 +37,13 @@ const Authentication: VoidComponent = () => {
       when={state.data}
       fallback={
         <Button
+          size="large"
           onClick={signin}
           title="sign into arcane platform"
           variant="secondary"
           id="auth"
         >
-          <span>Sign In</span>
+          {props.loggedOutTitle}
         </Button>
       }
     >
@@ -47,7 +53,7 @@ const Authentication: VoidComponent = () => {
         variant="secondary"
         id="auth"
       >
-        <span>Sign Out</span>
+        {props.title}
       </Button>
     </Show>
   );
