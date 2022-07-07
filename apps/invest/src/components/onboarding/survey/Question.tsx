@@ -18,23 +18,25 @@ const Question: VoidComponent<QuestionProps> = (props) => {
       }}
     >
       <SolidRichText document={props.question.content.json} />
-      <FieldSet class="padding-16">
-        <RadioButton
-          position="down"
-          id={props.question.name}
-          name={props.question.name}
-          label="Yes"
-          value="yes"
-        />
-        <br />
-        <RadioButton
-          position="down"
-          id={props.question.name}
-          name={props.question.name}
-          label="No"
-          value={'no'}
-        />
-      </FieldSet>
+      {props.question.name === 'warning' ? null : (
+        <FieldSet class="padding-16">
+          <RadioButton
+            position="down"
+            id={props.question.name}
+            name={props.question.name}
+            label="Yes"
+            value="yes"
+          />
+          <br />
+          <RadioButton
+            position="down"
+            id={props.question.name}
+            name={props.question.name}
+            label="No"
+            value={'no'}
+          />
+        </FieldSet>
+      )}
     </div>
   );
 };
