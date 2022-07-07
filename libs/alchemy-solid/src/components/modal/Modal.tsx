@@ -2,6 +2,7 @@
 
 import { FlowComponent, Show } from 'solid-js';
 import { Button } from '../button';
+import { IoCloseCircleSharp } from 'solid-icons/io';
 
 type ModalProps = {
   isOpen: boolean;
@@ -15,11 +16,12 @@ const Modal: FlowComponent<ModalProps> = (props) => {
         <div class="elevation-300 radius-small modal">
           <div class="modal-close">
             <Button
+              variant="tertiary"
               type="button"
               onClick={() => props.toggleModal(false)}
               class="modal-close"
             >
-              x
+              <IoCloseCircleSharp size={42} />
             </Button>
           </div>
           {props.children}

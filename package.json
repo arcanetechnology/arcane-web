@@ -19,6 +19,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@contentful/rich-text-types": "^15.12.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@types/cpx": "^1",
     "@types/eslint": "^8.4.2",

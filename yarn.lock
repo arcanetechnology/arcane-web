@@ -30,6 +30,8 @@ __metadata:
 "@arcane-web/alchemy-solid@workspace:^, @arcane-web/alchemy-solid@workspace:libs/alchemy-solid":
   version: 0.0.0-use.local
   resolution: "@arcane-web/alchemy-solid@workspace:libs/alchemy-solid"
+  peerDependencies:
+    solid-icons: "*"
   languageName: unknown
   linkType: soft
 
@@ -1604,6 +1606,13 @@ __metadata:
   dependencies:
     chalk: ^4.1.0
   checksum: 210636d3923f93f7cfc409eac04376b0fe50356a0e08f25a37b43d5cd9ca4363f7b03ca2e7736cbf95b62d67733fe8e1028269d35b4fddd1b3f2a653c90ca85c
+  languageName: node
+  linkType: hard
+
+"@contentful/rich-text-types@npm:^15.12.1":
+  version: 15.12.1
+  resolution: "@contentful/rich-text-types@npm:15.12.1"
+  checksum: 2a0f7b2e39f04dcf00847a61b8497fe8849033180adc76102aed1fa84db9ce0523c9b2321b7949cfa2c0ed7b698d727c44d6be3cd720d5687aeff147e1db085b
   languageName: node
   linkType: hard
 
@@ -3878,6 +3887,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^17.0.3
     "@commitlint/config-conventional": ^17.0.3
+    "@contentful/rich-text-types": ^15.12.1
     "@felte/reporter-tippy": ^1.1.2
     "@felte/solid": ^1.2.2
     "@felte/validator-zod": ^1.0.10

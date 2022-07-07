@@ -2,4 +2,4 @@
 
 import withSolid from 'rollup-preset-solid';
 
-export default withSolid();
+export default withSolid({ external: 'solid-icons' });
