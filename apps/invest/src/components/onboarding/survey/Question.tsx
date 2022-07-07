@@ -13,6 +13,9 @@ type QuestionProps = {
 const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (props) => {
+      return <p class="body3">{props.children}</p>;
+    },
+    [BLOCKS.HEADING_1]: (props) => {
       return <p class="heading8">{props.children}</p>;
     },
   },
