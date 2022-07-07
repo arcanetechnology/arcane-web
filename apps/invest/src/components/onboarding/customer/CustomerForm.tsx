@@ -1,5 +1,5 @@
 /** @format */
-import { Show, For } from 'solid-js';
+import { Show, For, Match, Switch } from 'solid-js';
 import {
   Form,
   FieldSet,
@@ -25,16 +25,6 @@ const CustomerFormPages = formConfig.map(
     const { form, data } = createForm({
       onSubmit: props.onSubmit,
 
-      ...(field.name === 'residence' && {
-        onSuccess: (response, data) => {
-          console.log('inside success');
-          console.log(data.setData('joel'));
-        },
-        /* transform: (data) => {
-          const key = Object.keys(data)[0];
-          if(key && )
-        }, */
-      }),
       extend: [
         validator({ schema: field.validation, level: 'error' }),
         reporter({
@@ -61,9 +51,76 @@ const CustomerFormPages = formConfig.map(
             <Label for={field.name}>
               <p class="heading8">{field.label}</p>
             </Label>
-            <Show
-              when={!(field.name === 'companyBehalf')}
+            <Switch
               fallback={
+                <Input
+                  class="w-full"
+                  name={field.name}
+                  placeholder={field.initialValue}
+                  id={field.name}
+                  type={field.name === 'phoneNumber' ? 'tel' : 'text'}
+                  list={field.name}
+                />
+              }
+            >
+              <Match when={field.name === 'residence'}>
+                <>
+                  <datalist id={field.name}>
+                    <For each={countries}>
+                      {(country) => (
+                        <option
+                          value={`${country[0].flag} - ${country[0].name}`}
+                        />
+                      )}
+                    </For>
+                  </datalist>
+                  <Input
+                    class="w-full"
+                    name={field.name}
+                    placeholder={field.initialValue}
+                    id={field.name}
+                    type="text"
+                    list={field.name}
+                  />
+                </>
+              </Match>
+              <Match when={field.name === 'phoneNumber'}>
+                <>
+                  <div class="align-row gap-small w-full">
+                    <select
+                      style={{
+                        flex: 1,
+                      }}
+                      class="radius-small padding-4"
+                      name="code"
+                      id="code"
+                    >
+                      <For
+                        each={[
+                          ...new Set([].concat(...countries.map((c) => c))),
+                        ]}
+                      >
+                        {(code) => (
+                          <option
+                            value={code.countryCode}
+                          >{`${code.flag} ${code.countryCode}`}</option>
+                        )}
+                      </For>
+                    </select>
+                    <Input
+                      style={{
+                        flex: 2,
+                      }}
+                      name={field.name}
+                      placeholder="Phone Number"
+                      id={field.name}
+                      type={field.name === 'phoneNumber' ? 'tel' : 'text'}
+                      list={field.name}
+                    />
+                  </div>
+                </>
+              </Match>
+              <Match when={field.name === 'companyBehalf'}>
                 <>
                   <RadioButton
                     position="down"
@@ -75,64 +132,21 @@ const CustomerFormPages = formConfig.map(
                   <br />
                   <RadioButton
                     position="down"
-                    id={field.name}
+                    id={field.name + 'no'}
                     name={field.name}
                     label="No"
                     value={'no'}
                   />
                 </>
-              }
-            >
-              <div>
-                {field.name === 'residence' ? (
-                  <datalist id={field.name}>
-                    <For each={countries}>
-                      {(country) => (
-                        <option
-                          value={`${country[0].flag} - ${country[0].name}`}
-                        />
-                      )}
-                    </For>
-                  </datalist>
-                ) : null}
-
-                <div class="align-row gap-medium">
-                  {field.name === 'phoneNumber' ? (
-                    <>
-                      <datalist id="countryCode">
-                        <For
-                          each={[
-                            ...new Set([].concat(...countries.map((c) => c))),
-                          ]}
-                        >
-                          {(code) => (
-                            <option
-                              value={code.countryCode}
-                              label={code.flag}
-                            />
-                          )}
-                        </For>
-                      </datalist>
-                    </>
-                  ) : null}
-                  <Input
-                    class="w-full"
-                    name={field.name}
-                    placeholder={field.initialValue}
-                    id={field.name}
-                    type={field.name === 'phoneNumber' ? 'tel' : 'text'}
-                    list={field.name}
-                  />
-                </div>
-              </div>
-            </Show>
+              </Match>
+            </Switch>
           </FieldSet>
         </div>
         <div class="align-row w-full">
           <Button type="button" onClick={() => props.onBack(data)}>
             Back
           </Button>
-          <div style="flex-grow: 1;"></div>
+          <div style={{ 'flex-grow': 1 }} />
           <Show
             when={field.name === 'phoneNumber'}
             fallback={<Button variant="primary">Next</Button>}
