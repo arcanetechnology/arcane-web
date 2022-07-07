@@ -2,6 +2,9 @@
 
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'solid-app-router';
+import { FundInfo } from '../types';
+
+// TODO: puth the auth part to service worker so this should be cleaner.
 
 export const getAuthToken = async () => {
   const navigate = useNavigate();
@@ -41,4 +44,28 @@ export const fetchUserRegistration = async (
   }
 };
 
-export const postUserRegistration = async () => {};
+export const postUserRegistration = async (values: FundInfo) => {
+  const navigate = useNavigate();
+  try {
+    const token = await getAuthToken();
+    const res = await fetch(
+      import.meta.env.VITE_BACKEND + '/apps/' + name + '/register',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify(values),
+      }
+    );
+    if (res.status) {
+      navigate('/register', { replace: true });
+      return null;
+    }
+    return res.json();
+  } catch (err) {
+    navigate('/', { replace: true });
+    return null;
+  }
+};

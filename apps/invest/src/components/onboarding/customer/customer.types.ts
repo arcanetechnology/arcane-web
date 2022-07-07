@@ -45,11 +45,9 @@ export const formConfig = [
       code: z.string().nonempty('please select the country code'),
       phoneNumber: z
         .string()
-        .trim()
-        .regex(
-          /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-          'please enter a phone number'
-        ),
+        .min(4)
+        .nonempty('please enter your phone number')
+        .regex(/^\d+$/),
     }),
   },
 ];

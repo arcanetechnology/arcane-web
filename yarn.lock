@@ -3098,15 +3098,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@thisbeyond/solid-select@npm:^0.11.0":
-  version: 0.11.0
-  resolution: "@thisbeyond/solid-select@npm:0.11.0"
-  peerDependencies:
-    solid-js: ^1.1.0
-  checksum: 4e22b2b08c399bc741c80223b1461da21f82df54465c6a9b66265e95698c0e6a0c81be99cfaf4bb40229df9b784ee8258e27d3900140be6840ca95d4454aedf2
-  languageName: node
-  linkType: hard
-
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -3903,7 +3894,6 @@ __metadata:
     "@solid-primitives/fetch": ^1.2.0
     "@solid-primitives/graphql": ^1.1.1
     "@testing-library/jest-dom": ^5.16.4
-    "@thisbeyond/solid-select": ^0.11.0
     "@types/cpx": ^1
     "@types/eslint": ^8.4.2
     "@types/jest": ^27.5.1
@@ -3941,6 +3931,7 @@ __metadata:
     solid-jest: ^0.2.0
     solid-js: ^1.4.6
     solid-testing-library: ^0.3.0
+    solid-toast: ^0.1.5
     svgo: ^2.8.0
     tippy.js: ^6.3.7
     ts-css-modules-vite-plugin: ^1.0.18
@@ -8265,6 +8256,15 @@ __metadata:
     merge2: ^1.4.1
     slash: ^4.0.0
   checksum: c148fcda0c981f00fb434bb94ca258f0a9d23cedbde6fb3f37098e1abde5b065019e2c63fe2aa2fad4daf2b54bf360b4d0423d85fb3a63d09ed75a2837d4de0f
+  languageName: node
+  linkType: hard
+
+"goober@npm:^2.1.9":
+  version: 2.1.10
+  resolution: "goober@npm:2.1.10"
+  peerDependencies:
+    csstype: ^3.0.10
+  checksum: 55a353a477665ea3ae748153132a32184a6a0db42b24ec66cdca97d1e046a2b63af29f698e245fe2f51c05d0eaefeda2cce4a106bc2b6293ea67490c39b6b5c8
   languageName: node
   linkType: hard
 
@@ -13634,6 +13634,17 @@ __metadata:
   peerDependencies:
     solid-js: ">=1.0.0"
   checksum: c4aafb901ec30cb839c8d6aec2b401bf695f7426ca473ec6072d35eab0f3a1c276ced063c2edf4aa9d2c588fd3060924e6f6f5b777ad1cb02a2e755a8a7a5330
+  languageName: node
+  linkType: hard
+
+"solid-toast@npm:^0.1.5":
+  version: 0.1.5
+  resolution: "solid-toast@npm:0.1.5"
+  dependencies:
+    goober: ^2.1.9
+  peerDependencies:
+    solid-js: ^1.4.2
+  checksum: dc06ce43ad7098da37d77de799f9ee6caa2c8a933d715b81018aab5a51f46f5376e3972243ce8157abc2a69000075c0db590a8923cfe0c6538ff5e38513d8e37
   languageName: node
   linkType: hard
 
