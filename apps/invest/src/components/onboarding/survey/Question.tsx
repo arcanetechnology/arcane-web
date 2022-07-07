@@ -13,8 +13,7 @@ const Question: VoidComponent<QuestionProps> = (props) => {
   return (
     <div
       style={{
-        overflow: 'scroll',
-        height: props.question.name === 'warning' ? '400px' : '100%',
+        overflow: props.question.name === 'warning' ? 'scroll' : 'hidden',
       }}
     >
       <SolidRichText document={props.question.content.json} />
