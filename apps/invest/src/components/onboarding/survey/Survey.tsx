@@ -31,6 +31,7 @@ const OnboardingSurvey: VoidComponent<
         display: 'grid',
         'grid-template-rows': '90% 10%',
         height: '100%',
+        width: '100%',
       }}
     >
       <Switch>
@@ -54,8 +55,12 @@ const OnboardingSurvey: VoidComponent<
             'flex-grow': 1,
           }}
         />
-        <Button disabled={disableNext()} type="submit" variant="primary">
-          Next
+        <Button
+          disabled={props.route === 'warning' ? false : disableNext()}
+          type="submit"
+          variant="primary"
+        >
+          {props.route === 'warning' ? 'Agree' : 'Next'}
         </Button>
       </div>
     </Form>
