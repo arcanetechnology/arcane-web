@@ -67,6 +67,7 @@ const OnboardingForm: VoidComponent = () => {
   function onSubmit(values) {
     try {
       if (page() === pages.length - 1) {
+        console.log(values);
         console.log('form state:', onboardingState());
         console.log('Submitted:', pagesState());
       } else {

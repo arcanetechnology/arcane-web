@@ -24,6 +24,17 @@ const CustomerFormPages = formConfig.map(
   (field) => (props: OnboardingFormPages) => {
     const { form, data } = createForm({
       onSubmit: props.onSubmit,
+
+      ...(field.name === 'residence' && {
+        onSuccess: (response, data) => {
+          console.log('inside success');
+          console.log(data.setData('joel'));
+        },
+        /* transform: (data) => {
+          const key = Object.keys(data)[0];
+          if(key && )
+        }, */
+      }),
       extend: [
         validator({ schema: field.validation, level: 'error' }),
         reporter({
@@ -78,8 +89,7 @@ const CustomerFormPages = formConfig.map(
                     <For each={countries}>
                       {(country) => (
                         <option
-                          value={country[0].code}
-                          label={`${country[0].flag} - ${country[0].name}`}
+                          value={`${country[0].flag} - ${country[0].name}`}
                         />
                       )}
                     </For>
@@ -103,13 +113,6 @@ const CustomerFormPages = formConfig.map(
                           )}
                         </For>
                       </datalist>
-                      <Input
-                        class="w-full"
-                        name="countryCode"
-                        id="countryCode"
-                        type="tel"
-                        list="countryCode"
-                      />
                     </>
                   ) : null}
                   <Input

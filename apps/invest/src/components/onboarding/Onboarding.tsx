@@ -42,7 +42,7 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
             height: '100%',
           }}
         >
-          <div class="align-row gap-big">
+          <div class="align-row gap-small">
             <OnboardingLogo />
             <p class="heading8">Investment Onboarding</p>
           </div>

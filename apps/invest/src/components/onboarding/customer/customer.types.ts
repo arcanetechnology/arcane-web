@@ -42,11 +42,9 @@ export const formConfig = [
     name: 'phoneNumber',
     label: 'Could your inform a number for future contact?',
     validation: z.object({
-      countryCode: z.number().nonnegative('please select the country code'),
       phoneNumber: z
         .string()
         .trim()
-        .nonempty('phone number is required')
         .regex(
           /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
           'please enter a phone number'

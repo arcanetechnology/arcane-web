@@ -3098,6 +3098,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@thisbeyond/solid-select@npm:^0.11.0":
+  version: 0.11.0
+  resolution: "@thisbeyond/solid-select@npm:0.11.0"
+  peerDependencies:
+    solid-js: ^1.1.0
+  checksum: 4e22b2b08c399bc741c80223b1461da21f82df54465c6a9b66265e95698c0e6a0c81be99cfaf4bb40229df9b784ee8258e27d3900140be6840ca95d4454aedf2
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -3894,6 +3903,7 @@ __metadata:
     "@solid-primitives/fetch": ^1.2.0
     "@solid-primitives/graphql": ^1.1.1
     "@testing-library/jest-dom": ^5.16.4
+    "@thisbeyond/solid-select": ^0.11.0
     "@types/cpx": ^1
     "@types/eslint": ^8.4.2
     "@types/jest": ^27.5.1
