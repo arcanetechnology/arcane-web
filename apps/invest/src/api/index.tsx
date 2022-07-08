@@ -18,14 +18,15 @@ export const getAuthToken = async () => {
   }
 };
 
-export const fetchUserRegistration = async (
-  name: string = import.meta.env.VITE_APP_NAME
-) => {
+export const fetchUserRegistration = async () => {
   const navigate = useNavigate();
   try {
     const token = await getAuthToken();
     const res = await fetch(
-      import.meta.env.VITE_BACKEND + '/apps/' + name + '/register',
+      import.meta.env.VITE_BACKEND +
+        '/apps/' +
+        import.meta.env.VITE_APP_NAME +
+        '/register',
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -33,11 +34,12 @@ export const fetchUserRegistration = async (
         },
       }
     );
-    if (res.status) {
+    if (res.status >= 400) {
       navigate('/register', { replace: true });
       return null;
     }
-    return res.json();
+
+    return 'success';
   } catch (err) {
     navigate('/', { replace: true });
     return null;
