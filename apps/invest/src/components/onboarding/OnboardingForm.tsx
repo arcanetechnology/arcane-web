@@ -11,6 +11,7 @@ import ArcaneFlow from '@arcane-web/arcane-flow';
 import { postUserRegistration } from '../../api';
 import type { FundInfo } from '../../types/index';
 import countries from '../../assets/countries.json';
+import type { Country } from '../../invest.types';
 
 const OnboardingWelcome: VoidComponent<OnboardingFormPages> = (props) => {
   return (
@@ -87,9 +88,9 @@ const OnboardingForm: VoidComponent = () => {
             }
 
             if (key === 'countryCode') {
-              item[key] = countries.find(
-                (c) => item[key] === c[0].name
-              )[0].code;
+              item[key] = (
+                countries.find((c: Country) => item[key] === c.name) as Country
+              ).code;
             }
 
             return Object.assign(obj, { [key]: item[key] });

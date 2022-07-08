@@ -15,10 +15,12 @@ import { validator } from '@felte/validator-zod';
 import reporter from '@felte/reporter-tippy';
 import type { OnboardingFormPages } from '../Onboarding.types';
 import countries from '../../../assets/countries.json';
+import type { Countries, Country } from '../../../invest.types';
 
-/* const countryCode: Countries = [
-  ...new Set([].concat(...countries.map((c) => c))),
-]; */
+const countryCodeSort = (a: Country, b: Country) => {
+  const aCode = Number(a.countryCode.substring(1));
+  const bCode = Number(b.countryCode.substring(1));
+};
 
 const CustomerFormPages = formConfig.map(
   (field) => (props: OnboardingFormPages) => {
@@ -66,8 +68,8 @@ const CustomerFormPages = formConfig.map(
               <Match when={field.name === 'countryCode'}>
                 <>
                   <datalist id={field.name}>
-                    <For each={countries}>
-                      {(country) => <option value={country[0].name} />}
+                    <For each={countries as Countries}>
+                      {(country) => <option value={country.name} />}
                     </For>
                   </datalist>
                   <Input
@@ -91,15 +93,11 @@ const CustomerFormPages = formConfig.map(
                       name="countryCode"
                       id="countryCode"
                     >
-                      <For
-                        each={[
-                          ...new Set([].concat(...countries.map((c) => c))),
-                        ]}
-                      >
-                        {(code) => (
+                      <For each={countries as Countries}>
+                        {(c) => (
                           <option
-                            value={code.countryCode}
-                          >{`${code.flag} ${code.countryCode}`}</option>
+                            value={c.countryCode}
+                          >{`${c.flag} +${c.countryCode}`}</option>
                         )}
                       </For>
                     </select>

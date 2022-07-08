@@ -78,6 +78,7 @@ export const postUserRegistration = async <R,>(
       body.map((err) => {
         toast.error(err);
       });
+      navigate('/register');
     }
   } catch (err) {
     navigate('/', { replace: true });
