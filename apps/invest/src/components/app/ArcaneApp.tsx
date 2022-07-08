@@ -21,7 +21,6 @@ type ArcaneAppProviderProps = {
 
 const ArcaneAppProvider: FlowComponent<ArcaneAppProviderProps> = (props) => {
   const [data] = createResource(props.name, fetchUserRegistration);
-  console.log(data());
   return (
     <ErrorBoundary fallback={<h1>There was some error</h1>}>
       <Show when={data()}>

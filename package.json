@@ -38,7 +38,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest-dom": "^4.0.2",
     "eslint-plugin-solid": "^0.7.0",
-    "firebase-tools": "^11.2.0",
+    "firebase-tools": "^11.2.1",
     "husky": "^8.0.1",
     "jest": "^28.1.2",
     "jest-environment-jsdom": "^28.1.2",

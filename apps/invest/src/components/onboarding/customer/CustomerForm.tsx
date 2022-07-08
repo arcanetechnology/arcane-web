@@ -58,20 +58,16 @@ const CustomerFormPages = formConfig.map(
                   name={field.name}
                   placeholder={field.initialValue}
                   id={field.name}
-                  type={field.name === 'phoneNumber' ? 'tel' : 'text'}
+                  type={field.name === 'nationalNumber' ? 'tel' : 'text'}
                   list={field.name}
                 />
               }
             >
-              <Match when={field.name === 'residence'}>
+              <Match when={field.name === 'countryCode'}>
                 <>
                   <datalist id={field.name}>
                     <For each={countries}>
-                      {(country) => (
-                        <option
-                          value={`${country[0].flag} - ${country[0].name}`}
-                        />
-                      )}
+                      {(country) => <option value={country[0].name} />}
                     </For>
                   </datalist>
                   <Input
@@ -84,7 +80,7 @@ const CustomerFormPages = formConfig.map(
                   />
                 </>
               </Match>
-              <Match when={field.name === 'phoneNumber'}>
+              <Match when={field.name === 'nationalNumber'}>
                 <>
                   <div class="align-row gap-small w-full">
                     <select
@@ -92,8 +88,8 @@ const CustomerFormPages = formConfig.map(
                         flex: 1,
                       }}
                       class="radius-small padding-4"
-                      name="code"
-                      id="code"
+                      name="countryCode"
+                      id="countryCode"
                     >
                       <For
                         each={[
@@ -148,7 +144,7 @@ const CustomerFormPages = formConfig.map(
           </Button>
           <div style={{ 'flex-grow': 1 }} />
           <Show
-            when={field.name === 'phoneNumber'}
+            when={field.name === 'nationalNumber'}
             fallback={<Button variant="primary">Next</Button>}
           >
             <Button variant="primary" type="submit">

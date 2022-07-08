@@ -2,7 +2,7 @@
 
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'solid-app-router';
-import { FundInfo } from '../types';
+import toast from 'solid-toast';
 
 // TODO: puth the auth part to service worker so this should be cleaner.
 
@@ -44,26 +44,41 @@ export const fetchUserRegistration = async (
   }
 };
 
-export const postUserRegistration = async (values: FundInfo) => {
+interface PostUserRegistrationValue<R> {
+  body: R;
+  name: string;
+}
+
+export const postUserRegistration = async <R,>(
+  values: PostUserRegistrationValue<R>
+) => {
   const navigate = useNavigate();
   try {
     const token = await getAuthToken();
     const res = await fetch(
-      import.meta.env.VITE_BACKEND + '/apps/' + name + '/register',
+      import.meta.env.VITE_BACKEND + '/apps/' + values.name + '/register',
       {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
         method: 'POST',
-        body: JSON.stringify(values),
+        body: JSON.stringify(values.body),
       }
     );
-    if (res.status) {
-      navigate('/register', { replace: true });
+
+    if (res.status >= 401) {
+      navigate('/nonprofessional');
       return null;
     }
-    return res.json();
+
+    const body = await res.json();
+
+    if (res.status === 400) {
+      body.map((err) => {
+        toast.error(err);
+      });
+    }
   } catch (err) {
     navigate('/', { replace: true });
     return null;

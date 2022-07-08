@@ -3,7 +3,7 @@
 export type InvestorType =
   | 'PROFESSIONAL'
   | 'ELECTIVE_PROFESSIONAL'
-  | 'UNQUALIFIED';
+  | 'NON_PROFESSIONAL';
 
 export interface PhoneNumber {
   countryCode: string;
@@ -12,13 +12,13 @@ export interface PhoneNumber {
 
 export interface FundInfoOptional {
   company: string;
-}
-
-export interface FundInfo extends Partial<FundInfoOptional> {
-  investorType: InvestorType;
   name: string;
   phoneNumber: PhoneNumber;
   // cca3 code enum, update it later
   countryCode: string;
   fundName: string;
+}
+
+export interface FundInfo extends Partial<FundInfoOptional> {
+  investorType: InvestorType;
 }

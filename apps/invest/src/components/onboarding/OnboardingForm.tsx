@@ -1,6 +1,6 @@
 /** @format */
 
-import { createSignal, onMount, VoidComponent, createResource } from 'solid-js';
+import { createResource, createSignal, onMount, VoidComponent } from 'solid-js';
 import { Button } from '@arcane-web/alchemy-solid';
 import { Dynamic } from 'solid-js/web';
 import { Survey } from './survey';
@@ -8,6 +8,9 @@ import { CustomerFormPages } from './customer';
 import { OnboardingFormPages } from './Onboarding.types';
 import onboardingConfig, { Questions, Answers } from './config';
 import ArcaneFlow from '@arcane-web/arcane-flow';
+import { postUserRegistration } from '../../api';
+import type { FundInfo } from '../../types/index';
+import countries from '../../assets/countries.json';
 
 const OnboardingWelcome: VoidComponent<OnboardingFormPages> = (props) => {
   return (
@@ -63,13 +66,50 @@ const OnboardingForm: VoidComponent = () => {
   const [page, setPage] = createSignal(0);
   const [pagesState, setPagesState] = createSignal([]);
   const { onboardingState, addOnboardingState } = updateOnboardingState();
+  const [body, setBody] = createSignal<{ body: FundInfo; name: string }>(null);
+  // TODO: refactor it later
+  const [register] = createResource(body, postUserRegistration, {
+    deferStream: true,
+  });
 
   function onSubmit(values) {
     try {
       if (page() === pages.length - 1) {
-        console.log(values);
-        console.log('form state:', onboardingState());
-        console.log('Submitted:', pagesState());
+        const formBody = pagesState().reduce(
+          (obj, item) => {
+            const key = Object.keys(item)[0];
+            if (!key) {
+              return { ...obj };
+            }
+
+            if (key === 'companyBehalf') {
+              return { ...obj };
+            }
+
+            if (key === 'countryCode') {
+              item[key] = countries.find(
+                (c) => item[key] === c[0].name
+              )[0].code;
+            }
+
+            return Object.assign(obj, { [key]: item[key] });
+          },
+          // TODO: remove the hardcoding later alligator 🐊
+          { phoneNumber: values, fundName: 'Arcane Assets Fund Limited' }
+        );
+
+        if (onboardingState().length <= 3) {
+          // TODO: abstract it away in the arcane platorm
+          setBody({
+            body: { ...formBody, investorType: 'PROFESSIONAL' },
+            name: 'invest',
+          });
+        } else {
+          setBody({
+            body: { ...formBody, investorType: 'ELECTIVE_PROFESSIONAL' },
+            name: 'invest',
+          });
+        }
       } else {
         const nextState = [...pagesState()];
         if (page() === 1 && route() !== 'warning') {
@@ -87,7 +127,10 @@ const OnboardingForm: VoidComponent = () => {
         }
       }
     } catch (err) {
-      window.location.href = '/invest/error';
+      setBody({
+        body: { investorType: 'NON_PROFESSIONAL' },
+        name: import.meta.env.VITE_APP_NAME,
+      });
     }
   }
 

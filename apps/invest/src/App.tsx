@@ -5,6 +5,7 @@ import { useRoutes, Router } from 'solid-app-router';
 import { Shell } from './components';
 import config from './firebase.config';
 import { routes } from './routes';
+import { Toaster } from 'solid-toast';
 
 export function createApp() {
   const Routes = useRoutes(routes);
@@ -15,6 +16,7 @@ export function createApp() {
           <Routes />
         </Shell>
       </Router>
+      <Toaster />
     </ArcaneAuthProvider>
   );
 }

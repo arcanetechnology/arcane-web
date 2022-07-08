@@ -29,21 +29,21 @@ export const formConfig = [
     }),
   },
   {
-    name: 'residence',
+    name: 'countryCode',
     label: 'What is your country of residence?',
     initialValue: '',
     validation: z.object({
-      residence: z
+      countryCode: z
         .string()
         .nonempty('please specify your country of residence'),
     }),
   },
   {
-    name: 'phoneNumber',
+    name: 'nationalNumber',
     label: 'Could your inform a number for future contact?',
     validation: z.object({
-      code: z.string().nonempty('please select the country code'),
-      phoneNumber: z
+      countryCode: z.string().nonempty('please select the country code'),
+      nationalNumber: z
         .string()
         .min(4)
         .nonempty('please enter your phone number')
