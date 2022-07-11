@@ -1,17 +1,42 @@
 {
-  "extends": "@tsconfig/node16-strictest-esm/tsconfig.json",
+  "extends": "../../tsconfig.base.json",
+
   "compilerOptions": {
-    "moduleResolution": "node",
-    "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "types": ["vite/client", "vite-plugin-pwa/client"],
-    "lib": ["ESNext", "DOM", "WebWorker"],
-    "noEmit": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom"],
     "module": "ESNext",
-    "isolatedModules": true,
-    "resolveJsonModule": true
-  }
+    "target": "ESNext",
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "typeRoots": ["node_modules/@types"],
+    "types": ["vite/client", "node"],
+    "paths": {
+      "@components/*": ["src/client/components/*"],
+      "@pages/*": ["src/client/pages/*"],
+      "@/*": ["src/client/*"]
+    }
+  },
+
+  "include": [
+    "./src/client/**/*.js",
+    "./src/client/**/*.ts",
+    "src/client/**/*.jsx",
+    "./src/client/**/*.tsx",
+    "src/client/**/*.d.ts",
+
+    "tests/**/*.js",
+    "tests/**/*.ts",
+    "tests/**/*.jsx",
+    "tests/**/*.tsx"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "typings",
+    "public",
+    "build",
+    "dist",
+    "src/server/**/*"
+  ]
 }

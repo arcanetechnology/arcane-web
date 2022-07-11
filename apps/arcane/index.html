@@ -1,54 +1,15 @@
+<!-- @format -->
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- https://web.dev/uses-rel-preconnect -->
-    <link rel="preconnect" href="https://storage.googleapis.com">
-
-    <meta name="description" content="Starter kit for modern web applications">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="mask-icon" href="/favicon.svg" color="#FFFFFF">
-    <meta name="theme-color" content="#ffffff">
-
-    <meta name="keywords" content="react, pwa, boilerplate, template" />
-
-    <meta
-      name="description"
-      content="Starter kit for modern web applications"
-      data-react-helmet="true"
-    />
-    <meta
-      property="og:title"
-      content="React-PWA"
-      data-react-helmet="true"
-    >
-    <meta
-      property="og:description"
-      content="Starter kit for modern web applications"
-      data-react-helmet="true"
-    >
-    <meta
-      property="og:url"
-      content="https://react-pwa.surenatoyan.com/"
-      data-react-helmet="true"
-    >
-    <meta
-      property="og:image"
-      content="https://react-pwa.surenatoyan.com/cover.png"
-      data-react-helmet="true"
-    />
-    <meta
-      name="twitter:card"
-      content="summary"
-      data-react-helmet="true"
-    />
-    <!--css-->
-    <!--hydrationScript-->
-    <!--hydration-->
-    <script>if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/assets/sw.js', { scope: '/assets/' })})}</script>
+    <title>Vite App</title>
   </head>
   <body>
-    <div id="root"><!--appHtml--></div>
-    <script type="module" src="./src/entry.client.tsx"></script>
+    <div id="app" />
+    <script type="module" src="/src/client/entry.client.tsx"></script>
   </body>
 </html>

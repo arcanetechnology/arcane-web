@@ -1,24 +1,30 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
+    // common
+    "strict": true,
+    "noEmit": false,
+    "checkJs": true,
+    "allowJs": true,
     "esModuleInterop": true,
-    "rootDir": ".",
-    "sourceMap": true,
-    "incremental": true,
-    "declaration": true,
-    "declarationMap": true,
-    "moduleResolution": "Node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "isolatedModules": true,
+    "noUnusedLocals": true,
     "importHelpers": true,
-    "target": "ES6",
-    "module": "ESNext",
-    "resolveJsonModule": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "noImplicitAny": true,
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "types": ["node"]
-  },
-  "exclude": ["node_modules"]
+    "noImplicitReturns": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "noUnusedParameters": true,
+    "noImplicitOverride": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": false,
+    "importsNotUsedAsValues": "error",
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true
+  }
 }

@@ -1,17 +1,28 @@
 {
   "name": "@arcane-web/arcane",
-  "packageManager": "yarn@3.2.1",
-  "author": "Joel D'Souza <joeldsouzax@gmail.com>",
+  "private": true,
+  "version": "0.0.0",
+  "main": "src/server/index.ts",
   "scripts": {
-    "dev": "yarn run -T tsx watch src/server.ts",
-    "start": "NODE_ENV=production yarn run -T tsx src/server.ts",
-    "build": "yarn run -T npm-run-all build:*",
-    "build:client": "yarn run -T vite build --outDir dist/client --ssrManifest",
-    "build:ssr": "yarn run -T vite build --ssr src/entry.server.tsx --outDir dist/ssr",
-    "check": "npm-run-all check:*",
-    "check:ts": "tsc --noEmit"
+    "dev": "ts-node-dev --project tsconfig.node.json --respawn --transpile-only src/server/index.ts",
+    "build:client": "vite build --outDir dist/client --ssrManifest",
+    "build:ssr": "vite build --ssr src/client/entry.server.tsx --outDir dist/ssr",
+    "build:server": "tsc -p tsconfig.node.json",
+    "build": "npm-run-all --parallel build:*",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.0.3",
+    "npm-run-all": "^4.1.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.9",
+    "vite-plugin-solid": "^2.2.6"
   },
   "dependencies": {
-    "@arcane-web/alchemy": "workspace:^"
+    "express": "^4.18.1",
+    "solid-js": "^1.4.7",
+    "solid-meta": "^0.27.5"
   }
 }

@@ -1,42 +1,30 @@
 /** @format */
 
 import { defineConfig } from 'vite';
-import solidPlugin from 'vite-plugin-solid';
-import { VitePWA } from 'vite-plugin-pwa';
-import solidSvg from 'vite-plugin-solid-svg';
-import federation from '@originjs/vite-plugin-federation';
-
+import solid from 'vite-plugin-solid';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [
-    solidPlugin({ ssr: true }),
-    VitePWA({
-      manifestFilename: 'assets/manifest.json',
-      outDir: 'dist/client/assets/',
-      strategies: 'injectManifest',
-      srcDir: 'src',
-      filename: 'sw.ts',
-      injectRegister: null,
-    }),
-    solidSvg({ defaultExport: 'url' }),
-    federation({
-      remotes: {
-        trade: 'http://localhost:3000/remoteEntry.js',
-      },
-    }),
-  ],
+  plugins: [solid({ ssr: true })],
   build: {
     target: 'esnext',
     polyfillDynamicImport: false,
   },
-  // @ts-ignore
-  ssr: {
-    noExternal: ['solid-icons'],
-  },
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+    alias: [
+      { find: '@', replacement: path.resolve(__dirname, './src/client') },
+      {
+        find: '@pages',
+        replacement: path.resolve(__dirname, './src/client/pages'),
+      },
+      {
+        find: '@components',
+        replacement: path.resolve(__dirname, './src/client/components'),
+      },
+      {
+        find: '@utils',
+        replacement: path.resolve(__dirname, './src/client/utils'),
+      },
+    ],
   },
 });
