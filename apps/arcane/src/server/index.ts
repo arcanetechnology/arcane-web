@@ -1,25 +1,15 @@
 /** @format */
 import express, { Express } from 'express';
-import pkg from '../../package.json';
+import expressWinston from 'express-winston';
+import { name, port } from './constants';
 import { auth } from './routers';
+import { loggerConfig } from './service';
 
-const port = 3000;
 const app: Express = express();
+app.use(expressWinston.logger(loggerConfig));
 
 app.use('/auth', auth);
 
-/* app.get('/auth/:id', async (req, res) => {
-  const id = req.params.id;
-  console.log(id);
-  // TODO: show error page
-  //@ts-ignore
-  const render = (await import('../../dist/ssr/entry.server.js'))['render'];
-  const { html } = await render();
-  res.status(200).type('text/html').send(html);
-}); */
-
 app.listen(port, () => {
-  console.log(
-    `⚡️[${pkg.name}]: Server is running at https://localhost:${port}`
-  );
+  console.log(`⚡️[${name}]: Server is running at https://localhost:${port}`);
 });

@@ -12,6 +12,7 @@
     "typeRoots": ["node_modules/@types"],
     "types": ["vite/client", "node"],
     "paths": {
+      "@types/*": ["src/types/*"],
       "@components/*": ["src/client/components/*"],
       "@pages/*": ["src/client/pages/*"],
       "@/*": ["src/client/*"]
@@ -19,16 +20,19 @@
   },
 
   "include": [
-    "./src/client/**/*.js",
-    "./src/client/**/*.ts",
+    "src/types/**/*.ts",
+    "src/client/**/*.js",
+    "src/client/**/*.ts",
     "src/client/**/*.jsx",
-    "./src/client/**/*.tsx",
+    "src/client/**/*.tsx",
     "src/client/**/*.d.ts",
 
     "tests/**/*.js",
     "tests/**/*.ts",
     "tests/**/*.jsx",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "src/client/env.d.ts",
+    "src/types/index.ts"
   ],
 
   "exclude": [

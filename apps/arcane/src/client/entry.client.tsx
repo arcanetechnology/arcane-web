@@ -1,6 +1,9 @@
 /** @format */
 /* @refresh reload */
 import { hydrate } from 'solid-js/web';
-import App from './App';
+import { createApp } from './App';
 
-hydrate(() => <App />, document.getElementById('app') as HTMLElement);
+hydrate(
+  () => createApp(window.hydration),
+  document.getElementById('app') as HTMLElement
+);

@@ -3,16 +3,18 @@
   "compilerOptions": {
     "lib": ["es2021"],
     "outDir": "./dist",
+    "moduleResolution": "Node",
     "module": "Node16",
-    "target": "ES2022",
-    "moduleResolution": "Node16",
+    "target": "es2021",
     "paths": {
-      "@/*": ["./src/server/*"],
-      "@utils/*": ["./src/server/utils/*"]
+      "@/*": ["src/server/*"],
+      "@types/*": ["src/types/*"],
+      "@routers/*": ["src/server/routers/*"],
+      "@utils/*": ["src/server/utils/*"]
     }
   },
   "include": [
-    "src/server/index.ts",
+    "src/types/**/*.ts",
     "src/server/**/*.js",
     "src/server/**/*.ts",
     "src/server/**/*.jsx",

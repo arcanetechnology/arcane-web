@@ -6,6 +6,11 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [solid({ ssr: true })],
+  server: { middlewareMode: 'ssr' },
+  // @ts-ignore
+  ssr: {
+    noExternal: ['solid-app-router'],
+  },
   build: {
     target: 'esnext',
     polyfillDynamicImport: false,
@@ -25,6 +30,7 @@ export default defineConfig({
         find: '@utils',
         replacement: path.resolve(__dirname, './src/client/utils'),
       },
+      { find: '@types', replacement: path.resolve(__dirname, './src/types') },
     ],
   },
 });
