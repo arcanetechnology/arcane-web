@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../../tsconfig.base.json",
 
   "compilerOptions": {
     "jsxImportSource": "solid-js",
@@ -12,27 +12,23 @@
     "typeRoots": ["node_modules/@types"],
     "types": ["vite/client", "node"],
     "paths": {
-      "@types/*": ["src/types/*"],
-      "@components/*": ["src/client/components/*"],
-      "@pages/*": ["src/client/pages/*"],
-      "@/*": ["src/client/*"]
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@/*": ["src/*"]
     }
   },
 
   "include": [
-    "src/types/**/*.ts",
-    "src/client/**/*.js",
-    "src/client/**/*.ts",
-    "src/client/**/*.jsx",
-    "src/client/**/*.tsx",
-    "src/client/**/*.d.ts",
+    "src/**/*.js",
+    "src/**/*.ts",
+    "src/**/*.jsx",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
 
     "tests/**/*.js",
     "tests/**/*.ts",
     "tests/**/*.jsx",
-    "tests/**/*.tsx",
-    "src/client/env.d.ts",
-    "src/types/index.ts"
+    "tests/**/*.tsx"
   ],
 
   "exclude": [

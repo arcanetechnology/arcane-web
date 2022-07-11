@@ -10,7 +10,7 @@ export const clientRoot = resolve(newDirName, '../../client');
 
 // TODO: change it later
 export const ssrEntry = isProduction
-  ? resolve(newDirName, '../../../dist/ssr/entry.server.js')
+  ? resolve(newDirName, '../../../dist/ssr/entry.server.cjs')
   : resolve(clientRoot, 'entry.server.tsx');
 
 export const clientEntry = resolve(clientRoot, 'index.html');

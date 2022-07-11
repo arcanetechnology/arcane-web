@@ -1,16 +1,16 @@
 {
   "name": "@arcane-web/arcane",
   "private": true,
+  "type": "module",
   "version": "0.0.0",
   "main": "src/server/index.ts",
   "scripts": {
-    "dev": "NODE_ENV=production tsx watch src/server/index.ts",
+    "dev": "NODE_ENV=production tsx watch server/src/index.ts",
     "start": "NODE_ENV=production",
-    "build:client": "vite build --outDir dist/client --ssrManifest",
-    "build:ssr": "vite build --ssr src/client/entry.server.tsx --outDir dist/ssr",
+    "build:client": "vite build --outDir ../dist/client client --ssrManifest",
+    "build:ssr": "vite build -c client/vite.config.ts --outDir dist/ssr --ssr client/src/entry.server.tsx; mv dist/ssr/entry.server.js dist/ssr/entry.server.cjs",
     "build:server": "tsc -p tsconfig.node.json",
-    "build": "npm-run-all --parallel build:*",
-    "preview": "vite preview"
+    "build": "npm-run-all --parallel build:*"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

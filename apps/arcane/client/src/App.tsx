@@ -1,15 +1,15 @@
 /** @format */
 
-import { Router, useRoutes } from 'solid-app-router';
+import { Router, Routes, Route } from 'solid-app-router';
 import type { VoidComponent } from 'solid-js';
+import { Login, Home } from './pages';
 
 const App: VoidComponent = () => {
-  const Route = useRoutes([]);
   return (
-    <>
-      <h1>Hello</h1>
-      <Route />
-    </>
+    <Routes>
+      <Route path="/" component={Login} />
+      <Route path="/home" component={Home} />
+    </Routes>
   );
 };
 

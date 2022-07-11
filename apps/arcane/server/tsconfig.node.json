@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
     "lib": ["es2021"],
     "outDir": "./dist",
@@ -14,12 +14,11 @@
     }
   },
   "include": [
-    "src/types/**/*.ts",
-    "src/server/**/*.js",
-    "src/server/**/*.ts",
-    "src/server/**/*.jsx",
-    "src/server/**/*.tsx",
-    "src/server/**/*.d.ts",
+    "src/**/*.js",
+    "src/**/*.ts",
+    "src/**/*.jsx",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
 
     "tests/**/*.js",
     "tests/**/*.ts",

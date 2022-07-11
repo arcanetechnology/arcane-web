@@ -2,6 +2,8 @@
 
 export interface ClientSeverRenderer {
   html: Promise<string>;
+  hydration: string;
+  hydrationScript: string;
 }
 
 type ClientRendererProps = {
