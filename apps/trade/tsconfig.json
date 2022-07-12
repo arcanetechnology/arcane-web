@@ -1,0 +1,42 @@
+{
+  "extends": "../../tsconfig.base.json",
+
+  "compilerOptions": {
+    "jsxImportSource": "solid-js",
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom"],
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "typeRoots": ["node_modules/@types"],
+    "types": ["vite/client", "node"],
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@/*": ["src/*"]
+    }
+  },
+
+  "include": [
+    "src/**/*.js",
+    "src/**/*.ts",
+    "src/**/*.jsx",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+
+    "tests/**/*.js",
+    "tests/**/*.ts",
+    "tests/**/*.jsx",
+    "tests/**/*.tsx"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "typings",
+    "public",
+    "build",
+    "dist",
+    "src/server/**/*"
+  ]
+}

@@ -1,6 +1,6 @@
 /** @format */
 
-import { ClientRenderer, EntryProps } from '../../types';
+import { ClientRenderer, EntryProps } from '../../../types';
 
 export const renderApp = async (value: EntryProps, clientEntry: string) => {
   const render: ClientRenderer = (await import(clientEntry))['render'];
@@ -13,3 +13,10 @@ const Renderer = {
 };
 
 export default Renderer;
+
+
+
+
+
+
+

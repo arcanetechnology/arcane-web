@@ -2,6 +2,10 @@
   "name": "@arcane-web/arcane",
   "private": true,
   "type": "module",
+  "author": {
+    "name": "Joel D'Souza",
+    "email": "joeldsouzax@gmail.com"
+  },
   "version": "0.0.0",
   "main": "src/server/index.ts",
   "scripts": {
@@ -25,6 +29,7 @@
     "devalue": "^2.0.1",
     "express": "^4.18.1",
     "express-winston": "^4.2.0",
+    "node-tailor": "^3.9.2",
     "solid-app-router": "^0.4.1",
     "solid-js": "^1.4.7",
     "solid-meta": "^0.27.5",

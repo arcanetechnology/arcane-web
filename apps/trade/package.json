@@ -1,0 +1,22 @@
+{
+  "name": "@arcane-web/trade",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "author": {
+    "name": "Joel D'Souza",
+    "email": "joeldsouzax@gmail.com"
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "vite start"
+  },
+  "devDependencies": {
+    "vite": "^2.9.9",
+    "vite-plugin-solid": "^2.2.6"
+  },
+  "dependencies": {
+    "solid-js": "^1.4.7"
+  }
+}
