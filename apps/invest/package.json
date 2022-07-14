@@ -13,6 +13,7 @@
     "@arcane-web/alchemy-solid": "workspace:^",
     "@arcane-web/arcane-auth": "workspace:^",
     "@arcane-web/arcane-components": "workspace:^",
-    "@arcane-web/arcane-flow": "workspace:^"
+    "@arcane-web/arcane-flow": "workspace:^",
+    "solid-transition-group": "^0.0.10"
   }
 }

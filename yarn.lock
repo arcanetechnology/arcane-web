@@ -72,6 +72,7 @@ __metadata:
     "@arcane-web/arcane-auth": "workspace:^"
     "@arcane-web/arcane-components": "workspace:^"
     "@arcane-web/arcane-flow": "workspace:^"
+    solid-transition-group: ^0.0.10
   languageName: unknown
   linkType: soft
 
@@ -13645,6 +13646,15 @@ __metadata:
   peerDependencies:
     solid-js: ^1.4.2
   checksum: dc06ce43ad7098da37d77de799f9ee6caa2c8a933d715b81018aab5a51f46f5376e3972243ce8157abc2a69000075c0db590a8923cfe0c6538ff5e38513d8e37
+  languageName: node
+  linkType: hard
+
+"solid-transition-group@npm:^0.0.10":
+  version: 0.0.10
+  resolution: "solid-transition-group@npm:0.0.10"
+  peerDependencies:
+    solid-js: ^1.0.0
+  checksum: ad87da0b35222e0764e1b5d47f59a54c106c8de4124362e0957764b3afc5e14b3341e8aa7a5c00bdcef00b6e01ad3eb5521f69ff8e74ba8cad257e728d27e2d9
   languageName: node
   linkType: hard
 
