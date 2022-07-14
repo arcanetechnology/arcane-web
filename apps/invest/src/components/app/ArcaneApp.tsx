@@ -20,9 +20,7 @@ type ArcaneAppProviderProps = {
 };
 
 const ArcaneAppProvider: FlowComponent<ArcaneAppProviderProps> = (props) => {
-  const [data] = createResource(fetchUserRegistration, {
-    deferStream: true,
-  });
+  const [data] = createResource(fetchUserRegistration);
   return (
     <ErrorBoundary fallback={'something went wrong'}>
       <Show when={data()}>

@@ -7,15 +7,9 @@ import toast from 'solid-toast';
 // TODO: puth the auth part to service worker so this should be cleaner.
 
 export const getAuthToken = async () => {
-  const navigate = useNavigate();
-  try {
-    const auth = getAuth();
-    const token = await auth.currentUser.getIdToken();
-    return token;
-  } catch (err) {
-    navigate('/', { replace: true });
-    throw new Error('user is not authenticated');
-  }
+  const auth = getAuth();
+  const token = await auth.currentUser.getIdToken();
+  return token;
 };
 
 export const fetchUserRegistration = async () => {

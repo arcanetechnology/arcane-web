@@ -9,11 +9,11 @@ const Home: VoidComponent = () => {
     <ArcaneAppProvider name={import.meta.env.VITE_APP_NAME}>
       <section class="margin-48">
         <div class="container">
-          <h1>Investor Dashboard</h1>
+          <h5>Investor Dashboard</h5>
         </div>
       </section>
       <section class="container">
-        <div id="invest-stats" class="gap-small parent">
+        <div id="invest-stats" class="gap-small parent" data-auto-grid="2">
           <div
             id="invest-home-info-cards"
             class="gap-small child"
