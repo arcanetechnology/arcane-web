@@ -1,7 +1,6 @@
 {
   "name": "@arcane-web/trade",
   "private": true,
-  "type": "module",
   "version": "0.0.0",
   "author": {
     "name": "Joel D'Souza",
@@ -10,7 +9,8 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "start": "vite start"
+    "start": "vite start",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "vite": "^2.9.9",

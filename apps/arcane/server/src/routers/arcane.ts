@@ -5,23 +5,20 @@ import type { Router, Request, Response } from 'express';
 import Tailor from 'node-tailor';
 import { templates } from '../constants';
 
-const auth: Router = express.Router({
-  strict: true,
-  mergeParams: true,
-  caseSensitive: true,
-});
+const arcane: Router = express.Router({});
+
 const tailor = new Tailor({
   templatesPath: templates,
   maxAssetLinks: 10,
 });
 
-auth.get('/', (req: Request, res: Response) => {
-  req.url = 'auth';
+arcane.get('/', async (req: Request, res: Response) => {
+  req.url = 'index';
   tailor.requestHandler(req, res);
 });
 
-auth.get('/home', (req: Request, res: Response) => {
+arcane.get('/:id', async (req: Request, res: Response) => {
   tailor.requestHandler(req, res);
 });
 
-export default auth;
+export default arcane;

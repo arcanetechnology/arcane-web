@@ -1,7 +1,6 @@
 {
   "name": "@arcane-web/arcane",
   "private": true,
-  "type": "module",
   "author": {
     "name": "Joel D'Souza",
     "email": "joeldsouzax@gmail.com"
@@ -10,29 +9,36 @@
   "main": "src/server/index.ts",
   "scripts": {
     "dev": "NODE_ENV=production tsx watch server/src/index.ts",
-    "start": "NODE_ENV=production",
-    "build:client": "vite build --outDir ../dist/client client --ssrManifest",
-    "build:ssr": "vite build -c client/vite.config.ts --outDir dist/ssr --ssr client/src/entry.server.tsx; mv dist/ssr/entry.server.js dist/ssr/entry.server.cjs",
-    "build:server": "tsc -p tsconfig.node.json",
-    "build": "npm-run-all --parallel build:*"
+    "dev:web": "pnpm run build:web && pnpm run start:web",
+    "clear:web": "del-cli --force ./dist/public",
+    "clear:ssg": "del-cli --force ./dist/public/js/ssg",
+    "start:web": "http-server ./dist/public",
+    "build:web": "pnpm run clear:web && pnpm run build:web:script && node client/index.js && pnpm run clear:ssg",
+    "build:web:script": "tsc -p client/tsconfig.json && rollup -c client/rollup.config.js"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "@types/express": "^4.17.13",
     "@types/node": "^18.0.3",
+    "del-cli": "^4.0.1",
+    "http-server": "^14.1.1",
     "npm-run-all": "^4.1.5",
+    "rollup": "^2.76.0",
+    "rollup-plugin-terser": "^7.0.2",
     "tsx": "^3.7.1",
-    "typescript": "^4.7.4",
-    "vite": "^2.9.9",
-    "vite-plugin-solid": "^2.2.6"
+    "typescript": "^4.7.4"
   },
   "dependencies": {
-    "devalue": "^2.0.1",
     "express": "^4.18.1",
     "express-winston": "^4.2.0",
     "node-tailor": "^3.9.2",
     "solid-app-router": "^0.4.1",
     "solid-js": "^1.4.7",
     "solid-meta": "^0.27.5",
+    "solid-ssr": "^1.4.7",
     "winston": "^3.8.1"
   }
 }

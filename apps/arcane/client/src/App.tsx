@@ -1,28 +1,24 @@
 /** @format */
 
-import { Router, Routes, Route } from 'solid-app-router';
+import { Suspense } from 'solid-js';
+import { useRoutes, Router } from 'solid-app-router';
 import type { VoidComponent } from 'solid-js';
-import { Login, Home } from './pages';
+import { routes } from './routes';
 
-const App: VoidComponent = () => {
+type AppProps = {
+  url?: string;
+};
+
+// TODO: change the fallback to arcane logo
+export const App: VoidComponent<AppProps> = (props) => {
+  const Routes = useRoutes(routes);
   return (
-    <Routes>
-      <Route path="/" component={Login} />
-      <Route path="/home" component={Home} />
-    </Routes>
+    <Router url={props.url ?? '/'}>
+      <Suspense fallback={'...loading'}>
+        <Routes />
+      </Suspense>
+    </Router>
   );
 };
 
 export default App;
-
-type CreateAppProps = {
-  url: string;
-};
-
-export const createApp: VoidComponent<CreateAppProps> = (props) => {
-  return (
-    <Router url={props.url}>
-      <App />
-    </Router>
-  );
-};

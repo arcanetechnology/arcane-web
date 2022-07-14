@@ -10,7 +10,5 @@ export const loggerConfig: expressWinston.LoggerOptions = {
     winston.format.json()
   ),
   meta: true,
-  msg: 'HTTP {{req.method}} {{req.url}}',
-  expressFormat: true,
   colorize: true,
 };
