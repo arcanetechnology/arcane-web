@@ -54,7 +54,10 @@ const Navigation: VoidComponent = () => {
               <For each={nav().applicationCollection.items}>
                 {(n) => (
                   <div class="app-nav">
-                    <a class="app-nav-link" href={n.path}>
+                    <a
+                      class="app-nav-link"
+                      href={window.location.origin + '/' + (n.path ?? '')}
+                    >
                       <img
                         width={40}
                         height={40}
