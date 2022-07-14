@@ -26,7 +26,8 @@ export const fetchUserRegistration = async () => {
       import.meta.env.VITE_BACKEND +
         '/apps/' +
         import.meta.env.VITE_APP_NAME +
-        '/register',
+        '/funds/' +
+        'arcane-assets-fund-limited',
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -58,7 +59,11 @@ export const postUserRegistration = async <R,>(
   try {
     const token = await getAuthToken();
     const res = await fetch(
-      import.meta.env.VITE_BACKEND + '/apps/' + values.name + '/register',
+      import.meta.env.VITE_BACKEND +
+        '/apps/' +
+        values.name +
+        '/funds/' +
+        'arcane-assets-fund-limited',
       {
         headers: {
           Authorization: `Bearer ${token}`,
