@@ -4,7 +4,6 @@ import { createSignal, Show, VoidComponent, For } from 'solid-js';
 import { gql } from '@solid-primitives/graphql';
 import client from '../../platform-contentful';
 import './Navigation.scss';
-import { Card } from '@arcane-web/alchemy-solid';
 
 type NavItems = {
   logo: { url: string; description: string };

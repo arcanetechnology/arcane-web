@@ -10,7 +10,7 @@ type LandingProps = {
 
 const Landing: FlowComponent<LandingProps> = (props) => {
   const base = { opacity: 1 };
-  const options = { duration: 2000 };
+  const options = { duration: 1000 };
   const animateIn = (el) => {
     el.animate([{ opacity: 0 }, base], options);
   };

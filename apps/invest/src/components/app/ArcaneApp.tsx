@@ -22,7 +22,17 @@ type ArcaneAppProviderProps = {
 const ArcaneAppProvider: FlowComponent<ArcaneAppProviderProps> = (props) => {
   const [data] = createResource(fetchUserRegistration);
   return (
-    <ErrorBoundary fallback={'something went wrong'}>
+    <ErrorBoundary
+      fallback={
+        <section class="margin-48">
+          <div id="apology-message" class="container" data-auto-grid="2">
+            <div class="space-8">
+              <h1>Something went wrong...</h1>
+            </div>
+          </div>
+        </section>
+      }
+    >
       <Show when={data()}>
         <ArcaneAppContext.Provider value={data}>
           {props.children}

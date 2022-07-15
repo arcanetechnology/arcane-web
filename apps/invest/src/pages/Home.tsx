@@ -1,79 +1,129 @@
 /** @format */
 
-import { VoidComponent } from 'solid-js';
-import { Donut, FundValue, Info } from '../components';
+import { VoidComponent, Show, For } from 'solid-js';
+import { FundValue, Info, AssetInfo } from '../components';
 import ArcaneAppProvider from '../components/app/ArcaneApp';
+import { gql } from '@solid-primitives/graphql';
+import investClient from '../invest-contentful';
+import { FundInfoCollection } from '../invest.types';
 
 const Home: VoidComponent = () => {
+  const [fundInfoCollection] = investClient<{
+    fundInfoCollection: FundInfoCollection;
+  }>(
+    gql`
+      query {
+        fundInfoCollection(limit: 1) {
+          items {
+            title
+            infoCardsCollection(limit: 4) {
+              items {
+                title
+                caption
+              }
+            }
+            portfolioCollection {
+              items {
+                name
+                units
+              }
+            }
+            chart {
+              title
+              url
+            }
+          }
+        }
+      }
+    `
+  );
+
   return (
     <ArcaneAppProvider name={import.meta.env.VITE_APP_NAME}>
-      <section class="margin-48">
-        <div class="container">
-          <h5>Investor Dashboard</h5>
-        </div>
-      </section>
-      <section class="container">
-        <div id="invest-stats" class="gap-small parent" data-auto-grid="2">
-          <div
-            id="invest-home-info-cards"
-            class="gap-small child"
-            data-auto-grid="2"
-          >
-            <Info
-              title="$16m"
-              variant="secondary"
-              description="Assets Under Management"
-            />
-            <Info title="55%" description="Bitcoin Holdings" />
-            <Info title="25%" description="Fund Performance YTD" />
-            <Info
-              title="8%"
-              variant="secondary"
-              description="Fund Performance x Benchmark YTD"
+      <Show
+        when={fundInfoCollection()}
+        fallback={
+          <>
+            <section class="margin-48">
+              <div class="container">
+                <h5>
+                  <div class="skeleton skeleton-text" />
+                </h5>
+              </div>
+            </section>
+            <section class="container">
+              <div
+                id="invest-stats"
+                class="gap-small parent"
+                data-auto-grid="2"
+              >
+                <div
+                  id="invest-home-info-cards"
+                  class="gap-small child"
+                  data-auto-grid="2"
+                >
+                  <div class="skeleton skeleton-text skeleton-text__body" />
+                  <div class="skeleton skeleton-text skeleton-text__body" />
+                  <div class="skeleton skeleton-text skeleton-text__body" />
+                  <div class="skeleton skeleton-text skeleton-text__body" />
+                </div>
+                <div id="invest-chart" class="child">
+                  <img class="skeleton" alt="" id="cover-img" />
+                </div>
+              </div>
+              <div id="fund-value" class="padding-48">
+                <img class="skeleton" alt="" id="cover-img" />
+              </div>
+            </section>
+          </>
+        }
+      >
+        <section class="margin-48">
+          <div class="container">
+            <h5>{fundInfoCollection().fundInfoCollection.items[0].title}</h5>
+          </div>
+        </section>
+        <section class="container">
+          <div id="invest-stats" class="gap-small parent" data-auto-grid="2">
+            <div
+              id="invest-home-info-cards"
+              class="gap-small child"
+              data-auto-grid="2"
+            >
+              <For
+                each={
+                  fundInfoCollection().fundInfoCollection.items[0]
+                    .infoCardsCollection.items
+                }
+              >
+                {(item, index) => (
+                  <Info
+                    title={item.title}
+                    description={item.caption}
+                    {...(index() % 2 === 0 && { variant: 'secondary' })}
+                  />
+                )}
+              </For>
+            </div>
+            <div id="invest-chart" class="child">
+              <AssetInfo
+                data={
+                  fundInfoCollection().fundInfoCollection.items[0]
+                    .portfolioCollection.items
+                }
+                title={'Usage overview'}
+              />
+            </div>
+          </div>
+          <div id="fund-value" class="padding-48">
+            <img
+              width={'100%'}
+              alt={fundInfoCollection().fundInfoCollection.items[0].chart.title}
+              src={fundInfoCollection().fundInfoCollection.items[0].chart.url}
             />
           </div>
-          <div id="invest-chart" class="child">
-            <Donut
-              value={'35%'}
-              title={'Usage overview'}
-              data={{
-                Bitcoin: { value: 35, color: '#090A0B' },
-                Etherium: { value: 15, color: '#5AC8FA' },
-                Dodegcoin: { value: 20, color: '#5856D6' },
-                Solano: { value: 30, color: '#AEAEB2' },
-              }}
-            />
-          </div>
-        </div>
-        <div id="fund-value" class="padding-48">
-          <FundValue
-            title="Fund Value Overtime"
-            labels={[
-              '00:00',
-              '01:00',
-              '02:00',
-              '03:00',
-              '04:00',
-              '05:00',
-              '06:00',
-              '07:00',
-              '08:00',
-              '09:00',
-            ]}
-            max={70}
-            datasets={[
-              {
-                label: 'Buying',
-                data: [10, 28, 29, 39, 50, 47, 30, 20, 36, 45],
-              },
-              {
-                label: 'Selling',
-                data: [38, 31, 40, 28, 39, 10, 50, 30, 35, 21],
-              },
-            ]}
-          />
-        </div>
-      </section>
+        </section>
+      </Show>
     </ArcaneAppProvider>
   );
 };
