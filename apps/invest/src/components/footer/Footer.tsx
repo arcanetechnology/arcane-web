@@ -1,11 +1,13 @@
 /** @format */
 
-import type { VoidComponent } from 'solid-js';
+import { For, Show, VoidComponent } from 'solid-js';
 import { FaBrandsLinkedinIn, FaBrandsTwitter } from 'solid-icons/fa';
 import './Footer.scss';
 import Logo from '../../assets/invest.svg';
+import { getNavigation } from '../../api/navigation';
 
 const Footer: VoidComponent = () => {
+  const nav = getNavigation();
   return (
     <footer>
       <div class="margin-48 container align-row gap-big">
@@ -21,15 +23,20 @@ const Footer: VoidComponent = () => {
         <div>
           <p class="heading8">Navigation</p>
           <nav id="arcane-application-navigation" class="align-vertical">
-            <a class="third after footer-link body1" href="/trade">
-              Trade
-            </a>
-            <a class="third after footer-link body1" href="/invest">
-              Invest
-            </a>
-            <a class="third after footer-link body1" href="/research">
-              Research
-            </a>
+            <Show when={nav()}>
+              {
+                <For each={nav().applicationCollection.items}>
+                  {(n) => (
+                    <a
+                      class="third after footer-link body1"
+                      href={window.location.origin + '/' + (n.path ?? '')}
+                    >
+                      {n.name}
+                    </a>
+                  )}
+                </For>
+              }
+            </Show>
           </nav>
         </div>
         <div>

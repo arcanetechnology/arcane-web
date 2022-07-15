@@ -10,7 +10,12 @@ type AssetInfoProps = {
   data: Assets;
   title: string;
 };
-
+const backgroundColor = [
+  'rgb(255, 99, 132)',
+  'rgb(54, 162, 235)',
+  'rgb(255, 205, 86)',
+  'rgb(255, 123, 86)',
+];
 const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
   const [sum, setSum] = createSignal<number | null>(null);
   let canvas;
@@ -31,12 +36,7 @@ const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
             {
               label: props.title,
               data: props.data.map((item) => (item.units / sum) * 100),
-              backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(255, 123, 86)',
-              ],
+              backgroundColor: backgroundColor,
             },
           ],
         },
@@ -53,6 +53,7 @@ const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
                     text: `${chart.data.labels[i]} (${data}%)`,
                     datasetIndex: i,
                     hidden: false,
+                    fillStyle: datasets[0].backgroundColor[i],
                     textAlign: 'left',
                   }));
                 },

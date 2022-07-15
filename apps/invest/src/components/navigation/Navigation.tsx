@@ -4,6 +4,7 @@ import { createSignal, Show, VoidComponent, For } from 'solid-js';
 import { gql } from '@solid-primitives/graphql';
 import client from '../../platform-contentful';
 import './Navigation.scss';
+import { getNavigation } from '../../api/navigation';
 
 type NavItems = {
   logo: { url: string; description: string };
@@ -13,22 +14,7 @@ type NavItems = {
 
 const Navigation: VoidComponent = () => {
   const [navigation, setNavigation] = createSignal(false);
-  const [nav] = client<{ applicationCollection: { items: Array<NavItems> } }>(
-    gql`
-      query {
-        applicationCollection {
-          items {
-            name
-            logo {
-              url
-              description
-            }
-            path
-          }
-        }
-      }
-    `
-  );
+  const nav = getNavigation();
 
   const toggleNavigation = (isHovering: boolean) => setNavigation(isHovering);
 

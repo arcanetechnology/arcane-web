@@ -97,7 +97,7 @@ const CustomerFormPages = formConfig.map(
                         {(c) => (
                           <option
                             value={c.countryCode}
-                          >{`${c.flag} +${c.countryCode}`}</option>
+                          >{`+${c.countryCode} ${c.flag}`}</option>
                         )}
                       </For>
                     </select>
