@@ -10,9 +10,12 @@ type LandingProps = {
 
 const Landing: FlowComponent<LandingProps> = (props) => {
   const base = { opacity: 1 };
-  const options = { duration: 1000 };
-  const animateIn = (el) => {
-    el.animate([{ opacity: 0 }, base], options);
+  const options = { duration: 1300 };
+  const animateIn = (el: Element, done: VoidFunction) => {
+    el.animate(
+      [{ opacity: 0, transform: 'translateY(30px)' }, base],
+      options
+    ).finished.then(done);
   };
 
   return (
@@ -27,18 +30,20 @@ const Landing: FlowComponent<LandingProps> = (props) => {
         </div>
       </section>
       <section class="margin-48">
-        <div id="apology-message" class="container" data-auto-grid="2">
-          <div class="space-8">
-            <Invest />
+        <Transition onEnter={animateIn} appear={true}>
+          <div id="apology-message" class="container" data-auto-grid="2">
+            <div class="space-8">
+              <Invest />
+            </div>
+            <div class="space-8 align-vertical">
+              <h1>The fund.</h1>
+              <h6 class="secondary-text">
+                Get managed exposure to cryptocurrencies as an asset class.
+              </h6>
+              <div class="margin-top-16">{props.children}</div>
+            </div>
           </div>
-          <div class="space-8 align-vertical">
-            <h1>The fund.</h1>
-            <h6 class="secondary-text">
-              Get managed exposure to cryptocurrencies as an asset class.
-            </h6>
-            <div class="margin-top-16">{props.children}</div>
-          </div>
-        </div>
+        </Transition>
       </section>
     </>
   );
