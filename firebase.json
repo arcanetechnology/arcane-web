@@ -3,10 +3,12 @@
     {
       "target": "arcane-invest",
       "public": "apps/invest/dist",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/invest/index.html"
+        }
       ]
     }
   ]
