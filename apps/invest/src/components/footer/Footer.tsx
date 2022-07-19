@@ -56,6 +56,7 @@ const Footer: VoidComponent = () => {
       </div>
 
       <hr />
+      
       <div class="container align-row margin-12 gap-big">
         <p class="body3">© All rights reserved to Arcane.</p>
         <p class="body3">Made with ❤️ in Norway</p>

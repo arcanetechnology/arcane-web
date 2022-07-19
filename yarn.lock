@@ -72,6 +72,7 @@ __metadata:
     "@arcane-web/arcane-auth": "workspace:^"
     "@arcane-web/arcane-components": "workspace:^"
     "@arcane-web/arcane-flow": "workspace:^"
+    "@thisbeyond/solid-select": ^0.11.0
     solid-transition-group: ^0.0.10
   languageName: unknown
   linkType: soft
@@ -3096,6 +3097,15 @@ __metadata:
     lodash: ^4.17.15
     redent: ^3.0.0
   checksum: 4240501223b72b97a44d4e3c669f39b208c49fb645d11d08d5f178d607265c5dfad07efbe027f41a0e2458178ff1fd5bf437fc05661b9109dcd013b95a37079e
+  languageName: node
+  linkType: hard
+
+"@thisbeyond/solid-select@npm:^0.11.0":
+  version: 0.11.0
+  resolution: "@thisbeyond/solid-select@npm:0.11.0"
+  peerDependencies:
+    solid-js: ^1.1.0
+  checksum: 4e22b2b08c399bc741c80223b1461da21f82df54465c6a9b66265e95698c0e6a0c81be99cfaf4bb40229df9b784ee8258e27d3900140be6840ca95d4454aedf2
   languageName: node
   linkType: hard
 

@@ -1,0 +1,32 @@
+/** @format */
+@import '@arcane-web/alchemy/lib/base/border';
+@import '@arcane-web/alchemy/lib/base/breakpoint';
+@import '@arcane-web/alchemy/lib/base/elevation';
+@import '@arcane-web/alchemy/lib/base/size';
+@import '@arcane-web/alchemy/lib/base/space';
+
+.custom .solid-select-container {
+  @include radius-large;
+  @include border-small(var(--primary-400));
+  z-index: 15;
+  color: var(--font-color);
+}
+.custom .solid-select-control {
+  @include radius-large;
+  padding: $space-4;
+}
+.custom .solid-select-placeholder {
+  padding: $space-4;
+  background-color: var(--background);
+  @include radius-large;
+  @include border-small(var(--primary-400));
+}
+.custom .solid-select-option:hover {
+  background-color: var(--selection-background);
+  color: var(--selection-color);
+}
+
+.custom .solid-select-list {
+  background-color: var(--background);
+  z-index: 15;
+}

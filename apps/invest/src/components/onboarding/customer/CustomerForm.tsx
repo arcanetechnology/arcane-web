@@ -16,15 +16,15 @@ import reporter from '@felte/reporter-tippy';
 import type { OnboardingFormPages } from '../Onboarding.types';
 import countries from '../../../assets/countries.json';
 import type { Countries, Country } from '../../../invest.types';
+import { createOptions, Select } from '@thisbeyond/solid-select';
+import '@thisbeyond/solid-select/style.css';
+import './CustomerForm.scss';
 
-const countryCodeSort = (a: Country, b: Country) => {
-  const aCode = Number(a.countryCode.substring(1));
-  const bCode = Number(b.countryCode.substring(1));
-};
+const coutryObject = createOptions(countries, { key: 'name' });
 
 const CustomerFormPages = formConfig.map(
   (field) => (props: OnboardingFormPages) => {
-    const { form, data } = createForm({
+    const { form, data, setFields } = createForm({
       onSubmit: props.onSubmit,
 
       extend: [
@@ -67,18 +67,15 @@ const CustomerFormPages = formConfig.map(
             >
               <Match when={field.name === 'countryCode'}>
                 <>
-                  <datalist id={field.name}>
-                    <For each={countries as Countries}>
-                      {(country) => <option value={country.name} />}
-                    </For>
-                  </datalist>
-                  <Input
-                    class="w-full"
-                    name={field.name}
-                    placeholder={field.initialValue}
+                  <Select
+                    class="custom"
+                    {...coutryObject}
                     id={field.name}
-                    type="text"
-                    list={field.name}
+                    name={field.name}
+                    initialValue={data(($data) => $data.countryCode)}
+                    onChange={(selected) => {
+                      setFields({ countryCode: selected.name });
+                    }}
                   />
                 </>
               </Match>
