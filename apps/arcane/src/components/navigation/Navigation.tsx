@@ -1,39 +1,47 @@
 /** @format */
 
-import { createUniqueId, VoidComponent } from 'solid-js';
-
-import { fetchAppsCollection } from '~/api';
+import type { VoidComponent } from 'solid-js';
+import type { Apps } from '~/types';
 import './Navigation.scss';
 
-const Navigation: VoidComponent = () => {
-  const apps = fetchAppsCollection();
+type NavigationProps = {
+  apps: Apps | undefined;
+};
+
+const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
+const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
+
+const Navigation: VoidComponent<NavigationProps> = (props) => {
   const [t] = useI18n();
-  const NAVIGATION_MENU_ID = `${createUniqueId()}-arcane-header-navigation-menu`;
-  const NAVIGATION_MENU_BUTTON_ID = `${createUniqueId()}-arcane-header-navigation-menu-button`;
+
+  let navigationRef: (el: HTMLDivElement) => void = (el: HTMLDivElement) => {
+    const navigationMenu = document.getElementById(NAVIGATION_MENU_ID);
+    const navigationMenuButton = document.getElementById(
+      NAVIGATION_MENU_BUTTON_ID
+    );
+
+    document.addEventListener('click', (e: any) => {
+      const includesMenu = !e.path.includes(navigationMenu);
+      const includesMenuBtn = !e.path.includes(navigationMenuButton);
+      if (includesMenu && includesMenuBtn) {
+        if (navigationMenu) {
+          navigationMenu.style.visibility = 'hidden';
+        }
+      }
+    });
+
+    el.addEventListener('click', () => {
+      console.log(navigationMenu);
+      if (navigationMenu) {
+        navigationMenu.style.visibility = 'visible';
+      }
+    });
+  };
 
   return (
     <div id="menu-container" class="menu-container" data-is-closed="true">
       <div
-        ref={(el) => {
-          const navigationMenu = document.getElementById(NAVIGATION_MENU_ID);
-          const navigationMenuButton = document.getElementById(
-            NAVIGATION_MENU_BUTTON_ID
-          );
-          document.addEventListener('click', (e: any) => {
-            const includesMenu = !e.path.includes(navigationMenu);
-            const includesMenuBtn = !e.path.includes(navigationMenuButton);
-            if (includesMenu && includesMenuBtn) {
-              if (navigationMenu) {
-                navigationMenu.style.visibility = 'hidden';
-              }
-            }
-          });
-          el.addEventListener('click', () => {
-            if (navigationMenu) {
-              navigationMenu.style.visibility = 'visible';
-            }
-          });
-        }}
+        ref={navigationRef}
         id={NAVIGATION_MENU_BUTTON_ID}
         class="menu-btn circle-hover"
       >
@@ -47,25 +55,23 @@ const Navigation: VoidComponent = () => {
         </abbr>
       </div>
       <div id={NAVIGATION_MENU_ID} class="menu margin-12">
-        <Show when={apps()}>
-          <nav class="gap-small" data-auto-grid="2">
-            <For each={apps()!.applicationCollection.items}>
-              {(n) => (
-                <div class="app-nav">
-                  <Link class="app-nav-link" href={'/' + (n.path ?? '')}>
-                    <img
-                      width={40}
-                      height={40}
-                      src={n.logo.url}
-                      alt={`${n.logo.description} logo`}
-                    />
-                  </Link>
-                  <p class="button-small">{n.name}</p>
-                </div>
-              )}
-            </For>
-          </nav>
-        </Show>
+        <nav class="gap-small" data-auto-grid="2">
+          <For each={props.apps}>
+            {(n) => (
+              <div class="app-nav">
+                <Link class="app-nav-link" href={'/' + (n.path ?? '')}>
+                  <img
+                    width={40}
+                    height={40}
+                    src={n.logo.url}
+                    alt={`${n.logo.description} logo`}
+                  />
+                </Link>
+                <p class="button-small">{n.name}</p>
+              </div>
+            )}
+          </For>
+        </nav>
       </div>
     </div>
   );

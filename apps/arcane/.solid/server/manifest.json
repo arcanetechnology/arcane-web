@@ -4,10 +4,12 @@
     "src": "src/entry-server.tsx",
     "isEntry": true,
     "css": [
-      "assets/entry-server.a0f50a8f.css"
+      "assets/entry-server.336a0ebe.css"
     ],
     "assets": [
-      "assets/logo.514dc4d8.svg"
+      "assets/logo.ea4c43ee.svg",
+      "assets/linkedin.de4b4749.svg",
+      "assets/twitter.9d5edd23.svg"
     ]
   }
 }

@@ -1,14 +1,17 @@
 /** @format */
 import type { ParentComponent } from 'solid-js';
+import type { Apps } from '~/types';
 
 interface AppContextInterface {
   isDark: boolean;
   loading: boolean;
+  apps: Apps;
 }
 
 const AppContext = createContext<AppContextInterface>({
   isDark: false,
   loading: true,
+  apps: [],
 });
 
 export const AppContextProvider: ParentComponent = (props) => {

@@ -2,23 +2,20 @@
 
 import type { VoidComponent } from 'solid-js';
 import logo from '~/assets/logo.svg';
-import { routeReadyState } from '~/utils';
+import { useAppContext } from '../contexts';
 import Navigation from '../navigation/Navigation';
 
 import './Header.scss';
 
 const Header: VoidComponent = () => {
-  createEffect(() => {});
-  createEffect(
-    on(
-      routeReadyState,
-      (readyState) => {
-        if (readyState.loading) return;
-        console.log('loaded');
-      },
-      { defer: true }
-    )
-  );
+  const context = useAppContext();
+
+  const getApps = createMemo(() => {
+    const apps = context.apps;
+    if (apps) {
+      return apps;
+    }
+  });
   return (
     <header role="banner">
       <div class="container align-row margin-12">
@@ -28,7 +25,7 @@ const Header: VoidComponent = () => {
             'flex-grow': 1,
           }}
         />
-        <Navigation />
+        <Navigation apps={getApps()} />
       </div>
     </header>
   );

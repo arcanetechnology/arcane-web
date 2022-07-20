@@ -1,8 +1,10 @@
 /** @format */
 
 import type { VoidComponent } from 'solid-js';
-import { FaBrandsLinkedinIn, FaBrandsTwitter } from 'solid-icons/fa';
+
 import logo from '~/assets/logo.svg';
+import linkedin from '~/assets/linkedin.svg';
+import twitter from '~/assets/twitter.svg';
 
 import './Footer.scss';
 
@@ -75,13 +77,11 @@ const Footer: VoidComponent = () => {
           </p>
           <Link href={'https://twitter.com/arcane_crypto'}>
             <p class="body3 footer-link">
-              <FaBrandsTwitter />
+              <img src={twitter} alt="arcane twitter" />
             </p>
           </Link>
           <Link href={'https://www.linkedin.com/company/arcane-crypto/'}>
-            <p class="body3 footer-link">
-              <FaBrandsLinkedinIn />
-            </p>
+            <img src={linkedin} alt="arcane linkedin" />
           </Link>
         </div>
       </div>

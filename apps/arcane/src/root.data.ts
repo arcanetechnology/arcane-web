@@ -2,6 +2,7 @@
 
 import type { RouteDataFunc } from 'solid-app-router';
 import { isServer } from 'solid-js/web';
+import { fetchAppsCollection } from './api';
 
 const createRootStore = () => {
   const now = new Date();
@@ -38,7 +39,11 @@ type DataParams = {
 };
 
 const RootData: RouteDataFunc = (props) => {
+  // get all apps
+
   const [settings, set] = createRootStore();
+
+  set('apps', 'undefined');
   const browserLang = !isServer ? navigator.language.slice(0, 2) : 'en';
   const location = props.location;
   if (location.query['locale']) {
@@ -61,8 +66,9 @@ const RootData: RouteDataFunc = (props) => {
     }
     return { locale, page };
   };
-
+  const apps = fetchAppsCollection();
   const [lang] = createResource(params, ({ locale }) => langs[locale]());
+
   const isDark = () =>
     settings.dark === 'true'
       ? true
@@ -71,6 +77,10 @@ const RootData: RouteDataFunc = (props) => {
       : window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   createEffect(() => set('locale', locale()));
+
+  createEffect(() => {
+    if (!apps.loading) add('apps', apps()?.applicationCollection.items || []);
+  });
 
   createEffect(() => {
     if (!lang.loading) add(locale(), lang() as Record<string, any>);
@@ -95,6 +105,10 @@ const RootData: RouteDataFunc = (props) => {
     },
     get loading() {
       return lang.loading;
+    },
+
+    get apps() {
+      return apps()?.applicationCollection.items;
     },
   };
 };
