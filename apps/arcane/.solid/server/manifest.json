@@ -4,7 +4,7 @@
     "src": "src/entry-server.tsx",
     "isEntry": true,
     "css": [
-      "assets/entry-server.c10b26ca.css"
+      "assets/entry-server.a0f50a8f.css"
     ],
     "assets": [
       "assets/logo.514dc4d8.svg"

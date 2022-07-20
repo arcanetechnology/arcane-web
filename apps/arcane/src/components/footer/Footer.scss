@@ -1,0 +1,40 @@
+/** @format */
+@import '@arcane-web/alchemy/lib/base/breakpoint';
+
+footer {
+  background-color: var(--footer-background);
+  color: var(--footer-color);
+  flex: 0;
+}
+
+#footer-logo {
+  fill: var(--footer-color);
+}
+
+.footer-link {
+  color: var(--link-contrast-color);
+}
+
+.footer-follow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.footer-row {
+  display: flex;
+  @include breakpoint(small) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-small);
+  }
+
+  @include breakpoint(medium) {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--gap-default);
+  }
+}

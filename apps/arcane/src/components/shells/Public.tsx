@@ -6,7 +6,7 @@ import Footer from '../footer/Footer';
 const Public: ParentComponent = (props) => {
   return (
     <>
-      <main>{props.children}</main>
+      <main style={{ flex: '1 0 auto' }}>{props.children}</main>
       <Footer />
     </>
   );

@@ -1,10 +1,27 @@
 {
-  "title": "Arcane Crypto",
+  "name": "English",
+  "title": "Arcane Crypto . Platform",
   "landing": {
     "title": "Welcome to Arcane Crypto"
   },
   "apps": {
     "title": "Arcane Apps"
   },
-  "404": "404 | Page Not Found"
+  "404": "404 | Page Not Found",
+  "footer": {
+    "navigation": {
+      "title": "Navigation"
+    },
+    "company": {
+      "title": "Company",
+      "people": "People",
+      "relations": "Investor Relations",
+      "privacy": "Privacy Policy"
+    },
+    "copyright": "Copyright © {{ date }} Arcane Crypto. All rights reserved.",
+    "message": "Made with ❤️ in Norway",
+    "social": {
+      "title": "Follow Us"
+    }
+  }
 }
