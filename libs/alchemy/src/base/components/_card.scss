@@ -1,0 +1,20 @@
+/** @format */
+
+@use '../elevation' as *;
+@use '../border' as *;
+@use '../space' as *;
+@use '../breakpoint' as *;
+
+.card {
+  @include elevation-200;
+  @include radius-large;
+  padding: $space-8;
+  min-width: $space-192;
+  @include breakpoint(default) {
+    padding-bottom: $space-12;
+  }
+
+  @include breakpoint(small) {
+    padding-bottom: $space-12;
+  }
+}

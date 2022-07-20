@@ -6,6 +6,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
+
     "jsxImportSource": "solid-js",
     "jsx": "preserve",
     "types": ["vite/client"],
@@ -13,5 +14,6 @@
     "paths": {
       "~/*": ["./src/*"]
     }
-  }
+  },
+  "exclude": ["node_modules", "typings", "public", "build", "dist"]
 }

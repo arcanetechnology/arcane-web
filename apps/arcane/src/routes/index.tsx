@@ -1,9 +1,17 @@
 /** @format */
 
-export default function Home() {
+import type { VoidComponent } from 'solid-js';
+import { Banner, Public } from '~/components';
+
+const Home: VoidComponent = () => {
+  const [t] = useI18n();
   return (
-    <main>
-      <h1>Landing Page</h1>
-    </main>
+    <Public>
+      <Banner>
+        <h1>{t('global.landing.title', {}, 'Welcome to Arcane Crypto')}</h1>
+      </Banner>
+    </Public>
   );
-}
+};
+
+export default Home;

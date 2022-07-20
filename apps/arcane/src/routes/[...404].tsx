@@ -1,16 +1,18 @@
 /** @format */
 
-export default function NotFound() {
+import type { Component } from 'solid-js';
+import { NotFound, Public } from '~/components';
+
+const FourOhFour: Component = () => {
   return (
-    <main>
-      <h1>Page Not Found</h1>
-      <p>
-        Visit{' '}
-        <a href="https://solidjs.com" target="_blank">
-          solidjs.com
-        </a>{' '}
-        to learn how to build Solid apps.
-      </p>
-    </main>
+    <Public>
+      <section class="margin-48">
+        <div id="error" class="container" style={{ 'text-align': 'center' }}>
+          <NotFound />
+        </div>
+      </section>
+    </Public>
   );
-}
+};
+
+export default FourOhFour;

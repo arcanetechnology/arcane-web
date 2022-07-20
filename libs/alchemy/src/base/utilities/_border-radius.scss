@@ -1,0 +1,19 @@
+/** @format */
+
+// | -------------------------------------------------------------
+// | Border Radius
+// | -------------------------------------------------------------
+
+@use '../border' as *;
+
+.radius-small {
+  @include radius-small;
+}
+
+.radius-large {
+  @include radius-large;
+}
+
+.border-small {
+  border: 1px solid var(--font-color);
+}

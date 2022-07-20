@@ -4,7 +4,8 @@
     "browser": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": ["prettier"],
+  "plugins": ["unused-imports", "@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -14,16 +15,11 @@
     "sourceType": "module"
   },
   "rules": {
-    /* "no-console": "error", */
-  },
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"],
-      "plugins": ["solid", "@typescript-eslint", "jest-dom"],
-      "extends": [
-        "plugin:solid/recommended",
-        "plugin:@typescript-eslint/recommended"
-      ]
-    }
-  ]
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-vars": [
+      2,
+      { "args": "after-used", "argsIgnorePattern": "^_" }
+    ],
+    "unused-imports/no-unused-imports": "error"
+  }
 }
