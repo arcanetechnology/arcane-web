@@ -1,15 +1,25 @@
 /** @format */
 
 import type { VoidComponent } from 'solid-js';
+import { FaBrandsLinkedinIn, FaBrandsTwitter } from 'solid-icons/fa';
+import logo from '~/assets/logo.svg';
+
 import './Footer.scss';
 
 const Footer: VoidComponent = () => {
   const [t] = useI18n();
+
   return (
     <footer>
       <div class="container footer-row margin-48">
         <div>
-          <h3>Logo</h3>
+          <img
+            style={{
+              filter: `invert(1)`,
+            }}
+            src={logo}
+            alt="arcane-logo"
+          />
         </div>
         <div
           style={{
@@ -43,7 +53,6 @@ const Footer: VoidComponent = () => {
       </div>
 
       <hr />
-
       <div class="container footer-row margin-12">
         <p class="body3">
           {t(
@@ -65,10 +74,14 @@ const Footer: VoidComponent = () => {
             {t('global.footer.social.title', {}, 'Follow Us')}
           </p>
           <Link href={'https://twitter.com/arcane_crypto'}>
-            <p class="body3 footer-link">placeholder twitter</p>
+            <p class="body3 footer-link">
+              <FaBrandsTwitter />
+            </p>
           </Link>
           <Link href={'https://www.linkedin.com/company/arcane-crypto/'}>
-            <p class="body3 footer-link">placeholder linkedin</p>
+            <p class="body3 footer-link">
+              <FaBrandsLinkedinIn />
+            </p>
           </Link>
         </div>
       </div>
