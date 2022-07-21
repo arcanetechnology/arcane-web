@@ -1,9 +1,8 @@
 /** @format */
 
-import type { Component } from 'solid-js';
 import { NotFound, Public } from '~/components';
 
-const FourOhFour: Component = () => {
+export default () => {
   return (
     <Public>
       <section class="margin-48">
@@ -14,5 +13,3 @@ const FourOhFour: Component = () => {
     </Public>
   );
 };
-
-export default FourOhFour;

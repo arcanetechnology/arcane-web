@@ -12,10 +12,12 @@ import type { ParentComponent } from 'solid-js';
 import { I18nContext, createI18nContext } from '@solid-primitives/i18n';
 import '@arcane-web/alchemy';
 import './root.scss';
+import { preventSmoothScrollOnTabbing } from './utils';
 
 // @refresh reload
 
 export default function Root() {
+  preventSmoothScrollOnTabbing();
   return (
     <html lang="en">
       <head>

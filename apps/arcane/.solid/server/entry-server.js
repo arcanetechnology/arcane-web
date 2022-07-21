@@ -491,6 +491,7 @@ const useHref = (to) => {
         return to_ !== undefined ? router.renderPath(to_) : to_;
     });
 };
+const useParams = () => useRoute().params;
 const useRouteData = () => useRoute().data;
 function createRoutes(routeDef, base = "", fallback) {
     const { component, data, children } = routeDef;
@@ -828,7 +829,7 @@ function createRouteContext(router, parent, child, match) {
     return route;
 }
 
-const _tmpl$$d = ["<a", " ", ">", "</a>"];
+const _tmpl$$f = ["<a", " ", ">", "</a>"];
 const Router = props => {
   const {
     source,
@@ -947,7 +948,7 @@ const Outlet = () => {
 function LinkBase(props) {
   const [, rest] = splitProps(props, ["children", "to", "href", "state"]);
   const href = useHref(() => props.to);
-  return ssr(_tmpl$$d, ssrHydrationKey(), ssrSpread(rest, false, true) + ssrAttribute("href", escape(href(), true) || escape(props.href, true), false) + ssrAttribute("state", escape(JSON.stringify(props.state), true), false), escape(props.children));
+  return ssr(_tmpl$$f, ssrHydrationKey(), ssrSpread(rest, false, true) + ssrAttribute("href", escape(href(), true) || escape(props.href, true), false) + ssrAttribute("state", escape(JSON.stringify(props.state), true), false), escape(props.children));
 }
 
 function Link(props) {
@@ -1002,7 +1003,7 @@ function StartProvider(props) {
   });
 }
 
-const _tmpl$$c = ["<link", " rel=\"stylesheet\"", ">"],
+const _tmpl$$e = ["<link", " rel=\"stylesheet\"", ">"],
       _tmpl$2$4 = ["<link", " rel=\"modulepreload\"", ">"];
 
 function getAssetsFromManifest(manifest, routerContext) {
@@ -1011,7 +1012,7 @@ function getAssetsFromManifest(manifest, routerContext) {
     return memo;
   }, []);
   const links = match.reduce((r, src) => {
-    r[src.href] = src.type === "style" ? ssr(_tmpl$$c, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$4, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
+    r[src.href] = src.type === "style" ? ssr(_tmpl$$e, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$4, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
     return r;
   }, {});
   return Object.values(links);
@@ -1049,10 +1050,13 @@ function Meta() {
 
 /// <reference path="../server/types.tsx" />
 const routes = [{
-  component: lazy(() => Promise.resolve().then(function () { return ____404_; })),
+  component: lazy(() => Promise.resolve().then(function () { return ____404_$1; })),
   path: "/*404"
 }, {
-  component: lazy(() => Promise.resolve().then(function () { return index; })),
+  component: lazy(() => Promise.resolve().then(function () { return _app_$1; })),
+  path: "/:app"
+}, {
+  component: lazy(() => Promise.resolve().then(function () { return index$1; })),
   path: "/"
 }, {
   component: lazy(() => Promise.resolve().then(function () { return login; })),
@@ -1066,6 +1070,12 @@ const routes = [{
 }, {
   component: lazy(() => Promise.resolve().then(function () { return relations; })),
   path: "/relations"
+}, {
+  component: lazy(() => Promise.resolve().then(function () { return _app_; })),
+  path: "/apps/:app"
+}, {
+  component: lazy(() => Promise.resolve().then(function () { return index; })),
+  path: "/apps/"
 }]; // console.log(routes);
 
 /**
@@ -1074,12 +1084,12 @@ const routes = [{
 
 const Routes = useRoutes(routes);
 
-const _tmpl$$b = ["<script", " type=\"module\" async", "></script>"];
+const _tmpl$$d = ["<script", " type=\"module\" async", "></script>"];
 
 function getFromManifest(manifest) {
   const match = manifest["*"];
   const entry = match.find(src => src.type === "script");
-  return ssr(_tmpl$$b, ssrHydrationKey(), ssrAttribute("src", escape(entry.href, true), false));
+  return ssr(_tmpl$$d, ssrHydrationKey(), ssrAttribute("src", escape(entry.href, true), false));
 }
 
 function Scripts() {
@@ -1092,7 +1102,7 @@ function Scripts() {
   })];
 }
 
-const _tmpl$$a = ["<div", " style=\"", "\"><div style=\"", "\"><p style=\"", "\" id=\"error-message\">", "</p><button id=\"reset-errors\" style=\"", "\">Clear errors and retry</button><pre style=\"", "\">", "</pre></div></div>"];
+const _tmpl$$c = ["<div", " style=\"", "\"><div style=\"", "\"><p style=\"", "\" id=\"error-message\">", "</p><button id=\"reset-errors\" style=\"", "\">Clear errors and retry</button><pre style=\"", "\">", "</pre></div></div>"];
 function ErrorBoundary(props) {
   return createComponent(ErrorBoundary$1, {
     fallback: e => {
@@ -1122,7 +1132,7 @@ function ErrorBoundary(props) {
 }
 
 function ErrorMessage(props) {
-  return ssr(_tmpl$$a, ssrHydrationKey(), "padding:" + "16px", "background-color:" + "rgba(252, 165, 165)" + (";color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";overflow:" + "scroll") + (";padding:" + "16px") + (";margin-bottom:" + "8px"), "font-weight:" + "bold", escape(props.error.message), "color:" + "rgba(252, 165, 165)" + (";background-color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";padding:" + "4px 8px"), "margin-top:" + "8px" + (";width:" + "100%"), escape(props.error.stack));
+  return ssr(_tmpl$$c, ssrHydrationKey(), "padding:" + "16px", "background-color:" + "rgba(252, 165, 165)" + (";color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";overflow:" + "scroll") + (";padding:" + "16px") + (";margin-bottom:" + "8px"), "font-weight:" + "bold", escape(props.error.message), "color:" + "rgba(252, 165, 165)" + (";background-color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";padding:" + "4px 8px"), "margin-top:" + "8px" + (";width:" + "100%"), escape(props.error.stack));
 }
 
 var logo = "/assets/logo.ea4c43ee.svg";
@@ -1148,7 +1158,7 @@ const useAppContext = () => useContext(AppContext);
 
 var Navigation$1 = '';
 
-const _tmpl$$9 = ["<div", " id=\"menu-container\" class=\"menu-container\" data-is-closed=\"true\"><div", " class=\"menu-btn circle-hover\"><abbr class=\"clear-df-abbr\"", "><svg viewBox=\"0 0 24 24\"><path d=\"M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z\"></path></svg></abbr></div><div", " class=\"menu margin-12\"><nav class=\"gap-small\" data-auto-grid=\"2\">", "</nav></div></div>"],
+const _tmpl$$b = ["<div", " id=\"menu-container\" class=\"menu-container\" data-is-closed=\"true\"><div", " class=\"menu-btn circle-hover\"><abbr class=\"clear-df-abbr\"", "><svg viewBox=\"0 0 24 24\"><path d=\"M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z\"></path></svg></abbr></div><div", " class=\"menu margin-12\"><nav class=\"gap-small\" data-auto-grid=\"2\">", "</nav></div></div>"],
       _tmpl$2$3 = ["<img", " width=\"40\" height=\"40\"", " alt=\"", "\">"],
       _tmpl$3$2 = ["<div", " class=\"app-nav\"><!--#-->", "<!--/--><p class=\"button-small\">", "</p></div>"];
 
@@ -1166,7 +1176,7 @@ const Navigation = () => {
   const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
   const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
 
-  return ssr(_tmpl$$9, ssrHydrationKey(), ssrAttribute("id", escape(NAVIGATION_MENU_BUTTON_ID, true), false), ssrAttribute("title", escape(t('global.apps.title', {}, 'Arcane Apps'), true), false), ssrAttribute("id", escape(NAVIGATION_MENU_ID, true), false), escape(createComponent(Show, {
+  return ssr(_tmpl$$b, ssrHydrationKey(), ssrAttribute("id", escape(NAVIGATION_MENU_BUTTON_ID, true), false), ssrAttribute("title", escape(t('global.apps.title', {}, 'Arcane Apps'), true), false), ssrAttribute("id", escape(NAVIGATION_MENU_ID, true), false), escape(createComponent(Show, {
     get when() {
       return arcaneApps();
     },
@@ -1197,7 +1207,7 @@ const Navigation = () => {
 
 var Header$1 = '';
 
-const _tmpl$$8 = ["<img", " alt=\"logo\">"],
+const _tmpl$$a = ["<img", " alt=\"logo\">"],
       _tmpl$2$2 = ["<header", " role=\"banner\"><div class=\"container align-row margin-12\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></header>"];
 
 const Header = () => {
@@ -1206,7 +1216,7 @@ const Header = () => {
     appear: !isServer,
 
     get children() {
-      return ssr(_tmpl$$8, ssrHydrationKey() + ssrAttribute("src", escape(logo, true), false));
+      return ssr(_tmpl$$a, ssrHydrationKey() + ssrAttribute("src", escape(logo, true), false));
     }
 
   })), "flex-grow:" + 1, escape(createComponent(Navigation, {})));
@@ -1221,29 +1231,30 @@ const options = {
 
 const onLogoEnter = (el, done) => {
   el.animate([{
-    opacity: 0,
-    transform: 'scale(1.3)'
+    opacity: 0
   }, base], options).finished.then(done);
 };
 
-const _tmpl$$7 = ["<section", "><section class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section></section>"];
+const _tmpl$$9 = ["<section", "><section class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section></section>"];
 
 /** @format */
 const Banner = props => {
-  return ssr(_tmpl$$7, ssrHydrationKey(), "text-align:" + "center", escape(props.children));
+  return ssr(_tmpl$$9, ssrHydrationKey(), "text-align:" + "center", escape(props.children));
 };
 
-const _tmpl$$6 = ["<h6", " id=\"arcane-not-found\">", "</h6>"];
+const _tmpl$$8 = ["<h6", " id=\"arcane-not-found\">", "</h6>"];
 
 const NotFound = () => {
   const [t] = useI18n();
   return createComponent(Banner, {
     get children() {
-      return ssr(_tmpl$$6, ssrHydrationKey(), escape(t('404')));
+      return ssr(_tmpl$$8, ssrHydrationKey(), escape(t('404')));
     }
 
   });
 };
+
+var NotFound$1 = NotFound;
 
 var linkedin = "/assets/linkedin.de4b4749.svg";
 
@@ -1251,7 +1262,7 @@ var twitter = "/assets/twitter.9d5edd23.svg";
 
 var Footer$1 = '';
 
-const _tmpl$$5 = ["<p", " class=\"body3 footer-link\"><img width=\"20\" style=\"", "\"", " alt=\"arcane twitter\"></p>"],
+const _tmpl$$7 = ["<p", " class=\"body3 footer-link\"><img width=\"20\" style=\"", "\"", " alt=\"arcane twitter\"></p>"],
       _tmpl$2$1 = ["<img", " width=\"20\" style=\"", "\"", " alt=\"arcane linkedin\">"],
       _tmpl$3$1 = ["<footer", "><div class=\"container footer-row margin-48\"><div><img style=\"", "\"", " alt=\"arcane-logo\"></div><div style=\"", "\"></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-application-navigation\" class=\"align-vertical\"></nav></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-static\" class=\"align-vertical\"><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--></nav></div></div><hr><div class=\"container footer-row margin-12\"><p class=\"body3\">", "</p><p class=\"body3\">", "</p><div style=\"", "\"></div><div class=\"footer-follow gap-small\"><p class=\"body3\">", "</p><!--#-->", "<!--/--><!--#-->", "<!--/--></div></div></footer>"];
 
@@ -1287,7 +1298,7 @@ const Footer = () => {
     href: 'https://twitter.com/arcane_crypto',
 
     get children() {
-      return ssr(_tmpl$$5, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(twitter, true), false));
+      return ssr(_tmpl$$7, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(twitter, true), false));
     }
 
   })), escape(createComponent(Link, {
@@ -1300,24 +1311,54 @@ const Footer = () => {
   })));
 };
 
-const _tmpl$$4 = ["<main", " style=\"", "\">", "</main>"];
+const _tmpl$$6 = ["<main", " style=\"", "\">", "</main>"];
 
 const Public = props => {
-  return [ssr(_tmpl$$4, ssrHydrationKey(), "flex:" + "1 0 auto", escape(props.children)), createComponent(Footer, {})];
+  return [ssr(_tmpl$$6, ssrHydrationKey(), "flex:" + "1 0 auto", escape(props.children)), createComponent(Footer, {})];
+};
+
+var Public$1 = Public;
+
+const _tmpl$$5 = ["<main", " style=\"", "\">", "</main>"];
+
+/** @format */
+const Private = props => {
+  return ssr(_tmpl$$5, ssrHydrationKey(), "flex:" + "1 0 auto", escape(props.children));
 };
 
 var core = '';
 
 var root = '';
 
-const _tmpl$$3 = ["<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link href=\"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap\" rel=\"stylesheet\"><link rel=\"icon\" href=\"data:,\">", "", "</head>"],
+createSignal({
+  loading: false,
+  routeChanged: false,
+  loadingBar: false
+}, {
+  equals: false
+});
+
+/** @format */
+const preventSmoothScrollOnTabbing = () => {
+  if (isServer) return;
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    document.documentElement.style.scrollBehavior = '';
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = 'smooth';
+    });
+  });
+};
+
+const _tmpl$$4 = ["<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link href=\"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap\" rel=\"stylesheet\"><link rel=\"icon\" href=\"data:,\">", "", "</head>"],
       _tmpl$2 = ["<html", " lang=\"en\">", "<body><!--#-->", "<!--/--><!--#-->", "<!--/--></body></html>"],
       _tmpl$3 = ["<div", " class=\"arcane-body\"", ">", "</div>"];
 
 function Root() {
+  preventSmoothScrollOnTabbing();
   return ssr(_tmpl$2, ssrHydrationKey(), NoHydration({
     get children() {
-      return ssr(_tmpl$$3, escape(createComponent(Meta, {})), escape(createComponent(Links, {})));
+      return ssr(_tmpl$$4, escape(createComponent(Meta, {})), escape(createComponent(Links, {})));
     }
 
   }), escape(createComponent(Lang, {
@@ -1379,6 +1420,10 @@ const api = [
   },
   {
     get: "skip",
+    path: "/:app"
+  },
+  {
+    get: "skip",
     path: "/"
   },
   {
@@ -1396,6 +1441,14 @@ const api = [
   {
     get: "skip",
     path: "/relations"
+  },
+  {
+    get: "skip",
+    path: "/apps/:app"
+  },
+  {
+    get: "skip",
+    path: "/apps/"
   }
 ];
 function routeToMatchRoute(route) {
@@ -1869,7 +1922,7 @@ var entryServer = createHandler(renderAsync(context => createComponent(StartServ
 
 const name = "English";
 const title = "Arcane Crypto . Platform";
-const apps = {
+const apps$1 = {
 	title: "Arcane Apps"
 };
 const footer = {
@@ -1892,18 +1945,24 @@ var global = {
 	"404": "404 | Page Not Found",
 	name: name,
 	title: title,
-	apps: apps,
+	apps: apps$1,
 	footer: footer
 };
 
-const hero = "Welcome to Arcane Crypto";
+const hero$1 = "Welcome to Arcane Crypto";
 var landing = {
+	hero: hero$1
+};
+
+const hero = "Arcane Apps";
+var apps = {
 	hero: hero
 };
 
 const langs = () => ({
   global,
-  landing
+  landing,
+  apps
 });
 
 var en = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -1911,31 +1970,45 @@ var en = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   'default': langs
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _tmpl$$2 = ["<section", " class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section>"];
-
-const FourOhFour = () => {
-  return createComponent(Public, {
+const _tmpl$$3 = ["<section", " class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section>"];
+var ____404_ = (() => {
+  return createComponent(Public$1, {
     get children() {
-      return ssr(_tmpl$$2, ssrHydrationKey(), "text-align:" + "center", escape(createComponent(NotFound, {})));
+      return ssr(_tmpl$$3, ssrHydrationKey(), "text-align:" + "center", escape(createComponent(NotFound$1, {})));
+    }
+
+  });
+});
+
+var ____404_$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  'default': ____404_
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const Id = () => {
+  const params = useParams();
+  return createComponent(Public$1, {
+    get children() {
+      return ["Hi ", () => params.app];
     }
 
   });
 };
 
-var ____404_ = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+var _app_$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  'default': FourOhFour
+  'default': Id
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _tmpl$$1 = ["<h1", ">", "</h1>"];
+const _tmpl$$2 = ["<h1", ">", "</h1>"];
 
 const Home = () => {
   const [t] = useI18n();
-  return createComponent(Public, {
+  return createComponent(Public$1, {
     get children() {
       return createComponent(Banner, {
         get children() {
-          return ssr(_tmpl$$1, ssrHydrationKey(), escape(t('landing.hero', {}, 'Welcome to Arcane Crypto')));
+          return ssr(_tmpl$$2, ssrHydrationKey(), escape(t('landing.hero', {}, 'Welcome to Arcane Crypto')));
         }
 
       });
@@ -1944,19 +2017,19 @@ const Home = () => {
   });
 };
 
-var index = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+var index$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   'default': Home
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _tmpl$ = ["<h6", ">Login</h6>"];
+const _tmpl$$1 = ["<h6", ">Login</h6>"];
 
 const Login = () => {
-  return createComponent(Public, {
+  return createComponent(Public$1, {
     get children() {
       return createComponent(Banner, {
         get children() {
-          return ssr(_tmpl$, ssrHydrationKey());
+          return ssr(_tmpl$$1, ssrHydrationKey());
         }
 
       });
@@ -1971,7 +2044,7 @@ var login = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const People = () => {
-  return createComponent(Public, {
+  return createComponent(Public$1, {
     get children() {
       return createComponent(Banner, {
         children: "people"
@@ -1987,7 +2060,7 @@ var people = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const Privacy = () => {
-  return createComponent(Public, {
+  return createComponent(Public$1, {
     get children() {
       return createComponent(Banner, {
         children: "privacy"
@@ -2003,7 +2076,7 @@ var privacy = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const Relations = () => {
-  return createComponent(Public, {
+  return createComponent(Public$1, {
     get children() {
       return createComponent(Banner, {
         children: "Relations"
@@ -2016,6 +2089,39 @@ const Relations = () => {
 var relations = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   'default': Relations
+}, Symbol.toStringTag, { value: 'Module' }));
+
+/** @format */
+const App = () => {
+  const params = useParams();
+  return params.app;
+};
+
+var _app_ = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  'default': App
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _tmpl$ = ["<h1", ">", "</h1>"];
+
+const Apps = () => {
+  const [t] = useI18n();
+  return createComponent(Private, {
+    get children() {
+      return createComponent(Banner, {
+        get children() {
+          return ssr(_tmpl$, ssrHydrationKey(), escape(t('apps.hero', {}, 'Apps list')));
+        }
+
+      });
+    }
+
+  });
+};
+
+var index = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  'default': Apps
 }, Symbol.toStringTag, { value: 'Module' }));
 
 export { entryServer as default };
