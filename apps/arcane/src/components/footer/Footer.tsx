@@ -5,7 +5,6 @@ import type { VoidComponent } from 'solid-js';
 import logo from '~/assets/logo.svg';
 import linkedin from '~/assets/linkedin.svg';
 import twitter from '~/assets/twitter.svg';
-
 import './Footer.scss';
 
 const Footer: VoidComponent = () => {
@@ -33,7 +32,20 @@ const Footer: VoidComponent = () => {
             {t('global.footer.navigation.title', {}, 'Navigation')}
           </p>
           <nav id="arcane-application-navigation" class="align-vertical">
-            <p>navigation placeholder</p>
+            {/* <Show when={apps()}>
+              <For each={apps()?.applicationCollection.items}>
+                {(app) => (
+                  <>
+                    <Link
+                      href={'/' + (app.path ?? '')}
+                      class="third after footer-link body1"
+                    >
+                      {app.name}
+                    </Link>
+                  </>
+                )}
+              </For>
+            </Show> */}
           </nav>
         </div>
         <div>
@@ -77,11 +89,25 @@ const Footer: VoidComponent = () => {
           </p>
           <Link href={'https://twitter.com/arcane_crypto'}>
             <p class="body3 footer-link">
-              <img src={twitter} alt="arcane twitter" />
+              <img
+                width={20}
+                style={{
+                  filter: `invert(1)`,
+                }}
+                src={twitter}
+                alt="arcane twitter"
+              />
             </p>
           </Link>
           <Link href={'https://www.linkedin.com/company/arcane-crypto/'}>
-            <img src={linkedin} alt="arcane linkedin" />
+            <img
+              width={20}
+              style={{
+                filter: `invert(1)`,
+              }}
+              src={linkedin}
+              alt="arcane linkedin"
+            />
           </Link>
         </div>
       </div>

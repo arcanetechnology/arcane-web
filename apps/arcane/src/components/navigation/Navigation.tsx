@@ -1,18 +1,27 @@
 /** @format */
 
 import type { VoidComponent } from 'solid-js';
-import type { Apps } from '~/types';
+
+import { useAppContext } from '../contexts';
 import './Navigation.scss';
 
-type NavigationProps = {
-  apps: Apps | undefined;
-};
-
-const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
-const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
-
-const Navigation: VoidComponent<NavigationProps> = (props) => {
+const Navigation: VoidComponent = () => {
   const [t] = useI18n();
+
+  const context = useAppContext();
+
+  const arcaneApps = createMemo(() => {
+    if (context.apps) {
+      return context.apps;
+    } else {
+      return null;
+    }
+  });
+
+  createEffect(() => {});
+
+  const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
+  const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
 
   let navigationRef: (el: HTMLDivElement) => void = (el: HTMLDivElement) => {
     const navigationMenu = document.getElementById(NAVIGATION_MENU_ID);
@@ -31,7 +40,6 @@ const Navigation: VoidComponent<NavigationProps> = (props) => {
     });
 
     el.addEventListener('click', () => {
-      console.log(navigationMenu);
       if (navigationMenu) {
         navigationMenu.style.visibility = 'visible';
       }
@@ -56,21 +64,23 @@ const Navigation: VoidComponent<NavigationProps> = (props) => {
       </div>
       <div id={NAVIGATION_MENU_ID} class="menu margin-12">
         <nav class="gap-small" data-auto-grid="2">
-          <For each={props.apps}>
-            {(n) => (
-              <div class="app-nav">
-                <Link class="app-nav-link" href={'/' + (n.path ?? '')}>
-                  <img
-                    width={40}
-                    height={40}
-                    src={n.logo.url}
-                    alt={`${n.logo.description} logo`}
-                  />
-                </Link>
-                <p class="button-small">{n.name}</p>
-              </div>
-            )}
-          </For>
+          <Show when={arcaneApps()}>
+            <For each={arcaneApps()}>
+              {(app) => (
+                <div class="app-nav">
+                  <Link class="app-nav-link" href={'/' + (app.path ?? '')}>
+                    <img
+                      width={40}
+                      height={40}
+                      src={app.logo.url}
+                      alt={`${app.logo.description} logo`}
+                    />
+                  </Link>
+                  <p class="button-small">{app.name}</p>
+                </div>
+              )}
+            </For>
+          </Show>
         </nav>
       </div>
     </div>

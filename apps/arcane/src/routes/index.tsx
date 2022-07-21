@@ -8,7 +8,7 @@ const Home: VoidComponent = () => {
   return (
     <Public>
       <Banner>
-        <h1>{t('global.landing.title', {}, 'Welcome to Arcane Crypto')}</h1>
+        <h1>{t('landing.hero', {}, 'Welcome to Arcane Crypto')}</h1>
       </Banner>
     </Public>
   );

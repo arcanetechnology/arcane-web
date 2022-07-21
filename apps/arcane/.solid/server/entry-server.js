@@ -1,8 +1,9 @@
-import { sharedConfig, createContext, createSignal, onCleanup, getOwner, runWithOwner, createMemo, useContext, createComponent as createComponent$1, useTransition, createRenderEffect, untrack, on, resetErrorBoundaries, children, createRoot, Show, splitProps, createResource, createEffect, onMount, createComputed, lazy, ErrorBoundary as ErrorBoundary$1, Suspense } from 'solid-js';
-import { renderToStringAsync, isServer, createComponent, mergeProps, ssr, ssrHydrationKey, ssrSpread, ssrAttribute, escape, Show as Show$1, Portal, Dynamic, Assets, HydrationScript, NoHydration, For } from 'solid-js/web';
+import { renderToStringAsync, isServer, createComponent, Show, Portal, Dynamic, mergeProps, ssr, ssrHydrationKey, ssrSpread, ssrAttribute, escape, Assets, HydrationScript, NoHydration, For } from 'solid-js/web';
 import { createCookieStorage } from '@solid-primitives/storage';
 import { createI18nContext, useI18n, I18nContext } from '@solid-primitives/i18n';
+import { createResource, createEffect, createContext, createSignal, onMount, useContext, createComputed, onCleanup, getOwner, runWithOwner, createMemo, createComponent as createComponent$1, useTransition, createRenderEffect, untrack, on, resetErrorBoundaries, children, createRoot, Show as Show$1, splitProps, lazy, ErrorBoundary as ErrorBoundary$1, Suspense, sharedConfig } from 'solid-js';
 import { createGraphQLClient, gql } from '@solid-primitives/graphql';
+import { Transition } from 'solid-transition-group';
 
 function renderAsync(fn, options) {
   return () => async (context) => {
@@ -18,399 +19,263 @@ function renderAsync(fn, options) {
   };
 }
 
-const api = [
-  {
-    get: "skip",
-    path: "/*404"
-  },
-  {
-    get: "skip",
-    path: "/"
-  },
-  {
-    get: "skip",
-    path: "/login"
-  },
-  {
-    get: "skip",
-    path: "/people"
-  },
-  {
-    get: "skip",
-    path: "/privacy"
-  },
-  {
-    get: "skip",
-    path: "/relations"
-  }
-];
-function routeToMatchRoute(route) {
-  const segments = route.path.split("/").filter(Boolean);
-  const params = [];
-  const matchSegments = [];
-  let score = route.path.endsWith("/") ? 4 : 0;
-  let wildcard = false;
-  for (const [index, segment] of segments.entries()) {
-    if (segment[0] === ":") {
-      const name = segment.slice(1);
-      score += 3;
-      params.push({
-        type: ":",
-        name,
-        index
-      });
-      matchSegments.push(null);
-    } else if (segment[0] === "*") {
-      params.push({
-        type: "*",
-        name: segment.slice(1),
-        index
-      });
-      wildcard = true;
-    } else {
-      score += 4;
-      matchSegments.push(segment);
-    }
-  }
-  return {
-    ...route,
-    score,
-    params,
-    matchSegments,
-    wildcard
-  };
-}
-function getRouteMatches$1(routes, path, method) {
-  const segments = path.split("/").filter(Boolean);
-  routeLoop:
-    for (const route of routes) {
-      const matchSegments = route.matchSegments;
-      if (segments.length < matchSegments.length || !route.wildcard && segments.length > matchSegments.length) {
-        continue;
-      }
-      for (let index = 0; index < matchSegments.length; index++) {
-        const match = matchSegments[index];
-        if (!match) {
-          continue;
-        }
-        if (segments[index] !== match) {
-          continue routeLoop;
+const client = createGraphQLClient(`https://graphql.contentful.com/content/v1/spaces/${"033pb98fujnc"}/environments/${"master"}`, {
+  Authorization: `Bearer ${"GOsWj1IHwuGaWT9hzQzzy4K2OWu1qVWqJJDkZ8Bd83Q"}`
+});
+
+const fetchAppsCollection = () => {
+  const [apps] = client(gql`
+      query {
+        applicationCollection(limit: 20) {
+          items {
+            name
+            logo {
+              url
+              description
+            }
+            path
+          }
         }
       }
-      const handler = route[method];
-      if (handler === "skip" || handler === void 0) {
-        return;
-      }
-      const params = {};
-      for (const { type, name, index } of route.params) {
-        if (type === ":") {
-          params[name] = segments[index];
-        } else {
-          params[name] = segments.slice(index).join("/");
-        }
-      }
-      return { handler, params };
-    }
-}
-const allRoutes = api.map(routeToMatchRoute).sort((a, b) => b.score - a.score);
-function getApiHandler(url, method) {
-  return getRouteMatches$1(allRoutes, url.pathname, method.toLowerCase());
-}
-
-class FormError extends Error {
-  constructor(message, {
-    fieldErrors = {},
-    form,
-    fields,
-    stack
-  } = {}) {
-    super(message);
-    this.formError = message;
-    this.name = "FormError";
-    this.fields = fields || Object.fromEntries(typeof form !== "undefined" ? form.entries() : []) || {};
-    this.fieldErrors = fieldErrors;
-
-    if (stack) {
-      this.stack = stack;
-    }
-  }
-
-}
-
-const XSolidStartLocationHeader = "x-solidstart-location";
-const LocationHeader = "Location";
-const ContentTypeHeader = "content-type";
-const XSolidStartResponseTypeHeader = "x-solidstart-response-type";
-const XSolidStartContentTypeHeader = "x-solidstart-content-type";
-const XSolidStartOrigin = "x-solidstart-origin";
-const JSONResponseType = "application/json";
-const redirectStatusCodes = /* @__PURE__ */ new Set([204, 301, 302, 303, 307, 308]);
-function isRedirectResponse(response) {
-  return response && response instanceof Response && redirectStatusCodes.has(response.status);
-}
-class ResponseError extends Error {
-  constructor(response) {
-    let message = JSON.stringify({
-      $type: "response",
-      status: response.status,
-      message: response.statusText,
-      headers: [...response.headers.entries()]
-    });
-    super(message);
-    this.name = "ResponseError";
-    this.status = response.status;
-    this.headers = new Map([...response.headers.entries()]);
-    this.url = response.url;
-    this.ok = response.ok;
-    this.statusText = response.statusText;
-    this.redirected = response.redirected;
-    this.bodyUsed = false;
-    this.type = response.type;
-    this.response = () => response;
-  }
-  clone() {
-    return this.response();
-  }
-  get body() {
-    return this.response().body;
-  }
-  async arrayBuffer() {
-    return await this.response().arrayBuffer();
-  }
-  async blob() {
-    return await this.response().blob();
-  }
-  async formData() {
-    return await this.response().formData();
-  }
-  async text() {
-    return await this.response().text();
-  }
-  async json() {
-    return await this.response().json();
-  }
-}
-function respondWith(request, data, responseType) {
-  if (data instanceof ResponseError) {
-    data = data.clone();
-  }
-  if (data instanceof Response) {
-    if (isRedirectResponse(data) && request.headers.get(XSolidStartOrigin) === "client") {
-      let headers = new Headers(data.headers);
-      headers.set(XSolidStartOrigin, "server");
-      headers.set(XSolidStartLocationHeader, data.headers.get(LocationHeader));
-      headers.set(XSolidStartResponseTypeHeader, responseType);
-      headers.set(XSolidStartContentTypeHeader, "response");
-      return new Response(null, {
-        status: 204,
-        headers
-      });
-    } else {
-      data.headers.set(XSolidStartResponseTypeHeader, responseType);
-      data.headers.set(XSolidStartContentTypeHeader, "response");
-      return data;
-    }
-  } else if (data instanceof FormError) {
-    return new Response(JSON.stringify({
-      error: {
-        message: data.message,
-        stack: data.stack,
-        formError: data.formError,
-        fields: data.fields,
-        fieldErrors: data.fieldErrors
-      }
-    }), {
-      status: 400,
-      headers: {
-        [XSolidStartResponseTypeHeader]: responseType,
-        [XSolidStartContentTypeHeader]: "form-error"
-      }
-    });
-  } else if (data instanceof Error) {
-    return new Response(JSON.stringify({
-      error: {
-        message: data.message,
-        stack: data.stack,
-        status: data.status
-      }
-    }), {
-      status: data.status || 500,
-      headers: {
-        [XSolidStartResponseTypeHeader]: responseType,
-        [XSolidStartContentTypeHeader]: "error"
-      }
-    });
-  } else if (typeof data === "object" || typeof data === "string" || typeof data === "number" || typeof data === "boolean") {
-    return new Response(JSON.stringify(data), {
-      status: 200,
-      headers: {
-        [ContentTypeHeader]: "application/json",
-        [XSolidStartResponseTypeHeader]: responseType,
-        [XSolidStartContentTypeHeader]: "json"
-      }
-    });
-  }
-  return new Response("null", {
-    status: 200,
-    headers: {
-      [ContentTypeHeader]: "application/json",
-      [XSolidStartContentTypeHeader]: "json",
-      [XSolidStartResponseTypeHeader]: responseType
-    }
-  });
-}
-
-const server = (fn) => {
-  throw new Error("Should be compiled away");
+    `);
+  return apps;
 };
-async function parseRequest(request) {
-  let contentType = request.headers.get(ContentTypeHeader);
-  let name = new URL(request.url).pathname, args = [];
-  if (contentType) {
-    if (contentType === JSONResponseType) {
-      let text = await request.text();
-      try {
-        args = JSON.parse(text, (key, value) => {
-          if (!value) {
-            return value;
-          }
-          if (value.$type === "headers") {
-            let headers = new Headers();
-            request.headers.forEach((value2, key2) => headers.set(key2, value2));
-            value.values.forEach(([key2, value2]) => headers.set(key2, value2));
-            return headers;
-          }
-          if (value.$type === "request") {
-            return new Request(value.url, {
-              method: value.method,
-              headers: value.headers
-            });
-          }
-          return value;
-        });
-      } catch (e) {
-        throw new Error(`Error parsing request body: ${text}`);
-      }
-    } else if (contentType.includes("form")) {
-      let formData = await request.formData();
-      args = [formData];
-    }
+
+const createRootStore = () => {
+  const now = new Date();
+  const cookieOptions = {
+    expires: new Date(now.getFullYear() + 1, now.getMonth(), now.getDate())
+  };
+  const [settings, set] = createCookieStorage();
+  return [settings, (key, value) => isServer ? set(key, value) : set(key, value, cookieOptions)];
+};
+const langs$1 = {
+  en: async () => (await Promise.resolve().then(function () { return en; })).default()
+};
+const langAliases = {
+  fil: "tl"
+};
+const RootData = (props) => {
+  const [settings, set] = createRootStore();
+  const browserLang = !isServer ? navigator.language.slice(0, 2) : "en";
+  const location = props.location;
+  if (location.query["locale"]) {
+    set("locale", location.query["locale"]);
+  } else if (!settings.locale && langs$1.hasOwnProperty(browserLang)) {
+    set("locale", browserLang);
   }
-  return [name, args];
-}
-async function handleServerRequest(ctx) {
-  const url = new URL(ctx.request.url);
-  if (server.hasHandler(url.pathname)) {
-    try {
-      let [name, args] = await parseRequest(ctx.request);
-      let handler = server.getHandler(name);
-      if (!handler) {
-        throw {
-          status: 404,
-          message: "Handler Not Found for " + name
-        };
-      }
-      const data = await handler.call(ctx, ...Array.isArray(args) ? args : [args]);
-      return respondWith(ctx.request, data, "return");
-    } catch (error) {
-      return respondWith(ctx.request, error, "throw");
+  const i18n = createI18nContext({}, settings.locale || "en");
+  const [, {
+    add,
+    locale
+  }] = i18n;
+  const params = () => {
+    const locale2 = i18n[1].locale();
+    let page = location.pathname.slice(1);
+    if (page == "") {
+      page = "home";
     }
-  }
-  return null;
-}
-const handlers = /* @__PURE__ */ new Map();
-server.createHandler = (_fn, hash) => {
-  let fn = function(...args) {
-    let ctx;
-    if (typeof this === "object" && this.request instanceof Request) {
-      ctx = this;
-    } else if (sharedConfig.context && sharedConfig.context.requestContext) {
-      ctx = sharedConfig.context.requestContext;
-    } else {
-      ctx = {
-        request: new URL(hash, "http://localhost:3000").href,
-        responseHeaders: new Headers()
+    if (locale2 in langAliases) {
+      return {
+        locale: langAliases[locale2],
+        page
       };
     }
-    const execute = async () => {
-      try {
-        let e = await _fn.call(ctx, ...args);
-        return e;
-      } catch (e) {
-        if (/[A-Za-z]+ is not defined/.test(e.message)) {
-          const error = new Error(e.message + "\n You probably are using a variable defined in a closure in your server function.");
-          error.stack = e.stack;
-          throw error;
-        }
-        throw e;
-      }
+    return {
+      locale: locale2,
+      page
     };
-    return execute();
   };
-  fn.url = hash;
-  fn.action = function(...args) {
-    return fn.call(this, ...args);
-  };
-  return fn;
-};
-server.registerHandler = function(route, handler) {
-  handlers.set(route, handler);
-};
-server.getHandler = function(route) {
-  return handlers.get(route);
-};
-server.hasHandler = function(route) {
-  return handlers.has(route);
-};
-server.fetch = async function(route, init) {
-  let url = new URL(route, "http://localhost:3000");
-  const request = new Request(url.href, init);
-  const handler = getApiHandler(url, request.method);
-  const response = await handler.handler({ request }, handler.params);
-  return response;
-};
-
-const StartContext = createContext({});
-function StartProvider(props) {
-  const [request, setRequest] = createSignal(new Request(isServer ? props.context.request.url : window.location.pathname)); // TODO: throw error if values are used on client for anything more than stubbing
-  // OR replace with actual request that updates with the current URL
-
-  return createComponent(StartContext.Provider, {
-    get value() {
-      return props.context || {
-        get request() {
-          return request();
-        },
-
-        get responseHeaders() {
-          return new Headers();
-        },
-
-        get tags() {
-          return [];
-        },
-
-        get manifest() {
-          return {};
-        },
-
-        get routerContext() {
-          return {};
-        },
-
-        setStatusCode(code) {},
-
-        setHeader(name, value) {}
-
-      };
+  const apps = fetchAppsCollection();
+  const [lang] = createResource(params, ({
+    locale: locale2
+  }) => langs$1[locale2]());
+  const isDark = () => settings.dark === "true" ? true : settings.dark === "false" ? false : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  createEffect(() => set("locale", locale()));
+  createEffect(() => set("apps", JSON.stringify(apps()?.applicationCollection.items)));
+  createEffect(() => {
+    if (!lang.loading)
+      add(locale(), lang());
+  });
+  createEffect(() => {
+    document.documentElement.lang = locale();
+  });
+  createEffect(() => {
+    if (isDark())
+      document.documentElement.classList.add("dark");
+    else
+      document.documentElement.classList.remove("dark");
+  });
+  return {
+    set isDark(value) {
+      set("dark", value === true ? "true" : "false");
     },
+    get isDark() {
+      return isDark();
+    },
+    get i18n() {
+      return i18n;
+    },
+    get loading() {
+      return lang.loading;
+    },
+    get apps() {
+      return apps()?.applicationCollection.items;
+    }
+  };
+};
+
+var __glob_9_0 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  'default': RootData
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const MetaContext = createContext();
+const cascadingTags = ["title", "meta"];
+
+const MetaProvider = props => {
+  const indices = new Map(),
+        [tags, setTags] = createSignal({});
+  onMount(() => {
+    const ssrTags = document.head.querySelectorAll(`[data-sm=""]`); // `forEach` on `NodeList` is not supported in Googlebot, so use a workaround
+
+    Array.prototype.forEach.call(ssrTags, ssrTag => ssrTag.parentNode.removeChild(ssrTag));
+  });
+  const actions = {
+    addClientTag: (tag, name) => {
+      // consider only cascading tags
+      if (cascadingTags.indexOf(tag) !== -1) {
+        setTags(tags => {
+          const names = tags[tag] || [];
+          return { ...tags,
+            [tag]: [...names, name]
+          };
+        }); // track indices synchronously
+
+        const index = indices.has(tag) ? indices.get(tag) + 1 : 0;
+        indices.set(tag, index);
+        return index;
+      }
+
+      return -1;
+    },
+    shouldRenderTag: (tag, index) => {
+      if (cascadingTags.indexOf(tag) !== -1) {
+        const names = tags()[tag]; // check if the tag is the last one of similar
+
+        return names && names.lastIndexOf(names[index]) === index;
+      }
+
+      return true;
+    },
+    removeClientTag: (tag, index) => {
+      setTags(tags => {
+        const names = tags[tag];
+
+        if (names) {
+          names[index] = null;
+          return { ...tags,
+            [tag]: names
+          };
+        }
+
+        return tags;
+      });
+    }
+  };
+
+  if (isServer) {
+    actions.addServerTag = tagDesc => {
+      const {
+        tags = []
+      } = props; // tweak only cascading tags
+
+      if (cascadingTags.indexOf(tagDesc.tag) !== -1) {
+        const index = tags.findIndex(prev => {
+          const prevName = prev.props.name || prev.props.property;
+          const nextName = tagDesc.props.name || tagDesc.props.property;
+          return prev.tag === tagDesc.tag && prevName === nextName;
+        });
+
+        if (index !== -1) {
+          tags.splice(index, 1);
+        }
+      }
+
+      tags.push(tagDesc);
+    };
+
+    if (Array.isArray(props.tags) === false) {
+      throw Error("tags array should be passed to <MetaProvider /> in node");
+    }
+  }
+
+  return createComponent(MetaContext.Provider, {
+    value: actions,
 
     get children() {
       return props.children;
     }
 
   });
+};
+
+const MetaTag = (tag, props) => {
+  const c = useContext(MetaContext);
+  if (!c) throw new Error("<MetaProvider /> should be in the tree");
+  const {
+    addClientTag,
+    removeClientTag,
+    addServerTag,
+    shouldRenderTag
+  } = c;
+  let index = -1;
+  createComputed(() => {
+    index = addClientTag(tag, props.name || props.property);
+    onCleanup(() => removeClientTag(tag, index));
+  });
+
+  if (isServer) {
+    addServerTag({
+      tag,
+      props
+    });
+    return null;
+  }
+
+  return createComponent(Show, {
+    get when() {
+      return shouldRenderTag(tag, index);
+    },
+
+    get children() {
+      return createComponent(Portal, {
+        get mount() {
+          return document.head;
+        },
+
+        get children() {
+          return createComponent(Dynamic, mergeProps({
+            component: tag
+          }, props));
+        }
+
+      });
+    }
+
+  });
+};
+function renderTags(tags) {
+  return tags.map(tag => {
+    const keys = Object.keys(tag.props);
+    const props = keys.map(k => k === "children" ? "" : ` ${k}="${tag.props[k]}"`).join("");
+    return tag.props.children ? `<${tag.tag} data-sm=""${props}>${// Tags might contain multiple text children:
+    //   <Title>example - {myCompany}</Title>
+    Array.isArray(tag.props.children) ? tag.props.children.join("") : tag.props.children}</${tag.tag}>` : `<${tag.tag} data-sm=""${props}/>`;
+  }).join("");
 }
+const Title = props => MetaTag("title", props);
+const Meta$1 = props => MetaTag("meta", props);
 
 function bindEvent(target, type, handler) {
     target.addEventListener(type, handler);
@@ -705,7 +570,7 @@ function createBranches(routeDef, base = "", fallback, stack = [], branches = []
     // Stack will be empty on final return
     return stack.length ? branches : branches.sort((a, b) => b.score - a.score);
 }
-function getRouteMatches(branches, location) {
+function getRouteMatches$1(branches, location) {
     for (let i = 0, len = branches.length; i < len; i++) {
         const match = branches[i].matcher(location);
         if (match) {
@@ -990,7 +855,7 @@ const Routes$1 = props => {
   const parentRoute = useRoute();
   const routeDefs = children(() => props.children);
   const branches = createMemo(() => createBranches(routeDefs(), joinPaths(parentRoute.pattern, props.base || ""), Outlet));
-  const matches = createMemo(() => getRouteMatches(branches(), router.location.pathname));
+  const matches = createMemo(() => getRouteMatches$1(branches(), router.location.pathname));
 
   if (router.out) {
     router.out.matches.push(matches().map(({
@@ -1040,7 +905,7 @@ const Routes$1 = props => {
     root = next[0];
     return next;
   }));
-  return createComponent(Show, {
+  return createComponent(Show$1, {
     get when() {
       return routeStates() && root;
     },
@@ -1063,7 +928,7 @@ const useRoutes = (routes, base) => {
 };
 const Outlet = () => {
   const route = useRoute();
-  return createComponent(Show, {
+  return createComponent(Show$1, {
     get when() {
       return route.child;
     },
@@ -1095,270 +960,50 @@ function Link(props) {
   }));
 }
 
-const client = createGraphQLClient(`https://graphql.contentful.com/content/v1/spaces/${"033pb98fujnc"}/environments/${"master"}`, {
-  Authorization: `Bearer ${"GOsWj1IHwuGaWT9hzQzzy4K2OWu1qVWqJJDkZ8Bd83Q"}`
-}, server.fetcher);
+const StartContext = createContext({});
+function StartProvider(props) {
+  const [request, setRequest] = createSignal(new Request(isServer ? props.context.request.url : window.location.pathname)); // TODO: throw error if values are used on client for anything more than stubbing
+  // OR replace with actual request that updates with the current URL
 
-const fetchAppsCollection = () => {
-  const [apps] = client(gql`
-      query {
-        applicationCollection(limit: 20) {
-          items {
-            name
-            logo {
-              url
-              description
-            }
-            path
-          }
-        }
-      }
-    `);
-  return apps;
-};
+  return createComponent(StartContext.Provider, {
+    get value() {
+      return props.context || {
+        get request() {
+          return request();
+        },
 
-const createRootStore = () => {
-  const now = new Date();
-  const cookieOptions = {
-    expires: new Date(now.getFullYear() + 1, now.getMonth(), now.getDate())
-  };
-  const [settings, set] = createCookieStorage();
-  return [settings, (key, value) => isServer ? set(key, value) : set(key, value, cookieOptions)];
-};
-const langs$1 = {
-  en: async () => (await Promise.resolve().then(function () { return en; })).default()
-};
-const langAliases = {
-  fil: "tl"
-};
-const RootData = (props) => {
-  const [settings, set] = createRootStore();
-  set("apps", "undefined");
-  const browserLang = !isServer ? navigator.language.slice(0, 2) : "en";
-  const location = props.location;
-  if (location.query["locale"]) {
-    set("locale", location.query["locale"]);
-  } else if (!settings.locale && langs$1.hasOwnProperty(browserLang)) {
-    set("locale", browserLang);
-  }
-  const i18n = createI18nContext({}, settings.locale || "en");
-  const [, {
-    add,
-    locale
-  }] = i18n;
-  const params = () => {
-    const locale2 = i18n[1].locale();
-    let page = location.pathname.slice(1);
-    if (page == "") {
-      page = "home";
-    }
-    if (locale2 in langAliases) {
-      return {
-        locale: langAliases[locale2],
-        page
+        get responseHeaders() {
+          return new Headers();
+        },
+
+        get tags() {
+          return [];
+        },
+
+        get manifest() {
+          return {};
+        },
+
+        get routerContext() {
+          return {};
+        },
+
+        setStatusCode(code) {},
+
+        setHeader(name, value) {}
+
       };
-    }
-    return {
-      locale: locale2,
-      page
-    };
-  };
-  const apps = fetchAppsCollection();
-  const [lang] = createResource(params, ({
-    locale: locale2
-  }) => langs$1[locale2]());
-  const isDark = () => settings.dark === "true" ? true : settings.dark === "false" ? false : window.matchMedia("(prefers-color-scheme: dark)").matches;
-  createEffect(() => set("locale", locale()));
-  createEffect(() => {
-    if (!apps.loading)
-      add("apps", apps()?.applicationCollection.items || []);
-  });
-  createEffect(() => {
-    if (!lang.loading)
-      add(locale(), lang());
-  });
-  createEffect(() => {
-    document.documentElement.lang = locale();
-  });
-  createEffect(() => {
-    if (isDark())
-      document.documentElement.classList.add("dark");
-    else
-      document.documentElement.classList.remove("dark");
-  });
-  return {
-    set isDark(value) {
-      set("dark", value === true ? "true" : "false");
     },
-    get isDark() {
-      return isDark();
-    },
-    get i18n() {
-      return i18n;
-    },
-    get loading() {
-      return lang.loading;
-    },
-    get apps() {
-      return apps()?.applicationCollection.items;
-    }
-  };
-};
-
-var __glob_9_0 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  'default': RootData
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const MetaContext = createContext();
-const cascadingTags = ["title", "meta"];
-
-const MetaProvider = props => {
-  const indices = new Map(),
-        [tags, setTags] = createSignal({});
-  onMount(() => {
-    const ssrTags = document.head.querySelectorAll(`[data-sm=""]`); // `forEach` on `NodeList` is not supported in Googlebot, so use a workaround
-
-    Array.prototype.forEach.call(ssrTags, ssrTag => ssrTag.parentNode.removeChild(ssrTag));
-  });
-  const actions = {
-    addClientTag: (tag, name) => {
-      // consider only cascading tags
-      if (cascadingTags.indexOf(tag) !== -1) {
-        setTags(tags => {
-          const names = tags[tag] || [];
-          return { ...tags,
-            [tag]: [...names, name]
-          };
-        }); // track indices synchronously
-
-        const index = indices.has(tag) ? indices.get(tag) + 1 : 0;
-        indices.set(tag, index);
-        return index;
-      }
-
-      return -1;
-    },
-    shouldRenderTag: (tag, index) => {
-      if (cascadingTags.indexOf(tag) !== -1) {
-        const names = tags()[tag]; // check if the tag is the last one of similar
-
-        return names && names.lastIndexOf(names[index]) === index;
-      }
-
-      return true;
-    },
-    removeClientTag: (tag, index) => {
-      setTags(tags => {
-        const names = tags[tag];
-
-        if (names) {
-          names[index] = null;
-          return { ...tags,
-            [tag]: names
-          };
-        }
-
-        return tags;
-      });
-    }
-  };
-
-  if (isServer) {
-    actions.addServerTag = tagDesc => {
-      const {
-        tags = []
-      } = props; // tweak only cascading tags
-
-      if (cascadingTags.indexOf(tagDesc.tag) !== -1) {
-        const index = tags.findIndex(prev => {
-          const prevName = prev.props.name || prev.props.property;
-          const nextName = tagDesc.props.name || tagDesc.props.property;
-          return prev.tag === tagDesc.tag && prevName === nextName;
-        });
-
-        if (index !== -1) {
-          tags.splice(index, 1);
-        }
-      }
-
-      tags.push(tagDesc);
-    };
-
-    if (Array.isArray(props.tags) === false) {
-      throw Error("tags array should be passed to <MetaProvider /> in node");
-    }
-  }
-
-  return createComponent(MetaContext.Provider, {
-    value: actions,
 
     get children() {
       return props.children;
     }
 
   });
-};
-
-const MetaTag = (tag, props) => {
-  const c = useContext(MetaContext);
-  if (!c) throw new Error("<MetaProvider /> should be in the tree");
-  const {
-    addClientTag,
-    removeClientTag,
-    addServerTag,
-    shouldRenderTag
-  } = c;
-  let index = -1;
-  createComputed(() => {
-    index = addClientTag(tag, props.name || props.property);
-    onCleanup(() => removeClientTag(tag, index));
-  });
-
-  if (isServer) {
-    addServerTag({
-      tag,
-      props
-    });
-    return null;
-  }
-
-  return createComponent(Show$1, {
-    get when() {
-      return shouldRenderTag(tag, index);
-    },
-
-    get children() {
-      return createComponent(Portal, {
-        get mount() {
-          return document.head;
-        },
-
-        get children() {
-          return createComponent(Dynamic, mergeProps({
-            component: tag
-          }, props));
-        }
-
-      });
-    }
-
-  });
-};
-function renderTags(tags) {
-  return tags.map(tag => {
-    const keys = Object.keys(tag.props);
-    const props = keys.map(k => k === "children" ? "" : ` ${k}="${tag.props[k]}"`).join("");
-    return tag.props.children ? `<${tag.tag} data-sm=""${props}>${// Tags might contain multiple text children:
-    //   <Title>example - {myCompany}</Title>
-    Array.isArray(tag.props.children) ? tag.props.children.join("") : tag.props.children}</${tag.tag}>` : `<${tag.tag} data-sm=""${props}/>`;
-  }).join("");
 }
-const Title = props => MetaTag("title", props);
-const Meta$1 = props => MetaTag("meta", props);
 
 const _tmpl$$c = ["<link", " rel=\"stylesheet\"", ">"],
-      _tmpl$2$3 = ["<link", " rel=\"modulepreload\"", ">"];
+      _tmpl$2$4 = ["<link", " rel=\"modulepreload\"", ">"];
 
 function getAssetsFromManifest(manifest, routerContext) {
   const match = routerContext.matches.reduce((memo, m) => {
@@ -1366,7 +1011,7 @@ function getAssetsFromManifest(manifest, routerContext) {
     return memo;
   }, []);
   const links = match.reduce((r, src) => {
-    r[src.href] = src.type === "style" ? ssr(_tmpl$$c, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$3, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
+    r[src.href] = src.type === "style" ? ssr(_tmpl$$c, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$4, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
     return r;
   }, {});
   return Object.values(links);
@@ -1451,7 +1096,7 @@ const _tmpl$$a = ["<div", " style=\"", "\"><div style=\"", "\"><p style=\"", "\"
 function ErrorBoundary(props) {
   return createComponent(ErrorBoundary$1, {
     fallback: e => {
-      return createComponent(Show, {
+      return createComponent(Show$1, {
         get when() {
           return !props.fallback;
         },
@@ -1504,64 +1149,81 @@ const useAppContext = () => useContext(AppContext);
 var Navigation$1 = '';
 
 const _tmpl$$9 = ["<div", " id=\"menu-container\" class=\"menu-container\" data-is-closed=\"true\"><div", " class=\"menu-btn circle-hover\"><abbr class=\"clear-df-abbr\"", "><svg viewBox=\"0 0 24 24\"><path d=\"M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z\"></path></svg></abbr></div><div", " class=\"menu margin-12\"><nav class=\"gap-small\" data-auto-grid=\"2\">", "</nav></div></div>"],
-      _tmpl$2$2 = ["<img", " width=\"40\" height=\"40\"", " alt=\"", "\">"],
+      _tmpl$2$3 = ["<img", " width=\"40\" height=\"40\"", " alt=\"", "\">"],
       _tmpl$3$2 = ["<div", " class=\"app-nav\"><!--#-->", "<!--/--><p class=\"button-small\">", "</p></div>"];
-const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
-const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
 
-const Navigation = props => {
+const Navigation = () => {
   const [t] = useI18n();
-
-  onMount(() => {
+  const context = useAppContext();
+  const arcaneApps = createMemo(() => {
+    if (context.apps) {
+      return context.apps;
+    } else {
+      return null;
+    }
   });
-  return ssr(_tmpl$$9, ssrHydrationKey(), ssrAttribute("id", escape(NAVIGATION_MENU_BUTTON_ID, true), false), ssrAttribute("title", escape(t('global.apps.title', {}, 'Arcane Apps'), true), false), ssrAttribute("id", escape(NAVIGATION_MENU_ID, true), false), escape(createComponent(For, {
-    get each() {
-      return props.apps;
+  createEffect(() => {});
+  const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
+  const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
+
+  return ssr(_tmpl$$9, ssrHydrationKey(), ssrAttribute("id", escape(NAVIGATION_MENU_BUTTON_ID, true), false), ssrAttribute("title", escape(t('global.apps.title', {}, 'Arcane Apps'), true), false), ssrAttribute("id", escape(NAVIGATION_MENU_ID, true), false), escape(createComponent(Show, {
+    get when() {
+      return arcaneApps();
     },
 
-    children: n => ssr(_tmpl$3$2, ssrHydrationKey(), escape(createComponent(Link, {
-      "class": "app-nav-link",
+    get children() {
+      return createComponent(For, {
+        get each() {
+          return arcaneApps();
+        },
 
-      get href() {
-        return '/' + (n.path ?? '');
-      },
+        children: app => ssr(_tmpl$3$2, ssrHydrationKey(), escape(createComponent(Link, {
+          "class": "app-nav-link",
 
-      get children() {
-        return ssr(_tmpl$2$2, ssrHydrationKey(), ssrAttribute("src", escape(n.logo.url, true), false), `${escape(n.logo.description, true)} logo`);
-      }
+          get href() {
+            return '/' + (app.path ?? '');
+          },
 
-    })), escape(n.name))
+          get children() {
+            return ssr(_tmpl$2$3, ssrHydrationKey(), ssrAttribute("src", escape(app.logo.url, true), false), `${escape(app.logo.description, true)} logo`);
+          }
+
+        })), escape(app.name))
+      });
+    }
+
   })));
 };
 
 var Header$1 = '';
 
-const _tmpl$$8 = ["<header", " role=\"banner\"><div class=\"container align-row margin-12\"><img", " alt=\"logo\"><div style=\"", "\"></div><!--#-->", "<!--/--></div></header>"];
+const _tmpl$$8 = ["<img", " alt=\"logo\">"],
+      _tmpl$2$2 = ["<header", " role=\"banner\"><div class=\"container align-row margin-12\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></header>"];
 
 const Header = () => {
-  const context = useAppContext();
-  const getApps = createMemo(() => {
-    const apps = context.apps;
-
-    if (apps) {
-      return apps;
-    }
-  });
-  return ssr(_tmpl$$8, ssrHydrationKey(), ssrAttribute("src", escape(logo, true), false), "flex-grow:" + 1, escape(createComponent(Show$1, {
-    get when() {
-      return getApps();
-    },
+  return ssr(_tmpl$2$2, ssrHydrationKey(), escape(createComponent(Transition, {
+    onEnter: onLogoEnter,
+    appear: !isServer,
 
     get children() {
-      return createComponent(Navigation, {
-        get apps() {
-          return getApps();
-        }
-
-      });
+      return ssr(_tmpl$$8, ssrHydrationKey() + ssrAttribute("src", escape(logo, true), false));
     }
 
-  })));
+  })), "flex-grow:" + 1, escape(createComponent(Navigation, {})));
+};
+
+const base = {
+  opacity: 1
+};
+const options = {
+  duration: 1300
+};
+
+const onLogoEnter = (el, done) => {
+  el.animate([{
+    opacity: 0,
+    transform: 'scale(1.3)'
+  }, base], options).finished.then(done);
 };
 
 const _tmpl$$7 = ["<section", "><section class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section></section>"];
@@ -1589,9 +1251,9 @@ var twitter = "/assets/twitter.9d5edd23.svg";
 
 var Footer$1 = '';
 
-const _tmpl$$5 = ["<p", " class=\"body3 footer-link\"><img", " alt=\"arcane twitter\"></p>"],
-      _tmpl$2$1 = ["<img", " alt=\"arcane linkedin\">"],
-      _tmpl$3$1 = ["<footer", "><div class=\"container footer-row margin-48\"><div><img style=\"", "\"", " alt=\"arcane-logo\"></div><div style=\"", "\"></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-application-navigation\" class=\"align-vertical\"><p>navigation placeholder</p></nav></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-static\" class=\"align-vertical\"><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--></nav></div></div><hr><div class=\"container footer-row margin-12\"><p class=\"body3\">", "</p><p class=\"body3\">", "</p><div style=\"", "\"></div><div class=\"footer-follow gap-small\"><p class=\"body3\">", "</p><!--#-->", "<!--/--><!--#-->", "<!--/--></div></div></footer>"];
+const _tmpl$$5 = ["<p", " class=\"body3 footer-link\"><img width=\"20\" style=\"", "\"", " alt=\"arcane twitter\"></p>"],
+      _tmpl$2$1 = ["<img", " width=\"20\" style=\"", "\"", " alt=\"arcane linkedin\">"],
+      _tmpl$3$1 = ["<footer", "><div class=\"container footer-row margin-48\"><div><img style=\"", "\"", " alt=\"arcane-logo\"></div><div style=\"", "\"></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-application-navigation\" class=\"align-vertical\"></nav></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-static\" class=\"align-vertical\"><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--></nav></div></div><hr><div class=\"container footer-row margin-12\"><p class=\"body3\">", "</p><p class=\"body3\">", "</p><div style=\"", "\"></div><div class=\"footer-follow gap-small\"><p class=\"body3\">", "</p><!--#-->", "<!--/--><!--#-->", "<!--/--></div></div></footer>"];
 
 const Footer = () => {
   const [t] = useI18n();
@@ -1625,14 +1287,14 @@ const Footer = () => {
     href: 'https://twitter.com/arcane_crypto',
 
     get children() {
-      return ssr(_tmpl$$5, ssrHydrationKey(), ssrAttribute("src", escape(twitter, true), false));
+      return ssr(_tmpl$$5, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(twitter, true), false));
     }
 
   })), escape(createComponent(Link, {
     href: 'https://www.linkedin.com/company/arcane-crypto/',
 
     get children() {
-      return ssr(_tmpl$2$1, ssrHydrationKey() + ssrAttribute("src", escape(linkedin, true), false));
+      return ssr(_tmpl$2$1, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(linkedin, true), false));
     }
 
   })));
@@ -1708,6 +1370,358 @@ const Lang = props => {
     }
 
   });
+};
+
+const api = [
+  {
+    get: "skip",
+    path: "/*404"
+  },
+  {
+    get: "skip",
+    path: "/"
+  },
+  {
+    get: "skip",
+    path: "/login"
+  },
+  {
+    get: "skip",
+    path: "/people"
+  },
+  {
+    get: "skip",
+    path: "/privacy"
+  },
+  {
+    get: "skip",
+    path: "/relations"
+  }
+];
+function routeToMatchRoute(route) {
+  const segments = route.path.split("/").filter(Boolean);
+  const params = [];
+  const matchSegments = [];
+  let score = route.path.endsWith("/") ? 4 : 0;
+  let wildcard = false;
+  for (const [index, segment] of segments.entries()) {
+    if (segment[0] === ":") {
+      const name = segment.slice(1);
+      score += 3;
+      params.push({
+        type: ":",
+        name,
+        index
+      });
+      matchSegments.push(null);
+    } else if (segment[0] === "*") {
+      params.push({
+        type: "*",
+        name: segment.slice(1),
+        index
+      });
+      wildcard = true;
+    } else {
+      score += 4;
+      matchSegments.push(segment);
+    }
+  }
+  return {
+    ...route,
+    score,
+    params,
+    matchSegments,
+    wildcard
+  };
+}
+function getRouteMatches(routes, path, method) {
+  const segments = path.split("/").filter(Boolean);
+  routeLoop:
+    for (const route of routes) {
+      const matchSegments = route.matchSegments;
+      if (segments.length < matchSegments.length || !route.wildcard && segments.length > matchSegments.length) {
+        continue;
+      }
+      for (let index = 0; index < matchSegments.length; index++) {
+        const match = matchSegments[index];
+        if (!match) {
+          continue;
+        }
+        if (segments[index] !== match) {
+          continue routeLoop;
+        }
+      }
+      const handler = route[method];
+      if (handler === "skip" || handler === void 0) {
+        return;
+      }
+      const params = {};
+      for (const { type, name, index } of route.params) {
+        if (type === ":") {
+          params[name] = segments[index];
+        } else {
+          params[name] = segments.slice(index).join("/");
+        }
+      }
+      return { handler, params };
+    }
+}
+const allRoutes = api.map(routeToMatchRoute).sort((a, b) => b.score - a.score);
+function getApiHandler(url, method) {
+  return getRouteMatches(allRoutes, url.pathname, method.toLowerCase());
+}
+
+class FormError extends Error {
+  constructor(message, {
+    fieldErrors = {},
+    form,
+    fields,
+    stack
+  } = {}) {
+    super(message);
+    this.formError = message;
+    this.name = "FormError";
+    this.fields = fields || Object.fromEntries(typeof form !== "undefined" ? form.entries() : []) || {};
+    this.fieldErrors = fieldErrors;
+
+    if (stack) {
+      this.stack = stack;
+    }
+  }
+
+}
+
+const XSolidStartLocationHeader = "x-solidstart-location";
+const LocationHeader = "Location";
+const ContentTypeHeader = "content-type";
+const XSolidStartResponseTypeHeader = "x-solidstart-response-type";
+const XSolidStartContentTypeHeader = "x-solidstart-content-type";
+const XSolidStartOrigin = "x-solidstart-origin";
+const JSONResponseType = "application/json";
+const redirectStatusCodes = /* @__PURE__ */ new Set([204, 301, 302, 303, 307, 308]);
+function isRedirectResponse(response) {
+  return response && response instanceof Response && redirectStatusCodes.has(response.status);
+}
+class ResponseError extends Error {
+  constructor(response) {
+    let message = JSON.stringify({
+      $type: "response",
+      status: response.status,
+      message: response.statusText,
+      headers: [...response.headers.entries()]
+    });
+    super(message);
+    this.name = "ResponseError";
+    this.status = response.status;
+    this.headers = new Map([...response.headers.entries()]);
+    this.url = response.url;
+    this.ok = response.ok;
+    this.statusText = response.statusText;
+    this.redirected = response.redirected;
+    this.bodyUsed = false;
+    this.type = response.type;
+    this.response = () => response;
+  }
+  clone() {
+    return this.response();
+  }
+  get body() {
+    return this.response().body;
+  }
+  async arrayBuffer() {
+    return await this.response().arrayBuffer();
+  }
+  async blob() {
+    return await this.response().blob();
+  }
+  async formData() {
+    return await this.response().formData();
+  }
+  async text() {
+    return await this.response().text();
+  }
+  async json() {
+    return await this.response().json();
+  }
+}
+function respondWith(request, data, responseType) {
+  if (data instanceof ResponseError) {
+    data = data.clone();
+  }
+  if (data instanceof Response) {
+    if (isRedirectResponse(data) && request.headers.get(XSolidStartOrigin) === "client") {
+      let headers = new Headers(data.headers);
+      headers.set(XSolidStartOrigin, "server");
+      headers.set(XSolidStartLocationHeader, data.headers.get(LocationHeader));
+      headers.set(XSolidStartResponseTypeHeader, responseType);
+      headers.set(XSolidStartContentTypeHeader, "response");
+      return new Response(null, {
+        status: 204,
+        headers
+      });
+    } else {
+      data.headers.set(XSolidStartResponseTypeHeader, responseType);
+      data.headers.set(XSolidStartContentTypeHeader, "response");
+      return data;
+    }
+  } else if (data instanceof FormError) {
+    return new Response(JSON.stringify({
+      error: {
+        message: data.message,
+        stack: data.stack,
+        formError: data.formError,
+        fields: data.fields,
+        fieldErrors: data.fieldErrors
+      }
+    }), {
+      status: 400,
+      headers: {
+        [XSolidStartResponseTypeHeader]: responseType,
+        [XSolidStartContentTypeHeader]: "form-error"
+      }
+    });
+  } else if (data instanceof Error) {
+    return new Response(JSON.stringify({
+      error: {
+        message: data.message,
+        stack: data.stack,
+        status: data.status
+      }
+    }), {
+      status: data.status || 500,
+      headers: {
+        [XSolidStartResponseTypeHeader]: responseType,
+        [XSolidStartContentTypeHeader]: "error"
+      }
+    });
+  } else if (typeof data === "object" || typeof data === "string" || typeof data === "number" || typeof data === "boolean") {
+    return new Response(JSON.stringify(data), {
+      status: 200,
+      headers: {
+        [ContentTypeHeader]: "application/json",
+        [XSolidStartResponseTypeHeader]: responseType,
+        [XSolidStartContentTypeHeader]: "json"
+      }
+    });
+  }
+  return new Response("null", {
+    status: 200,
+    headers: {
+      [ContentTypeHeader]: "application/json",
+      [XSolidStartContentTypeHeader]: "json",
+      [XSolidStartResponseTypeHeader]: responseType
+    }
+  });
+}
+
+const server = (fn) => {
+  throw new Error("Should be compiled away");
+};
+async function parseRequest(request) {
+  let contentType = request.headers.get(ContentTypeHeader);
+  let name = new URL(request.url).pathname, args = [];
+  if (contentType) {
+    if (contentType === JSONResponseType) {
+      let text = await request.text();
+      try {
+        args = JSON.parse(text, (key, value) => {
+          if (!value) {
+            return value;
+          }
+          if (value.$type === "headers") {
+            let headers = new Headers();
+            request.headers.forEach((value2, key2) => headers.set(key2, value2));
+            value.values.forEach(([key2, value2]) => headers.set(key2, value2));
+            return headers;
+          }
+          if (value.$type === "request") {
+            return new Request(value.url, {
+              method: value.method,
+              headers: value.headers
+            });
+          }
+          return value;
+        });
+      } catch (e) {
+        throw new Error(`Error parsing request body: ${text}`);
+      }
+    } else if (contentType.includes("form")) {
+      let formData = await request.formData();
+      args = [formData];
+    }
+  }
+  return [name, args];
+}
+async function handleServerRequest(ctx) {
+  const url = new URL(ctx.request.url);
+  if (server.hasHandler(url.pathname)) {
+    try {
+      let [name, args] = await parseRequest(ctx.request);
+      let handler = server.getHandler(name);
+      if (!handler) {
+        throw {
+          status: 404,
+          message: "Handler Not Found for " + name
+        };
+      }
+      const data = await handler.call(ctx, ...Array.isArray(args) ? args : [args]);
+      return respondWith(ctx.request, data, "return");
+    } catch (error) {
+      return respondWith(ctx.request, error, "throw");
+    }
+  }
+  return null;
+}
+const handlers = /* @__PURE__ */ new Map();
+server.createHandler = (_fn, hash) => {
+  let fn = function(...args) {
+    let ctx;
+    if (typeof this === "object" && this.request instanceof Request) {
+      ctx = this;
+    } else if (sharedConfig.context && sharedConfig.context.requestContext) {
+      ctx = sharedConfig.context.requestContext;
+    } else {
+      ctx = {
+        request: new URL(hash, "http://localhost:3000").href,
+        responseHeaders: new Headers()
+      };
+    }
+    const execute = async () => {
+      try {
+        let e = await _fn.call(ctx, ...args);
+        return e;
+      } catch (e) {
+        if (/[A-Za-z]+ is not defined/.test(e.message)) {
+          const error = new Error(e.message + "\n You probably are using a variable defined in a closure in your server function.");
+          error.stack = e.stack;
+          throw error;
+        }
+        throw e;
+      }
+    };
+    return execute();
+  };
+  fn.url = hash;
+  fn.action = function(...args) {
+    return fn.call(this, ...args);
+  };
+  return fn;
+};
+server.registerHandler = function(route, handler) {
+  handlers.set(route, handler);
+};
+server.getHandler = function(route) {
+  return handlers.get(route);
+};
+server.hasHandler = function(route) {
+  return handlers.has(route);
+};
+server.fetch = async function(route, init) {
+  let url = new URL(route, "http://localhost:3000");
+  const request = new Request(url.href, init);
+  const handler = getApiHandler(url, request.method);
+  const response = await handler.handler({ request }, handler.params);
+  return response;
 };
 
 const inlineServerFunctions = ({ forward }) => {
@@ -1855,9 +1869,6 @@ var entryServer = createHandler(renderAsync(context => createComponent(StartServ
 
 const name = "English";
 const title = "Arcane Crypto . Platform";
-const landing = {
-	title: "Welcome to Arcane Crypto"
-};
 const apps = {
 	title: "Arcane Apps"
 };
@@ -1881,13 +1892,18 @@ var global = {
 	"404": "404 | Page Not Found",
 	name: name,
 	title: title,
-	landing: landing,
 	apps: apps,
 	footer: footer
 };
 
+const hero = "Welcome to Arcane Crypto";
+var landing = {
+	hero: hero
+};
+
 const langs = () => ({
-  global
+  global,
+  landing
 });
 
 var en = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -1919,7 +1935,7 @@ const Home = () => {
     get children() {
       return createComponent(Banner, {
         get children() {
-          return ssr(_tmpl$$1, ssrHydrationKey(), escape(t('global.landing.title', {}, 'Welcome to Arcane Crypto')));
+          return ssr(_tmpl$$1, ssrHydrationKey(), escape(t('landing.hero', {}, 'Welcome to Arcane Crypto')));
         }
 
       });

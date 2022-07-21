@@ -11,10 +11,6 @@ const createRootStore = () => {
   };
 
   const [settings, set] = createCookieStorage();
-  /* const browserLang = !isServer ? navigator.language.slice(0, 2) : 'en';
-  const location = useLocation()
-    ? createCookieStorage()
-    : createStore({ dark: 'false', locale: 'en' }); */
 
   return [
     settings as { dark: 'false' | 'true'; locale: string },
@@ -39,11 +35,8 @@ type DataParams = {
 };
 
 const RootData: RouteDataFunc = (props) => {
-  // get all apps
-
   const [settings, set] = createRootStore();
 
-  set('apps', 'undefined');
   const browserLang = !isServer ? navigator.language.slice(0, 2) : 'en';
   const location = props.location;
   if (location.query['locale']) {
@@ -53,6 +46,7 @@ const RootData: RouteDataFunc = (props) => {
   }
 
   const i18n = createI18nContext({}, (settings.locale || 'en') as string);
+
   const [, { add, locale }] = i18n;
 
   const params = (): DataParams => {
@@ -66,7 +60,9 @@ const RootData: RouteDataFunc = (props) => {
     }
     return { locale, page };
   };
+
   const apps = fetchAppsCollection();
+
   const [lang] = createResource(params, ({ locale }) => langs[locale]());
 
   const isDark = () =>
@@ -78,13 +74,15 @@ const RootData: RouteDataFunc = (props) => {
 
   createEffect(() => set('locale', locale()));
 
-  createEffect(() => {
-    if (!apps.loading) add('apps', apps()?.applicationCollection.items || []);
-  });
+  // store apps in cookies
+  createEffect(() =>
+    set('apps', JSON.stringify(apps()?.applicationCollection.items))
+  );
 
   createEffect(() => {
     if (!lang.loading) add(locale(), lang() as Record<string, any>);
   });
+
   createEffect(() => {
     document.documentElement.lang = locale();
   });

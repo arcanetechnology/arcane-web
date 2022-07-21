@@ -59,7 +59,6 @@ export default defineConfig({
     conditions: ['solid'],
     dedupe: ['solid-js'],
   },
-
   //@ts-ignore
   ssr: {
     noExternal: ['solid-app-router'],
