@@ -34,7 +34,7 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
       >
         Contact Us
       </Button>
-      <Modal isOpen={isOpen()} toggleModal={setModal}>
+      <Modal size="large" isOpen={isOpen()} toggleModal={setModal}>
         <article
           class="align-center"
           style={{

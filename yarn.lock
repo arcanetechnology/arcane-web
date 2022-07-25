@@ -72,6 +72,7 @@ __metadata:
     "@arcane-web/arcane-auth": "workspace:^"
     "@arcane-web/arcane-components": "workspace:^"
     "@arcane-web/arcane-flow": "workspace:^"
+    "@solid-primitives/storage": ^1.3.1
     "@thisbeyond/solid-select": ^0.11.0
     solid-transition-group: ^0.0.10
   languageName: unknown
@@ -3030,6 +3031,15 @@ __metadata:
   peerDependencies:
     solid-js: ^1.4.3
   checksum: c2cac59f00152434cdd7bcd92f0ad5addcf9da545a4291546088966271c5846e0bce1f194f3b60f282abf00c6cb68976ae277379b3afc2f774c394149e193438
+  languageName: node
+  linkType: hard
+
+"@solid-primitives/storage@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "@solid-primitives/storage@npm:1.3.1"
+  peerDependencies:
+    solid-js: ^1.3.1
+  checksum: db7b4f333477f4aea3224420181c91c1ac7494a18af8b78b04c61837c184241b193ff190b5ae1bfe6aead0bced19b51e3b0a4492f139f447d2a0084e4dba02c2
   languageName: node
   linkType: hard
 

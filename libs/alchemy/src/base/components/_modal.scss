@@ -73,3 +73,49 @@
   top: 0px;
   right: 0px;
 }
+
+.modal-small {
+  @include breakpoint(default) {
+    width: 100%;
+    height: 90%;
+    padding: $space-12;
+  }
+
+  @include breakpoint(small) {
+    width: 100%;
+    height: 90%;
+    padding: $space-12;
+  }
+
+  @include breakpoint(medium) {
+    width: 20%;
+    height: auto;
+    padding: $space-24;
+  }
+}
+
+.modal-large {
+  @include breakpoint(default) {
+    width: 100%;
+    height: 90%;
+    padding: $space-12;
+  }
+
+  @include breakpoint(small) {
+    width: 100%;
+    height: 90%;
+    padding: $space-12;
+  }
+
+  @include breakpoint(medium) {
+    width: 50%;
+    height: 70%;
+    padding: $space-32;
+  }
+
+  @include breakpoint(large) {
+    width: 40%;
+    height: 60%;
+    padding: $space-32;
+  }
+}

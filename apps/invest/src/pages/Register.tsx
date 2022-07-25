@@ -41,3 +41,9 @@ const Register: VoidComponent = () => {
 };
 
 export default Register;
+
+// TODO scss alchemy file.
+// TODO alchemy solid and react
+
+
+
