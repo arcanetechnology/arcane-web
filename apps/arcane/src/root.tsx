@@ -28,6 +28,7 @@ export default function Root() {
           rel="stylesheet"
         />
         <link rel="icon" href="data:," />
+
         <Meta />
         <Links />
       </head>

@@ -1,31 +1,9 @@
 /** @format */
 
 import { defineConfig } from 'vite';
-import solid from 'vite-plugin-solid';
-import path from 'path';
+import solid from 'solid-start';
+import arcaneAdapter from './server';
 
 export default defineConfig({
-  plugins: [solid()],
-  build: {
-    target: 'esnext',
-    polyfillDynamicImport: false,
-    rollupOptions: {
-      output: {
-        entryFileNames: '[name].js',
-      },
-    },
-  },
-  resolve: {
-    alias: [
-      { find: '@', replacement: path.resolve(__dirname, './src') },
-      {
-        find: '@pages',
-        replacement: path.resolve(__dirname, './src/pages'),
-      },
-      {
-        find: '@components',
-        replacement: path.resolve(__dirname, './src/components'),
-      },
-    ],
-  },
+  plugins: [solid({ ssr: true, inspect: true, adapter: arcaneAdapter() })],
 });

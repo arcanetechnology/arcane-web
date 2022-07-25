@@ -59,10 +59,10 @@ export default defineConfig({
     conditions: ['solid'],
     dedupe: ['solid-js'],
   },
-  //@ts-ignore
+  /*   //@ts-ignore
   ssr: {
     noExternal: ['solid-app-router'],
-  },
+  }, */
   build: {
     target: 'esnext',
     polyfillDynamicImport: false,

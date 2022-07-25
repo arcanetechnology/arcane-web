@@ -491,7 +491,6 @@ const useHref = (to) => {
         return to_ !== undefined ? router.renderPath(to_) : to_;
     });
 };
-const useParams = () => useRoute().params;
 const useRouteData = () => useRoute().data;
 function createRoutes(routeDef, base = "", fallback) {
     const { component, data, children } = routeDef;
@@ -829,7 +828,7 @@ function createRouteContext(router, parent, child, match) {
     return route;
 }
 
-const _tmpl$$f = ["<a", " ", ">", "</a>"];
+const _tmpl$$i = ["<a", " ", ">", "</a>"];
 const Router = props => {
   const {
     source,
@@ -948,7 +947,7 @@ const Outlet = () => {
 function LinkBase(props) {
   const [, rest] = splitProps(props, ["children", "to", "href", "state"]);
   const href = useHref(() => props.to);
-  return ssr(_tmpl$$f, ssrHydrationKey(), ssrSpread(rest, false, true) + ssrAttribute("href", escape(href(), true) || escape(props.href, true), false) + ssrAttribute("state", escape(JSON.stringify(props.state), true), false), escape(props.children));
+  return ssr(_tmpl$$i, ssrHydrationKey(), ssrSpread(rest, false, true) + ssrAttribute("href", escape(href(), true) || escape(props.href, true), false) + ssrAttribute("state", escape(JSON.stringify(props.state), true), false), escape(props.children));
 }
 
 function Link(props) {
@@ -1003,8 +1002,8 @@ function StartProvider(props) {
   });
 }
 
-const _tmpl$$e = ["<link", " rel=\"stylesheet\"", ">"],
-      _tmpl$2$4 = ["<link", " rel=\"modulepreload\"", ">"];
+const _tmpl$$h = ["<link", " rel=\"stylesheet\"", ">"],
+      _tmpl$2$5 = ["<link", " rel=\"modulepreload\"", ">"];
 
 function getAssetsFromManifest(manifest, routerContext) {
   const match = routerContext.matches.reduce((memo, m) => {
@@ -1012,7 +1011,7 @@ function getAssetsFromManifest(manifest, routerContext) {
     return memo;
   }, []);
   const links = match.reduce((r, src) => {
-    r[src.href] = src.type === "style" ? ssr(_tmpl$$e, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$4, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
+    r[src.href] = src.type === "style" ? ssr(_tmpl$$h, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$5, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
     return r;
   }, {});
   return Object.values(links);
@@ -1053,11 +1052,11 @@ const routes = [{
   component: lazy(() => Promise.resolve().then(function () { return ____404_$1; })),
   path: "/*404"
 }, {
-  component: lazy(() => Promise.resolve().then(function () { return _app_$1; })),
-  path: "/:app"
-}, {
   component: lazy(() => Promise.resolve().then(function () { return index$1; })),
   path: "/"
+}, {
+  component: lazy(() => Promise.resolve().then(function () { return invest; })),
+  path: "/invest"
 }, {
   component: lazy(() => Promise.resolve().then(function () { return login; })),
   path: "/login"
@@ -1071,11 +1070,14 @@ const routes = [{
   component: lazy(() => Promise.resolve().then(function () { return relations; })),
   path: "/relations"
 }, {
-  component: lazy(() => Promise.resolve().then(function () { return _app_; })),
-  path: "/apps/:app"
+  component: lazy(() => Promise.resolve().then(function () { return trade$1; })),
+  path: "/trade"
 }, {
   component: lazy(() => Promise.resolve().then(function () { return index; })),
-  path: "/apps/"
+  path: "/app/"
+}, {
+  component: lazy(() => Promise.resolve().then(function () { return trade; })),
+  path: "/app/trade"
 }]; // console.log(routes);
 
 /**
@@ -1084,12 +1086,12 @@ const routes = [{
 
 const Routes = useRoutes(routes);
 
-const _tmpl$$d = ["<script", " type=\"module\" async", "></script>"];
+const _tmpl$$g = ["<script", " type=\"module\" async", "></script>"];
 
 function getFromManifest(manifest) {
   const match = manifest["*"];
   const entry = match.find(src => src.type === "script");
-  return ssr(_tmpl$$d, ssrHydrationKey(), ssrAttribute("src", escape(entry.href, true), false));
+  return ssr(_tmpl$$g, ssrHydrationKey(), ssrAttribute("src", escape(entry.href, true), false));
 }
 
 function Scripts() {
@@ -1102,7 +1104,7 @@ function Scripts() {
   })];
 }
 
-const _tmpl$$c = ["<div", " style=\"", "\"><div style=\"", "\"><p style=\"", "\" id=\"error-message\">", "</p><button id=\"reset-errors\" style=\"", "\">Clear errors and retry</button><pre style=\"", "\">", "</pre></div></div>"];
+const _tmpl$$f = ["<div", " style=\"", "\"><div style=\"", "\"><p style=\"", "\" id=\"error-message\">", "</p><button id=\"reset-errors\" style=\"", "\">Clear errors and retry</button><pre style=\"", "\">", "</pre></div></div>"];
 function ErrorBoundary(props) {
   return createComponent(ErrorBoundary$1, {
     fallback: e => {
@@ -1132,7 +1134,7 @@ function ErrorBoundary(props) {
 }
 
 function ErrorMessage(props) {
-  return ssr(_tmpl$$c, ssrHydrationKey(), "padding:" + "16px", "background-color:" + "rgba(252, 165, 165)" + (";color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";overflow:" + "scroll") + (";padding:" + "16px") + (";margin-bottom:" + "8px"), "font-weight:" + "bold", escape(props.error.message), "color:" + "rgba(252, 165, 165)" + (";background-color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";padding:" + "4px 8px"), "margin-top:" + "8px" + (";width:" + "100%"), escape(props.error.stack));
+  return ssr(_tmpl$$f, ssrHydrationKey(), "padding:" + "16px", "background-color:" + "rgba(252, 165, 165)" + (";color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";overflow:" + "scroll") + (";padding:" + "16px") + (";margin-bottom:" + "8px"), "font-weight:" + "bold", escape(props.error.message), "color:" + "rgba(252, 165, 165)" + (";background-color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";padding:" + "4px 8px"), "margin-top:" + "8px" + (";width:" + "100%"), escape(props.error.stack));
 }
 
 var logo = "/assets/logo.ea4c43ee.svg";
@@ -1158,8 +1160,8 @@ const useAppContext = () => useContext(AppContext);
 
 var Navigation$1 = '';
 
-const _tmpl$$b = ["<div", " id=\"menu-container\" class=\"menu-container\" data-is-closed=\"true\"><div", " class=\"menu-btn circle-hover\"><abbr class=\"clear-df-abbr\"", "><svg viewBox=\"0 0 24 24\"><path d=\"M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z\"></path></svg></abbr></div><div", " class=\"menu margin-12\"><nav class=\"gap-small\" data-auto-grid=\"2\">", "</nav></div></div>"],
-      _tmpl$2$3 = ["<img", " width=\"40\" height=\"40\"", " alt=\"", "\">"],
+const _tmpl$$e = ["<div", " id=\"menu-container\" class=\"menu-container\" data-is-closed=\"true\"><div", " class=\"menu-btn circle-hover\"><abbr class=\"clear-df-abbr\"", "><svg viewBox=\"0 0 24 24\"><path d=\"M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z\"></path></svg></abbr></div><div", " class=\"menu margin-12\"><nav class=\"gap-small\" data-auto-grid=\"2\">", "</nav></div></div>"],
+      _tmpl$2$4 = ["<img", " width=\"40\" height=\"40\"", " alt=\"", "\">"],
       _tmpl$3$2 = ["<div", " class=\"app-nav\"><!--#-->", "<!--/--><p class=\"button-small\">", "</p></div>"];
 
 const Navigation = () => {
@@ -1176,7 +1178,7 @@ const Navigation = () => {
   const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
   const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
 
-  return ssr(_tmpl$$b, ssrHydrationKey(), ssrAttribute("id", escape(NAVIGATION_MENU_BUTTON_ID, true), false), ssrAttribute("title", escape(t('global.apps.title', {}, 'Arcane Apps'), true), false), ssrAttribute("id", escape(NAVIGATION_MENU_ID, true), false), escape(createComponent(Show, {
+  return ssr(_tmpl$$e, ssrHydrationKey(), ssrAttribute("id", escape(NAVIGATION_MENU_BUTTON_ID, true), false), ssrAttribute("title", escape(t('global.apps.title', {}, 'Arcane Apps'), true), false), ssrAttribute("id", escape(NAVIGATION_MENU_ID, true), false), escape(createComponent(Show, {
     get when() {
       return arcaneApps();
     },
@@ -1195,7 +1197,7 @@ const Navigation = () => {
           },
 
           get children() {
-            return ssr(_tmpl$2$3, ssrHydrationKey(), ssrAttribute("src", escape(app.logo.url, true), false), `${escape(app.logo.description, true)} logo`);
+            return ssr(_tmpl$2$4, ssrHydrationKey(), ssrAttribute("src", escape(app.logo.url, true), false), `${escape(app.logo.description, true)} logo`);
           }
 
         })), escape(app.name))
@@ -1207,16 +1209,16 @@ const Navigation = () => {
 
 var Header$1 = '';
 
-const _tmpl$$a = ["<img", " alt=\"logo\">"],
-      _tmpl$2$2 = ["<header", " role=\"banner\"><div class=\"container align-row margin-12\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></header>"];
+const _tmpl$$d = ["<img", " alt=\"logo\">"],
+      _tmpl$2$3 = ["<header", " role=\"banner\"><div class=\"container align-row margin-12\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></header>"];
 
 const Header = () => {
-  return ssr(_tmpl$2$2, ssrHydrationKey(), escape(createComponent(Transition, {
+  return ssr(_tmpl$2$3, ssrHydrationKey(), escape(createComponent(Transition, {
     onEnter: onLogoEnter,
     appear: !isServer,
 
     get children() {
-      return ssr(_tmpl$$a, ssrHydrationKey() + ssrAttribute("src", escape(logo, true), false));
+      return ssr(_tmpl$$d, ssrHydrationKey() + ssrAttribute("src", escape(logo, true), false));
     }
 
   })), "flex-grow:" + 1, escape(createComponent(Navigation, {})));
@@ -1235,20 +1237,20 @@ const onLogoEnter = (el, done) => {
   }, base], options).finished.then(done);
 };
 
-const _tmpl$$9 = ["<section", "><section class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section></section>"];
+const _tmpl$$c = ["<section", "><section class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section></section>"];
 
 /** @format */
 const Banner = props => {
-  return ssr(_tmpl$$9, ssrHydrationKey(), "text-align:" + "center", escape(props.children));
+  return ssr(_tmpl$$c, ssrHydrationKey(), "text-align:" + "center", escape(props.children));
 };
 
-const _tmpl$$8 = ["<h6", " id=\"arcane-not-found\">", "</h6>"];
+const _tmpl$$b = ["<h6", " id=\"arcane-not-found\">", "</h6>"];
 
 const NotFound = () => {
   const [t] = useI18n();
   return createComponent(Banner, {
     get children() {
-      return ssr(_tmpl$$8, ssrHydrationKey(), escape(t('404')));
+      return ssr(_tmpl$$b, ssrHydrationKey(), escape(t('404')));
     }
 
   });
@@ -1262,8 +1264,8 @@ var twitter = "/assets/twitter.9d5edd23.svg";
 
 var Footer$1 = '';
 
-const _tmpl$$7 = ["<p", " class=\"body3 footer-link\"><img width=\"20\" style=\"", "\"", " alt=\"arcane twitter\"></p>"],
-      _tmpl$2$1 = ["<img", " width=\"20\" style=\"", "\"", " alt=\"arcane linkedin\">"],
+const _tmpl$$a = ["<p", " class=\"body3 footer-link\"><img width=\"20\" style=\"", "\"", " alt=\"arcane twitter\"></p>"],
+      _tmpl$2$2 = ["<img", " width=\"20\" style=\"", "\"", " alt=\"arcane linkedin\">"],
       _tmpl$3$1 = ["<footer", "><div class=\"container footer-row margin-48\"><div><img style=\"", "\"", " alt=\"arcane-logo\"></div><div style=\"", "\"></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-application-navigation\" class=\"align-vertical\"></nav></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-static\" class=\"align-vertical\"><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--></nav></div></div><hr><div class=\"container footer-row margin-12\"><p class=\"body3\">", "</p><p class=\"body3\">", "</p><div style=\"", "\"></div><div class=\"footer-follow gap-small\"><p class=\"body3\">", "</p><!--#-->", "<!--/--><!--#-->", "<!--/--></div></div></footer>"];
 
 const Footer = () => {
@@ -1298,32 +1300,32 @@ const Footer = () => {
     href: 'https://twitter.com/arcane_crypto',
 
     get children() {
-      return ssr(_tmpl$$7, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(twitter, true), false));
+      return ssr(_tmpl$$a, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(twitter, true), false));
     }
 
   })), escape(createComponent(Link, {
     href: 'https://www.linkedin.com/company/arcane-crypto/',
 
     get children() {
-      return ssr(_tmpl$2$1, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(linkedin, true), false));
+      return ssr(_tmpl$2$2, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(linkedin, true), false));
     }
 
   })));
 };
 
-const _tmpl$$6 = ["<main", " style=\"", "\">", "</main>"];
+const _tmpl$$9 = ["<main", " style=\"", "\">", "</main>"];
 
 const Public = props => {
-  return [ssr(_tmpl$$6, ssrHydrationKey(), "flex:" + "1 0 auto", escape(props.children)), createComponent(Footer, {})];
+  return [ssr(_tmpl$$9, ssrHydrationKey(), "flex:" + "1 0 auto", escape(props.children)), createComponent(Footer, {})];
 };
 
 var Public$1 = Public;
 
-const _tmpl$$5 = ["<main", " style=\"", "\">", "</main>"];
+const _tmpl$$8 = ["<main", " style=\"", "\">", "</main>"];
 
 /** @format */
 const Private = props => {
-  return ssr(_tmpl$$5, ssrHydrationKey(), "flex:" + "1 0 auto", escape(props.children));
+  return ssr(_tmpl$$8, ssrHydrationKey(), "flex:" + "1 0 auto", escape(props.children));
 };
 
 var core = '';
@@ -1350,15 +1352,15 @@ const preventSmoothScrollOnTabbing = () => {
   });
 };
 
-const _tmpl$$4 = ["<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link href=\"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap\" rel=\"stylesheet\"><link rel=\"icon\" href=\"data:,\">", "", "</head>"],
-      _tmpl$2 = ["<html", " lang=\"en\">", "<body><!--#-->", "<!--/--><!--#-->", "<!--/--></body></html>"],
+const _tmpl$$7 = ["<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link href=\"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap\" rel=\"stylesheet\"><link rel=\"icon\" href=\"data:,\">", "", "</head>"],
+      _tmpl$2$1 = ["<html", " lang=\"en\">", "<body><!--#-->", "<!--/--><!--#-->", "<!--/--></body></html>"],
       _tmpl$3 = ["<div", " class=\"arcane-body\"", ">", "</div>"];
 
 function Root() {
   preventSmoothScrollOnTabbing();
-  return ssr(_tmpl$2, ssrHydrationKey(), NoHydration({
+  return ssr(_tmpl$2$1, ssrHydrationKey(), NoHydration({
     get children() {
-      return ssr(_tmpl$$4, escape(createComponent(Meta, {})), escape(createComponent(Links, {})));
+      return ssr(_tmpl$$7, escape(createComponent(Meta, {})), escape(createComponent(Links, {})));
     }
 
   }), escape(createComponent(Lang, {
@@ -1420,11 +1422,11 @@ const api = [
   },
   {
     get: "skip",
-    path: "/:app"
+    path: "/"
   },
   {
     get: "skip",
-    path: "/"
+    path: "/invest"
   },
   {
     get: "skip",
@@ -1444,11 +1446,15 @@ const api = [
   },
   {
     get: "skip",
-    path: "/apps/:app"
+    path: "/trade"
   },
   {
     get: "skip",
-    path: "/apps/"
+    path: "/app/"
+  },
+  {
+    get: "skip",
+    path: "/app/trade"
   }
 ];
 function routeToMatchRoute(route) {
@@ -1918,7 +1924,11 @@ var StartServer = (({
 
 var entryServer = createHandler(renderAsync(context => createComponent(StartServer, {
   context: context
-})));
+}))); // TODO: create express server and add tailorx to it.
+// TODO: serve dist folder as template.
+// TODO: add trade as child application
+// TODO: add authentication to that app
+// TODO: convert invest as child application.
 
 const name = "English";
 const title = "Arcane Crypto . Platform";
@@ -1970,11 +1980,11 @@ var en = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   'default': langs
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _tmpl$$3 = ["<section", " class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section>"];
+const _tmpl$$6 = ["<section", " class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section>"];
 var ____404_ = (() => {
   return createComponent(Public$1, {
     get children() {
-      return ssr(_tmpl$$3, ssrHydrationKey(), "text-align:" + "center", escape(createComponent(NotFound$1, {})));
+      return ssr(_tmpl$$6, ssrHydrationKey(), "text-align:" + "center", escape(createComponent(NotFound$1, {})));
     }
 
   });
@@ -1985,22 +1995,7 @@ var ____404_$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   'default': ____404_
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const Id = () => {
-  const params = useParams();
-  return createComponent(Public$1, {
-    get children() {
-      return ["Hi ", () => params.app];
-    }
-
-  });
-};
-
-var _app_$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  'default': Id
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const _tmpl$$2 = ["<h1", ">", "</h1>"];
+const _tmpl$$5 = ["<h1", ">", "</h1>"];
 
 const Home = () => {
   const [t] = useI18n();
@@ -2008,7 +2003,7 @@ const Home = () => {
     get children() {
       return createComponent(Banner, {
         get children() {
-          return ssr(_tmpl$$2, ssrHydrationKey(), escape(t('landing.hero', {}, 'Welcome to Arcane Crypto')));
+          return ssr(_tmpl$$5, ssrHydrationKey(), escape(t('landing.hero', {}, 'Welcome to Arcane Crypto')));
         }
 
       });
@@ -2022,14 +2017,35 @@ var index$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   'default': Home
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _tmpl$$1 = ["<h6", ">Login</h6>"];
+const _tmpl$$4 = ["<h6", ">Login</h6>"];
+
+const Invest = () => {
+  return createComponent(Public$1, {
+    get children() {
+      return createComponent(Banner, {
+        get children() {
+          return ssr(_tmpl$$4, ssrHydrationKey());
+        }
+
+      });
+    }
+
+  });
+};
+
+var invest = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  'default': Invest
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _tmpl$$3 = ["<h6", ">Login</h6>"];
 
 const Login = () => {
   return createComponent(Public$1, {
     get children() {
       return createComponent(Banner, {
         get children() {
-          return ssr(_tmpl$$1, ssrHydrationKey());
+          return ssr(_tmpl$$3, ssrHydrationKey());
         }
 
       });
@@ -2091,18 +2107,23 @@ var relations = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   'default': Relations
 }, Symbol.toStringTag, { value: 'Module' }));
 
-/** @format */
-const App = () => {
-  const params = useParams();
-  return params.app;
+const _tmpl$$2 = ["<fragment", " async primary src=\"http://localhost:3000\"></fragment>"];
+
+const Trade$1 = () => {
+  return createComponent(Public$1, {
+    get children() {
+      return ssr(_tmpl$$2, ssrHydrationKey());
+    }
+
+  });
 };
 
-var _app_ = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+var trade$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  'default': App
+  'default': Trade$1
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _tmpl$ = ["<h1", ">", "</h1>"];
+const _tmpl$$1 = ["<h1", ">", "</h1>"];
 
 const Apps = () => {
   const [t] = useI18n();
@@ -2110,7 +2131,7 @@ const Apps = () => {
     get children() {
       return createComponent(Banner, {
         get children() {
-          return ssr(_tmpl$, ssrHydrationKey(), escape(t('apps.hero', {}, 'Apps list')));
+          return ssr(_tmpl$$1, ssrHydrationKey(), escape(t('apps.hero', {}, 'Apps list')));
         }
 
       });
@@ -2122,6 +2143,23 @@ const Apps = () => {
 var index = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   'default': Apps
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _tmpl$ = ["<fragment", " src=\"http://localhost:3000/app/\" async></fragment>"],
+      _tmpl$2 = ["<div", "></div>"];
+
+const Trade = () => {
+  return createComponent(Private, {
+    get children() {
+      return [ssr(_tmpl$, ssrHydrationKey()), ssr(_tmpl$2, ssrHydrationKey())];
+    }
+
+  });
+};
+
+var trade = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  'default': Trade
 }, Symbol.toStringTag, { value: 'Module' }));
 
 export { entryServer as default };

@@ -1,13 +1,13 @@
 /** @format */
 import express from 'express';
-import type { Express, Request, Response } from 'express';
+import type { Express } from 'express';
+import { root } from './routes';
+import { assets, port, name } from './constants';
 
 const app: Express = express();
+app.use('/assets', express.static(assets));
+app.use('/', root);
 
-app.get('*', (req: Request, res: Response) => {
-  res.status(200).send('Hello World!');
-});
-
-app.listen(3000, () => {
-  console.log(`⚡️[arcane]: Server is running at https://localhost:3000`);
+app.listen(port, () => {
+  console.log(`⚡️[${name}]: Server is running at https://localhost:${port}`);
 });
