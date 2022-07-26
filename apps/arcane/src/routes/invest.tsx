@@ -8,7 +8,7 @@ const Invest: VoidComponent = () => {
   return (
     <Public>
       <Banner>
-        <h6>Login</h6>
+        <h6>Invest App</h6>
       </Banner>
     </Public>
   );

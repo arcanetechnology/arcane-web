@@ -4,6 +4,7 @@ import { createI18nContext, useI18n, I18nContext } from '@solid-primitives/i18n'
 import { createResource, createEffect, createContext, createSignal, onMount, useContext, createComputed, onCleanup, getOwner, runWithOwner, createMemo, createComponent as createComponent$1, useTransition, createRenderEffect, untrack, on, resetErrorBoundaries, children, createRoot, Show as Show$1, splitProps, lazy, ErrorBoundary as ErrorBoundary$1, mergeProps as mergeProps$1, Suspense, sharedConfig } from 'solid-js';
 import { createGraphQLClient, gql } from '@solid-primitives/graphql';
 import { Transition } from 'solid-transition-group';
+import { createForm } from '@felte/solid';
 
 function renderAsync(fn, options) {
   return () => async (context) => {
@@ -837,7 +838,7 @@ function createRouteContext(router, parent, child, match) {
     return route;
 }
 
-const _tmpl$$m = ["<a", " ", ">", "</a>"];
+const _tmpl$$n = ["<a", " ", ">", "</a>"];
 const Router = props => {
   const {
     source,
@@ -956,7 +957,7 @@ const Outlet = () => {
 function LinkBase(props) {
   const [, rest] = splitProps(props, ["children", "to", "href", "state"]);
   const href = useHref(() => props.to);
-  return ssr(_tmpl$$m, ssrHydrationKey(), ssrSpread(rest, false, true) + ssrAttribute("href", escape(href(), true) || escape(props.href, true), false) + ssrAttribute("state", escape(JSON.stringify(props.state), true), false), escape(props.children));
+  return ssr(_tmpl$$n, ssrHydrationKey(), ssrSpread(rest, false, true) + ssrAttribute("href", escape(href(), true) || escape(props.href, true), false) + ssrAttribute("state", escape(JSON.stringify(props.state), true), false), escape(props.children));
 }
 
 function Link(props) {
@@ -1011,7 +1012,7 @@ function StartProvider(props) {
   });
 }
 
-const _tmpl$$l = ["<link", " rel=\"stylesheet\"", ">"],
+const _tmpl$$m = ["<link", " rel=\"stylesheet\"", ">"],
       _tmpl$2$6 = ["<link", " rel=\"modulepreload\"", ">"];
 
 function getAssetsFromManifest(manifest, routerContext) {
@@ -1020,7 +1021,7 @@ function getAssetsFromManifest(manifest, routerContext) {
     return memo;
   }, []);
   const links = match.reduce((r, src) => {
-    r[src.href] = src.type === "style" ? ssr(_tmpl$$l, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$6, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
+    r[src.href] = src.type === "style" ? ssr(_tmpl$$m, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$6, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
     return r;
   }, {});
   return Object.values(links);
@@ -1098,12 +1099,12 @@ const routes = [{
 
 const Routes = useRoutes(routes);
 
-const _tmpl$$k = ["<script", " type=\"module\" async", "></script>"];
+const _tmpl$$l = ["<script", " type=\"module\" async", "></script>"];
 
 function getFromManifest(manifest) {
   const match = manifest["*"];
   const entry = match.find(src => src.type === "script");
-  return ssr(_tmpl$$k, ssrHydrationKey(), ssrAttribute("src", escape(entry.href, true), false));
+  return ssr(_tmpl$$l, ssrHydrationKey(), ssrAttribute("src", escape(entry.href, true), false));
 }
 
 function Scripts() {
@@ -1116,7 +1117,7 @@ function Scripts() {
   })];
 }
 
-const _tmpl$$j = ["<div", " style=\"", "\"><div style=\"", "\"><p style=\"", "\" id=\"error-message\">", "</p><button id=\"reset-errors\" style=\"", "\">Clear errors and retry</button><pre style=\"", "\">", "</pre></div></div>"];
+const _tmpl$$k = ["<div", " style=\"", "\"><div style=\"", "\"><p style=\"", "\" id=\"error-message\">", "</p><button id=\"reset-errors\" style=\"", "\">Clear errors and retry</button><pre style=\"", "\">", "</pre></div></div>"];
 function ErrorBoundary(props) {
   return createComponent(ErrorBoundary$1, {
     fallback: e => {
@@ -1146,7 +1147,7 @@ function ErrorBoundary(props) {
 }
 
 function ErrorMessage(props) {
-  return ssr(_tmpl$$j, ssrHydrationKey(), "padding:" + "16px", "background-color:" + "rgba(252, 165, 165)" + (";color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";overflow:" + "scroll") + (";padding:" + "16px") + (";margin-bottom:" + "8px"), "font-weight:" + "bold", escape(props.error.message), "color:" + "rgba(252, 165, 165)" + (";background-color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";padding:" + "4px 8px"), "margin-top:" + "8px" + (";width:" + "100%"), escape(props.error.stack));
+  return ssr(_tmpl$$k, ssrHydrationKey(), "padding:" + "16px", "background-color:" + "rgba(252, 165, 165)" + (";color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";overflow:" + "scroll") + (";padding:" + "16px") + (";margin-bottom:" + "8px"), "font-weight:" + "bold", escape(props.error.message), "color:" + "rgba(252, 165, 165)" + (";background-color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";padding:" + "4px 8px"), "margin-top:" + "8px" + (";width:" + "100%"), escape(props.error.stack));
 }
 
 var logo = "/assets/logo.ea4c43ee.svg";
@@ -1173,7 +1174,7 @@ const useAppContext = () => useContext(AppContext);
 
 var Navigation$1 = '';
 
-const _tmpl$$i = ["<div", " id=\"menu-container\" class=\"menu-container\" data-is-closed=\"true\"><div", " class=\"menu-btn circle-hover\"><abbr class=\"clear-df-abbr\"", "><svg viewBox=\"0 0 24 24\"><path d=\"M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z\"></path></svg></abbr></div><div", " class=\"menu margin-12\"><nav class=\"gap-small\" data-auto-grid=\"2\">", "</nav></div></div>"],
+const _tmpl$$j = ["<div", " id=\"menu-container\" class=\"menu-container\" data-is-closed=\"true\"><div", " class=\"menu-btn circle-hover\"><abbr class=\"clear-df-abbr\"", "><svg viewBox=\"0 0 24 24\"><path d=\"M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z\"></path></svg></abbr></div><div", " class=\"menu margin-12\"><nav class=\"gap-small\" data-auto-grid=\"2\">", "</nav></div></div>"],
       _tmpl$2$5 = ["<img", " width=\"40\" height=\"40\"", " alt=\"", "\">"],
       _tmpl$3$3 = ["<div", " class=\"app-nav\"><!--#-->", "<!--/--><p class=\"button-small\">", "</p></div>"];
 
@@ -1191,7 +1192,7 @@ const Navigation = () => {
   const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
   const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
 
-  return ssr(_tmpl$$i, ssrHydrationKey(), ssrAttribute("id", escape(NAVIGATION_MENU_BUTTON_ID, true), false), ssrAttribute("title", escape(t('global.apps.title', {}, 'Arcane Apps'), true), false), ssrAttribute("id", escape(NAVIGATION_MENU_ID, true), false), escape(createComponent(Show, {
+  return ssr(_tmpl$$j, ssrHydrationKey(), ssrAttribute("id", escape(NAVIGATION_MENU_BUTTON_ID, true), false), ssrAttribute("title", escape(t('global.apps.title', {}, 'Arcane Apps'), true), false), ssrAttribute("id", escape(NAVIGATION_MENU_ID, true), false), escape(createComponent(Show, {
     get when() {
       return arcaneApps();
     },
@@ -1222,7 +1223,7 @@ const Navigation = () => {
 
 var Header$1 = '';
 
-const _tmpl$$h = ["<img", " alt=\"logo\">"],
+const _tmpl$$i = ["<img", " alt=\"logo\">"],
       _tmpl$2$4 = ["<header", " role=\"banner\"><div class=\"container align-row margin-12\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></header>"];
 
 const Header = () => {
@@ -1231,7 +1232,7 @@ const Header = () => {
     appear: !isServer,
 
     get children() {
-      return ssr(_tmpl$$h, ssrHydrationKey() + ssrAttribute("src", escape(logo, true), false));
+      return ssr(_tmpl$$i, ssrHydrationKey() + ssrAttribute("src", escape(logo, true), false));
     }
 
   })), "flex-grow:" + 1, escape(createComponent(Navigation, {})));
@@ -1250,14 +1251,14 @@ const onLogoEnter = (el, done) => {
   }, base], options).finished.then(done);
 };
 
-const _tmpl$$g = ["<section", "><section class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section></section>"];
+const _tmpl$$h = ["<section", "><section class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section></section>"];
 
 /** @format */
 const Banner = props => {
-  return ssr(_tmpl$$g, ssrHydrationKey(), "text-align:" + "center", escape(props.children));
+  return ssr(_tmpl$$h, ssrHydrationKey(), "text-align:" + "center", escape(props.children));
 };
 
-const _tmpl$$f = ["<button", " id=\"", "\" ", ">", "</button>"];
+const _tmpl$$g = ["<button", " id=\"", "\" ", ">", "</button>"];
 /**
  * low level base button without any custom style, all styles are inherited from css files.
  * @param @type {BaseButtonProps} accepst all types of button properties of an html button.
@@ -1266,7 +1267,7 @@ const _tmpl$$f = ["<button", " id=\"", "\" ", ">", "</button>"];
 
 const BaseButton = props => {
   const [local, others] = splitProps(props, ['id', 'children']);
-  return ssr(_tmpl$$f, ssrHydrationKey(), `${escape(local.id, true)}-button`, ssrSpread(others, false, true), escape(local.children));
+  return ssr(_tmpl$$g, ssrHydrationKey(), `${escape(local.id, true)}-button`, ssrSpread(others, false, true), escape(local.children));
 };
 /**
  * mid level button wrapped in arcane design languge css based on prop values
@@ -1310,6 +1311,13 @@ const Button = props => {
   }));
 };
 
+const _tmpl$$f = ["<form", " ", ">", "</form>"];
+
+const Form = props => {
+  const [local, others] = splitProps(props, ['children']);
+  return ssr(_tmpl$$f, ssrHydrationKey(), ssrSpread(others, false, true), escape(local.children));
+};
+
 const _tmpl$$e = ["<div", " class=\"modal-background\"><div class=\"", "\"><div class=\"modal-close\">", "</div><!--#-->", "<!--/--></div></div>"];
 
 const Modal = props => {
@@ -1337,7 +1345,7 @@ const Modal = props => {
   });
 };
 
-const _tmpl$$d = ["<div", " class=\"", "\"><div class=\"wrg-toggle-container\"><div class=\"wrg-toggle-check\"><span>", "</span></div><div class=\"wrg-toggle-uncheck\"><span>", "</span></div></div><div class=\"wrg-toggle-circle\"></div><input type=\"checkbox\" aria-label=\"Toggle Button\" class=\"wrg-toggle-input\"></div>"];
+const _tmpl$$d = ["<div", " class=\"", "\"><div class=\"wrg-toggle-container\"><div class=\"wrg-toggle-check\"><span>", "</span></div><div class=\"wrg-toggle-uncheck\"><span>", "</span></div></div><div class=\"wrg-toggle-circle\"></div><input", " type=\"checkbox\" aria-label=\"Toggle Button\" class=\"wrg-toggle-input\"></div>"];
 
 const checked = () => [];
 
@@ -1359,7 +1367,7 @@ const Toggle = props => {
     return unchecked();
   };
 
-  return ssr(_tmpl$$d, ssrHydrationKey(), `wrg-toggle ${toggle() ? "wrg-toggle--checked" : ""} ${props.disabled ? "wrg-toggle--disabled" : ""}`, escape(getIcon('checked')), escape(getIcon('unchecked')));
+  return ssr(_tmpl$$d, ssrHydrationKey(), `wrg-toggle ${toggle() ? "wrg-toggle--checked" : ""} ${props.disabled ? "wrg-toggle--disabled" : ""}`, escape(getIcon('checked')), escape(getIcon('unchecked')), ssrAttribute("name", escape(props.name, true), false));
 };
 
 var back = "/assets/back.612dc836.svg";
@@ -1368,26 +1376,35 @@ const _tmpl$$c = ["<img", " width=\"20\">"],
       _tmpl$2$3 = ["<article", " class=\"align-center gap-big\"><div class=\"align-row gap-small\"><!--#-->", "<!--/--><p class=\"heading8\">", "</p></div><div class=\"align-vertical gap-big\"><div class=\"align-vertical gap-default\"><p class=\"body3\"><!--#-->", "<!--/--> <!--#-->", "<!--/--></p><!--#-->", "<!--/--></div><div class=\"w-full align-row\" style=\"", "\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></div></article>"],
       _tmpl$3$2 = ["<div", " class=\"w-full\"><div class=\"align-row\"><p class=\"body1\">", "</p><div style=\"", "\"></div><!--#-->", "<!--/--></div><p class=\"small\">", "</p></div>"];
 
+const normalizeCookieType = title => title.replace(/ /g, '-').toLowerCase();
+
 const Cookies$1 = () => {
   const [t] = useI18n();
   const [isOpen, toggleModal] = createSignal(false);
   const [isBreakDown, toggleBreakDown] = createSignal(false);
   const context = useAppContext();
+  console.log(t('global.cookie.sections'));
+  const {
+    form,
+    data
+  } = createForm({
+    initialValues: t('global.cookie.sections', {}, '').reduce((a, v) => ({ ...a,
+      [normalizeCookieType(v)]: true
+    }), {}),
+    onSubmit: () => {
+      gtag('consent', 'update', {
+        ad_storage: 'denied',
+        analytics_storage: 'granted'
+      });
+      context.showCookie = !context.showCookie;
+      toggleModal(false);
+    }
+  });
   createEffect(on(isOpen, isOpen => {
     if (!isOpen && context.showCookie) {
       toggleModal(true);
     }
   }));
-
-  const handleCookies = () => {
-    gtag('consent', 'update', {
-      ad_storage: 'denied',
-      analytics_storage: 'granted'
-    });
-    context.showCookie = !context.showCookie;
-    toggleModal(false);
-  };
-
   return createComponent(Modal, {
     size: "small",
     toggleModal: toggleModal,
@@ -1397,79 +1414,98 @@ const Cookies$1 = () => {
     },
 
     get children() {
-      return ssr(_tmpl$2$3, ssrHydrationKey(), escape(createComponent(Show$1, {
-        get when() {
-          return isBreakDown();
-        },
-
+      return createComponent(Form, {
         get children() {
-          return createComponent(Button, {
-            onClick: () => toggleBreakDown(false),
+          return ssr(_tmpl$2$3, ssrHydrationKey(), escape(createComponent(Show$1, {
+            get when() {
+              return isBreakDown();
+            },
 
             get children() {
-              return ssr(_tmpl$$c, ssrHydrationKey() + ssrAttribute("src", escape(back, true), false));
+              return createComponent(Button, {
+                type: "button",
+                onClick: () => toggleBreakDown(false),
+
+                get children() {
+                  return ssr(_tmpl$$c, ssrHydrationKey() + ssrAttribute("src", escape(back, true), false));
+                }
+
+              });
             }
 
-          });
-        }
-
-      })), escape(t('global.cookie.title', {}, 'Cookie Settings')), escape(t('global.cookie.description', {}, 'We use cookies to improve your experience on our website.')), escape(createComponent(Link, {
-        href: "/cookies",
-
-        get children() {
-          return t('global.cookie.link', {}, 'learn more');
-        }
-
-      })), escape(createComponent(Show$1, {
-        get when() {
-          return isBreakDown();
-        },
-
-        get children() {
-          return t('global.cookie.sections', {}, '').map(section => ssr(_tmpl$3$2, ssrHydrationKey(), escape(section.title), "flex-grow:" + 1, escape(createComponent(Toggle, {
-            defaultChecked: true,
-            disabled: true
-          })), escape(section.description)));
-        }
-
-      })), "bottom:" + 0 + (";position:" + "relative"), escape(createComponent(Show$1, {
-        get when() {
-          return isBreakDown();
-        },
-
-        get fallback() {
-          return createComponent(Button, {
-            variant: "secondary",
-            onClick: () => toggleBreakDown(true),
+          })), escape(t('global.cookie.title', {}, 'Cookie Settings')), escape(t('global.cookie.description', {}, 'We use cookies to improve your experience on our website.')), escape(createComponent(Link, {
+            href: "/cookies",
 
             get children() {
-              return t('global.cookie.manage', {}, 'Manage Cookies');
+              return t('global.cookie.link', {}, 'learn more');
             }
 
-          });
-        },
-
-        get children() {
-          return createComponent(Button, {
-            variant: "secondary",
-            onClick: () => toggleModal(false),
+          })), escape(createComponent(Show$1, {
+            get when() {
+              return isBreakDown();
+            },
 
             get children() {
-              return t('global.cookie.cancel', {}, 'Cancel');
+              return t('global.cookie.sections', {}, '').map(section => {
+                const name = normalizeCookieType(section.title);
+                return ssr(_tmpl$3$2, ssrHydrationKey(), escape(section.title), "flex-grow:" + 1, escape(createComponent(Toggle, {
+                  get defaultChecked() {
+                    return data(name);
+                  },
+
+                  name: name,
+
+                  get disabled() {
+                    return section.disabled;
+                  }
+
+                })), escape(section.description));
+              });
             }
 
-          });
+          })), "bottom:" + 0 + (";position:" + "relative"), escape(createComponent(Show$1, {
+            get when() {
+              return isBreakDown();
+            },
+
+            get fallback() {
+              return createComponent(Button, {
+                type: "button",
+                variant: "secondary",
+                onClick: () => toggleBreakDown(true),
+
+                get children() {
+                  return t('global.cookie.manage', {}, 'Manage Cookies');
+                }
+
+              });
+            },
+
+            get children() {
+              return createComponent(Button, {
+                type: "button",
+                variant: "secondary",
+                onClick: () => toggleModal(false),
+
+                get children() {
+                  return t('global.cookie.cancel', {}, 'Cancel');
+                }
+
+              });
+            }
+
+          })), "flex-grow:" + 1, escape(createComponent(Button, {
+            type: "submit",
+            variant: "primary",
+
+            get children() {
+              return t('global.cookie.accept', {}, 'Accept');
+            }
+
+          })));
         }
 
-      })), "flex-grow:" + 1, escape(createComponent(Button, {
-        variant: "primary",
-        onClick: () => handleCookies(),
-
-        get children() {
-          return t('global.cookie.accept', {}, 'Accept');
-        }
-
-      })));
+      });
     }
 
   });
@@ -1481,7 +1517,7 @@ const NotFound = () => {
   const [t] = useI18n();
   return createComponent(Banner, {
     get children() {
-      return ssr(_tmpl$$b, ssrHydrationKey(), escape(t('404')));
+      return ssr(_tmpl$$b, ssrHydrationKey(), escape(t('global.404', {}, 'could not find the info')));
     }
 
   });
@@ -1539,7 +1575,7 @@ const Footer = () => {
     "class": "third after footer-link body1",
 
     get children() {
-      return t('global.footer.company.privacy', {}, 'Privacy Policy');
+      return t('global.footer.company.people', {}, 'Privacy Policy');
     }
 
   })), escape(createComponent(Link, {
@@ -2237,11 +2273,13 @@ const cookie = {
 	sections: [
 		{
 			title: "Strictly Necessary",
-			description: "These cookies are necessary for our website to function properly and can’t be disabled."
+			description: "These cookies are necessary for our website to function properly and can’t be disabled.",
+			disabled: true
 		},
 		{
 			title: "Product Development",
-			description: "These cookies help us understand how people use our website and help us make it better."
+			description: "These cookies help us understand how people use our website and help us make it better.",
+			disabled: false
 		}
 	]
 };
@@ -2328,7 +2366,7 @@ var index$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   'default': Home
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _tmpl$$4 = ["<h6", ">Login</h6>"];
+const _tmpl$$4 = ["<h6", ">Invest App</h6>"];
 
 const Invest = () => {
   return createComponent(Public$1, {
@@ -2418,7 +2456,7 @@ var relations = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   'default': Relations
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _tmpl$$2 = ["<fragment", " async primary src=\"http://localhost:3000\"></fragment>"];
+const _tmpl$$2 = ["<h6", ">Trade app</h6>"];
 
 const Trade$1 = () => {
   return createComponent(Public$1, {

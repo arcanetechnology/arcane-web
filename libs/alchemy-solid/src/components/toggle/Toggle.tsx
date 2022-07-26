@@ -11,6 +11,7 @@ type ToggleProps = {
   disabled?: boolean;
   defaultChecked?: boolean;
   onChange?: (checked: boolean) => void;
+  name: string;
 };
 
 const Toggle: VoidComponent<ToggleProps> = (props) => {
@@ -58,6 +59,7 @@ const Toggle: VoidComponent<ToggleProps> = (props) => {
       </div>
       <div class="wrg-toggle-circle" />
       <input
+        name={props.name}
         type="checkbox"
         aria-label="Toggle Button"
         class="wrg-toggle-input"

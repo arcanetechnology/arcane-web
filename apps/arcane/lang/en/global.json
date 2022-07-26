@@ -31,11 +31,13 @@
     "sections": [
       {
         "title": "Strictly Necessary",
-        "description": "These cookies are necessary for our website to function properly and can’t be disabled."
+        "description": "These cookies are necessary for our website to function properly and can’t be disabled.",
+        "disabled": true
       },
       {
         "title": "Product Development",
-        "description": "These cookies help us understand how people use our website and help us make it better."
+        "description": "These cookies help us understand how people use our website and help us make it better.",
+        "disabled": false
       }
     ]
   }

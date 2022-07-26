@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "@arcane-web/alchemy-solid": "workspace:*",
+    "@felte/solid": "^1.2.2",
     "@podium/layout": "^4.6.111",
     "@solid-primitives/graphql": "^1.1.1",
     "@solid-primitives/i18n": "^1.1.0",

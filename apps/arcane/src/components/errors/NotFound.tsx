@@ -7,7 +7,9 @@ const NotFound: VoidComponent = () => {
   const [t] = useI18n();
   return (
     <Banner>
-      <h6 id="arcane-not-found">{t('404')}</h6>
+      <h6 id="arcane-not-found">
+        {t('global.404', {}, 'could not find the info')}
+      </h6>
     </Banner>
   );
 };
