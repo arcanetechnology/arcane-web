@@ -41,6 +41,7 @@
     "workbox-window": "^6.5.3"
   },
   "dependencies": {
+    "@arcane-web/alchemy-solid": "workspace:*",
     "@podium/layout": "^4.6.111",
     "@solid-primitives/graphql": "^1.1.1",
     "@solid-primitives/i18n": "^1.1.0",

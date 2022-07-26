@@ -1,7 +1,7 @@
 /** @format */
 
 import { JSX, mergeProps, splitProps, FlowComponent } from 'solid-js';
-import { ButtonSize, ButtonVariant } from '../../types';
+import type { ButtonSize, ButtonVariant } from '../../types';
 
 // just incase we want to add a use defined base button props :)
 type BaseButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;

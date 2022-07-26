@@ -8,6 +8,7 @@ interface ImportMetaEnv {
   readonly VITE_PLATFORM_CONTENTFUL_ACCESS_TOKEN: string;
   readonly VITE_BACKEND: string;
   readonly VITE_APP_NAME: string;
+  readonly VITE_GTAG_ID: string;
 }
 
 interface ImportMeta {

@@ -5,12 +5,14 @@ import type { Apps } from '~/types';
 interface AppContextInterface {
   isDark: boolean;
   loading: boolean;
+  showCookie: boolean;
   apps: Apps;
 }
 
 const AppContext = createContext<AppContextInterface>({
   isDark: false,
   loading: true,
+  showCookie: true,
   apps: [],
 });
 

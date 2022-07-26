@@ -8,7 +8,8 @@
 @use 'components/card';
 @use 'components/table';
 @use 'components/link';
-@use 'components/skeleton'; // TODO update the z-index
+@use 'components/skeleton';
+@use 'components/toggle';
 
 // 1 modal
 // 2 backdrop

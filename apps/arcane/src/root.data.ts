@@ -1,19 +1,26 @@
 /** @format */
 
+import type { CookieOptions } from '@solid-primitives/storage';
 import type { RouteDataFunc } from 'solid-app-router';
 import { isServer } from 'solid-js/web';
 import { fetchAppsCollection } from './api';
 
+// TODO: check if sameSite attribute is necessary.
 const createRootStore = () => {
   const now = new Date();
-  const cookieOptions = {
+  const cookieOptions: CookieOptions = {
+    domain: 'arcane.no',
     expires: new Date(now.getFullYear() + 1, now.getMonth(), now.getDate()),
   };
 
   const [settings, set] = createCookieStorage();
 
   return [
-    settings as { dark: 'false' | 'true'; locale: string },
+    settings as {
+      dark: 'false' | 'true';
+      locale: string;
+      showCookie: 'false' | 'true';
+    },
     (key: string, value: string) =>
       isServer ? set(key, value) : set(key, value, cookieOptions),
   ] as const;
@@ -37,6 +44,8 @@ type DataParams = {
 const RootData: RouteDataFunc = (props) => {
   const [settings, set] = createRootStore();
 
+  // set cookie popup to true on first visit
+
   const browserLang = !isServer ? navigator.language.slice(0, 2) : 'en';
   const location = props.location;
   if (location.query['locale']) {
@@ -44,6 +53,10 @@ const RootData: RouteDataFunc = (props) => {
   } else if (!settings.locale && langs.hasOwnProperty(browserLang)) {
     set('locale', browserLang);
   }
+
+  // set cookie popup to true on first visit
+
+  set('showCookie', 'true');
 
   const i18n = createI18nContext({}, (settings.locale || 'en') as string);
 
@@ -107,6 +120,10 @@ const RootData: RouteDataFunc = (props) => {
 
     get apps() {
       return apps()?.applicationCollection.items;
+    },
+
+    get showCookie() {
+      return settings.showCookie === 'true';
     },
   };
 };

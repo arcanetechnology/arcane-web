@@ -4,10 +4,11 @@
     "src": "src/entry-server.tsx",
     "isEntry": true,
     "css": [
-      "assets/entry-server.336a0ebe.css"
+      "assets/entry-server.1b01a793.css"
     ],
     "assets": [
       "assets/logo.ea4c43ee.svg",
+      "assets/back.612dc836.svg",
       "assets/linkedin.de4b4749.svg",
       "assets/twitter.9d5edd23.svg"
     ]

@@ -20,5 +20,23 @@
     "social": {
       "title": "Follow Us"
     }
+  },
+  "cookie": {
+    "title": "Cookie Settings",
+    "description": "We use cookies in order to give you the best experience possible while visiting our website. Some of them are essential, others are optional. We won’t turn them on unless you accept.",
+    "link": "Learn more about them",
+    "manage": "Manage Cookies",
+    "cancel;": "Cancel",
+    "accept": "Allow Cookies",
+    "sections": [
+      {
+        "title": "Strictly Necessary",
+        "description": "These cookies are necessary for our website to function properly and can’t be disabled."
+      },
+      {
+        "title": "Product Development",
+        "description": "These cookies help us understand how people use our website and help us make it better."
+      }
+    ]
   }
 }

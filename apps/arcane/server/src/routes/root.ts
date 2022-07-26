@@ -12,6 +12,11 @@ const tailor = new Tailor({
 });
 const root: Router = express.Router();
 
-root.get('*', tailor.requestHandler);
+root.get('/', (req: Request, res: Response) => {
+  req.url = '/index';
+  tailor.requestHandler(req, res);
+});
+
+root.get('/:id', tailor.requestHandler);
 
 export default root;

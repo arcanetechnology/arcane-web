@@ -1,7 +1,7 @@
 import { renderToStringAsync, isServer, createComponent, Show, Portal, Dynamic, mergeProps, ssr, ssrHydrationKey, ssrSpread, ssrAttribute, escape, Assets, HydrationScript, NoHydration, For } from 'solid-js/web';
 import { createCookieStorage } from '@solid-primitives/storage';
 import { createI18nContext, useI18n, I18nContext } from '@solid-primitives/i18n';
-import { createResource, createEffect, createContext, createSignal, onMount, useContext, createComputed, onCleanup, getOwner, runWithOwner, createMemo, createComponent as createComponent$1, useTransition, createRenderEffect, untrack, on, resetErrorBoundaries, children, createRoot, Show as Show$1, splitProps, lazy, ErrorBoundary as ErrorBoundary$1, Suspense, sharedConfig } from 'solid-js';
+import { createResource, createEffect, createContext, createSignal, onMount, useContext, createComputed, onCleanup, getOwner, runWithOwner, createMemo, createComponent as createComponent$1, useTransition, createRenderEffect, untrack, on, resetErrorBoundaries, children, createRoot, Show as Show$1, splitProps, lazy, ErrorBoundary as ErrorBoundary$1, mergeProps as mergeProps$1, Suspense, sharedConfig } from 'solid-js';
 import { createGraphQLClient, gql } from '@solid-primitives/graphql';
 import { Transition } from 'solid-transition-group';
 
@@ -44,6 +44,7 @@ const fetchAppsCollection = () => {
 const createRootStore = () => {
   const now = new Date();
   const cookieOptions = {
+    domain: "arcane.no",
     expires: new Date(now.getFullYear() + 1, now.getMonth(), now.getDate())
   };
   const [settings, set] = createCookieStorage();
@@ -64,6 +65,7 @@ const RootData = (props) => {
   } else if (!settings.locale && langs$1.hasOwnProperty(browserLang)) {
     set("locale", browserLang);
   }
+  set("showCookie", "true");
   const i18n = createI18nContext({}, settings.locale || "en");
   const [, {
     add,
@@ -828,7 +830,7 @@ function createRouteContext(router, parent, child, match) {
     return route;
 }
 
-const _tmpl$$i = ["<a", " ", ">", "</a>"];
+const _tmpl$$m = ["<a", " ", ">", "</a>"];
 const Router = props => {
   const {
     source,
@@ -947,7 +949,7 @@ const Outlet = () => {
 function LinkBase(props) {
   const [, rest] = splitProps(props, ["children", "to", "href", "state"]);
   const href = useHref(() => props.to);
-  return ssr(_tmpl$$i, ssrHydrationKey(), ssrSpread(rest, false, true) + ssrAttribute("href", escape(href(), true) || escape(props.href, true), false) + ssrAttribute("state", escape(JSON.stringify(props.state), true), false), escape(props.children));
+  return ssr(_tmpl$$m, ssrHydrationKey(), ssrSpread(rest, false, true) + ssrAttribute("href", escape(href(), true) || escape(props.href, true), false) + ssrAttribute("state", escape(JSON.stringify(props.state), true), false), escape(props.children));
 }
 
 function Link(props) {
@@ -1002,8 +1004,8 @@ function StartProvider(props) {
   });
 }
 
-const _tmpl$$h = ["<link", " rel=\"stylesheet\"", ">"],
-      _tmpl$2$5 = ["<link", " rel=\"modulepreload\"", ">"];
+const _tmpl$$l = ["<link", " rel=\"stylesheet\"", ">"],
+      _tmpl$2$6 = ["<link", " rel=\"modulepreload\"", ">"];
 
 function getAssetsFromManifest(manifest, routerContext) {
   const match = routerContext.matches.reduce((memo, m) => {
@@ -1011,7 +1013,7 @@ function getAssetsFromManifest(manifest, routerContext) {
     return memo;
   }, []);
   const links = match.reduce((r, src) => {
-    r[src.href] = src.type === "style" ? ssr(_tmpl$$h, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$5, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
+    r[src.href] = src.type === "style" ? ssr(_tmpl$$l, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$6, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
     return r;
   }, {});
   return Object.values(links);
@@ -1086,12 +1088,12 @@ const routes = [{
 
 const Routes = useRoutes(routes);
 
-const _tmpl$$g = ["<script", " type=\"module\" async", "></script>"];
+const _tmpl$$k = ["<script", " type=\"module\" async", "></script>"];
 
 function getFromManifest(manifest) {
   const match = manifest["*"];
   const entry = match.find(src => src.type === "script");
-  return ssr(_tmpl$$g, ssrHydrationKey(), ssrAttribute("src", escape(entry.href, true), false));
+  return ssr(_tmpl$$k, ssrHydrationKey(), ssrAttribute("src", escape(entry.href, true), false));
 }
 
 function Scripts() {
@@ -1104,7 +1106,7 @@ function Scripts() {
   })];
 }
 
-const _tmpl$$f = ["<div", " style=\"", "\"><div style=\"", "\"><p style=\"", "\" id=\"error-message\">", "</p><button id=\"reset-errors\" style=\"", "\">Clear errors and retry</button><pre style=\"", "\">", "</pre></div></div>"];
+const _tmpl$$j = ["<div", " style=\"", "\"><div style=\"", "\"><p style=\"", "\" id=\"error-message\">", "</p><button id=\"reset-errors\" style=\"", "\">Clear errors and retry</button><pre style=\"", "\">", "</pre></div></div>"];
 function ErrorBoundary(props) {
   return createComponent(ErrorBoundary$1, {
     fallback: e => {
@@ -1134,7 +1136,7 @@ function ErrorBoundary(props) {
 }
 
 function ErrorMessage(props) {
-  return ssr(_tmpl$$f, ssrHydrationKey(), "padding:" + "16px", "background-color:" + "rgba(252, 165, 165)" + (";color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";overflow:" + "scroll") + (";padding:" + "16px") + (";margin-bottom:" + "8px"), "font-weight:" + "bold", escape(props.error.message), "color:" + "rgba(252, 165, 165)" + (";background-color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";padding:" + "4px 8px"), "margin-top:" + "8px" + (";width:" + "100%"), escape(props.error.stack));
+  return ssr(_tmpl$$j, ssrHydrationKey(), "padding:" + "16px", "background-color:" + "rgba(252, 165, 165)" + (";color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";overflow:" + "scroll") + (";padding:" + "16px") + (";margin-bottom:" + "8px"), "font-weight:" + "bold", escape(props.error.message), "color:" + "rgba(252, 165, 165)" + (";background-color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";padding:" + "4px 8px"), "margin-top:" + "8px" + (";width:" + "100%"), escape(props.error.stack));
 }
 
 var logo = "/assets/logo.ea4c43ee.svg";
@@ -1160,9 +1162,9 @@ const useAppContext = () => useContext(AppContext);
 
 var Navigation$1 = '';
 
-const _tmpl$$e = ["<div", " id=\"menu-container\" class=\"menu-container\" data-is-closed=\"true\"><div", " class=\"menu-btn circle-hover\"><abbr class=\"clear-df-abbr\"", "><svg viewBox=\"0 0 24 24\"><path d=\"M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z\"></path></svg></abbr></div><div", " class=\"menu margin-12\"><nav class=\"gap-small\" data-auto-grid=\"2\">", "</nav></div></div>"],
-      _tmpl$2$4 = ["<img", " width=\"40\" height=\"40\"", " alt=\"", "\">"],
-      _tmpl$3$2 = ["<div", " class=\"app-nav\"><!--#-->", "<!--/--><p class=\"button-small\">", "</p></div>"];
+const _tmpl$$i = ["<div", " id=\"menu-container\" class=\"menu-container\" data-is-closed=\"true\"><div", " class=\"menu-btn circle-hover\"><abbr class=\"clear-df-abbr\"", "><svg viewBox=\"0 0 24 24\"><path d=\"M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z\"></path></svg></abbr></div><div", " class=\"menu margin-12\"><nav class=\"gap-small\" data-auto-grid=\"2\">", "</nav></div></div>"],
+      _tmpl$2$5 = ["<img", " width=\"40\" height=\"40\"", " alt=\"", "\">"],
+      _tmpl$3$3 = ["<div", " class=\"app-nav\"><!--#-->", "<!--/--><p class=\"button-small\">", "</p></div>"];
 
 const Navigation = () => {
   const [t] = useI18n();
@@ -1178,7 +1180,7 @@ const Navigation = () => {
   const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
   const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
 
-  return ssr(_tmpl$$e, ssrHydrationKey(), ssrAttribute("id", escape(NAVIGATION_MENU_BUTTON_ID, true), false), ssrAttribute("title", escape(t('global.apps.title', {}, 'Arcane Apps'), true), false), ssrAttribute("id", escape(NAVIGATION_MENU_ID, true), false), escape(createComponent(Show, {
+  return ssr(_tmpl$$i, ssrHydrationKey(), ssrAttribute("id", escape(NAVIGATION_MENU_BUTTON_ID, true), false), ssrAttribute("title", escape(t('global.apps.title', {}, 'Arcane Apps'), true), false), ssrAttribute("id", escape(NAVIGATION_MENU_ID, true), false), escape(createComponent(Show, {
     get when() {
       return arcaneApps();
     },
@@ -1189,7 +1191,7 @@ const Navigation = () => {
           return arcaneApps();
         },
 
-        children: app => ssr(_tmpl$3$2, ssrHydrationKey(), escape(createComponent(Link, {
+        children: app => ssr(_tmpl$3$3, ssrHydrationKey(), escape(createComponent(Link, {
           "class": "app-nav-link",
 
           get href() {
@@ -1197,7 +1199,7 @@ const Navigation = () => {
           },
 
           get children() {
-            return ssr(_tmpl$2$4, ssrHydrationKey(), ssrAttribute("src", escape(app.logo.url, true), false), `${escape(app.logo.description, true)} logo`);
+            return ssr(_tmpl$2$5, ssrHydrationKey(), ssrAttribute("src", escape(app.logo.url, true), false), `${escape(app.logo.description, true)} logo`);
           }
 
         })), escape(app.name))
@@ -1209,16 +1211,16 @@ const Navigation = () => {
 
 var Header$1 = '';
 
-const _tmpl$$d = ["<img", " alt=\"logo\">"],
-      _tmpl$2$3 = ["<header", " role=\"banner\"><div class=\"container align-row margin-12\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></header>"];
+const _tmpl$$h = ["<img", " alt=\"logo\">"],
+      _tmpl$2$4 = ["<header", " role=\"banner\"><div class=\"container align-row margin-12\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></header>"];
 
 const Header = () => {
-  return ssr(_tmpl$2$3, ssrHydrationKey(), escape(createComponent(Transition, {
+  return ssr(_tmpl$2$4, ssrHydrationKey(), escape(createComponent(Transition, {
     onEnter: onLogoEnter,
     appear: !isServer,
 
     get children() {
-      return ssr(_tmpl$$d, ssrHydrationKey() + ssrAttribute("src", escape(logo, true), false));
+      return ssr(_tmpl$$h, ssrHydrationKey() + ssrAttribute("src", escape(logo, true), false));
     }
 
   })), "flex-grow:" + 1, escape(createComponent(Navigation, {})));
@@ -1237,11 +1239,209 @@ const onLogoEnter = (el, done) => {
   }, base], options).finished.then(done);
 };
 
-const _tmpl$$c = ["<section", "><section class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section></section>"];
+const _tmpl$$g = ["<section", "><section class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section></section>"];
 
 /** @format */
 const Banner = props => {
-  return ssr(_tmpl$$c, ssrHydrationKey(), "text-align:" + "center", escape(props.children));
+  return ssr(_tmpl$$g, ssrHydrationKey(), "text-align:" + "center", escape(props.children));
+};
+
+const _tmpl$$f = ["<button", " id=\"", "\" ", ">", "</button>"];
+/**
+ * low level base button without any custom style, all styles are inherited from css files.
+ * @param @type {BaseButtonProps} accepst all types of button properties of an html button.
+ * @returns @type {JSX.Element} renders and html button
+ */
+
+const BaseButton = props => {
+  const [local, others] = splitProps(props, ['id', 'children']);
+  return ssr(_tmpl$$f, ssrHydrationKey(), `${escape(local.id, true)}-button`, ssrSpread(others, false, true), escape(local.children));
+};
+/**
+ * mid level button wrapped in arcane design languge css based on prop values
+ * @param @type {ButtonProps} accepst all types of button properties of an html button.
+ * @returns @type {BaseButton} renders base button.
+ */
+
+const Button = props => {
+  const merged = mergeProps$1({
+    variant: 'primary',
+    id: 'arcane',
+    size: 'large'
+  }, props);
+  const [local, others] = splitProps(merged, ['id', 'variant', 'children', 'class', 'classList']);
+  return createComponent(BaseButton, mergeProps({
+    get ["class"]() {
+      return ['button'].concat(local.class ?? '').join(' ');
+    },
+
+    get classList() {
+      return {
+        'button-primary': props.variant === 'primary',
+        'button-secondary': props.variant === 'secondary',
+        'button-tertiary': props.variant === 'tertiary',
+        'button-large': props.size === 'large',
+        'button-medium': props.size === 'medium',
+        'button-small': props.size === 'small',
+        ...local.classList
+      };
+    },
+
+    get id() {
+      return `${local.id}-${local.variant}`;
+    }
+
+  }, others, {
+    get children() {
+      return local.children;
+    }
+
+  }));
+};
+
+const _tmpl$$e = ["<div", " class=\"modal-background\"><div class=\"", "\"><div class=\"modal-close\">", "</div><!--#-->", "<!--/--></div></div>"];
+
+const Modal = props => {
+  const mergedProps = mergeProps$1({
+    size: 'large'
+  }, props);
+  const [local, others] = splitProps(mergedProps, ['size', 'children']);
+  return createComponent(Show$1, {
+    get when() {
+      return others.isOpen;
+    },
+
+    fallback: null,
+
+    get children() {
+      return ssr(_tmpl$$e, ssrHydrationKey(), `elevation-300 radius-small modal ${local.size === 'small' ? "modal-small" : ""} ${local.size === 'large' ? "modal-large" : ""}`, escape(createComponent(Button, {
+        variant: "tertiary",
+        type: "button",
+        onClick: () => others.toggleModal(false),
+        "class": "modal-close",
+        children: "X"
+      })), escape(local.children));
+    }
+
+  });
+};
+
+const _tmpl$$d = ["<div", " class=\"", "\"><div class=\"wrg-toggle-container\"><div class=\"wrg-toggle-check\"><span>", "</span></div><div class=\"wrg-toggle-uncheck\"><span>", "</span></div></div><div class=\"wrg-toggle-circle\"></div><input type=\"checkbox\" aria-label=\"Toggle Button\" class=\"wrg-toggle-input\"></div>"];
+
+const checked = () => [];
+
+const unchecked = () => [];
+
+const Toggle = props => {
+  const [toggle, setToggle] = createSignal(false);
+  createEffect(() => {
+    if (props.defaultChecked) {
+      setToggle(props.defaultChecked);
+    }
+  });
+
+  const getIcon = state => {
+    if (state === 'checked') {
+      return checked();
+    }
+
+    return unchecked();
+  };
+
+  return ssr(_tmpl$$d, ssrHydrationKey(), `wrg-toggle ${toggle() ? "wrg-toggle--checked" : ""} ${props.disabled ? "wrg-toggle--disabled" : ""}`, escape(getIcon('checked')), escape(getIcon('unchecked')));
+};
+
+var Back = "/assets/back.612dc836.svg";
+
+const _tmpl$$c = ["<div", "><div class=\"align-row\"><p class=\"body1\">Strictly Necessary</p><div style=\"", "\"></div><!--#-->", "<!--/--></div><p class=\"small\">These cookies are necessary for our website to function properly and can\u2019t be disabled.</p></div>"],
+      _tmpl$2$3 = ["<div", "><div class=\"align-row\"><p class=\"body1\">Product Development</p><div style=\"", "\"></div><!--#-->", "<!--/--></div><p class=\"small\">These cookies are necessary for our website to function properly and can\u2019t be disabled.</p></div>"],
+      _tmpl$3$2 = ["<article", " class=\"align-center gap-big\"><div class=\"align-row gap-small\"><!--#-->", "<!--/--><p class=\"heading8\">Cookie Settings</p></div><div class=\"align-vertical gap-big\"><div class=\"align-vertical gap-default w-full\"><p class=\"body3\">We use cookies in order to give you the best experience possible while visiting our website. Some of them are essential, others are optional. We won\u2019t turn them on unless you accept.<a href=\"https://arcane.no/cookies\">Learn more about them</a></p><!--#-->", "<!--/--></div><div class=\"w-full align-row\" style=\"", "\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></div></article>"];
+
+const Cookies = () => {
+  const [isOpen, setModal] = createSignal(true);
+  const [showBreakDown, setShowBreakDown] = createSignal(false);
+  const [productDevCookie, setProductDevCookie] = createSignal(true);
+
+  const toggleModal = open => setModal(open);
+
+  const handleCookies = () => {
+    setModal(false);
+  };
+
+  return createComponent(Modal, {
+    size: "small",
+    toggleModal: toggleModal,
+
+    get isOpen() {
+      return isOpen();
+    },
+
+    get children() {
+      return ssr(_tmpl$3$2, ssrHydrationKey(), escape(createComponent(Show$1, {
+        get when() {
+          return showBreakDown();
+        },
+
+        get children() {
+          return createComponent(Button, {
+            onClick: () => setShowBreakDown(false),
+
+            get children() {
+              return createComponent(Back, {});
+            }
+
+          });
+        }
+
+      })), escape(createComponent(Show$1, {
+        get when() {
+          return showBreakDown();
+        },
+
+        get children() {
+          return [ssr(_tmpl$$c, ssrHydrationKey(), "flex-grow:" + 1, escape(createComponent(Toggle, {
+            defaultChecked: true,
+            disabled: true
+          }))), ssr(_tmpl$2$3, ssrHydrationKey(), "flex-grow:" + 1, escape(createComponent(Toggle, {
+            get defaultChecked() {
+              return productDevCookie();
+            },
+
+            onChange: s => {
+              setProductDevCookie(!s);
+            }
+          })))];
+        }
+
+      })), "bottom:" + 0 + (";position:" + "relative"), escape(createComponent(Show$1, {
+        get when() {
+          return showBreakDown();
+        },
+
+        get fallback() {
+          return createComponent(Button, {
+            variant: "secondary",
+            onClick: () => setShowBreakDown(true),
+            children: "Manage Cookies"
+          });
+        },
+
+        get children() {
+          return createComponent(Button, {
+            variant: "secondary",
+            onClick: () => setModal(false),
+            children: "Cancel"
+          });
+        }
+
+      })), "flex-grow:" + 1, escape(createComponent(Button, {
+        variant: "primary",
+        onClick: () => handleCookies(),
+        children: "Allow Cookies"
+      })));
+    }
+
+  });
 };
 
 const _tmpl$$b = ["<h6", " id=\"arcane-not-found\">", "</h6>"];
@@ -1352,7 +1552,7 @@ const preventSmoothScrollOnTabbing = () => {
   });
 };
 
-const _tmpl$$7 = ["<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link href=\"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap\" rel=\"stylesheet\"><link rel=\"icon\" href=\"data:,\">", "", "</head>"],
+const _tmpl$$7 = ["<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link href=\"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap\" rel=\"stylesheet\"><script async src=\"", "\"></script>", "", "", "</head>"],
       _tmpl$2$1 = ["<html", " lang=\"en\">", "<body><!--#-->", "<!--/--><!--#-->", "<!--/--></body></html>"],
       _tmpl$3 = ["<div", " class=\"arcane-body\"", ">", "</div>"];
 
@@ -1360,7 +1560,17 @@ function Root() {
   preventSmoothScrollOnTabbing();
   return ssr(_tmpl$2$1, ssrHydrationKey(), NoHydration({
     get children() {
-      return ssr(_tmpl$$7, escape(createComponent(Meta, {})), escape(createComponent(Links, {})));
+      return ssr(_tmpl$$7, `https://www.googletagmanager.com/gtag/js?id=${escape("G-SBY3V7YVL3", true)}`, `<script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            return window.dataLayer.push(arguments);
+          }
+          gtag('config', '${escape("G-SBY3V7YVL3")}');
+          gtag('consent', 'default', {
+            ad_storage: 'denied',
+            analytics_storage: 'denied',
+          });
+        </script>`, escape(createComponent(Meta, {})), escape(createComponent(Links, {})));
     }
 
   }), escape(createComponent(Lang, {
@@ -1369,7 +1579,7 @@ function Root() {
         get children() {
           return createComponent(Suspense, {
             get children() {
-              return createComponent(Routes, {});
+              return [createComponent(Routes, {}), createComponent(Cookies, {})];
             }
 
           });

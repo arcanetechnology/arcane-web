@@ -7,7 +7,7 @@ import { Links, Meta, Routes, Scripts } from 'solid-start/root';
 import { Title, Meta as SolidMeta } from 'solid-meta';
 import { ErrorBoundary } from 'solid-start/error-boundary';
 import { Suspense } from 'solid-js';
-import { AppContextProvider, Header } from './components';
+import { AppContextProvider, Cookies, Header } from './components';
 import type { ParentComponent } from 'solid-js';
 import { I18nContext, createI18nContext } from '@solid-primitives/i18n';
 import '@arcane-web/alchemy';
@@ -27,8 +27,23 @@ export default function Root() {
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="data:," />
-
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${
+            import.meta.env.VITE_GTAG_ID
+          }`}
+        ></script>
+        {`<script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            return window.dataLayer.push(arguments);
+          }
+          gtag('config', '${import.meta.env.VITE_GTAG_ID}');
+          gtag('consent', 'default', {
+            ad_storage: 'denied',
+            analytics_storage: 'denied',
+          });
+        </script>`}
         <Meta />
         <Links />
       </head>
@@ -38,6 +53,7 @@ export default function Root() {
           <ErrorBoundary>
             <Suspense>
               <Routes />
+              <Cookies />
             </Suspense>
           </ErrorBoundary>
         </Lang>

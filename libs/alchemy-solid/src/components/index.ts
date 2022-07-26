@@ -1,6 +1,6 @@
 /** @format */
 
-export * from './button/Button';
+export * from './button';
 export * from './input';
 export * from './label';
 export * from './fieldSet';
@@ -11,3 +11,4 @@ export * from './dialog';
 export * from './form';
 export * from './modal';
 export * from './card';
+export * from './toggle';
