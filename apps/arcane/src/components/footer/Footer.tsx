@@ -63,7 +63,7 @@ const Footer: VoidComponent = () => {
           </p>
           <nav id="arcane-static" class="align-vertical">
             <Link href="/people" class="third after footer-link body1">
-              {t('global.footer.company.privacy', {}, 'Privacy Policy')}
+              {t('global.footer.company.people', {}, 'Privacy Policy')}
             </Link>
             <Link href="/relations" class="third after footer-link body1">
               {t('global.footer.company.relations', {}, 'Investor Relations')}
