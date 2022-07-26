@@ -20,6 +20,7 @@
     "@arcane-web/alchemy": "workspace:*",
     "@rollup/plugin-replace": "^4.0.0",
     "@types/express": "^4.17.13",
+    "@types/gtag.js": "^0.0.10",
     "child_process": "^1.0.2",
     "node-tailor": "^3.9.2",
     "pnpm": "^7.5.2",

@@ -10,15 +10,22 @@ const Cookies: VoidComponent = () => {
   const [isOpen, toggleModal] = createSignal(false);
   const [isBreakDown, toggleBreakDown] = createSignal(false);
 
-  const { showCookie } = useAppContext();
+  const context = useAppContext();
 
-  createEffect(() => {
-    if (showCookie) {
-      toggleModal(true);
-    }
-  });
+  createEffect(
+    on(isOpen, (isOpen) => {
+      if (!isOpen && context.showCookie) {
+        toggleModal(true);
+      }
+    })
+  );
 
   const handleCookies = () => {
+    gtag('consent', 'update', {
+      ad_storage: 'denied',
+      analytics_storage: 'granted',
+    });
+    context.showCookie = !context.showCookie;
     toggleModal(false);
   };
 

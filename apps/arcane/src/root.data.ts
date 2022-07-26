@@ -1,6 +1,5 @@
 /** @format */
 
-import type { CookieOptions } from '@solid-primitives/storage';
 import type { RouteDataFunc } from 'solid-app-router';
 import { isServer } from 'solid-js/web';
 import { fetchAppsCollection } from './api';
@@ -8,12 +7,11 @@ import { fetchAppsCollection } from './api';
 // TODO: check if sameSite attribute is necessary.
 const createRootStore = () => {
   const now = new Date();
-  const cookieOptions: CookieOptions = {
-    domain: 'arcane.no',
+  const cookieOptions = {
     expires: new Date(now.getFullYear() + 1, now.getMonth(), now.getDate()),
   };
 
-  const [settings, set] = createCookieStorage();
+  const [settings, set] = createCookieStorage({ options: cookieOptions });
 
   return [
     settings as {
@@ -43,8 +41,6 @@ type DataParams = {
 
 const RootData: RouteDataFunc = (props) => {
   const [settings, set] = createRootStore();
-
-  // set cookie popup to true on first visit
 
   const browserLang = !isServer ? navigator.language.slice(0, 2) : 'en';
   const location = props.location;
@@ -124,6 +120,10 @@ const RootData: RouteDataFunc = (props) => {
 
     get showCookie() {
       return settings.showCookie === 'true';
+    },
+
+    set showCookie(value) {
+      set('showCookie', value === true ? 'true' : 'false');
     },
   };
 };

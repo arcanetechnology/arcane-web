@@ -35,9 +35,7 @@ export default function Root() {
         ></script>
         {`<script>
           window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            return window.dataLayer.push(arguments);
-          }
+          function gtag(){window.dataLayer.push(arguments);}
           gtag('config', '${import.meta.env.VITE_GTAG_ID}');
           gtag('consent', 'default', {
             ad_storage: 'denied',

@@ -44,10 +44,11 @@ const fetchAppsCollection = () => {
 const createRootStore = () => {
   const now = new Date();
   const cookieOptions = {
-    domain: "arcane.no",
     expires: new Date(now.getFullYear() + 1, now.getMonth(), now.getDate())
   };
-  const [settings, set] = createCookieStorage();
+  const [settings, set] = createCookieStorage({
+    options: cookieOptions
+  });
   return [settings, (key, value) => isServer ? set(key, value) : set(key, value, cookieOptions)];
 };
 const langs$1 = {
@@ -123,6 +124,12 @@ const RootData = (props) => {
     },
     get apps() {
       return apps()?.applicationCollection.items;
+    },
+    get showCookie() {
+      return settings.showCookie === "true";
+    },
+    set showCookie(value) {
+      set("showCookie", value === true ? "true" : "false");
     }
   };
 };
@@ -1054,6 +1061,9 @@ const routes = [{
   component: lazy(() => Promise.resolve().then(function () { return ____404_$1; })),
   path: "/*404"
 }, {
+  component: lazy(() => Promise.resolve().then(function () { return cookies; })),
+  path: "/cookies"
+}, {
   component: lazy(() => Promise.resolve().then(function () { return index$1; })),
   path: "/"
 }, {
@@ -1145,6 +1155,7 @@ var logo = "/assets/logo.ea4c43ee.svg";
 const AppContext = createContext({
   isDark: false,
   loading: true,
+  showCookie: true,
   apps: []
 });
 const AppContextProvider = props => {
@@ -1351,21 +1362,26 @@ const Toggle = props => {
   return ssr(_tmpl$$d, ssrHydrationKey(), `wrg-toggle ${toggle() ? "wrg-toggle--checked" : ""} ${props.disabled ? "wrg-toggle--disabled" : ""}`, escape(getIcon('checked')), escape(getIcon('unchecked')));
 };
 
-var Back = "/assets/back.612dc836.svg";
+var back = "/assets/back.612dc836.svg";
 
-const _tmpl$$c = ["<div", "><div class=\"align-row\"><p class=\"body1\">Strictly Necessary</p><div style=\"", "\"></div><!--#-->", "<!--/--></div><p class=\"small\">These cookies are necessary for our website to function properly and can\u2019t be disabled.</p></div>"],
-      _tmpl$2$3 = ["<div", "><div class=\"align-row\"><p class=\"body1\">Product Development</p><div style=\"", "\"></div><!--#-->", "<!--/--></div><p class=\"small\">These cookies are necessary for our website to function properly and can\u2019t be disabled.</p></div>"],
-      _tmpl$3$2 = ["<article", " class=\"align-center gap-big\"><div class=\"align-row gap-small\"><!--#-->", "<!--/--><p class=\"heading8\">Cookie Settings</p></div><div class=\"align-vertical gap-big\"><div class=\"align-vertical gap-default w-full\"><p class=\"body3\">We use cookies in order to give you the best experience possible while visiting our website. Some of them are essential, others are optional. We won\u2019t turn them on unless you accept.<a href=\"https://arcane.no/cookies\">Learn more about them</a></p><!--#-->", "<!--/--></div><div class=\"w-full align-row\" style=\"", "\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></div></article>"];
+const _tmpl$$c = ["<img", " width=\"20\">"],
+      _tmpl$2$3 = ["<article", " class=\"align-center gap-big\"><div class=\"align-row gap-small\"><!--#-->", "<!--/--><p class=\"heading8\">", "</p></div><div class=\"align-vertical gap-big\"><div class=\"align-vertical gap-default\"><p class=\"body3\"><!--#-->", "<!--/--> <!--#-->", "<!--/--></p><!--#-->", "<!--/--></div><div class=\"w-full align-row\" style=\"", "\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></div></article>"],
+      _tmpl$3$2 = ["<div", " class=\"w-full\"><div class=\"align-row\"><p class=\"body1\">", "</p><div style=\"", "\"></div><!--#-->", "<!--/--></div><p class=\"small\">", "</p></div>"];
 
-const Cookies = () => {
-  const [isOpen, setModal] = createSignal(true);
-  const [showBreakDown, setShowBreakDown] = createSignal(false);
-  const [productDevCookie, setProductDevCookie] = createSignal(true);
-
-  const toggleModal = open => setModal(open);
+const Cookies$1 = () => {
+  const [t] = useI18n();
+  const [isOpen, toggleModal] = createSignal(false);
+  const [isBreakDown, toggleBreakDown] = createSignal(false);
+  const context = useAppContext();
+  createEffect(on(isOpen, isOpen => {
+    if (!isOpen && context.showCookie) {
+      toggleModal(true);
+    }
+  }));
 
   const handleCookies = () => {
-    setModal(false);
+    context.showCookie = !context.showCookie;
+    toggleModal(false);
   };
 
   return createComponent(Modal, {
@@ -1377,67 +1393,78 @@ const Cookies = () => {
     },
 
     get children() {
-      return ssr(_tmpl$3$2, ssrHydrationKey(), escape(createComponent(Show$1, {
+      return ssr(_tmpl$2$3, ssrHydrationKey(), escape(createComponent(Show$1, {
         get when() {
-          return showBreakDown();
+          return isBreakDown();
         },
 
         get children() {
           return createComponent(Button, {
-            onClick: () => setShowBreakDown(false),
+            onClick: () => toggleBreakDown(false),
 
             get children() {
-              return createComponent(Back, {});
+              return ssr(_tmpl$$c, ssrHydrationKey() + ssrAttribute("src", escape(back, true), false));
             }
 
           });
         }
 
+      })), escape(t('global.cookie.title', {}, 'Cookie Settings')), escape(t('global.cookie.description', {}, 'We use cookies to improve your experience on our website.')), escape(createComponent(Link, {
+        href: "/cookies",
+
+        get children() {
+          return t('global.cookie.link', {}, 'learn more');
+        }
+
       })), escape(createComponent(Show$1, {
         get when() {
-          return showBreakDown();
+          return isBreakDown();
         },
 
         get children() {
-          return [ssr(_tmpl$$c, ssrHydrationKey(), "flex-grow:" + 1, escape(createComponent(Toggle, {
+          return t('global.cookie.sections', {}, '').map(section => ssr(_tmpl$3$2, ssrHydrationKey(), escape(section.title), "flex-grow:" + 1, escape(createComponent(Toggle, {
             defaultChecked: true,
             disabled: true
-          }))), ssr(_tmpl$2$3, ssrHydrationKey(), "flex-grow:" + 1, escape(createComponent(Toggle, {
-            get defaultChecked() {
-              return productDevCookie();
-            },
-
-            onChange: s => {
-              setProductDevCookie(!s);
-            }
-          })))];
+          })), escape(section.description)));
         }
 
       })), "bottom:" + 0 + (";position:" + "relative"), escape(createComponent(Show$1, {
         get when() {
-          return showBreakDown();
+          return isBreakDown();
         },
 
         get fallback() {
           return createComponent(Button, {
             variant: "secondary",
-            onClick: () => setShowBreakDown(true),
-            children: "Manage Cookies"
+            onClick: () => toggleBreakDown(true),
+
+            get children() {
+              return t('global.cookie.manage', {}, 'Manage Cookies');
+            }
+
           });
         },
 
         get children() {
           return createComponent(Button, {
             variant: "secondary",
-            onClick: () => setModal(false),
-            children: "Cancel"
+            onClick: () => toggleModal(false),
+
+            get children() {
+              return t('global.cookie.cancel', {}, 'Cancel');
+            }
+
           });
         }
 
       })), "flex-grow:" + 1, escape(createComponent(Button, {
         variant: "primary",
         onClick: () => handleCookies(),
-        children: "Allow Cookies"
+
+        get children() {
+          return t('global.cookie.accept', {}, 'Accept');
+        }
+
       })));
     }
 
@@ -1579,7 +1606,7 @@ function Root() {
         get children() {
           return createComponent(Suspense, {
             get children() {
-              return [createComponent(Routes, {}), createComponent(Cookies, {})];
+              return [createComponent(Routes, {}), createComponent(Cookies$1, {})];
             }
 
           });
@@ -1629,6 +1656,10 @@ const api = [
   {
     get: "skip",
     path: "/*404"
+  },
+  {
+    get: "skip",
+    path: "/cookies"
   },
   {
     get: "skip",
@@ -2161,12 +2192,31 @@ const footer = {
 		title: "Follow Us"
 	}
 };
+const cookie = {
+	title: "Cookie Settings",
+	description: "We use cookies in order to give you the best experience possible while visiting our website. Some of them are essential, others are optional. We won’t turn them on unless you accept.",
+	link: "Learn more about them",
+	manage: "Manage Cookies",
+	"cancel;": "Cancel",
+	accept: "Allow Cookies",
+	sections: [
+		{
+			title: "Strictly Necessary",
+			description: "These cookies are necessary for our website to function properly and can’t be disabled."
+		},
+		{
+			title: "Product Development",
+			description: "These cookies help us understand how people use our website and help us make it better."
+		}
+	]
+};
 var global = {
 	"404": "404 | Page Not Found",
 	name: name,
 	title: title,
 	apps: apps$1,
-	footer: footer
+	footer: footer,
+	cookie: cookie
 };
 
 const hero$1 = "Welcome to Arcane Crypto";
@@ -2203,6 +2253,22 @@ var ____404_ = (() => {
 var ____404_$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   'default': ____404_
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const Cookies = () => {
+  return createComponent(Public$1, {
+    get children() {
+      return createComponent(Banner, {
+        children: "Cookies"
+      });
+    }
+
+  });
+};
+
+var cookies = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  'default': Cookies
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const _tmpl$$5 = ["<h1", ">", "</h1>"];
