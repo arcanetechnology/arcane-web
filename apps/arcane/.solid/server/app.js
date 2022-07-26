@@ -1380,6 +1380,10 @@ const Cookies$1 = () => {
   }));
 
   const handleCookies = () => {
+    gtag('consent', 'update', {
+      ad_storage: 'denied',
+      analytics_storage: 'granted'
+    });
     context.showCookie = !context.showCookie;
     toggleModal(false);
   };
@@ -1493,11 +1497,44 @@ var Footer$1 = '';
 
 const _tmpl$$a = ["<p", " class=\"body3 footer-link\"><img width=\"20\" style=\"", "\"", " alt=\"arcane twitter\"></p>"],
       _tmpl$2$2 = ["<img", " width=\"20\" style=\"", "\"", " alt=\"arcane linkedin\">"],
-      _tmpl$3$1 = ["<footer", "><div class=\"container footer-row margin-48\"><div><img style=\"", "\"", " alt=\"arcane-logo\"></div><div style=\"", "\"></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-application-navigation\" class=\"align-vertical\"></nav></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-static\" class=\"align-vertical\"><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--></nav></div></div><hr><div class=\"container footer-row margin-12\"><p class=\"body3\">", "</p><p class=\"body3\">", "</p><div style=\"", "\"></div><div class=\"footer-follow gap-small\"><p class=\"body3\">", "</p><!--#-->", "<!--/--><!--#-->", "<!--/--></div></div></footer>"];
+      _tmpl$3$1 = ["<footer", "><div class=\"container footer-row margin-48\"><div><img style=\"", "\"", " alt=\"arcane-logo\"></div><div style=\"", "\"></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-application-navigation\" class=\"align-vertical\">", "</nav></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-static\" class=\"align-vertical\"><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--></nav></div></div><hr><div class=\"container footer-row margin-12\"><p class=\"body3\">", "</p><p class=\"body3\">", "</p><div style=\"", "\"></div><div class=\"footer-follow gap-small\"><p class=\"body3\">", "</p><!--#-->", "<!--/--><!--#-->", "<!--/--></div></div></footer>"];
 
 const Footer = () => {
   const [t] = useI18n();
-  return ssr(_tmpl$3$1, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(logo, true), false), "flex-grow:" + 1, escape(t('global.footer.navigation.title', {}, 'Navigation')), escape(t('global.footer.company.title', {}, 'Company')), escape(createComponent(Link, {
+  const [apps, setApps] = createSignal([]);
+  const context = useAppContext();
+  createEffect(() => {
+    if (context.apps) {
+      setApps(context.apps);
+    }
+  });
+  return ssr(_tmpl$3$1, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(logo, true), false), "flex-grow:" + 1, escape(t('global.footer.navigation.title', {}, 'Navigation')), escape(createComponent(Show, {
+    get when() {
+      return apps().length !== 0;
+    },
+
+    get children() {
+      return createComponent(For, {
+        get each() {
+          return apps();
+        },
+
+        children: app => createComponent(Link, {
+          get href() {
+            return '/' + (app.path ?? '');
+          },
+
+          "class": "third after footer-link body1",
+
+          get children() {
+            return app.name;
+          }
+
+        })
+      });
+    }
+
+  })), escape(t('global.footer.company.title', {}, 'Company')), escape(createComponent(Link, {
     href: "/people",
     "class": "third after footer-link body1",
 
@@ -1589,9 +1626,7 @@ function Root() {
     get children() {
       return ssr(_tmpl$$7, `https://www.googletagmanager.com/gtag/js?id=${escape("G-SBY3V7YVL3", true)}`, `<script>
           window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            return window.dataLayer.push(arguments);
-          }
+          function gtag(){window.dataLayer.push(arguments);}
           gtag('config', '${escape("G-SBY3V7YVL3")}');
           gtag('consent', 'default', {
             ad_storage: 'denied',

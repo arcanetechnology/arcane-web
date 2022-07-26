@@ -6,9 +6,18 @@ import logo from '~/assets/logo.svg';
 import linkedin from '~/assets/linkedin.svg';
 import twitter from '~/assets/twitter.svg';
 import './Footer.scss';
+import type { Apps } from '~/types';
+import { useAppContext } from '../contexts';
 
 const Footer: VoidComponent = () => {
   const [t] = useI18n();
+  const [apps, setApps] = createSignal<Apps>([]);
+  const context = useAppContext();
+  createEffect(() => {
+    if (context.apps) {
+      setApps(context.apps);
+    }
+  });
 
   return (
     <footer>
@@ -32,8 +41,8 @@ const Footer: VoidComponent = () => {
             {t('global.footer.navigation.title', {}, 'Navigation')}
           </p>
           <nav id="arcane-application-navigation" class="align-vertical">
-            {/* <Show when={apps()}>
-              <For each={apps()?.applicationCollection.items}>
+            <Show when={apps().length !== 0}>
+              <For each={apps()}>
                 {(app) => (
                   <>
                     <Link
@@ -45,7 +54,7 @@ const Footer: VoidComponent = () => {
                   </>
                 )}
               </For>
-            </Show> */}
+            </Show>
           </nav>
         </div>
         <div>
