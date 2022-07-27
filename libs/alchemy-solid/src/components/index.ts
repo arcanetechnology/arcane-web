@@ -12,3 +12,4 @@ export * from './form';
 export * from './modal';
 export * from './card';
 export * from './toggle';
+export * from './banner';

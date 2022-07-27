@@ -10,19 +10,20 @@ const tailor = new Tailor({
   templatesPath: templates,
   maxAssetLinks: 100,
 });
-const root: Router = express.Router();
 
-root.use((req: Request, res: Response) => {
-  if (req.path === '/') {
-    req.url = '/index';
-  }
-  console.log(req.path);
+const app: Router = express.Router();
+
+app.get('/', (req: Request, res: Response) => {
+  req.url = '/app';
   tailor.requestHandler(req, res);
 });
-/* 
-root.get('/:id', (req: Request, res: Response) => {
-  console.log(req);
+
+app.get('/:id', (req: Request, res: Response) => {
+  console.log('hello');
   tailor.requestHandler(req, res);
 });
- */
-export default root;
+
+export default app;
+
+// TODO: trade
+// TODO: trade-admin

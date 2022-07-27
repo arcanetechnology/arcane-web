@@ -1,0 +1,21 @@
+{
+  "name": "@arcane-web/trade-admin",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.7.4",
+    "vite": "^2.9.5",
+    "vite-plugin-cdn-import": "^0.3.5",
+    "vite-plugin-solid": "^2.3.0"
+  },
+  "dependencies": {
+    "@arcane-web/alchemy-solid": "workspace:*",
+    "solid-app-router": "^0.4.1",
+    "solid-js": "^1.4.7"
+  }
+}

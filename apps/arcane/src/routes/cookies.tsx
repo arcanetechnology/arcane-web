@@ -1,7 +1,8 @@
 /** @format */
 
 import type { VoidComponent } from 'solid-js';
-import { Banner, Public } from '~/components';
+import {  Public } from '~/components';
+import { Banner } from '@arcane-web/alchemy-solid';
 
 const Cookies: VoidComponent = () => {
   return (

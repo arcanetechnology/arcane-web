@@ -45,6 +45,7 @@ const fetchAppsCollection = () => {
 const createRootStore = () => {
   const now = new Date();
   const cookieOptions = {
+    domain: "arcane.no",
     expires: new Date(now.getFullYear() + 1, now.getMonth(), now.getDate())
   };
   const [settings, set] = createCookieStorage({
@@ -1013,7 +1014,7 @@ function StartProvider(props) {
 }
 
 const _tmpl$$m = ["<link", " rel=\"stylesheet\"", ">"],
-      _tmpl$2$6 = ["<link", " rel=\"modulepreload\"", ">"];
+      _tmpl$2$7 = ["<link", " rel=\"modulepreload\"", ">"];
 
 function getAssetsFromManifest(manifest, routerContext) {
   const match = routerContext.matches.reduce((memo, m) => {
@@ -1021,7 +1022,7 @@ function getAssetsFromManifest(manifest, routerContext) {
     return memo;
   }, []);
   const links = match.reduce((r, src) => {
-    r[src.href] = src.type === "style" ? ssr(_tmpl$$m, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$6, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
+    r[src.href] = src.type === "style" ? ssr(_tmpl$$m, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : ssr(_tmpl$2$7, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false));
     return r;
   }, {});
   return Object.values(links);
@@ -1175,7 +1176,7 @@ const useAppContext = () => useContext(AppContext);
 var Navigation$1 = '';
 
 const _tmpl$$j = ["<div", " id=\"menu-container\" class=\"menu-container\" data-is-closed=\"true\"><div", " class=\"menu-btn circle-hover\"><abbr class=\"clear-df-abbr\"", "><svg viewBox=\"0 0 24 24\"><path d=\"M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z\"></path></svg></abbr></div><div", " class=\"menu margin-12\"><nav class=\"gap-small\" data-auto-grid=\"2\">", "</nav></div></div>"],
-      _tmpl$2$5 = ["<img", " width=\"40\" height=\"40\"", " alt=\"", "\">"],
+      _tmpl$2$6 = ["<img", " width=\"40\" height=\"40\"", " alt=\"", "\">"],
       _tmpl$3$3 = ["<div", " class=\"app-nav\"><!--#-->", "<!--/--><p class=\"button-small\">", "</p></div>"];
 
 const Navigation = () => {
@@ -1211,7 +1212,7 @@ const Navigation = () => {
           },
 
           get children() {
-            return ssr(_tmpl$2$5, ssrHydrationKey(), ssrAttribute("src", escape(app.logo.url, true), false), `${escape(app.logo.description, true)} logo`);
+            return ssr(_tmpl$2$6, ssrHydrationKey(), ssrAttribute("src", escape(app.logo.url, true), false), `${escape(app.logo.description, true)} logo`);
           }
 
         })), escape(app.name))
@@ -1224,10 +1225,10 @@ const Navigation = () => {
 var Header$1 = '';
 
 const _tmpl$$i = ["<img", " alt=\"logo\">"],
-      _tmpl$2$4 = ["<header", " role=\"banner\"><div class=\"container align-row margin-12\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></header>"];
+      _tmpl$2$5 = ["<header", " role=\"banner\"><div class=\"container align-row margin-12\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></header>"];
 
 const Header = () => {
-  return ssr(_tmpl$2$4, ssrHydrationKey(), escape(createComponent(Transition, {
+  return ssr(_tmpl$2$5, ssrHydrationKey(), escape(createComponent(Transition, {
     onEnter: onLogoEnter,
     appear: !isServer,
 
@@ -1251,14 +1252,7 @@ const onLogoEnter = (el, done) => {
   }, base], options).finished.then(done);
 };
 
-const _tmpl$$h = ["<section", "><section class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section></section>"];
-
-/** @format */
-const Banner = props => {
-  return ssr(_tmpl$$h, ssrHydrationKey(), "text-align:" + "center", escape(props.children));
-};
-
-const _tmpl$$g = ["<button", " id=\"", "\" ", ">", "</button>"];
+const _tmpl$$h = ["<button", " id=\"", "\" ", ">", "</button>"];
 /**
  * low level base button without any custom style, all styles are inherited from css files.
  * @param @type {BaseButtonProps} accepst all types of button properties of an html button.
@@ -1267,7 +1261,7 @@ const _tmpl$$g = ["<button", " id=\"", "\" ", ">", "</button>"];
 
 const BaseButton = props => {
   const [local, others] = splitProps(props, ['id', 'children']);
-  return ssr(_tmpl$$g, ssrHydrationKey(), `${escape(local.id, true)}-button`, ssrSpread(others, false, true), escape(local.children));
+  return ssr(_tmpl$$h, ssrHydrationKey(), `${escape(local.id, true)}-button`, ssrSpread(others, false, true), escape(local.children));
 };
 /**
  * mid level button wrapped in arcane design languge css based on prop values
@@ -1311,14 +1305,14 @@ const Button = props => {
   }));
 };
 
-const _tmpl$$f = ["<form", " ", ">", "</form>"];
+const _tmpl$$g = ["<form", " ", ">", "</form>"];
 
 const Form = props => {
   const [local, others] = splitProps(props, ['children']);
-  return ssr(_tmpl$$f, ssrHydrationKey(), ssrSpread(others, false, true), escape(local.children));
+  return ssr(_tmpl$$g, ssrHydrationKey(), ssrSpread(others, false, true), escape(local.children));
 };
 
-const _tmpl$$e = ["<div", " class=\"modal-background\"><div class=\"", "\"><div class=\"modal-close\">", "</div><!--#-->", "<!--/--></div></div>"];
+const _tmpl$$f = ["<div", " class=\"modal-background\"><div class=\"", "\"><div class=\"modal-close\">", "</div><!--#-->", "<!--/--></div></div>"];
 
 const Modal = props => {
   const mergedProps = mergeProps$1({
@@ -1333,7 +1327,7 @@ const Modal = props => {
     fallback: null,
 
     get children() {
-      return ssr(_tmpl$$e, ssrHydrationKey(), `elevation-300 radius-small modal ${local.size === 'small' ? "modal-small" : ""} ${local.size === 'large' ? "modal-large" : ""}`, escape(createComponent(Button, {
+      return ssr(_tmpl$$f, ssrHydrationKey(), `elevation-300 radius-small modal ${local.size === 'small' ? "modal-small" : ""} ${local.size === 'large' ? "modal-large" : ""}`, escape(createComponent(Button, {
         variant: "tertiary",
         type: "button",
         onClick: () => others.toggleModal(false),
@@ -1345,7 +1339,7 @@ const Modal = props => {
   });
 };
 
-const _tmpl$$d = ["<div", " class=\"", "\"><div class=\"wrg-toggle-container\"><div class=\"wrg-toggle-check\"><span>", "</span></div><div class=\"wrg-toggle-uncheck\"><span>", "</span></div></div><div class=\"wrg-toggle-circle\"></div><input", " type=\"checkbox\" aria-label=\"Toggle Button\" class=\"wrg-toggle-input\"></div>"];
+const _tmpl$$e = ["<div", " class=\"", "\"><div class=\"wrg-toggle-container\"><div class=\"wrg-toggle-check\"><span>", "</span></div><div class=\"wrg-toggle-uncheck\"><span>", "</span></div></div><div class=\"wrg-toggle-circle\"></div><input", " type=\"checkbox\" aria-label=\"Toggle Button\" class=\"wrg-toggle-input\"></div>"];
 
 const checked = () => [];
 
@@ -1367,13 +1361,20 @@ const Toggle = props => {
     return unchecked();
   };
 
-  return ssr(_tmpl$$d, ssrHydrationKey(), `wrg-toggle ${toggle() ? "wrg-toggle--checked" : ""} ${props.disabled ? "wrg-toggle--disabled" : ""}`, escape(getIcon('checked')), escape(getIcon('unchecked')), ssrAttribute("name", escape(props.name, true), false));
+  return ssr(_tmpl$$e, ssrHydrationKey(), `wrg-toggle ${toggle() ? "wrg-toggle--checked" : ""} ${props.disabled ? "wrg-toggle--disabled" : ""}`, escape(getIcon('checked')), escape(getIcon('unchecked')), ssrAttribute("name", escape(props.name, true), false));
+};
+
+const _tmpl$$d = ["<section", "><section class=\"margin-48\"><div id=\"error\" class=\"container\" style=\"", "\">", "</div></section></section>"];
+
+/** @format */
+const Banner = props => {
+  return ssr(_tmpl$$d, ssrHydrationKey(), "text-align:" + "center", escape(props.children));
 };
 
 var back = "/assets/back.612dc836.svg";
 
 const _tmpl$$c = ["<img", " width=\"20\">"],
-      _tmpl$2$3 = ["<article", " class=\"align-center gap-big\"><div class=\"align-row gap-small\"><!--#-->", "<!--/--><p class=\"heading8\">", "</p></div><div class=\"align-vertical gap-big\"><div class=\"align-vertical gap-default\"><p class=\"body3\"><!--#-->", "<!--/--> <!--#-->", "<!--/--></p><!--#-->", "<!--/--></div><div class=\"w-full align-row\" style=\"", "\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></div></article>"],
+      _tmpl$2$4 = ["<article", " class=\"align-center gap-big\"><div class=\"align-row gap-small\"><!--#-->", "<!--/--><p class=\"heading8\">", "</p></div><div class=\"align-vertical gap-big\"><div class=\"align-vertical gap-default\"><p class=\"body3\"><!--#-->", "<!--/--> <!--#-->", "<!--/--></p><!--#-->", "<!--/--></div><div class=\"w-full align-row\" style=\"", "\"><!--#-->", "<!--/--><div style=\"", "\"></div><!--#-->", "<!--/--></div></div></article>"],
       _tmpl$3$2 = ["<div", " class=\"w-full\"><div class=\"align-row\"><p class=\"body1\">", "</p><div style=\"", "\"></div><!--#-->", "<!--/--></div><p class=\"small\">", "</p></div>"];
 
 const normalizeCookieType = title => title.replace(/ /g, '-').toLowerCase();
@@ -1383,14 +1384,15 @@ const Cookies$1 = () => {
   const [isOpen, toggleModal] = createSignal(false);
   const [isBreakDown, toggleBreakDown] = createSignal(false);
   const context = useAppContext();
-  console.log(t('global.cookie.sections'));
   const {
     form,
-    data
+    data,
+    setData
   } = createForm({
-    initialValues: t('global.cookie.sections', {}, '').reduce((a, v) => ({ ...a,
-      [normalizeCookieType(v)]: true
-    }), {}),
+    initialValues: {
+      'strictly-necessary': true,
+      'product-development': true
+    },
     onSubmit: () => {
       gtag('consent', 'update', {
         ad_storage: 'denied',
@@ -1416,7 +1418,7 @@ const Cookies$1 = () => {
     get children() {
       return createComponent(Form, {
         get children() {
-          return ssr(_tmpl$2$3, ssrHydrationKey(), escape(createComponent(Show$1, {
+          return ssr(_tmpl$2$4, ssrHydrationKey(), escape(createComponent(Show$1, {
             get when() {
               return isBreakDown();
             },
@@ -1453,6 +1455,7 @@ const Cookies$1 = () => {
                     return data(name);
                   },
 
+                  onChange: checked => setData(name, !checked),
                   name: name,
 
                   get disabled() {
@@ -1532,7 +1535,7 @@ var twitter = "/assets/twitter.9d5edd23.svg";
 var Footer$1 = '';
 
 const _tmpl$$a = ["<p", " class=\"body3 footer-link\"><img width=\"20\" style=\"", "\"", " alt=\"arcane twitter\"></p>"],
-      _tmpl$2$2 = ["<img", " width=\"20\" style=\"", "\"", " alt=\"arcane linkedin\">"],
+      _tmpl$2$3 = ["<img", " width=\"20\" style=\"", "\"", " alt=\"arcane linkedin\">"],
       _tmpl$3$1 = ["<footer", "><div class=\"container footer-row margin-48\"><div><img style=\"", "\"", " alt=\"arcane-logo\"></div><div style=\"", "\"></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-application-navigation\" class=\"align-vertical\">", "</nav></div><div><p class=\"heading8\">", "</p><nav id=\"arcane-static\" class=\"align-vertical\"><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--></nav></div></div><hr><div class=\"container footer-row margin-12\"><p class=\"body3\">", "</p><p class=\"body3\">", "</p><div style=\"", "\"></div><div class=\"footer-follow gap-small\"><p class=\"body3\">", "</p><!--#-->", "<!--/--><!--#-->", "<!--/--></div></div></footer>"];
 
 const Footer = () => {
@@ -1607,7 +1610,7 @@ const Footer = () => {
     href: 'https://www.linkedin.com/company/arcane-crypto/',
 
     get children() {
-      return ssr(_tmpl$2$2, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(linkedin, true), false));
+      return ssr(_tmpl$2$3, ssrHydrationKey(), "filter:" + "invert(1)", ssrAttribute("src", escape(linkedin, true), false));
     }
 
   })));
@@ -1652,13 +1655,13 @@ const preventSmoothScrollOnTabbing = () => {
   });
 };
 
-const _tmpl$$7 = ["<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link href=\"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap\" rel=\"stylesheet\"><script async src=\"", "\"></script>", "", "", "</head>"],
-      _tmpl$2$1 = ["<html", " lang=\"en\">", "<body><!--#-->", "<!--/--><!--#-->", "<!--/--></body></html>"],
+const _tmpl$$7 = ["<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link href=\"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap\" rel=\"stylesheet\"><script async src=\"", "\"></script><link rel=\"icon\" type=\"image/png\" href=\"http://example.com/favicon.png\">", "", "", "</head>"],
+      _tmpl$2$2 = ["<html", " lang=\"en\">", "<body><!--#-->", "<!--/--><!--#-->", "<!--/--></body></html>"],
       _tmpl$3 = ["<div", " class=\"arcane-body\"", ">", "</div>"];
 
 function Root() {
   preventSmoothScrollOnTabbing();
-  return ssr(_tmpl$2$1, ssrHydrationKey(), NoHydration({
+  return ssr(_tmpl$2$2, ssrHydrationKey(), NoHydration({
     get children() {
       return ssr(_tmpl$$7, `https://www.googletagmanager.com/gtag/js?id=${escape("G-SBY3V7YVL3", true)}`, `<script>
           window.dataLayer = window.dataLayer || [];
@@ -2243,7 +2246,7 @@ var entryServer = createHandler(renderAsync(context => createComponent(StartServ
 // TODO: convert invest as child application.
 
 const name = "English";
-const title = "Arcane Crypto . Platform";
+const title = "Arcane Crypto | Platform";
 const apps$1 = {
 	title: "Arcane Apps"
 };
@@ -2456,12 +2459,13 @@ var relations = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   'default': Relations
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _tmpl$$2 = ["<h6", ">Trade app</h6>"];
+const _tmpl$$2 = ["<div", " id=\"arcane-app\"></div>"],
+      _tmpl$2$1 = ["<fragment", " async src=\"http://localhost:3000\"></fragment>"];
 
 const Trade$1 = () => {
   return createComponent(Public$1, {
     get children() {
-      return ssr(_tmpl$$2, ssrHydrationKey());
+      return [ssr(_tmpl$$2, ssrHydrationKey()), ssr(_tmpl$2$1, ssrHydrationKey())];
     }
 
   });

@@ -7,7 +7,8 @@ import { Public } from '~/components';
 const Trade: VoidComponent = () => {
   return (
     <Public>
-      <h6>Trade app</h6>
+      <div id="arcane-app"></div>
+      <fragment async src="http://localhost:3000" />
     </Public>
   );
 };

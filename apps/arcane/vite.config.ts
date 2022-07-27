@@ -6,6 +6,7 @@ import solidStatic from 'solid-start-static';
 import AutoImport from 'unplugin-auto-import/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import type { VitePWAOptions } from 'vite-plugin-pwa';
+import importToCDN from 'vite-plugin-cdn-import';
 
 const pwaOptions: Partial<VitePWAOptions> = {
   base: '/',
@@ -55,16 +56,16 @@ export default defineConfig({
     }),
     VitePWA(pwaOptions),
   ],
-  resolve: {
-    conditions: ['solid'],
-    dedupe: ['solid-js'],
-  },
-  /*   //@ts-ignore
+
+  //@ts-ignore
   ssr: {
     noExternal: ['solid-app-router'],
-  }, */
+  },
   build: {
     target: 'esnext',
-    polyfillDynamicImport: false,
+    polyfillModulePreload: true,
   },
 });
+
+// TODO: make Solid and Web globally available so other apps can use them as global dependency.
+// TODO: segregate solid server side and client side code.

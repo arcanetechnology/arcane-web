@@ -1,7 +1,8 @@
 /** @format */
 
 import type { VoidComponent } from 'solid-js';
-import { Banner, Private } from '~/components';
+import { Private } from '~/components';
+import { Banner } from '@arcane-web/alchemy-solid';
 
 const Apps: VoidComponent = () => {
   const [t] = useI18n();

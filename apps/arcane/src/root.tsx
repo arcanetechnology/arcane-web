@@ -33,6 +33,11 @@ export default function Root() {
             import.meta.env.VITE_GTAG_ID
           }`}
         ></script>
+        <link
+          rel="icon"
+          type="image/png"
+          href="http://example.com/favicon.png"
+        ></link>
         {`<script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}

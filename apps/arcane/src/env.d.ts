@@ -16,3 +16,5 @@ interface ImportMeta {
 }
 
 declare module 'solid-start-static';
+
+declare module 'rollup-plugin-external-globals';

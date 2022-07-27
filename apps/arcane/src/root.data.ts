@@ -8,6 +8,7 @@ import { fetchAppsCollection } from './api';
 const createRootStore = () => {
   const now = new Date();
   const cookieOptions = {
+    domain: 'arcane.no',
     expires: new Date(now.getFullYear() + 1, now.getMonth(), now.getDate()),
   };
 
