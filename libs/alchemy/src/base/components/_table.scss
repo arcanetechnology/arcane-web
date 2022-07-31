@@ -1,51 +1,23 @@
 /** @format */
 
-@use '../elevation' as *;
-@use '../border' as *;
-@use '../space' as *;
-@use '../breakpoint' as *;
+table {
+  border: 1px solid lightgray;
+}
 
-.arcane-table {
-  @include border-small(--font-color);
+tbody {
+  border-bottom: 1px solid lightgray;
+}
 
-  text-align: left;
-  border-collapse: collapse;
+th {
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  padding: 2px 4px;
+}
 
-  th,
-  td {
-    padding: $space-8;
-    cursor: pointer;
-  }
+tfoot {
+  color: gray;
+}
 
-  th {
-    border-right: 1px solid #000;
-    border-bottom: 1px solid #000;
-
-    &:last-child {
-      border-right: none;
-    }
-
-    &.sortable {
-      cursor: pointer;
-      // do not select text on clicks
-      user-select: none;
-    }
-
-    .header {
-      display: inline-flex;
-      align-self: flex-start;
-      float: left;
-    }
-
-    .sort-icon {
-      float: right;
-      display: inline-flex;
-      align-self: flex-end;
-      visibility: hidden;
-    }
-
-    &:hover .sort-icon {
-      visibility: visible;
-    }
-  }
+tfoot th {
+  font-weight: normal;
 }
