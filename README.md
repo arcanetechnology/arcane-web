@@ -1,8 +1,17 @@
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Strict TypeScript Checked](https://badgen.net/badge/TS/Strict "Strict TypeScript Checked")](https://www.typescriptlang.org) ![](https://badges.aleen42.com/src/vitejs.svg "Vite Powered") 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Strict TypeScript Checked](https://badgen.net/badge/TS/Strict "Strict TypeScript Checked")](https://www.typescriptlang.org) ![](https://badges.aleen42.com/src/vitejs.svg "Vite Powered")
 
 
 [![Build](https://github.com/arcanetechnology/arcane-web/actions/workflows/deploy-invest.yml/badge.svg)](https://github.com/arcanetechnology/arcane-web/actions/workflows/deploy-invest.yml)
+
+# Running the project locally
+
+- Add local env variables to connect to firebase, contentful, etc...
+- `yarn`
+- `npm run build`
+- `npm run dev`
+
+The invest application would be available on http://localhost:3000/invest/.
 
 # `@arcane-web`
 
@@ -11,7 +20,7 @@
 This philosophy guides arcanes web development, we have kept the framework lean
 
 
-### pre-requisite 
+### pre-requisite
 
 https://yarnpkg.com/getting-started/install
 
