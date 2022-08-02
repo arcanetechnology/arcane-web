@@ -13,7 +13,7 @@ export const routes: RouteDefinition[] = [
   {
     path: '/users/:id',
     component: lazy(() => import('./pages/users/[id]')),
-    data: ({ params }) => getUserInfo(params['id']),
+    data: getUserInfo,
   },
   {
     path: '/',

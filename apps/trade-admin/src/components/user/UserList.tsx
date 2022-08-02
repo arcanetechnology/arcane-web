@@ -1,7 +1,7 @@
 /** @format */
 
-import { createSignal, For, VoidComponent, createEffect } from 'solid-js';
-import { User, Users } from '../../types';
+import { For, VoidComponent } from 'solid-js';
+import { BaseUser as User, Users } from '../../types';
 import {
   flexRender,
   getCoreRowModel,

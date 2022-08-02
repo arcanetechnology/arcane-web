@@ -93,6 +93,7 @@ __metadata:
     "@thisbeyond/solid-select": ^0.11.0
     fuse.js: ^6.6.2
     solid-transition-group: ^0.0.10
+    vite-plugin-solid-svg: ^0.3.1
   languageName: unknown
   linkType: soft
 
@@ -15253,6 +15254,19 @@ __metadata:
   peerDependencies:
     vite: ^2.4.4
   checksum: b028c14e74ad66366f6c1a3d1fe0d4d410b0eed9eb1d2fea326ad7753001895703c3cf5515f879928b24361902f0adfaa5e0ccd7523af86651749400692a6d00
+  languageName: node
+  linkType: hard
+
+"vite-plugin-solid-svg@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "vite-plugin-solid-svg@npm:0.3.1"
+  dependencies:
+    fast-glob: ^3.2.7
+    svgo: ^2.3.1
+  peerDependencies:
+    solid-js: ^1.4.7
+    vite: ^2.9.14
+  checksum: 883c8987735d69a9b54d34bb3f407211057c537a4a7b3e25b41a56822166ec60eacb751b93cd18a22ccbc8608a058169e6745d0edf6591149009f45b84cb90f0
   languageName: node
   linkType: hard
 
