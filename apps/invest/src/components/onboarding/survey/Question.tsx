@@ -4,7 +4,9 @@ import { VoidComponent } from 'solid-js';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { OnboardingNode } from './Question.types';
 import SolidRichText from 'rich-text-solid-renderer';
-import { RadioButton, FieldSet } from '@arcane-web/alchemy-solid';
+import { RadioButton, FieldSet, Button } from '@arcane-web/alchemy-solid';
+import aLetter from '../../../assets/aletter.svg';
+import bLetter from '../../../assets/bletter.svg';
 
 type QuestionProps = {
   question: OnboardingNode;
@@ -23,29 +25,20 @@ const options = {
 
 const Question: VoidComponent<QuestionProps> = (props) => {
   return (
-    <div
-      style={{
-        overflow: props.question.name === 'warning' ? 'scroll' : 'hidden',
-      }}
-    >
+    <div>
       <SolidRichText document={props.question.content.json} options={options} />
       {props.question.name === 'warning' ? null : (
         <FieldSet class="padding-16">
-          <RadioButton
-            position="down"
-            id={props.question.name}
-            name={props.question.name}
-            label="Yes"
-            value="yes"
-          />
-          <br />
-          <RadioButton
-            position="down"
-            id={props.question.name + 'no'}
-            name={props.question.name}
-            label="No"
-            value={'no'}
-          />
+          <div class="align-vertical gap-default">
+            <Button type="button" variant="secondary" size="medium">
+              <img src={aLetter} />
+              <span>Yes</span>
+            </Button>
+            <Button type="button" variant="secondary" size="medium">
+              <img src={bLetter} />
+              <span>No</span>
+            </Button>
+          </div>
         </FieldSet>
       )}
     </div>

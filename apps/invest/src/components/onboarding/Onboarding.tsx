@@ -27,7 +27,7 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   return (
     <OnboardingContext.Provider value={props.questions}>
       <Button
-        size={'large'}
+        size="large"
         onClick={() => setModal(true)}
         title="sign into arcane platform"
         variant="primary"
@@ -36,25 +36,20 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
         Contact Us
       </Button>
       <Modal
-        closeIcon={() => <img src={close} alt="modal close" />}
         size="small"
         isOpen={isOpen()}
         toggleModal={setModal}
         class="onboarding-modal"
+        icon={<img src={close} width={40} alt="modal close" />}
       >
-        <article
-          class="align-center"
-          style={{
-            'min-width': '360px',
-            'grid-template-rows': '20% 80%',
-            'min-height': '400px',
-          }}
-        >
-          <div class="align-row gap-small">
+        <article class="modal-content">
+          <div class="align-row gap-small modal-title">
             <img src={OnboardingLogo} alt="onboarding logo" />
             <p class="heading8">Investment Onboarding</p>
           </div>
-          <OnboardingForm />
+          <div class="modal-form">
+            <OnboardingForm />
+          </div>
         </article>
       </Modal>
     </OnboardingContext.Provider>

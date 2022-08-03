@@ -7,6 +7,9 @@ import { Form, Button } from '@arcane-web/alchemy-solid';
 import type { OnboardingFormPages } from '../Onboarding.types';
 import { createForm } from '@felte/solid';
 import { Questions } from '../config';
+import UpIcon from '../../../assets/up.svg';
+import DownIcon from '../../../assets/down.svg';
+import Progress from '../../progress/Progress';
 
 type OnboardingSurveyProps = {
   route: Questions;
@@ -25,43 +28,46 @@ const OnboardingSurvey: VoidComponent<
   });
 
   return (
-    <Form
-      ref={form}
-      style={{
-        display: 'grid',
-        'grid-template-rows': '90% 10%',
-        height: props.route === 'warning' ? '500px' : '100%',
-        width: '100%',
-      }}
-    >
-      <Switch>
-        <For each={questions}>
-          {(node) => {
-            return (
-              <Match when={props.route === node.name}>
-                <Question question={node} />
-              </Match>
-            );
-          }}
-        </For>
-      </Switch>
+    <Form ref={form} class="onboarding-content">
+      <div class="onboarding-main">
+        <Switch>
+          <For each={questions}>
+            {(node) => {
+              return (
+                <Match when={props.route === node.name}>
+                  <Question question={node} />
+                </Match>
+              );
+            }}
+          </For>
+        </Switch>
+      </div>
 
-      <div class="align-row w-full">
-        <Button type="button" onClick={() => props.onBack(data)}>
-          Back
-        </Button>
-        <div
-          style={{
-            'flex-grow': 1,
-          }}
-        />
-        <Button
-          disabled={props.route === 'warning' ? false : disableNext()}
-          type="submit"
-          variant="primary"
-        >
-          {props.route === 'warning' ? 'Agree' : 'Next'}
-        </Button>
+      <div class="onboarding-footer modal-horizontal">
+        <div style={{ 'padding-right': '8px' }}>
+          <Progress
+            label="0% completed"
+            max="100"
+            value="0"
+            id="survey-progress"
+          />
+        </div>
+        <div class="multi-button">
+          <button
+            class="multi-button_button"
+            type="button"
+            onClick={() => props.onBack(data)}
+          >
+            <img src={DownIcon} style={{ filter: 'invert(1)' }} />
+          </button>
+          <button
+            class="multi-button_button"
+            disabled={props.route === 'warning' ? false : disableNext()}
+            type="submit"
+          >
+            <img src={UpIcon} style={{ filter: 'invert(1)' }} />
+          </button>
+        </div>
       </div>
     </Form>
   );

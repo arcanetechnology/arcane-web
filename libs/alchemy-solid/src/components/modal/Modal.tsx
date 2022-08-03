@@ -8,8 +8,8 @@ type ModalProps = {
   isOpen: boolean;
   toggleModal: (val: boolean) => void;
   size: ModalSize;
-  closeIcon: () => JSX.Element;
   class?: string;
+  icon: JSX.Element;
 };
 
 const Modal: FlowComponent<ModalProps> = (props) => {
@@ -30,11 +30,12 @@ const Modal: FlowComponent<ModalProps> = (props) => {
           <div class="modal-close">
             <Button
               variant="tertiary"
+              size="medium"
               type="button"
               onClick={() => others.toggleModal(false)}
               class="modal-close"
             >
-              {others.closeIcon()}
+              <span>{others.icon}</span>
             </Button>
           </div>
           {others.children}

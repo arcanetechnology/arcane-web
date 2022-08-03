@@ -15,21 +15,18 @@ import type { Country } from '../../invest.types';
 
 const OnboardingWelcome: VoidComponent<OnboardingFormPages> = (props) => {
   return (
-    <div
-      style={{
-        display: 'grid',
-        'grid-template-rows': '90% 10%',
-        height: '100%',
-      }}
-    >
-      <p class="heading8">
-        Thanks for your insterest in our fund. Before we proceed, we will ask
-        you some questions that will help customize this solution to meet your
-        own needs.
-      </p>
-      <div class="w-full">
+    <div class="onboarding-content">
+      <div class="onboarding-main">
+        <p class="heading8">
+          Thanks for your insterest in our fund. Before we proceed, we will ask
+          you some questions that will help customize this solution to meet your
+          own needs.
+        </p>
+      </div>
+      <div class="w-full onboarding-footer">
         <Button
           class="w-full"
+          size="large"
           type="button"
           variant="primary"
           onClick={() => props.onSubmit({})}

@@ -20,6 +20,7 @@
   // TODO: add lightest white variable
   color: #ffffff;
   background-color: var(--primary-500);
+  @include elevation-100;
   &:hover {
     background-color: var(--primary-300);
   }
@@ -39,6 +40,7 @@
 .button-secondary {
   color: var(--primary-500);
   @include border-small(var(--primary-500));
+  @include elevation-100;
   &:hover {
     color: #ffffff;
     background-color: var(--primary-300);
@@ -60,22 +62,25 @@
 }
 
 .button-tertiary {
-  color: var(--font-color);
-  background-color: 'transparent';
+  color: var(--primary-500);
+  background-color: transparent;
   border: none;
-  @include breakpoint(default) {
-    &:focus {
-      color: var(--font-color);
-      border: none;
-      background-color: inherit;
-    }
+  &:active {
+    @include border-small(var(#2d3339));
   }
-  @include breakpoint(small) {
-    &:focus {
-      color: var(--font-color);
-      border: none;
-      background-color: inherit;
-    }
+  &:hover {
+    color: var(--primary-300);
+    background-color: var(--primary-300);
+    @include border-small(var(--primary-300));
+  }
+
+  &:disabled {
+    color: #e5e5ea;
+  }
+
+  &:focus {
+    @include border-small(var(--primary-500));
+    box-shadow: 0px 0px 7px #5ac8fa;
   }
 }
 
