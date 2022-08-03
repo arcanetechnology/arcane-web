@@ -36,7 +36,6 @@ export const fetchUserRegistration = async () => {
 
     return 'success';
   } catch (err) {
-    navigate('/', { replace: true });
     return null;
   }
 };

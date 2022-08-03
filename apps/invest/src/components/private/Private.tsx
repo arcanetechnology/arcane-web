@@ -3,25 +3,33 @@
 import { getAuth } from 'firebase/auth';
 import { useAuth } from '@arcane-web/arcane-auth';
 import { useNavigate } from 'solid-app-router';
-import { JSXElement, FlowComponent, createEffect, Show } from 'solid-js';
+import {
+  JSXElement,
+  FlowComponent,
+  createEffect,
+  Show,
+  createSignal,
+} from 'solid-js';
 
 type PrivateProps = {
   children: JSXElement;
 };
 
 const Private: FlowComponent<PrivateProps> = (props) => {
+  const [showPage, setPage] = createSignal(false);
   const navigate = useNavigate();
   const auth = getAuth();
   const state = useAuth(auth);
 
   createEffect(() => {
     if (!state.loading && !state.data) {
-      navigate('/', { replace: true });
+      return navigate('/', { replace: true });
     }
+    setPage(true);
   });
   return (
     <Show
-      when={state.data}
+      when={showPage()}
       fallback={
         <>
           <section class="margin-48">

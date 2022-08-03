@@ -1,6 +1,6 @@
 /** @format */
 
-import { Show, VoidComponent, For, createEffect } from 'solid-js';
+import { Show, VoidComponent, For } from 'solid-js';
 import './Navigation.scss';
 import { getNavigation } from '../../api/navigation';
 

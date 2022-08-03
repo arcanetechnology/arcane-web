@@ -1,7 +1,6 @@
 /** @format */
 
 import { VoidComponent, Show } from 'solid-js';
-import Invest from '../assets/invest.svg';
 import { gql } from '@solid-primitives/graphql';
 import queryClient from '../invest-contentful';
 import {

@@ -1,5 +1,5 @@
 /** @format */
-import { FlowComponent, JSXElement, onMount } from 'solid-js';
+import { FlowComponent, JSXElement } from 'solid-js';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import styles from './Shell.module.scss';
