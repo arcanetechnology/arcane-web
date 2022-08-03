@@ -9,7 +9,7 @@
 }
 
 @mixin elevation-100 {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 4px rgba(33, 37, 41, 0.5);
 }
 
 @mixin elevation-200 {
@@ -27,3 +27,6 @@
 @mixin elevation-500 {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
+
+// shadow light
+// shadow

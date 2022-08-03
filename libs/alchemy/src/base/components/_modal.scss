@@ -44,7 +44,7 @@
     bottom: 0;
   }
 
-  @include breakpoint(large) {
+  @include breakpoint(medium) {
     top: 50%;
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
@@ -71,19 +71,19 @@
 
   @include breakpoint(small) {
     width: 100%;
-    height: auto;
+    height: 80%;
     padding: $space-12;
   }
 
   @include breakpoint(medium) {
-    width: 50%;
-    height: 70%;
+    width: 600px;
+    height: 600px;
     padding: $space-16;
   }
 
   @include breakpoint(large) {
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
     padding: $space-24;
   }
 }
