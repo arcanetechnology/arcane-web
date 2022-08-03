@@ -11,8 +11,8 @@ const Footer: VoidComponent = () => {
   const nav = getNavigation();
   return (
     <footer>
-      <div class="container footer-row margin-48">
-        <div>
+      <div class="container footer-row margin-48 padding-24">
+        <div class="padding-8">
           <img
             src={Logo}
             style={{
@@ -26,44 +26,52 @@ const Footer: VoidComponent = () => {
           }}
         />
 
-        <div>
-          <p class="heading8">Navigation</p>
+        <div class="padding-8">
+          <p class="heading8 footer-text">Menu</p>
           <nav id="arcane-application-navigation" class="align-vertical">
             <Show when={nav()}>
               {
                 <For each={nav().applicationCollection.items}>
                   {(n) => (
-                    <a
-                      class="third after footer-link body1"
-                      href={window.location.origin + '/' + (n.path ?? '')}
-                    >
-                      {n.name}
-                    </a>
+                    <div class="footer-text">
+                      <a
+                        class="third after footer-link body1 "
+                        href={window.location.origin + '/' + (n.path ?? '')}
+                      >
+                        {n.name}
+                      </a>
+                    </div>
                   )}
                 </For>
               }
             </Show>
           </nav>
         </div>
-        <div>
-          <p class="heading8">Company</p>
+        <div class="padding-8">
+          <p class="heading8 footer-text">Company</p>
           <nav id="arcane-static" class="align-vertical">
-            <a class="third after footer-link body1" href="/people">
-              People
-            </a>
-            <a class="third after footer-link body1" href="/relations">
-              Investor Relations
-            </a>
-            <a class="third after footer-link body1" href="/privacy">
-              Privacy
-            </a>
+            <div class="footer-text">
+              <a class="third after footer-link body1" href="/people">
+                People
+              </a>
+            </div>
+            <div class="footer-text">
+              <a class="third after footer-link body1" href="/relations">
+                Investor Relations
+              </a>
+            </div>
+            <div class="footer-text">
+              <a class="third after footer-link body1" href="/privacy">
+                Privacy
+              </a>
+            </div>
           </nav>
         </div>
       </div>
 
       <hr />
 
-      <div class="container footer-row margin-12">
+      <div class="container footer-row margin-12 padding-24">
         <p class="body3">© All rights reserved to Arcane.</p>
         <p class="body3">Made with ❤️ in Norway</p>
         <div
