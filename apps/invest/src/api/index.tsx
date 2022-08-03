@@ -31,12 +31,10 @@ export const fetchUserRegistration = async () => {
     );
     if (res.status >= 400) {
       navigate('/register', { replace: true });
-      return null;
     }
-
     return 'success';
   } catch (err) {
-    return null;
+    return navigate('/');
   }
 };
 

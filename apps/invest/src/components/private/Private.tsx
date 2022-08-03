@@ -23,7 +23,7 @@ const Private: FlowComponent<PrivateProps> = (props) => {
 
   createEffect(() => {
     if (!state.loading && !state.data) {
-      return navigate('/', { replace: true });
+      navigate('/', { replace: true });
     }
     setPage(true);
   });

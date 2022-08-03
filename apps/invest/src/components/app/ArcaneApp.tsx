@@ -12,7 +12,7 @@ import {
   Show,
   createResource,
   createSignal,
-  createEffect,
+  onMount,
 } from 'solid-js';
 import { fetchUserRegistration } from '../../api';
 
@@ -28,15 +28,15 @@ const ArcaneAppProvider: FlowComponent<ArcaneAppProviderProps> = (props) => {
   const [data] = createResource(fetchUserRegistration);
   const navigate = useNavigate();
   const [show, setShow] = createSignal(false);
-  const auth = getAuth();
-  const state = useAuth(auth);
 
-  createEffect(() => {
-    if (!data && !state.loading && !state.data) {
-      return navigate('/', { replace: true });
+  onMount(() => {
+    if (!data) {
+      navigate('/register', { replace: true });
+    } else {
+      setShow(true);
     }
-    setShow(true);
   });
+
   return (
     <ErrorBoundary
       fallback={
