@@ -72,7 +72,6 @@
   align-content: center;
   text-align: center;
   font-size: 12px;
-
   cursor: pointer;
 }
 
@@ -91,6 +90,11 @@
     display: block;
   }
 }
+
+.current-route {
+  opacity: 0.4;
+}
+
 /* ----------------- SCROLLBAR -------------- */
 
 /* width */
