@@ -30,7 +30,7 @@ const OnboardingSurvey: VoidComponent<
       style={{
         display: 'grid',
         'grid-template-rows': '90% 10%',
-        height: props.route === 'warning' ? '700px' : '100%',
+        height: props.route === 'warning' ? '500px' : '100%',
         width: '100%',
       }}
     >

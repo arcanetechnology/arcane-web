@@ -1,24 +1,27 @@
 /** @format */
 
-import { FlowComponent, mergeProps, Show, splitProps } from 'solid-js';
+import { FlowComponent, JSX, mergeProps, Show, splitProps } from 'solid-js';
 import { Button } from '../button';
-import { IoCloseCircleSharp } from 'solid-icons/io';
 import { ModalSize } from '../../types';
 
 type ModalProps = {
   isOpen: boolean;
   toggleModal: (val: boolean) => void;
   size: ModalSize;
+  closeIcon: () => JSX.Element;
+  class?: string;
 };
 
 const Modal: FlowComponent<ModalProps> = (props) => {
   const mergedProps = mergeProps({ size: 'large' }, props);
-  const [local, others] = splitProps(mergedProps, ['size', 'children']);
+  const [local, others] = splitProps(mergedProps, ['size', 'class']);
   return (
     <Show when={others.isOpen} fallback={null}>
       <div class="modal-background">
         <div
-          class="elevation-300 radius-small modal"
+          class={(['elevation-300', 'radius-small', 'modal'] as Array<string>)
+            .concat(local.class ?? '')
+            .join(' ')}
           classList={{
             'modal-small': local.size === 'small',
             'modal-large': local.size === 'large',
@@ -31,10 +34,10 @@ const Modal: FlowComponent<ModalProps> = (props) => {
               onClick={() => others.toggleModal(false)}
               class="modal-close"
             >
-              <IoCloseCircleSharp size={42} />
+              {others.closeIcon()}
             </Button>
           </div>
-          {local.children}
+          {others.children}
         </div>
       </div>
     </Show>

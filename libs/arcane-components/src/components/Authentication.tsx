@@ -31,9 +31,7 @@ const Authentication: VoidComponent<AuthenticationProps> = (props) => {
   };
 
   const signOut = () => {
-    auth.signOut().then(() => {
-      location.reload();
-    });
+    auth.signOut();
   };
 
   return (

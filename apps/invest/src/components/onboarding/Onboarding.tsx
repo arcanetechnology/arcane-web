@@ -11,6 +11,8 @@ import OnboardingForm from './OnboardingForm';
 import { Modal, Button } from '@arcane-web/alchemy-solid';
 import OnboardingLogo from '../../assets/onboarding.svg';
 import 'tippy.js/dist/tippy.css';
+import close from '../../assets/close.svg';
+import './Onboarding.scss';
 
 const OnboardingContext = createContext<OnboardingNodes>([]);
 
@@ -21,32 +23,37 @@ type OnboardingProps = {
 // TODO: update the action part make it look good.
 export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   const [isOpen, setModal] = createSignal<boolean>(false);
-  // TODO: check if we need this auto trigger
-  // onMount(() => setModal(true));
+
   return (
     <OnboardingContext.Provider value={props.questions}>
       <Button
         size={'large'}
-        onClick={(e) => setModal(true)}
+        onClick={() => setModal(true)}
         title="sign into arcane platform"
         variant="primary"
         id="auth"
       >
         Contact Us
       </Button>
-      <Modal size="large" isOpen={isOpen()} toggleModal={setModal}>
+      <Modal
+        closeIcon={() => <img src={close} alt="modal close" />}
+        size="small"
+        isOpen={isOpen()}
+        toggleModal={setModal}
+        class="onboarding-modal"
+      >
         <article
           class="align-center"
           style={{
+            'min-width': '360px',
             'grid-template-rows': '20% 80%',
-            height: '100%',
+            'min-height': '400px',
           }}
         >
           <div class="align-row gap-small">
-            <OnboardingLogo />
+            <img src={OnboardingLogo} alt="onboarding logo" />
             <p class="heading8">Investment Onboarding</p>
           </div>
-
           <OnboardingForm />
         </article>
       </Modal>

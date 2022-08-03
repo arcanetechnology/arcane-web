@@ -7,13 +7,12 @@ import toast from 'solid-toast';
 // TODO: puth the auth part to service worker so this should be cleaner.
 
 export const getAuthToken = async () => {
-  const auth = getAuth();
+  const auth = await getAuth();
   const token = await auth.currentUser.getIdToken();
+  console.log(token);
   return token;
 };
-
 export const fetchUserRegistration = async () => {
-  const navigate = useNavigate();
   try {
     const token = await getAuthToken();
     const res = await fetch(
@@ -30,11 +29,12 @@ export const fetchUserRegistration = async () => {
       }
     );
     if (res.status >= 400) {
-      navigate('/register', { replace: true });
+      return 'error';
     }
     return 'success';
   } catch (err) {
-    return navigate('/');
+    console.log(err);
+    return 'error';
   }
 };
 
@@ -76,7 +76,7 @@ export const postUserRegistration = async <R,>(
       body.map((err) => {
         toast.error(err);
       });
-      navigate('/register');
+      navigate('/');
     }
   } catch (err) {
     navigate('/', { replace: true });

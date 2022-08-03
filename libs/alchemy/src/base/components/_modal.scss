@@ -28,41 +28,29 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
+
   z-index: 21;
 
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
   background-color: var(--neutral-background);
   @include radius-small;
   animation: fade-in 0.5s ease-in-out forwards;
   transition: all 0.25s ease-in-out;
 
   @include breakpoint(default) {
-    width: 100%;
-    height: 90%;
-    padding: $space-12;
+    bottom: 0;
   }
 
   @include breakpoint(small) {
-    width: 100%;
-    height: 90%;
-    padding: $space-12;
-  }
-
-  @include breakpoint(medium) {
-    width: 50%;
-    height: 70%;
-    padding: $space-32;
+    bottom: 0;
   }
 
   @include breakpoint(large) {
-    width: 40%;
-    height: 60%;
-    padding: $space-32;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
   }
 }
 
@@ -77,19 +65,25 @@
 .modal-small {
   @include breakpoint(default) {
     width: 100%;
-    height: 90%;
+    height: auto;
     padding: $space-12;
   }
 
   @include breakpoint(small) {
     width: 100%;
-    height: 90%;
+    height: auto;
     padding: $space-12;
   }
 
   @include breakpoint(medium) {
-    width: 20%;
-    height: auto;
+    width: 50%;
+    height: 70%;
+    padding: $space-16;
+  }
+
+  @include breakpoint(large) {
+    width: 400px;
+    height: 400px;
     padding: $space-24;
   }
 }

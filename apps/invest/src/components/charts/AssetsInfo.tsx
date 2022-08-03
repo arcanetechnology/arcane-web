@@ -1,7 +1,7 @@
 /** @format */
 
 import { createEffect, createSignal, on, VoidComponent } from 'solid-js';
-import Chart from 'chart.js/auto/auto.esm';
+import Chart from 'chart.js/auto/auto.mjs';
 import { Card } from '@arcane-web/alchemy-solid';
 import { onMount } from 'solid-js';
 import { Assets } from '../../invest.types';

@@ -1,7 +1,5 @@
 /** @format */
 
-import { getAuth } from 'firebase/auth';
-import { useAuth } from '@arcane-web/arcane-auth';
 import { useNavigate } from 'solid-app-router';
 import {
   createContext,
@@ -11,8 +9,8 @@ import {
   useContext,
   Show,
   createResource,
-  createSignal,
-  onMount,
+  createEffect,
+  on,
 } from 'solid-js';
 import { fetchUserRegistration } from '../../api';
 
@@ -27,15 +25,14 @@ type ArcaneAppProviderProps = {
 const ArcaneAppProvider: FlowComponent<ArcaneAppProviderProps> = (props) => {
   const [data] = createResource(fetchUserRegistration);
   const navigate = useNavigate();
-  const [show, setShow] = createSignal(false);
 
-  onMount(() => {
-    if (!data) {
-      navigate('/register', { replace: true });
-    } else {
-      setShow(true);
-    }
-  });
+  createEffect(
+    on(data, (data) => {
+      if (data === 'error') {
+        navigate('/');
+      }
+    })
+  );
 
   return (
     <ErrorBoundary
@@ -50,7 +47,7 @@ const ArcaneAppProvider: FlowComponent<ArcaneAppProviderProps> = (props) => {
       }
     >
       <Show
-        when={data && show()}
+        when={data() === 'success'}
         fallback={
           <>
             <section class="margin-48">
@@ -67,7 +64,9 @@ const ArcaneAppProvider: FlowComponent<ArcaneAppProviderProps> = (props) => {
                 <div class="space-8 align-vertical">
                   <div class="skeleton skeleton-text" />
                   <div class="margin-top-16">
-                    <div class="skeleton skeleton-text skeleton-text__body" />
+                    <div
+                      style={{ color: 'grey', width: '400px', height: '40px' }}
+                    />
                   </div>
                 </div>
               </div>
