@@ -73,6 +73,9 @@
   text-align: center;
   font-size: 12px;
   cursor: pointer;
+  &:hover {
+    opacity: 1 !important;
+  }
 }
 
 .app-box {
