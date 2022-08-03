@@ -35,5 +35,6 @@ a.third:after {
   transform: translateX(-50%);
 }
 a.after:hover:after {
-  width: 100%;
+  width: 80%;
+  filter: blur(2px);
 }
