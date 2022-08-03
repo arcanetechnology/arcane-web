@@ -3,6 +3,7 @@
 import { Show, VoidComponent, For } from 'solid-js';
 import './Navigation.scss';
 import { getNavigation } from '../../api/navigation';
+import menu from '../../assets/menu.svg';
 
 const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
 const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
@@ -41,10 +42,8 @@ const Navigation: VoidComponent = () => {
       data-is-closed="true"
     >
       <div id={NAVIGATION_MENU_BUTTON_ID} class="menu-btn circle-hover">
-        <abbr class="clear-df-abbr" title="Arcane applications">
-          <svg viewBox="0 0 24 24">
-            <path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z" />
-          </svg>
+        <abbr title="Arcane applications">
+          <img src={menu} alt="Arcane Applications" />
         </abbr>
       </div>
       <div id={NAVIGATION_MENU_ID} class="menu margin-12">

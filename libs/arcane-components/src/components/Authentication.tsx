@@ -36,7 +36,7 @@ const Authentication: VoidComponent<AuthenticationProps> = (props) => {
 
   return (
     <Show
-      when={state.data}
+      when={!state.loading}
       fallback={
         <Button
           size={props.size}
@@ -45,19 +45,34 @@ const Authentication: VoidComponent<AuthenticationProps> = (props) => {
           variant="secondary"
           id="auth"
         >
-          {props.loggedOutTitle}
+          {'...loading'}
         </Button>
       }
     >
-      <Button
-        size={props.size}
-        onClick={signOut}
-        title="sign into arcane platform"
-        variant="secondary"
-        id="auth"
+      <Show
+        when={state.data}
+        fallback={
+          <Button
+            size={props.size}
+            onClick={signin}
+            title="sign into arcane platform"
+            variant="secondary"
+            id="auth"
+          >
+            {props.loggedOutTitle}
+          </Button>
+        }
       >
-        {props.title}
-      </Button>
+        <Button
+          size={props.size}
+          onClick={signOut}
+          title="sign into arcane platform"
+          variant="secondary"
+          id="auth"
+        >
+          {props.title}
+        </Button>
+      </Show>
     </Show>
   );
 };
