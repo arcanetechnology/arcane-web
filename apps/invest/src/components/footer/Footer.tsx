@@ -1,7 +1,8 @@
 /** @format */
 
 import { For, Show, VoidComponent } from 'solid-js';
-import { FaBrandsLinkedinIn, FaBrandsTwitter } from 'solid-icons/fa';
+import Twitter from '../../assets/twitter.svg';
+import LinkedIn from '../../assets/linkedin.svg';
 import './Footer.scss';
 import Logo from '../../assets/logo.svg';
 import { getNavigation } from '../../api/navigation';
@@ -12,7 +13,12 @@ const Footer: VoidComponent = () => {
     <footer>
       <div class="container footer-row margin-48">
         <div>
-          <Logo />
+          <img
+            src={Logo}
+            style={{
+              filter: 'invert(1)',
+            }}
+          />
         </div>
         <div
           style={{
@@ -68,13 +74,27 @@ const Footer: VoidComponent = () => {
         <div class="footer-follow gap-small">
           <p class="body3">Follow us</p>
           <a href="https://twitter.com/arcane_crypto" class="footer-link body3">
-            <FaBrandsTwitter size={20} />
+            <img
+              src={Twitter}
+              width={20}
+              alt="twitter"
+              style={{
+                filter: 'invert(1)',
+              }}
+            />
           </a>
           <a
             href="https://www.linkedin.com/company/arcane-crypto/"
-            class="footer-link body3"
+            class="body3"
           >
-            <FaBrandsLinkedinIn size={20} />
+            <img
+              src={LinkedIn}
+              width={20}
+              alt="linkedin"
+              style={{
+                filter: 'invert(1)',
+              }}
+            />
           </a>
         </div>
       </div>

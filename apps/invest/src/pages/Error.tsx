@@ -11,7 +11,7 @@ const Error: VoidComponent = () => {
       <section class="margin-48">
         <div id="apology-message" class="container" data-auto-grid="2">
           <div class="space-8">
-            <Invest />
+            <img src={Invest} alt="invest-error" />
           </div>
           <div class="space-8 align-vertical">
             <p class="heading7">

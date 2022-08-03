@@ -16,6 +16,7 @@
 
 .menu {
   position: absolute;
+  visibility: hidden;
   padding: $space-16;
   transform: translateX(-50%);
   overflow-y: scroll;

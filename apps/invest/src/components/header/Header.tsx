@@ -1,7 +1,7 @@
 /** @format */
 
 import type { VoidComponent } from 'solid-js';
-import Arcane from '../../assets/logo.svg';
+import arcane from '../../assets/logo.svg';
 import Navigation from '../navigation/Navigation';
 import { Authentication } from '@arcane-web/arcane-components';
 
@@ -11,7 +11,7 @@ const Header: VoidComponent = () => {
   return (
     <header role="banner">
       <div class="container align-row margin-12">
-        <Arcane />
+        <img src={arcane} alt="arcane-logo" />
         <div
           style={{
             'flex-grow': 1,

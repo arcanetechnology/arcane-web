@@ -1,7 +1,7 @@
 /** @format */
 
 import type { JSXElement, FlowComponent } from 'solid-js';
-import Invest from '../../assets/invest.svg';
+import invest from '../../assets/invest.svg';
 import { Transition } from 'solid-transition-group';
 
 type LandingProps = {
@@ -33,7 +33,7 @@ const Landing: FlowComponent<LandingProps> = (props) => {
         <Transition onEnter={animateIn} appear={true}>
           <div id="apology-message" class="container" data-auto-grid="2">
             <div class="space-8">
-              <Invest />
+              <img src={invest} alt="invest-landing" />
             </div>
             <div class="space-8 align-vertical">
               <h1>The fund.</h1>
