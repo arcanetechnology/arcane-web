@@ -1,11 +1,12 @@
 /** @format */
 
-import type { VoidComponent } from 'solid-js';
+import { Show, VoidComponent } from 'solid-js';
 import arcane from '../../assets/logo.svg';
 import Navigation from '../navigation/Navigation';
 import { Authentication } from '@arcane-web/arcane-components';
 
 import './Header.scss';
+import { isSmall } from '..';
 
 const Header: VoidComponent = () => {
   return (
@@ -18,11 +19,14 @@ const Header: VoidComponent = () => {
           }}
         />
         <Navigation />
-        <Authentication
-          loggedOutTitle="Sign In"
-          title="Sign Out"
-          size="medium"
-        />
+
+        <Show when={!isSmall()}>
+          <Authentication
+            loggedOutTitle="Sign In"
+            title="Sign Out"
+            size="medium"
+          />
+        </Show>
       </div>
     </header>
   );

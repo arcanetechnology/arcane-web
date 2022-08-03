@@ -17,12 +17,17 @@
 .menu {
   position: absolute;
   visibility: hidden;
-  padding: $space-8;
+  padding: $space-16;
   transform: translateX(-50%);
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-24;
   background-color: var(--background);
-  @include radius-large;
-  @include elevation-300;
+  @include radius-small;
+  @include elevation-200;
 }
 
 [data-is-closed='false'] .menu-btn:before {
@@ -60,17 +65,22 @@
 }
 
 .app-nav {
-  padding: $space-8;
   @include radius-large;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   text-align: center;
-  &:hover {
-    background-color: var(--primary-200);
-    color: var(--primary-500);
-  }
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.app-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
 }
 
 .app-nav-link {
