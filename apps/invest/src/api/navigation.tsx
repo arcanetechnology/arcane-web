@@ -6,6 +6,7 @@ type NavItems = {
   logo: { url: string; description: string };
   name: string;
   path: null | string;
+  ranking: number;
 };
 
 export const getNavigation = () => {
@@ -20,6 +21,7 @@ export const getNavigation = () => {
               description
             }
             path
+            ranking
           }
         }
       }

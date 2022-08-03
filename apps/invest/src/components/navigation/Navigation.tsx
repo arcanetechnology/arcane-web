@@ -1,6 +1,13 @@
 /** @format */
 
-import { Show, VoidComponent, For } from 'solid-js';
+import {
+  Show,
+  VoidComponent,
+  For,
+  createSignal,
+  onMount,
+  createEffect,
+} from 'solid-js';
 import './Navigation.scss';
 import { getNavigation } from '../../api/navigation';
 import menu from '../../assets/menu.svg';
@@ -10,7 +17,17 @@ const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
 const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
 
 const Navigation: VoidComponent = () => {
+  const [sortedNavigation, setSortedNavigation] = createSignal([]);
   const nav = getNavigation();
+
+  createEffect(() => {
+    if (nav()) {
+      const sorted = nav().applicationCollection.items.sort((a, b) => {
+        return a.ranking - b.ranking;
+      });
+      setSortedNavigation(sorted);
+    }
+  });
 
   const navigationRef: (el: HTMLDivElement) => void = (el: HTMLDivElement) => {
     document.addEventListener('click', (e: any) => {
@@ -35,8 +52,6 @@ const Navigation: VoidComponent = () => {
     });
   };
 
-  console.log(window.location.pathname.replaceAll('/', ''));
-
   return (
     <div
       ref={navigationRef}
@@ -50,15 +65,15 @@ const Navigation: VoidComponent = () => {
         </abbr>
       </div>
       <div id={NAVIGATION_MENU_ID} class="menu margin-8">
-        <Show when={nav()}>
+        <Show when={sortedNavigation().length > 0}>
           <nav class="app-box">
-            <For each={nav().applicationCollection.items}>
+            <For each={sortedNavigation()}>
               {(n) => (
                 <div
                   class="app-nav"
                   style={{
                     opacity:
-                      window.location.pathname.replaceAll('/', '') === n.path
+                      window.location.pathname.split('/')[1] === n.path
                         ? 1
                         : 0.4,
                   }}
