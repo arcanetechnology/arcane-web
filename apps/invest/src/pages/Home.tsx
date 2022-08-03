@@ -1,7 +1,7 @@
 /** @format */
 
 import { VoidComponent, Show, For } from 'solid-js';
-import { FundValue, Info, AssetInfo } from '../components';
+import { Info, AssetInfo } from '../components';
 import ArcaneAppProvider from '../components/app/ArcaneApp';
 import { gql } from '@solid-primitives/graphql';
 import investClient from '../invest-contentful';

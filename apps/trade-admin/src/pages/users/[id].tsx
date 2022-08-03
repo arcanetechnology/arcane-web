@@ -11,8 +11,8 @@ const User: VoidComponent = () => {
     <Show when={userInfo()} fallback={<div>Loading User Info...</div>}>
       <h6>User Info</h6>
       <UserInfo profile={userInfo().user} />
-      <OperationProvider>
-        <Transactions profiles={userInfo().user.profiles} />
+      <OperationProvider profiles={userInfo().user.profiles}>
+        <Transactions />
       </OperationProvider>
     </Show>
   );

@@ -3,14 +3,14 @@
 import { For, Show, VoidComponent } from 'solid-js';
 import { FaBrandsLinkedinIn, FaBrandsTwitter } from 'solid-icons/fa';
 import './Footer.scss';
-import Logo from '../../assets/invest.svg';
+import Logo from '../../assets/logo.svg';
 import { getNavigation } from '../../api/navigation';
 
 const Footer: VoidComponent = () => {
   const nav = getNavigation();
   return (
     <footer>
-      <div class="margin-48 container align-row gap-big">
+      <div class="container footer-row margin-48">
         <div>
           <Logo />
         </div>
@@ -56,8 +56,8 @@ const Footer: VoidComponent = () => {
       </div>
 
       <hr />
-      
-      <div class="container align-row margin-12 gap-big">
+
+      <div class="container footer-row margin-12">
         <p class="body3">© All rights reserved to Arcane.</p>
         <p class="body3">Made with ❤️ in Norway</p>
         <div

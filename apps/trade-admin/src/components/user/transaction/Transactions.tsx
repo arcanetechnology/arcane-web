@@ -1,54 +1,15 @@
 /** @format */
 
-import { Profile } from '../../../types';
-import { createSignal, onMount, VoidComponent, For } from 'solid-js';
-import { SearchAbleAccounts } from './Transaction.types';
+import { VoidComponent, For } from 'solid-js';
 import Transaction from './Transaction';
 import { Button } from '@arcane-web/alchemy-solid';
 import { useOperations } from './Operations';
 
-type TransactionProps = {
-  profiles: Array<Profile>;
-};
-
-const normalizeAccounts = (profiles: Profile[]): Array<SearchAbleAccounts> => {
-  return profiles.flatMap((profile) =>
-    profile.accounts.flatMap((acc) =>
-      acc.portfolios.flatMap((p) =>
-        p.cryptoAccounts.flatMap(
-          (c) =>
-            ({
-              accountAlias: acc.alias,
-              accountCurrency: acc.currency,
-              accountId: acc.id,
-              cryptoAccountId: c.id,
-              cryptoAlias: c.alias,
-              cryptoCurrency: c.currency,
-              cryptoId: c.id,
-              portfolioAlias: p.alias,
-              portfolioId: p.id,
-              profileAlias: profile.alias,
-              profileId: profile.id,
-              profileType: profile.type,
-            } as SearchAbleAccounts)
-        )
-      )
-    )
-  );
-};
-const Transactions: VoidComponent<TransactionProps> = (props) => {
-  const [initialData, setInitialData] = createSignal<Array<SearchAbleAccounts>>(
-    []
-  );
-
+const Transactions: VoidComponent = () => {
   const [
     operations,
     { addOperations, removeOperation, addTransaction, deleteTransaction },
   ] = useOperations();
-
-  onMount(() => {
-    setInitialData(normalizeAccounts(props.profiles));
-  });
 
   return (
     <div class="margin-48">
@@ -58,7 +19,7 @@ const Transactions: VoidComponent<TransactionProps> = (props) => {
         </Button>
       </div>
       <div class="margin-16">
-        <For each={operations}>
+        <For each={operations.operations}>
           {(o) => (
             <div class="margin-8">
               <div class="align-horizontal gap-small">
@@ -77,14 +38,16 @@ const Transactions: VoidComponent<TransactionProps> = (props) => {
                 <For each={o.transactions}>
                   {(t) => (
                     <div class="align-horizontal gap-small">
-                      <Transaction accounts={initialData()} />
-                      <Button
-                        onClick={() => deleteTransaction(o.id, t.id)}
-                        size="small"
-                        variant="secondary"
-                      >
-                        Delete Transaction
-                      </Button>
+                      <Transaction accounts={operations.accounts} />
+                      <div class="align-vertical">
+                        <Button
+                          onClick={() => deleteTransaction(o.id, t.id)}
+                          size="small"
+                          variant="secondary"
+                        >
+                          Delete
+                        </Button>
+                      </div>
                     </div>
                   )}
                 </For>
