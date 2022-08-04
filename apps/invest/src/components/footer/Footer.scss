@@ -33,17 +33,13 @@ footer {
 
 .footer-row {
   display: flex;
-  @include breakpoint(small) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--gap-small);
-  }
+  flex-direction: row;
+  justify-content: space-around;
+}
 
-  @include breakpoint(medium) {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: var(--gap-default);
-  }
+.footer-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

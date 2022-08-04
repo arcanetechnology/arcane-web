@@ -10,10 +10,10 @@ type LandingProps = {
 
 const Landing: FlowComponent<LandingProps> = (props) => {
   const base = { opacity: 1 };
-  const options = { duration: 1300 };
+  const options = { duration: 1000 };
   const animateIn = (el: Element, done: VoidFunction) => {
     el.animate(
-      [{ opacity: 0, transform: 'translateY(30px)' }, base],
+      [{ opacity: 0, transform: 'translateY(25px)' }, base],
       options
     ).finished.then(done);
   };

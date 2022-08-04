@@ -3,10 +3,12 @@
 import { Authentication } from '@arcane-web/arcane-components';
 import { getAuth } from 'firebase/auth';
 import { useAuth } from '@arcane-web/arcane-auth';
-import { VoidComponent, Show } from 'solid-js';
+import { VoidComponent, Show, createResource } from 'solid-js';
 import { LandingComponent, Onboarding, OnboardingNodes } from '../components';
 import queryClient from '../invest-contentful';
 import { gql } from '@solid-primitives/graphql';
+import { fetchUserRegistration } from '../api';
+import { useNavigate } from 'solid-app-router';
 
 const Landing: VoidComponent = () => {
   const [questions] = queryClient<{
@@ -25,7 +27,7 @@ const Landing: VoidComponent = () => {
       }
     `
   );
-
+  createResource(fetchUserRegistration);
   const auth = getAuth();
   const state = useAuth(auth);
 

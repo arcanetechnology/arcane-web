@@ -1,7 +1,7 @@
 /** @format */
 
 import { Button } from '@arcane-web/alchemy-solid';
-import { VoidComponent, Show } from 'solid-js';
+import { VoidComponent, Show, splitProps } from 'solid-js';
 import { useAuth } from '@arcane-web/arcane-auth';
 import { getAuth } from 'firebase/auth';
 import type { ButtonProps } from '@arcane-web/alchemy-solid';
@@ -15,6 +15,7 @@ type AuthenticationProps = {
 const Authentication: VoidComponent<AuthenticationProps> = (props) => {
   const auth = getAuth();
   const state = useAuth(auth);
+  const [local, others] = splitProps(props, ['title', 'loggedOutTitle']);
 
   const signin = () => {
     const width = 512;
@@ -44,6 +45,7 @@ const Authentication: VoidComponent<AuthenticationProps> = (props) => {
           title="sign into arcane platform"
           variant="secondary"
           id="auth"
+          {...others}
         >
           {'...loading'}
         </Button>
@@ -58,8 +60,9 @@ const Authentication: VoidComponent<AuthenticationProps> = (props) => {
             title="sign into arcane platform"
             variant="secondary"
             id="auth"
+            {...others}
           >
-            {props.loggedOutTitle}
+            {local.loggedOutTitle}
           </Button>
         }
       >
@@ -69,8 +72,9 @@ const Authentication: VoidComponent<AuthenticationProps> = (props) => {
           title="sign into arcane platform"
           variant="secondary"
           id="auth"
+          {...others}
         >
-          {props.title}
+          {local.title}
         </Button>
       </Show>
     </Show>

@@ -48,13 +48,21 @@ const OnboardingForm: VoidComponent = () => {
   const { onboardingState, addOnboardingState } = updateOnboardingState();
   const [body, setBody] = createSignal<{ body: FundInfo; name: string }>(null);
 
-  createResource(body, postUserRegistration, {
-    deferStream: true,
-  });
+  const [{ loading, error }, { refetch }] = createResource(
+    body,
+    postUserRegistration,
+    {
+      deferStream: true,
+    }
+  );
 
   function onSubmit(values) {
     try {
       if (page() === pages.length - 1) {
+        console.log('second time??');
+        console.log(error);
+        console.log(loading);
+        console.log(pagesState());
         const formBody = pagesState().reduce(
           (obj, item) => {
             const key = Object.keys(item)[0];
@@ -79,7 +87,6 @@ const OnboardingForm: VoidComponent = () => {
           // TODO: remove the hardcoding later alligator 🐊
           { phoneNumber: values, fundName: 'Arcane Assets Fund Limited' }
         );
-
         delete formBody['warning'];
 
         if (onboardingState().length <= 3) {

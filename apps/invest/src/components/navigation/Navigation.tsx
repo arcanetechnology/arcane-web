@@ -90,14 +90,15 @@ const Navigation: VoidComponent = () => {
                     />
                   </a>
 
-                  <div>{n.name}</div>
+                  <div class="padding-8">{n.name}</div>
                 </div>
               )}
             </For>
           </nav>
         </Show>
-        <div>
+        <div class="w-full">
           <Authentication
+            class="w-full"
             loggedOutTitle="Sign In"
             title="Sign Out"
             size="medium"

@@ -13,6 +13,7 @@ import { Modal, Button } from '@arcane-web/alchemy-solid';
 import OnboardingLogo from '../../assets/onboarding.svg';
 import 'tippy.js/dist/tippy.css';
 import close from '../../assets/close.svg';
+import arrow from '../../assets/arrow.svg';
 import './Onboarding.scss';
 import { Questions } from './config';
 
@@ -77,7 +78,8 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
         variant="primary"
         id="auth"
       >
-        Contact Us
+        Contact Us{' '}
+        <img style={{ filter: 'invert(1)' }} src={arrow} alt="right arrow" />
       </Button>
       <Modal
         size="small"
