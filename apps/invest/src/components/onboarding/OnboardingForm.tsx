@@ -1,7 +1,13 @@
 /** @format */
 
-import { createResource, createSignal, onMount, VoidComponent } from 'solid-js';
-import { Button } from '@arcane-web/alchemy-solid';
+import {
+  createEffect,
+  createResource,
+  createSignal,
+  on,
+  onMount,
+  VoidComponent,
+} from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { Survey } from './survey';
 import { CustomerFormPages } from './customer';
@@ -12,33 +18,9 @@ import { postUserRegistration } from '../../api';
 import type { FundInfo } from '../../types/index';
 import countries from '../../assets/countries.json';
 import type { Country } from '../../invest.types';
+import OnboardingWelcomePage from './OnboardingWelcomPage';
 
-const OnboardingWelcome: VoidComponent<OnboardingFormPages> = (props) => {
-  return (
-    <div class="onboarding-content">
-      <div class="onboarding-main">
-        <p class="heading8">
-          Thanks for your insterest in our fund. Before we proceed, we will ask
-          you some questions that will help customize this solution to meet your
-          own needs.
-        </p>
-      </div>
-      <div class="w-full onboarding-footer">
-        <Button
-          class="w-full"
-          size="large"
-          type="button"
-          variant="primary"
-          onClick={() => props.onSubmit({})}
-        >
-          Start
-        </Button>
-      </div>
-    </div>
-  );
-};
-
-const pages = [OnboardingWelcome, Survey, ...CustomerFormPages];
+const pages = [OnboardingWelcomePage, Survey, ...CustomerFormPages];
 
 const getFirstKeyOfObject = (obj: Record<string, string>) => {
   return Object.keys(obj)[0];
@@ -65,8 +47,8 @@ const OnboardingForm: VoidComponent = () => {
   const [pagesState, setPagesState] = createSignal([]);
   const { onboardingState, addOnboardingState } = updateOnboardingState();
   const [body, setBody] = createSignal<{ body: FundInfo; name: string }>(null);
-  // TODO: refactor it later
-  const [register] = createResource(body, postUserRegistration, {
+
+  createResource(body, postUserRegistration, {
     deferStream: true,
   });
 
@@ -86,8 +68,10 @@ const OnboardingForm: VoidComponent = () => {
 
             if (key === 'countryCode') {
               item[key] = (
-                countries.find((c: Country) => item[key] === c.name) as Country
-              ).code;
+                countries.find(
+                  (c: Country) => item[key] === c.displayName
+                ) as Country
+              ).isO3CountyCode;
             }
 
             return Object.assign(obj, { [key]: item[key] });
@@ -95,6 +79,8 @@ const OnboardingForm: VoidComponent = () => {
           // TODO: remove the hardcoding later alligator 🐊
           { phoneNumber: values, fundName: 'Arcane Assets Fund Limited' }
         );
+
+        delete formBody['warning'];
 
         if (onboardingState().length <= 3) {
           // TODO: abstract it away in the arcane platorm
@@ -150,9 +136,11 @@ const OnboardingForm: VoidComponent = () => {
 
   return (
     <Dynamic<OnboardingFormPages>
+      progress={page()}
       component={pages[page()]}
       onSubmit={onSubmit}
       onBack={onBack}
+      totalPages={pages.length}
       route={route()}
     />
   );

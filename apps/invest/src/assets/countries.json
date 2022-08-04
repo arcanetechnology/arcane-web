@@ -1,475 +1,1472 @@
 [
-  { "name": "United States", "code": "USA", "flag": "🇺🇸", "countryCode": "1" },
-  { "name": "Canada", "code": "CAN", "flag": "🇨🇦", "countryCode": "1" },
-  { "name": "Puerto Rico", "code": "PRI", "flag": "🇵🇷", "countryCode": "1" },
   {
-    "name": "Dominican Republic",
-    "code": "DOM",
-    "flag": "🇩🇴",
-    "countryCode": "1"
+    "isO2CountyCode": "AF",
+    "isO3CountyCode": "AFG",
+    "displayName": "Afghanistan",
+    "callingCountryCode": 93
   },
   {
-    "name": "Saint Helena, Ascension and Tristan da Cunha",
-    "code": "SHN",
-    "flag": "🇸🇭",
-    "countryCode": "2"
-  },
-  { "name": "Western Sahara", "code": "ESH", "flag": "🇪🇭", "countryCode": "2" },
-  { "name": "Vatican City", "code": "VAT", "flag": "🇻🇦", "countryCode": "3" },
-  { "name": "Russia", "code": "RUS", "flag": "🇷🇺", "countryCode": "7" },
-  { "name": "Kazakhstan", "code": "KAZ", "flag": "🇰🇿", "countryCode": "7" },
-  { "name": "Egypt", "code": "EGY", "flag": "🇪🇬", "countryCode": "20" },
-  { "name": "Netherlands", "code": "NLD", "flag": "🇳🇱", "countryCode": "31" },
-  { "name": "Italy", "code": "ITA", "flag": "🇮🇹", "countryCode": "39" },
-  {
-    "name": "United Kingdom",
-    "code": "GBR",
-    "flag": "🇬🇧",
-    "countryCode": "44"
-  },
-  { "name": "Isle of Man", "code": "IMN", "flag": "🇮🇲", "countryCode": "44" },
-  { "name": "Denmark", "code": "DNK", "flag": "🇩🇰", "countryCode": "45" },
-  { "name": "Peru", "code": "PER", "flag": "🇵🇪", "countryCode": "51" },
-  { "name": "Chile", "code": "CHL", "flag": "🇨🇱", "countryCode": "56" },
-  {
-    "name": "Cocos (Keeling) Islands",
-    "code": "CCK",
-    "flag": "🇨🇨",
-    "countryCode": "61"
-  },
-  { "name": "New Zealand", "code": "NZL", "flag": "🇳🇿", "countryCode": "64" },
-  { "name": "South Korea", "code": "KOR", "flag": "🇰🇷", "countryCode": "82" },
-  { "name": "Pakistan", "code": "PAK", "flag": "🇵🇰", "countryCode": "92" },
-  { "name": "Myanmar", "code": "MMR", "flag": "🇲🇲", "countryCode": "95" },
-  { "name": "Tunisia", "code": "TUN", "flag": "🇹🇳", "countryCode": "216" },
-  { "name": "Gambia", "code": "GMB", "flag": "🇬🇲", "countryCode": "220" },
-  { "name": "Togo", "code": "TGO", "flag": "🇹🇬", "countryCode": "228" },
-  { "name": "Ghana", "code": "GHA", "flag": "🇬🇭", "countryCode": "233" },
-  {
-    "name": "São Tomé and Príncipe",
-    "code": "STP",
-    "flag": "🇸🇹",
-    "countryCode": "239"
+    "isO2CountyCode": "AL",
+    "isO3CountyCode": "ALB",
+    "displayName": "Albania",
+    "callingCountryCode": 355
   },
   {
-    "name": "British Indian Ocean Territory",
-    "code": "IOT",
-    "flag": "🇮🇴",
-    "countryCode": "246"
-  },
-  { "name": "Seychelles", "code": "SYC", "flag": "🇸🇨", "countryCode": "248" },
-  { "name": "Somalia", "code": "SOM", "flag": "🇸🇴", "countryCode": "252" },
-  { "name": "Tanzania", "code": "TZA", "flag": "🇹🇿", "countryCode": "255" },
-  { "name": "Uganda", "code": "UGA", "flag": "🇺🇬", "countryCode": "256" },
-  { "name": "Burundi", "code": "BDI", "flag": "🇧🇮", "countryCode": "257" },
-  { "name": "Madagascar", "code": "MDG", "flag": "🇲🇬", "countryCode": "261" },
-  { "name": "Réunion", "code": "REU", "flag": "🇷🇪", "countryCode": "262" },
-  { "name": "Lesotho", "code": "LSO", "flag": "🇱🇸", "countryCode": "266" },
-  { "name": "Luxembourg", "code": "LUX", "flag": "🇱🇺", "countryCode": "352" },
-  { "name": "Albania", "code": "ALB", "flag": "🇦🇱", "countryCode": "355" },
-  { "name": "Cyprus", "code": "CYP", "flag": "🇨🇾", "countryCode": "357" },
-  { "name": "Belarus", "code": "BLR", "flag": "🇧🇾", "countryCode": "375" },
-  { "name": "Monaco", "code": "MCO", "flag": "🇲🇨", "countryCode": "377" },
-  { "name": "Ukraine", "code": "UKR", "flag": "🇺🇦", "countryCode": "380" },
-  { "name": "Serbia", "code": "SRB", "flag": "🇷🇸", "countryCode": "381" },
-  { "name": "Kosovo", "code": "UNK", "flag": "🇽🇰", "countryCode": "383" },
-  { "name": "Slovenia", "code": "SVN", "flag": "🇸🇮", "countryCode": "386" },
-  {
-    "name": "North Macedonia",
-    "code": "MKD",
-    "flag": "🇲🇰",
-    "countryCode": "389"
+    "isO2CountyCode": "DZ",
+    "isO3CountyCode": "DZA",
+    "displayName": "Algeria",
+    "callingCountryCode": 213
   },
   {
-    "name": "South Georgia",
-    "code": "SGS",
-    "flag": "🇬🇸",
-    "countryCode": "500"
+    "isO2CountyCode": "AS",
+    "isO3CountyCode": "ASM",
+    "displayName": "American Samoa",
+    "callingCountryCode": 1
   },
   {
-    "name": "Saint Pierre and Miquelon",
-    "code": "SPM",
-    "flag": "🇵🇲",
-    "countryCode": "508"
-  },
-  { "name": "Bolivia", "code": "BOL", "flag": "🇧🇴", "countryCode": "591" },
-  { "name": "Paraguay", "code": "PRY", "flag": "🇵🇾", "countryCode": "595" },
-  { "name": "Timor-Leste", "code": "TLS", "flag": "🇹🇱", "countryCode": "670" },
-  {
-    "name": "Papua New Guinea",
-    "code": "PNG",
-    "flag": "🇵🇬",
-    "countryCode": "675"
-  },
-  { "name": "Tonga", "code": "TON", "flag": "🇹🇴", "countryCode": "676" },
-  { "name": "Palau", "code": "PLW", "flag": "🇵🇼", "countryCode": "680" },
-  { "name": "Niue", "code": "NIU", "flag": "🇳🇺", "countryCode": "683" },
-  { "name": "Kiribati", "code": "KIR", "flag": "🇰🇮", "countryCode": "686" },
-  { "name": "Micronesia", "code": "FSM", "flag": "🇫🇲", "countryCode": "691" },
-  { "name": "North Korea", "code": "PRK", "flag": "🇰🇵", "countryCode": "850" },
-  { "name": "Hong Kong", "code": "HKG", "flag": "🇭🇰", "countryCode": "852" },
-  { "name": "Lebanon", "code": "LBN", "flag": "🇱🇧", "countryCode": "961" },
-  { "name": "Kuwait", "code": "KWT", "flag": "🇰🇼", "countryCode": "965" },
-  { "name": "Bhutan", "code": "BTN", "flag": "🇧🇹", "countryCode": "975" },
-  { "name": "Tajikistan", "code": "TJK", "flag": "🇹🇯", "countryCode": "992" },
-  { "name": "Kyrgyzstan", "code": "KGZ", "flag": "🇰🇬", "countryCode": "996" },
-  { "name": "Bermuda", "code": "BMU", "flag": "🇧🇲", "countryCode": "1441" },
-  {
-    "name": "Sint Maarten",
-    "code": "SXM",
-    "flag": "🇸🇽",
-    "countryCode": "1721"
-  },
-  { "name": "Saint Lucia", "code": "LCA", "flag": "🇱🇨", "countryCode": "1758" },
-  {
-    "name": "Åland Islands",
-    "code": "ALA",
-    "flag": "🇦🇽",
-    "countryCode": "35818"
-  },
-  { "name": "South Africa", "code": "ZAF", "flag": "🇿🇦", "countryCode": "27" },
-  { "name": "Greece", "code": "GRC", "flag": "🇬🇷", "countryCode": "30" },
-  { "name": "Belgium", "code": "BEL", "flag": "🇧🇪", "countryCode": "32" },
-  { "name": "France", "code": "FRA", "flag": "🇫🇷", "countryCode": "33" },
-  { "name": "Spain", "code": "ESP", "flag": "🇪🇸", "countryCode": "34" },
-  { "name": "Hungary", "code": "HUN", "flag": "🇭🇺", "countryCode": "36" },
-  { "name": "Romania", "code": "ROU", "flag": "🇷🇴", "countryCode": "40" },
-  { "name": "Switzerland", "code": "CHE", "flag": "🇨🇭", "countryCode": "41" },
-  { "name": "Austria", "code": "AUT", "flag": "🇦🇹", "countryCode": "43" },
-  { "name": "Guernsey", "code": "GGY", "flag": "🇬🇬", "countryCode": "44" },
-  { "name": "Jersey", "code": "JEY", "flag": "🇯🇪", "countryCode": "44" },
-  { "name": "Sweden", "code": "SWE", "flag": "🇸🇪", "countryCode": "46" },
-  { "name": "Bouvet Island", "code": "BVT", "flag": "🇧🇻", "countryCode": "47" },
-  { "name": "Norway", "code": "NOR", "flag": "🇳🇴", "countryCode": "47" },
-  { "name": "Poland", "code": "POL", "flag": "🇵🇱", "countryCode": "48" },
-  { "name": "Germany", "code": "DEU", "flag": "🇩🇪", "countryCode": "49" },
-  { "name": "Mexico", "code": "MEX", "flag": "🇲🇽", "countryCode": "52" },
-  { "name": "Cuba", "code": "CUB", "flag": "🇨🇺", "countryCode": "53" },
-  { "name": "Argentina", "code": "ARG", "flag": "🇦🇷", "countryCode": "54" },
-  { "name": "Brazil", "code": "BRA", "flag": "🇧🇷", "countryCode": "55" },
-  { "name": "Colombia", "code": "COL", "flag": "🇨🇴", "countryCode": "57" },
-  { "name": "Venezuela", "code": "VEN", "flag": "🇻🇪", "countryCode": "58" },
-  { "name": "Malaysia", "code": "MYS", "flag": "🇲🇾", "countryCode": "60" },
-  {
-    "name": "Christmas Island",
-    "code": "CXR",
-    "flag": "🇨🇽",
-    "countryCode": "61"
-  },
-  { "name": "Australia", "code": "AUS", "flag": "🇦🇺", "countryCode": "61" },
-  { "name": "Indonesia", "code": "IDN", "flag": "🇮🇩", "countryCode": "62" },
-  { "name": "Philippines", "code": "PHL", "flag": "🇵🇭", "countryCode": "63" },
-  {
-    "name": "Pitcairn Islands",
-    "code": "PCN",
-    "flag": "🇵🇳",
-    "countryCode": "64"
-  },
-  { "name": "Singapore", "code": "SGP", "flag": "🇸🇬", "countryCode": "65" },
-  { "name": "Thailand", "code": "THA", "flag": "🇹🇭", "countryCode": "66" },
-  { "name": "Japan", "code": "JPN", "flag": "🇯🇵", "countryCode": "81" },
-  { "name": "Vietnam", "code": "VNM", "flag": "🇻🇳", "countryCode": "84" },
-  { "name": "China", "code": "CHN", "flag": "🇨🇳", "countryCode": "86" },
-  { "name": "Turkey", "code": "TUR", "flag": "🇹🇷", "countryCode": "90" },
-  { "name": "India", "code": "IND", "flag": "🇮🇳", "countryCode": "91" },
-  { "name": "Afghanistan", "code": "AFG", "flag": "🇦🇫", "countryCode": "93" },
-  { "name": "Sri Lanka", "code": "LKA", "flag": "🇱🇰", "countryCode": "94" },
-  { "name": "Iran", "code": "IRN", "flag": "🇮🇷", "countryCode": "98" },
-  { "name": "South Sudan", "code": "SSD", "flag": "🇸🇸", "countryCode": "211" },
-  { "name": "Morocco", "code": "MAR", "flag": "🇲🇦", "countryCode": "212" },
-  { "name": "Algeria", "code": "DZA", "flag": "🇩🇿", "countryCode": "213" },
-  { "name": "Libya", "code": "LBY", "flag": "🇱🇾", "countryCode": "218" },
-  { "name": "Senegal", "code": "SEN", "flag": "🇸🇳", "countryCode": "221" },
-  { "name": "Mauritania", "code": "MRT", "flag": "🇲🇷", "countryCode": "222" },
-  { "name": "Mali", "code": "MLI", "flag": "🇲🇱", "countryCode": "223" },
-  { "name": "Guinea", "code": "GIN", "flag": "🇬🇳", "countryCode": "224" },
-  { "name": "Ivory Coast", "code": "CIV", "flag": "🇨🇮", "countryCode": "225" },
-  { "name": "Burkina Faso", "code": "BFA", "flag": "🇧🇫", "countryCode": "226" },
-  { "name": "Niger", "code": "NER", "flag": "🇳🇪", "countryCode": "227" },
-  { "name": "Benin", "code": "BEN", "flag": "🇧🇯", "countryCode": "229" },
-  { "name": "Mauritius", "code": "MUS", "flag": "🇲🇺", "countryCode": "230" },
-  { "name": "Liberia", "code": "LBR", "flag": "🇱🇷", "countryCode": "231" },
-  { "name": "Sierra Leone", "code": "SLE", "flag": "🇸🇱", "countryCode": "232" },
-  { "name": "Nigeria", "code": "NGA", "flag": "🇳🇬", "countryCode": "234" },
-  { "name": "Chad", "code": "TCD", "flag": "🇹🇩", "countryCode": "235" },
-  {
-    "name": "Central African Republic",
-    "code": "CAF",
-    "flag": "🇨🇫",
-    "countryCode": "236"
-  },
-  { "name": "Cameroon", "code": "CMR", "flag": "🇨🇲", "countryCode": "237" },
-  { "name": "Cape Verde", "code": "CPV", "flag": "🇨🇻", "countryCode": "238" },
-  {
-    "name": "Equatorial Guinea",
-    "code": "GNQ",
-    "flag": "🇬🇶",
-    "countryCode": "240"
-  },
-  { "name": "Gabon", "code": "GAB", "flag": "🇬🇦", "countryCode": "241" },
-  {
-    "name": "Republic of the Congo",
-    "code": "COG",
-    "flag": "🇨🇬",
-    "countryCode": "242"
-  },
-  { "name": "DR Congo", "code": "COD", "flag": "🇨🇩", "countryCode": "243" },
-  { "name": "Angola", "code": "AGO", "flag": "🇦🇴", "countryCode": "244" },
-  {
-    "name": "Guinea-Bissau",
-    "code": "GNB",
-    "flag": "🇬🇼",
-    "countryCode": "245"
-  },
-  { "name": "Sudan", "code": "SDN", "flag": "🇸🇩", "countryCode": "249" },
-  { "name": "Rwanda", "code": "RWA", "flag": "🇷🇼", "countryCode": "250" },
-  { "name": "Ethiopia", "code": "ETH", "flag": "🇪🇹", "countryCode": "251" },
-  { "name": "Djibouti", "code": "DJI", "flag": "🇩🇯", "countryCode": "253" },
-  { "name": "Kenya", "code": "KEN", "flag": "🇰🇪", "countryCode": "254" },
-  { "name": "Mozambique", "code": "MOZ", "flag": "🇲🇿", "countryCode": "258" },
-  { "name": "Zambia", "code": "ZMB", "flag": "🇿🇲", "countryCode": "260" },
-  { "name": "Mayotte", "code": "MYT", "flag": "🇾🇹", "countryCode": "262" },
-  {
-    "name": "French Southern and Antarctic Lands",
-    "code": "ATF",
-    "flag": "🇹🇫",
-    "countryCode": "262"
-  },
-  { "name": "Zimbabwe", "code": "ZWE", "flag": "🇿🇼", "countryCode": "263" },
-  { "name": "Namibia", "code": "NAM", "flag": "🇳🇦", "countryCode": "264" },
-  { "name": "Malawi", "code": "MWI", "flag": "🇲🇼", "countryCode": "265" },
-  { "name": "Botswana", "code": "BWA", "flag": "🇧🇼", "countryCode": "267" },
-  { "name": "Eswatini", "code": "SWZ", "flag": "🇸🇿", "countryCode": "268" },
-  {
-    "name": "United States Minor Outlying Islands",
-    "code": "UMI",
-    "flag": "🇺🇲",
-    "countryCode": "268"
-  },
-  { "name": "Comoros", "code": "COM", "flag": "🇰🇲", "countryCode": "269" },
-  { "name": "Eritrea", "code": "ERI", "flag": "🇪🇷", "countryCode": "291" },
-  { "name": "Aruba", "code": "ABW", "flag": "🇦🇼", "countryCode": "297" },
-  {
-    "name": "Faroe Islands",
-    "code": "FRO",
-    "flag": "🇫🇴",
-    "countryCode": "298"
-  },
-  { "name": "Greenland", "code": "GRL", "flag": "🇬🇱", "countryCode": "299" },
-  { "name": "Gibraltar", "code": "GIB", "flag": "🇬🇮", "countryCode": "350" },
-  { "name": "Portugal", "code": "PRT", "flag": "🇵🇹", "countryCode": "351" },
-  { "name": "Ireland", "code": "IRL", "flag": "🇮🇪", "countryCode": "353" },
-  { "name": "Iceland", "code": "ISL", "flag": "🇮🇸", "countryCode": "354" },
-  { "name": "Malta", "code": "MLT", "flag": "🇲🇹", "countryCode": "356" },
-  { "name": "Finland", "code": "FIN", "flag": "🇫🇮", "countryCode": "358" },
-  { "name": "Bulgaria", "code": "BGR", "flag": "🇧🇬", "countryCode": "359" },
-  { "name": "Lithuania", "code": "LTU", "flag": "🇱🇹", "countryCode": "370" },
-  { "name": "Latvia", "code": "LVA", "flag": "🇱🇻", "countryCode": "371" },
-  { "name": "Estonia", "code": "EST", "flag": "🇪🇪", "countryCode": "372" },
-  { "name": "Czechia", "code": "CZE", "flag": "🇨🇿", "countryCode": "420" },
-  { "name": "Costa Rica", "code": "CRI", "flag": "🇨🇷", "countryCode": "506" },
-  { "name": "Haiti", "code": "HTI", "flag": "🇭🇹", "countryCode": "509" },
-  { "name": "Uruguay", "code": "URY", "flag": "🇺🇾", "countryCode": "598" },
-  { "name": "Curaçao", "code": "CUW", "flag": "🇨🇼", "countryCode": "599" },
-  { "name": "Moldova", "code": "MDA", "flag": "🇲🇩", "countryCode": "373" },
-  { "name": "Armenia", "code": "ARM", "flag": "🇦🇲", "countryCode": "374" },
-  { "name": "Andorra", "code": "AND", "flag": "🇦🇩", "countryCode": "376" },
-  { "name": "San Marino", "code": "SMR", "flag": "🇸🇲", "countryCode": "378" },
-  { "name": "Montenegro", "code": "MNE", "flag": "🇲🇪", "countryCode": "382" },
-  { "name": "Croatia", "code": "HRV", "flag": "🇭🇷", "countryCode": "385" },
-  {
-    "name": "Bosnia and Herzegovina",
-    "code": "BIH",
-    "flag": "🇧🇦",
-    "countryCode": "387"
-  },
-  { "name": "Slovakia", "code": "SVK", "flag": "🇸🇰", "countryCode": "421" },
-  {
-    "name": "Liechtenstein",
-    "code": "LIE",
-    "flag": "🇱🇮",
-    "countryCode": "423"
+    "isO2CountyCode": "AD",
+    "isO3CountyCode": "AND",
+    "displayName": "Andorra",
+    "callingCountryCode": 376
   },
   {
-    "name": "Falkland Islands",
-    "code": "FLK",
-    "flag": "🇫🇰",
-    "countryCode": "500"
-  },
-  { "name": "Belize", "code": "BLZ", "flag": "🇧🇿", "countryCode": "501" },
-  { "name": "Guatemala", "code": "GTM", "flag": "🇬🇹", "countryCode": "502" },
-  { "name": "El Salvador", "code": "SLV", "flag": "🇸🇻", "countryCode": "503" },
-  { "name": "Honduras", "code": "HND", "flag": "🇭🇳", "countryCode": "504" },
-  { "name": "Nicaragua", "code": "NIC", "flag": "🇳🇮", "countryCode": "505" },
-  { "name": "Panama", "code": "PAN", "flag": "🇵🇦", "countryCode": "507" },
-  { "name": "Guadeloupe", "code": "GLP", "flag": "🇬🇵", "countryCode": "590" },
-  {
-    "name": "Saint Barthélemy",
-    "code": "BLM",
-    "flag": "🇧🇱",
-    "countryCode": "590"
-  },
-  { "name": "Saint Martin", "code": "MAF", "flag": "🇲🇫", "countryCode": "590" },
-  { "name": "Guyana", "code": "GUY", "flag": "🇬🇾", "countryCode": "592" },
-  { "name": "Ecuador", "code": "ECU", "flag": "🇪🇨", "countryCode": "593" },
-  {
-    "name": "French Guiana",
-    "code": "GUF",
-    "flag": "🇬🇫",
-    "countryCode": "594"
-  },
-  { "name": "Martinique", "code": "MTQ", "flag": "🇲🇶", "countryCode": "596" },
-  { "name": "Suriname", "code": "SUR", "flag": "🇸🇷", "countryCode": "597" },
-  {
-    "name": "Caribbean Netherlands",
-    "code": "BES",
-    "flag": "🇧🇶",
-    "countryCode": "599"
+    "isO2CountyCode": "AO",
+    "isO3CountyCode": "AGO",
+    "displayName": "Angola",
+    "callingCountryCode": 244
   },
   {
-    "name": "Norfolk Island",
-    "code": "NFK",
-    "flag": "🇳🇫",
-    "countryCode": "672"
-  },
-  { "name": "Brunei", "code": "BRN", "flag": "🇧🇳", "countryCode": "673" },
-  { "name": "Nauru", "code": "NRU", "flag": "🇳🇷", "countryCode": "674" },
-  {
-    "name": "Solomon Islands",
-    "code": "SLB",
-    "flag": "🇸🇧",
-    "countryCode": "677"
-  },
-  { "name": "Vanuatu", "code": "VUT", "flag": "🇻🇺", "countryCode": "678" },
-  { "name": "Fiji", "code": "FJI", "flag": "🇫🇯", "countryCode": "679" },
-  {
-    "name": "Wallis and Futuna",
-    "code": "WLF",
-    "flag": "🇼🇫",
-    "countryCode": "681"
-  },
-  { "name": "Cook Islands", "code": "COK", "flag": "🇨🇰", "countryCode": "682" },
-  { "name": "Samoa", "code": "WSM", "flag": "🇼🇸", "countryCode": "685" },
-  {
-    "name": "New Caledonia",
-    "code": "NCL",
-    "flag": "🇳🇨",
-    "countryCode": "687"
-  },
-  { "name": "Tuvalu", "code": "TUV", "flag": "🇹🇻", "countryCode": "688" },
-  {
-    "name": "French Polynesia",
-    "code": "PYF",
-    "flag": "🇵🇫",
-    "countryCode": "689"
-  },
-  { "name": "Tokelau", "code": "TKL", "flag": "🇹🇰", "countryCode": "690" },
-  {
-    "name": "Marshall Islands",
-    "code": "MHL",
-    "flag": "🇲🇭",
-    "countryCode": "692"
-  },
-  { "name": "Macau", "code": "MAC", "flag": "🇲🇴", "countryCode": "853" },
-  { "name": "Cambodia", "code": "KHM", "flag": "🇰🇭", "countryCode": "855" },
-  { "name": "Laos", "code": "LAO", "flag": "🇱🇦", "countryCode": "856" },
-  { "name": "Bangladesh", "code": "BGD", "flag": "🇧🇩", "countryCode": "880" },
-  { "name": "Taiwan", "code": "TWN", "flag": "🇹🇼", "countryCode": "886" },
-  { "name": "Maldives", "code": "MDV", "flag": "🇲🇻", "countryCode": "960" },
-  { "name": "Jordan", "code": "JOR", "flag": "🇯🇴", "countryCode": "962" },
-  { "name": "Syria", "code": "SYR", "flag": "🇸🇾", "countryCode": "963" },
-  { "name": "Iraq", "code": "IRQ", "flag": "🇮🇶", "countryCode": "964" },
-  { "name": "Saudi Arabia", "code": "SAU", "flag": "🇸🇦", "countryCode": "966" },
-  { "name": "Yemen", "code": "YEM", "flag": "🇾🇪", "countryCode": "967" },
-  { "name": "Oman", "code": "OMN", "flag": "🇴🇲", "countryCode": "968" },
-  { "name": "Palestine", "code": "PSE", "flag": "🇵🇸", "countryCode": "970" },
-  {
-    "name": "United Arab Emirates",
-    "code": "ARE",
-    "flag": "🇦🇪",
-    "countryCode": "971"
-  },
-  { "name": "Israel", "code": "ISR", "flag": "🇮🇱", "countryCode": "972" },
-  { "name": "Bahrain", "code": "BHR", "flag": "🇧🇭", "countryCode": "973" },
-  { "name": "Qatar", "code": "QAT", "flag": "🇶🇦", "countryCode": "974" },
-  { "name": "Mongolia", "code": "MNG", "flag": "🇲🇳", "countryCode": "976" },
-  { "name": "Nepal", "code": "NPL", "flag": "🇳🇵", "countryCode": "977" },
-  { "name": "Turkmenistan", "code": "TKM", "flag": "🇹🇲", "countryCode": "993" },
-  { "name": "Azerbaijan", "code": "AZE", "flag": "🇦🇿", "countryCode": "994" },
-  { "name": "Georgia", "code": "GEO", "flag": "🇬🇪", "countryCode": "995" },
-  { "name": "Uzbekistan", "code": "UZB", "flag": "🇺🇿", "countryCode": "998" },
-  { "name": "Bahamas", "code": "BHS", "flag": "🇧🇸", "countryCode": "1242" },
-  { "name": "Barbados", "code": "BRB", "flag": "🇧🇧", "countryCode": "1246" },
-  { "name": "Anguilla", "code": "AIA", "flag": "🇦🇮", "countryCode": "1264" },
-  {
-    "name": "Antigua and Barbuda",
-    "code": "ATG",
-    "flag": "🇦🇬",
-    "countryCode": "1268"
+    "isO2CountyCode": "AI",
+    "isO3CountyCode": "AIA",
+    "displayName": "Anguilla",
+    "callingCountryCode": 1
   },
   {
-    "name": "British Virgin Islands",
-    "code": "VGB",
-    "flag": "🇻🇬",
-    "countryCode": "1284"
+    "isO2CountyCode": "AG",
+    "isO3CountyCode": "ATG",
+    "displayName": "Antigua & Barbuda",
+    "callingCountryCode": 1
   },
   {
-    "name": "United States Virgin Islands",
-    "code": "VIR",
-    "flag": "🇻🇮",
-    "countryCode": "1340"
+    "isO2CountyCode": "AR",
+    "isO3CountyCode": "ARG",
+    "displayName": "Argentina",
+    "callingCountryCode": 54
   },
   {
-    "name": "Cayman Islands",
-    "code": "CYM",
-    "flag": "🇰🇾",
-    "countryCode": "1345"
-  },
-  { "name": "Grenada", "code": "GRD", "flag": "🇬🇩", "countryCode": "1473" },
-  {
-    "name": "Turks and Caicos Islands",
-    "code": "TCA",
-    "flag": "🇹🇨",
-    "countryCode": "1649"
-  },
-  { "name": "Montserrat", "code": "MSR", "flag": "🇲🇸", "countryCode": "1664" },
-  {
-    "name": "Northern Mariana Islands",
-    "code": "MNP",
-    "flag": "🇲🇵",
-    "countryCode": "1670"
-  },
-  { "name": "Guam", "code": "GUM", "flag": "🇬🇺", "countryCode": "1671" },
-  {
-    "name": "American Samoa",
-    "code": "ASM",
-    "flag": "🇦🇸",
-    "countryCode": "1684"
-  },
-  { "name": "Dominica", "code": "DMA", "flag": "🇩🇲", "countryCode": "1767" },
-  {
-    "name": "Saint Vincent and the Grenadines",
-    "code": "VCT",
-    "flag": "🇻🇨",
-    "countryCode": "1784"
+    "isO2CountyCode": "AM",
+    "isO3CountyCode": "ARM",
+    "displayName": "Armenia",
+    "callingCountryCode": 374
   },
   {
-    "name": "Trinidad and Tobago",
-    "code": "TTO",
-    "flag": "🇹🇹",
-    "countryCode": "1868"
+    "isO2CountyCode": "AW",
+    "isO3CountyCode": "ABW",
+    "displayName": "Aruba",
+    "callingCountryCode": 297
   },
   {
-    "name": "Saint Kitts and Nevis",
-    "code": "KNA",
-    "flag": "🇰🇳",
-    "countryCode": "1869"
+    "isO2CountyCode": "AC",
+    "isO3CountyCode": "",
+    "displayName": "Ascension Island",
+    "callingCountryCode": 247
   },
-  { "name": "Jamaica", "code": "JAM", "flag": "🇯🇲", "countryCode": "1876" },
   {
-    "name": "Svalbard and Jan Mayen",
-    "code": "SJM",
-    "flag": "🇸🇯",
-    "countryCode": "4779"
+    "isO2CountyCode": "AU",
+    "isO3CountyCode": "AUS",
+    "displayName": "Australia",
+    "callingCountryCode": 61
+  },
+  {
+    "isO2CountyCode": "AT",
+    "isO3CountyCode": "AUT",
+    "displayName": "Austria",
+    "callingCountryCode": 43
+  },
+  {
+    "isO2CountyCode": "AZ",
+    "isO3CountyCode": "AZE",
+    "displayName": "Azerbaijan",
+    "callingCountryCode": 994
+  },
+  {
+    "isO2CountyCode": "BS",
+    "isO3CountyCode": "BHS",
+    "displayName": "Bahamas",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "BH",
+    "isO3CountyCode": "BHR",
+    "displayName": "Bahrain",
+    "callingCountryCode": 973
+  },
+  {
+    "isO2CountyCode": "BD",
+    "isO3CountyCode": "BGD",
+    "displayName": "Bangladesh",
+    "callingCountryCode": 880
+  },
+  {
+    "isO2CountyCode": "BB",
+    "isO3CountyCode": "BRB",
+    "displayName": "Barbados",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "BY",
+    "isO3CountyCode": "BLR",
+    "displayName": "Belarus",
+    "callingCountryCode": 375
+  },
+  {
+    "isO2CountyCode": "BE",
+    "isO3CountyCode": "BEL",
+    "displayName": "Belgium",
+    "callingCountryCode": 32
+  },
+  {
+    "isO2CountyCode": "BZ",
+    "isO3CountyCode": "BLZ",
+    "displayName": "Belize",
+    "callingCountryCode": 501
+  },
+  {
+    "isO2CountyCode": "BJ",
+    "isO3CountyCode": "BEN",
+    "displayName": "Benin",
+    "callingCountryCode": 229
+  },
+  {
+    "isO2CountyCode": "BM",
+    "isO3CountyCode": "BMU",
+    "displayName": "Bermuda",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "BT",
+    "isO3CountyCode": "BTN",
+    "displayName": "Bhutan",
+    "callingCountryCode": 975
+  },
+  {
+    "isO2CountyCode": "BO",
+    "isO3CountyCode": "BOL",
+    "displayName": "Bolivia",
+    "callingCountryCode": 591
+  },
+  {
+    "isO2CountyCode": "BA",
+    "isO3CountyCode": "BIH",
+    "displayName": "Bosnia & Herzegovina",
+    "callingCountryCode": 387
+  },
+  {
+    "isO2CountyCode": "BW",
+    "isO3CountyCode": "BWA",
+    "displayName": "Botswana",
+    "callingCountryCode": 267
+  },
+  {
+    "isO2CountyCode": "BR",
+    "isO3CountyCode": "BRA",
+    "displayName": "Brazil",
+    "callingCountryCode": 55
+  },
+  {
+    "isO2CountyCode": "IO",
+    "isO3CountyCode": "IOT",
+    "displayName": "British Indian Ocean Territory",
+    "callingCountryCode": 246
+  },
+  {
+    "isO2CountyCode": "VG",
+    "isO3CountyCode": "VGB",
+    "displayName": "British Virgin Islands",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "BN",
+    "isO3CountyCode": "BRN",
+    "displayName": "Brunei",
+    "callingCountryCode": 673
+  },
+  {
+    "isO2CountyCode": "BG",
+    "isO3CountyCode": "BGR",
+    "displayName": "Bulgaria",
+    "callingCountryCode": 359
+  },
+  {
+    "isO2CountyCode": "BF",
+    "isO3CountyCode": "BFA",
+    "displayName": "Burkina Faso",
+    "callingCountryCode": 226
+  },
+  {
+    "isO2CountyCode": "BI",
+    "isO3CountyCode": "BDI",
+    "displayName": "Burundi",
+    "callingCountryCode": 257
+  },
+  {
+    "isO2CountyCode": "KH",
+    "isO3CountyCode": "KHM",
+    "displayName": "Cambodia",
+    "callingCountryCode": 855
+  },
+  {
+    "isO2CountyCode": "CM",
+    "isO3CountyCode": "CMR",
+    "displayName": "Cameroon",
+    "callingCountryCode": 237
+  },
+  {
+    "isO2CountyCode": "CA",
+    "isO3CountyCode": "CAN",
+    "displayName": "Canada",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "CV",
+    "isO3CountyCode": "CPV",
+    "displayName": "Cape Verde",
+    "callingCountryCode": 238
+  },
+  {
+    "isO2CountyCode": "BQ",
+    "isO3CountyCode": "BES",
+    "displayName": "Caribbean Netherlands",
+    "callingCountryCode": 599
+  },
+  {
+    "isO2CountyCode": "KY",
+    "isO3CountyCode": "CYM",
+    "displayName": "Cayman Islands",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "CF",
+    "isO3CountyCode": "CAF",
+    "displayName": "Central African Republic",
+    "callingCountryCode": 236
+  },
+  {
+    "isO2CountyCode": "TD",
+    "isO3CountyCode": "TCD",
+    "displayName": "Chad",
+    "callingCountryCode": 235
+  },
+  {
+    "isO2CountyCode": "CL",
+    "isO3CountyCode": "CHL",
+    "displayName": "Chile",
+    "callingCountryCode": 56
+  },
+  {
+    "isO2CountyCode": "CN",
+    "isO3CountyCode": "CHN",
+    "displayName": "China",
+    "callingCountryCode": 86
+  },
+  {
+    "isO2CountyCode": "CX",
+    "isO3CountyCode": "CXR",
+    "displayName": "Christmas Island",
+    "callingCountryCode": 61
+  },
+  {
+    "isO2CountyCode": "CC",
+    "isO3CountyCode": "CCK",
+    "displayName": "Cocos (Keeling) Islands",
+    "callingCountryCode": 61
+  },
+  {
+    "isO2CountyCode": "CO",
+    "isO3CountyCode": "COL",
+    "displayName": "Colombia",
+    "callingCountryCode": 57
+  },
+  {
+    "isO2CountyCode": "KM",
+    "isO3CountyCode": "COM",
+    "displayName": "Comoros",
+    "callingCountryCode": 269
+  },
+  {
+    "isO2CountyCode": "CG",
+    "isO3CountyCode": "COG",
+    "displayName": "Congo - Brazzaville",
+    "callingCountryCode": 242
+  },
+  {
+    "isO2CountyCode": "CD",
+    "isO3CountyCode": "COD",
+    "displayName": "Congo - Kinshasa",
+    "callingCountryCode": 243
+  },
+  {
+    "isO2CountyCode": "CK",
+    "isO3CountyCode": "COK",
+    "displayName": "Cook Islands",
+    "callingCountryCode": 682
+  },
+  {
+    "isO2CountyCode": "CR",
+    "isO3CountyCode": "CRI",
+    "displayName": "Costa Rica",
+    "callingCountryCode": 506
+  },
+  {
+    "isO2CountyCode": "HR",
+    "isO3CountyCode": "HRV",
+    "displayName": "Croatia",
+    "callingCountryCode": 385
+  },
+  {
+    "isO2CountyCode": "CU",
+    "isO3CountyCode": "CUB",
+    "displayName": "Cuba",
+    "callingCountryCode": 53
+  },
+  {
+    "isO2CountyCode": "CW",
+    "isO3CountyCode": "CUW",
+    "displayName": "Curaçao",
+    "callingCountryCode": 599
+  },
+  {
+    "isO2CountyCode": "CY",
+    "isO3CountyCode": "CYP",
+    "displayName": "Cyprus",
+    "callingCountryCode": 357
+  },
+  {
+    "isO2CountyCode": "CZ",
+    "isO3CountyCode": "CZE",
+    "displayName": "Czechia",
+    "callingCountryCode": 420
+  },
+  {
+    "isO2CountyCode": "CI",
+    "isO3CountyCode": "CIV",
+    "displayName": "Côte d’Ivoire",
+    "callingCountryCode": 225
+  },
+  {
+    "isO2CountyCode": "DK",
+    "isO3CountyCode": "DNK",
+    "displayName": "Denmark",
+    "callingCountryCode": 45
+  },
+  {
+    "isO2CountyCode": "DJ",
+    "isO3CountyCode": "DJI",
+    "displayName": "Djibouti",
+    "callingCountryCode": 253
+  },
+  {
+    "isO2CountyCode": "DM",
+    "isO3CountyCode": "DMA",
+    "displayName": "Dominica",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "DO",
+    "isO3CountyCode": "DOM",
+    "displayName": "Dominican Republic",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "EC",
+    "isO3CountyCode": "ECU",
+    "displayName": "Ecuador",
+    "callingCountryCode": 593
+  },
+  {
+    "isO2CountyCode": "EG",
+    "isO3CountyCode": "EGY",
+    "displayName": "Egypt",
+    "callingCountryCode": 20
+  },
+  {
+    "isO2CountyCode": "SV",
+    "isO3CountyCode": "SLV",
+    "displayName": "El Salvador",
+    "callingCountryCode": 503
+  },
+  {
+    "isO2CountyCode": "GQ",
+    "isO3CountyCode": "GNQ",
+    "displayName": "Equatorial Guinea",
+    "callingCountryCode": 240
+  },
+  {
+    "isO2CountyCode": "ER",
+    "isO3CountyCode": "ERI",
+    "displayName": "Eritrea",
+    "callingCountryCode": 291
+  },
+  {
+    "isO2CountyCode": "EE",
+    "isO3CountyCode": "EST",
+    "displayName": "Estonia",
+    "callingCountryCode": 372
+  },
+  {
+    "isO2CountyCode": "SZ",
+    "isO3CountyCode": "SWZ",
+    "displayName": "Eswatini",
+    "callingCountryCode": 268
+  },
+  {
+    "isO2CountyCode": "ET",
+    "isO3CountyCode": "ETH",
+    "displayName": "Ethiopia",
+    "callingCountryCode": 251
+  },
+  {
+    "isO2CountyCode": "FK",
+    "isO3CountyCode": "FLK",
+    "displayName": "Falkland Islands",
+    "callingCountryCode": 500
+  },
+  {
+    "isO2CountyCode": "FO",
+    "isO3CountyCode": "FRO",
+    "displayName": "Faroe Islands",
+    "callingCountryCode": 298
+  },
+  {
+    "isO2CountyCode": "FJ",
+    "isO3CountyCode": "FJI",
+    "displayName": "Fiji",
+    "callingCountryCode": 679
+  },
+  {
+    "isO2CountyCode": "FI",
+    "isO3CountyCode": "FIN",
+    "displayName": "Finland",
+    "callingCountryCode": 358
+  },
+  {
+    "isO2CountyCode": "FR",
+    "isO3CountyCode": "FRA",
+    "displayName": "France",
+    "callingCountryCode": 33
+  },
+  {
+    "isO2CountyCode": "GF",
+    "isO3CountyCode": "GUF",
+    "displayName": "French Guiana",
+    "callingCountryCode": 594
+  },
+  {
+    "isO2CountyCode": "PF",
+    "isO3CountyCode": "PYF",
+    "displayName": "French Polynesia",
+    "callingCountryCode": 689
+  },
+  {
+    "isO2CountyCode": "GA",
+    "isO3CountyCode": "GAB",
+    "displayName": "Gabon",
+    "callingCountryCode": 241
+  },
+  {
+    "isO2CountyCode": "GM",
+    "isO3CountyCode": "GMB",
+    "displayName": "Gambia",
+    "callingCountryCode": 220
+  },
+  {
+    "isO2CountyCode": "GE",
+    "isO3CountyCode": "GEO",
+    "displayName": "Georgia",
+    "callingCountryCode": 995
+  },
+  {
+    "isO2CountyCode": "DE",
+    "isO3CountyCode": "DEU",
+    "displayName": "Germany",
+    "callingCountryCode": 49
+  },
+  {
+    "isO2CountyCode": "GH",
+    "isO3CountyCode": "GHA",
+    "displayName": "Ghana",
+    "callingCountryCode": 233
+  },
+  {
+    "isO2CountyCode": "GI",
+    "isO3CountyCode": "GIB",
+    "displayName": "Gibraltar",
+    "callingCountryCode": 350
+  },
+  {
+    "isO2CountyCode": "GR",
+    "isO3CountyCode": "GRC",
+    "displayName": "Greece",
+    "callingCountryCode": 30
+  },
+  {
+    "isO2CountyCode": "GL",
+    "isO3CountyCode": "GRL",
+    "displayName": "Greenland",
+    "callingCountryCode": 299
+  },
+  {
+    "isO2CountyCode": "GD",
+    "isO3CountyCode": "GRD",
+    "displayName": "Grenada",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "GP",
+    "isO3CountyCode": "GLP",
+    "displayName": "Guadeloupe",
+    "callingCountryCode": 590
+  },
+  {
+    "isO2CountyCode": "GU",
+    "isO3CountyCode": "GUM",
+    "displayName": "Guam",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "GT",
+    "isO3CountyCode": "GTM",
+    "displayName": "Guatemala",
+    "callingCountryCode": 502
+  },
+  {
+    "isO2CountyCode": "GG",
+    "isO3CountyCode": "GGY",
+    "displayName": "Guernsey",
+    "callingCountryCode": 44
+  },
+  {
+    "isO2CountyCode": "GN",
+    "isO3CountyCode": "GIN",
+    "displayName": "Guinea",
+    "callingCountryCode": 224
+  },
+  {
+    "isO2CountyCode": "GW",
+    "isO3CountyCode": "GNB",
+    "displayName": "Guinea-Bissau",
+    "callingCountryCode": 245
+  },
+  {
+    "isO2CountyCode": "GY",
+    "isO3CountyCode": "GUY",
+    "displayName": "Guyana",
+    "callingCountryCode": 592
+  },
+  {
+    "isO2CountyCode": "HT",
+    "isO3CountyCode": "HTI",
+    "displayName": "Haiti",
+    "callingCountryCode": 509
+  },
+  {
+    "isO2CountyCode": "HN",
+    "isO3CountyCode": "HND",
+    "displayName": "Honduras",
+    "callingCountryCode": 504
+  },
+  {
+    "isO2CountyCode": "HK",
+    "isO3CountyCode": "HKG",
+    "displayName": "Hong Kong SAR China",
+    "callingCountryCode": 852
+  },
+  {
+    "isO2CountyCode": "HU",
+    "isO3CountyCode": "HUN",
+    "displayName": "Hungary",
+    "callingCountryCode": 36
+  },
+  {
+    "isO2CountyCode": "IS",
+    "isO3CountyCode": "ISL",
+    "displayName": "Iceland",
+    "callingCountryCode": 354
+  },
+  {
+    "isO2CountyCode": "IN",
+    "isO3CountyCode": "IND",
+    "displayName": "India",
+    "callingCountryCode": 91
+  },
+  {
+    "isO2CountyCode": "ID",
+    "isO3CountyCode": "IDN",
+    "displayName": "Indonesia",
+    "callingCountryCode": 62
+  },
+  {
+    "isO2CountyCode": "IR",
+    "isO3CountyCode": "IRN",
+    "displayName": "Iran",
+    "callingCountryCode": 98
+  },
+  {
+    "isO2CountyCode": "IQ",
+    "isO3CountyCode": "IRQ",
+    "displayName": "Iraq",
+    "callingCountryCode": 964
+  },
+  {
+    "isO2CountyCode": "IE",
+    "isO3CountyCode": "IRL",
+    "displayName": "Ireland",
+    "callingCountryCode": 353
+  },
+  {
+    "isO2CountyCode": "IM",
+    "isO3CountyCode": "IMN",
+    "displayName": "Isle of Man",
+    "callingCountryCode": 44
+  },
+  {
+    "isO2CountyCode": "IL",
+    "isO3CountyCode": "ISR",
+    "displayName": "Israel",
+    "callingCountryCode": 972
+  },
+  {
+    "isO2CountyCode": "IT",
+    "isO3CountyCode": "ITA",
+    "displayName": "Italy",
+    "callingCountryCode": 39
+  },
+  {
+    "isO2CountyCode": "JM",
+    "isO3CountyCode": "JAM",
+    "displayName": "Jamaica",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "JP",
+    "isO3CountyCode": "JPN",
+    "displayName": "Japan",
+    "callingCountryCode": 81
+  },
+  {
+    "isO2CountyCode": "JE",
+    "isO3CountyCode": "JEY",
+    "displayName": "Jersey",
+    "callingCountryCode": 44
+  },
+  {
+    "isO2CountyCode": "JO",
+    "isO3CountyCode": "JOR",
+    "displayName": "Jordan",
+    "callingCountryCode": 962
+  },
+  {
+    "isO2CountyCode": "KZ",
+    "isO3CountyCode": "KAZ",
+    "displayName": "Kazakhstan",
+    "callingCountryCode": 7
+  },
+  {
+    "isO2CountyCode": "KE",
+    "isO3CountyCode": "KEN",
+    "displayName": "Kenya",
+    "callingCountryCode": 254
+  },
+  {
+    "isO2CountyCode": "KI",
+    "isO3CountyCode": "KIR",
+    "displayName": "Kiribati",
+    "callingCountryCode": 686
+  },
+  {
+    "isO2CountyCode": "XK",
+    "isO3CountyCode": "",
+    "displayName": "Kosovo",
+    "callingCountryCode": 383
+  },
+  {
+    "isO2CountyCode": "KW",
+    "isO3CountyCode": "KWT",
+    "displayName": "Kuwait",
+    "callingCountryCode": 965
+  },
+  {
+    "isO2CountyCode": "KG",
+    "isO3CountyCode": "KGZ",
+    "displayName": "Kyrgyzstan",
+    "callingCountryCode": 996
+  },
+  {
+    "isO2CountyCode": "LA",
+    "isO3CountyCode": "LAO",
+    "displayName": "Laos",
+    "callingCountryCode": 856
+  },
+  {
+    "isO2CountyCode": "LV",
+    "isO3CountyCode": "LVA",
+    "displayName": "Latvia",
+    "callingCountryCode": 371
+  },
+  {
+    "isO2CountyCode": "LB",
+    "isO3CountyCode": "LBN",
+    "displayName": "Lebanon",
+    "callingCountryCode": 961
+  },
+  {
+    "isO2CountyCode": "LS",
+    "isO3CountyCode": "LSO",
+    "displayName": "Lesotho",
+    "callingCountryCode": 266
+  },
+  {
+    "isO2CountyCode": "LR",
+    "isO3CountyCode": "LBR",
+    "displayName": "Liberia",
+    "callingCountryCode": 231
+  },
+  {
+    "isO2CountyCode": "LY",
+    "isO3CountyCode": "LBY",
+    "displayName": "Libya",
+    "callingCountryCode": 218
+  },
+  {
+    "isO2CountyCode": "LI",
+    "isO3CountyCode": "LIE",
+    "displayName": "Liechtenstein",
+    "callingCountryCode": 423
+  },
+  {
+    "isO2CountyCode": "LT",
+    "isO3CountyCode": "LTU",
+    "displayName": "Lithuania",
+    "callingCountryCode": 370
+  },
+  {
+    "isO2CountyCode": "LU",
+    "isO3CountyCode": "LUX",
+    "displayName": "Luxembourg",
+    "callingCountryCode": 352
+  },
+  {
+    "isO2CountyCode": "MO",
+    "isO3CountyCode": "MAC",
+    "displayName": "Macao SAR China",
+    "callingCountryCode": 853
+  },
+  {
+    "isO2CountyCode": "MG",
+    "isO3CountyCode": "MDG",
+    "displayName": "Madagascar",
+    "callingCountryCode": 261
+  },
+  {
+    "isO2CountyCode": "MW",
+    "isO3CountyCode": "MWI",
+    "displayName": "Malawi",
+    "callingCountryCode": 265
+  },
+  {
+    "isO2CountyCode": "MY",
+    "isO3CountyCode": "MYS",
+    "displayName": "Malaysia",
+    "callingCountryCode": 60
+  },
+  {
+    "isO2CountyCode": "MV",
+    "isO3CountyCode": "MDV",
+    "displayName": "Maldives",
+    "callingCountryCode": 960
+  },
+  {
+    "isO2CountyCode": "ML",
+    "isO3CountyCode": "MLI",
+    "displayName": "Mali",
+    "callingCountryCode": 223
+  },
+  {
+    "isO2CountyCode": "MT",
+    "isO3CountyCode": "MLT",
+    "displayName": "Malta",
+    "callingCountryCode": 356
+  },
+  {
+    "isO2CountyCode": "MH",
+    "isO3CountyCode": "MHL",
+    "displayName": "Marshall Islands",
+    "callingCountryCode": 692
+  },
+  {
+    "isO2CountyCode": "MQ",
+    "isO3CountyCode": "MTQ",
+    "displayName": "Martinique",
+    "callingCountryCode": 596
+  },
+  {
+    "isO2CountyCode": "MR",
+    "isO3CountyCode": "MRT",
+    "displayName": "Mauritania",
+    "callingCountryCode": 222
+  },
+  {
+    "isO2CountyCode": "MU",
+    "isO3CountyCode": "MUS",
+    "displayName": "Mauritius",
+    "callingCountryCode": 230
+  },
+  {
+    "isO2CountyCode": "YT",
+    "isO3CountyCode": "MYT",
+    "displayName": "Mayotte",
+    "callingCountryCode": 262
+  },
+  {
+    "isO2CountyCode": "MX",
+    "isO3CountyCode": "MEX",
+    "displayName": "Mexico",
+    "callingCountryCode": 52
+  },
+  {
+    "isO2CountyCode": "FM",
+    "isO3CountyCode": "FSM",
+    "displayName": "Micronesia",
+    "callingCountryCode": 691
+  },
+  {
+    "isO2CountyCode": "MD",
+    "isO3CountyCode": "MDA",
+    "displayName": "Moldova",
+    "callingCountryCode": 373
+  },
+  {
+    "isO2CountyCode": "MC",
+    "isO3CountyCode": "MCO",
+    "displayName": "Monaco",
+    "callingCountryCode": 377
+  },
+  {
+    "isO2CountyCode": "MN",
+    "isO3CountyCode": "MNG",
+    "displayName": "Mongolia",
+    "callingCountryCode": 976
+  },
+  {
+    "isO2CountyCode": "ME",
+    "isO3CountyCode": "MNE",
+    "displayName": "Montenegro",
+    "callingCountryCode": 382
+  },
+  {
+    "isO2CountyCode": "MS",
+    "isO3CountyCode": "MSR",
+    "displayName": "Montserrat",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "MA",
+    "isO3CountyCode": "MAR",
+    "displayName": "Morocco",
+    "callingCountryCode": 212
+  },
+  {
+    "isO2CountyCode": "MZ",
+    "isO3CountyCode": "MOZ",
+    "displayName": "Mozambique",
+    "callingCountryCode": 258
+  },
+  {
+    "isO2CountyCode": "MM",
+    "isO3CountyCode": "MMR",
+    "displayName": "Myanmar (Burma)",
+    "callingCountryCode": 95
+  },
+  {
+    "isO2CountyCode": "NA",
+    "isO3CountyCode": "NAM",
+    "displayName": "Namibia",
+    "callingCountryCode": 264
+  },
+  {
+    "isO2CountyCode": "NR",
+    "isO3CountyCode": "NRU",
+    "displayName": "Nauru",
+    "callingCountryCode": 674
+  },
+  {
+    "isO2CountyCode": "NP",
+    "isO3CountyCode": "NPL",
+    "displayName": "Nepal",
+    "callingCountryCode": 977
+  },
+  {
+    "isO2CountyCode": "NL",
+    "isO3CountyCode": "NLD",
+    "displayName": "Netherlands",
+    "callingCountryCode": 31
+  },
+  {
+    "isO2CountyCode": "NC",
+    "isO3CountyCode": "NCL",
+    "displayName": "New Caledonia",
+    "callingCountryCode": 687
+  },
+  {
+    "isO2CountyCode": "NZ",
+    "isO3CountyCode": "NZL",
+    "displayName": "New Zealand",
+    "callingCountryCode": 64
+  },
+  {
+    "isO2CountyCode": "NI",
+    "isO3CountyCode": "NIC",
+    "displayName": "Nicaragua",
+    "callingCountryCode": 505
+  },
+  {
+    "isO2CountyCode": "NE",
+    "isO3CountyCode": "NER",
+    "displayName": "Niger",
+    "callingCountryCode": 227
+  },
+  {
+    "isO2CountyCode": "NG",
+    "isO3CountyCode": "NGA",
+    "displayName": "Nigeria",
+    "callingCountryCode": 234
+  },
+  {
+    "isO2CountyCode": "NU",
+    "isO3CountyCode": "NIU",
+    "displayName": "Niue",
+    "callingCountryCode": 683
+  },
+  {
+    "isO2CountyCode": "NF",
+    "isO3CountyCode": "NFK",
+    "displayName": "Norfolk Island",
+    "callingCountryCode": 672
+  },
+  {
+    "isO2CountyCode": "KP",
+    "isO3CountyCode": "PRK",
+    "displayName": "North Korea",
+    "callingCountryCode": 850
+  },
+  {
+    "isO2CountyCode": "MK",
+    "isO3CountyCode": "MKD",
+    "displayName": "North Macedonia",
+    "callingCountryCode": 389
+  },
+  {
+    "isO2CountyCode": "MP",
+    "isO3CountyCode": "MNP",
+    "displayName": "Northern Mariana Islands",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "NO",
+    "isO3CountyCode": "NOR",
+    "displayName": "Norway",
+    "callingCountryCode": 47
+  },
+  {
+    "isO2CountyCode": "OM",
+    "isO3CountyCode": "OMN",
+    "displayName": "Oman",
+    "callingCountryCode": 968
+  },
+  {
+    "isO2CountyCode": "PK",
+    "isO3CountyCode": "PAK",
+    "displayName": "Pakistan",
+    "callingCountryCode": 92
+  },
+  {
+    "isO2CountyCode": "PW",
+    "isO3CountyCode": "PLW",
+    "displayName": "Palau",
+    "callingCountryCode": 680
+  },
+  {
+    "isO2CountyCode": "PS",
+    "isO3CountyCode": "PSE",
+    "displayName": "Palestinian Territories",
+    "callingCountryCode": 970
+  },
+  {
+    "isO2CountyCode": "PA",
+    "isO3CountyCode": "PAN",
+    "displayName": "Panama",
+    "callingCountryCode": 507
+  },
+  {
+    "isO2CountyCode": "PG",
+    "isO3CountyCode": "PNG",
+    "displayName": "Papua New Guinea",
+    "callingCountryCode": 675
+  },
+  {
+    "isO2CountyCode": "PY",
+    "isO3CountyCode": "PRY",
+    "displayName": "Paraguay",
+    "callingCountryCode": 595
+  },
+  {
+    "isO2CountyCode": "PE",
+    "isO3CountyCode": "PER",
+    "displayName": "Peru",
+    "callingCountryCode": 51
+  },
+  {
+    "isO2CountyCode": "PH",
+    "isO3CountyCode": "PHL",
+    "displayName": "Philippines",
+    "callingCountryCode": 63
+  },
+  {
+    "isO2CountyCode": "PL",
+    "isO3CountyCode": "POL",
+    "displayName": "Poland",
+    "callingCountryCode": 48
+  },
+  {
+    "isO2CountyCode": "PT",
+    "isO3CountyCode": "PRT",
+    "displayName": "Portugal",
+    "callingCountryCode": 351
+  },
+  {
+    "isO2CountyCode": "PR",
+    "isO3CountyCode": "PRI",
+    "displayName": "Puerto Rico",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "QA",
+    "isO3CountyCode": "QAT",
+    "displayName": "Qatar",
+    "callingCountryCode": 974
+  },
+  {
+    "isO2CountyCode": "RO",
+    "isO3CountyCode": "ROU",
+    "displayName": "Romania",
+    "callingCountryCode": 40
+  },
+  {
+    "isO2CountyCode": "RU",
+    "isO3CountyCode": "RUS",
+    "displayName": "Russia",
+    "callingCountryCode": 7
+  },
+  {
+    "isO2CountyCode": "RW",
+    "isO3CountyCode": "RWA",
+    "displayName": "Rwanda",
+    "callingCountryCode": 250
+  },
+  {
+    "isO2CountyCode": "RE",
+    "isO3CountyCode": "REU",
+    "displayName": "Réunion",
+    "callingCountryCode": 262
+  },
+  {
+    "isO2CountyCode": "WS",
+    "isO3CountyCode": "WSM",
+    "displayName": "Samoa",
+    "callingCountryCode": 685
+  },
+  {
+    "isO2CountyCode": "SM",
+    "isO3CountyCode": "SMR",
+    "displayName": "San Marino",
+    "callingCountryCode": 378
+  },
+  {
+    "isO2CountyCode": "SA",
+    "isO3CountyCode": "SAU",
+    "displayName": "Saudi Arabia",
+    "callingCountryCode": 966
+  },
+  {
+    "isO2CountyCode": "SN",
+    "isO3CountyCode": "SEN",
+    "displayName": "Senegal",
+    "callingCountryCode": 221
+  },
+  {
+    "isO2CountyCode": "RS",
+    "isO3CountyCode": "SRB",
+    "displayName": "Serbia",
+    "callingCountryCode": 381
+  },
+  {
+    "isO2CountyCode": "SC",
+    "isO3CountyCode": "SYC",
+    "displayName": "Seychelles",
+    "callingCountryCode": 248
+  },
+  {
+    "isO2CountyCode": "SL",
+    "isO3CountyCode": "SLE",
+    "displayName": "Sierra Leone",
+    "callingCountryCode": 232
+  },
+  {
+    "isO2CountyCode": "SG",
+    "isO3CountyCode": "SGP",
+    "displayName": "Singapore",
+    "callingCountryCode": 65
+  },
+  {
+    "isO2CountyCode": "SX",
+    "isO3CountyCode": "SXM",
+    "displayName": "Sint Maarten",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "SK",
+    "isO3CountyCode": "SVK",
+    "displayName": "Slovakia",
+    "callingCountryCode": 421
+  },
+  {
+    "isO2CountyCode": "SI",
+    "isO3CountyCode": "SVN",
+    "displayName": "Slovenia",
+    "callingCountryCode": 386
+  },
+  {
+    "isO2CountyCode": "SB",
+    "isO3CountyCode": "SLB",
+    "displayName": "Solomon Islands",
+    "callingCountryCode": 677
+  },
+  {
+    "isO2CountyCode": "SO",
+    "isO3CountyCode": "SOM",
+    "displayName": "Somalia",
+    "callingCountryCode": 252
+  },
+  {
+    "isO2CountyCode": "ZA",
+    "isO3CountyCode": "ZAF",
+    "displayName": "South Africa",
+    "callingCountryCode": 27
+  },
+  {
+    "isO2CountyCode": "KR",
+    "isO3CountyCode": "KOR",
+    "displayName": "South Korea",
+    "callingCountryCode": 82
+  },
+  {
+    "isO2CountyCode": "SS",
+    "isO3CountyCode": "SSD",
+    "displayName": "South Sudan",
+    "callingCountryCode": 211
+  },
+  {
+    "isO2CountyCode": "ES",
+    "isO3CountyCode": "ESP",
+    "displayName": "Spain",
+    "callingCountryCode": 34
+  },
+  {
+    "isO2CountyCode": "LK",
+    "isO3CountyCode": "LKA",
+    "displayName": "Sri Lanka",
+    "callingCountryCode": 94
+  },
+  {
+    "isO2CountyCode": "BL",
+    "isO3CountyCode": "BLM",
+    "displayName": "St. Barthélemy",
+    "callingCountryCode": 590
+  },
+  {
+    "isO2CountyCode": "SH",
+    "isO3CountyCode": "SHN",
+    "displayName": "St. Helena",
+    "callingCountryCode": 290
+  },
+  {
+    "isO2CountyCode": "KN",
+    "isO3CountyCode": "KNA",
+    "displayName": "St. Kitts & Nevis",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "LC",
+    "isO3CountyCode": "LCA",
+    "displayName": "St. Lucia",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "MF",
+    "isO3CountyCode": "MAF",
+    "displayName": "St. Martin",
+    "callingCountryCode": 590
+  },
+  {
+    "isO2CountyCode": "PM",
+    "isO3CountyCode": "SPM",
+    "displayName": "St. Pierre & Miquelon",
+    "callingCountryCode": 508
+  },
+  {
+    "isO2CountyCode": "VC",
+    "isO3CountyCode": "VCT",
+    "displayName": "St. Vincent & Grenadines",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "SD",
+    "isO3CountyCode": "SDN",
+    "displayName": "Sudan",
+    "callingCountryCode": 249
+  },
+  {
+    "isO2CountyCode": "SR",
+    "isO3CountyCode": "SUR",
+    "displayName": "Suriname",
+    "callingCountryCode": 597
+  },
+  {
+    "isO2CountyCode": "SJ",
+    "isO3CountyCode": "SJM",
+    "displayName": "Svalbard & Jan Mayen",
+    "callingCountryCode": 47
+  },
+  {
+    "isO2CountyCode": "SE",
+    "isO3CountyCode": "SWE",
+    "displayName": "Sweden",
+    "callingCountryCode": 46
+  },
+  {
+    "isO2CountyCode": "CH",
+    "isO3CountyCode": "CHE",
+    "displayName": "Switzerland",
+    "callingCountryCode": 41
+  },
+  {
+    "isO2CountyCode": "SY",
+    "isO3CountyCode": "SYR",
+    "displayName": "Syria",
+    "callingCountryCode": 963
+  },
+  {
+    "isO2CountyCode": "ST",
+    "isO3CountyCode": "STP",
+    "displayName": "São Tomé & Príncipe",
+    "callingCountryCode": 239
+  },
+  {
+    "isO2CountyCode": "TW",
+    "isO3CountyCode": "TWN",
+    "displayName": "Taiwan",
+    "callingCountryCode": 886
+  },
+  {
+    "isO2CountyCode": "TJ",
+    "isO3CountyCode": "TJK",
+    "displayName": "Tajikistan",
+    "callingCountryCode": 992
+  },
+  {
+    "isO2CountyCode": "TZ",
+    "isO3CountyCode": "TZA",
+    "displayName": "Tanzania",
+    "callingCountryCode": 255
+  },
+  {
+    "isO2CountyCode": "TH",
+    "isO3CountyCode": "THA",
+    "displayName": "Thailand",
+    "callingCountryCode": 66
+  },
+  {
+    "isO2CountyCode": "TL",
+    "isO3CountyCode": "TLS",
+    "displayName": "Timor-Leste",
+    "callingCountryCode": 670
+  },
+  {
+    "isO2CountyCode": "TG",
+    "isO3CountyCode": "TGO",
+    "displayName": "Togo",
+    "callingCountryCode": 228
+  },
+  {
+    "isO2CountyCode": "TK",
+    "isO3CountyCode": "TKL",
+    "displayName": "Tokelau",
+    "callingCountryCode": 690
+  },
+  {
+    "isO2CountyCode": "TO",
+    "isO3CountyCode": "TON",
+    "displayName": "Tonga",
+    "callingCountryCode": 676
+  },
+  {
+    "isO2CountyCode": "TT",
+    "isO3CountyCode": "TTO",
+    "displayName": "Trinidad & Tobago",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "TA",
+    "isO3CountyCode": "",
+    "displayName": "Tristan da Cunha",
+    "callingCountryCode": 290
+  },
+  {
+    "isO2CountyCode": "TN",
+    "isO3CountyCode": "TUN",
+    "displayName": "Tunisia",
+    "callingCountryCode": 216
+  },
+  {
+    "isO2CountyCode": "TR",
+    "isO3CountyCode": "TUR",
+    "displayName": "Turkey",
+    "callingCountryCode": 90
+  },
+  {
+    "isO2CountyCode": "TM",
+    "isO3CountyCode": "TKM",
+    "displayName": "Turkmenistan",
+    "callingCountryCode": 993
+  },
+  {
+    "isO2CountyCode": "TC",
+    "isO3CountyCode": "TCA",
+    "displayName": "Turks & Caicos Islands",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "TV",
+    "isO3CountyCode": "TUV",
+    "displayName": "Tuvalu",
+    "callingCountryCode": 688
+  },
+  {
+    "isO2CountyCode": "VI",
+    "isO3CountyCode": "VIR",
+    "displayName": "US Virgin Islands",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "UG",
+    "isO3CountyCode": "UGA",
+    "displayName": "Uganda",
+    "callingCountryCode": 256
+  },
+  {
+    "isO2CountyCode": "UA",
+    "isO3CountyCode": "UKR",
+    "displayName": "Ukraine",
+    "callingCountryCode": 380
+  },
+  {
+    "isO2CountyCode": "AE",
+    "isO3CountyCode": "ARE",
+    "displayName": "United Arab Emirates",
+    "callingCountryCode": 971
+  },
+  {
+    "isO2CountyCode": "GB",
+    "isO3CountyCode": "GBR",
+    "displayName": "United Kingdom",
+    "callingCountryCode": 44
+  },
+  {
+    "isO2CountyCode": "US",
+    "isO3CountyCode": "USA",
+    "displayName": "United States",
+    "callingCountryCode": 1
+  },
+  {
+    "isO2CountyCode": "UY",
+    "isO3CountyCode": "URY",
+    "displayName": "Uruguay",
+    "callingCountryCode": 598
+  },
+  {
+    "isO2CountyCode": "UZ",
+    "isO3CountyCode": "UZB",
+    "displayName": "Uzbekistan",
+    "callingCountryCode": 998
+  },
+  {
+    "isO2CountyCode": "VU",
+    "isO3CountyCode": "VUT",
+    "displayName": "Vanuatu",
+    "callingCountryCode": 678
+  },
+  {
+    "isO2CountyCode": "VA",
+    "isO3CountyCode": "VAT",
+    "displayName": "Vatican City",
+    "callingCountryCode": 39
+  },
+  {
+    "isO2CountyCode": "VE",
+    "isO3CountyCode": "VEN",
+    "displayName": "Venezuela",
+    "callingCountryCode": 58
+  },
+  {
+    "isO2CountyCode": "VN",
+    "isO3CountyCode": "VNM",
+    "displayName": "Vietnam",
+    "callingCountryCode": 84
+  },
+  {
+    "isO2CountyCode": "WF",
+    "isO3CountyCode": "WLF",
+    "displayName": "Wallis & Futuna",
+    "callingCountryCode": 681
+  },
+  {
+    "isO2CountyCode": "EH",
+    "isO3CountyCode": "ESH",
+    "displayName": "Western Sahara",
+    "callingCountryCode": 212
+  },
+  {
+    "isO2CountyCode": "YE",
+    "isO3CountyCode": "YEM",
+    "displayName": "Yemen",
+    "callingCountryCode": 967
+  },
+  {
+    "isO2CountyCode": "ZM",
+    "isO3CountyCode": "ZMB",
+    "displayName": "Zambia",
+    "callingCountryCode": 260
+  },
+  {
+    "isO2CountyCode": "ZW",
+    "isO3CountyCode": "ZWE",
+    "displayName": "Zimbabwe",
+    "callingCountryCode": 263
+  },
+  {
+    "isO2CountyCode": "AX",
+    "isO3CountyCode": "ALA",
+    "displayName": "Åland Islands",
+    "callingCountryCode": 358
   }
 ]

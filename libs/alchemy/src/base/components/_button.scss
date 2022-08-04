@@ -12,7 +12,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  @include elevation-100;
+
   gap: $space-8;
 }
 
@@ -69,9 +69,6 @@
     @include border-small(var(#2d3339));
   }
   &:hover {
-    color: var(--primary-300);
-    background-color: var(--primary-300);
-    @include border-small(var(--primary-300));
   }
 
   &:disabled {

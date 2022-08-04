@@ -3,8 +3,7 @@
 import { Authentication } from '@arcane-web/arcane-components';
 import { getAuth } from 'firebase/auth';
 import { useAuth } from '@arcane-web/arcane-auth';
-import { useNavigate } from 'solid-app-router';
-import { createEffect, VoidComponent, Show } from 'solid-js';
+import { VoidComponent, Show } from 'solid-js';
 import { LandingComponent, Onboarding, OnboardingNodes } from '../components';
 import queryClient from '../invest-contentful';
 import { gql } from '@solid-primitives/graphql';
@@ -32,7 +31,7 @@ const Landing: VoidComponent = () => {
 
   return (
     <LandingComponent>
-      {state.data ? (
+      {state.data || import.meta.env.DEV ? (
         <Show when={questions()}>
           <Onboarding questions={questions().onboardingStepCollection.items} />
         </Show>

@@ -12,8 +12,8 @@ type ProgressProps = {
 
 const Progress: VoidComponent<ProgressProps> = (props) => {
   return (
-    <div class="arcane-progress">
-      <label for={props.id}>{props.label}</label>
+    <div class="arcane-progress w-full">
+      {/* <label for={props.id}>{props.label}</label> */}
       <progress id={props.id} max={props.max} value={props.value} />
     </div>
   );

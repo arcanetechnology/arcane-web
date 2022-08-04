@@ -6,6 +6,7 @@ import LinkedIn from '../../assets/linkedin.svg';
 import './Footer.scss';
 import Logo from '../../assets/logo.svg';
 import { getNavigation } from '../../api/navigation';
+import { isSmall } from '..';
 
 const Footer: VoidComponent = () => {
   const nav = getNavigation();
@@ -25,48 +26,6 @@ const Footer: VoidComponent = () => {
             'flex-grow': 1,
           }}
         />
-
-        <div class="padding-8">
-          <p class="heading8 footer-text">Menu</p>
-          <nav id="arcane-application-navigation" class="align-vertical">
-            <Show when={nav()}>
-              {
-                <For each={nav().applicationCollection.items}>
-                  {(n) => (
-                    <div class="footer-text">
-                      <a
-                        class="third after footer-link body1 "
-                        href={window.location.origin + '/' + (n.path ?? '')}
-                      >
-                        {n.name}
-                      </a>
-                    </div>
-                  )}
-                </For>
-              }
-            </Show>
-          </nav>
-        </div>
-        <div class="padding-8">
-          <p class="heading8 footer-text">Company</p>
-          <nav id="arcane-static" class="align-vertical">
-            <div class="footer-text">
-              <a class="third after footer-link body1" href="/people">
-                People
-              </a>
-            </div>
-            <div class="footer-text">
-              <a class="third after footer-link body1" href="/relations">
-                Investor Relations
-              </a>
-            </div>
-            <div class="footer-text">
-              <a class="third after footer-link body1" href="/privacy">
-                Privacy
-              </a>
-            </div>
-          </nav>
-        </div>
       </div>
 
       <hr />

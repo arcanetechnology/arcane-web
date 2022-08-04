@@ -72,6 +72,7 @@ __metadata:
     "@arcane-web/arcane-auth": "workspace:^"
     "@arcane-web/arcane-components": "workspace:^"
     "@arcane-web/arcane-flow": "workspace:^"
+    "@solid-primitives/keyboard": ^1.0.1
     "@solid-primitives/media": ^2.0.1
     "@solid-primitives/storage": ^1.3.1
     "@thisbeyond/solid-select": ^0.11.0
@@ -3113,6 +3114,19 @@ __metadata:
   peerDependencies:
     solid-js: ^1.4.3
   checksum: 848815534233f93772ffdd1479cafb38655c6652309503d8192728ac9e7bd3b049c04dafb7cd683e1620856ca409c89ffcd75c4ebaedd6fcb36a1ffee8486a63
+  languageName: node
+  linkType: hard
+
+"@solid-primitives/keyboard@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@solid-primitives/keyboard@npm:1.0.1"
+  dependencies:
+    "@solid-primitives/event-listener": ^2.2.1
+    "@solid-primitives/rootless": ^1.1.2
+    "@solid-primitives/utils": ^3.0.0
+  peerDependencies:
+    solid-js: ^1.4.0
+  checksum: e5efd9440ff80350e79064ddb709830bca9e6c7bb4501b98334c1f92662563e0096a85dbf151ad76a933f2a779920c9b13392d216cd069ee6665a96ed4e2f431
   languageName: node
   linkType: hard
 

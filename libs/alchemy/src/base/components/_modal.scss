@@ -75,14 +75,14 @@
   }
 
   @include breakpoint(medium) {
-    width: 600px;
-    height: 600px;
+    width: 800px;
+    height: 500px;
     padding: $space-16;
   }
 
   @include breakpoint(large) {
-    width: 600px;
-    height: 600px;
+    width: 800px;
+    height: 500px;
     padding: $space-24;
   }
 }

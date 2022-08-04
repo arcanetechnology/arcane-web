@@ -9,7 +9,6 @@ import toast from 'solid-toast';
 export const getAuthToken = async () => {
   const auth = await getAuth();
   const token = await auth.currentUser.getIdToken();
-  console.log(token);
   return token;
 };
 export const fetchUserRegistration = async () => {

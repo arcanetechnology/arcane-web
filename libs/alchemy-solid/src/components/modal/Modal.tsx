@@ -35,7 +35,7 @@ const Modal: FlowComponent<ModalProps> = (props) => {
               onClick={() => others.toggleModal(false)}
               class="modal-close"
             >
-              <span>{others.icon}</span>
+              X
             </Button>
           </div>
           {others.children}

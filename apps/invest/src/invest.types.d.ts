@@ -1,10 +1,10 @@
 /** @format */
 
 export type Country = {
-  name: string;
-  flag: string;
-  code: string;
-  countryCode: string;
+  isO2CountyCode: string;
+  isO3CountyCode: string;
+  displayName: string;
+  callingCountryCode: number;
 };
 
 export type Countries = Array<Country>;

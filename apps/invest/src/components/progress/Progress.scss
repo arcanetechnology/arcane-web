@@ -5,30 +5,10 @@
 
 .arcane-progress {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: flex-start;
   height: 100%;
   > label {
     flex: 1;
-  }
-  > progress {
-    border: 0;
-    height: $space-8;
-    @include radius-large;
-  }
-  > progress::-webkit-progress-bar {
-    border: 0;
-    height: $space-8;
-    @include radius-large;
-  }
-  > progress::-webkit-progress-value {
-    border: 0;
-    height: $space-8;
-    @include radius-large;
-  }
-  > progress::-moz-progress-bar {
-    border: 0;
-    height: $space-8;
-    @include radius-large;
   }
 }

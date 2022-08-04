@@ -5,20 +5,23 @@
 @import '@arcane-web/alchemy/lib/base/size';
 @import '@arcane-web/alchemy/lib/base/space';
 
+.custom .solid-select-input {
+  min-width: $space-8;
+}
 .custom .solid-select-container {
-  @include radius-large;
+  @include radius-small;
   @include border-small(var(--primary-400));
   z-index: 15;
   color: var(--font-color);
 }
 .custom .solid-select-control {
-  @include radius-large;
-  padding: $space-4;
+  @include radius-small;
+  padding: $space-8;
 }
 .custom .solid-select-placeholder {
-  padding: $space-4;
+  padding: $space-8;
   background-color: var(--background);
-  @include radius-large;
+  @include radius-small;
   @include border-small(var(--primary-400));
 }
 .custom .solid-select-option:hover {
@@ -29,4 +32,29 @@
 .custom .solid-select-list {
   background-color: var(--background);
   z-index: 15;
+}
+
+.customer-form-node {
+  height: 400px;
+  overflow-y: scroll;
+
+  @include breakpoint(medium) {
+    height: 300px !important;
+    overflow-y: scroll;
+  }
+}
+
+.customer-node {
+  width: 100% !important;
+  @include breakpoint(medium) {
+    width: 600px;
+    height: 100%;
+  }
+}
+
+.customer-text-form {
+  @include breakpoint(medium) {
+    display: flex;
+    flex-direction: row;
+  }
 }
