@@ -12,6 +12,13 @@
 
 .modal-form {
   flex: 1;
+  @include breakpoint(small) {
+    width: 100%;
+  }
+
+  @include breakpoint(medium) {
+    width: 600px;
+  }
 }
 
 .modal-title {

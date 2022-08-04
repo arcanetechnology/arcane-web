@@ -16,7 +16,9 @@
 }
 .custom .solid-select-control {
   @include radius-small;
+  background-color: #ffffff;
   padding: $space-8;
+  @include radius-small;
 }
 .custom .solid-select-placeholder {
   padding: $space-8;

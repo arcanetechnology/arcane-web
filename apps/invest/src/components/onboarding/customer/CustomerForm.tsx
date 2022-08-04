@@ -3,7 +3,6 @@ import { Show, For, Match, Switch, createSignal, createEffect } from 'solid-js';
 import {
   Form,
   FieldSet,
-  RadioButton,
   Label,
   Input,
   Button,
@@ -20,6 +19,7 @@ import '@thisbeyond/solid-select/style.css';
 import back from '../../../assets/back.svg';
 import './CustomerForm.scss';
 import Progress from '../../progress/Progress';
+import { isSmall } from '../..';
 
 const coutryObject = createOptions(countries as Countries, {
   key: 'displayName',
@@ -122,7 +122,15 @@ const CustomerFormPages = formConfig.map(
                 </>
               </Match>
               <Match when={field.name === 'nationalNumber'}>
-                <div class="w-full align-horizontal gap-small">
+                <div
+                  class="w-full"
+                  classList={{
+                    'flex-vertical': isSmall(),
+                    'align-horizontal': !isSmall(),
+                    'gap-small': !isSmall(),
+                    'gap-big': isSmall(),
+                  }}
+                >
                   <div style={{ flex: '1' }}>
                     <Select
                       class="custom"
@@ -153,16 +161,20 @@ const CustomerFormPages = formConfig.map(
                     </p>
                   )}
 
-                  <Input
+                  <div
                     style={{
                       flex: 2,
                     }}
-                    name={field.name}
-                    placeholder="Phone Number"
-                    id={field.name}
-                    type={field.name === 'phoneNumber' ? 'tel' : 'text'}
-                    list={field.name}
-                  />
+                    classList={{ 'padding-4': isSmall() }}
+                  >
+                    <Input
+                      name={field.name}
+                      placeholder="Phone Number"
+                      id={field.name}
+                      type={field.name === 'phoneNumber' ? 'tel' : 'text'}
+                      list={field.name}
+                    />
+                  </div>
                   <Button
                     type="button"
                     variant="secondary"
