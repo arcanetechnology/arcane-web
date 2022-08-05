@@ -18,14 +18,15 @@ type ArcaneAppProviderProps = {
 
 const ArcaneAppProvider: FlowComponent<ArcaneAppProviderProps> = (props) => {
   const location = useLocation();
-  if (location.state) {
-    if (location.state['valid'] !== true) {
+  if (!import.meta.env.DEV) {
+    if (location.state) {
+      if (location.state['valid'] !== true) {
+        createResource(fetchUserRegistration);
+      }
+    } else {
       createResource(fetchUserRegistration);
     }
-  } else {
-    createResource(fetchUserRegistration);
   }
-
   return (
     <ErrorBoundary
       fallback={

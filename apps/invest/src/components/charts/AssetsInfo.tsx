@@ -20,14 +20,13 @@ const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
   const [sum, setSum] = createSignal<number | null>(null);
   let canvas;
 
-  onMount(() => {
+  createEffect(() => {
     setSum(props.data.map((item) => item.units).reduce((a, b) => a + b));
   });
 
   createEffect(
     on(sum, (sum) => {
       if (!canvas || !sum) return;
-
       const chart = new Chart(canvas, {
         type: 'doughnut',
         data: {
@@ -86,7 +85,8 @@ const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
         ref={canvas}
         style={{
           'max-height': '200px',
-          'min-width': '400px',
+          width: '100%',
+          'object-fit': 'contain',
         }}
       />
     </Card>

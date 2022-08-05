@@ -44,37 +44,7 @@ const Home: VoidComponent = () => {
         when={fundInfoCollection()}
         fallback={
           <>
-            <section class="margin-48">
-              <div class="container">
-                <h5>
-                  <div class="skeleton skeleton-text" />
-                </h5>
-              </div>
-            </section>
-            <section class="container">
-              <div
-                id="invest-stats"
-                class="gap-small parent"
-                data-auto-grid="2"
-              >
-                <div
-                  id="invest-home-info-cards"
-                  class="gap-small child"
-                  data-auto-grid="2"
-                >
-                  <div class="skeleton skeleton-text skeleton-text__body" />
-                  <div class="skeleton skeleton-text skeleton-text__body" />
-                  <div class="skeleton skeleton-text skeleton-text__body" />
-                  <div class="skeleton skeleton-text skeleton-text__body" />
-                </div>
-                <div id="invest-chart" class="child">
-                  <img class="skeleton" alt="" id="cover-img" />
-                </div>
-              </div>
-              <div id="fund-value" class="padding-48">
-                <img class="skeleton" alt="" id="cover-img" />
-              </div>
-            </section>
+            <h6>Loading...</h6>
           </>
         }
       >

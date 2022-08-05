@@ -101,7 +101,6 @@ const Doughnut: VoidComponent<DoughnutProps> = (props) => {
         ref={canvas}
         style={{
           'max-height': '200px',
-          'min-width': '400px',
         }}
       />
     </Card>

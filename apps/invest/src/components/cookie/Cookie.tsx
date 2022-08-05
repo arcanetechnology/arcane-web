@@ -10,6 +10,7 @@ import { Button, Modal, Toggle } from '@arcane-web/alchemy-solid';
 import { createLocalStorage } from '@solid-primitives/storage';
 import { createEffect, createSignal, Show, VoidComponent } from 'solid-js';
 import Back from '../../assets/back.svg';
+import './Cookie.scss';
 
 const Cookie: VoidComponent = () => {
   const [storage, setStorage] = createLocalStorage();
@@ -40,77 +41,90 @@ const Cookie: VoidComponent = () => {
   };
 
   return (
-    <Modal size="small" toggleModal={toggleModal} isOpen={isOpen()}>
-      <article class="align-center gap-big">
-        <div class="align-row gap-small">
+    <Modal
+      icon={() => <div />}
+      size="small"
+      toggleModal={toggleModal}
+      isOpen={isOpen()}
+    >
+      <article class="modal-content">
+        <div class="align-row gap-small modal-title">
           <Show when={showBreakDown()}>
             <Button onClick={(e) => setShowBreakDown(false)}>
-              <Back />
+              <img src={Back} alt="back-icon" />
             </Button>
           </Show>
           <p class="heading8">Cookie Settings</p>
         </div>
-        <div class="align-vertical gap-big">
-          <div class="align-vertical gap-default w-full">
-            <p class="body3">
-              We use cookies in order to give you the best experience possible
-              while visiting our website. Some of them are essential, others are
-              optional. We won’t turn them on unless you accept.
-              <a href="https://arcane.no/cookies">Learn more about them</a>
-            </p>
-            <Show when={showBreakDown()}>
-              <div>
-                <div class="align-row">
-                  <p class="body1">Strictly Necessary</p>
-                  <div style={{ 'flex-grow': 1 }} />
-                  <Toggle defaultChecked disabled />
+        <div class="modal-form">
+          <div class="cookie-main">
+            <div class="onboarding-main padding-32">
+              <p class="body3">
+                We use cookies in order to give you the best experience possible
+                while visiting our website. Some of them are essential, others
+                are optional. We won’t turn them on unless you accept.
+                <a href="https://arcane.no/cookies">Learn more about them</a>
+              </p>
+              <Show when={showBreakDown()}>
+                <div class="padding-16">
+                  <div class="align-row">
+                    <p class="body1">Strictly Necessary</p>
+                    <div style={{ 'flex-grow': 1 }} />
+                    <Toggle defaultChecked disabled />
+                  </div>
+                  <p class="small">
+                    These cookies are necessary for our website to function
+                    properly and can’t be disabled.
+                  </p>
                 </div>
-                <p class="small">
-                  These cookies are necessary for our website to function
-                  properly and can’t be disabled.
-                </p>
-              </div>
-              <div>
-                <div class="align-row">
-                  <p class="body1">Product Development</p>
-                  <div style={{ 'flex-grow': 1 }} />
-                  <Toggle
-                    defaultChecked={productDevCookie()}
-                    onChange={(s) => {
-                      setProductDevCookie(!s);
-                    }}
-                  />
+                <div>
+                  <div class="align-row">
+                    <p class="body1">Product Development</p>
+                    <div style={{ 'flex-grow': 1 }} />
+                    <Toggle
+                      defaultChecked={productDevCookie()}
+                      onChange={(s) => {
+                        setProductDevCookie(!s);
+                      }}
+                    />
+                  </div>
+                  <p class="small">
+                    These cookies are necessary for our website to function
+                    properly and can’t be disabled.
+                  </p>
                 </div>
-                <p class="small">
-                  These cookies are necessary for our website to function
-                  properly and can’t be disabled.
-                </p>
-              </div>
-            </Show>
+              </Show>
+            </div>
           </div>
-
-          <div
-            class="w-full align-row"
-            style={{ bottom: 0, position: 'relative' }}
+        </div>
+        <div class="cookie-footer modal-horizontal gap-big w-full">
+          <Show
+            when={showBreakDown()}
+            fallback={
+              <Button
+                variant="secondary"
+                size="medium"
+                onClick={() => setShowBreakDown(true)}
+              >
+                Manage Cookies
+              </Button>
+            }
           >
-            <Show
-              when={showBreakDown()}
-              fallback={
-                <Button
-                  variant="secondary"
-                  onClick={(e) => setShowBreakDown(true)}
-                >
-                  Manage Cookies
-                </Button>
-              }
+            <Button
+              onClick={() => toggleModal(false)}
+              size="medium"
+              variant="secondary"
             >
-              <Button variant="secondary">Cancel</Button>
-            </Show>
-            <div style={{ 'flex-grow': 1 }} />
-            <Button variant="primary" onClick={() => handleCookies()}>
-              Allow Cookies
+              Cancel
             </Button>
-          </div>
+          </Show>
+          <Button
+            variant="primary"
+            size="medium"
+            onClick={() => handleCookies()}
+          >
+            Allow Cookies
+          </Button>
         </div>
       </article>
     </Modal>
