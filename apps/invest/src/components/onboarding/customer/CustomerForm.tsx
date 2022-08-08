@@ -20,6 +20,7 @@ import back from '../../../assets/back.svg';
 import './CustomerForm.scss';
 import Progress from '../../progress/Progress';
 import { isSmall } from '../..';
+import OnboardingLogo from '../../../assets/onboarding.svg';
 
 const coutryObject = createOptions(countries as Countries, {
   key: 'displayName',
@@ -48,99 +49,45 @@ const CustomerFormPages = formConfig.map(
     });
 
     return (
-      <Form ref={form} class="onboarding-content customer-node">
-        <div class="onboarding-main">
-          <FieldSet class="padding-16">
-            <Label for={field.name}>
-              <p class="heading8">{field.label}</p>
-            </Label>
-            <br />
-            <Switch
-              fallback={
-                <div class="w-full align-horizontal gap-small">
-                  <Input
-                    name={field.name}
-                    placeholder={field.initialValue}
-                    id={field.name}
-                    type={field.name === 'nationalNumber' ? 'tel' : 'text'}
-                    list={field.name}
-                  />
-                  <Button
-                    onClick={handleSubmit}
-                    variant="secondary"
-                    size="medium"
-                    type="button"
-                  >
-                    OK
-                  </Button>
-                </div>
-              }
-            >
-              <Match when={field.name === 'countryCode'}>
-                <div class="w-full align-horizontal gap-small">
-                  <Select
-                    class="custom w-full"
-                    {...coutryObject}
-                    id={field.name}
-                    name={field.name}
-                    initialValue={data(($data) => $data.countryCode)}
-                    onChange={(selected) => {
-                      setFields({
-                        countryCode: selected.displayName,
-                      });
-                    }}
-                  />
-                  <Button
-                    onClick={handleSubmit}
-                    variant="secondary"
-                    size="medium"
-                    type="button"
-                  >
-                    OK
-                  </Button>
-                </div>
-              </Match>
-              <Match when={field.name === 'companyBehalf'}>
-                <>
-                  <Button
-                    onClick={() => props.onSubmit({ [field.name]: 'yes' })}
-                    variant="secondary"
-                    type="button"
-                    size="medium"
-                  >
-                    Yes
-                  </Button>
-                  <br />
-                  <Button
-                    onClick={() => props.onSubmit({ [field.name]: 'no' })}
-                    variant="secondary"
-                    size="medium"
-                    type="button"
-                  >
-                    No
-                  </Button>
-                </>
-              </Match>
-              <Match when={field.name === 'nationalNumber'}>
-                <div
-                  class="w-full"
-                  classList={{
-                    'flex-vertical': isSmall(),
-                    'align-horizontal': !isSmall(),
-                    'gap-small': !isSmall(),
-                    'gap-big': isSmall(),
-                  }}
-                >
-                  <div style={{ flex: '1' }}>
+      <div class="onboarding-form">
+        <div class="onboarding-form-title">
+          <img src={OnboardingLogo} alt="onboarding logo" />
+          <p class="body1">Investment Onboarding</p>
+        </div>
+        <Form style={{ width: '100%' }} ref={form}>
+          <div class="onboarding-form-content">
+            <div>
+              <Label for={field.name}>
+                <p class="heading8">{field.label}</p>
+              </Label>
+              <Switch
+                fallback={
+                  <div class="onboarding-form-input">
+                    <Input
+                      name={field.name}
+                      placeholder={field.initialValue}
+                      id={field.name}
+                      type={field.name === 'nationalNumber' ? 'tel' : 'text'}
+                      list={field.name}
+                    />
+                    <Button
+                      style={{ width: '49px' }}
+                      variant="secondary"
+                      size="medium"
+                      type="submit"
+                    >
+                      OK
+                    </Button>
+                  </div>
+                }
+              >
+                <Match when={field.name === 'countryCode'}>
+                  <div class="onboarding-form-input">
                     <Select
-                      class="custom"
+                      class="custom w-full"
                       {...coutryObject}
-                      name="countryCode"
-                      id="countryCode"
-                      onBlur={() => {
-                        setCountryCode(true);
-                      }}
-                      placeholder="Country Code"
+                      id={field.name}
+                      name={field.name}
                       initialValue={data(($data) => $data.countryCode)}
                       onChange={(selected) => {
                         setFields({
@@ -148,80 +95,147 @@ const CustomerFormPages = formConfig.map(
                         });
                       }}
                     />
-                  </div>
-                  {showCountryCode() && (
-                    <p>
-                      +{' '}
-                      {
-                        countries.find(
-                          (c: Country) =>
-                            c.displayName === data(($data) => $data.countryCode)
-                        ).callingCountryCode
+                    <Button
+                      style={{ width: '49px' }}
+                      onClick={() =>
+                        props.onSubmit({
+                          countryCode: countries
+                            .find(
+                              (c: Country) =>
+                                c.displayName ===
+                                data(($data) => $data.countryCode)
+                            )
+                            .isO3CountyCode.toString(),
+                        })
                       }
-                    </p>
-                  )}
-
-                  <div
-                    style={{
-                      flex: 2,
-                    }}
-                    classList={{ 'padding-4': isSmall() }}
-                  >
-                    <Input
-                      name={field.name}
-                      placeholder="Phone Number"
-                      id={field.name}
-                      type={field.name === 'phoneNumber' ? 'tel' : 'text'}
-                      list={field.name}
-                    />
+                      variant="secondary"
+                      size="medium"
+                      type="button"
+                    >
+                      OK
+                    </Button>
                   </div>
-                  <Button
-                    type="button"
-                    variant="secondary"
-                    onClick={() =>
-                      props.onSubmit({
-                        countryCode: countries
-                          .find(
+                </Match>
+                <Match when={field.name === 'companyBehalf'}>
+                  <div class="onboarding-company-behalf">
+                    <Button
+                      onClick={() => props.onSubmit({ [field.name]: 'yes' })}
+                      variant="secondary"
+                      type="button"
+                      size="medium"
+                    >
+                      Yes
+                    </Button>
+                    <Button
+                      onClick={() => props.onSubmit({ [field.name]: 'no' })}
+                      variant="secondary"
+                      size="medium"
+                      type="button"
+                    >
+                      No
+                    </Button>
+                  </div>
+                </Match>
+                <Match when={field.name === 'nationalNumber'}>
+                  <div class="onboarding-form-input">
+                    <div style={{ flex: '1' }}>
+                      <Select
+                        class="number-list"
+                        {...coutryObject}
+                        name="countryCode"
+                        id="countryCode"
+                        onBlur={() => {
+                          setCountryCode(true);
+                        }}
+                        placeholder="Country Code"
+                        initialValue={data(($data) => $data.countryCode)}
+                        onChange={(selected) => {
+                          setFields({
+                            countryCode: selected.displayName,
+                          });
+                        }}
+                      />
+                    </div>
+                    {showCountryCode() && (
+                      <p>
+                        +{' '}
+                        {
+                          countries.find(
                             (c: Country) =>
                               c.displayName ===
                               data(($data) => $data.countryCode)
-                          )
-                          .callingCountryCode.toString(),
-                        nationalNumber: data(($data) => $data.nationalNumber),
-                      })
-                    }
-                    id="national-number-button"
-                    size="medium"
-                  >
-                    OK
-                  </Button>
-                </div>
-              </Match>
-            </Switch>
-          </FieldSet>
-        </div>
-        <div class="onboarding-footer modal-horizontal">
-          <div style={{ 'padding-right': '8px' }}>
-            <Progress
-              label={`${progress()}% Completed`}
-              max="100"
-              value={`${progress()}`}
-              id="customer-form-progress"
-            />
+                          ).callingCountryCode
+                        }
+                      </p>
+                    )}
+
+                    <div
+                      style={{
+                        flex: 2,
+                      }}
+                      classList={{ 'padding-4': isSmall() }}
+                    >
+                      <Input
+                        name={field.name}
+                        placeholder="Phone Number"
+                        id={field.name}
+                        type={field.name === 'phoneNumber' ? 'tel' : 'text'}
+                        list={field.name}
+                      />
+                    </div>
+                    <Button
+                      type="button"
+                      style={{ width: '49px' }}
+                      variant="secondary"
+                      onClick={() =>
+                        props.onSubmit({
+                          phoneNumber: {
+                            countryCode: countries
+                              .find(
+                                (c: Country) =>
+                                  c.displayName ===
+                                  data(($data) => $data.countryCode)
+                              )
+                              .callingCountryCode.toString(),
+                            nationalNumber: data(
+                              ($data) => $data.nationalNumber
+                            ),
+                          },
+                        })
+                      }
+                      id="national-number-button"
+                      size="medium"
+                    >
+                      OK
+                    </Button>
+                  </div>
+                </Match>
+              </Switch>
+            </div>
           </div>
-          <Button
-            variant="primary"
-            size="medium"
-            onClick={() => {
-              props.onBack(data);
-            }}
-            type="button"
-          >
-            <img width={15} src={back} style={{ filter: 'invert(1)' }} />
-            Back
-          </Button>
-        </div>
-      </Form>
+          <div class="onboarding-form-footer">
+            <div>
+              <Progress
+                label={`${progress()}% Completed`}
+                max="100"
+                value={`${progress()}`}
+                id="customer-form-progress"
+              />
+            </div>
+            <Button
+              variant="primary"
+              size="medium"
+              onClick={() => {
+                props.onBack(data());
+              }}
+              type="button"
+            >
+              <img width={15} src={back} style={{ filter: 'invert(1)' }} />
+              Back
+            </Button>
+          </div>
+        </Form>
+      </div>
     );
   }
 );

@@ -32,9 +32,7 @@ export const fetchUserRegistration = async () => {
           }
 
           if (res.status === 200) {
-            if (window.location.pathname.split('/').pop() !== 'home') {
-              navigate('/home');
-            }
+            navigate('/home', { replace: true, resolve: true });
           }
         })
         .catch((err) => {
@@ -81,20 +79,20 @@ export const postUserRegistration = async <R,>(
           if (res.status >= 401) {
             navigate('/nonprofessional');
           }
-          const body = await res.json();
 
           if (res.status === 400) {
+            const body = await res.json();
             body.map((err) => {
               toast.error(err);
             });
-            navigate('/');
           }
 
-          navigate('/home', { state: { valid: true } });
+          if (res.status === 200) {
+            navigate('/home', { replace: true, resolve: true });
+          }
         })
         .catch((err) => {
           toast.error(err.message);
-          navigate('/');
         });
     } else {
       navigate('/');

@@ -19,6 +19,8 @@ import UpIcon from '../../../assets/up.svg';
 import DownIcon from '../../../assets/down.svg';
 import back from '../../../assets/back.svg';
 import Progress from '../../progress/Progress';
+import './Survey.scss';
+import OnboardingLogo from '../../../assets/onboarding.svg';
 
 type OnboardingSurveyProps = {
   route: Questions;
@@ -55,66 +57,110 @@ const OnboardingSurvey: VoidComponent<
   });
 
   return (
-    <Form ref={form} class="onboarding-content">
-      <div class="onboarding-main">
-        <Switch>
-          <For each={nodes}>
-            {(node) => {
-              return (
-                <Match when={props.route === node.name}>
-                  <Question
-                    onSubmit={props.onSubmit}
-                    onChange={setData}
-                    question={node}
-                  />
-                </Match>
-              );
-            }}
-          </For>
-        </Switch>
+    <div class="onboarding-survey">
+      <div class="onboarding-survey-title">
+        <img src={OnboardingLogo} alt="onboarding logo" />
+        <p class="body1">Investment Onboarding</p>
       </div>
-
-      <div class="onboarding-footer modal-horizontal">
-        <div style={{ 'padding-right': '8px' }}>
-          <Progress
-            label={`${surveyProgress()}% Completed`}
-            max="100"
-            value={`${surveyProgress()}`}
-            id="survey-progress"
-          />
+      <Form ref={form}>
+        <div class="onboarding-survey-content">
+          <Switch>
+            <For each={nodes}>
+              {(node) => {
+                return (
+                  <Match when={props.route === node.name}>
+                    <div class="onboarding-survey-text">
+                      <Question
+                        onSubmit={props.onSubmit}
+                        onChange={setData}
+                        question={node}
+                      />
+                    </div>
+                  </Match>
+                );
+              }}
+            </For>
+          </Switch>
         </div>
-        <Button
-          variant="primary"
-          size="medium"
-          onClick={() => {
-            props.onBack(data);
-          }}
-          type="button"
-        >
-          <img width={15} src={back} style={{ filter: 'invert(1)' }} />
-          Back
-        </Button>
+        <div class="onboarding-survey-action">
+          {props.route === 'warning' ? (
+            <div>
+              <Button
+                onClick={() => props.onSubmit({ [props.route]: 'yes' })}
+                type="button"
+                variant="secondary"
+                size="medium"
+              >
+                {/* <img src={aLetter} /> */}
+                <span>I Agree with terms and conditions</span>
+              </Button>
+            </div>
+          ) : (
+            <div class="onboarding-survey-questions">
+              <Button
+                onClick={() => props.onSubmit({ [props.route]: 'yes' })}
+                type="button"
+                variant="secondary"
+                size="medium"
+              >
+                {/* <img src={aLetter} /> */}
+                <span>Yes</span>
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                size="medium"
+                onClick={() => props.onSubmit({ [props.route]: 'no' })}
+              >
+                {/* <img src={bLetter} /> */}
+                <span>No</span>
+              </Button>
+            </div>
+          )}
+        </div>
 
-        {/*  <div class="multi-button">
-          <button
-            class="multi-button_button"
-            type="button"
+        <div class="onboarding-survey-footer">
+          <div>
+            <Progress
+              label={`${surveyProgress()}% Completed`}
+              max="100"
+              value={`${surveyProgress()}`}
+              id="survey-progress"
+            />
+          </div>
+          <Button
+            variant="primary"
+            size="medium"
             onClick={() => {
               props.onBack(data);
             }}
+            type="button"
           >
-            <img width={15} src={DownIcon} style={{ filter: 'invert(1)' }} />
-          </button>
-          <button
-            class="multi-button_button"
-            disabled={props.route === 'warning' ? false : disableNext()}
-            type="submit"
-          >
-            <img width={15} src={UpIcon} style={{ filter: 'invert(1)' }} />
-          </button>
-        </div> */}
-      </div>
-    </Form>
+            <img width={15} src={back} style={{ filter: 'invert(1)' }} />
+            Back
+          </Button>
+
+          {/*  <div class="multi-button">
+        <button
+          class="multi-button_button"
+          type="button"
+          onClick={() => {
+            props.onBack(data);
+          }}
+        >
+          <img width={15} src={DownIcon} style={{ filter: 'invert(1)' }} />
+        </button>
+        <button
+          class="multi-button_button"
+          disabled={props.route === 'warning' ? false : disableNext()}
+          type="submit"
+        >
+          <img width={15} src={UpIcon} style={{ filter: 'invert(1)' }} />
+        </button>
+      </div> */}
+        </div>
+      </Form>
+    </div>
   );
 };
 

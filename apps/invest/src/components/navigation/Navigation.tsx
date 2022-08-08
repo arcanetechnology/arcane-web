@@ -61,7 +61,7 @@ const Navigation: VoidComponent = () => {
     >
       <div id={NAVIGATION_MENU_BUTTON_ID} class="menu-btn circle-hover">
         <abbr title="Arcane applications">
-          <img src={menu} alt="Arcane Applications" />
+          <img width={40} height={40} src={menu} alt="Arcane Applications" />
         </abbr>
       </div>
       <div id={NAVIGATION_MENU_ID} class="menu margin-8">

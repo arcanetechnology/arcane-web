@@ -19,7 +19,7 @@ type QuestionProps = {
 const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (props) => {
-      return <p class="body3">{props.children}</p>;
+      return <p class="small">{props.children}</p>;
     },
     [BLOCKS.HEADING_1]: (props) => {
       return <p class="heading8">{props.children}</p>;
@@ -39,50 +39,7 @@ const Question: VoidComponent<QuestionProps> = (props) => {
   }); */
 
   return (
-    <div
-      class="survey-node"
-      classList={{
-        'warning-survey-node': props.question.name === 'warning',
-      }}
-    >
-      <SolidRichText document={props.question.content.json} options={options} />
-      {props.question.name === 'warning' ? (
-        <div class="padding-16">
-          <Button
-            onClick={() => props.onSubmit({ [props.question.name]: 'yes' })}
-            type="button"
-            variant="secondary"
-            size="medium"
-          >
-            {/* <img src={aLetter} /> */}
-            <span>I Agree with terms and conditions</span>
-          </Button>
-        </div>
-      ) : (
-        <FieldSet class="padding-16">
-          <div class="align-vertical gap-default">
-            <Button
-              onClick={() => props.onSubmit({ [props.question.name]: 'yes' })}
-              type="button"
-              variant="secondary"
-              size="medium"
-            >
-              {/* <img src={aLetter} /> */}
-              <span>Yes</span>
-            </Button>
-            <Button
-              type="button"
-              variant="secondary"
-              size="medium"
-              onClick={() => props.onSubmit({ [props.question.name]: 'no' })}
-            >
-              {/* <img src={bLetter} /> */}
-              <span>No</span>
-            </Button>
-          </div>
-        </FieldSet>
-      )}
-    </div>
+    <SolidRichText document={props.question.content.json} options={options} />
   );
 };
 

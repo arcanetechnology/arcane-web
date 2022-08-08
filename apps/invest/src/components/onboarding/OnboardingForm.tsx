@@ -1,13 +1,6 @@
 /** @format */
 
-import {
-  createEffect,
-  createResource,
-  createSignal,
-  on,
-  onMount,
-  VoidComponent,
-} from 'solid-js';
+import { createResource, createSignal, onMount, VoidComponent } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { Survey } from './survey';
 import { CustomerFormPages } from './customer';
@@ -59,11 +52,11 @@ const OnboardingForm: VoidComponent = () => {
   function onSubmit(values) {
     try {
       if (page() === pages.length - 1) {
-        console.log('second time??');
-        console.log(error);
-        console.log(loading);
-        console.log(pagesState());
-        const formBody = pagesState().reduce(
+        const nextState = [...pagesState()];
+        nextState[page()] = values;
+        setPagesState(nextState);
+        const prunedState = pagesState().filter((el) => el !== undefined);
+        const formBody = prunedState.reduce(
           (obj, item) => {
             const key = Object.keys(item)[0];
             if (!key) {
@@ -74,20 +67,11 @@ const OnboardingForm: VoidComponent = () => {
               return { ...obj };
             }
 
-            if (key === 'countryCode') {
-              item[key] = (
-                countries.find(
-                  (c: Country) => item[key] === c.displayName
-                ) as Country
-              ).isO3CountyCode;
-            }
-
             return Object.assign(obj, { [key]: item[key] });
           },
           // TODO: remove the hardcoding later alligator 🐊
-          { phoneNumber: values, fundName: 'Arcane Assets Fund Limited' }
+          { fundName: 'Arcane Assets Fund Limited' }
         );
-        delete formBody['warning'];
 
         if (onboardingState().length <= 3) {
           // TODO: abstract it away in the arcane platorm
@@ -101,11 +85,15 @@ const OnboardingForm: VoidComponent = () => {
             name: 'invest',
           });
         }
+      } else if (page() === 0) {
+        setPage(page() + 1);
       } else {
         const nextState = [...pagesState()];
         if (page() === 1 && route() !== 'warning') {
           addOnboardingState(values);
           setRoute(next(route(), values[getFirstKeyOfObject(values)]));
+        } else if (page() === 1 && route() === 'warning') {
+          setPage(page() + 1);
         } else {
           nextState[page()] = values;
           setPagesState(nextState);
@@ -148,6 +136,7 @@ const OnboardingForm: VoidComponent = () => {
       onSubmit={onSubmit}
       onBack={onBack}
       totalPages={pages.length}
+      formData={pagesState()}
       route={route()}
     />
   );

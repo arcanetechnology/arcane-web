@@ -5,53 +5,41 @@
 @import '@arcane-web/alchemy/lib/base/size';
 @import '@arcane-web/alchemy/lib/base/space';
 
-.custom .solid-select-input {
-  min-width: $space-8;
+.custom .solid-select-single-value {
+  border: 1px solid #e5e5ea;
+  background-color: #fff;
+  padding: $space-8;
+  @include radius-small;
 }
 .custom .solid-select-container {
   @include radius-small;
-  @include border-small(var(--primary-400));
   z-index: 15;
   color: var(--font-color);
+  border: 1px solid #e5e5ea;
 }
+
 .custom .solid-select-control {
   @include radius-small;
-  background-color: #ffffff;
-  padding: $space-8;
-  @include radius-small;
+  padding-left: 0px;
 }
 .custom .solid-select-placeholder {
   padding: $space-8;
   background-color: var(--background);
   @include radius-small;
-  @include border-small(var(--primary-400));
+  border: 1px solid #e5e5ea;
 }
 .custom .solid-select-option:hover {
+  border: 0;
   background-color: var(--selection-background);
   color: var(--selection-color);
 }
 
 .custom .solid-select-list {
   background-color: var(--background);
+  @include radius-small;
+  text-align: left;
+  width: inherit !important;
   z-index: 15;
-}
-
-.customer-form-node {
-  height: 400px;
-  overflow-y: scroll;
-
-  @include breakpoint(medium) {
-    height: 300px !important;
-    overflow-y: scroll;
-  }
-}
-
-.customer-node {
-  width: 100% !important;
-  @include breakpoint(medium) {
-    width: 600px;
-    height: 100%;
-  }
 }
 
 .customer-text-form {
@@ -59,4 +47,115 @@
     display: flex;
     flex-direction: row;
   }
+}
+
+.onboarding-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.onboarding-form-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $space-16;
+  // TODO: @xavier not in 8 point grid system.
+  padding-bottom: 40px;
+  padding-top: 48px;
+
+  // TODO: @xavier not in the 8 point grid system.
+  > img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.onboarding-form-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.onboarding-form-content {
+  padding-right: $space-64;
+  padding-left: $space-64;
+}
+
+.onboarding-form-action {
+  padding-right: $space-64;
+  padding-left: $space-64;
+  padding-bottom: 80px;
+  width: 100%;
+}
+
+.onboarding-form-input {
+  padding-top: $space-16;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: $space-8;
+  padding-bottom: 152px;
+}
+
+.onboarding-form-footer {
+  padding-bottom: $space-32;
+  display: flex;
+  justify-content: flex-end;
+  gap: $space-24;
+  padding-right: $space-24;
+}
+
+.onboarding-company-behalf {
+  padding-top: $space-24;
+  display: flex;
+  width: 83px;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 64px;
+}
+
+// number list select
+
+.number-list .solid-select-single-value {
+  border: 1px solid #e5e5ea;
+  background-color: #fff;
+  padding: $space-8;
+  @include radius-small;
+}
+.number-list .solid-select-container {
+  @include radius-small;
+  z-index: 15;
+  color: var(--font-color);
+  border: 1px solid #e5e5ea;
+}
+
+.number-list .solid-select-control {
+  @include radius-small;
+  padding-left: 0px;
+}
+.number-list .solid-select-placeholder {
+  padding: $space-8;
+  background-color: var(--background);
+  @include radius-small;
+  border: 1px solid #e5e5ea;
+}
+.number-list .solid-select-option:hover {
+  border: 0;
+  background-color: var(--selection-background);
+  color: var(--selection-color);
+}
+
+.number-list .solid-select-list {
+  background-color: var(--background);
+  @include radius-small;
+  text-align: left;
+  width: inherit !important;
+  word-wrap: break-word;
+  z-index: 15;
+  max-width: 40px;
 }

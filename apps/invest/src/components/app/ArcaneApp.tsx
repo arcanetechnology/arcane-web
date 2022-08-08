@@ -5,9 +5,11 @@ import {
   JSXElement,
   ErrorBoundary,
   createResource,
+  Show,
+  createEffect,
+  createSignal,
 } from 'solid-js';
 import { fetchUserRegistration } from '../../api';
-import { useLocation } from 'solid-app-router';
 
 // app information type
 
@@ -17,16 +19,16 @@ type ArcaneAppProviderProps = {
 };
 
 const ArcaneAppProvider: FlowComponent<ArcaneAppProviderProps> = (props) => {
-  const location = useLocation();
-  if (!import.meta.env.DEV) {
-    if (location.state) {
-      if (location.state['valid'] !== true) {
-        createResource(fetchUserRegistration);
-      }
-    } else {
-      createResource(fetchUserRegistration);
-    }
-  }
+  const [show, setShowing] = createSignal(false);
+
+  // ONCE auth is done in service worker, we can use the usual loading from createResource
+  createResource(fetchUserRegistration);
+
+  createEffect(() => {
+    setTimeout(() => {
+      setShowing(true);
+    }, 200);
+  });
   return (
     <ErrorBoundary
       fallback={
@@ -39,7 +41,7 @@ const ArcaneAppProvider: FlowComponent<ArcaneAppProviderProps> = (props) => {
         </section>
       }
     >
-      <>{props.children}</>
+      <Show when={show()}>{props.children}</Show>
     </ErrorBoundary>
   );
 };

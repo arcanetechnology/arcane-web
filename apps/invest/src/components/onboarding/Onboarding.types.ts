@@ -8,6 +8,7 @@ export type OnboardingFormPages = {
   route: Questions;
   progress: number;
   totalPages: number;
+  formData: Array<Record<string, any>>;
 };
 
 export type OnboardingNode = {

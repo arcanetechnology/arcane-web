@@ -8,7 +8,6 @@ import { LandingComponent, Onboarding, OnboardingNodes } from '../components';
 import queryClient from '../invest-contentful';
 import { gql } from '@solid-primitives/graphql';
 import { fetchUserRegistration } from '../api';
-import { useNavigate } from 'solid-app-router';
 
 const Landing: VoidComponent = () => {
   const [questions] = queryClient<{

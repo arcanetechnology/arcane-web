@@ -6,6 +6,7 @@
 
 @use 'breakpoint' as *;
 
+// TODO: hardcode the padding to match arcane.no
 .container {
   margin: 0 auto;
   padding: 0 calc(var(--gap-default) / 2);
@@ -109,3 +110,7 @@
     }
   }
 }
+
+// TODO:
+// padding / width fix
+

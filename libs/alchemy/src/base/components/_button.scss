@@ -85,6 +85,8 @@
   font-weight: 500;
   @include size-14;
   @include radius-large;
+  // TODO: put it in the variable.
+  height: 64px;
   padding: ($space-16) ($space-24);
 }
 
@@ -93,6 +95,7 @@
   @include radius-small;
   font-weight: 500;
   padding: ($space-8) ($space-16);
+  height: 40px;
 }
 .button-small {
   padding: ($space-8) ($space-16);

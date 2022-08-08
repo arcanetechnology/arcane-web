@@ -5,7 +5,6 @@ import {
   useContext,
   VoidComponent,
   createSignal,
-  Accessor,
 } from 'solid-js';
 import { OnboardingNodes } from './Onboarding.types';
 import OnboardingForm from './OnboardingForm';
@@ -82,21 +81,20 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
         <img style={{ filter: 'invert(1)' }} src={arrow} alt="right arrow" />
       </Button>
       <Modal
-        size="small"
+        size="large"
         isOpen={isOpen()}
         toggleModal={setModal}
         class="onboarding-modal"
         icon={<img src={close} width={40} alt="modal close" />}
       >
-        <article class="modal-content">
+        {/* <article class="modal-content">
           <div class="align-row gap-small modal-title">
             <img src={OnboardingLogo} alt="onboarding logo" />
             <p class="heading8">Investment Onboarding</p>
           </div>
-          <div class="modal-form">
-            <OnboardingForm />
-          </div>
-        </article>
+          <div class="modal-form"></div>
+        </article> */}
+        <OnboardingForm />
       </Modal>
     </OnboardingContext.Provider>
   );
