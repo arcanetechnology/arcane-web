@@ -11,4 +11,22 @@
   > label {
     flex: 1;
   }
+
+  > progress {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 160px;
+    height: $space-8;
+    @include radius-small;
+  }
+
+  > progress[value]::-webkit-progress-bar {
+    background-color: #f2f2f7;
+    @include radius-small;
+  }
+
+  > progress[value]::-webkit-progress-value {
+    background-color: #2d3339;
+    @include radius-small;
+  }
 }
