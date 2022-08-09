@@ -27,21 +27,32 @@ const config: ArcaneFlowConfig<Questions, Answers> = {
     return 'question4';
   },
   question4: (val, history) => {
-    if (val === 'yes') return 'question5';
     return 'question5';
   },
   question5: (val, history) => {
     const question4 = history.find((question) => question.node === 'question4');
 
     if (question4.answer === 'yes' && val === 'yes') return 'warning';
+<<<<<<< HEAD
     if (question4.answer === 'yes' && val === 'no') return 'question6';
     if (val === 'yes') return 'question6';
     throw new Error('you are not qualified!');
+=======
+    if (question4.answer === 'no' && val === 'no') throw new Error('you are not qualified!');
+    return 'question6';
+>>>>>>> eb7e2214e8d11c9345d68dd28ad12e42842f116f
   },
   question6: (val, history) => {
+    const question4 = history.find((question) => question.node === 'question4');
     const question5 = history.find((question) => question.node === 'question5');
 
-    if (question5.answer === 'yes' && val === 'yes') return 'warning';
+    let yesCount = 0
+    if (question4.answer === 'yes') ++yesCount;
+    if (question5.answer === 'yes') ++yesCount;
+    if (val === 'yes') ++yesCount;
+    if (yesCount >= 2) {
+      return 'warning';
+    }
     throw new Error('you are not qualified');
   },
 };
