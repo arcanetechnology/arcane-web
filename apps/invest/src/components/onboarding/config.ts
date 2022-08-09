@@ -34,6 +34,7 @@ const config: ArcaneFlowConfig<Questions, Answers> = {
     const question4 = history.find((question) => question.node === 'question4');
 
     if (question4.answer === 'yes' && val === 'yes') return 'warning';
+    if (question4.answer === 'yes' && val === 'no') return 'question6';
     if (val === 'yes') return 'question6';
     throw new Error('you are not qualified!');
   },

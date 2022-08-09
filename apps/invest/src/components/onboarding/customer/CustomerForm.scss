@@ -137,6 +137,7 @@
 .number-list .solid-select-control {
   @include radius-small;
   padding-left: 0px;
+  width: 280px;
 }
 .number-list .solid-select-placeholder {
   padding: $space-8;
@@ -157,5 +158,4 @@
   width: inherit !important;
   word-wrap: break-word;
   z-index: 15;
-  max-width: 40px;
 }
