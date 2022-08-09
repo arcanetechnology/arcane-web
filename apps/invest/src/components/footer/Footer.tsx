@@ -30,7 +30,7 @@ const Footer: VoidComponent = () => {
                   {
                     <For each={nav().applicationCollection.items}>
                       {(n) => (
-                        <div style={{ 'margin-top': '16px' }}>
+                        <div style={{ 'margin-top': '16px', color: 'white' }}>
                           <a
                             class="third after footer-link body1 "
                             href={window.location.origin + '/' + (n.path ?? '')}
@@ -44,7 +44,7 @@ const Footer: VoidComponent = () => {
                 </Show>
               </nav>
             </div>
-            <div>
+            <div style={{ 'margin-right': '96px' }}>
               <p class="heading8 footer-text">Company</p>
               <nav id="arcane-static" class="align-vertical">
                 <div style={{ 'margin-top': '16px' }}>
@@ -73,7 +73,14 @@ const Footer: VoidComponent = () => {
           <div class="copyright">© All rights reserved to Arcane.</div>
           <div>Made with in Norway</div>
           <div class="social">
-            <p class="body3">Follow us</p>
+            <p
+              class="body3"
+              style={{
+                'margin-right': '16px',
+              }}
+            >
+              Follow us
+            </p>
             <a href="https://twitter.com/arcane_crypto">
               <img
                 src={Twitter}

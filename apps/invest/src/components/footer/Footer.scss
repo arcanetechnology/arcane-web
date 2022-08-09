@@ -13,21 +13,33 @@ footer {
 }
 
 .main-footer {
-  padding: 80px 0;
+  padding: 56px 0;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+  justify-content: center;
 
   @include breakpoint(medium) {
+    padding: 80px 0;
     flex-direction: row;
-    justify-content: space-between !important;
+    justify-content: space-between;
+  }
+
+  @include breakpoint(large) {
+    padding: 80px 0;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .icon {
-    align-self: flex-start;
-    @include breakpoint(small) {
-      align-self: center;
-      padding-bottom: 40px;
+    align-self: center;
+    padding-bottom: 40px;
+    @include breakpoint(medium) {
+      align-self: flex-start;
+    }
+
+    @include breakpoint(large) {
+      align-self: flex-start;
     }
   }
 }
@@ -35,9 +47,7 @@ footer {
 .footer-navigation {
   display: flex;
   flex-direction: row;
-  @include breakpoint(small) {
-    width: 100%;
-  }
+  color: white;
 }
 
 .sub-footer {
@@ -50,14 +60,14 @@ footer {
 
   @include breakpoint(medium) {
     flex-direction: row;
-    padding-top: 72px;
-    padding-bottom: 38px;
+    padding-top: 40px;
+    padding-bottom: 20px;
   }
 
   @include breakpoint(large) {
     flex-direction: row;
     padding-top: 40px;
-    padding-bottom: 40px !important;
+    padding-bottom: 20px;
   }
 
   .copyright {
