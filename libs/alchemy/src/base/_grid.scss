@@ -9,15 +9,19 @@
 // TODO: hardcode the padding to match arcane.no
 .container {
   margin: 0 auto;
-  padding: 0 calc(var(--gap-default) / 2);
+  //padding: 0 calc(var(--gap-default) / 2);
+  padding: 0 16px;
   max-width: 100%;
 
   @include breakpoint(medium) {
-    padding: 0 var(--gap-default);
+    //padding: 0 var(--gap-default);
+    padding: 0 48px;
   }
 
   @include breakpoint(large) {
-    padding: 0 calc(var(--gap-default) / 2);
+    //TODO: @xavier make it dynamic
+    //padding: 0 calc(var(--gap-default) / 2);
+    padding: 0 112px;
     max-width: 1440px;
   }
 
@@ -113,4 +117,3 @@
 
 // TODO:
 // padding / width fix
-

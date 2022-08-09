@@ -10,16 +10,11 @@ import { isSmall } from '..';
 
 const Header: VoidComponent = () => {
   return (
-    <header role="banner">
-      <div class="container align-row margin-12">
-        <img src={arcane} alt="arcane-logo" />
-        <div
-          style={{
-            'flex-grow': 1,
-          }}
-        />
-        <Navigation />
-
+    <header role="banner" class="container">
+      <img src={arcane} alt="arcane-logo" />
+      <div style={{ 'flex-grow': 1 }} />
+      <Navigation />
+      <div>
         <Show when={!isSmall()}>
           <Authentication
             loggedOutTitle="Sign In"

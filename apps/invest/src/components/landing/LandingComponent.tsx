@@ -20,7 +20,7 @@ const Landing: FlowComponent<LandingProps> = (props) => {
 
   return (
     <>
-      <section class="margin-48">
+      <section class="margin-128">
         <div class="container" style={{ 'text-align': 'center' }}>
           <Transition onEnter={animateIn} appear={true}>
             <h2>
