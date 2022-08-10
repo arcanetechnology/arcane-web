@@ -72,8 +72,11 @@ __metadata:
     "@arcane-web/arcane-auth": "workspace:^"
     "@arcane-web/arcane-components": "workspace:^"
     "@arcane-web/arcane-flow": "workspace:^"
+    "@solid-primitives/destructure": ^0.1.0
+    "@solid-primitives/intersection-observer": ^2.0.0
     "@solid-primitives/keyboard": ^1.0.1
     "@solid-primitives/media": ^2.0.1
+    "@solid-primitives/scroll": ^2.0.3
     "@solid-primitives/storage": ^1.3.1
     "@thisbeyond/solid-select": ^0.11.0
     "@types/chart.js": ^2.9.37
@@ -3081,6 +3084,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@solid-primitives/destructure@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@solid-primitives/destructure@npm:0.1.0"
+  dependencies:
+    "@solid-primitives/utils": ^1.0.0
+  peerDependencies:
+    solid-js: ^1.3.0
+  checksum: 6c7feb3bfd62042770c575e593d4a674b198f7e00bf04c6ba4919ae8f9c9e9b6f840ad5c68ce10930b28a9db16f453c571dd4bb899bd2027c7d6c2cb51add2b4
+  languageName: node
+  linkType: hard
+
 "@solid-primitives/event-listener@npm:^2.2.1":
   version: 2.2.1
   resolution: "@solid-primitives/event-listener@npm:2.2.1"
@@ -3114,6 +3128,17 @@ __metadata:
   peerDependencies:
     solid-js: ^1.4.3
   checksum: 848815534233f93772ffdd1479cafb38655c6652309503d8192728ac9e7bd3b049c04dafb7cd683e1620856ca409c89ffcd75c4ebaedd6fcb36a1ffee8486a63
+  languageName: node
+  linkType: hard
+
+"@solid-primitives/intersection-observer@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@solid-primitives/intersection-observer@npm:2.0.0"
+  dependencies:
+    "@solid-primitives/utils": ^3.0.0
+  peerDependencies:
+    solid-js: ^1.4.4
+  checksum: f9a47b5110418a310043157970189fd7be092a10f3e5aca57d659849d1f6e0b43f18787cb82d02916a5018b4e5e538cf5ae7bd5f2cbd9bc1437a4659a6710507
   languageName: node
   linkType: hard
 
@@ -3154,12 +3179,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@solid-primitives/scroll@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@solid-primitives/scroll@npm:2.0.3"
+  dependencies:
+    "@solid-primitives/event-listener": ^2.2.1
+    "@solid-primitives/rootless": ^1.1.2
+    "@solid-primitives/utils": ^3.0.0
+  peerDependencies:
+    solid-js: ^1.4.0
+  checksum: 92f9c4bf8637a4aebc7d31e8e55d65beb6dc9e60d0423742a1a0541cc31a8c8ba1205221b552bb48dc44f2cab296a544c1dfbf74ec2708530c7d2d86f9acaa8d
+  languageName: node
+  linkType: hard
+
 "@solid-primitives/storage@npm:^1.3.1":
   version: 1.3.1
   resolution: "@solid-primitives/storage@npm:1.3.1"
   peerDependencies:
     solid-js: ^1.3.1
   checksum: db7b4f333477f4aea3224420181c91c1ac7494a18af8b78b04c61837c184241b193ff190b5ae1bfe6aead0bced19b51e3b0a4492f139f447d2a0084e4dba02c2
+  languageName: node
+  linkType: hard
+
+"@solid-primitives/utils@npm:^1.0.0":
+  version: 1.5.2
+  resolution: "@solid-primitives/utils@npm:1.5.2"
+  peerDependencies:
+    solid-js: ^1.3.1
+  checksum: 6db2ee1f343da0024c1061daba29455d0b2fca0dd5df423cebd4518908b12f6523955f2bfd42c664415eb8740ff3599f99fd8eb7ac1f301109d068850a7828a0
   languageName: node
   linkType: hard
 

@@ -40,14 +40,19 @@ const Navigation: VoidComponent = () => {
       if (includesMenu && includesMenuBtn) {
         if (navigationMenu) {
           navigationMenu.style.visibility = 'hidden';
+          navigationMenuButton.classList.remove('arcane-button-menu-active');
         }
       }
     });
 
     el.addEventListener('click', () => {
       const getNavigationMenu = document.getElementById(NAVIGATION_MENU_ID);
+      const navigationMenuButton = document.getElementById(
+        NAVIGATION_MENU_BUTTON_ID
+      );
       if (getNavigationMenu) {
         getNavigationMenu.style.visibility = 'visible';
+        navigationMenuButton.classList.add('arcane-button-menu-active');
       }
     });
   };
@@ -59,12 +64,13 @@ const Navigation: VoidComponent = () => {
       class="menu-container"
       data-is-closed="true"
     >
-      <div id={NAVIGATION_MENU_BUTTON_ID} class="menu-btn circle-hover">
-        <abbr title="Arcane applications">
-          <img width={40} height={40} src={menu} alt="Arcane Applications" />
-        </abbr>
-      </div>
-      <div id={NAVIGATION_MENU_ID} class="menu margin-8">
+      <button
+        id={NAVIGATION_MENU_BUTTON_ID}
+        class="arcane-navigation-menu-button"
+      >
+        <img src={menu} alt="Arcane Applications" />
+      </button>
+      <div id={NAVIGATION_MENU_ID} class="menu">
         <Show when={sortedNavigation().length > 0}>
           <nav class="app-box">
             <For each={sortedNavigation()}>
@@ -90,7 +96,9 @@ const Navigation: VoidComponent = () => {
                     />
                   </a>
 
-                  <div class="padding-8">{n.name}</div>
+                  <div class="padding-8">
+                    <p class="caption">{n.name}</p>
+                  </div>
                 </div>
               )}
             </For>

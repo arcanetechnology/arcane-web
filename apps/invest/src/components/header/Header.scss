@@ -8,25 +8,38 @@ header {
   display: flex;
   align-items: center;
   background-color: var(--header-background);
-
+  transition: all 0.1s;
+  transition: height 0.1s;
   @include breakpoint(medium) {
     height: 136px;
   }
+}
 
-  &.sticky {
-    position: fixed;
-    z-index: 99;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    transition: height 0.2s;
+.header {
+  height: 88px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--header-background);
+}
+
+.sticky {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  div > img {
+    width: 141px;
+    height: 24px;
   }
 }
 
-#header-logo {
-  fill: var(--font-color);
-  width: 141px;
-  height: 24px;
+.scroll-height {
+  height: 88px !important;
+  @include breakpoint(medium) {
+    height: 88px;
+  }
 }

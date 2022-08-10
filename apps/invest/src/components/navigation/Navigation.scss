@@ -10,7 +10,7 @@
   width: 50px;
   position: relative;
   cursor: pointer;
-  margin-right: $space-16;
+  margin-right: 28px;
   transition: all 1ms ease-in-out;
 }
 
@@ -18,7 +18,7 @@
   position: absolute;
   visibility: hidden;
   padding: $space-24;
-  transform: translateX(-72%);
+  transform: translateX(-65%) translateY(4%);
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -30,7 +30,20 @@
   @include elevation-200;
 }
 
-[data-is-closed='false'] .menu-btn:before {
+.arcane-navigation-menu-button {
+  border-radius: 50%;
+  width: $space-64;
+  height: $space-64;
+  &:hover {
+    background-color: #ebebf0;
+  }
+}
+
+.arcane-button-menu-active {
+  background-color: #d8d8dc;
+}
+
+/* [data-is-closed='false'] .menu-btn:before {
   content: '';
   background-color: var(--primary-200);
   border-radius: 50%;
@@ -41,7 +54,6 @@
   height: 100%;
   transform: scale(1.1);
   display: block;
-  z-index: -10;
 }
 
 [data-is-closed='true'] .circle-hover:hover:before {
@@ -55,10 +67,9 @@
   height: 100%;
   transform: scale(1.1);
   display: block;
-  z-index: -10;
   cursor: pointer;
 }
-
+ */
 .divider {
   height: $space-2;
   background-color: var(--divider);

@@ -3,6 +3,7 @@
 import { mergeProps, VoidComponent } from 'solid-js';
 import { Card } from '@arcane-web/alchemy-solid';
 import { Transition } from 'solid-transition-group';
+import './Info.scss';
 
 type InfoVariant = 'primary' | 'secondary';
 
@@ -32,7 +33,14 @@ const Info: VoidComponent<InfoProps> = (props) => {
         }}
       >
         <h6>{props.title}</h6>
-        <p class="small">{props.description}</p>
+        <p
+          class="small"
+          classList={{
+            'secondary-info': merged.variant === 'secondary',
+          }}
+        >
+          {props.description}
+        </p>
       </Card>
     </Transition>
   );

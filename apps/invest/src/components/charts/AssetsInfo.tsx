@@ -15,7 +15,16 @@ const backgroundColor = [
   'rgb(54, 162, 235)',
   'rgb(255, 205, 86)',
   'rgb(255, 123, 86)',
+  'rgb(54, 162, 235)',
+  'rgb(255, 205, 86)',
+  'rgb(255, 123, 86)',
 ];
+
+function toFixed(num, fixed) {
+  const re = new RegExp('^-?\\d+(?:.\\d{0,' + (fixed || -1) + '})?');
+  return num.toString().match(re)[0];
+}
+
 const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
   const [sum, setSum] = createSignal<number | null>(null);
   let canvas;
@@ -35,7 +44,7 @@ const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
             {
               label: props.title,
               data: props.data.map((item) =>
-                Math.trunc((item.units / sum) * 100)
+                Number(toFixed((item.units / sum) * 100, 2))
               ),
               backgroundColor: backgroundColor,
             },
@@ -43,6 +52,7 @@ const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
         },
         options: {
           responsive: true,
+          cutout: 60,
           plugins: {
             legend: {
               position: 'right',
@@ -66,6 +76,13 @@ const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
               text: props.title,
               position: 'top',
               align: 'start',
+              font: {
+                family: 'Poppins',
+                size: 16,
+                lineHeight: '24px',
+                weight: '500',
+                style: 'normal',
+              },
             },
             tooltip: {
               callbacks: {

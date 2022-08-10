@@ -1,7 +1,7 @@
 /** @format */
 
 import { VoidComponent, Show, For } from 'solid-js';
-import { Info, AssetInfo } from '../components';
+import { Info, AssetInfo, isSmall } from '../components';
 import ArcaneAppProvider from '../components/app/ArcaneApp';
 import { gql } from '@solid-primitives/graphql';
 import investClient from '../invest-contentful';
@@ -38,6 +38,13 @@ const Home: VoidComponent = () => {
     `
   );
 
+  const getSecondaryClass = (index: number) => {
+    if (index === 0 || index === 3) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <ArcaneAppProvider name={import.meta.env.VITE_APP_NAME}>
       <Show
@@ -70,7 +77,9 @@ const Home: VoidComponent = () => {
                   <Info
                     title={item.title}
                     description={item.caption}
-                    {...(index() % 2 === 0 && { variant: 'secondary' })}
+                    variant={
+                      getSecondaryClass(index()) ? 'secondary' : 'primary'
+                    }
                   />
                 )}
               </For>
