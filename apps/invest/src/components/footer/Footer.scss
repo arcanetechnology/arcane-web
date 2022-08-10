@@ -48,15 +48,18 @@ footer {
   display: flex;
   flex-direction: row;
   color: white;
+  justify-content: space-between;
+  @include breakpoint(medium) {
+    gap: 96px;
+  }
 }
 
 .sub-footer {
   display: flex;
   flex-direction: column;
-  padding-top: 48px;
-  padding-bottom: 40px;
-  font-size: 16px;
-  line-height: 24px;
+
+  padding-top: $space-32;
+  padding-bottom: $space-24;
 
   @include breakpoint(medium) {
     flex-direction: row;
@@ -64,17 +67,10 @@ footer {
     padding-bottom: 20px;
   }
 
-  @include breakpoint(large) {
-    flex-direction: row;
-    padding-top: 40px;
-    padding-bottom: 20px;
-  }
-
   .copyright {
-    @include breakpoint(small) {
-      margin-right: 0px;
-      margin-bottom: 24px;
-    }
+    margin-right: 0px;
+    margin-bottom: 24px;
+    align-self: center;
 
     @include breakpoint(medium) {
       margin-right: 80px;
