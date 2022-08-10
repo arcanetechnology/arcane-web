@@ -16,8 +16,8 @@ const Shell: FlowComponent<ShellProps> = (props) => {
       <main id="main-content" class={styles['mainContent']}>
         {props.children}
       </main>
-      <Footer />
       <Cookie />
+      <Footer />
     </div>
   );
 };

@@ -5,7 +5,7 @@
 footer {
   background-color: var(--footer-background);
   color: var(--footer-color);
-  flex: 0;
+  
   & svg {
     filter: invert(1);
     fill: var(--footer-color);

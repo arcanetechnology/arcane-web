@@ -1,19 +1,25 @@
 /** @format */
 
 .shell {
-  height: 100%;
+  min-height: 100% !important;
+  align-items: stretch;
   display: flex;
   flex-direction: column;
   overflow-wrap: break-word;
   word-wrap: break-word; /* Firefox support */
   background-color: var(--background);
+
   main {
-    flex: 1 0 auto;
+    flex-grow: 1 !important;
   }
+
   footer {
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
+    margin-top: auto;
   }
 }
 .mainContent {
-  flex: 1 0 auto;
+  flex-grow: 1 !important;
+  height: 100vh;
+  margin-bottom: 464px;
 }
