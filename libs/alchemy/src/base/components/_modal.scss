@@ -79,7 +79,7 @@
 .modal-large {
   @include breakpoint(default) {
     width: 696px;
-    height: 464px !important;
+    height: 90% !important;
     padding: $space-12;
     @include radius-small;
     bottom: 0;
@@ -87,7 +87,7 @@
 
   @include breakpoint(small) {
     width: 100%;
-    height: 90%;
+    height: 90% !important;
     padding: $space-12;
     @include radius-small;
     bottom: 0;

@@ -7,6 +7,7 @@ import './Footer.scss';
 import Logo from '../../assets/logo.svg';
 import { getNavigation } from '../../api/navigation';
 import heart from '../../assets/heart.svg';
+import { isSmall } from '..';
 
 const Footer: VoidComponent = () => {
   const [sortedNavigation, setSortedNavigation] = createSignal([]);
@@ -121,15 +122,18 @@ const Footer: VoidComponent = () => {
             <p style={{ 'padding-left': '4px' }}>in Norway</p>
           </div>
           <div class="social">
-            <p
-              class="body3"
-              style={{
-                'margin-right': '16px',
-                'padding-top': '6px',
-              }}
-            >
-              Follow us
-            </p>
+            <Show when={!isSmall()}>
+              {' '}
+              <p
+                class="body3"
+                style={{
+                  'margin-right': '16px',
+                  'padding-top': '6px',
+                }}
+              >
+                Follow us
+              </p>
+            </Show>
             <a href="https://twitter.com/arcane_crypto">
               <img
                 src={Twitter}
