@@ -8,6 +8,7 @@ import {
   createSignal,
   onMount,
   createEffect,
+  Show,
 } from 'solid-js';
 import Question from './Question';
 import { useOnboarding } from '../Onboarding';
@@ -21,6 +22,7 @@ import back from '../../../assets/back.svg';
 import Progress from '../../progress/Progress';
 import './Survey.scss';
 import OnboardingLogo from '../../../assets/onboarding.svg';
+import { isSmall } from '../..';
 
 type OnboardingSurveyProps = {
   route: Questions;
@@ -64,12 +66,23 @@ const OnboardingSurvey: VoidComponent<
       </div>
       <Form ref={form}>
         <div class="onboarding-survey-content">
+          <Show when={props.route === 'warning'}>
+            <div style={{ 'padding-bottom': '8px' }}>
+              <p class={isSmall() ? 'body1' : 'heading8'}>WARNING</p>
+            </div>
+          </Show>
           <Switch>
             <For each={nodes}>
               {(node) => {
                 return (
                   <Match when={props.route === node.name}>
-                    <div class="onboarding-survey-text">
+                    <div
+                      class={
+                        props.route === 'warning' && isSmall()
+                          ? 'onboarding-warning-mobile'
+                          : 'onboarding-survey-text'
+                      }
+                    >
                       <Question
                         onSubmit={props.onSubmit}
                         onChange={setData}
@@ -82,7 +95,13 @@ const OnboardingSurvey: VoidComponent<
             </For>
           </Switch>
         </div>
-        <div class="onboarding-survey-action">
+        <div
+          class={
+            props.route === 'warning' && isSmall()
+              ? 'onboarding-warning-mobile-action'
+              : 'onboarding-survey-action'
+          }
+        >
           {props.route === 'warning' ? (
             <div>
               <Button

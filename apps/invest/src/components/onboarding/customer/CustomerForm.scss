@@ -42,83 +42,6 @@
   z-index: 15;
 }
 
-.customer-text-form {
-  @include breakpoint(medium) {
-    display: flex;
-    flex-direction: row;
-  }
-}
-
-.onboarding-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.onboarding-form-title {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: $space-16;
-  // TODO: @xavier not in 8 point grid system.
-  padding-bottom: 40px;
-  padding-top: 48px;
-
-  // TODO: @xavier not in the 8 point grid system.
-  > img {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-.onboarding-form-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.onboarding-form-content {
-  padding-right: $space-64;
-  padding-left: $space-64;
-}
-
-.onboarding-form-action {
-  padding-right: $space-64;
-  padding-left: $space-64;
-  padding-bottom: 80px;
-  width: 100%;
-}
-
-.onboarding-form-input {
-  padding-top: $space-16;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  gap: $space-8;
-  padding-bottom: 152px;
-}
-
-.onboarding-form-footer {
-  padding-bottom: $space-32;
-  display: flex;
-  justify-content: flex-end;
-  gap: $space-24;
-  padding-right: $space-24;
-}
-
-.onboarding-company-behalf {
-  padding-top: $space-24;
-  display: flex;
-  width: 83px;
-  flex-direction: column;
-  gap: 16px;
-  padding-bottom: 64px;
-}
-
 // number list select
 
 .number-list .solid-select-single-value {
@@ -158,4 +81,106 @@
   width: inherit !important;
   word-wrap: break-word;
   z-index: 15;
+}
+
+/// actual css
+
+.customer-text-form {
+  @include breakpoint(medium) {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.onboarding-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.onboarding-form-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $space-16;
+  // TODO: @xavier not in 8 point grid system.
+  padding-bottom: 88px;
+  padding-top: 48px;
+
+  @include breakpoint(medium) {
+    padding-bottom: 40px;
+  }
+
+  // TODO: @xavier not in the 8 point grid system.
+  > img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.onboarding-form-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.onboarding-form-content {
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @include breakpoint(medium) {
+    padding-right: $space-64;
+    padding-left: $space-64;
+  }
+}
+
+.onboarding-form-action {
+  padding-right: $space-64;
+  padding-left: $space-64;
+  padding-bottom: 80px;
+  width: 100%;
+}
+
+.onboarding-form-input {
+  padding-top: $space-24;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: $space-8;
+  padding-bottom: 348px;
+
+  @include breakpoint(medium) {
+    padding-bottom: 152px;
+    padding-top: $space-16;
+  }
+}
+
+.onboarding-form-footer {
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: flex-end;
+  gap: $space-24;
+  padding-right: 20px;
+  @include breakpoint(medium) {
+    padding-bottom: $space-32;
+    padding-right: $space-24;
+  }
+}
+
+.onboarding-company-behalf {
+  padding-top: $space-24;
+  display: flex;
+  width: 83px;
+  flex-direction: column;
+  gap: $space-16;
+  padding-bottom: 348px;
+
+  @include breakpoint(medium) {
+    padding-bottom: 64px;
+    padding-top: $space-16;
+  }
 }

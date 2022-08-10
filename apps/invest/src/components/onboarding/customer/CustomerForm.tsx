@@ -137,7 +137,12 @@ const CustomerFormPages = formConfig.map(
                   </div>
                 </Match>
                 <Match when={field.name === 'nationalNumber'}>
-                  <div class="onboarding-form-input">
+                  <div
+                    class="onboarding-form-input"
+                    classList={{
+                      'align-vertical': isSmall(),
+                    }}
+                  >
                     <div>
                       <Select
                         class="number-list"
@@ -173,7 +178,10 @@ const CustomerFormPages = formConfig.map(
                       style={{
                         flex: 1,
                       }}
-                      classList={{ 'padding-4': isSmall() }}
+                      classList={{
+                        'padding-4': isSmall(),
+                        'w-full': isSmall(),
+                      }}
                     >
                       <Input
                         name={field.name}

@@ -80,6 +80,7 @@
   @include breakpoint(default) {
     width: 100%;
     height: auto;
+    max-height: 720px;
     padding: $space-12;
     border-radius: 16px 16px 0px 0px;
     bottom: 0;
@@ -88,6 +89,7 @@
   @include breakpoint(small) {
     width: 100%;
     height: auto;
+    max-height: 720px !important;
     padding: $space-12;
     border-radius: 16px 16px 0px 0px;
     bottom: 0;
