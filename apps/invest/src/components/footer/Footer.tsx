@@ -6,7 +6,7 @@ import LinkedIn from '../../assets/linkedin.svg';
 import './Footer.scss';
 import Logo from '../../assets/logo.svg';
 import { getNavigation } from '../../api/navigation';
-import { isSmall } from '..';
+import heart from '../../assets/heart.svg';
 
 const Footer: VoidComponent = () => {
   const nav = getNavigation();
@@ -30,12 +30,12 @@ const Footer: VoidComponent = () => {
                   {
                     <For each={nav().applicationCollection.items}>
                       {(n) => (
-                        <div style={{ 'margin-top': '16px', color: 'white' }}>
+                        <div style={{ 'margin-top': '16px' }}>
                           <a
-                            class="third after footer-link body1 "
+                            class="third after"
                             href={window.location.origin + '/' + (n.path ?? '')}
                           >
-                            {n.name}
+                            <p class="body1">{n.name}</p>
                           </a>
                         </div>
                       )}
@@ -48,18 +48,18 @@ const Footer: VoidComponent = () => {
               <p class="heading8 footer-text">Company</p>
               <nav id="arcane-static" class="align-vertical">
                 <div style={{ 'margin-top': '16px' }}>
-                  <a class="third after footer-link body1" href="/people">
-                    People
+                  <a class="third after" href="/people">
+                    <p class="body1">People</p>
                   </a>
                 </div>
                 <div style={{ 'margin-top': '16px' }}>
-                  <a class="third after footer-link body1" href="/relations">
-                    Investor Relations
+                  <a class="third after" href="/relations">
+                    <p class="body1">Investor Relations</p>
                   </a>
                 </div>
                 <div style={{ 'margin-top': '16px' }}>
-                  <a class="third after footer-link body1" href="/privacy">
-                    Privacy
+                  <a class="third after" href="/privacy">
+                    <p class="body1">Privacy</p>
                   </a>
                 </div>
               </nav>
@@ -71,7 +71,11 @@ const Footer: VoidComponent = () => {
       <div class="container">
         <div class="sub-footer">
           <div class="copyright">© All rights reserved to Arcane.</div>
-          <div>Made with in Norway</div>
+          <div class="madeIn">
+            <p style={{ 'padding-right': '3px' }}>Made with</p>
+            <img src={heart} width={15} height={18} style={{ opacity: 0.4 }} />
+            <p style={{ 'padding-left': '3px' }}>in Norway</p>
+          </div>
           <div class="social">
             <p
               class="body3"

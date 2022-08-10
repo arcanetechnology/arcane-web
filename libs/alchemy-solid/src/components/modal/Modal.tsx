@@ -27,17 +27,19 @@ const Modal: FlowComponent<ModalProps> = (props) => {
             'modal-large': local.size === 'large',
           }}
         >
-          <div class="modal-close">
-            <Button
-              variant="tertiary"
-              size="medium"
-              type="button"
-              onClick={() => others.toggleModal(false)}
-              class="modal-close"
-            >
-              X
-            </Button>
-          </div>
+          <Show when={local.size === 'large'}>
+            <div class="modal-close">
+              <Button
+                variant="tertiary"
+                size="medium"
+                type="button"
+                onClick={() => others.toggleModal(false)}
+                class="modal-close"
+              >
+                X
+              </Button>
+            </div>
+          </Show>
           {others.children}
         </div>
       </div>

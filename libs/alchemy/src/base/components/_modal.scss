@@ -30,26 +30,8 @@
   right: 0;
   z-index: 21;
   background: #ffffff;
-  @include radius-small;
   animation: fade-in 0.5s ease-in-out forwards;
   transition: all 0.25s ease-in-out;
-
-  @include breakpoint(default) {
-    bottom: 0;
-  }
-
-  @include breakpoint(small) {
-    bottom: 0;
-  }
-
-  @include breakpoint(medium) {
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
 }
 
 .modal-close {
@@ -59,30 +41,39 @@
   right: 0px;
 }
 
+//TODO: @xavier make this more generic
 .modal-small {
   @include breakpoint(default) {
-    width: 100%;
+    width: 100% !important;
     height: auto;
-    padding: $space-12;
+    border-radius: ($space-16) ($space-16) 0px 0px;
+    box-shadow: 0px 24px 38px rgba(9, 10, 11, 0.14),
+      0px 9px 46px rgba(9, 10, 11, 0.5), 0px 11px 15px rgba(9, 10, 11, 0.2);
+    bottom: $space-24;
   }
 
   @include breakpoint(small) {
-    width: 100%;
-    height: 288px;
-    padding: 20px;
+    width: 100% !important;
+    box-shadow: 0px 24px 38px rgba(9, 10, 11, 0.14),
+      0px 9px 46px rgba(9, 10, 11, 0.5), 0px 11px 15px rgba(9, 10, 11, 0.2);
+    border-radius: ($space-16) ($space-16) 0px 0px;
+    bottom: 0;
+    bottom: $space-24;
   }
 
   @include breakpoint(medium) {
-    width: 431px;
-    height: 312px;
-    padding: ($space-32) 48px;
+    width: 431px !important;
+    height: 312px !important;
+    box-shadow: 0px 24px 38px rgba(9, 10, 11, 0.14),
+      0px 9px 46px rgba(9, 10, 11, 0.5), 0px 11px 15px rgba(9, 10, 11, 0.2);
+    border-radius: ($space-16);
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
   }
-  /* 
-  @include breakpoint(large) {
-    width: 431px;
-    height: 312px;
-    padding: $space-24;
-  } */
 }
 
 .modal-large {
@@ -90,12 +81,16 @@
     width: 696px;
     height: 464px !important;
     padding: $space-12;
+    @include radius-small;
+    bottom: 0;
   }
 
   @include breakpoint(small) {
     width: 100%;
     height: 90%;
     padding: $space-12;
+    @include radius-small;
+    bottom: 0;
   }
 
   // Invest app figma modal size
@@ -103,12 +98,26 @@
   @include breakpoint(medium) {
     width: 696px;
     height: 464px !important;
+    @include radius-small;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
     //    padding: ($space-64) ($space-64);
   }
 
   @include breakpoint(large) {
     width: 696px;
     height: 464px !important;
+    @include radius-small;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
     //padding: ($space-64) ($space-64);
   }
 }

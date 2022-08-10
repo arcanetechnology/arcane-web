@@ -10,6 +10,8 @@ import { Button, Modal, Toggle } from '@arcane-web/alchemy-solid';
 import { createLocalStorage } from '@solid-primitives/storage';
 import { createEffect, createSignal, Show, VoidComponent } from 'solid-js';
 import Back from '../../assets/back.svg';
+import cookie from '../../assets/cookie.svg';
+import switchDisabled from '../../assets/switchDisabled.svg';
 import './Cookie.scss';
 
 const Cookie: VoidComponent = () => {
@@ -47,71 +49,82 @@ const Cookie: VoidComponent = () => {
       toggleModal={toggleModal}
       isOpen={isOpen()}
     >
-      <article class="modal-content">
-        <div class="align-row gap-small modal-title">
-          <Show when={showBreakDown()}>
+      <article class="arcane-cookie">
+        <div class="arcane-cookie-title">
+          <Show
+            when={showBreakDown()}
+            fallback={<img src={cookie} width={40} height={40} />}
+          >
             <Button onClick={(e) => setShowBreakDown(false)}>
               <img src={Back} alt="back-icon" />
             </Button>
           </Show>
-          <p class="heading8">Cookie Settings</p>
+          <p class="heading7">Cookie Settings</p>
         </div>
-        <div class="modal-form">
-          <div class="cookie-main">
-            <div class="onboarding-main padding-32">
-              <p class="body3">
-                We use cookies in order to give you the best experience possible
-                while visiting our website. Some of them are essential, others
-                are optional. We won’t turn them on unless you accept.
-                <a href="https://arcane.no/cookies">Learn more about them</a>
-              </p>
-              <Show when={showBreakDown()}>
-                <div class="padding-16">
-                  <div class="align-row">
-                    <p class="body1">Strictly Necessary</p>
-                    <div style={{ 'flex-grow': 1 }} />
-                    <Toggle defaultChecked disabled />
-                  </div>
-                  <p class="small">
+        <div class="arcane-cookie-content">
+          <p class="body1 arcane-content-text">
+            We use cookies in order to give you the best experience possible
+            while visiting our website. Some of them are essential, others are
+            optional. We won’t turn them on unless you accept.
+            <a href="https://arcane.no/cookies"> Learn more about</a>
+          </p>
+
+          <Show when={showBreakDown()}>
+            <div class="arcane-cookie-options">
+              <div class="arcane-cookie-option">
+                <div class="cookie-option-text">
+                  <p class="body1">Strictly Necessary</p>
+                  <p class="small description">
                     These cookies are necessary for our website to function
                     properly and can’t be disabled.
                   </p>
                 </div>
                 <div>
-                  <div class="align-row">
-                    <p class="body1">Product Development</p>
-                    <div style={{ 'flex-grow': 1 }} />
-                    <Toggle
-                      defaultChecked={productDevCookie()}
-                      onChange={(s) => {
-                        setProductDevCookie(!s);
-                      }}
-                    />
-                  </div>
-                  <p class="small">
-                    These cookies are necessary for our website to function
-                    properly and can’t be disabled.
+                  {/* <Toggle defaultChecked disabled /> */}
+                  <img src={switchDisabled} />
+                </div>
+              </div>
+              <div
+                class="arcane-cookie-option"
+                style={{ 'padding-top': '16px' }}
+              >
+                <div class="cookie-option-text">
+                  <p class="body1">Product Development</p>
+                  <p class="small description">
+                    These cookies help us understand how people use our website
+                    and help us make it better.
                   </p>
                 </div>
-              </Show>
+                <div>
+                  <Toggle
+                    defaultChecked={productDevCookie()}
+                    onChange={(s) => {
+                      setProductDevCookie(!s);
+                    }}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
+          </Show>
         </div>
-        <div class="cookie-footer modal-horizontal gap-big w-full">
+        <div class="arcane-cookie-footer">
           <Show
             when={showBreakDown()}
             fallback={
               <Button
+                class="arcane-cookie-button"
                 variant="secondary"
                 size="medium"
                 onClick={() => setShowBreakDown(true)}
               >
-                Manage Cookies
+                <p class="body1">Manage Cookies</p>
               </Button>
             }
           >
             <Button
+              class="arcane-cookie-button"
               onClick={() => toggleModal(false)}
+              style={{ width: '90px' }}
               size="medium"
               variant="secondary"
             >
@@ -119,11 +132,12 @@ const Cookie: VoidComponent = () => {
             </Button>
           </Show>
           <Button
+            class="arcane-cookie-button"
             variant="primary"
             size="medium"
             onClick={() => handleCookies()}
           >
-            Allow Cookies
+            <p class="body3">Allow Cookies</p>
           </Button>
         </div>
       </article>

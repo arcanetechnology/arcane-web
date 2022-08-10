@@ -9,9 +9,9 @@ a:active {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   position: relative;
-  transition: 0.2s color ease;
   text-decoration: none;
   padding-top: $space-4;
+  color: inherit !important;
 }
 
 a.after:after {

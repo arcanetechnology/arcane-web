@@ -34,7 +34,9 @@ const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
           datasets: [
             {
               label: props.title,
-              data: props.data.map((item) => (item.units / sum) * 100),
+              data: props.data.map((item) =>
+                Math.trunc((item.units / sum) * 100)
+              ),
               backgroundColor: backgroundColor,
             },
           ],

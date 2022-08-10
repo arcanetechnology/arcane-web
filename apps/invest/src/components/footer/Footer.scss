@@ -71,16 +71,19 @@ footer {
   }
 
   .copyright {
-    margin-right: 80px;
-
     @include breakpoint(small) {
       margin-right: 0px;
       margin-bottom: 24px;
     }
 
     @include breakpoint(medium) {
-      margin-right: 32px;
+      margin-right: 80px;
     }
+  }
+
+  .madeIn {
+    display: flex;
+    flex-direction: row;
   }
 
   .social {
