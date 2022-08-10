@@ -24,7 +24,7 @@ const Landing: FlowComponent<LandingProps> = (props) => {
       <section
         classList={{
           'margin-48': isSmall(),
-          'margin-128': !isSmall(),
+          'margin-96': !isSmall(),
         }}
       >
         <div class="container" style={{ 'text-align': 'center' }}>
@@ -40,17 +40,19 @@ const Landing: FlowComponent<LandingProps> = (props) => {
         <Show
           when={isSmall()}
           fallback={
-            <section class="margin-32">
+            <section
+              style={{ 'padding-bottom': isSmall() ? '124px' : '200px' }}
+            >
               <div id="apology-message" class="container" data-auto-grid="2">
                 <div class="space-8">
                   <img src={invest} alt="invest-landing" />
                 </div>
-                <div class="space-8 align-vertical">
+                <div class="align-vertical">
                   <h1>The fund.</h1>
                   <h6 class="secondary-text">
                     Get managed exposure to cryptocurrencies as an asset class.
                   </h6>
-                  <div class="margin-top-16">{props.children}</div>
+                  <div class="margin-top-32">{props.children}</div>
                 </div>
               </div>
             </section>
