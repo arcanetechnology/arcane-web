@@ -1,5 +1,6 @@
 /** @format */
 @import '@arcane-web/alchemy/lib/base/space';
+@import '@arcane-web/alchemy/lib/base/breakpoint';
 
 .onboarding-welcome {
   display: flex;
@@ -12,11 +13,18 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   gap: $space-16;
   // TODO: @xavier not in 8 point grid system.
-  padding-bottom: 40px;
-  padding-top: 80px;
+  padding-bottom: 68px;
+  padding-top: 48px;
+
+  @include breakpoint(medium) {
+    padding-bottom: 40px;
+    padding-top: 80px;
+    flex-direction: row;
+  }
 
   // TODO: @xavier not in the 8 point grid system.
   > img {
@@ -26,14 +34,25 @@
 }
 
 .onboarding-welcome-content {
-  padding-right: $space-64;
-  padding-left: $space-64;
-  padding-bottom: $space-24;
+  padding-right: $space-48;
+  padding-left: $space-48;
+  padding-bottom: 92px;
+  @include breakpoint(medium) {
+    padding-right: $space-64;
+    padding-left: $space-64;
+    padding-bottom: $space-24;
+  }
 }
 
 .onboarding-welcome-action {
-  padding-right: $space-64;
-  padding-left: $space-64;
-  padding-bottom: 80px;
   width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 96px;
+
+  @include breakpoint(medium) {
+    padding-right: $space-64;
+    padding-left: $space-64;
+    padding-bottom: 80px;
+  }
 }

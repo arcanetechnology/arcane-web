@@ -1,5 +1,6 @@
 /** @format */
 @import '@arcane-web/alchemy/lib/base/space';
+@import '@arcane-web/alchemy/lib/base/breakpoint';
 
 .onboarding-survey {
   display: flex;
@@ -15,8 +16,12 @@
   align-items: center;
   gap: $space-16;
   // TODO: @xavier not in 8 point grid system.
-  padding-bottom: 40px;
-  padding-top: $space-64;
+  padding-bottom: 88px;
+  padding-top: $space-48;
+
+  @include breakpoint(medium) {
+    padding-top: $space-64;
+  }
 
   // TODO: @xavier not in the 8 point grid system.
   > img {
@@ -26,16 +31,26 @@
 }
 
 .onboarding-survey-content {
-  padding-right: $space-64;
-  padding-left: $space-64;
+  padding-right: 20px;
+  padding-left: 20px;
   padding-bottom: $space-24;
+  @include breakpoint(medium) {
+    padding-right: $space-64;
+    padding-left: $space-64;
+    padding-bottom: $space-24;
+  }
 }
 
 .onboarding-survey-action {
-  padding-right: $space-64;
-  padding-left: $space-64;
-  // TODO: @xavier arbitary number.
-  padding-bottom: $space-32;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 228px;
+  @include breakpoint(medium) {
+    padding-right: $space-64;
+    padding-left: $space-64;
+    // TODO: @xavier arbitary number.
+    padding-bottom: $space-32;
+  }
 }
 
 .onboarding-survey-text {
@@ -52,9 +67,14 @@
 }
 
 .onboarding-survey-footer {
-  padding-bottom: $space-32;
+  padding-bottom: 40px;
   display: flex;
   justify-content: flex-end;
   gap: $space-24;
-  padding-right: $space-24;
+  padding-right: 20px;
+
+  @include breakpoint(medium) {
+    padding-bottom: $space-32;
+    padding-right: $space-24;
+  }
 }
