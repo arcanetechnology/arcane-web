@@ -11,19 +11,14 @@ type AssetInfoProps = {
   title: string;
 };
 const backgroundColor = [
-  'rgb(255, 99, 132)',
-  'rgb(54, 162, 235)',
-  'rgb(255, 205, 86)',
-  'rgb(255, 123, 86)',
-  'rgb(54, 162, 235)',
-  'rgb(255, 205, 86)',
-  'rgb(255, 123, 86)',
+  '#5ac8fa',
+  '#5856d6',
+  '#aeaeb2',
+  '#fa8f5a',
+  '#d69656',
+  '#b2b0ae',
+  '#090A0B',
 ];
-
-function toFixed(num, fixed) {
-  const re = new RegExp('^-?\\d+(?:.\\d{0,' + (fixed || -1) + '})?');
-  return num.toString().match(re)[0];
-}
 
 const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
   const [sum, setSum] = createSignal<number | null>(null);
@@ -43,9 +38,10 @@ const AssetInfo: VoidComponent<AssetInfoProps> = (props) => {
           datasets: [
             {
               label: props.title,
-              data: props.data.map((item) =>
-                Number(toFixed((item.units / sum) * 100, 2))
-              ),
+              data: props.data.map((item) => {
+                const perc = Math.trunc((item.units / sum) * 10000) / 100;
+                return perc;
+              }),
               backgroundColor: backgroundColor,
             },
           ],

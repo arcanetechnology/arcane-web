@@ -1,6 +1,6 @@
 /** @format */
 
-import { For, Show, VoidComponent } from 'solid-js';
+import { For, Show, VoidComponent, createSignal, createEffect } from 'solid-js';
 import Twitter from '../../assets/twitter.svg';
 import LinkedIn from '../../assets/linkedin.svg';
 import './Footer.scss';
@@ -9,7 +9,18 @@ import { getNavigation } from '../../api/navigation';
 import heart from '../../assets/heart.svg';
 
 const Footer: VoidComponent = () => {
+  const [sortedNavigation, setSortedNavigation] = createSignal([]);
   const nav = getNavigation();
+
+  createEffect(() => {
+    if (nav()) {
+      const sorted = nav().applicationCollection.items.sort((a, b) => {
+        return a.ranking - b.ranking;
+      });
+      setSortedNavigation(sorted);
+    }
+  });
+
   return (
     <footer>
       <div class="container">
@@ -26,16 +37,30 @@ const Footer: VoidComponent = () => {
             <div style={{ 'margin-right': '96px' }}>
               <p class="heading8">Menu</p>
               <nav id="arcane-application-navigation" class="align-vertical">
-                <Show when={nav()}>
+                <Show when={sortedNavigation().length > 0}>
                   {
-                    <For each={nav().applicationCollection.items}>
+                    <For each={sortedNavigation()}>
                       {(n) => (
                         <div style={{ 'margin-top': '16px' }}>
                           <a
                             class="third after"
+                            classList={{
+                              after: !(
+                                window.location.pathname.split('/')[1] ===
+                                n.path
+                              ),
+                            }}
                             href={window.location.origin + '/' + (n.path ?? '')}
                           >
                             <p class="body1">{n.name}</p>
+                            <Show
+                              when={
+                                window.location.pathname.split('/')[1] ===
+                                n.path
+                              }
+                            >
+                              <div class="arcane-footer-link" />
+                            </Show>
                           </a>
                         </div>
                       )}
@@ -50,16 +75,35 @@ const Footer: VoidComponent = () => {
                 <div style={{ 'margin-top': '16px' }}>
                   <a class="third after" href="/people">
                     <p class="body1">People</p>
+                    <Show
+                      when={window.location.pathname.split('/')[1] === 'people'}
+                    >
+                      <div class="arcane-footer-link" />
+                    </Show>
                   </a>
                 </div>
                 <div style={{ 'margin-top': '16px' }}>
                   <a class="third after" href="/relations">
                     <p class="body1">Investor Relations</p>
+                    <Show
+                      when={
+                        window.location.pathname.split('/')[1] === 'relations'
+                      }
+                    >
+                      <div class="arcane-footer-link" />
+                    </Show>
                   </a>
                 </div>
                 <div style={{ 'margin-top': '16px' }}>
                   <a class="third after" href="/privacy">
                     <p class="body1">Privacy</p>
+                    <Show
+                      when={
+                        window.location.pathname.split('/')[1] === 'privacy'
+                      }
+                    >
+                      <div class="arcane-footer-link" />
+                    </Show>
                   </a>
                 </div>
               </nav>
@@ -72,15 +116,16 @@ const Footer: VoidComponent = () => {
         <div class="sub-footer">
           <div class="copyright">© All rights reserved to Arcane.</div>
           <div class="madeIn">
-            <p style={{ 'padding-right': '3px' }}>Made with</p>
-            <img src={heart} width={15} height={18} style={{ opacity: 0.4 }} />
-            <p style={{ 'padding-left': '3px' }}>in Norway</p>
+            <p style={{ 'padding-right': '4px' }}>Made with</p>
+            <img src={heart} width={15} height={19} style={{ opacity: 0.4 }} />
+            <p style={{ 'padding-left': '4px' }}>in Norway</p>
           </div>
           <div class="social">
             <p
               class="body3"
               style={{
                 'margin-right': '16px',
+                'padding-top': '6px',
               }}
             >
               Follow us

@@ -45,8 +45,7 @@ body {
   h2,
   h3,
   h4,
-  h5,
-  h6 {
+  h5 {
     font-weight: 600;
   }
 
@@ -56,7 +55,7 @@ body {
   }
 
   h1 {
-    @include size-36;
+    @include size-24;
 
     @include breakpoint(medium) {
       @include size-48;
@@ -64,7 +63,7 @@ body {
   }
 
   h2 {
-    @include size-30;
+    @include size-20;
 
     @include breakpoint(medium) {
       @include size-36;
@@ -88,18 +87,20 @@ body {
   }
 
   h5 {
-    @include size-18;
+    @include size-14;
 
     @include breakpoint(medium) {
-      @include size-20;
+      @include size-18;
     }
   }
 
   h6 {
-    @include size-16;
+    @include size-14;
+    font-weight: 500;
 
     @include breakpoint(medium) {
       @include size-18;
+      font-weight: 600;
     }
   }
 }

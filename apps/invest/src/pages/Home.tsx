@@ -39,10 +39,16 @@ const Home: VoidComponent = () => {
   );
 
   const getSecondaryClass = (index: number) => {
-    if (index === 0 || index === 3) {
-      return true;
+    switch (index) {
+      case 0:
+        return true;
+      case 2:
+        return isSmall() ? true : false;
+      case 3:
+        return isSmall() ? false : true;
+      default:
+        return false;
     }
-    return false;
   };
 
   return (
@@ -55,7 +61,12 @@ const Home: VoidComponent = () => {
           </>
         }
       >
-        <section class="margin-48">
+        <section
+          classList={{
+            'margin-16': isSmall(),
+            'margin-48': !isSmall(),
+          }}
+        >
           <div class="container">
             <h5>{fundInfoCollection().fundInfoCollection.items[0].title}</h5>
           </div>

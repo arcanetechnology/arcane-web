@@ -1,13 +1,6 @@
 /** @format */
 
-import {
-  Show,
-  VoidComponent,
-  For,
-  createSignal,
-  onMount,
-  createEffect,
-} from 'solid-js';
+import { Show, VoidComponent, For, createSignal, createEffect } from 'solid-js';
 import './Navigation.scss';
 import { getNavigation } from '../../api/navigation';
 import menu from '../../assets/menu.svg';
@@ -16,6 +9,7 @@ import { Authentication } from '@arcane-web/arcane-components';
 const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
 const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
 
+// TODO: global?
 const Navigation: VoidComponent = () => {
   const [sortedNavigation, setSortedNavigation] = createSignal([]);
   const nav = getNavigation();
@@ -96,7 +90,7 @@ const Navigation: VoidComponent = () => {
                     />
                   </a>
 
-                  <div class="padding-8">
+                  <div class="padding-2">
                     <p class="caption">{n.name}</p>
                   </div>
                 </div>

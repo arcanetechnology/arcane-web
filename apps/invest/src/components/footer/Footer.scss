@@ -124,3 +124,11 @@ footer {
     }
   }
 }
+
+.arcane-footer-link {
+  width: 100%;
+  text-align: center;
+  height: 2px;
+  background-color: white;
+  filter: blur(2px);
+}
