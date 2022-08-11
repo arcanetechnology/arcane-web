@@ -13,6 +13,12 @@ header {
   @include breakpoint(medium) {
     height: 136px;
   }
+
+  div > img {
+    transition: all 0.2s;
+    width: 174px;
+    height: 30px;
+  }
 }
 
 .header {
