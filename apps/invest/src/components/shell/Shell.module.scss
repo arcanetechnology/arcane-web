@@ -1,4 +1,5 @@
 /** @format */
+@import '@arcane-web/alchemy/lib/base/breakpoint';
 
 .shell {
   min-height: 100% !important;
@@ -22,4 +23,9 @@
   flex-grow: 1 !important;
   height: 100vh;
   margin-bottom: 300px;
+  margin-top: 88px;
+
+  @include breakpoint(medium) {
+    margin-top: 136px;
+  }
 }
