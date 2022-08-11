@@ -65,8 +65,10 @@ const Cookie: VoidComponent = () => {
           <p class="body1 arcane-content-text">
             We use cookies in order to give you the best experience possible
             while visiting our website. Some of them are essential, others are
-            optional. We won’t turn them on unless you accept.
-            <a href="https://arcane.no/cookies"> Learn more about</a>
+            optional. We won’t turn them on unless you accept.{' '}
+            <a class="link-underline" href="https://arcane.no/cookies">
+              Learn more about
+            </a>
           </p>
 
           <Show when={showBreakDown()}>
