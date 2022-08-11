@@ -40,9 +40,9 @@ const Home: VoidComponent = () => {
 
   const getSecondaryClass = (index: number) => {
     const columnCount = isSmall() ? 1 : 2;
-    const rowIndex = index / columnCount;
+    const rowIndex = Math.floor(index / columnCount);
     const columnIndex = index % columnCount;
-    return (rowIndex + columnIndex) % 2 == 0
+    return (rowIndex + columnIndex) % 2 == 0;
   };
 
   return (

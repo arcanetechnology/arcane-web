@@ -22,7 +22,10 @@ const ArcaneAppProvider: FlowComponent<ArcaneAppProviderProps> = (props) => {
   const [show, setShowing] = createSignal(false);
 
   // ONCE auth is done in service worker, we can use the usual loading from createResource
-  createResource(fetchUserRegistration);
+
+  if (!import.meta.env.DEV) {
+    createResource(fetchUserRegistration);
+  }
 
   createEffect(() => {
     setTimeout(() => {
