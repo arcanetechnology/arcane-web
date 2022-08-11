@@ -48,7 +48,11 @@ const Toggle: VoidComponent<ToggleProps> = (props) => {
         'wrg-toggle--disabled': props.disabled,
       }}
     >
-      <div class="wrg-toggle-container">
+      <div
+        class={
+          toggle() ? 'wrg-toggle-container' : 'wrg-uncheck-toggle-container'
+        }
+      >
         <div class="wrg-toggle-check">
           <span>{getIcon('checked')}</span>
         </div>

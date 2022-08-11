@@ -65,8 +65,17 @@
   height: 24px;
   padding: 0;
   border-radius: 30px;
-  background-color: #4d4d4d;
   transition: all 0.2s ease;
+  background-color: #090a0b;
+}
+
+.wrg-uncheck-toggle-container {
+  width: 50px;
+  height: 24px;
+  padding: 0;
+  border-radius: 30px;
+  transition: all 0.2s ease;
+  background-color: #6c757d;
 }
 
 .wrg-toggle-circle {
@@ -76,7 +85,7 @@
   left: 1px;
   width: 22px;
   height: 22px;
-  border: 1px solid #4d4d4d;
+  border: 1px solid #090a0b;
   border-radius: 50%;
   background-color: #fafafa;
   box-sizing: border-box;
