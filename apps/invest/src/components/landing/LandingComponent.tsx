@@ -22,7 +22,7 @@ const Landing: FlowComponent<LandingProps> = (props) => {
             { opacity: 1, easing: 'ease-in', transform: 'translateY(0)' },
           ],
           {
-            duration: 800,
+            duration: 400,
           }
         ).finished.then(() => {
           el.style.opacity = '1';
