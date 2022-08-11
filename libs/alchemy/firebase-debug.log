@@ -1,0 +1,28 @@
+[debug] [2022-08-10T21:06:39.066Z] ----------------------------------------------------------------------
+[debug] [2022-08-10T21:06:39.067Z] Command:       /Users/joeldsouza/.nvm/versions/node/v18.6.0/bin/node /Users/joeldsouza/.nvm/versions/node/v18.6.0/bin/firebase deploy
+[debug] [2022-08-10T21:06:39.067Z] CLI Version:   11.5.0
+[debug] [2022-08-10T21:06:39.068Z] Platform:      darwin
+[debug] [2022-08-10T21:06:39.068Z] Node Version:  v18.6.0
+[debug] [2022-08-10T21:06:39.068Z] Time:          Wed Aug 10 2022 23:06:39 GMT+0200 (Central European Summer Time)
+[debug] [2022-08-10T21:06:39.068Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-08-10T21:06:39.111Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-10T21:06:39.112Z] > authorizing via signed-in user (joel@arcane.no)
+[debug] [2022-08-10T21:06:39.112Z] [iam] checking project arcane-platform-prod for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-08-10T21:06:39.113Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/arcane-platform-prod:testIamPermissions [none]
+[debug] [2022-08-10T21:06:39.114Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/arcane-platform-prod:testIamPermissions x-goog-quota-user=projects/arcane-platform-prod
+[debug] [2022-08-10T21:06:39.114Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/arcane-platform-prod:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-08-10T21:06:39.875Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/arcane-platform-prod:testIamPermissions 200
+[debug] [2022-08-10T21:06:39.875Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/arcane-platform-prod:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-08-10T21:06:39.876Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod [none]
+[debug] [2022-08-10T21:06:40.145Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod 200
+[debug] [2022-08-10T21:06:40.145Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod {"projectId":"arcane-platform-prod","projectNumber":"648199467896","displayName":"Arcane Platform Production","name":"projects/arcane-platform-prod","resources":{"hostingSite":"arcane-platform-prod"},"state":"ACTIVE","etag":"1_99a9cd4e-620a-4941-a006-f0dfb51b8b61"}
+[info] 
+[info] === Deploying to 'arcane-platform-prod'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-08-10T21:06:40.147Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod [none]
+[debug] [2022-08-10T21:06:40.442Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod 200
+[debug] [2022-08-10T21:06:40.442Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/arcane-platform-prod {"projectId":"arcane-platform-prod","projectNumber":"648199467896","displayName":"Arcane Platform Production","name":"projects/arcane-platform-prod","resources":{"hostingSite":"arcane-platform-prod"},"state":"ACTIVE","etag":"1_99a9cd4e-620a-4941-a006-f0dfb51b8b61"}
+[debug] [2022-08-10T21:06:40.444Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/648199467896/sites/arcane-invest/versions [none]
+[debug] [2022-08-10T21:06:40.445Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/648199467896/sites/arcane-invest/versions {"config":{"rewrites":[{"glob":"**","path":"/invest/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}

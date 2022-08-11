@@ -87,7 +87,7 @@ body {
   }
 
   h5 {
-    @include size-18;
+    @include size-14;
 
     @include breakpoint(medium) {
       @include size-18;
