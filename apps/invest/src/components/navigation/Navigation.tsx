@@ -9,6 +9,19 @@ import { Authentication } from '@arcane-web/arcane-components';
 const NAVIGATION_MENU_ID = 'arcane-header-navigation-menu';
 const NAVIGATION_MENU_BUTTON_ID = 'arcane-header-navigation-menu-button';
 
+function composedPath(el) {
+  const path = [];
+  while (el) {
+    path.push(el);
+    if (el.tagName === 'HTML') {
+      path.push(document);
+      path.push(window);
+      return path;
+    }
+    el = el.parentElement;
+  }
+}
+
 // TODO: global?
 const Navigation: VoidComponent = () => {
   const [sortedNavigation, setSortedNavigation] = createSignal([]);
@@ -29,8 +42,14 @@ const Navigation: VoidComponent = () => {
       const navigationMenuButton = document.getElementById(
         NAVIGATION_MENU_BUTTON_ID
       );
-      const includesMenu = !e.path.includes(navigationMenu);
-      const includesMenuBtn = !e.path.includes(navigationMenuButton);
+
+      // weird shit, have to do cos it doesn't work in ff and safari
+      const path =
+        e.path ||
+        (e.composedPath && e.composedPath()) ||
+        composedPath(e.target);
+      const includesMenu = !path.includes(navigationMenu);
+      const includesMenuBtn = !path.includes(navigationMenuButton);
       if (includesMenu && includesMenuBtn) {
         if (navigationMenu) {
           navigationMenu.style.visibility = 'hidden';
