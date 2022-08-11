@@ -10,33 +10,41 @@ type LandingProps = {
 };
 
 const Landing: FlowComponent<LandingProps> = (props) => {
-  const base = { opacity: 1 };
-  const options = { duration: 1000 };
-  const animateIn = (el: Element, done: VoidFunction) => {
-    el.animate(
-      [{ opacity: 0, transform: 'translateY(25px)' }, base],
-      options
-    ).finished.then(done);
-  };
-
   return (
-    <>
-      <section
-        classList={{
-          'margin-48': isSmall(),
-          'margin-96': !isSmall(),
-        }}
-      >
-        <div class="container" style={{ 'text-align': 'center' }}>
-          <Transition onEnter={animateIn} appear={true}>
+    <Transition
+      onBeforeEnter={(el) => {
+        el.style.opacity = '0';
+      }}
+      onEnter={(el, done) => {
+        el.animate(
+          [
+            { opacity: 0, transform: 'translateY(20px)', easing: 'ease-in' },
+            { opacity: 1, easing: 'ease-in', transform: 'translateY(0)' },
+          ],
+          {
+            duration: 800,
+          }
+        ).finished.then(() => {
+          el.style.opacity = '1';
+          done();
+        });
+      }}
+      appear={true}
+    >
+      <div>
+        <section
+          classList={{
+            'margin-48': isSmall(),
+            'margin-96': !isSmall(),
+          }}
+        >
+          <div class="container" style={{ 'text-align': 'center' }}>
             <h2>
               Build generational wealth with our actively managed crypto fund.
             </h2>
-          </Transition>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <Transition onEnter={animateIn} appear={true || isSmall()}>
         <Show
           when={isSmall()}
           fallback={
@@ -73,8 +81,8 @@ const Landing: FlowComponent<LandingProps> = (props) => {
             </div>
           </section>
         </Show>
-      </Transition>
-    </>
+      </div>
+    </Transition>
   );
 };
 
