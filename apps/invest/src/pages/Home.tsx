@@ -39,16 +39,10 @@ const Home: VoidComponent = () => {
   );
 
   const getSecondaryClass = (index: number) => {
-    switch (index) {
-      case 0:
-        return true;
-      case 2:
-        return isSmall() ? true : false;
-      case 3:
-        return isSmall() ? false : true;
-      default:
-        return false;
-    }
+    const columnCount = isSmall() ? 1 : 2;
+    const rowIndex = index / columnCount;
+    const columnIndex = index % columnCount;
+    return (rowIndex + columnIndex) % 2 == 0
   };
 
   return (
