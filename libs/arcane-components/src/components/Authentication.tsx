@@ -36,21 +36,7 @@ const Authentication: VoidComponent<AuthenticationProps> = (props) => {
   };
 
   return (
-    <Show
-      when={!state.loading}
-      fallback={
-        <Button
-          size={props.size}
-          onClick={signin}
-          title="sign into arcane platform"
-          variant="secondary"
-          id="auth"
-          {...others}
-        >
-          {'...loading'}
-        </Button>
-      }
-    >
+    <Show when={!state.loading} fallback={<div style={{ width: '90px' }} />}>
       <Show
         when={state.data}
         fallback={
