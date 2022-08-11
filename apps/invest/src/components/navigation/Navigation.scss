@@ -10,6 +10,7 @@
   width: 50px;
   position: relative;
   cursor: pointer;
+  align-self: center;
   transition: all 1ms ease-in-out;
 
   @include breakpoint(default) {
@@ -17,7 +18,7 @@
   }
 
   @include breakpoint(medium) {
-    margin-right: 28px;
+    margin-right: 24px;
   }
 }
 
@@ -39,8 +40,7 @@
 
 .arcane-navigation-menu-button {
   border-radius: 50%;
-  width: $space-64;
-  height: $space-64;
+  cursor: pointer;
   &:hover {
     background-color: #ebebf0;
   }

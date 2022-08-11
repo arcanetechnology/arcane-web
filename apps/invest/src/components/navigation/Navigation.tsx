@@ -81,7 +81,7 @@ const Navigation: VoidComponent = () => {
         id={NAVIGATION_MENU_BUTTON_ID}
         class="arcane-navigation-menu-button"
       >
-        <img src={menu} alt="Arcane Applications" />
+        <img width={50} src={menu} alt="Arcane Applications" />
       </button>
       <div id={NAVIGATION_MENU_ID} class="menu">
         <Show when={sortedNavigation().length > 0}>
