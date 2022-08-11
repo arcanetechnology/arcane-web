@@ -1,0 +1,154 @@
+/** @format */
+@import '@arcane-web/alchemy/lib/base/space';
+@import '@arcane-web/alchemy/lib/base/breakpoint';
+
+.arcane-cookie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.arcane-cookie-title {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-16;
+  // TODO: @xavier not in 8 point grid system.
+
+  @include breakpoint(default) {
+    padding-top: 20px;
+    padding-bottom: $space-24;
+  }
+
+  @include breakpoint(small) {
+    padding-top: 20px;
+    padding-bottom: $space-24;
+  }
+
+  @include breakpoint(medium) {
+    padding-bottom: $space-24;
+    padding-top: $space-32;
+  }
+
+  // TODO: @xavier not in the 8 point grid system.
+  > img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.arcane-back-cookie-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: $space-16;
+}
+
+.arcane-cookie-content {
+  @include breakpoint(default) {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: $space-24;
+  }
+
+  @include breakpoint(small) {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: $space-24;
+  }
+
+  @include breakpoint(medium) {
+    padding-right: $space-48;
+    padding-left: $space-48;
+    padding-bottom: $space-24;
+  }
+}
+
+.arcane-cookie-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+
+  @include breakpoint(default) {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+  }
+
+  @include breakpoint(small) {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+  }
+
+  @include breakpoint(medium) {
+    padding-right: $space-48;
+    padding-left: $space-48;
+    padding-bottom: $space-32;
+  }
+}
+
+.arcane-content-text {
+  color: #868e96 !important;
+}
+
+.arcane-cookie-buttons {
+  height: 40px;
+}
+
+.arcane-cookie-options {
+  @include breakpoint(default) {
+    padding-top: $space-16;
+  }
+
+  @include breakpoint(small) {
+    padding-top: $space-16;
+  }
+
+  @include breakpoint(medium) {
+    padding-top: $space-24;
+  }
+}
+
+.arcane-cookie-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 70px;
+
+  .cookie-option-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+
+    @include breakpoint(default) {
+      width: 100%;
+    }
+
+    @include breakpoint(small) {
+      width: 100%;
+    }
+
+    @include breakpoint(medium) {
+      width: 263px;
+    }
+  }
+
+  .description {
+    color: #868e96 !important;
+  }
+}
+
+.link-underline {
+  text-decoration: underline !important;
+}

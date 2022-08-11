@@ -1,24 +1,38 @@
 /** @format */
 
-import type { VoidComponent } from 'solid-js';
-import Arcane from '../../assets/logo.svg';
+import { Show, VoidComponent } from 'solid-js';
+import arcane from '../../assets/logo.svg';
 import Navigation from '../navigation/Navigation';
 import { Authentication } from '@arcane-web/arcane-components';
-
 import './Header.scss';
+import { isSmall } from '..';
+import { createScrollPosition } from '@solid-primitives/scroll';
+import { destructure } from '@solid-primitives/destructure';
 
 const Header: VoidComponent = () => {
+  const scroll = createScrollPosition();
+
   return (
-    <header role="banner">
-      <div class="container align-row margin-12">
-        <Arcane />
-        <div
-          style={{
-            'flex-grow': 1,
-          }}
-        ></div>
+    <header
+      role="banner"
+      classList={{
+        sticky: Boolean(scroll.y),
+        'scroll-height': Boolean(scroll.y),
+      }}
+    >
+      <div class="container header">
+        <img src={arcane} alt="arcane-logo" />
+        <div style={{ 'flex-grow': 1 }} />
         <Navigation />
-        <Authentication />
+        <div>
+          <Show when={!isSmall()}>
+            <Authentication
+              loggedOutTitle="Sign In"
+              title="Sign Out"
+              size="medium"
+            />
+          </Show>
+        </div>
       </div>
     </header>
   );

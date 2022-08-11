@@ -7,11 +7,14 @@ import Landing from './pages/Landing';
 
 export const routes: RouteDefinition[] = [
   {
+    path: '/',
+    component: Landing,
+  },
+  {
     path: '/home',
     component: lazy(() => import('./pages/Home')),
   },
-  { path: '/error', component: lazy(() => import('./pages/Error')) },
-  { path: '/register', component: lazy(() => import('./pages/Register')) },
+  { path: '/nonprofessional', component: lazy(() => import('./pages/Error')) },
   {
     path: '**',
     component: Landing,

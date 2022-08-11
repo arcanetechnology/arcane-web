@@ -31,5 +31,8 @@
   "scripts": {
     "test": "yarn run -T jest",
     "build": "yarn run -T rollup -c"
+  },
+  "peerDependencies": {
+    "solid-icons": "*"
   }
 }

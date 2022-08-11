@@ -9,10 +9,9 @@ a:active {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   position: relative;
-  transition: 0.2s color ease;
   text-decoration: none;
   padding-top: $space-4;
-  @include size-16;
+  color: inherit !important;
 }
 
 a.after:after {
@@ -23,11 +22,10 @@ a.after:after {
   position: absolute;
 }
 a.after:after {
-  bottom: -0.1em;
+  bottom: -0.05em;
 }
 a.after:after {
-  height: 1px;
-  height: 0.2rem;
+  height: 0.1rem;
   width: 0;
   background: var(--link-contrast-color);
 }
@@ -37,5 +35,6 @@ a.third:after {
   transform: translateX(-50%);
 }
 a.after:hover:after {
-  width: 100%;
+  width: 90%;
+  filter: blur(2px);
 }

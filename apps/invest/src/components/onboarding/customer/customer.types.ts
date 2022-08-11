@@ -1,21 +1,23 @@
 /** @format */
 import { z } from 'zod';
 
+// READ THIS BEFORE EDITING
+// IMPORTANT: company should always be after company behalf!!!
 export const formConfig = [
-  {
-    name: 'companyBehalf',
-    label: "Are you making this request on your company's behalf?",
-    initialValue: '',
-    validation: z.object({
-      companyBehalf: z.string().nonempty('please select one option'),
-    }),
-  },
   {
     name: 'name',
     label: 'What is your name?',
     initialValue: '',
     validation: z.object({
       name: z.string().nonempty('please write your name'),
+    }),
+  },
+  {
+    name: 'companyBehalf',
+    label: "Are you making this request on your company's behalf?",
+    initialValue: '',
+    validation: z.object({
+      companyBehalf: z.string().nonempty('please select one option'),
     }),
   },
   {
@@ -27,27 +29,25 @@ export const formConfig = [
     }),
   },
   {
-    name: 'residence',
+    name: 'countryCode',
     label: 'What is your country of residence?',
     initialValue: '',
     validation: z.object({
-      residence: z
+      countryCode: z
         .string()
         .nonempty('please specify your country of residence'),
     }),
   },
   {
-    name: 'phoneNumber',
+    name: 'nationalNumber',
     label: 'Could your inform a number for future contact?',
     validation: z.object({
-      phoneNumber: z
+      countryCode: z.string().nonempty('please select the country code'),
+      nationalNumber: z
         .string()
-        .trim()
-        .nonempty('phone number is required')
-        .regex(
-          /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-          'please enter a phone number'
-        ),
+        .min(4)
+        .nonempty('please enter your phone number')
+        .regex(/^\d+$/),
     }),
   },
 ];

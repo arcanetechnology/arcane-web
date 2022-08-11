@@ -1,43 +1,19 @@
 /** @format */
 
-import { createSignal, onMount, VoidComponent, createResource } from 'solid-js';
-import { Button } from '@arcane-web/alchemy-solid';
+import { createResource, createSignal, onMount, VoidComponent } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { Survey } from './survey';
 import { CustomerFormPages } from './customer';
 import { OnboardingFormPages } from './Onboarding.types';
 import onboardingConfig, { Questions, Answers } from './config';
 import ArcaneFlow from '@arcane-web/arcane-flow';
+import { postUserRegistration } from '../../api';
+import type { FundInfo } from '../../types/index';
+import countries from '../../assets/countries.json';
+import type { Country } from '../../invest.types';
+import OnboardingWelcomePage from './OnboardingWelcomPage';
 
-const OnboardingWelcome: VoidComponent<OnboardingFormPages> = (props) => {
-  return (
-    <div
-      style={{
-        display: 'grid',
-        'grid-template-rows': '90% 10%',
-        height: '100%',
-      }}
-    >
-      <h4>
-        Thanks for your insterest in our fund. Before we proceed, we will ask
-        you some questions that will help customize this solution to meet your
-        own needs.
-      </h4>
-      <div class="w-full">
-        <Button
-          class="w-full"
-          type="button"
-          variant="primary"
-          onClick={() => props.onSubmit({})}
-        >
-          Start
-        </Button>
-      </div>
-    </div>
-  );
-};
-
-const pages = [OnboardingWelcome, Survey, ...CustomerFormPages];
+const pages = [OnboardingWelcomePage, Survey, ...CustomerFormPages];
 
 const getFirstKeyOfObject = (obj: Record<string, string>) => {
   return Object.keys(obj)[0];
@@ -63,25 +39,77 @@ const OnboardingForm: VoidComponent = () => {
   const [page, setPage] = createSignal(0);
   const [pagesState, setPagesState] = createSignal([]);
   const { onboardingState, addOnboardingState } = updateOnboardingState();
+  const [body, setBody] = createSignal<{ body: FundInfo; name: string }>(null);
+
+  const [{ loading, error }, { refetch }] = createResource(
+    body,
+    postUserRegistration,
+    {
+      deferStream: true,
+    }
+  );
 
   function onSubmit(values) {
     try {
       if (page() === pages.length - 1) {
-        console.log('form state:', onboardingState());
-        console.log('Submitted:', pagesState());
+        const nextState = [...pagesState()];
+        nextState[page()] = values;
+        setPagesState(nextState);
+        const prunedState = pagesState().filter((el) => el !== undefined);
+        const formBody = prunedState.reduce(
+          (obj, item) => {
+            const key = Object.keys(item)[0];
+            if (!key) {
+              return { ...obj };
+            }
+
+            if (key === 'companyBehalf') {
+              return { ...obj };
+            }
+
+            return Object.assign(obj, { [key]: item[key] });
+          },
+          // TODO: remove the hardcoding later alligator 🐊
+          { fundName: 'Arcane Assets Fund Limited' }
+        );
+
+        if (onboardingState().length <= 3) {
+          // TODO: abstract it away in the arcane platorm
+          setBody({
+            body: { ...formBody, investorType: 'PROFESSIONAL' },
+            name: 'invest',
+          });
+        } else {
+          setBody({
+            body: { ...formBody, investorType: 'ELECTIVE_PROFESSIONAL' },
+            name: 'invest',
+          });
+        }
+      } else if (page() === 0) {
+        setPage(page() + 1);
       } else {
         const nextState = [...pagesState()];
         if (page() === 1 && route() !== 'warning') {
           addOnboardingState(values);
           setRoute(next(route(), values[getFirstKeyOfObject(values)]));
+        } else if (page() === 1 && route() === 'warning') {
+          setPage(page() + 1);
         } else {
           nextState[page()] = values;
           setPagesState(nextState);
-          setPage(page() + 1);
+          const key = Object.keys(values)[0];
+          if (key === 'companyBehalf' && values[key] === 'no') {
+            setPage(page() + 2);
+          } else {
+            setPage(page() + 1);
+          }
         }
       }
     } catch (err) {
-      window.location.href = '/invest/error';
+      setBody({
+        body: { investorType: 'NON_PROFESSIONAL' },
+        name: import.meta.env.VITE_APP_NAME,
+      });
     }
   }
 
@@ -103,9 +131,12 @@ const OnboardingForm: VoidComponent = () => {
 
   return (
     <Dynamic<OnboardingFormPages>
+      progress={page()}
       component={pages[page()]}
       onSubmit={onSubmit}
       onBack={onBack}
+      totalPages={pages.length}
+      formData={pagesState()}
       route={route()}
     />
   );

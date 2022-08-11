@@ -1,0 +1,103 @@
+/** @format */
+@import '@arcane-web/alchemy/lib/base/space';
+@import '@arcane-web/alchemy/lib/base/breakpoint';
+
+.onboarding-survey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.onboarding-survey-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $space-16;
+  // TODO: @xavier not in 8 point grid system.
+  padding-bottom: 88px;
+  padding-top: $space-48;
+
+  @include breakpoint(medium) {
+    padding-top: $space-64;
+    padding-bottom: 40px;
+  }
+
+  // TODO: @xavier not in the 8 point grid system.
+  > img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.onboarding-survey-content {
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: $space-24;
+  @include breakpoint(medium) {
+    padding-right: $space-64;
+    padding-left: $space-64;
+    padding-bottom: $space-24;
+  }
+}
+
+.onboarding-survey-action {
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 228px;
+  @include breakpoint(medium) {
+    padding-right: $space-64;
+    padding-left: $space-64;
+    // TODO: @xavier arbitary number.
+    padding-bottom: $space-32;
+  }
+}
+
+.onboarding-survey-text {
+  max-height: 200px !important;
+  width: 100%;
+  overflow-y: scroll;
+
+  @include breakpoint(medium) {
+    max-height: 125px !important;
+  }
+}
+
+.onboarding-survey-questions {
+  width: 83px;
+  display: flex;
+  flex-direction: column;
+  gap: $space-16;
+}
+
+.onboarding-survey-footer {
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: flex-end;
+  gap: $space-24;
+  padding-right: 20px;
+
+  @include breakpoint(medium) {
+    padding-bottom: $space-32;
+    padding-right: $space-24;
+  }
+}
+
+.onboarding-warning-mobile {
+  height: 336px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.onboarding-warning-mobile-action {
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 76px;
+  @include breakpoint(medium) {
+    padding-right: $space-64;
+    padding-left: $space-64;
+    // TODO: @xavier arbitary number.
+    padding-bottom: $space-32;
+  }
+}

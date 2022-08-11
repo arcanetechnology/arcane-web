@@ -28,7 +28,8 @@
       width: 8px;
       height: 8px;
       border-radius: 60px;
-      background: var(--action-color);
+      // TODO: get arcane action its a mix of black and white right now!
+      background: var(--font-color);
       content: '';
     }
   }

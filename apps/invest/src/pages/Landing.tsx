@@ -3,49 +3,47 @@
 import { Authentication } from '@arcane-web/arcane-components';
 import { getAuth } from 'firebase/auth';
 import { useAuth } from '@arcane-web/arcane-auth';
-import { useNavigate } from 'solid-app-router';
-import { onMount, VoidComponent } from 'solid-js';
-import Invest from '../assets/invest.svg';
+import { VoidComponent, Show, createResource } from 'solid-js';
+import { LandingComponent, Onboarding, OnboardingNodes } from '../components';
+import queryClient from '../invest-contentful';
+import { gql } from '@solid-primitives/graphql';
+import { fetchUserRegistration } from '../api';
 
 const Landing: VoidComponent = () => {
-  const navigate = useNavigate();
+  const [questions] = queryClient<{
+    onboardingStepCollection: { items: OnboardingNodes };
+  }>(
+    gql`
+      query {
+        onboardingStepCollection {
+          items {
+            name
+            content {
+              json
+            }
+          }
+        }
+      }
+    `
+  );
+  createResource(fetchUserRegistration);
   const auth = getAuth();
   const state = useAuth(auth);
 
-  onMount(() => {
-    if (state.data) {
-      console.log(state.data);
-      navigate('/invest/home', { replace: true });
-    }
-  });
   return (
-    <>
-      <section class="margin-48">
-        <div class="container align-center">
-          <h1>
-            <b>
-              Build generational wealth with our actively managed crypto fund.
-            </b>
-          </h1>
-        </div>
-      </section>
-      <section class="margin-48">
-        <div id="apology-message" class="container" data-auto-grid="2">
-          <div class="space-8">
-            <Invest />
-          </div>
-          <div class="space-8 align-vertical">
-            <h1>The fund.</h1>
-            <h4 class="secondary-text">
-              Get managed exposure to cryptocurrencies as an asset class.
-            </h4>
-            <div class="margin-top-16">
-              <Authentication />
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    <LandingComponent>
+      {state.data || import.meta.env.DEV ? (
+        <Show when={questions()}>
+          <Onboarding questions={questions().onboardingStepCollection.items} />
+        </Show>
+      ) : (
+        <Authentication
+          loggedOutTitle="Sign in to Contact Us..."
+          title="Sign out"
+          size="large"
+        />
+      )}
+    </LandingComponent>
   );
 };
 

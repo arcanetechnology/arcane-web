@@ -1,6 +1,6 @@
 /** @format */
 
-import Chart from 'chart.js/auto/auto.esm';
+import Chart from 'chart.js/auto/auto.mjs';
 import { Card } from '@arcane-web/alchemy-solid';
 import { VoidComponent, onMount } from 'solid-js';
 
@@ -101,7 +101,6 @@ const Doughnut: VoidComponent<DoughnutProps> = (props) => {
         ref={canvas}
         style={{
           'max-height': '200px',
-          'min-width': '400px',
         }}
       />
     </Card>

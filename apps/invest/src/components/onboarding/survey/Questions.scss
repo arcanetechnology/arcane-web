@@ -1,0 +1,17 @@
+/** @format */
+@import '@arcane-web/alchemy/lib/base/breakpoint';
+.warning-survey-node {
+  height: 400px;
+  overflow-y: scroll;
+  @include breakpoint(medium) {
+    height: 300px !important;
+    overflow-y: scroll;
+  }
+}
+
+.survey-node {
+  @include breakpoint(medium) {
+    width: 600px;
+    height: 100%;
+  }
+}

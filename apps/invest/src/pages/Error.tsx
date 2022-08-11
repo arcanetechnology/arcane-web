@@ -11,22 +11,22 @@ const Error: VoidComponent = () => {
       <section class="margin-48">
         <div id="apology-message" class="container" data-auto-grid="2">
           <div class="space-8">
-            <Invest />
+            <img src={Invest} alt="invest-error" />
           </div>
           <div class="space-8 align-vertical">
-            <h4 class="secondary-text">
+            <p class="heading7">
               We unfortunalety can not offer you a spot in our fund right now.
-            </h4>
-            <h4 class="secondary-text">
+            </p>
+            <p class="heading7">
               Feel free to contact us if you have any question.
-            </h4>
-            <h4 class="secondary-text">
-              In the meatime, check our Research Platform.
-            </h4>
+            </p>
+            <p class="heading7">In the meatime, check our Research Platform.</p>
             <div class="margin-top-16">
-              <Button type="button" variant="primary">
-                Go To Research
-              </Button>
+              <a href={window.location.origin + '/research'}>
+                <Button size="large" variant="primary" id="error">
+                  Go To Research
+                </Button>
+              </a>
             </div>
           </div>
         </div>

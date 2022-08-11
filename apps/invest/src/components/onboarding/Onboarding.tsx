@@ -5,18 +5,27 @@ import {
   useContext,
   VoidComponent,
   createSignal,
-  Show,
-  onMount,
 } from 'solid-js';
 import { OnboardingNodes } from './Onboarding.types';
 import OnboardingForm from './OnboardingForm';
-import { Modal } from '@arcane-web/alchemy-solid';
-import { Authentication } from '@arcane-web/arcane-components';
+import { Modal, Button } from '@arcane-web/alchemy-solid';
+import OnboardingLogo from '../../assets/onboarding.svg';
 import 'tippy.js/dist/tippy.css';
-import { useAuth } from '@arcane-web/arcane-auth';
-import { getAuth } from 'firebase/auth';
+import close from '../../assets/close.svg';
+import arrow from '../../assets/arrow.svg';
+import './Onboarding.scss';
+import { Questions } from './config';
 
-const OnboardingContext = createContext<OnboardingNodes>([]);
+const OnboardingContext = createContext<{
+  nodes: OnboardingNodes;
+  counter: () => number;
+  updateCounter: (questions: Questions) => void;
+}>({
+  nodes: [],
+  counter: () => 0,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  updateCounter: (questions: Questions) => {},
+});
 
 type OnboardingProps = {
   questions: OnboardingNodes;
@@ -25,44 +34,67 @@ type OnboardingProps = {
 // TODO: update the action part make it look good.
 export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
   const [isOpen, setModal] = createSignal<boolean>(false);
-  const auth = getAuth();
-  const state = useAuth(auth);
-  onMount(() => {
-    if (state.error) {
-      console.log('redirect to landing page');
-    } else {
-      setModal(true);
-    }
-  });
+  const [counter, setCounter] = createSignal(0),
+    store = {
+      nodes: props.questions,
+      counter,
+      updateCounter: (questions: Questions) => {
+        switch (questions) {
+          case 'warning':
+            setCounter(props.questions.length);
+            break;
+          case 'question1':
+            setCounter(1);
+            break;
+          case 'question2':
+            setCounter(2);
+            break;
+          case 'question3':
+            setCounter(3);
+            break;
+          case 'question4':
+            setCounter(4);
+            break;
+          case 'question5':
+            setCounter(5);
+            break;
+          case 'question6':
+            setCounter(6);
+            break;
+          default:
+            setCounter((c) => c + 1);
+            break;
+        }
+      },
+    };
 
   return (
-    <OnboardingContext.Provider value={props.questions}>
-      <Show when={state.data}>
-        <button
-          class="button button-primary"
-          onClick={(e) => {
-            if (state.error) {
-              console.log('hello');
-            } else {
-              setModal(true);
-            }
-          }}
-        >
-          Contact Us
-        </button>
-      </Show>
-
-      <Modal isOpen={isOpen()} toggleModal={setModal}>
-        <article
-          class="align-center"
-          style={{
-            'grid-template-rows': '20% 80%',
-            height: '100%',
-          }}
-        >
-          <h3>Investment Onboarding</h3>
-          <OnboardingForm />
-        </article>
+    <OnboardingContext.Provider value={store}>
+      <Button
+        size="large"
+        onClick={() => setModal(true)}
+        title="sign into arcane platform"
+        variant="primary"
+        id="auth"
+      >
+        Contact Us{' '}
+        <img style={{ filter: 'invert(1)' }} src={arrow} alt="right arrow" />
+      </Button>
+      <Modal
+        size="large"
+        isOpen={isOpen()}
+        toggleModal={setModal}
+        class="onboarding-modal"
+        icon={<img src={close} width={40} alt="modal close" />}
+      >
+        {/* <article class="modal-content">
+          <div class="align-row gap-small modal-title">
+            <img src={OnboardingLogo} alt="onboarding logo" />
+            <p class="heading8">Investment Onboarding</p>
+          </div>
+          <div class="modal-form"></div>
+        </article> */}
+        <OnboardingForm />
       </Modal>
     </OnboardingContext.Provider>
   );

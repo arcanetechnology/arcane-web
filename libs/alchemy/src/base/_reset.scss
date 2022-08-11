@@ -59,6 +59,14 @@ textarea {
   background: none;
 }
 
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 input[type='text'],
 textarea {
   width: 100%;
@@ -75,12 +83,13 @@ legend {
 }
 
 input,
+select,
 textarea {
   border: 1px solid var(--font-color);
 }
 
 button {
-  padding: 0.75em 1em;
+  padding: none;
   border-radius: 0;
   background-color: transparent;
   line-height: 1;

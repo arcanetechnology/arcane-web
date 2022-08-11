@@ -1,7 +1,7 @@
 /** @format */
 
 import { JSX, mergeProps, splitProps, FlowComponent } from 'solid-js';
-import { ButtonVariant } from '../../types';
+import { ButtonSize, ButtonVariant } from '../../types';
 
 // just incase we want to add a use defined base button props :)
 type BaseButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -23,9 +23,10 @@ export const BaseButton: FlowComponent<BaseButtonProps> = (props) => {
 
 type OptionalButtonProps = {
   variant: ButtonVariant; // type
+  size: ButtonSize;
 };
 
-type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
+export type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
 
 /**
  * mid level button wrapped in arcane design languge css based on prop values
@@ -33,7 +34,10 @@ type ButtonProps = Partial<OptionalButtonProps> & BaseButtonProps;
  * @returns @type {BaseButton} renders base button.
  */
 export const Button: FlowComponent<ButtonProps> = (props) => {
-  const merged = mergeProps({ variant: 'primary', id: 'arcane' }, props);
+  const merged = mergeProps(
+    { variant: 'primary', id: 'arcane', size: 'large' },
+    props
+  );
   const [local, others] = splitProps(merged, [
     'id',
     'variant',
@@ -48,6 +52,9 @@ export const Button: FlowComponent<ButtonProps> = (props) => {
         'button-primary': props.variant === 'primary',
         'button-secondary': props.variant === 'secondary',
         'button-tertiary': props.variant === 'tertiary',
+        'button-large': props.size === 'large',
+        'button-medium': props.size === 'medium',
+        'button-small': props.size === 'small',
         ...local.classList,
       }}
       id={`${local.id}-${local.variant}`}

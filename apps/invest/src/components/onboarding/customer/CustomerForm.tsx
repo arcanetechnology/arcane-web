@@ -1,28 +1,36 @@
 /** @format */
-import { Show, For } from 'solid-js';
+import { Show, For, Match, Switch, createSignal, createEffect } from 'solid-js';
 import {
   Form,
   FieldSet,
-  RadioButton,
   Label,
   Input,
   Button,
 } from '@arcane-web/alchemy-solid';
 import { createForm } from '@felte/solid';
-
 import { formConfig } from './customer.types';
 import { validator } from '@felte/validator-zod';
 import reporter from '@felte/reporter-tippy';
 import type { OnboardingFormPages } from '../Onboarding.types';
 import countries from '../../../assets/countries.json';
+import type { Countries, Country } from '../../../invest.types';
+import { createOptions, Select } from '@thisbeyond/solid-select';
+import '@thisbeyond/solid-select/style.css';
+import back from '../../../assets/back.svg';
+import './CustomerForm.scss';
+import Progress from '../../progress/Progress';
+import { isSmall } from '../..';
+import OnboardingLogo from '../../../assets/onboarding.svg';
 
-/* const countryCode: Countries = [
-  ...new Set([].concat(...countries.map((c) => c))),
-]; */
+const coutryObject = createOptions(countries as Countries, {
+  key: 'displayName',
+});
 
 const CustomerFormPages = formConfig.map(
   (field) => (props: OnboardingFormPages) => {
-    const { form, data } = createForm({
+    const [progress, setProgress] = createSignal(0);
+    const [showCountryCode, setCountryCode] = createSignal(false);
+    const { form, data, setFields, handleSubmit } = createForm({
       onSubmit: props.onSubmit,
       extend: [
         validator({ schema: field.validation, level: 'error' }),
@@ -34,96 +42,208 @@ const CustomerFormPages = formConfig.map(
       ],
     });
 
-    return (
-      <Form
-        ref={form}
-        class="w-full"
-        style={{
-          display: 'grid',
-          'grid-template-rows': '90% 10%',
-          height: '100%',
-          overflow: 'scroll',
-        }}
-      >
-        <div>
-          <FieldSet>
-            <Label for={field.name}>
-              <h4>{field.label}</h4>
-            </Label>
-            <Show
-              when={!(field.name === 'companyBehalf')}
-              fallback={
-                <>
-                  <RadioButton
-                    position="down"
-                    id={field.name}
-                    name={field.name}
-                    label="Yes"
-                    value="yes"
-                  />
-                  <br />
-                  <RadioButton
-                    position="down"
-                    id={field.name}
-                    name={field.name}
-                    label="No"
-                    value={'no'}
-                  />
-                </>
-              }
-            >
-              <div>
-                {field.name === 'residence' ? (
-                  <datalist id={field.name}>
-                    <For each={countries}>
-                      {(country) => (
-                        <option
-                          value={country[0].code}
-                          label={`${country[0].flag} - ${country[0].name}`}
-                        />
-                      )}
-                    </For>
-                  </datalist>
-                ) : null}
-                {field.name === 'phoneNumber' ? (
-                  <datalist id={field.name}>
-                    <For
-                      each={[...new Set([].concat(...countries.map((c) => c)))]}
-                    >
-                      {(code) => (
-                        <option value={code.countryCode} label={code.flag} />
-                      )}
-                    </For>
-                  </datalist>
-                ) : null}
+    createEffect(() => {
+      setProgress(
+        Math.trunc(((props.progress + 7) / (props.totalPages + 7)) * 100)
+      );
+    });
 
-                <Input
-                  class="w-full"
-                  name={field.name}
-                  placeholder={field.initialValue}
-                  id={field.name}
-                  type={field.name === 'phoneNumber' ? 'tel' : 'text'}
-                  list={field.name}
-                />
-              </div>
-            </Show>
-          </FieldSet>
+    return (
+      <div class="onboarding-form">
+        <div class="onboarding-form-title">
+          <img src={OnboardingLogo} alt="onboarding logo" />
+          <p class="body1">Investment Onboarding</p>
         </div>
-        <div class="align-row w-full">
-          <Button type="button" onClick={() => props.onBack(data)}>
-            Back
-          </Button>
-          <div style="flex-grow: 1;"></div>
-          <Show
-            when={field.name === 'phoneNumber'}
-            fallback={<Button variant="primary">Next</Button>}
-          >
-            <Button variant="primary" type="submit">
-              Submit
+        <Form style={{ width: '100%' }} ref={form}>
+          <div class="onboarding-form-content">
+            <div>
+              <Label for={field.name}>
+                <p class="heading8">{field.label}</p>
+              </Label>
+              <Switch
+                fallback={
+                  <div class="onboarding-form-input">
+                    <Input
+                      name={field.name}
+                      placeholder={field.initialValue}
+                      id={field.name}
+                      type={field.name === 'nationalNumber' ? 'tel' : 'text'}
+                      list={field.name}
+                    />
+                    <Button
+                      style={{ width: '49px' }}
+                      variant="secondary"
+                      size="medium"
+                      type="submit"
+                    >
+                      OK
+                    </Button>
+                  </div>
+                }
+              >
+                <Match when={field.name === 'countryCode'}>
+                  <div class="onboarding-form-input">
+                    <Select
+                      class="custom w-full"
+                      {...coutryObject}
+                      id={field.name}
+                      name={field.name}
+                      initialValue={data(($data) => $data.countryCode)}
+                      onChange={(selected) => {
+                        setFields({
+                          countryCode: selected.displayName,
+                        });
+                      }}
+                    />
+                    <Button
+                      style={{ width: '49px' }}
+                      onClick={() =>
+                        props.onSubmit({
+                          countryCode: countries
+                            .find(
+                              (c: Country) =>
+                                c.displayName ===
+                                data(($data) => $data.countryCode)
+                            )
+                            .isO3CountyCode.toString(),
+                        })
+                      }
+                      variant="secondary"
+                      size="medium"
+                      type="button"
+                    >
+                      OK
+                    </Button>
+                  </div>
+                </Match>
+                <Match when={field.name === 'companyBehalf'}>
+                  <div class="onboarding-company-behalf">
+                    <Button
+                      onClick={() => props.onSubmit({ [field.name]: 'yes' })}
+                      variant="secondary"
+                      type="button"
+                      size="medium"
+                    >
+                      Yes
+                    </Button>
+                    <Button
+                      onClick={() => props.onSubmit({ [field.name]: 'no' })}
+                      variant="secondary"
+                      size="medium"
+                      type="button"
+                    >
+                      No
+                    </Button>
+                  </div>
+                </Match>
+                <Match when={field.name === 'nationalNumber'}>
+                  <div
+                    class="onboarding-form-input"
+                    classList={{
+                      'align-vertical': isSmall(),
+                    }}
+                  >
+                    <div>
+                      <Select
+                        class="number-list"
+                        {...coutryObject}
+                        name="countryCode"
+                        id="countryCode"
+                        onBlur={() => {
+                          setCountryCode(true);
+                        }}
+                        placeholder="Country Code"
+                        initialValue={data(($data) => $data.countryCode)}
+                        onChange={(selected) => {
+                          setFields({
+                            countryCode: selected.displayName,
+                          });
+                        }}
+                      />
+                    </div>
+                    {showCountryCode() && (
+                      <p>
+                        +{' '}
+                        {
+                          countries.find(
+                            (c: Country) =>
+                              c.displayName ===
+                              data(($data) => $data.countryCode)
+                          ).callingCountryCode
+                        }
+                      </p>
+                    )}
+
+                    <div
+                      style={{
+                        flex: 1,
+                      }}
+                      classList={{
+                        'padding-4': isSmall(),
+                        'w-full': isSmall(),
+                      }}
+                    >
+                      <Input
+                        name={field.name}
+                        placeholder="Phone Number"
+                        id={field.name}
+                        type={field.name === 'phoneNumber' ? 'tel' : 'text'}
+                        list={field.name}
+                      />
+                    </div>
+                    <Button
+                      type="button"
+                      style={{ width: '49px' }}
+                      variant="secondary"
+                      onClick={() =>
+                        props.onSubmit({
+                          phoneNumber: {
+                            countryCode: countries
+                              .find(
+                                (c: Country) =>
+                                  c.displayName ===
+                                  data(($data) => $data.countryCode)
+                              )
+                              .callingCountryCode.toString(),
+                            nationalNumber: data(
+                              ($data) => $data.nationalNumber
+                            ),
+                          },
+                        })
+                      }
+                      id="national-number-button"
+                      size="medium"
+                    >
+                      OK
+                    </Button>
+                  </div>
+                </Match>
+              </Switch>
+            </div>
+          </div>
+          <div class="onboarding-form-footer">
+            <div>
+              <Progress
+                label={`${progress()}% Completed`}
+                max="100"
+                value={`${progress()}`}
+                id="customer-form-progress"
+              />
+            </div>
+            <Button
+              variant="primary"
+              size="medium"
+              onClick={() => {
+                props.onBack(data());
+              }}
+              type="button"
+            >
+              <img width={15} src={back} style={{ filter: 'invert(1)' }} />
+              Back
             </Button>
-          </Show>
-        </div>
-      </Form>
+          </div>
+        </Form>
+      </div>
     );
   }
 );
