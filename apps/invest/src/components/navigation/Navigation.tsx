@@ -118,14 +118,12 @@ const Navigation: VoidComponent = () => {
           </nav>
         </Show>
         <div class="w-full">
-          <div style={{ width: '90px' }}>
-            <Authentication
-              class="w-full"
-              loggedOutTitle="Sign In"
-              title="Sign Out"
-              size="medium"
-            />
-          </div>
+          <Authentication
+            class="w-full"
+            loggedOutTitle="Sign In"
+            title="Sign Out"
+            size="medium"
+          />
         </div>
       </div>
     </div>
