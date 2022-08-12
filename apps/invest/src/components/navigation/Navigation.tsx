@@ -81,7 +81,7 @@ const Navigation: VoidComponent = () => {
         id={NAVIGATION_MENU_BUTTON_ID}
         class="arcane-navigation-menu-button"
       >
-        <img width={50} src={menu} alt="Arcane Applications" />
+        <img width={40} height={40} src={menu} alt="Arcane Applications" />
       </button>
       <div id={NAVIGATION_MENU_ID} class="menu">
         <Show when={sortedNavigation().length > 0}>
@@ -118,12 +118,14 @@ const Navigation: VoidComponent = () => {
           </nav>
         </Show>
         <div class="w-full">
-          <Authentication
-            class="w-full"
-            loggedOutTitle="Sign In"
-            title="Sign Out"
-            size="medium"
-          />
+          <div style={{ width: '90px' }}>
+            <Authentication
+              class="w-full"
+              loggedOutTitle="Sign In"
+              title="Sign Out"
+              size="medium"
+            />
+          </div>
         </div>
       </div>
     </div>
