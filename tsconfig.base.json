@@ -11,7 +11,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "ES6",
+    "target": "ESNext",
     "module": "ESNext",
     "resolveJsonModule": true,
     "lib": ["dom", "dom.iterable", "esnext"],

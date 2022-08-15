@@ -1,5 +1,13 @@
 /** @format */
-import { Show, For, Match, Switch, createSignal, createEffect } from 'solid-js';
+import {
+  Show,
+  For,
+  Match,
+  Switch,
+  createSignal,
+  createEffect,
+  onMount,
+} from 'solid-js';
 import {
   Form,
   FieldSet,
@@ -29,8 +37,8 @@ const coutryObject = createOptions(countries as Countries, {
 const CustomerFormPages = formConfig.map(
   (field) => (props: OnboardingFormPages) => {
     const [progress, setProgress] = createSignal(0);
-    const [showCountryCode, setCountryCode] = createSignal(false);
-    const { form, data, setFields, handleSubmit } = createForm({
+    const [showCountryCode, setCountryCode] = createSignal<string | number>('');
+    const { form, data, setFields, setData } = createForm({
       onSubmit: props.onSubmit,
       extend: [
         validator({ schema: field.validation, level: 'error' }),
@@ -40,6 +48,23 @@ const CustomerFormPages = formConfig.map(
           },
         }),
       ],
+    });
+
+    createEffect(() => {
+      if (field.name === 'nationalNumber') {
+        props.formData.some((o) => {
+          if (o !== undefined) {
+            if (o.hasOwnProperty('countryCode')) {
+              const country = countries.find(
+                (c) => c.isO3CountyCode === o['countryCode']
+              );
+
+              setFields({ countryCode: country.displayName });
+              setCountryCode(country.callingCountryCode);
+            }
+          }
+        });
+      }
     });
 
     createEffect(() => {
@@ -149,31 +174,23 @@ const CustomerFormPages = formConfig.map(
                         {...coutryObject}
                         name="countryCode"
                         id="countryCode"
-                        onBlur={() => {
-                          setCountryCode(true);
-                        }}
-                        placeholder="Country Code"
+                        emptyPlaceholder={''}
+                        placeholder={''}
                         initialValue={data(($data) => $data.countryCode)}
                         onChange={(selected) => {
+                          setCountryCode(
+                            countries.find(
+                              (c: Country) =>
+                                c.displayName === selected.displayName
+                            ).callingCountryCode
+                          );
                           setFields({
                             countryCode: selected.displayName,
                           });
                         }}
                       />
                     </div>
-                    {showCountryCode() && (
-                      <p>
-                        +{' '}
-                        {
-                          countries.find(
-                            (c: Country) =>
-                              c.displayName ===
-                              data(($data) => $data.countryCode)
-                          ).callingCountryCode
-                        }
-                      </p>
-                    )}
-
+                    <p>+ {showCountryCode()}</p>
                     <div
                       style={{
                         flex: 1,
@@ -198,13 +215,7 @@ const CustomerFormPages = formConfig.map(
                       onClick={() =>
                         props.onSubmit({
                           phoneNumber: {
-                            countryCode: countries
-                              .find(
-                                (c: Country) =>
-                                  c.displayName ===
-                                  data(($data) => $data.countryCode)
-                              )
-                              .callingCountryCode.toString(),
+                            countryCode: showCountryCode(),
                             nationalNumber: data(
                               ($data) => $data.nationalNumber
                             ),

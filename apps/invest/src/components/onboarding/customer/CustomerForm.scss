@@ -5,6 +5,10 @@
 @import '@arcane-web/alchemy/lib/base/size';
 @import '@arcane-web/alchemy/lib/base/space';
 
+.custom .solid-select-input {
+  padding-left: 4px;
+}
+
 .custom .solid-select-single-value {
   border: 1px solid #e5e5ea;
   background-color: #fff;
@@ -44,6 +48,10 @@
 
 // number list select
 
+.number-list .solid-select-input {
+  padding-left: 4px;
+}
+
 .number-list .solid-select-single-value {
   border: 1px solid #e5e5ea;
   background-color: #fff;
@@ -63,7 +71,7 @@
   width: 280px;
 }
 .number-list .solid-select-placeholder {
-  padding: $space-8;
+  padding: 20px !important;
   background-color: var(--background);
   @include radius-small;
   border: 1px solid #e5e5ea;

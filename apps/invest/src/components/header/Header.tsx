@@ -24,7 +24,7 @@ const Header: VoidComponent = () => {
         <img src={arcane} alt="arcane-logo" />
         <div style={{ 'flex-grow': 1 }} />
         <Navigation />
-        <div>
+        <div class="auth-fixed-width">
           <Show when={!isSmall()}>
             <Authentication
               loggedOutTitle="Sign In"
