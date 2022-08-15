@@ -139,6 +139,19 @@ export function createDonutChart<T, N, V extends number>(
 
   if (legends) {
     svg.append('text').attr('x', '160').text('text');
+    svg
+      .append('circle')
+      .attr('cx', 160)
+      .attr('cy', 0)
+      .attr('r', 6)
+      .style('fill', '#69b3a2');
+    svg
+      .append('text')
+      .attr('x', 160)
+      .attr('y', 0)
+      .text('variable A')
+      .style('font-size', '15px')
+      .attr('alignment-baseline', 'middle');
   }
 
   return Object.assign(svg.node(), { scales: { color } });
