@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - feature/invest
+      - feature/invest-improvements
 
 jobs:
   test-build-deploy:
