@@ -18,6 +18,7 @@ const AssetInfoSvg: VoidComponent<AssetInfoProps> = (props) => {
       value: (value) => value.units,
       height: 200,
       labels: false,
+      legends: true,
     });
 
     setChart(chart);

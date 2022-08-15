@@ -138,6 +138,7 @@ export function createDonutChart<T, N, V extends number>(
   }
 
   if (legends) {
+    svg.append('text').attr('x', '160').text('text');
     svg
       .append('circle')
       .attr('cx', 160)
