@@ -1,7 +1,14 @@
 /** @format */
 
 import { VoidComponent, Show, For } from 'solid-js';
-import { Info, AssetInfo, isSmall, AssetInfoSvg } from '../components';
+import {
+  Info,
+  AssetInfo,
+  isSmall,
+  AssetInfoSvg,
+  Contact,
+  Mission,
+} from '../components';
 import ArcaneAppProvider from '../components/app/ArcaneApp';
 import { gql } from '@solid-primitives/graphql';
 import investClient from '../invest-contentful';
@@ -55,12 +62,10 @@ const Home: VoidComponent = () => {
           </>
         }
       >
-        <section
-          classList={{
-            'margin-16': isSmall(),
-            'margin-48': !isSmall(),
-          }}
-        >
+        <section class="margin-24">
+          <Mission />
+        </section>
+        <section class={isSmall() ? 'margin-16' : 'margin-48'}>
           <div class="container">
             <h5>{fundInfoCollection().fundInfoCollection.items[0].title}</h5>
           </div>
@@ -105,6 +110,9 @@ const Home: VoidComponent = () => {
               alt={fundInfoCollection().fundInfoCollection.items[0].chart.title}
               src={fundInfoCollection().fundInfoCollection.items[0].chart.url}
             />
+          </div>
+          <div id="contact" class="margin-48">
+            <Contact />
           </div>
         </section>
       </Show>

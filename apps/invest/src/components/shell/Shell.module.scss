@@ -21,8 +21,8 @@
 }
 .mainContent {
   flex-grow: 1 !important;
-  height: 100vh;
-  margin-bottom: 300px;
+  min-height: 100vh;
+  margin-bottom: 200px;
   margin-top: 88px;
 
   @include breakpoint(medium) {
