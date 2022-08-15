@@ -9,7 +9,6 @@ import {
   Contact,
   Mission,
 } from '../components';
-import { Info, AssetInfo, isSmall, AssetInfoSvg } from '../components';
 import ArcaneAppProvider from '../components/app/ArcaneApp';
 import { gql } from '@solid-primitives/graphql';
 import investClient from '../invest-contentful';
