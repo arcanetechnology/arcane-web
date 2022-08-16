@@ -100,7 +100,7 @@ const Home: VoidComponent = () => {
                   fundInfoCollection().fundInfoCollection.items[0]
                     .portfolioCollection.items
                 }
-                title={'Usage overview'}
+                title={'Fund Holdings'}
               />
             </div>
           </div>
