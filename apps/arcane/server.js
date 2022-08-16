@@ -1,19 +1,10 @@
 /** @format */
 //import Podlet from '@podium/podlet';
 import express from 'express';
-import fs from 'node:fs';
+//import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-// app configuration can be stored in contentful????
-/* const footer = new Podlet({
-  name: 'footer',
-  version: '1.0.0',
-  pathname: '/footer',
-  manifest: '/manifest.json',
-  content: '/footer',
-  development: true,
-}); */
+import Layout from '@podium/layout';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
@@ -25,11 +16,33 @@ export async function createServer(
 ) {
   const resolve = (p) => path.resolve(__dirname, p);
 
-  const indexProd = isProd
+  /*  const indexProd = isProd
     ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
-    : '';
+    : ''; */
   const app = express();
   let vite;
+
+  const layout = new Layout({
+    name: 'arcane', // required
+    pathname: '/', // required
+  });
+
+  layout.view(async (incoming, header, footer) => {
+    const render = (await import('./dist/layouts/base.js')).render;
+    return render(incoming, header, footer);
+  });
+
+  const arcaneHeader = layout.client.register({
+    name: 'header', // required
+    uri: 'http://localhost:3002/manifest.json', // required
+  });
+
+  const arcaneFooter = layout.client.register({
+    name: 'footer', // required
+    uri: 'http://localhost:3003/manifest.json', // required
+  });
+
+  app.use(layout.middleware());
 
   if (!isProd) {
     vite = await (
@@ -65,35 +78,21 @@ export async function createServer(
 
   app.use('*', async (req, res) => {
     try {
-      const url = req.originalUrl;
-      let template, render;
-      if (!isProd) {
-        template = fs.readFileSync(resolve('index.html'), 'utf-8');
-        template = await vite.transformIndexHtml(url, template);
-        render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
-      } else {
-        template = indexProd;
-        // @ts-ignore
-        render = (await import('./dist/server/footer.js')).render;
-      }
+      // const url = req.originalUrl;
 
-      const context = {};
-      const { body, hydration } = render(url, context);
+      /* const incoming = res.locals.podium;
+      const [header, footer] = await Promise.all([
+        arcaneHeader.fetch(incoming),
+        arcaneFooter.fetch(incoming),
+      ]);
 
-      if (context.url) {
-        // Somewhere a `<Redirect>` was rendered
-        return res.redirect(301, context.url);
-      }
-
-      const html = template
-        .replace(`<!--ssr-outlet-->`, body)
-        .replace('<!--ssr-hydration-->', hydration);
-
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
+      incoming.podlets = [header, footer]; */
+      const document = layout.render([], '<h1>Hello World</h1>');
+      res.send(document);
     } catch (err) {
-      !isProd && vite.ssrFixStacktrace(e);
-      console.log(e.stack);
-      res.status(500).end(e.stack);
+      !isProd && vite.ssrFixStacktrace(err);
+      console.log(err);
+      res.status(500).end(err.stack);
     }
   });
 
@@ -102,8 +101,8 @@ export async function createServer(
 
 if (!isTest) {
   createServer().then(({ app }) =>
-    app.listen(3003, () => {
-      console.log('http://localhost:3003');
+    app.listen(3000, () => {
+      console.log('http://localhost:3000');
     })
   );
 }

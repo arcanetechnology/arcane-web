@@ -1,9 +1,15 @@
 /** @format */
 
 import { renderToString, HydrationScript } from 'solid-js/web';
-import App from './App';
+import utils from '@podium/utils';
+import type { HttpIncoming } from '@podium/utils';
 
-export function render() {
+export function render(
+  incoming: HttpIncoming<{
+    [key: string]: unknown;
+  }>,
+  application: string
+) {
   const body = renderToString(() => (
     <html lang="en">
       <head>
@@ -15,10 +21,9 @@ export function render() {
         />
         <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${
-            import.meta.env.VITE_GTAG_ID
-          }`}
+          src={`https://www.googletagmanager.com/gtag/js?id=`}
         ></script>
+        {incoming.css.map(utils.buildLinkElement).join('\n')}
         <link
           rel="icon"
           type="image/png"
@@ -27,17 +32,16 @@ export function render() {
         {`<script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
-          gtag('config', '${import.meta.env.VITE_GTAG_ID}');
+          gtag('config', '');
           gtag('consent', 'default', {
             ad_storage: 'denied',
             analytics_storage: 'denied',
           });
         </script>`}
+        {incoming.js.map(utils.buildScriptElement).join('\n')}
         <HydrationScript />
       </head>
-      <body>
-        <App />
-      </body>
+      <body>{application}</body>
     </html>
   ));
   return { body };
