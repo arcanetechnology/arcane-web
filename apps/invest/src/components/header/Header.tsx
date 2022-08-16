@@ -24,15 +24,15 @@ const Header: VoidComponent = () => {
         <img src={arcane} alt="arcane-logo" />
         <div style={{ 'flex-grow': 1 }} />
         <Navigation />
-        <div class="auth-fixed-width">
-          <Show when={!isSmall()}>
+        <Show when={!isSmall()}>
+          <div class="auth-fixed-width">
             <Authentication
               loggedOutTitle="Sign In"
               title="Sign Out"
               size="medium"
             />
-          </Show>
-        </div>
+          </div>
+        </Show>
       </div>
     </header>
   );
