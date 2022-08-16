@@ -77,7 +77,7 @@ export const Onboarding: VoidComponent<OnboardingProps> = (props) => {
         variant="primary"
         id="auth"
       >
-        Contact Us{' '}
+        Learn more{' '}
         <img style={{ filter: 'invert(1)' }} src={arrow} alt="right arrow" />
       </Button>
       <Modal
