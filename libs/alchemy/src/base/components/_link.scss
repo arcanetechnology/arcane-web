@@ -33,7 +33,9 @@ a.third:after {
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
+  filter: blur(2px);
 }
 a.after:hover:after {
-  width: 100%;
+  width: 60%;
+  filter: blur(2px);
 }
