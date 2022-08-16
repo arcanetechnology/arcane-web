@@ -10,7 +10,7 @@ const Mission: VoidComponent = () => {
       <img width={600} src={mission} alt="contact us" />
       <div class="align-vertical">
         <h6 class="contact-marketing">
-          The Arcane Asset Fund is an{' '}
+          The Arcane Assets Fund is an{' '}
           <span style={{ color: '#495057' }}>actively managed </span>fund with
           the mission of capturing the value of{' '}
           <span style={{ color: '#495057' }}>
