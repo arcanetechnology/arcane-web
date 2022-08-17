@@ -7,19 +7,19 @@
 @use '../font' as *;
 
 .modal-background {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   padding: $space-16;
   overflow: auto;
-  backdrop-filter: url(filters.svg#filter) blur(4px) saturate(150%);
+  backdrop-filter: blur(4px) saturate(150%);
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   opacity: 0;
   animation: fade-in 0.5s ease-in-out forwards;
-  z-index: 20;
+  z-index: 999;
 }
 
 .modal {
@@ -28,10 +28,10 @@
   position: absolute;
   left: 0;
   right: 0;
-  z-index: 21;
   background: #ffffff;
   animation: fade-in 0.5s ease-in-out forwards;
   transition: all 0.25s ease-in-out;
+  z-index: 1000;
 }
 
 .modal-close {
