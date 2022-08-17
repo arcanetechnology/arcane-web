@@ -10,8 +10,8 @@
   margin-top: 2px;
   position: relative;
   cursor: pointer;
-  align-self: center;
   transition: all 1ms ease-in-out;
+  align-self: center;
   @include breakpoint(default) {
     margin-right: 0;
   }
@@ -54,7 +54,6 @@
 .arcane-button-menu-active {
   background-color: #d8d8dc;
 }
-
 
 .divider {
   height: $space-2;

@@ -2,14 +2,15 @@
 
 import { Button } from '@arcane-web/alchemy-solid';
 import type { VoidComponent } from 'solid-js';
-import contact from '../../../assets/contact-us.png';
+//import contact from '../../../assets/contact-us.png';
+import contactPath from '../../../assets/contactUs.svg';
 import './Contact.scss';
 
 // A typical marketing component structure;
 const Contact: VoidComponent = () => {
   return (
     <div class="container" data-auto-grid="2">
-      <img width={594} height={480} src={contact} alt="contact us" />
+      <img src={contactPath} alt="contact us" />
       <div class="align-vertical">
         <h1>Contact Us</h1>
         <h6 class="contact-marketing">

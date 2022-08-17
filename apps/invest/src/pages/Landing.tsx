@@ -38,7 +38,7 @@ const Landing: VoidComponent = () => {
         </Show>
       ) : (
         <Authentication
-          loggedOutTitle="Sign in to Contact Us..."
+          loggedOutTitle="Learn More"
           title="Sign out"
           size="large"
         />
