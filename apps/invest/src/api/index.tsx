@@ -71,7 +71,7 @@ export const postUserRegistration = async <R,>(
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json',
               },
-              method: 'POST',
+              method: 'PUT',
               body: JSON.stringify(values.body),
             }
           );
