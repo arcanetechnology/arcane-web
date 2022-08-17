@@ -10,13 +10,12 @@ const OnboardingWelcomePage: VoidComponent<OnboardingFormPages> = (props) => {
     <div class="onboarding-welcome">
       <div class="onboarding-welcome-title">
         <img src={OnboardingLogo} alt="onboarding logo" />
-        <p class="heading8">Investment Onboarding</p>
+        <p class="heading8">Welcome to Arcane Invest</p>
       </div>
       <div class="onboarding-welcome-content">
         <p class="heading8">
-          Thanks for your insterest in our fund. Before we proceed, we will ask
-          you some questions that will help customize this solution to meet your
-          own needs.
+          Please take a moment to answer some questions that will help us
+          determine your eligibility to invest in our investment products.
         </p>
       </div>
       <div class="onboarding-welcome-action">

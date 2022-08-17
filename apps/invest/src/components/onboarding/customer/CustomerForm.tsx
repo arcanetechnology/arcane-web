@@ -77,7 +77,7 @@ const CustomerFormPages = formConfig.map(
       <div class="onboarding-form">
         <div class="onboarding-form-title">
           <img src={OnboardingLogo} alt="onboarding logo" />
-          <p class="body1">Investment Onboarding</p>
+          <p class="body1">Welcome to Arcane Invest</p>
         </div>
         <Form style={{ width: '100%' }} ref={form}>
           <div class="onboarding-form-content">
