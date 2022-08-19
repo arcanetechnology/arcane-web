@@ -62,7 +62,7 @@ const OnboardingSurvey: VoidComponent<
     <div class="onboarding-survey">
       <div class="onboarding-survey-title">
         <img src={OnboardingLogo} alt="onboarding logo" />
-        <p class="body1">Investment Onboarding</p>
+        <p class="body1">Welcome to Arcane Invest</p>
       </div>
       <Form ref={form}>
         <div class="onboarding-survey-content">

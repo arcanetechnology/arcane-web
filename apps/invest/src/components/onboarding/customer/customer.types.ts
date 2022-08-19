@@ -40,7 +40,7 @@ export const formConfig = [
   },
   {
     name: 'nationalNumber',
-    label: 'Could your inform a number for future contact?',
+    label: 'What is your phone number?',
     validation: z.object({
       countryCode: z.string().nonempty('please select the country code'),
       nationalNumber: z

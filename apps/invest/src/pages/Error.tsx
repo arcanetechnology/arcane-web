@@ -15,12 +15,13 @@ const Error: VoidComponent = () => {
           </div>
           <div class="space-8 align-vertical">
             <p class="heading7">
-              We unfortunalety can not offer you a spot in our fund right now.
+              Due to current MIFID regulations we cannot show you information
+              about the Arcane Assets fund at this time.
             </p>
             <p class="heading7">
-              Feel free to contact us if you have any question.
+              In the meantime, please feel free to browse our market leading
+              digital assets research and analysis.
             </p>
-            <p class="heading7">In the meatime, check our Research Platform.</p>
             <div class="margin-top-16">
               <a href={window.location.origin + '/research'}>
                 <Button size="large" variant="primary" id="error">
