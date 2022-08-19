@@ -52,7 +52,7 @@ const Modal: FlowComponent<ModalProps> = (props) => {
   const [local, others] = splitProps(mergedProps, ['size', 'class']);
 
   return (
-    <Show when={props.isOpen} fallback={null}>
+     <Show when={props.isOpen} fallback={null}>
       <div class="modal-background">
         <div
           class={(['elevation-300', 'radius-small', 'modal'] as Array<string>)
