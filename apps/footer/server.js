@@ -4,6 +4,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Podlet from '@podium/podlet';
+import pkg from './package.json' assert {type: "json"};
+
+const PORT = 3003;
 
 // app configuration can be stored in contentful????
 const footer = new Podlet({
@@ -96,8 +99,6 @@ export async function createServer(
         .replace(`<!--ssr-outlet-->`, body)
         .replace('<!--ssr-hydration-->', hydration);
 
-        console.log(body);
-
         res.status(200).podiumSend(body);
     } catch (err) {
       !isProd && vite.ssrFixStacktrace(e);
@@ -112,8 +113,8 @@ export async function createServer(
 
 if (!isTest) {
   createServer().then(({ app }) =>
-    app.listen(3003, () => {
-      console.log('http://localhost:3003');
+    app.listen(PORT, () => {
+      console.log(`⚡ - (${pkg.name}) : has started on http://localhost:${PORT}`);
     })
   );
 }

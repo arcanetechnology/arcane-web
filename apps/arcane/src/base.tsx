@@ -42,7 +42,6 @@ export function render(
         </script>
         <HydrationScript />
         {incoming.js.map(utils.buildScriptElement)}
-        {/* {scripts.map(s => <script src={s} type="module"></script>)} */}
       </head>
       <body innerHTML={application}>
         <div id="arcane-header"></div>
