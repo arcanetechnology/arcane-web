@@ -95,7 +95,7 @@ const Home: VoidComponent = () => {
               </For>
             </div>
             <div id="invest-chart" class="child">
-              <AssetInfo
+              <AssetInfoSvg
                 data={
                   fundInfoCollection().fundInfoCollection.items[0]
                     .portfolioCollection.items

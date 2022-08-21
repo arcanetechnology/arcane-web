@@ -52,4 +52,6 @@ header {
 
 .auth-fixed-width {
   width: 120px !important;
+  display: flex;
+  flex-direction: row-reverse;
 }
