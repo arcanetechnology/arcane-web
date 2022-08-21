@@ -1,19 +1,18 @@
 /** @format */
-//import Podlet from '@podium/podlet';
 import express from 'express';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import Podlet from '@podium/podlet';
 
 // app configuration can be stored in contentful????
-/* const footer = new Podlet({
+const footer = new Podlet({
   name: 'footer',
   version: '1.0.0',
-  pathname: '/footer',
+  pathname: '/',
   manifest: '/manifest.json',
-  content: '/footer',
-  development: true,
-}); */
+  content: '/',
+});
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
@@ -29,6 +28,7 @@ export async function createServer(
     ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
     : '';
   const app = express();
+  app.use(footer.middleware());
   let vite;
 
   if (!isProd) {
@@ -63,7 +63,14 @@ export async function createServer(
     );
   }
 
-  app.use('*', async (req, res) => {
+  footer.js({ value: "dist/client/footer.js", type: 'module', defer: true })
+
+  app.get(footer.manifest(), (req, res) => {
+    res.status(200).send(footer);
+  });
+
+
+  app.get(footer.content(), async (req, res) => {
     try {
       const url = req.originalUrl;
       let template, render;
@@ -89,7 +96,9 @@ export async function createServer(
         .replace(`<!--ssr-outlet-->`, body)
         .replace('<!--ssr-hydration-->', hydration);
 
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
+        console.log(body);
+
+        res.status(200).podiumSend(body);
     } catch (err) {
       !isProd && vite.ssrFixStacktrace(e);
       console.log(e.stack);
@@ -97,6 +106,7 @@ export async function createServer(
     }
   });
 
+  
   return { app, vite };
 }
 

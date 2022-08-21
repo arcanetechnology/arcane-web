@@ -1,10 +1,9 @@
 /** @format */
-//import Podlet from '@podium/podlet';
 import express from 'express';
-//import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Layout from '@podium/layout';
+import utils from '@podium/utils';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
@@ -15,7 +14,6 @@ export async function createServer(
   hmrPort
 ) {
   const resolve = (p) => path.resolve(__dirname, p);
-
   /*  const indexProd = isProd
     ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
     : ''; */
@@ -29,7 +27,8 @@ export async function createServer(
 
   layout.view(async (incoming, header, footer) => {
     const render = (await import('./dist/layouts/base.js')).render;
-    return render(incoming, header, footer);
+    const {body} = render(incoming, `${header}${footer}`);
+    return body;
   });
 
   const arcaneHeader = layout.client.register({
@@ -78,20 +77,19 @@ export async function createServer(
 
   app.use('*', async (req, res) => {
     try {
-      // const url = req.originalUrl;
+      const url = req.originalUrl;
 
-      /* const incoming = res.locals.podium;
+      const incoming = res.locals.podium;
       const [header, footer] = await Promise.all([
         arcaneHeader.fetch(incoming),
         arcaneFooter.fetch(incoming),
       ]);
 
-      incoming.podlets = [header, footer]; */
-      const document = layout.render([], '<h1>Hello World</h1>');
+      incoming.podlets = [header, footer];
+      const document = await layout.render(incoming, header.content,footer.content);
       res.send(document);
     } catch (err) {
       !isProd && vite.ssrFixStacktrace(err);
-      console.log(err);
       res.status(500).end(err.stack);
     }
   });
