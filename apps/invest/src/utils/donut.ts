@@ -148,8 +148,7 @@ export function createDonutChart<T, N, V extends number>(
     .attr("cx", 132)
     .attr("cy", function(d,i){ return -40 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
     .attr("r", 4)
-    .style("fill", function(d){ 
-      return color(N[d.data as number])})
+    .style("fill", d => color(N[d.data as number]))
 
     svg.selectAll("mylabels")
     .data(arcs)

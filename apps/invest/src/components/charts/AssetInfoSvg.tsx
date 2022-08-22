@@ -4,7 +4,6 @@ import { createSignal, onMount, Show, VoidComponent } from 'solid-js';
 import { Assets } from '../../invest.types';
 import { Card } from '@arcane-web/alchemy-solid';
 import { createDonutChart } from '../../utils';
-import { truncate } from 'fs';
 
 type AssetInfoProps = {
   data: Assets;
@@ -13,6 +12,7 @@ type AssetInfoProps = {
 
 const AssetInfoSvg: VoidComponent<AssetInfoProps> = (props) => {
   const [chart, setChart] = createSignal<SVGElement | null>(null);
+
   onMount(() => {
     const chart = createDonutChart(props.data, {
       name: (value) => value.name,
@@ -21,9 +21,10 @@ const AssetInfoSvg: VoidComponent<AssetInfoProps> = (props) => {
       labels: false,
       colors: ['#090A0B','#AEAEB2','#5AC8FA','#5856D6','#F28515','#FF6831']
     });
-
     setChart(chart);
   });
+
+
   return (
     <Card class="w-full">
       <p class="body1">{props.title}</p>
