@@ -4,7 +4,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Layout from '@podium/layout';
+import utils from '@podium/utils';
 import pkg from './package.json' assert { type: 'json' };
+import manifest from './dist/client/manifest.json' assert { type: 'json' };
 
 const PORT = 3000;
 
@@ -26,18 +28,27 @@ export async function createServer(
     pathname: '/', // required
   });
 
-  layout.view(async (incoming, header, footer) => {
+  layout.view(async (incoming, header, footer, application) => {
     const template = fs.readFileSync(
       resolve('dist/client/index.html'),
       'utf-8'
     );
 
-    const render = (await import('./dist/layouts/App.js')).render;
-    const { body, hydration } = render(incoming, header, footer);
+    const render = (await import('./dist/server/entry-server.js')).render;
+    const { body, hydration } = render();
 
     const html = template
       .replace(`<!--ssr-outlet-->`, body)
-      .replace('<!--ssr-hydration-->', hydration);
+      .replace('<!--ssr-hydration-->', hydration)
+      .replace(
+        '<!--app-scripts-->',
+        incoming.js.map(utils.buildScriptElement).join('\n')
+      )
+      .replace(
+        '<!--app-styles-->',
+        incoming.css.map(utils.buildLinkElement).join('\n')
+      );
+
     return html;
   });
 
@@ -85,6 +96,23 @@ export async function createServer(
     );
   }
 
+  // find the assets and bundle it up.
+  Object.keys(manifest).forEach((k) => {
+    if (manifest[k].css) {
+      manifest[k].css.map((c) => {
+        layout.css({ value: c });
+      });
+    }
+
+    if (k.includes('.html')) {
+      layout.js({
+        value: manifest[k].file,
+        type: 'module',
+        defer: true,
+      });
+    }
+  });
+
   app.use('*', async (req, res) => {
     try {
       //const url = req.originalUrl;
@@ -98,7 +126,8 @@ export async function createServer(
       const document = await layout.render(
         incoming,
         header.content,
-        footer.content
+        footer.content,
+        '<h1> some app </h1>'
       );
       res.send(document);
     } catch (err) {

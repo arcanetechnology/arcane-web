@@ -10,7 +10,8 @@
     "jsxImportSource": "solid-js",
     "jsx": "preserve",
     "types": ["vite/client"],
-    "baseUrl": "./",
+    "baseUrl": "/",
+    "outDir": "dist",
     "paths": {
       "~/*": ["./src/*"]
     }

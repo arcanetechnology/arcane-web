@@ -1,0 +1,48 @@
+/** @format */
+
+@import '@arcane-web/alchemy/lib/base/breakpoint';
+@import '@arcane-web/alchemy';
+
+.shell {
+  min-height: 100% !important;
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  word-wrap: break-word; /* Firefox support */
+  background-color: var(--background);
+}
+
+.main {
+  flex-grow: 1 !important;
+}
+
+.header {
+  height: 88px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--header-background);
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.2s;
+  transition: height 0.2s;
+
+  @include breakpoint(medium) {
+    height: 136px;
+  }
+}
+
+.footer {
+  flex-shrink: 0 !important;
+  margin-top: auto;
+  background-color: var(--footer-background);
+  color: var(--footer-color);
+  & svg {
+    filter: invert(1);
+    fill: var(--footer-color);
+  }
+}

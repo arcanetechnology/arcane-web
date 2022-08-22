@@ -1,0 +1,8 @@
+/** @format */
+
+html,
+body,
+#arcane-platform,
+#arcane-platform > div {
+  height: 100%;
+}
