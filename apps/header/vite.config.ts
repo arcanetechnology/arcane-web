@@ -8,11 +8,5 @@ export default defineConfig({
   build: {
     manifest: true,
     ssrManifest: true,
-    
-    rollupOptions: {
-      output: {
-        entryFileNames: 'header.js',
-       },
-     },
-   },
+  },
 });

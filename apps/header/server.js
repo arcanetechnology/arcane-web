@@ -1,11 +1,11 @@
 /** @format */
 import express from 'express';
-import fs from 'node:fs';
+// import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Podlet from '@podium/podlet';
-import pkg from './package.json' assert {type: "json"};
-
+import pkg from './package.json' assert { type: 'json' };
+import manifest from './dist/client/manifest.json' assert { type: 'json' };
 
 const PORT = 3002;
 
@@ -28,13 +28,13 @@ export async function createServer(
 ) {
   const resolve = (p) => path.resolve(__dirname, p);
 
-  const indexProd = isProd
-    ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
-    : '';
+  // const indexProd = isProd
+  //   ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
+  //   : '';
   const app = express();
 
   app.use(header.middleware());
-  
+
   let vite;
 
   if (!isProd) {
@@ -69,45 +69,59 @@ export async function createServer(
     );
   }
 
-  header.js({ value: "/dist/client/header.js", type: 'module', defer: true})
+  // find the assets and bundle it up.
+  Object.keys(manifest).forEach((k) => {
+    if (manifest[k].css) {
+      manifest[k].css.map((c) => {
+        header.css({ value: `/dist/client/${c}` });
+      });
+    }
+
+    if (k.includes('.html')) {
+      header.js({
+        value: `/dist/client/${manifest[k].file}`,
+        type: 'module',
+        defer: true,
+      });
+    }
+  });
 
   app.get(header.content(), async (req, res) => {
     try {
       const url = req.originalUrl;
-      let template, render;
+      let render;
       if (!isProd) {
-        template = fs.readFileSync(resolve('index.html'), 'utf-8');
-        template = await vite.transformIndexHtml(url, template);
+        // template = fs.readFileSync(resolve('index.html'), 'utf-8');
+        // template = await vite.transformIndexHtml(url, template);
         render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
       } else {
-        template = indexProd;
+        // template = indexProd;
         // @ts-ignore
         render = (await import('./dist/server/header.js')).render;
       }
 
       const context = {};
-      const { body, hydration } = render(url, context);
+      const { body } = render(url, context);
 
       if (context.url) {
         // Somewhere a `<Redirect>` was rendered
         return res.redirect(301, context.url);
       }
 
-      const html = template
-        .replace(`<!--ssr-outlet-->`, body)
-        .replace('<!--ssr-hydration-->', hydration);
+      // const html = template
+      //   .replace(`<!--ssr-outlet-->`, body)
+      //   .replace('<!--ssr-hydration-->', hydration);
       res.status(200).podiumSend(body);
     } catch (err) {
       !isProd && vite.ssrFixStacktrace(e);
-      
+
       res.status(500).end(e.stack);
     }
   });
 
-
   app.get(header.manifest(), (req, res) => {
     res.status(200).send(header);
-});
+  });
 
   return { app, vite };
 }
@@ -115,7 +129,9 @@ export async function createServer(
 if (!isTest) {
   createServer().then(({ app }) =>
     app.listen(PORT, () => {
-      console.log(`⚡ - (${pkg.name}) : has started on http://localhost:${PORT}`);
+      console.log(
+        `⚡ - (${pkg.name}) : has started on http://localhost:${PORT}`
+      );
     })
   );
 }

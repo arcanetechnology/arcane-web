@@ -1,0 +1,41 @@
+/** @format */
+
+@import '@arcane-web/alchemy/lib/base/breakpoint';
+
+.header-parent {
+  width: 100%;
+}
+
+.header {
+  height: 88px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--header-background);
+  > img {
+    transition: all 0.2s;
+    width: 174px;
+    height: 30px;
+  }
+}
+
+.sticky {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  div > img {
+    width: 141px;
+    height: 24px;
+  }
+}
+
+.scroll-height {
+  height: 88px !important;
+  @include breakpoint(medium) {
+    height: 88px;
+  }
+}
+
+.auth-fixed-width {
+  width: 120px !important;
+  display: flex;
+  flex-direction: row-reverse;
+}

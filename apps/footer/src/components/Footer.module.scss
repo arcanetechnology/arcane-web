@@ -1,0 +1,120 @@
+/** @format */
+@import '@arcane-web/alchemy/lib/base/breakpoint';
+@import '@arcane-web/alchemy/lib/base/space';
+
+.main-footer {
+  padding: 56px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-content: center;
+
+  @include breakpoint(medium) {
+    padding: 80px 0;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include breakpoint(large) {
+    padding: 80px 0;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .icon {
+    align-self: center;
+    padding-bottom: 40px;
+    @include breakpoint(medium) {
+      align-self: flex-start;
+    }
+
+    @include breakpoint(large) {
+      align-self: flex-start;
+    }
+  }
+}
+
+.footer-navigation {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: space-between;
+  @include breakpoint(medium) {
+    gap: 96px;
+  }
+}
+
+.sub-footer {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: $space-32;
+  padding-bottom: $space-24;
+
+  @include breakpoint(medium) {
+    flex-direction: row;
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
+
+  .copyright {
+    margin-right: 0px;
+    margin-bottom: 24px;
+    align-self: center;
+
+    @include breakpoint(medium) {
+      margin-right: 80px;
+    }
+  }
+
+  .madeIn {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .social {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    @include breakpoint(small) {
+      margin-top: -24px;
+
+      .text {
+        display: none;
+      }
+    }
+
+    svg {
+      position: relative;
+      top: 2px;
+      fill: white;
+      width: 16px;
+      height: 16px;
+
+      @include breakpoint(small) {
+        top: 0px;
+        width: auto;
+        height: auto;
+      }
+    }
+
+    .text,
+    a {
+      margin-right: 16px;
+      color: white;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
+.arcane-footer-link {
+  width: 100%;
+  text-align: center;
+  height: 2px;
+  background-color: white;
+  filter: blur(2px);
+}

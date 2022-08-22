@@ -3,6 +3,7 @@
 import { renderToString, HydrationScript } from 'solid-js/web';
 import utils from '@podium/utils';
 import type { HttpIncoming } from '@podium/utils';
+import { Base } from './layouts';
 
 export function render(
   incoming: HttpIncoming<{
@@ -10,8 +11,6 @@ export function render(
   }>,
   application: string
 ) {
-
-
   const body = renderToString(() => (
     <html lang="en">
       <head>
@@ -44,9 +43,7 @@ export function render(
         {incoming.js.map(utils.buildScriptElement)}
       </head>
       <body innerHTML={application}>
-        <div id="arcane-header"></div>
-        <div id="arcane-app"></div>
-        <div id="arcane-footer"></div>
+        <Base />
       </body>
     </html>
   ));

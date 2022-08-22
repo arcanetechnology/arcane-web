@@ -3,10 +3,9 @@ import express from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Layout from '@podium/layout';
-import pkg from './package.json' assert {type: "json"};
+import pkg from './package.json' assert { type: 'json' };
 
 const PORT = 3000;
-
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
@@ -29,8 +28,8 @@ export async function createServer(
   });
 
   layout.view(async (incoming, header, footer) => {
-    const render = (await import('./dist/layouts/base.js')).render;
-    const {body} = render(incoming, `${header}${footer}`);
+    const render = (await import('./dist/layouts/App.js')).render;
+    const { body } = render(incoming, `${header}${footer}`);
     return body;
   });
 
@@ -80,14 +79,18 @@ export async function createServer(
 
   app.use('*', async (req, res) => {
     try {
-      const url = req.originalUrl;
+      //const url = req.originalUrl;
       const incoming = res.locals.podium;
       const [header, footer] = await Promise.all([
         arcaneHeader.fetch(incoming),
         arcaneFooter.fetch(incoming),
       ]);
       incoming.podlets = [header, footer];
-      const document = await layout.render(incoming, header.content,footer.content);
+      const document = await layout.render(
+        incoming,
+        header.content,
+        footer.content
+      );
       res.send(document);
     } catch (err) {
       !isProd && vite.ssrFixStacktrace(err);
@@ -101,7 +104,9 @@ export async function createServer(
 if (!isTest) {
   createServer().then(({ app }) =>
     app.listen(3000, () => {
-      console.log(`⚡ - (${pkg.name}) : has started on http://localhost:${PORT}`);
+      console.log(
+        `⚡ - (${pkg.name}) : has started on http://localhost:${PORT}`
+      );
     })
   );
 }

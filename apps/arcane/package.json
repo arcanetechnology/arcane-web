@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "node server",
     "build": "pnpm build:layout",
-    "build:layout": "vite build --ssr src/base.tsx --outDir dist/layouts",
+    "build:layout": "vite build --ssr src/App.tsx --outDir dist/layouts",
     "serve": "cross-env NODE_ENV=production node server",
     "debug": "node --inspect-brk server"
   },
