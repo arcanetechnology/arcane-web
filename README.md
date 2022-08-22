@@ -7,11 +7,27 @@
 # Running the project locally
 
 - Add local env variables to connect to firebase, contentful, etc...
-- `yarn`
-- `npm run build`
-- `npm run dev`
+```shell
+yarn
+yarn build
+yarn dev
+```
 
-The invest application would be available on http://localhost:3000/invest/.
+Invest application would be available on http://localhost:3000/invest/.
+
+# Deployment
+
+### Deploy to Firebase Hosting
+
+Find `TARGET` and `SITE` for your application.  
+Check `firebase.json` and `.firebaserc` configuration.  
+For more info, check (Firebase hosting documentation)[https://firebase.google.com/docs/hosting/multisites#define_hosting_config]
+
+Syntax: `firebase deploy --only hosting:[TARGET]`
+
+```shell
+firebase deploy --only hosting:arcane-invest-dev
+```
 
 # `@arcane-web`
 
@@ -29,7 +45,6 @@ https://yarnpkg.com/getting-started/install
 2. TODO: evaluate arcane-state vs nanostore.
 3. TODO: alchemy css only design system hosted on cdn.
 4. TODO: alchemy solidjs based design system with inbuilt style provider.
-
 
 ### Quirks
 
