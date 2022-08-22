@@ -1,22 +1,17 @@
 /** @format */
 
-import { For, Show, VoidComponent, createSignal, createEffect } from 'solid-js';
+import { For, Show, VoidComponent, createSignal } from 'solid-js';
 import Twitter from '../assets/twitter.svg';
 import LinkedIn from '../assets/linkedin.svg';
 import Logo from '../assets/logo.svg';
 import Heart from '../assets/heart.svg';
 import classes from './Footer.module.scss';
-import { useLocation } from '@solidjs/router';
 
 // TODO: IMPORTANT!!!!! REMOVE FOLLOW US WITH IS SMALL IMPLEMENTATION
 
 const Footer: VoidComponent = () => {
   // eslint-disable-next-line unused-imports/no-unused-vars
   const [sortedNavigation, setSortedNavigation] = createSignal([]);
-  const location = useLocation();
-  createEffect(() => {
-    console.log(location.pathname);
-  });
 
   return (
     <>

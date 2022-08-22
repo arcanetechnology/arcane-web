@@ -1,5 +1,6 @@
 /** @format */
 import express from 'express';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Layout from '@podium/layout';
@@ -16,9 +17,7 @@ export async function createServer(
   hmrPort
 ) {
   const resolve = (p) => path.resolve(__dirname, p);
-  /*  const indexProd = isProd
-    ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
-    : ''; */
+
   const app = express();
   let vite;
 
@@ -28,9 +27,18 @@ export async function createServer(
   });
 
   layout.view(async (incoming, header, footer) => {
+    const template = fs.readFileSync(
+      resolve('dist/client/index.html'),
+      'utf-8'
+    );
+
     const render = (await import('./dist/layouts/App.js')).render;
-    const { body } = render(incoming, `${header}${footer}`);
-    return body;
+    const { body, hydration } = render(incoming, header, footer);
+
+    const html = template
+      .replace(`<!--ssr-outlet-->`, body)
+      .replace('<!--ssr-hydration-->', hydration);
+    return html;
   });
 
   const arcaneHeader = layout.client.register({
@@ -86,6 +94,7 @@ export async function createServer(
         arcaneFooter.fetch(incoming),
       ]);
       incoming.podlets = [header, footer];
+
       const document = await layout.render(
         incoming,
         header.content,
