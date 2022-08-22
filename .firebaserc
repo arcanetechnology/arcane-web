@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "arcane-platform-prod"
+    "default": "arcane-platform-dev"
   },
   "targets": {
     "arcane-platform-prod": {
@@ -9,6 +9,14 @@
           "arcane-invest"
         ]
       }
+    },
+    "arcane-platform-dev": {
+      "hosting": {
+        "arcane-invest-dev": [
+          "arcane-invest-dev"
+        ]
+      }
     }
-  }
+  },
+  "etags": {}
 }
