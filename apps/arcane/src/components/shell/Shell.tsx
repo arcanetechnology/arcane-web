@@ -7,7 +7,9 @@ const Shell: VoidComponent = () => {
   return (
     <div class={classes.shell}>
       <header class={classes.header} role="banner" id="arcane-header"></header>
-      <main class={classes.main} id="arcane-app"></main>
+      <main class={classes.main} id="arcane-app">
+        <button onClick={() => alert('hello')}>I dont kno</button>
+      </main>
       <footer class={classes.footer} id="arcane-footer"></footer>
     </div>
   );
