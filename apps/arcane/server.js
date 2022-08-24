@@ -113,6 +113,9 @@ export async function createServer(
     }
   });
 
+  app.use('/auth', (req, res) => {
+    res.send('<h1>login</h1>');
+  });
   app.use('*', async (req, res) => {
     try {
       //const url = req.originalUrl;
