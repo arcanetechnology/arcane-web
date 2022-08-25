@@ -19,11 +19,18 @@ const AssetInfoSvg: VoidComponent<AssetInfoProps> = (props) => {
       value: (value) => value.units,
       height: 208,
       labels: false,
-      colors: ['#090A0B','#AEAEB2','#5AC8FA','#5856D6','#F28515','#FF6831']
+      colors: [
+        '#090A0B',
+        '#AEAEB2',
+        '#5AC8FA',
+        '#5856D6',
+        '#F28515',
+        '#FF6831',
+      ],
+      highlight: false,
     });
     setChart(chart);
   });
-
 
   return (
     <Card class="w-full">

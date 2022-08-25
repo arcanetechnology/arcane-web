@@ -22,6 +22,15 @@ const Home: VoidComponent = () => {
       query {
         fundInfoCollection(limit: 1) {
           items {
+            hero {
+              name
+              image {
+                url
+              }
+              description {
+                json
+              }
+            }
             title
             infoCardsCollection(limit: 4) {
               items {
@@ -38,6 +47,15 @@ const Home: VoidComponent = () => {
             chart {
               title
               url
+            }
+            contact {
+              name
+              image {
+                url
+              }
+              description {
+                json
+              }
             }
           }
         }
@@ -63,7 +81,15 @@ const Home: VoidComponent = () => {
         }
       >
         <section class="margin-24">
-          <Mission />
+          <Mission
+            url={
+              fundInfoCollection().fundInfoCollection.items[0].hero.image.url
+            }
+            description={
+              fundInfoCollection().fundInfoCollection.items[0].hero.description
+                .json
+            }
+          />
         </section>
         <section class={isSmall() ? 'margin-16' : 'margin-48'}>
           <div class="container">
@@ -112,7 +138,19 @@ const Home: VoidComponent = () => {
             />
           </div>
           <div id="contact" class="margin-48">
-            <Contact />
+            <Contact
+              url={
+                fundInfoCollection().fundInfoCollection.items[0].contact.image
+                  .url
+              }
+              title={
+                fundInfoCollection().fundInfoCollection.items[0].contact.name
+              }
+              description={
+                fundInfoCollection().fundInfoCollection.items[0].contact
+                  .description.json
+              }
+            />
           </div>
         </section>
       </Show>

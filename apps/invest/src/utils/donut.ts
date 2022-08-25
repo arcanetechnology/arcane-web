@@ -56,7 +56,6 @@ export function createDonutChart<T, N, V extends number>(
     highlight = true,
   }: ChartOptions<T, N, V>
 ) {
-
   // Compute values.
   const N = d3.map(data, name);
   const V = d3.map(data, value);
@@ -141,86 +140,98 @@ export function createDonutChart<T, N, V extends number>(
   }
 
   if (legends) {
-    svg.selectAll("myDots")
-    .data(arcs)
-  .enter()
-  .append("circle")
-    .attr("cx", 132)
-    .attr("cy", function(d,i){ return -40 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
-    .attr("r", 4)
-    .style("fill", d => color(N[d.data as number]))
+    svg
+      .selectAll('myDots')
+      .data(arcs)
+      .enter()
+      .append('circle')
+      .attr('cx', 132)
+      .attr('cy', function (d, i) {
+        return -40 + i * 25;
+      }) // 100 is where the first dot appears. 25 is the distance between dots
+      .attr('r', 4)
+      .style('fill', (d) => color(N[d.data as number]));
 
-    svg.selectAll("mylabels")
-    .data(arcs)
-    .enter()
-    .append("text")
-    .attr('font-family', 'Poppins')
-    .attr('font-size', 16)
-    .attr('font-weight', 400)
-    .attr('line-height',24)
-    .attr("x", 140)
-    .attr("y", function(d,i){ return -40 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
-    .style("fill", "#343A40")
-    
-    .text(function(d){ 
-      const lines = `${title(d.data)}`.split(/\n/);
-      return lines[0]})
-    .attr("text-anchor", "left")
-    .style("alignment-baseline", "middle")
+    svg
+      .selectAll('mylabels')
+      .data(arcs)
+      .enter()
+      .append('text')
+      .attr('font-family', 'Poppins')
+      .attr('font-size', 16)
+      .attr('font-weight', 400)
+      .attr('line-height', 24)
+      .attr('x', 140)
+      .attr('y', function (d, i) {
+        return -40 + i * 25;
+      }) // 100 is where the first dot appears. 25 is the distance between dots
+      .style('fill', '#343A40')
 
+      .text(function (d) {
+        const lines = `${title(d.data)}`.split(/\n/);
+        return lines[0];
+      })
+      .attr('text-anchor', 'left')
+      .style('alignment-baseline', 'middle');
 
-    svg.selectAll("myCounts")
-    .data(arcs)
-    .enter()
-    .append("text")
-    .attr('font-family', 'Poppins')
-    .attr('font-size', 16)
-    .attr('font-weight', 400)
-    .attr('line-height',24)
-    .attr("x", 300)
-    .attr("y", function(d,i){ return -40 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
-    .style("fill", '#343A40')
-    
-    .text(d => d.value)
-    .attr("text-anchor", "left")
-    .style("alignment-baseline", "middle")
+    /* svg
+      .selectAll('myCounts')
+      .data(arcs)
+      .enter()
+      .append('text')
+      .attr('font-family', 'Poppins')
+      .attr('font-size', 16)
+      .attr('font-weight', 400)
+      .attr('line-height', 24)
+      .attr('x', 300)
+      .attr('y', function (d, i) {
+        return -40 + i * 25;
+      }) // 100 is where the first dot appears. 25 is the distance between dots
+      .style('fill', '#343A40')
 
+      .text((d) => d.value)
+      .attr('text-anchor', 'left')
+      .style('alignment-baseline', 'middle'); */
 
-    svg.selectAll("myPercentage")
-    .data(arcs)
-    .enter()
-    .append("text")
-    .attr('opacity',0.7)
-    .attr('font-family', 'Poppins')
-    .attr('font-size', 16)
-    .attr('font-weight', 300)
-    .attr('line-height',24)
-    .attr("x", 350)
-    .attr("y", function(d,i){ return -40 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
-    .style("fill", '#343A40')
-    
-    .text(function(d){ 
-      const sum = V.reduce((p, c) => p + c,0);
-      return `(${(d.value / sum) * 100} %)`})
-    .attr("text-anchor", "left")
-    .style("alignment-baseline", "middle")
+    const format = d3.format('.2f');
 
+    svg
+      .selectAll('myPercentage')
+      .data(arcs)
+      .enter()
+      .append('text')
+      .attr('opacity', 0.7)
+      .attr('font-family', 'Poppins')
+      .attr('font-size', 16)
+      .attr('font-weight', 300)
+      .attr('line-height', 24)
+      .attr('x', 300)
+      .attr('y', function (d, i) {
+        return -40 + i * 25;
+      }) // 100 is where the first dot appears. 25 is the distance between dots
+      .style('fill', '#343A40')
 
+      .text(function (d) {
+        const sum = V.reduce((p, c) => p + c, 0);
+        return `(${format((d.value / sum) * 100)} %)`;
+      })
+      .attr('text-anchor', 'left')
+      .style('alignment-baseline', 'middle');
   }
 
-
-  if(highlight) {
-    svg.append("text")
-    .attr("x", -50)
-    .attr("y", 10)
-    .attr('font-family', 'Poppins')
-    .attr('font-size', 32)
-    .attr('font-weight', 500)
-    .attr('line-height',56)
-    .text(() => {
-      const sum = V.reduce((p, c) => p + c,0);
-      return `${(V[0] / sum) * 100} %`
-    })
+  if (highlight) {
+    svg
+      .append('text')
+      .attr('x', -50)
+      .attr('y', 10)
+      .attr('font-family', 'Poppins')
+      .attr('font-size', 32)
+      .attr('font-weight', 500)
+      .attr('line-height', 56)
+      .text(() => {
+        const sum = V.reduce((p, c) => p + c, 0);
+        return `${(V[0] / sum) * 100} %`;
+      });
   }
 
   return Object.assign(svg.node(), { scales: { color } });
