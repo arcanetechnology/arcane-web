@@ -36,8 +36,20 @@ export type Chart = {
   url: string;
 };
 
+export type MarketingAsset = {
+  url: string;
+};
+
+export type FundMarketing = {
+  name: string;
+  image: MarketingAsset;
+  description: { json: any };
+};
+
 export type FundInfo = {
   title: string;
+  hero: FundMarketing;
+  contact: FundMarketing;
   infoCardsCollection: InfoCardsCollection;
   portfolioCollection: AssetCollection;
   chart: Chart;

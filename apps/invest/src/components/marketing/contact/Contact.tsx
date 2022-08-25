@@ -3,21 +3,42 @@
 import { Button } from '@arcane-web/alchemy-solid';
 import type { VoidComponent } from 'solid-js';
 //import contact from '../../../assets/contact-us.png';
+import { BLOCKS } from '@contentful/rich-text-types';
 import contactPath from '../../../assets/contactUs.svg';
 import './Contact.scss';
+import SolidRichText from 'rich-text-solid-renderer';
 
 // A typical marketing component structure;
-const Contact: VoidComponent = () => {
+type ContactProps = {
+  url: string;
+  description: any;
+  title: string;
+};
+
+const options = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (props) => {
+      return (
+        <>
+          <br />
+          <p class="small">{props.children}</p>
+        </>
+      );
+    },
+
+    [BLOCKS.HEADING_6]: (props) => {
+      return <h6 class="contact-marketing">{props.children}</h6>;
+    },
+  },
+};
+
+const Contact: VoidComponent<ContactProps> = (props) => {
   return (
     <div class="container" data-auto-grid="2">
-      <img src={contactPath} alt="contact us" />
+      <img src={props.url} alt="contact us" />
       <div class="align-vertical">
-        <h1>Contact Us</h1>
-        <h6 class="contact-marketing">
-          Get in touch to find out more about the fund and get the offering
-          documentation.
-        </h6>
-        <div class="margin-top-32">
+        <SolidRichText document={props.description} options={options} />
+        <div class="margin-top-16">
           <a href={`mailto:invest@arcane.no`}>
             <Button variant="primary" size="large">
               Email Us{' '}

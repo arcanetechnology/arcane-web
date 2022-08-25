@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - feature/invest-improvements
 
 jobs:
   test-build-deploy:
@@ -32,5 +31,5 @@ jobs:
           expires: 30d
           projectId: "${{ secrets.GCP_PROJECT_ID }}"
           channelId: live
-          # removing target will deploy all targets defined in .firebaser
+          # removing target will deploy all targets defined in .firebaserc
           target: "arcane-invest"

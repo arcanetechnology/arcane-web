@@ -1,7 +1,7 @@
-# IDE specific 
+# IDE specific
 .history
 
-# yarn 2 
+# yarn 2
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
@@ -29,8 +29,8 @@ lerna-debug.log*
 
 
 # environment variables
-.env
-.env.production
+.env*
+!.env.template
 
 # macOS-specific files
 .DS_Store
