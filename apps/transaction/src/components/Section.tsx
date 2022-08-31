@@ -12,6 +12,8 @@ import {
   accountsSelector,
   operationAdded,
   sectionOperationAdded,
+  getAccountOptions,
+  getOperations,
 } from '../state';
 import { Operation as OperationType, Section as SectionType } from '../types';
 import Operation from './Operation';
@@ -51,7 +53,11 @@ const Section: React.FC<SectionType> = ({ id, operations }) => {
           id={o}
           deleteOperation={deleteOperation}
           submitOperation={updateOperation}
-          accountOptions={accounts}
+          accountOptions={getAccountOptions(
+            accounts,
+            'EUR',
+            getOperations(operations).map((o) => o.account)
+          )}
         />
       ))}
     </Box>
