@@ -35,10 +35,13 @@ const OperationForm: FC<OperationFormProps> = ({ accounts }) => {
           render={({ field: { value, ...rest } }) => (
             <Autocomplete
               disablePortal
-              options={accountDatas}
+              //options={accountDatas}
               {...rest}
               value={accountDatas.find((a) => a.id === value) || null}
-              groupBy={(option) => option?.type ?? ''}
+              groupBy={(option) => option.type}
+              options={accountDatas.sort(
+                (a, b) => -b.type.localeCompare(a.type)
+              )}
               getOptionLabel={(item) => (item?.label ? item?.label : '')}
               sx={{ width: 300 }}
               size="small"
