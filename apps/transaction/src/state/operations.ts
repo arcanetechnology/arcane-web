@@ -14,14 +14,14 @@ const operationSlice = createSlice({
   reducers: {
     // filter accounts
     operationAdded: operationsAdapter.addOne,
-    operationCreated: operationsAdapter.setOne,
+    operationUpdated: operationsAdapter.updateOne,
     operationDeleted: operationsAdapter.removeOne,
   },
 });
 
 export default operationSlice.reducer;
 
-export const { operationAdded, operationDeleted, operationCreated } =
+export const { operationAdded, operationDeleted, operationUpdated } =
   operationSlice.actions;
 
 export const operationsSelector = operationsAdapter.getSelectors(

@@ -61,7 +61,6 @@ export type AccountTypes = 'Fiat' | 'Crypto';
 export type Operation = {
   id: string;
   status: OperationStatus;
-  accounts: Array<string>;
   account: string;
   amount: number;
 };

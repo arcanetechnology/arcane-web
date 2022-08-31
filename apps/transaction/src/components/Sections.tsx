@@ -18,7 +18,6 @@ import { nanoid } from '@reduxjs/toolkit';
 
 const Sections: React.FC = () => {
   const sections = useSelector(sectionsSelector.selectAll);
-  const accounts = useSelector(accountsSelector.selectIds) as string[];
   const isLoading = useSelector((s: RootState) => s.accounts.loading);
 
   const dispatch = useTransactionDispatch();
@@ -37,7 +36,6 @@ const Sections: React.FC = () => {
         operationAdded({
           id: operation,
           status: 'draft',
-          accounts,
           account: '',
           amount: 0,
         })
