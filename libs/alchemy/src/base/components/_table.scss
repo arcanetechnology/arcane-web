@@ -1,0 +1,43 @@
+/** @format */
+
+@use '../space' as *;
+@use '../elevation' as *;
+@use '../border' as *;
+
+table {
+  @include elevation-100;
+  padding: $space-2;
+  @include radius-small;
+}
+
+tbody {
+}
+
+th {
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+}
+
+tfoot {
+}
+
+tfoot th {
+  font-weight: normal;
+}
+
+tr {
+  cursor: pointer;
+  @include radius-small;
+  &:hover {
+    @include elevation-200;
+  }
+}
+
+td {
+  padding: $space-4;
+}
+
+td:first-child {
+  padding-left: $space-4;
+  padding-right: 0;
+}

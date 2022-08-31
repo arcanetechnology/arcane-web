@@ -1,0 +1,35 @@
+{
+  "name": "@arcane-web/alchemy",
+  "author": {
+    "email": "joeldsouzax@gmail.com",
+    "name": "Joel D'Souza"
+  },
+  "main": "lib/core.scss",
+  "scripts": {
+    "publish": "pnpm run build",
+    "build": "pnpm run build:prod && pnpm run build:dev && cpx 'src/**/*.*' ./lib",
+    "build:prod": "sass src/core.scss dist/alchemy.min.css  -s compressed && postcss dist/alchemy.min.css --use autoprefixer  -d dist/",
+    "build:dev": "sass src/core.scss dist/alchemy.css && postcss dist/alchemy.css --use autoprefixer -d dist/",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.13",
+    "@storybook/addon-actions": "^6.5.10",
+    "@storybook/addon-essentials": "^6.5.10",
+    "@storybook/addon-interactions": "^6.5.10",
+    "@storybook/addon-links": "^6.5.10",
+    "@storybook/builder-webpack4": "^6.5.10",
+    "@storybook/html": "^6.5.10",
+    "@storybook/manager-webpack4": "^6.5.10",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/node": "^18.7.14",
+    "autoprefixer": "^10.4.8",
+    "babel-loader": "^8.2.5",
+    "cpx": "^1.5.0",
+    "postcss": "^8.4.16",
+    "postcss-cli": "^10.0.0",
+    "sass": "^1.54.5",
+    "typescript": "^4.8.2"
+  }
+}

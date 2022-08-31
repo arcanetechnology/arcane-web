@@ -1,0 +1,11 @@
+/** @format */
+
+.error-input {
+  box-shadow: 0px 0px 2px 1px red;
+}
+
+input:disabled {
+  cursor: not-allowed;
+  background: var(--neutral-300);
+  color: var(--primary-100);
+}

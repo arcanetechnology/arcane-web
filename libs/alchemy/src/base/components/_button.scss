@@ -1,0 +1,102 @@
+/** @format */
+
+@use '../elevation' as *;
+@use '../space' as *;
+@use '../size' as *;
+@use '../border' as *;
+@use '../breakpoint' as *;
+
+.button {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  gap: $space-8;
+}
+
+.button-primary {
+  // TODO: add lightest white variable
+  color: #ffffff;
+  background-color: var(--primary-500);
+  @include elevation-100;
+  &:hover {
+    background-color: var(--primary-300);
+  }
+  &:active {
+    background-color: #2d3339;
+  }
+  &:focus {
+    box-shadow: 0px 0px 7px #5ac8fa;
+  }
+  &:disabled {
+    // TODO: make a variable
+    background-color: #e5e5ea;
+    color: var(--primary-500);
+  }
+}
+
+.button-secondary {
+  color: var(--primary-500);
+  @include border-small(var(--primary-500));
+  @include elevation-100;
+  &:hover {
+    color: #ffffff;
+    background-color: var(--primary-300);
+    @include border-small(var(--primary-300));
+  }
+  &:active {
+    color: #ffffff;
+    background-color: #2d3339;
+    @include border-small(var(#2d3339));
+  }
+  &:focus {
+    box-shadow: 0px 0px 7px #5ac8fa;
+  }
+  &:disabled {
+    // TODO: make a variable
+    border: 2px solid #e5e5ea;
+    color: #e5e5ea;
+  }
+}
+
+.button-tertiary {
+  color: var(--primary-500);
+  background-color: transparent;
+  border: none;
+  &:active {
+    @include border-small(var(#2d3339));
+  }
+  &:hover {
+  }
+
+  &:disabled {
+    color: #e5e5ea;
+  }
+
+  &:focus {
+    @include border-small(var(--primary-500));
+    box-shadow: 0px 0px 7px #5ac8fa;
+  }
+}
+
+.button-large {
+  font-weight: 500;
+  @include size-14;
+  @include radius-large;
+  // TODO: put it in the variable.
+  height: 64px;
+  padding: ($space-16) ($space-24);
+}
+
+.button-medium,
+.label {
+  @include radius-small;
+  font-weight: 500;
+  padding: ($space-8) ($space-16);
+  height: 40px;
+}
+.button-small {
+  padding: ($space-8) ($space-16);
+}

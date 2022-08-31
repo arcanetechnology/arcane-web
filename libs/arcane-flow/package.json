@@ -1,0 +1,30 @@
+{
+  "name": "@arcane-web/arcane-flow",
+  "author": {
+    "email": "joeldsouzax@gmail.com",
+    "name": "Joel D'Souza"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/arcane-flow.umd.js",
+  "module": "./dist/arcane-flow.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/arcane-flow.es.js",
+      "require": "./dist/arcane-flow.umd.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "vite build",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^28.1.3",
+    "vite": "^3.0.9"
+  },
+  "dependencies": {
+    "fp-ts": "^2.12.2"
+  }
+}

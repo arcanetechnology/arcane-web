@@ -1,10 +1,11 @@
+# @format
+
 packages:
   # the root package.json
   - '.'
   # all packages in subdirs of apps/ and libs/
   - 'apps/**'
+  - 'admin/**'
   - 'libs/**'
   # exclude packages that are inside test/ directories
   - '!**/test/**'
-
-  

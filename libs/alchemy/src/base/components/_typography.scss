@@ -1,0 +1,111 @@
+/** @format */
+@use '../breakpoint' as *;
+@use '../size' as *;
+@use '../space' as *;
+
+.description {
+  color: var(--font-secondary-color);
+  @include breakpoint(default) {
+    @include size-10;
+  }
+
+  @include breakpoint(default) {
+    @include size-10;
+  }
+
+  @include breakpoint(medium) {
+    @include size-12;
+  }
+}
+
+.secondary-text {
+  color: var(--primary-300);
+}
+
+.title {
+  @include breakpoint(default) {
+    @include size-24;
+  }
+
+  @include breakpoint(default) {
+    @include size-24;
+  }
+
+  @include breakpoint(medium) {
+    @include size-30;
+  }
+}
+
+.subtitle {
+  @include breakpoint(default) {
+    @include size-18;
+  }
+
+  @include breakpoint(default) {
+    @include size-18;
+  }
+
+  @include breakpoint(medium) {
+    @include size-20;
+  }
+}
+
+.heading7 {
+  @include size-14;
+  font-weight: 500;
+  @include breakpoint(medium) {
+    @include size-16;
+  }
+}
+
+.heading8 {
+  @include size-12;
+  font-weight: 500;
+  @include breakpoint(medium) {
+    @include size-14;
+  }
+}
+
+.body1,
+.body2,
+.body3 {
+  font-style: normal;
+  @include size-10;
+  @include breakpoint(medium) {
+    @include size-12;
+  }
+}
+
+.body1 {
+  font-weight: 500;
+}
+
+.body2 {
+  font-weight: 400;
+}
+
+.body3 {
+  font-weight: 300;
+}
+
+.small {
+  @include size-8;
+  @include breakpoint(medium) {
+    @include size-10;
+  }
+}
+
+.extra-small,
+.caption {
+  @include size-8;
+}
+
+.small,
+.extra-small {
+  font-weight: 400;
+  font-style: normal;
+}
+
+.caption {
+  font-weight: 500;
+}
