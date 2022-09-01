@@ -1,7 +1,7 @@
 /** @format */
 import {
   Card,
-  IconButton,
+  Button,
   CardContent,
   CardActions,
   TextField,
@@ -10,7 +10,7 @@ import {
   InputAdornment,
 } from '@mui/material';
 import * as React from 'react';
-import { Add, Delete } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 import { useForm, Controller } from 'react-hook-form';
 import {
   TransactionAccount,
@@ -19,11 +19,15 @@ import {
   CryptoCurrencyTypes,
 } from '../../types';
 
+type OptionalOperationProps = {
+  size: 'small' | 'medium';
+};
+
 type OperationProps = {
   accountOptions: Array<TransactionAccount>;
   submitOperation: (operation: Omit<OperationType, 'id' | 'status'>) => void;
   currency: CurrencyTypes | CryptoCurrencyTypes | null;
-};
+} & Partial<OptionalOperationProps>;
 
 type OperationFormSchema = {
   account: string;
@@ -34,6 +38,7 @@ const Operation: React.FC<OperationProps> = ({
   submitOperation,
   accountOptions,
   currency,
+  size = 'medium',
 }) => {
   const [ccy, setCcy] = React.useState(currency);
 
@@ -81,7 +86,7 @@ const Operation: React.FC<OperationProps> = ({
                   )}
                   getOptionLabel={(item) => (item?.label ? item?.label : '')}
                   sx={{ width: 300 }}
-                  size="medium"
+                  size={size}
                   renderInput={(params) => (
                     <TextField
                       {...params}
@@ -102,7 +107,7 @@ const Operation: React.FC<OperationProps> = ({
             />
             <TextField
               required
-              size="medium"
+              size={size}
               label="Amount"
               type="number"
               InputProps={{
@@ -115,9 +120,10 @@ const Operation: React.FC<OperationProps> = ({
           </Box>
         </CardContent>
         <CardActions>
-          <IconButton type="submit">
-            <Add />
-          </IconButton>
+          <Button variant="contained" type="submit">
+            <Add sx={{ mr: 1 }} />
+            Add
+          </Button>
         </CardActions>
       </Card>
     </form>

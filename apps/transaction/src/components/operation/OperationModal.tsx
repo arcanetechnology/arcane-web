@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import { Operation as Operationtype } from '../../types';
 import { toast } from 'react-toastify';
 import { nanoid } from '@reduxjs/toolkit';
+import { useEventListener } from '../../hooks';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -59,6 +60,12 @@ const OperationModal = () => {
     }
   };
 
+  useEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && e.metaKey) {
+      setOpen(!open);
+    }
+  });
+
   return (
     <React.Fragment>
       <Fab
@@ -69,7 +76,7 @@ const OperationModal = () => {
         aria-label="add new operation"
       >
         <PointOfSale sx={{ mr: 1 }} />
-        Add New Operation
+        Add Group (⌘ + ↩)
       </Fab>
       <Modal
         open={open}

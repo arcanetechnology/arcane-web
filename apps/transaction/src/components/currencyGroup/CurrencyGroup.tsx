@@ -44,7 +44,7 @@ const CurrencyGroup: React.FC<CurrencyGroupType> = ({
       const operation = nanoid();
       dispatch(operationAdded({ id: operation, status: 'added', ...data }));
       dispatch(currencyGroupOperationAdded({ id, operation }));
-      toast('new currency group is created!', {
+      toast('new operation is added!', {
         hideProgressBar: true,
       });
     } catch (err) {
@@ -83,6 +83,7 @@ const CurrencyGroup: React.FC<CurrencyGroupType> = ({
       {showOperationForm && (
         <Operation
           currency={currency}
+          size="small"
           submitOperation={submitOperation}
           accountOptions={getAccountOptions(accounts, currency)}
         />
