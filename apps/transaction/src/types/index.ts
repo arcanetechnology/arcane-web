@@ -45,8 +45,12 @@ export type PortFolio = {
 
 // crypto
 
+export type CryptoCurrencyTypes = string;
+
 export type Crypto = {
   id: string;
+  currency: CryptoCurrencyTypes;
+  balance: number;
 };
 
 /**
@@ -65,9 +69,10 @@ export type Operation = {
   amount: number;
 };
 
-export type Section = {
+export type CurrencyGroup = {
   id: string;
   operations: Array<string>;
+  currency: CurrencyTypes | CryptoCurrencyTypes;
 };
 
 export type TransactionAccount = {

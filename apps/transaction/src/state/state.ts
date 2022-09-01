@@ -1,13 +1,13 @@
 /** @format */
 
 import operations from './operations';
-import sections from './sections';
+import currencyGroups from './currencyGroups';
 import accounts from './accounts';
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 
 const store = configureStore({
-  reducer: { operations, sections, accounts },
+  reducer: { operations, currencyGroups, accounts },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -11,7 +11,9 @@ const operationsAdapter = createEntityAdapter<Operation>({
 
 const operationSlice = createSlice({
   name: 'operations',
-  initialState: operationsAdapter.getInitialState(),
+  initialState: operationsAdapter.getInitialState({
+    currency: null,
+  }),
   reducers: {
     // filter accounts
     operationAdded: operationsAdapter.addOne,
@@ -25,6 +27,9 @@ export default operationSlice.reducer;
 export const { operationAdded, operationDeleted, operationUpdated } =
   operationSlice.actions;
 
+/**
+ * OPERATION READ SIDE DATA
+ */
 export const operationsSelector = operationsAdapter.getSelectors(
   (s: RootState) => s.operations
 );

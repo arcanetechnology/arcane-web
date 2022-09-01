@@ -1,7 +1,11 @@
 /** @format */
 
 import { useSelector } from 'react-redux';
-import { CurrencyTypes, TransactionAccount } from '../../types';
+import {
+  CryptoCurrencyTypes,
+  CurrencyTypes,
+  TransactionAccount,
+} from '../../types';
 import { RootState } from '../state';
 import { accountsAdapter } from './accounts';
 
@@ -19,9 +23,19 @@ export const getAccounts = (ids: string[]) => {
 
 export const getAccountOptions = (
   accounts: Array<TransactionAccount>,
-  currency: CurrencyTypes,
-  accountIds: Array<string>
+  selectedCurrency: CurrencyTypes | CryptoCurrencyTypes | null = null,
+  excludedAccountIds: Array<string> = [],
+  excludedCurrencies: Array<CurrencyTypes | CryptoCurrencyTypes> = []
 ) => {
   // TODO: @vihang filter implementation
   return accounts;
+};
+
+export const getAccount = (accounts: Array<TransactionAccount>, id: string) => {
+  const account = accounts.find((a) => a.id === id);
+  if (account) {
+    return account;
+  } else {
+    throw new Error('account not found');
+  }
 };

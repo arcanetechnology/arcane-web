@@ -7,19 +7,22 @@ import {
   TextField,
   Autocomplete,
   Box,
+  InputAdornment,
 } from '@mui/material';
 import * as React from 'react';
-import { useSelector } from 'react-redux';
-import { operationsSelector, RootState, getAccounts } from '../state';
 import { Add, Delete } from '@mui/icons-material';
 import { useForm, Controller } from 'react-hook-form';
-import { TransactionAccount, Operation as OperationType } from '../types';
+import {
+  TransactionAccount,
+  Operation as OperationType,
+  CurrencyTypes,
+  CryptoCurrencyTypes,
+} from '../../types';
 
 type OperationProps = {
-  id: string;
   accountOptions: Array<TransactionAccount>;
-  deleteOperation: (id: string) => void;
-  submitOperation: (operation: OperationType) => void;
+  submitOperation: (operation: Omit<OperationType, 'id' | 'status'>) => void;
+  currency: CurrencyTypes | CryptoCurrencyTypes | null;
 };
 
 type OperationFormSchema = {
@@ -28,35 +31,33 @@ type OperationFormSchema = {
 };
 
 const Operation: React.FC<OperationProps> = ({
-  id,
-  deleteOperation,
   submitOperation,
   accountOptions,
+  currency,
 }) => {
-  const operation = useSelector((s: RootState) =>
-    operationsSelector.selectById(s, id)
-  );
+  const [ccy, setCcy] = React.useState(currency);
 
   const {
     register,
     handleSubmit,
+    watch,
     control,
     formState: { errors },
   } = useForm<OperationFormSchema>({
     defaultValues: { account: '', amount: 0 },
   });
 
-  if (!operation) {
-    return null;
-  }
-
-  const onSubmit = (data: OperationFormSchema) =>
-    submitOperation({ id: operation.id, ...data, status: 'added' });
+  const onSubmit = (data: OperationFormSchema) => submitOperation(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Card
-        sx={{ display: 'flex', mb: 2, mt: 2, justifyContent: 'space-between' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+        elevation={0}
       >
         <CardContent>
           <Box
@@ -76,30 +77,39 @@ const Operation: React.FC<OperationProps> = ({
                   value={accountOptions.find((a) => a.id === value) || null}
                   groupBy={(option) => option.type}
                   options={accountOptions.sort(
-                    (a, b) => -b.type.localeCompare(a.type)
+                    (a, b) => -a.type.localeCompare(b.type)
                   )}
                   getOptionLabel={(item) => (item?.label ? item?.label : '')}
                   sx={{ width: 300 }}
-                  size="small"
+                  size="medium"
                   renderInput={(params) => (
                     <TextField
                       {...params}
                       required
                       variant="outlined"
                       label="Accounts"
-                      error={!!errors['account']}
-                      helperText={errors['account'] && 'item required'}
+                      helperText={value}
                     />
                   )}
-                  onChange={(_event, data) => rest.onChange(data?.id ?? '')}
+                  onChange={(_event, data) => {
+                    rest.onChange(data?.id ?? '');
+                    if (!currency) {
+                      setCcy(data?.currency ?? '');
+                    }
+                  }}
                 />
               )}
             />
             <TextField
               required
-              size="small"
+              size="medium"
               label="Amount"
               type="number"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">{ccy}</InputAdornment>
+                ),
+              }}
               {...register('amount', { required: true })}
             />
           </Box>
@@ -107,9 +117,6 @@ const Operation: React.FC<OperationProps> = ({
         <CardActions>
           <IconButton type="submit">
             <Add />
-          </IconButton>
-          <IconButton onClick={() => deleteOperation(id)}>
-            <Delete />
           </IconButton>
         </CardActions>
       </Card>
