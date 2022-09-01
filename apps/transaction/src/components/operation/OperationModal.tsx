@@ -86,7 +86,6 @@ const OperationModal = () => {
       >
         <Box sx={style}>
           <Operation
-            currency={null}
             submitOperation={submitOperation}
             accountOptions={getAccountOptions(accounts)}
           />

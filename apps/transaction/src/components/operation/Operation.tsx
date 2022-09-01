@@ -18,15 +18,16 @@ import {
   CurrencyTypes,
   CryptoCurrencyTypes,
 } from '../../types';
+import { getAccount } from '../../state';
 
 type OptionalOperationProps = {
   size: 'small' | 'medium';
+  currency: CurrencyTypes | CryptoCurrencyTypes | null;
 };
 
 type OperationProps = {
   accountOptions: Array<TransactionAccount>;
   submitOperation: (operation: Omit<OperationType, 'id' | 'status'>) => void;
-  currency: CurrencyTypes | CryptoCurrencyTypes | null;
 } & Partial<OptionalOperationProps>;
 
 type OperationFormSchema = {
@@ -37,11 +38,9 @@ type OperationFormSchema = {
 const Operation: React.FC<OperationProps> = ({
   submitOperation,
   accountOptions,
-  currency,
+  currency = null,
   size = 'medium',
 }) => {
-  const [ccy, setCcy] = React.useState(currency);
-
   const {
     register,
     handleSubmit,
@@ -53,6 +52,20 @@ const Operation: React.FC<OperationProps> = ({
   });
 
   const onSubmit = (data: OperationFormSchema) => submitOperation(data);
+
+  const getAccountObj = React.useMemo(() => getAccount, [accountOptions]);
+
+  const getAcc = (id: string) => {
+    try {
+      const acc = getAccountObj(accountOptions, id);
+      return acc;
+    } catch (err) {
+      return {
+        balance: 0,
+        currency: '',
+      };
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -93,14 +106,11 @@ const Operation: React.FC<OperationProps> = ({
                       required
                       variant="outlined"
                       label="Accounts"
-                      helperText={value}
+                      helperText={value || `ID: ${watch('account')}`}
                     />
                   )}
                   onChange={(_event, data) => {
                     rest.onChange(data?.id ?? '');
-                    if (!currency) {
-                      setCcy(data?.currency ?? '');
-                    }
                   }}
                 />
               )}
@@ -112,15 +122,28 @@ const Operation: React.FC<OperationProps> = ({
               type="number"
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="end">{ccy}</InputAdornment>
+                  <InputAdornment position="end">
+                    {currency ? currency : getAcc(watch('account')).currency}
+                  </InputAdornment>
                 ),
               }}
-              {...register('amount', { required: true })}
+              {...register('amount', {
+                valueAsNumber: true,
+                required: true,
+                deps: ['account'],
+                validate: (v) =>
+                  validateBalance(v, getAcc(watch('account')).balance),
+              })}
+              error={Boolean(errors.amount)}
+              helperText={
+                errors.amount?.message ||
+                `Balance: ${getAcc(watch('account')).balance}`
+              }
             />
           </Box>
         </CardContent>
         <CardActions>
-          <Button variant="contained" type="submit">
+          <Button type="submit">
             <Add sx={{ mr: 1 }} />
             Add
           </Button>
@@ -131,3 +154,7 @@ const Operation: React.FC<OperationProps> = ({
 };
 
 export default Operation;
+
+const validateBalance = (value: number, balance: number) => {
+  return balance + value > 0 || `balance is in negative`;
+};
