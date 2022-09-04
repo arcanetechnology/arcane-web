@@ -26,10 +26,10 @@ const CurrencyGroupOperation: React.FC<CurrencyGroupOperationProps> = ({
   );
   return (
     <Box display="flex" flexDirection="row" gap={5} mb={1}>
-      <Typography>{account?.label}</Typography>
-      <Typography>Account ID : {operation.account}</Typography>
-      <Typography>Amount : {operation.amount}</Typography>
-      <Typography>Balance : {account?.balance}</Typography>
+      <Typography variant="h6">{account?.label}</Typography>
+      <Typography variant="h6">Account ID : {operation.account}</Typography>
+      <Typography variant="h6">Amount : {operation.amount}</Typography>
+      <Typography variant="h6">Balance : {account?.balance}</Typography>
     </Box>
   );
 };

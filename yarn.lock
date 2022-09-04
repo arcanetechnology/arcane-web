@@ -109,6 +109,7 @@ __metadata:
     "@types/react-dom": ^18.0.6
     "@typescript-eslint/eslint-plugin": ^5.0.0
     "@vitejs/plugin-react": ^2.0.1
+    currency-symbol: ^1.0.6
     eslint: ^8.0.1
     eslint-config-airbnb: ^19.0.4
     eslint-config-standard-with-typescript: latest
@@ -7141,6 +7142,13 @@ __metadata:
   version: 5.3.0
   resolution: "csv-parse@npm:5.3.0"
   checksum: 6754e85aef9dfdf19da99206b4a83f51fb881b3a75f9f7b6221864252c386410e1f535a013911d6e52f77a017d3dadf10f1e526fe31e01b2b79074c3fb4b3aaa
+  languageName: node
+  linkType: hard
+
+"currency-symbol@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "currency-symbol@npm:1.0.6"
+  checksum: 3d17781c7b7d6d8fbd5b61fc17e07eb75e3e1a396c514b11fb3c1f7901d7e86237c7eee2a3b7d5dc434f99649dbe79fbbacf8494bd7e91ddc9327caccc088f38
   languageName: node
   linkType: hard
 

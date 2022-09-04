@@ -26,6 +26,7 @@ import { Operation } from '../operation';
 import CurrencyGroupOperation from './CurrencyGroupOperation';
 import { toast } from 'react-toastify';
 import { nanoid } from '@reduxjs/toolkit';
+import { symbol } from '../../utils/countries';
 
 const CurrencyGroup: React.FC<CurrencyGroupType> = ({
   currency,
@@ -60,13 +61,18 @@ const CurrencyGroup: React.FC<CurrencyGroupType> = ({
         <AccordionSummary
           expandIcon={<ExpandMore />}
           aria-controls="currency-group"
+          sx={{
+            alignItems: 'center',
+          }}
           id="currency-group-header"
         >
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>
-            Currency: {currency}
-          </Typography>
-          <Typography sx={{ color: 'text.secondary' }}>
-            {operations.length} Operation
+          <Typography variant="h4" sx={{ flexShrink: 0 }}>
+            {currency}{' '}
+            <span
+              dangerouslySetInnerHTML={{
+                __html: symbol(currency) as unknown as string,
+              }}
+            ></span>
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
