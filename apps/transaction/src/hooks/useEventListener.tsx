@@ -15,6 +15,7 @@ export function useEventListener(
   // ... without us needing to pass it in effect deps array ...
   // ... and potentially cause effect to re-run every render.
   React.useEffect(() => {
+    //@ts-ignore
     savedHandler.current = handler;
   }, [handler]);
 
@@ -27,6 +28,7 @@ export function useEventListener(
 
       // Create event listener that calls handler function stored in ref
       const eventListener = (event: Event) =>
+        //@ts-ignore
         savedHandler.current(event) as any;
 
       // Add event listener
