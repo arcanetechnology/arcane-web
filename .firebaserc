@@ -7,6 +7,9 @@
       "hosting": {
         "arcane-invest": [
           "arcane-invest"
+        ],
+        "arcane-trade-admin": [
+          "arcane-trade-admin"
         ]
       }
     },
@@ -14,6 +17,9 @@
       "hosting": {
         "arcane-invest-dev": [
           "arcane-invest-dev"
+        ],
+        "arcane-trade-admin-dev": [
+          "arcane-trade-admin-dev"
         ]
       }
     }

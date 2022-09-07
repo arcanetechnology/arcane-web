@@ -21,6 +21,28 @@
           "destination": "/invest/index.html"
         }
       ]
+    },
+    {
+      "target": "arcane-trade-admin",
+      "public": "admin/trade/dist",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "arcane-trade-admin-dev",
+      "public": "admin/trade/dist",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     }
   ]
 }

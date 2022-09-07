@@ -1,10 +1,12 @@
-name: Deploy invest
+name: Deploy trade-admin
 
 on:
   workflow_dispatch:
   push:
     branches:
       - main
+      # TODO remove trade-admin branch from deploy list.
+      - trade-admin
 
 jobs:
   test-build-deploy:
@@ -17,11 +19,6 @@ jobs:
       - uses: actions/checkout@v3
       - run: yarn
       - run: yarn test
-      - name: Load github env secrets
-        env:
-          INVEST_ENV_FILE: ${{ secrets.INVEST_ENV_FILE }}
-        run: |
-          echo "${INVEST_ENV_FILE}" >> apps/invest/.env
       - run: yarn build
       - name: Firebase hosting deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
@@ -32,4 +29,4 @@ jobs:
           projectId: "${{ secrets.GCP_PROJECT_ID }}"
           channelId: live
           # removing target will deploy all targets defined in .firebaserc
-          target: "arcane-invest"
+          target: "arcane-trade-admin"
