@@ -23,7 +23,7 @@ const CurrencyGroups: React.FC = () => {
   return (
     <React.Fragment>
       {currencyGroups.map((c) => (
-        <CurrencyGroup key={c.id} {...c} />
+        <CurrencyGroup key={c.currency} {...c} />
       ))}
     </React.Fragment>
   );

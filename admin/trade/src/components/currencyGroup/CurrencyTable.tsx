@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useSelector } from 'react-redux';
-import { operationsSelector, RootState } from '../../state';
+import { accountsSelector, operationsSelector, RootState } from '../../state';
 
 function createData(
   name: string,
@@ -34,38 +34,44 @@ type BasicTableProps = {
 };
 
 const BasicTable: React.FC<BasicTableProps> = ({ operations }) => {
-  const oAll = useSelector((s: RootState) => {
+  const operationDatas = useSelector((s: RootState) => {
     return operationsSelector
       .selectAll(s)
       .filter((o) => operations.includes(o.account));
   });
 
-  console.log(oAll);
+  const accounts = useSelector(accountsSelector.selectAll);
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <TableContainer component={Paper} elevation={0}>
+      <Table
+        sx={{ minWidth: 650 }}
+        aria-label="currency group operations"
+        padding="normal"
+        size="small"
+      >
         <TableHead>
           <TableRow>
             <TableCell>Label</TableCell>
             <TableCell align="right">Account ID</TableCell>
             <TableCell align="right">Amount</TableCell>
             <TableCell align="right">Balance</TableCell>
-            <TableCell align="right">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {operations.map((o) => (
+          {operationDatas.map((o) => (
             <TableRow
-              key={o}
+              key={o.account}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {o}
+                {accounts.find((a) => a.id === o.account)?.label}
               </TableCell>
-              <TableCell align="right">{o}</TableCell>
-              <TableCell align="right">{o}</TableCell>
-              <TableCell align="right">{o}</TableCell>
+              <TableCell align="right">{o.account}</TableCell>
+              <TableCell align="right">{o.amount}</TableCell>
+              <TableCell align="right">
+                {accounts.find((a) => a.id === o.account)?.balance}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -75,5 +81,3 @@ const BasicTable: React.FC<BasicTableProps> = ({ operations }) => {
 };
 
 export default BasicTable;
-
-

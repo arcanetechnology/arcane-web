@@ -133,42 +133,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@arcane-web/transaction@workspace:apps/transaction":
-  version: 0.0.0-use.local
-  resolution: "@arcane-web/transaction@workspace:apps/transaction"
-  dependencies:
-    "@babel/core": ^7.18.13
-    "@emotion/react": ^11.10.4
-    "@emotion/styled": ^11.10.4
-    "@mui/icons-material": ^5.10.3
-    "@mui/material": ^5.10.3
-    "@reduxjs/toolkit": ^1.8.5
-    "@types/eslint": ^8
-    "@types/react": ^18.0.18
-    "@types/react-dom": ^18.0.6
-    "@typescript-eslint/eslint-plugin": ^5.0.0
-    "@vitejs/plugin-react": ^2.0.1
-    eslint: ^8.0.1
-    eslint-config-airbnb: ^19.0.4
-    eslint-config-standard-with-typescript: latest
-    eslint-plugin-import: ^2.25.2
-    eslint-plugin-jsx-a11y: ^6.6.1
-    eslint-plugin-n: ^15.0.0
-    eslint-plugin-promise: ^6.0.0
-    eslint-plugin-react: latest
-    eslint-plugin-react-hooks: ^4.6.0
-    prettier: ^2.7.1
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    react-hook-form: ^7.34.2
-    react-redux: ^8.0.2
-    react-toastify: ^9.0.8
-    redux: ^4.2.0
-    typescript: "*"
-    vite: ^3.0.9
-  languageName: unknown
-  linkType: soft
-
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.10.4, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.18.6":
   version: 7.18.6
   resolution: "@babel/code-frame@npm:7.18.6"
