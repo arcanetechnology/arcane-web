@@ -37,6 +37,9 @@ __metadata:
 "@arcane-web/alchemy-solid@workspace:^, @arcane-web/alchemy-solid@workspace:libs/alchemy-solid":
   version: 0.0.0-use.local
   resolution: "@arcane-web/alchemy-solid@workspace:libs/alchemy-solid"
+  dependencies:
+    "@babel/preset-typescript": ^7.18.6
+    babel-preset-solid: ^1.5.4
   peerDependencies:
     solid-icons: "*"
   languageName: unknown
@@ -109,7 +112,6 @@ __metadata:
     "@types/react-dom": ^18.0.6
     "@typescript-eslint/eslint-plugin": ^5.0.0
     "@vitejs/plugin-react": ^2.0.1
-    currency-symbol: ^1.0.6
     eslint: ^8.0.1
     eslint-config-airbnb: ^19.0.4
     eslint-config-standard-with-typescript: latest
@@ -5156,7 +5158,7 @@ __metadata:
     postcss-cli: ^10.0.0
     prettier: ^2.7.1
     rich-text-solid-renderer: ^1.7.0
-    rollup: ^2.75.7
+    rollup: ^2.79.0
     rollup-plugin-dotenv: ^0.3.0
     rollup-preset-solid: ^1.4.0
     sass: ^1.53.0
@@ -5622,6 +5624,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-jsx-dom-expressions@npm:^0.34.5":
+  version: 0.34.5
+  resolution: "babel-plugin-jsx-dom-expressions@npm:0.34.5"
+  dependencies:
+    "@babel/helper-module-imports": 7.16.0
+    "@babel/plugin-syntax-jsx": ^7.16.5
+    "@babel/types": ^7.16.0
+    html-entities: 2.3.2
+  peerDependencies:
+    "@babel/core": ^7.0.0
+  checksum: 6f244d10e153e046aab1bcf0c0cab3c30b144a384969ef8f2333d04336b81f336c56b23d1df2da89fd212c8ec5f73904f41859922416953dcabf56e009e699f9
+  languageName: node
+  linkType: hard
+
 "babel-plugin-macros@npm:^3.1.0":
   version: 3.1.0
   resolution: "babel-plugin-macros@npm:3.1.0"
@@ -5723,6 +5739,17 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0
   checksum: e3776daeca80e01344f9ad356864bbb14e2ba60dea618c8c0fd09bef487d1020a4215a1c6b9ecaf959a68e142b3dd7653ec5748eba7584cfa9c84693fff364b7
+  languageName: node
+  linkType: hard
+
+"babel-preset-solid@npm:^1.5.4":
+  version: 1.5.4
+  resolution: "babel-preset-solid@npm:1.5.4"
+  dependencies:
+    babel-plugin-jsx-dom-expressions: ^0.34.5
+  peerDependencies:
+    "@babel/core": ^7.0.0
+  checksum: 7aec177faa2b67b28128d2ef5cf793f43ce826ebb4c2b34b571e41f4f3a01d942ae558dc58a6c608a2fcd34e4ffd08186c4c558dacc222d14b8f61adcc0189fa
   languageName: node
   linkType: hard
 
@@ -7142,13 +7169,6 @@ __metadata:
   version: 5.3.0
   resolution: "csv-parse@npm:5.3.0"
   checksum: 6754e85aef9dfdf19da99206b4a83f51fb881b3a75f9f7b6221864252c386410e1f535a013911d6e52f77a017d3dadf10f1e526fe31e01b2b79074c3fb4b3aaa
-  languageName: node
-  linkType: hard
-
-"currency-symbol@npm:^1.0.6":
-  version: 1.0.6
-  resolution: "currency-symbol@npm:1.0.6"
-  checksum: 3d17781c7b7d6d8fbd5b61fc17e07eb75e3e1a396c514b11fb3c1f7901d7e86237c7eee2a3b7d5dc434f99649dbe79fbbacf8494bd7e91ddc9327caccc088f38
   languageName: node
   linkType: hard
 
@@ -15354,7 +15374,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.68.0, rollup@npm:^2.75.7":
+"rollup@npm:^2.68.0":
   version: 2.78.0
   resolution: "rollup@npm:2.78.0"
   dependencies:
@@ -15365,6 +15385,20 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: 01b5a7ae082d2a14201c973ee973099f0899cc87b65063d5ca5a77c05eeefb3b51e14b1346cf1a0fc879ac2cbb87239d4f960917bfc30b7c52f5dce50a7f56e7
+  languageName: node
+  linkType: hard
+
+"rollup@npm:^2.79.0":
+  version: 2.79.0
+  resolution: "rollup@npm:2.79.0"
+  dependencies:
+    fsevents: ~2.3.2
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    rollup: dist/bin/rollup
+  checksum: 166f1ffea1898e157003920065b3a328e7012ea6808860ee8fe5d1ce94804fcce9985c95a3c0f7fe9c611aff0d09a70f073f1d6f715c8faba28e4e40f71ee3bb
   languageName: node
   linkType: hard
 
