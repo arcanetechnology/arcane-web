@@ -25,13 +25,11 @@ import {
 import { Operation } from '../operation';
 import CurrencyGroupOperation from './CurrencyGroupOperation';
 import { toast } from 'react-toastify';
-import { nanoid } from '@reduxjs/toolkit';
 import { symbol } from '../../utils/countries';
 
 const CurrencyGroup: React.FC<CurrencyGroupType> = ({
   currency,
   operations,
-  id,
 }) => {
   const [showOperationForm, setOperationForm] = React.useState(false);
   const accounts = useSelector(accountsSelector.selectAll);
@@ -40,11 +38,21 @@ const CurrencyGroup: React.FC<CurrencyGroupType> = ({
   const handleOpen = () => setOperationForm(true);
   const handleClose = () => setOperationForm(false);
 
-  const submitOperation = (data: Omit<OperationType, 'id' | 'status'>) => {
+  const submitOperation = (data: Omit<OperationType, 'status'>) => {
+    if (operations.includes(data.account)) {
+      toast('you cannot add the same account in this group', {
+        hideProgressBar: true,
+      });
+      return;
+    }
+
     try {
-      const operation = nanoid();
-      dispatch(operationAdded({ id: operation, status: 'added', ...data }));
-      dispatch(currencyGroupOperationAdded({ id, operation }));
+      dispatch(operationAdded({ status: 'added', ...data }));
+
+      dispatch(
+        currencyGroupOperationAdded({ currency, operation: data.account })
+      );
+
       toast('new operation is added!', {
         hideProgressBar: true,
       });

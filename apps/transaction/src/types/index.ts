@@ -63,14 +63,12 @@ export type OperationStatus = 'draft' | 'added';
 export type AccountTypes = 'Fiat' | 'Crypto';
 
 export type Operation = {
-  id: string;
   status: OperationStatus;
   account: string;
   amount: number;
 };
 
 export type CurrencyGroup = {
-  id: string;
   operations: Array<string>;
   currency: CurrencyTypes | CryptoCurrencyTypes;
 };

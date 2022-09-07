@@ -6,14 +6,12 @@ import { Operation } from '../types';
 import { RootState } from './state';
 
 const operationsAdapter = createEntityAdapter<Operation>({
-  selectId: (operation) => operation.id,
+  selectId: (operation) => operation.account,
 });
 
 const operationSlice = createSlice({
   name: 'operations',
-  initialState: operationsAdapter.getInitialState({
-    currency: null,
-  }),
+  initialState: operationsAdapter.getInitialState(),
   reducers: {
     // filter accounts
     operationAdded: operationsAdapter.addOne,
@@ -36,10 +34,10 @@ export const operationsSelector = operationsAdapter.getSelectors(
 
 // User => fetch accounts => transform accounts to transaction app =>
 
-export const getOperations = (ids: Array<string>) => {
+export const getOperations = (accounts: Array<string>) => {
   const allOperations = useSelector(operationsSelector.selectAll);
-  const operations = Object.values(allOperations).filter(({ id }) =>
-    ids.some((i) => id.includes(i))
+  const operations = Object.values(allOperations).filter(({ account }) =>
+    accounts.some((i) => account.includes(i))
   );
   return operations;
 };

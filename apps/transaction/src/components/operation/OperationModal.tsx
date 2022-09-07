@@ -45,16 +45,13 @@ const OperationModal = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const submitOperation = (data: Omit<Operationtype, 'id' | 'status'>) => {
+  const submitOperation = (data: Omit<Operationtype, 'status'>) => {
     try {
       const account = getAccount(accounts, data.account);
-      const id = nanoid();
-      const sectionId = nanoid();
-      dispatch(operationAdded({ id, status: 'added', ...data }));
+      dispatch(operationAdded({ status: 'added', ...data }));
       dispatch(
         currencyGroupAdded({
-          id: sectionId,
-          operations: [id],
+          operations: [data.account],
           currency: account.currency,
         })
       );

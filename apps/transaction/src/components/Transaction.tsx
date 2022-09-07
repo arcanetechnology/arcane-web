@@ -5,7 +5,6 @@ import { useTransactionDispatch, fetchUserAccounts } from '../state';
 import { toast } from 'react-toastify';
 import { OperationModal } from './operation';
 import CurrencyGroups from './currencyGroup';
-import { Box, Typography } from '@mui/material';
 
 const Transaction: React.FC = () => {
   const dispatch = useTransactionDispatch();
