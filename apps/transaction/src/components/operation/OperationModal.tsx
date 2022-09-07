@@ -11,6 +11,8 @@ import {
   operationAdded,
   currencyGroupAdded,
   getAccount,
+  currencyGroupsSelector,
+  operationsSelector,
 } from '../../state';
 import { useSelector } from 'react-redux';
 import { Operation as Operationtype } from '../../types';
@@ -31,7 +33,13 @@ const style = {
 
 const OperationModal = () => {
   const [open, setOpen] = React.useState(false);
+  // get all accounts present
   const accounts = useSelector(accountsSelector.selectAll);
+  // get all currencyGroups for the transaction
+  const currencyGroup = useSelector(currencyGroupsSelector.selectAll);
+  // get all operations in this transaction
+  const operations = useSelector(operationsSelector.selectAll);
+
   const dispatch = useTransactionDispatch();
 
   const handleOpen = () => setOpen(true);
@@ -87,7 +95,12 @@ const OperationModal = () => {
         <Box sx={style}>
           <Operation
             submitOperation={submitOperation}
-            accountOptions={getAccountOptions(accounts)}
+            accountOptions={getAccountOptions(
+              accounts,
+              null,
+              operations.map((o) => o.account),
+              currencyGroup.map((c) => c.currency)
+            )}
           />
         </Box>
       </Modal>
