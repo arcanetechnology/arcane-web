@@ -3,8 +3,7 @@
 import * as React from 'react';
 import { useTransactionDispatch, fetchUserAccounts } from '../state';
 import { toast } from 'react-toastify';
-import { OperationModal } from './operation';
-import CurrencyGroups from './currencyGroup';
+import { OperationModal, CurrencyGroups } from '../components';
 
 const Transaction: React.FC = () => {
   const dispatch = useTransactionDispatch();

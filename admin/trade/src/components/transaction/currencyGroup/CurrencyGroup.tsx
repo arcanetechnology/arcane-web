@@ -13,7 +13,7 @@ import * as React from 'react';
 import {
   CurrencyGroup as CurrencyGroupType,
   Operation as OperationType,
-} from '../../types';
+} from '../../../types';
 import { useSelector } from 'react-redux';
 import {
   accountsSelector,
@@ -21,10 +21,10 @@ import {
   getAccountOptions,
   operationAdded,
   useTransactionDispatch,
-} from '../../state';
+} from '../../../state';
 import { Operation } from '../operation';
 import { toast } from 'react-toastify';
-import { symbol } from '../../utils/countries';
+import { symbol } from '../../../utils/countries';
 import CurrencyTable from './CurrencyTable';
 
 const CurrencyGroup: React.FC<CurrencyGroupType> = ({

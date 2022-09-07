@@ -17,8 +17,8 @@ import {
   Operation as OperationType,
   CurrencyTypes,
   CryptoCurrencyTypes,
-} from '../../types';
-import { getAccount } from '../../state';
+} from '../../../types';
+import { getAccount } from '../../../state';
 
 type OptionalOperationProps = {
   size: 'small' | 'medium';

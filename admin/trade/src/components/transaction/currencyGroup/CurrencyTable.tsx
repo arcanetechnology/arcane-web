@@ -9,7 +9,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useSelector } from 'react-redux';
-import { accountsSelector, operationsSelector, RootState } from '../../state';
+import {
+  accountsSelector,
+  operationsSelector,
+  RootState,
+} from '../../../state';
 
 function createData(
   name: string,

@@ -13,12 +13,11 @@ import {
   getAccount,
   currencyGroupsSelector,
   operationsSelector,
-} from '../../state';
+} from '../../../state';
 import { useSelector } from 'react-redux';
-import { Operation as Operationtype } from '../../types';
+import { Operation as Operationtype } from '../../../types';
 import { toast } from 'react-toastify';
-import { nanoid } from '@reduxjs/toolkit';
-import { useEventListener } from '../../hooks';
+import { useEventListener } from '../../../hooks';
 
 const style = {
   position: 'absolute' as 'absolute',

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Alert, AlertTitle } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { currencyGroupsSelector } from '../../state';
+import { currencyGroupsSelector } from '../../../state';
 import CurrencyGroup from './CurrencyGroup';
 
 const CurrencyGroups: React.FC = () => {
