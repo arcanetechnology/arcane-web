@@ -26,6 +26,7 @@ import { Operation } from '../operation';
 import CurrencyGroupOperation from './CurrencyGroupOperation';
 import { toast } from 'react-toastify';
 import { symbol } from '../../utils/countries';
+import CurrencyTable from './CurrencyTable';
 
 const CurrencyGroup: React.FC<CurrencyGroupType> = ({
   currency,
@@ -83,10 +84,13 @@ const CurrencyGroup: React.FC<CurrencyGroupType> = ({
             ></span>
           </Typography>
         </AccordionSummary>
-        <AccordionDetails>
-          {operations.map((o) => (
+        <AccordionDetails
+          sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}
+        >
+          {/* {operations.map((o) => (
             <CurrencyGroupOperation key={o} id={o} />
-          ))}
+          ))} */}
+          <CurrencyTable operations={operations} />
           {!showOperationForm && (
             <Button variant="contained" onClick={handleOpen}>
               Add Operation

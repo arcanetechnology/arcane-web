@@ -1,5 +1,5 @@
 {
-  "name": "@arcane-web/transaction",
+  "name": "@arcane-web/trade",
   "private": true,
   "version": "0.0.0",
   "packageManager": "yarn@3.2.1",
