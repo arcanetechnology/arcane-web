@@ -1,3 +1,4 @@
 /** @format */
 
-export * from './UserList';
+export { default as UserList } from './UserList';
+export { default as UserView } from './UserView';

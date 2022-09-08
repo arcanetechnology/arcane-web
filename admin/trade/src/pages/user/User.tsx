@@ -2,17 +2,13 @@
 
 import * as React from 'react';
 import { useParams, Outlet } from 'react-router-dom';
+import { UserView } from '../../components';
 
 const User: React.FC = () => {
   const params = useParams();
-
-  // get trade user info and dispatch accountoptions action
-  // make other entities :D
-
   return (
     <div>
-      <h1>User</h1>
-      <Outlet />
+      <UserView id={params.userId as string} />
     </div>
   );
 };

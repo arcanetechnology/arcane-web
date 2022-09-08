@@ -1,5 +1,5 @@
 /** @format */
-import { User, Currency, CryptoCurrency } from './api';
+import { User, Currency, CryptoCurrency } from './entities';
 
 export type TradeUserData = User;
 

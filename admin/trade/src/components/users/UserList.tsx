@@ -1,17 +1,14 @@
 /** @format */
 
 import * as React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState, usersSelector } from '../../state';
 import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import { RemoveRedEye } from '@mui/icons-material';
 import { User } from '../../types';
 import { GridLinkAction } from '../navigation';
+import { useGetUsersQuery } from '../../services/users';
 
 const UserList: React.FC = () => {
-  const users = useSelector(usersSelector.selectAll);
-  const isLoading = useSelector((s: RootState) => s.users.loading);
-
+  const { data: users = [], isLoading } = useGetUsersQuery();
   const columns = React.useMemo<GridColumns<User>>(
     () => [
       {
@@ -42,12 +39,8 @@ const UserList: React.FC = () => {
   );
 
   return (
-    <div style={{ height: 500, width: '100%' }}>
-      <DataGrid<User>
-        loading={isLoading === 'loading'}
-        rows={users}
-        columns={columns}
-      />
+    <div style={{ height: 600, width: '100%' }}>
+      <DataGrid loading={isLoading} rows={users} columns={columns} />
     </div>
   );
 };
