@@ -15,11 +15,18 @@ import {
   AppBar as MuiAppBar,
   AppBarProps as MuiAppBarProps,
 } from '@mui/material';
-import { Menu, ChevronLeft, ChevronRight, People } from '@mui/icons-material';
-import User from './pages/user';
+import {
+  Menu,
+  ChevronLeft,
+  ChevronRight,
+  People,
+  AccountBalance,
+} from '@mui/icons-material';
+import Users, { User } from './pages/user';
 import Home from './pages/Home';
 import { Routes, Route } from 'react-router-dom';
 import { NavigationLink } from './components';
+import Transaction from './pages/Transaction';
 
 const drawerWidth = 240;
 
@@ -59,6 +66,7 @@ interface AppBarProps extends MuiAppBarProps {
 
 const icons: Record<string, JSX.Element> = {
   user: <People />,
+  transaction: <AccountBalance />,
 };
 
 const AppBar = styled(MuiAppBar, {
@@ -138,7 +146,7 @@ export default function App() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['User'].map((text, index) => (
+          {['User', 'Transaction'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <NavigationLink
                 to={'/' + text.toLowerCase()}
@@ -154,7 +162,10 @@ export default function App() {
         <DrawerHeader />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/user" element={<User />} />
+          <Route path="/" element={<Users />}>
+            <Route path=":userId" element={<User />} />
+          </Route>
+          <Route path="transaction" element={<Transaction />} />
         </Routes>
       </Box>
     </Box>

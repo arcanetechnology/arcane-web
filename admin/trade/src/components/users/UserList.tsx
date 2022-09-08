@@ -7,6 +7,7 @@ import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import { IconButton } from '@mui/material';
 import { RemoveRedEye } from '@mui/icons-material';
 import { User } from '../../types';
+import { Link as RouterLink } from 'react-router-dom';
 
 const UserList: React.FC = () => {
   const users = useSelector(usersSelector.selectAll);
@@ -29,7 +30,7 @@ const UserList: React.FC = () => {
       field: 'action',
       headerName: 'Actions',
       renderCell: (params: GridRenderCellParams) => (
-        <IconButton>
+        <IconButton component={RouterLink} to="/">
           <RemoveRedEye />
         </IconButton>
       ),
