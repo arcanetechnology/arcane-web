@@ -1,6 +1,7 @@
 /** @format */
 
 import * as React from 'react';
+
 import UserList from '../../components/users/UserList';
 import { useTradeDispatch } from '../../state';
 import { fetchUsers } from '../../state';
@@ -12,7 +13,11 @@ const Users: React.FC = () => {
     dispatch(fetchUsers());
   }, []);
 
-  return <UserList />;
+  return (
+    <React.Fragment>
+      <UserList />
+    </React.Fragment>
+  );
 };
 
 export default Users;

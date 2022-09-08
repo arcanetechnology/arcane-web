@@ -162,7 +162,9 @@ export default function App() {
         <DrawerHeader />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/" element={<Users />}>
+          <Route path="user" element={<User />} />
+          <Route path="user">
+            <Route index element={<Users />} />
             <Route path=":userId" element={<User />} />
           </Route>
           <Route path="transaction" element={<Transaction />} />

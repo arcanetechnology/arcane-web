@@ -36,30 +36,28 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({
   const match = useMatch(to);
 
   return (
-    <li>
-      <ListItem
-        sx={{
-          minHeight: 48,
-          justifyContent: open ? 'initial' : 'center',
-          px: 2.5,
-        }}
-        selected={Boolean(match)}
-        component={renderLink}
-      >
-        {icon ? (
-          <ListItemIcon
-            sx={{
-              minWidth: 0,
-              mr: open ? 3 : 'auto',
-              justifyContent: 'center',
-            }}
-          >
-            {icon}
-          </ListItemIcon>
-        ) : null}
-        <ListItemText sx={{ opacity: open ? 1 : 0 }} primary={primary} />
-      </ListItem>
-    </li>
+    <ListItem
+      sx={{
+        minHeight: 48,
+        justifyContent: open ? 'initial' : 'center',
+        px: 2.5,
+      }}
+      selected={Boolean(match)}
+      component={renderLink}
+    >
+      {icon ? (
+        <ListItemIcon
+          sx={{
+            minWidth: 0,
+            mr: open ? 3 : 'auto',
+            justifyContent: 'center',
+          }}
+        >
+          {icon}
+        </ListItemIcon>
+      ) : null}
+      <ListItemText sx={{ opacity: open ? 1 : 0 }} primary={primary} />
+    </ListItem>
   );
 };
 
