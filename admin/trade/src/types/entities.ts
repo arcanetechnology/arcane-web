@@ -1,4 +1,11 @@
 /** @format */
+// PROFILE
+
+export const profileTypes = ['BUSINESS', 'PERSONAL'] as const;
+export const currency = ['USD', 'EUR', 'GBP', 'NOK', 'SEK', 'DKK', 'CHF'];
+export type ProfileTypes = typeof profileTypes[number];
+export type Currency = typeof currency[number];
+export type CryptoCurrency = string;
 
 // USER TYPE
 export type User = {
@@ -10,9 +17,6 @@ export type TradeUser = {
   profiles: Array<Profile>;
 } & User;
 
-// PROFILE
-export type ProfileTypes = 'BUSINESS' | 'PERSONAL';
-
 export type Profile = {
   id: string;
   alias: string;
@@ -21,8 +25,6 @@ export type Profile = {
 };
 
 // ACCOUNTS
-
-export type Currency = 'USD' | 'EUR' | 'GBP' | 'NOK' | 'SEK' | 'DKK' | 'CHF';
 
 export type Account = {
   id: string;
@@ -41,8 +43,6 @@ export type Portfolio = {
 };
 
 // crypto
-
-export type CryptoCurrency = string;
 
 export type CryptoAccount = {
   id: string;

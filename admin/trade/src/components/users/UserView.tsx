@@ -12,6 +12,11 @@ type UsereViewProps = {
 const UserView: React.FC<UsereViewProps> = ({ id }) => {
   const { data: user, isLoading, isSuccess } = useGetUserQuery(id);
 
+  React.useEffect(() => {
+    if (isSuccess) {
+    }
+  }, [user]);
+
   return (
     <Box>
       {isLoading && (
