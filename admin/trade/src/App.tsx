@@ -25,7 +25,7 @@ import {
 import Users, { User } from './pages/user';
 import Home from './pages/Home';
 import { Routes, Route } from 'react-router-dom';
-import { NavigationLink } from './components';
+import { NavigationLink, TradeBreadCrumbs } from './components';
 import Transaction from './pages/Transaction';
 
 const drawerWidth = 240;
@@ -160,6 +160,7 @@ export default function App() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
+        <TradeBreadCrumbs />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="user" element={<User />} />
