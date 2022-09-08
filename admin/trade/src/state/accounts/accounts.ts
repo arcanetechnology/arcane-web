@@ -5,13 +5,13 @@ import {
   createEntityAdapter,
   createSlice,
 } from '@reduxjs/toolkit';
-import { TransactionAccount } from '../../types';
+import { AccountOptions } from '../../types';
 
 export const fetchUserAccounts = createAsyncThunk<
-  Array<TransactionAccount>,
+  Array<AccountOptions>,
   string
 >('user/account', async (id: string, thunkAPI) => {
-  const res = await new Promise<Array<TransactionAccount>>((res, _) => {
+  const res = await new Promise<Array<AccountOptions>>((res, _) => {
     setTimeout(() => {
       res([
         {
@@ -84,7 +84,7 @@ export const fetchUserAccounts = createAsyncThunk<
   return res;
 });
 
-export const accountsAdapter = createEntityAdapter<TransactionAccount>({
+export const accountsAdapter = createEntityAdapter<AccountOptions>({
   selectId: (account) => account.id,
 });
 
@@ -109,6 +109,3 @@ const accountsSlice = createSlice({
 export default accountsSlice;
 
 export const { accountAdded, accountDeleted } = accountsSlice.actions;
-
-
-

@@ -73,12 +73,17 @@ export type CurrencyGroup = {
   currency: CurrencyTypes | CryptoCurrencyTypes;
 };
 
-export type TransactionAccount = {
+export type AccountOptions = {
   id: string;
   label: string;
   balance: number;
   currency: string;
   type: AccountTypes;
+};
+
+export type Transaction = {
+  id: string;
+  groups: Array<CurrencyGroup>;
 };
 
 /**
