@@ -27,7 +27,7 @@ const TradeBreadCrumbs: React.FC = () => {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter((x) => x);
   return (
-    <Box mt={2} mb={2}>
+    <Box mt={1} mb={2}>
       <Breadcrumbs
         separator={<NavigateNext fontSize="small" />}
         aria-label="trade admin breadcrumbs"
