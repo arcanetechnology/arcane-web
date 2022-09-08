@@ -20,7 +20,7 @@ import {
   currencyGroupOperationAdded,
   getAccountOptions,
   operationAdded,
-  useTransactionDispatch,
+  useTradeDispatch,
 } from '../../../state';
 import { Operation } from '../operation';
 import { toast } from 'react-toastify';
@@ -33,7 +33,7 @@ const CurrencyGroup: React.FC<CurrencyGroupType> = ({
 }) => {
   const [showOperationForm, setOperationForm] = React.useState(false);
   const accounts = useSelector(accountsSelector.selectAll);
-  const dispatch = useTransactionDispatch();
+  const dispatch = useTradeDispatch();
 
   const handleOpen = () => setOperationForm(true);
   const handleClose = () => setOperationForm(false);

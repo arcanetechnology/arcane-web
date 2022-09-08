@@ -7,7 +7,7 @@ import * as React from 'react';
 import {
   accountsSelector,
   getAccountOptions,
-  useTransactionDispatch,
+  useTradeDispatch,
   operationAdded,
   currencyGroupAdded,
   getAccount,
@@ -39,7 +39,7 @@ const OperationModal = () => {
   // get all operations in this transaction
   const operations = useSelector(operationsSelector.selectAll);
 
-  const dispatch = useTransactionDispatch();
+  const dispatch = useTradeDispatch();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

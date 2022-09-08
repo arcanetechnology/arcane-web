@@ -11,22 +11,15 @@ import {
   Divider,
   IconButton,
   ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Drawer as MuiDrawer,
   AppBar as MuiAppBar,
   AppBarProps as MuiAppBarProps,
 } from '@mui/material';
-import {
-  Menu,
-  ChevronLeft,
-  ChevronRight,
-  Inbox,
-  Mail,
-} from '@mui/icons-material';
-import Transaction from './pages/Transaction';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Menu, ChevronLeft, ChevronRight, People } from '@mui/icons-material';
+import User from './pages/user';
+import Home from './pages/Home';
+import { Routes, Route } from 'react-router-dom';
+import { NavigationLink } from './components';
 
 const drawerWidth = 240;
 
@@ -63,6 +56,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
+
+const icons: Record<string, JSX.Element> = {
+  user: <People />,
+};
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -141,26 +138,14 @@ export default function App() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Transaction'].map((text, index) => (
+          {['User'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <Inbox /> : <Mail />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
+              <NavigationLink
+                to={'/' + text.toLowerCase()}
+                primary={text}
+                icon={icons[text.toLowerCase()]}
+                open={open}
+              />
             </ListItem>
           ))}
         </List>
@@ -168,7 +153,8 @@ export default function App() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Routes>
-          <Route path="/" element={<Transaction />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/user" element={<User />} />
         </Routes>
       </Box>
     </Box>
