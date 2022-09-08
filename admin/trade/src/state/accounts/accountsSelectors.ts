@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import {
   CryptoCurrency,
   Currency,
-  AccountOptions,
+  AccountOption,
 } from '../../types';
 import { RootState } from '../state';
 import { accountsAdapter } from './accounts';
@@ -22,7 +22,7 @@ export const getAccounts = (ids: string[]) => {
 };
 
 export const getAccountOptions = (
-  accounts: Array<AccountOptions>,
+  accounts: Array<AccountOption>,
   selectedCurrency: Currency | CryptoCurrency | null = null,
   excludedAccountIds: Array<string> = [],
   excludedCurrencies: Array<Currency | CryptoCurrency> = []
@@ -36,7 +36,7 @@ export const getAccountOptions = (
     .filter((accountOption) => !excludedCurrencies.includes(accountOption.currency))
 };
 
-export const getAccount = (accounts: Array<AccountOptions>, id: string) => {
+export const getAccount = (accounts: Array<AccountOption>, id: string) => {
   const account = accounts.find((a) => a.id === id);
   if (account) {
     return account;

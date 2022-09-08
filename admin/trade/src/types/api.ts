@@ -29,12 +29,12 @@ export type Account = {
   alias: string;
   currency: Currency;
   balance: number;
-  portfolios: Array<PortFolio>;
+  portfolios: Array<Portfolio>;
 };
 
 // PORTFOLIO
 
-export type PortFolio = {
+export type Portfolio = {
   id: string;
   alias: string;
   cryptoAccounts: Array<CryptoAccount>;

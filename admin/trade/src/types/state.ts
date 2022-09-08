@@ -5,7 +5,7 @@ export type TradeUserData = User;
 
 // actions
 export type OperationStatus = 'draft' | 'added';
-export type AccountTypes = 'Fiat' | 'Crypto';
+export type AccountTypes = 'Fiat' | 'Crypto' | 'Virtual';
 export type Loading = 'idle' | 'loading' | 'fetched';
 
 export type Operation = {
@@ -19,7 +19,7 @@ export type CurrencyGroup = {
   currency: Currency | CryptoCurrency;
 };
 
-export type AccountOptions = {
+export type AccountOption = {
   id: string;
   label: string;
   balance: number;

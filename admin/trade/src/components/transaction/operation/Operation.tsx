@@ -13,7 +13,7 @@ import * as React from 'react';
 import { Add } from '@mui/icons-material';
 import { useForm, Controller } from 'react-hook-form';
 import {
-  AccountOptions,
+  AccountOption,
   Operation as OperationType,
   Currency,
   CryptoCurrency,
@@ -26,7 +26,7 @@ type OptionalOperationProps = {
 };
 
 type OperationProps = {
-  accountOptions: Array<AccountOptions>;
+  accountOptions: Array<AccountOption>;
   submitOperation: (operation: Omit<OperationType, 'id' | 'status'>) => void;
 } & Partial<OptionalOperationProps>;
 
