@@ -99,9 +99,11 @@ __metadata:
   resolution: "@arcane-web/research@workspace:apps/research"
   dependencies:
     "@types/eslint": ^8
+    "@types/next": ^9.0.0
     "@types/node": 18.7.14
     "@types/react": 18.0.18
     "@types/react-dom": 18.0.6
+    contentful: ^9.1.34
     eslint: 8.23.0
     eslint-config-next: 12.2.5
     next: 12.2.5
@@ -4070,6 +4072,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/next@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "@types/next@npm:9.0.0"
+  dependencies:
+    next: "*"
+  checksum: 3115931293e1928df5ecd9d0cbf8b9edc9e2d7f67467db468f3d92dac7b44199706dbd4226c33193a7fcd3fe230a1ec2c796a1a585911d40be9fdaf47e8cb16e
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^18.0.0":
   version: 18.7.3
   resolution: "@types/node@npm:18.7.3"
@@ -6364,7 +6375,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"contentful@npm:^9.1.32":
+"contentful@npm:^9.1.32, contentful@npm:^9.1.34":
   version: 9.1.34
   resolution: "contentful@npm:9.1.34"
   dependencies:
@@ -12828,7 +12839,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:12.2.5":
+"next@npm:*, next@npm:12.2.5":
   version: 12.2.5
   resolution: "next@npm:12.2.5"
   dependencies:
