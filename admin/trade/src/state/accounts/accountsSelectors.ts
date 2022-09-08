@@ -2,8 +2,8 @@
 
 import { useSelector } from 'react-redux';
 import {
-  CryptoCurrencyTypes,
-  CurrencyTypes,
+  CryptoCurrency,
+  Currency,
   AccountOptions,
 } from '../../types';
 import { RootState } from '../state';
@@ -23,9 +23,9 @@ export const getAccounts = (ids: string[]) => {
 
 export const getAccountOptions = (
   accounts: Array<AccountOptions>,
-  selectedCurrency: CurrencyTypes | CryptoCurrencyTypes | null = null,
+  selectedCurrency: Currency | CryptoCurrency | null = null,
   excludedAccountIds: Array<string> = [],
-  excludedCurrencies: Array<CurrencyTypes | CryptoCurrencyTypes> = []
+  excludedCurrencies: Array<Currency | CryptoCurrency> = []
 ) => {
   // TODO: @vihang filter implementation
   return accounts;

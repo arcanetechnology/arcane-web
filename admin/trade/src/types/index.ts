@@ -1,26 +1,28 @@
 /** @format */
 
 // USER TYPE
-
 export type User = {
   id: string;
   email: string;
-  name: string;
-  profiles: Array<Profile>;
 };
+
+export type TradeUser = {
+  profiles: Array<Profile>;
+} & User;
 
 // PROFILE
 export type ProfileTypes = 'BUSINESS' | 'PERSONAL';
 
 export type Profile = {
-  type: ProfileTypes;
   id: string;
+  alias: string;
+  type: ProfileTypes;
   accounts: Array<Account>;
 };
 
 // ACCOUNTS
 
-export type CurrencyTypes =
+export type Currency =
   | 'USD'
   | 'EUR'
   | 'GBP'
@@ -31,25 +33,28 @@ export type CurrencyTypes =
 
 export type Account = {
   id: string;
-  currencyType: CurrencyTypes;
-  portfolios: Array<PortFolio>;
+  alias: string;
+  currency: Currency;
   balance: number;
+  portfolios: Array<PortFolio>;
 };
 
 // PORTFOLIO
 
 export type PortFolio = {
   id: string;
-  cryptos: Array<Crypto>;
+  alias: string;
+  cryptoAccounts: Array<CryptoAccount>;
 };
 
 // crypto
 
-export type CryptoCurrencyTypes = string;
+export type CryptoCurrency = string;
 
-export type Crypto = {
+export type CryptoAccount = {
   id: string;
-  currency: CryptoCurrencyTypes;
+  alias: string;
+  currency: CryptoCurrency;
   balance: number;
 };
 
@@ -70,7 +75,7 @@ export type Operation = {
 
 export type CurrencyGroup = {
   operations: Array<string>;
-  currency: CurrencyTypes | CryptoCurrencyTypes;
+  currency: Currency | CryptoCurrency;
 };
 
 export type AccountOptions = {

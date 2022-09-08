@@ -15,14 +15,14 @@ import { useForm, Controller } from 'react-hook-form';
 import {
   AccountOptions,
   Operation as OperationType,
-  CurrencyTypes,
-  CryptoCurrencyTypes,
+  Currency,
+  CryptoCurrency,
 } from '../../../types';
 import { getAccount } from '../../../state';
 
 type OptionalOperationProps = {
   size: 'small' | 'medium';
-  currency: CurrencyTypes | CryptoCurrencyTypes | null;
+  currency: Currency | CryptoCurrency | null;
 };
 
 type OperationProps = {
