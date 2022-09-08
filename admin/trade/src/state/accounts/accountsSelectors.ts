@@ -27,8 +27,13 @@ export const getAccountOptions = (
   excludedAccountIds: Array<string> = [],
   excludedCurrencies: Array<Currency | CryptoCurrency> = []
 ) => {
-  // TODO: @vihang filter implementation
-  return accounts;
+  return accounts
+    // if selectedCurrency is present, filter accountOptions by selected selectedCurrency
+    .filter((accountOption) => selectedCurrency == null || accountOption.currency == selectedCurrency)
+    // exclude accountOptions with id in excludedAccountIds list
+    .filter((accountOption) => !excludedAccountIds.includes(accountOption.id))
+    // exclude accountOptions with currency in excludedCurrencies list
+    .filter((accountOption) => !excludedCurrencies.includes(accountOption.currency))
 };
 
 export const getAccount = (accounts: Array<AccountOptions>, id: string) => {
