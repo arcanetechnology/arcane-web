@@ -1,0 +1,800 @@
+[
+  {
+    "id": "user-external-usd",
+    "label": "User External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-eur",
+    "label": "User External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-gbp",
+    "label": "User External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-nok",
+    "label": "User External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-sek",
+    "label": "User External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-dkk",
+    "label": "User External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-chf",
+    "label": "User External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-btc",
+    "label": "User External BTC",
+    "currency": "BTC",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-eth_erc20",
+    "label": "User External ETH_ERC20",
+    "currency": "ETH_ERC20",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-sol",
+    "label": "User External SOL",
+    "currency": "SOL",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-usd",
+    "label": "Arcane External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-eur",
+    "label": "Arcane External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-gbp",
+    "label": "Arcane External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-nok",
+    "label": "Arcane External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-sek",
+    "label": "Arcane External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-dkk",
+    "label": "Arcane External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-chf",
+    "label": "Arcane External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-btc",
+    "label": "Arcane External BTC",
+    "currency": "BTC",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-eth_erc20",
+    "label": "Arcane External ETH_ERC20",
+    "currency": "ETH_ERC20",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-sol",
+    "label": "Arcane External SOL",
+    "currency": "SOL",
+    "allowNegative": true
+  },
+  {
+    "id": "dnb-fee-external-usd",
+    "label": "DNB Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "dnb-fee-external-eur",
+    "label": "DNB Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "dnb-fee-external-gbp",
+    "label": "DNB Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "dnb-fee-external-nok",
+    "label": "DNB Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "dnb-fee-external-sek",
+    "label": "DNB Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "dnb-fee-external-dkk",
+    "label": "DNB Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "dnb-fee-external-chf",
+    "label": "DNB Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-usd",
+    "label": "SP1 Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-eur",
+    "label": "SP1 Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-gbp",
+    "label": "SP1 Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-nok",
+    "label": "SP1 Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-sek",
+    "label": "SP1 Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-dkk",
+    "label": "SP1 Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-chf",
+    "label": "SP1 Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-usd",
+    "label": "Clearjunction Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-eur",
+    "label": "Clearjunction Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-gbp",
+    "label": "Clearjunction Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-nok",
+    "label": "Clearjunction Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-sek",
+    "label": "Clearjunction Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-dkk",
+    "label": "Clearjunction Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-chf",
+    "label": "Clearjunction Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-usd",
+    "label": "SBanken Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-eur",
+    "label": "SBanken Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-gbp",
+    "label": "SBanken Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-nok",
+    "label": "SBanken Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-sek",
+    "label": "SBanken Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-dkk",
+    "label": "SBanken Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-chf",
+    "label": "SBanken Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "dnb-tax-external-usd",
+    "label": "DNB Tax External USD",
+    "currency": "USD",
+    "allowNegative": false
+  },
+  {
+    "id": "dnb-tax-external-eur",
+    "label": "DNB Tax External EUR",
+    "currency": "EUR",
+    "allowNegative": false
+  },
+  {
+    "id": "dnb-tax-external-gbp",
+    "label": "DNB Tax External GBP",
+    "currency": "GBP",
+    "allowNegative": false
+  },
+  {
+    "id": "dnb-tax-external-nok",
+    "label": "DNB Tax External NOK",
+    "currency": "NOK",
+    "allowNegative": false
+  },
+  {
+    "id": "dnb-tax-external-sek",
+    "label": "DNB Tax External SEK",
+    "currency": "SEK",
+    "allowNegative": false
+  },
+  {
+    "id": "dnb-tax-external-dkk",
+    "label": "DNB Tax External DKK",
+    "currency": "DKK",
+    "allowNegative": false
+  },
+  {
+    "id": "dnb-tax-external-chf",
+    "label": "DNB Tax External CHF",
+    "currency": "CHF",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-usd",
+    "label": "SP1 Tax External USD",
+    "currency": "USD",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-eur",
+    "label": "SP1 Tax External EUR",
+    "currency": "EUR",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-gbp",
+    "label": "SP1 Tax External GBP",
+    "currency": "GBP",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-nok",
+    "label": "SP1 Tax External NOK",
+    "currency": "NOK",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-sek",
+    "label": "SP1 Tax External SEK",
+    "currency": "SEK",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-dkk",
+    "label": "SP1 Tax External DKK",
+    "currency": "DKK",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-chf",
+    "label": "SP1 Tax External CHF",
+    "currency": "CHF",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-usd",
+    "label": "Clearjunction Tax External USD",
+    "currency": "USD",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-eur",
+    "label": "Clearjunction Tax External EUR",
+    "currency": "EUR",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-gbp",
+    "label": "Clearjunction Tax External GBP",
+    "currency": "GBP",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-nok",
+    "label": "Clearjunction Tax External NOK",
+    "currency": "NOK",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-sek",
+    "label": "Clearjunction Tax External SEK",
+    "currency": "SEK",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-dkk",
+    "label": "Clearjunction Tax External DKK",
+    "currency": "DKK",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-chf",
+    "label": "Clearjunction Tax External CHF",
+    "currency": "CHF",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-usd",
+    "label": "SBanken Tax External USD",
+    "currency": "USD",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-eur",
+    "label": "SBanken Tax External EUR",
+    "currency": "EUR",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-gbp",
+    "label": "SBanken Tax External GBP",
+    "currency": "GBP",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-nok",
+    "label": "SBanken Tax External NOK",
+    "currency": "NOK",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-sek",
+    "label": "SBanken Tax External SEK",
+    "currency": "SEK",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-dkk",
+    "label": "SBanken Tax External DKK",
+    "currency": "DKK",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-chf",
+    "label": "SBanken Tax External CHF",
+    "currency": "CHF",
+    "allowNegative": false
+  },
+  {
+    "id": "blockchain-fee-external-btc",
+    "label": "Blockchain Fee External BTC",
+    "currency": "BTC",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-eth_erc20",
+    "label": "Blockchain Fee External ETH_ERC20",
+    "currency": "ETH_ERC20",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-sol",
+    "label": "Blockchain Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-btc",
+    "label": "Coinbase Withdrawal Fee External BTC",
+    "currency": "BTC",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-eth_erc20",
+    "label": "Coinbase Withdrawal Fee External ETH_ERC20",
+    "currency": "ETH_ERC20",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-sol",
+    "label": "Coinbase Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-btc",
+    "label": "FTX Withdrawal Fee External BTC",
+    "currency": "BTC",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-eth_erc20",
+    "label": "FTX Withdrawal Fee External ETH_ERC20",
+    "currency": "ETH_ERC20",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-sol",
+    "label": "FTX Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-btc",
+    "label": "Binance Withdrawal Fee External BTC",
+    "currency": "BTC",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-eth_erc20",
+    "label": "Binance Withdrawal Fee External ETH_ERC20",
+    "currency": "ETH_ERC20",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-sol",
+    "label": "Binance Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-fee-external-usd",
+    "label": "Coinbase Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-eur",
+    "label": "Coinbase Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-gbp",
+    "label": "Coinbase Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-nok",
+    "label": "Coinbase Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-sek",
+    "label": "Coinbase Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-dkk",
+    "label": "Coinbase Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-chf",
+    "label": "Coinbase Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-usd",
+    "label": "FTX Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-eur",
+    "label": "FTX Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-gbp",
+    "label": "FTX Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-nok",
+    "label": "FTX Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-sek",
+    "label": "FTX Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-dkk",
+    "label": "FTX Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-chf",
+    "label": "FTX Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-usd",
+    "label": "Binance Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-eur",
+    "label": "Binance Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-gbp",
+    "label": "Binance Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-nok",
+    "label": "Binance Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-sek",
+    "label": "Binance Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-dkk",
+    "label": "Binance Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-chf",
+    "label": "Binance Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-btc",
+    "label": "B2C2 Withdrawal Fee External BTC",
+    "currency": "BTC",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-eth_erc20",
+    "label": "B2C2 Withdrawal Fee External ETH_ERC20",
+    "currency": "ETH_ERC20",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-sol",
+    "label": "B2C2 Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-fee-external-usd",
+    "label": "B2C2 Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-eur",
+    "label": "B2C2 Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-gbp",
+    "label": "B2C2 Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-nok",
+    "label": "B2C2 Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-sek",
+    "label": "B2C2 Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-dkk",
+    "label": "B2C2 Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-chf",
+    "label": "B2C2 Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-usd",
+    "label": "Fireblocks Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-eur",
+    "label": "Fireblocks Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-gbp",
+    "label": "Fireblocks Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-nok",
+    "label": "Fireblocks Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-sek",
+    "label": "Fireblocks Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-dkk",
+    "label": "Fireblocks Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-chf",
+    "label": "Fireblocks Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-usd",
+    "label": "Metamask Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-eur",
+    "label": "Metamask Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-gbp",
+    "label": "Metamask Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-nok",
+    "label": "Metamask Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-sek",
+    "label": "Metamask Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-dkk",
+    "label": "Metamask Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-chf",
+    "label": "Metamask Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  }
+]
