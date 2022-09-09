@@ -11,9 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { worker } from './mocks/browser';
 
 const render = async () => {
-  if (import.meta.env.DEV) {
-    await worker.start();
-  }
+  await worker.start();
 
   ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <Provider store={store}>
