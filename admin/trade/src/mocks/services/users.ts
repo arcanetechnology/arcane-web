@@ -49,7 +49,7 @@ const getRandomProfiles = (): Array<Profile> => {
     return {
       ...getEntities(),
       accounts: getRandomAccount(),
-      type: faker.datatype.boolean() ? 'PERSONAL' : 'PERSONAL',
+      type: faker.datatype.boolean() ? 'PERSONAL' : 'BUSINESS',
     };
   });
 };
