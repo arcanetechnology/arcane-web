@@ -3,10 +3,10 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 import { Operation } from '../types';
-import { RootState } from './state';
+import { RootState, useTradeSelector } from './state';
 
 const operationsAdapter = createEntityAdapter<Operation>({
-  selectId: (operation) => operation.account,
+  selectId: (operation) => operation.id,
 });
 
 const operationSlice = createSlice({
@@ -40,4 +40,9 @@ export const getOperations = (accounts: Array<string>) => {
     accounts.some((i) => account.includes(i))
   );
   return operations;
+};
+
+export const getOperationsData = (operationIds: Array<string>) => {
+  const allOperations = useTradeSelector(operationsSelector.selectAll);
+  return allOperations.filter((o) => operationIds.includes(o.id))
 };

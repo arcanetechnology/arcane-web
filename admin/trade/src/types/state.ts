@@ -25,17 +25,19 @@ export type PortfolioState = {
 };
 
 // actions
-export type OperationStatus = 'draft' | 'added';
+
 export type AccountTypes = 'Fiat' | 'Crypto' | 'Virtual';
 export type Loading = 'idle' | 'loading' | 'fetched';
+export type Status = 'draft' | 'published';
 
 export type Operation = {
-  status: OperationStatus;
+  id: string;
   account: string;
   amount: number;
 };
 
 export type CurrencyGroup = {
+  id: string;
   operations: Array<string>;
   currency: Currency | CryptoCurrency;
 };
@@ -48,7 +50,9 @@ export type AccountOption = {
   type: AccountTypes;
 };
 
-export type Transaction = {
+export type UserTransaction = {
   id: string;
-  groups: Array<CurrencyGroup>;
+  status: Status;
+  name: string;
+  groups: Array<string>;
 };

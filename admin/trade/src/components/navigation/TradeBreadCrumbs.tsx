@@ -6,12 +6,14 @@ import * as React from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 const breadcrumbNameMap: { [key: string]: string } = {
-  '/user': 'User',
-  '/profile': 'Profile',
-  '/transaction': 'Transaction',
-  '/portfolio': 'Portfolio',
-  '/account': 'Account',
-  '/crypto': 'Crypto',
+  user: 'User',
+  rofiles: 'Profiles',
+  transactions: 'Transactions',
+  edit: 'Edit',
+  groups: 'Groups',
+  portfolios: 'Portfolios',
+  accounts: 'Accounts',
+  cryptos: 'Cryptos',
 };
 
 interface LinkRouterProps extends LinkProps {
@@ -41,11 +43,11 @@ const TradeBreadCrumbs: React.FC = () => {
 
           return last ? (
             <Typography color="text.primary" key={to}>
-              {breadcrumbNameMap[to]}
+              {breadcrumbNameMap[value]}
             </Typography>
           ) : (
             <LinkRouter underline="hover" color="inherit" to={to} key={to}>
-              {breadcrumbNameMap[to] ?? to}
+              {breadcrumbNameMap[value] ?? value}
             </LinkRouter>
           );
         })}

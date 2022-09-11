@@ -23,10 +23,10 @@ import {
   AccountBalance,
 } from '@mui/icons-material';
 import Users, { User } from './pages/user';
+import Transactions, { Group, Transaction } from './pages/transactions';
 import Home from './pages/Home';
 import { Routes, Route } from 'react-router-dom';
 import { NavigationLink, TradeBreadCrumbs } from './components';
-import Transaction from './pages/Transaction';
 
 const drawerWidth = 240;
 
@@ -66,7 +66,7 @@ interface AppBarProps extends MuiAppBarProps {
 
 const icons: Record<string, JSX.Element> = {
   user: <People />,
-  transaction: <AccountBalance />,
+  transactions: <AccountBalance />,
 };
 
 const AppBar = styled(MuiAppBar, {
@@ -146,7 +146,7 @@ export default function App() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['User', 'Transaction'].map((text, index) => (
+          {['User', 'Transactions'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <NavigationLink
                 to={'/' + text.toLowerCase()}
@@ -168,7 +168,13 @@ export default function App() {
             <Route index element={<Users />} />
             <Route path=":userId" element={<User />} />
           </Route>
-          <Route path="transaction" element={<Transaction />} />
+          <Route path="transactions">
+            <Route index element={<Transactions />} />
+            <Route path=":transactionId">
+              <Route index element={<Transaction />} />
+              <Route path=":id" element={<Group />} />
+            </Route>
+          </Route>
         </Routes>
       </Box>
     </Box>

@@ -50,3 +50,20 @@ export type CryptoAccount = {
   currency: CryptoCurrency;
   balance: number;
 };
+
+// transaction object
+
+export type TransactionCurrencyOperation = {
+  account: string;
+  amount: number;
+};
+
+export type TransactionCurrencyGroup = {
+  operations: Array<TransactionCurrencyOperation>;
+  currency: Currency | CryptoCurrency;
+};
+
+export type Transaction = {
+  id: string;
+  groups: Array<TransactionCurrencyGroup>;
+};

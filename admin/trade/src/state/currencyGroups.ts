@@ -7,7 +7,7 @@ import { CurrencyGroup } from '../types';
 
 // can contain global data for all operations in it.
 const currencyGroupsAdapter = createEntityAdapter<CurrencyGroup>({
-  selectId: (currencyGroup) => currencyGroup.currency,
+  selectId: (currencyGroup) => currencyGroup.id,
 });
 
 const currencyGroupsSlice = createSlice({
@@ -18,28 +18,28 @@ const currencyGroupsSlice = createSlice({
     currencyGroupUpdated: currencyGroupsAdapter.updateOne,
     currencyGroupOperationAdded: (
       state,
-      action: PayloadAction<{ currency: string; operation: string }>
+      action: PayloadAction<{ id: string; currency: string; operation: string }>
     ) => {
       const operations = [
-        ...(state.entities[action.payload.currency]?.operations || []),
+        ...(state.entities[action.payload.id]?.operations || []),
         action.payload.operation,
       ];
       return currencyGroupsAdapter.updateOne(state, {
-        id: action.payload.currency,
-        changes: { operations },
+        id: action.payload.id,
+        changes: { operations, currency: action.payload.currency },
       });
     },
 
     currencyGroupOperationDeleted: (
       state,
-      action: PayloadAction<{ currency: string; operation: string }>
+      action: PayloadAction<{ id: string; operation: string }>
     ) => {
       const operations: string[] =
-        state.entities[action.payload.currency]?.operations.filter(
+        state.entities[action.payload.id]?.operations.filter(
           (o) => o !== action.payload.operation
         ) || [];
       return currencyGroupsAdapter.updateOne(state, {
-        id: action.payload.currency,
+        id: action.payload.id,
         changes: { operations },
       });
     },

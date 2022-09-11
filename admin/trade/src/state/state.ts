@@ -3,6 +3,7 @@
 import operations from './operations';
 import currencyGroups from './currencyGroups';
 import accounts from './accounts';
+import transactions from './transactions';
 import { api } from '../services';
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
@@ -12,6 +13,7 @@ const store = configureStore({
     operations,
     currencyGroups,
     accounts,
+    transactions,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>

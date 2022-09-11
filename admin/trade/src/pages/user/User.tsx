@@ -1,7 +1,7 @@
 /** @format */
 
 import * as React from 'react';
-import { useParams, Outlet } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { UserView } from '../../components';
 
 const User: React.FC = () => {
