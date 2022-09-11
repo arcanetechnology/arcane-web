@@ -14,7 +14,7 @@ import { Operation as Operationtype } from '../../../types';
 import { toast } from 'react-toastify';
 import Action from '../../action/Action';
 import { nanoid } from '@reduxjs/toolkit';
-import { useGroupData } from 'admin/trade/src/hooks';
+import { useGroupData } from '../../../hooks';
 
 type AddOperationProps = {
   groupId: string;

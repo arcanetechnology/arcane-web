@@ -1,6 +1,5 @@
 /** @format */
 
-import { retry } from '@reduxjs/toolkit/dist/query';
 import { api } from './api';
 import { UsersResponse, UserResponse } from '../types';
 
