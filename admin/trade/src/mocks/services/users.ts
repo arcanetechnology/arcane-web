@@ -18,15 +18,17 @@ const cryptoCustodyAccounts: Array<string> = [
   'crypto-custody-3',
 ];
 
+const cryptoCurrency = ['BTC', 'ETH_ERC20', 'SOL', 'USDC', 'USDT', 'FTT'];
+const currency = ['USD', 'EUR', 'NOK', 'SEK', 'GBP'];
+
 const createRandomCryptoAccount = (): CryptoAccount[] => {
-  const currency = ['BTC', 'ETH', 'LTE', 'DOGE', 'ONE', 'MATIC'];
   return Array(getRandomIntInclusive(2, 5))
     .fill(0)
     .map(() => {
       return {
         ...getEntities(),
         balance: Number(faker.finance.amount(6)),
-        currency: currency[getRandomInt(currency.length - 1)],
+        currency: cryptoCurrency[getRandomInt(cryptoCurrency.length - 1)],
         cryptoCustodyAccountId:
           cryptoCustodyAccounts[getRandomInt(cryptoCustodyAccounts.length - 1)],
       };
@@ -50,7 +52,7 @@ const getRandomAccount = (): Array<Account> => {
     .map(() => {
       return {
         ...getEntities(),
-        currency: faker.finance.currencyCode() as Currency,
+        currency: currency[getRandomInt(currency.length - 1)] as Currency,
         balance: Number(faker.finance.amount(8)),
         fiatCustodyAccountId:
           custodyAccounts[getRandomInt(custodyAccounts.length - 1)],
@@ -73,7 +75,7 @@ const getRandomProfiles = (): Array<Profile> => {
 
 const getEntities = () => {
   const id = faker.datatype.uuid();
-  const alias = faker.commerce.productName() + '-' + id;
+  const alias = faker.company.name() + '-' + id;
   return {
     id,
     alias,

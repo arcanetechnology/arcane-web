@@ -1,7 +1,7 @@
 /** @format */
 
 import * as React from 'react';
-import { CreateTransaction, TransactionList } from '../../../components';
+import { CreateTransaction, TransactionList } from '@/components';
 
 const Transactions: React.FC = () => {
   return (

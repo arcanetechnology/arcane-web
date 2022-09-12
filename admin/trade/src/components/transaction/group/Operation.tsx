@@ -68,6 +68,7 @@ const Operation: React.FC<OperationProps> = ({
               (a, b) => -a.type.localeCompare(b.type)
             )}
             getOptionLabel={(item) => (item?.label ? item?.label : '')}
+            sx={{ mb: 2 }}
             size={size}
             fullWidth
             renderInput={(params) => (
@@ -92,6 +93,7 @@ const Operation: React.FC<OperationProps> = ({
         label="Amount"
         fullWidth
         type="number"
+        sx={{ mb: 2 }}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">

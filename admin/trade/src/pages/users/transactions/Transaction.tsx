@@ -4,12 +4,8 @@ import { Alert, Skeleton, Stack, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { transactionsSelector, useTradeSelector } from '../../../state';
-import {
-  CreateGroup,
-  TransactionToolbar,
-  GroupList,
-} from '../../../components';
+import { transactionsSelector, useTradeSelector } from '@/state';
+import { CreateGroup, TransactionToolbar, GroupList } from '@/components';
 
 const Transaction: React.FC = () => {
   const params = useParams();
