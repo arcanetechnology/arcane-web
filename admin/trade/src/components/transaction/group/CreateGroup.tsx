@@ -16,15 +16,18 @@ import { toast } from 'react-toastify';
 import Action from '../../action/Action';
 import { nanoid } from '@reduxjs/toolkit';
 import { useTransactionData } from '../../../hooks';
+import { useGetAccountOptionsQuery } from '@/services';
 
 type CreateGroupProps = {
   id: string;
+  userId: string;
 };
 
-const CreateGroup: React.FC<CreateGroupProps> = ({ id }) => {
-  const { accounts, operations, transaction, groups } = useTransactionData(id);
+const CreateGroup: React.FC<CreateGroupProps> = ({ id, userId }) => {
+  const { operations, transaction, groups } = useTransactionData(id);
+  const { data: accountOptions, error } = useGetAccountOptionsQuery(userId);
 
-  if (!transaction) {
+  if (!transaction || error) {
     return null;
   }
 
@@ -32,7 +35,7 @@ const CreateGroup: React.FC<CreateGroupProps> = ({ id }) => {
 
   const submitOperation = (data: Omit<Operationtype, 'id'>) => {
     try {
-      const account = getAccount(accounts, data.account);
+      const account = getAccount(accountOptions ?? [], data.account);
       const o = dispatch(operationAdded({ id: nanoid(), ...data }));
       const c = dispatch(
         currencyGroupAdded({
@@ -67,7 +70,7 @@ const CreateGroup: React.FC<CreateGroupProps> = ({ id }) => {
               handleClose();
             }}
             accountOptions={getAccountOptions(
-              accounts,
+              accountOptions ?? [],
               null,
               operations.map((o) => o.account),
               groups.map((g) => g.currency)

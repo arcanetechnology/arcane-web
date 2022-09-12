@@ -38,7 +38,9 @@ const Transaction: React.FC = () => {
         <TransactionToolbar transactionId={transaction.id} />
       )}
       <GroupList groups={transaction.groups || []} />
-      {transaction.status === 'draft' && <CreateGroup id={transaction.id} />}
+      {transaction.status === 'draft' && (
+        <CreateGroup userId={params.userId!} id={transaction.id} />
+      )}
     </Stack>
   );
 };

@@ -15,7 +15,6 @@ export const handlers = [
 
   rest.get('/users/:id', (req, res, ctx) => {
     const { id } = req.params as { id: string };
-    console.log(id);
     const user = users.entities[id];
     console.log(user);
     return res(ctx.status(200), ctx.json(user));

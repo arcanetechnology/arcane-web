@@ -1,11 +1,7 @@
 /** @format */
 
 import { useSelector } from 'react-redux';
-import {
-  CryptoCurrency,
-  Currency,
-  AccountOption,
-} from '../../types';
+import { CryptoCurrency, Currency, AccountOption } from '../../types';
 import { RootState } from '../state';
 import { accountsAdapter } from './accounts';
 
@@ -27,13 +23,20 @@ export const getAccountOptions = (
   excludedAccountIds: Array<string> = [],
   excludedCurrencies: Array<Currency | CryptoCurrency> = []
 ) => {
-  return accounts
-    // if selectedCurrency is present, filter accountOptions by selected selectedCurrency
-    .filter((accountOption) => selectedCurrency == null || accountOption.currency == selectedCurrency)
-    // exclude accountOptions with id in excludedAccountIds list
-    .filter((accountOption) => !excludedAccountIds.includes(accountOption.id))
-    // exclude accountOptions with currency in excludedCurrencies list
-    .filter((accountOption) => !excludedCurrencies.includes(accountOption.currency))
+  return (
+    accounts
+      // if selectedCurrency is present, filter accountOptions by selected selectedCurrency
+      .filter(
+        (accountOption) =>
+          selectedCurrency == null || accountOption.currency == selectedCurrency
+      )
+      // exclude accountOptions with id in excludedAccountIds list
+      .filter((accountOption) => !excludedAccountIds.includes(accountOption.id))
+      // exclude accountOptions with currency in excludedCurrencies list
+      .filter(
+        (accountOption) => !excludedCurrencies.includes(accountOption.currency)
+      )
+  );
 };
 
 export const getAccount = (accounts: Array<AccountOption>, id: string) => {

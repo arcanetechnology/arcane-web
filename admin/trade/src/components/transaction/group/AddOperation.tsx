@@ -15,17 +15,27 @@ import { toast } from 'react-toastify';
 import Action from '../../action/Action';
 import { nanoid } from '@reduxjs/toolkit';
 import { useGroupData } from '../../../hooks';
+import { useGetAccountOptionsQuery } from '@/services';
 
 type AddOperationProps = {
   groupId: string;
+  userId: string;
 };
 
-const AddOperation: React.FC<AddOperationProps> = ({ groupId }) => {
+const AddOperation: React.FC<AddOperationProps> = ({ groupId, userId }) => {
   const dispatch = useTradeDispatch();
-  const { accounts, operations, group } = useGroupData(groupId);
+  const { operations, group } = useGroupData(groupId);
+
+  const { data: accountOptions, error } = useGetAccountOptionsQuery(userId);
+
+  // do not let them add operation if they dont have any accounts
+  if (error) {
+    return null;
+  }
+
   const submitOperation = (data: Omit<Operationtype, 'id'>) => {
     try {
-      const account = getAccount(accounts, data.account);
+      const account = getAccount(accountOptions ?? [], data.account);
       const o = dispatch(operationAdded({ id: nanoid(), ...data }));
       const c = dispatch(
         currencyGroupOperationAdded({
@@ -57,7 +67,7 @@ const AddOperation: React.FC<AddOperationProps> = ({ groupId }) => {
             handleClose();
           }}
           accountOptions={getAccountOptions(
-            accounts,
+            accountOptions ?? [],
             group?.currency,
             operations.map((o) => o.account)
           )}

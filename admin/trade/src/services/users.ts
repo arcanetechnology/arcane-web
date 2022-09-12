@@ -1,7 +1,8 @@
 /** @format */
 
 import { api } from './api';
-import { UsersResponse, UserResponse } from '../types';
+import { UsersResponse, UserResponse, AccountOption } from '../types';
+import { getAllUserAccountOptions } from '@/utils';
 
 export const usersApi = api.injectEndpoints({
   endpoints: (build) => ({
@@ -22,12 +23,19 @@ export const usersApi = api.injectEndpoints({
     getUser: build.query<UserResponse, string>({
       query: (id) => `users/${id}`,
       transformResponse: (response: UserResponse) => {
-        console.log(response);
         return response;
+      },
+      providesTags: (_user, _err, id) => [{ type: 'User', id }],
+    }),
+    getAccountOptions: build.query<Array<AccountOption>, string>({
+      query: (id) => `users/${id}`,
+      transformResponse: (response: UserResponse) => {
+        return getAllUserAccountOptions(response);
       },
       providesTags: (_user, _err, id) => [{ type: 'User', id }],
     }),
   }),
 });
 
-export const { useGetUsersQuery, useGetUserQuery } = usersApi;
+export const { useGetUsersQuery, useGetUserQuery, useGetAccountOptionsQuery } =
+  usersApi;

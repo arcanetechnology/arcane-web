@@ -20,7 +20,7 @@ const cryptoCustodyAccounts: Array<string> = [
 
 const createRandomCryptoAccount = (): CryptoAccount[] => {
   const currency = ['BTC', 'ETH', 'LTE', 'DOGE', 'ONE', 'MATIC'];
-  return Array(getRandomIntInclusive(11, 20))
+  return Array(getRandomIntInclusive(2, 5))
     .fill(0)
     .map(() => {
       return {
@@ -34,35 +34,41 @@ const createRandomCryptoAccount = (): CryptoAccount[] => {
 };
 
 const getRandomPortfolios = (): Array<Portfolio> => {
-  return Array(getRandomIntInclusive(2, 9)).map(() => {
-    return {
-      ...getEntities(),
-      cryptoAccounts: createRandomCryptoAccount(),
-    };
-  });
+  return Array(getRandomIntInclusive(1, 4))
+    .fill(0)
+    .map(() => {
+      return {
+        ...getEntities(),
+        cryptoAccounts: createRandomCryptoAccount(),
+      };
+    });
 };
 
 const getRandomAccount = (): Array<Account> => {
-  return Array(getRandomIntInclusive(8, 15)).map(() => {
-    return {
-      ...getEntities(),
-      currency: faker.finance.currencyCode() as Currency,
-      balance: Number(faker.finance.amount(8)),
-      fiatCustodyAccountId:
-        custodyAccounts[getRandomInt(custodyAccounts.length - 1)],
-      portfolios: getRandomPortfolios(),
-    };
-  });
+  return Array(getRandomIntInclusive(1, 4))
+    .fill(0)
+    .map(() => {
+      return {
+        ...getEntities(),
+        currency: faker.finance.currencyCode() as Currency,
+        balance: Number(faker.finance.amount(8)),
+        fiatCustodyAccountId:
+          custodyAccounts[getRandomInt(custodyAccounts.length - 1)],
+        portfolios: getRandomPortfolios(),
+      };
+    });
 };
 
 const getRandomProfiles = (): Array<Profile> => {
-  return Array(getRandomIntInclusive(4, 12)).map(() => {
-    return {
-      ...getEntities(),
-      accounts: getRandomAccount(),
-      type: faker.datatype.boolean() ? 'PERSONAL' : 'BUSINESS',
-    };
-  });
+  return Array(getRandomIntInclusive(1, 3))
+    .fill(0)
+    .map(() => {
+      return {
+        ...getEntities(),
+        accounts: getRandomAccount(),
+        type: faker.datatype.boolean() ? 'PERSONAL' : 'BUSINESS',
+      };
+    });
 };
 
 const getEntities = () => {
@@ -91,7 +97,7 @@ const adapter = createEntityAdapter<TradeUser>({
 let users = adapter.getInitialState();
 users = adapter.setAll(
   users,
-  Array(100)
+  Array(13)
     .fill(0)
     .map((_, index) => {
       return {

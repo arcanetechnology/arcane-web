@@ -1,18 +1,16 @@
 /** @format */
 
 import {
-  accountsSelector,
   currencyGroupsSelector,
   operationsSelector,
   transactionsSelector,
   useTradeSelector,
-} from '../state';
-import { AccountOption, Operation } from '../types';
+} from '@/state';
+import { AccountOption, Operation } from '@/types';
 
 export * from './useEventListener';
 
 export const useTransactionData = (transactionId: string) => {
-  const accounts = useTradeSelector(accountsSelector.selectAll);
   const transaction = useTradeSelector((s) =>
     transactionsSelector.selectById(s, transactionId)
   );
@@ -28,17 +26,16 @@ export const useTransactionData = (transactionId: string) => {
     });
   });
 
-  return { accounts, transaction, groups, operations };
+  return { transaction, groups, operations };
 };
 
 export const useGroupData = (groupId: string) => {
-  const accounts = useTradeSelector(accountsSelector.selectAll);
   const group = useTradeSelector((s) => {
     return currencyGroupsSelector.selectById(s, groupId);
   });
 
   const operations = useOperationsData(group?.operations ?? []);
-  return { accounts, group, operations };
+  return { group, operations };
 };
 
 export const useOperationsData = (operationIds: Array<string>) => {
