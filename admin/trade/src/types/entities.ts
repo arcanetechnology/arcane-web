@@ -28,6 +28,7 @@ export type Profile = {
 
 export type Account = {
   id: string;
+  custodyAccountId: string;
   alias: string;
   currency: Currency;
   balance: number;
@@ -46,6 +47,7 @@ export type Portfolio = {
 
 export type CryptoAccount = {
   id: string;
+  custodyAccountId: string;
   alias: string;
   currency: CryptoCurrency;
   balance: number;
@@ -67,3 +69,5 @@ export type Transaction = {
   id: string;
   groups: Array<TransactionCurrencyGroup>;
 };
+
+// TODO accounts

@@ -8,6 +8,7 @@ import {
   transactionsSelector,
   useTradeSelector,
 } from '../state';
+import { AccountOption, Operation } from '../types';
 
 export * from './useEventListener';
 
@@ -44,4 +45,12 @@ export const useGroupData = (groupId: string) => {
 export const useOperationsData = (operationIds: Array<string>) => {
   const allOperations = useTradeSelector(operationsSelector.selectAll);
   return allOperations.filter((o) => operationIds.includes(o.id));
+};
+
+// TODO @vihang
+export const useCustodyPopulate = (
+  accountOptions: AccountOption[],
+  operations: Operation[]
+): Record<string, Array<{ account: string; amount: number }>> => {
+  return {};
 };

@@ -16,6 +16,7 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
 
   const validateTransaction = () => {
     // TODO validate this transaction
+    // TODO error array {}
   };
 
   return (

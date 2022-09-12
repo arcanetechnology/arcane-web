@@ -15,8 +15,16 @@ export const usersApi = api.injectEndpoints({
         },
       ],
     }),
+    // TODO getProfiles
+    // TODO getAccounts
+    // TODO getPortfolios
+    // TODO getCryptoAccounts
     getUser: build.query<UserResponse, string>({
       query: (id) => `users/${id}`,
+      transformResponse: (response: UserResponse) => {
+        console.log(response);
+        return response;
+      },
       providesTags: (_user, _err, id) => [{ type: 'User', id }],
     }),
   }),

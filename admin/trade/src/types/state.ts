@@ -1,6 +1,10 @@
 /** @format */
 
-import { Currency, CryptoCurrency, ProfileTypes } from './entities';
+import { Currency, CryptoCurrency, ProfileTypes, User } from './entities';
+
+export type UserState = {
+  profiles: Array<string>;
+} & User;
 
 // flattened profile state
 export type ProfileState = {
@@ -42,12 +46,22 @@ export type CurrencyGroup = {
   currency: Currency | CryptoCurrency;
 };
 
+// type only on frontend to manage accounts for transactions
 export type AccountOption = {
   id: string;
   label: string;
-  balance: number;
   currency: string;
   type: AccountTypes;
+} & Partial<StakeholderAccountOptions> &
+  Partial<VirtualAccountOptions>;
+
+export type StakeholderAccountOptions = {
+  balance: number;
+  custodyAccountId: string;
+};
+
+export type VirtualAccountOptions = {
+  allowNegative: boolean;
 };
 
 export type UserTransaction = {
@@ -56,3 +70,5 @@ export type UserTransaction = {
   name: string;
   groups: Array<string>;
 };
+
+//
