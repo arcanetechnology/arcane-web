@@ -10,6 +10,6 @@ const baseQueryWithRetry = retry(baseQuery, { maxRetries: 6 });
 
 export const api = createApi({
   baseQuery: baseQueryWithRetry,
-  tagTypes: ['Users', 'User'],
+  tagTypes: ['Users', 'User', 'Virtual'],
   endpoints: () => ({}),
 });

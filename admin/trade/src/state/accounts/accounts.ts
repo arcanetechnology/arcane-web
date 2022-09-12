@@ -6,7 +6,7 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import {
-  Account,
+  FiatStakeholderAccount as Account,
   AccountOption,
   Portfolio,
   Profile,
@@ -94,7 +94,7 @@ const tradeUser: TradeUser = {
           balance: 0,
           currency: 'NOK',
           alias: 'Account 1-1-1',
-          custodyAccountId: 'todo - custody',
+          fiatCustodyAccountId: 'todo - custody',
           portfolios: [
             {
               id: 'portfolio 1-1-1-1',
@@ -105,7 +105,7 @@ const tradeUser: TradeUser = {
                   balance: 0,
                   currency: 'BTC',
                   alias: 'Crypto 1-1-1-1-1',
-                  custodyAccountId: 'todo - custody',
+                  cryptoCustodyAccountId: 'todo - custody',
                 },
               ],
             },
@@ -123,7 +123,7 @@ const tradeUser: TradeUser = {
           balance: 0,
           currency: 'EUR',
           alias: 'Account 1-2-1',
-          custodyAccountId: 'todo - custody',
+          fiatCustodyAccountId: 'todo - custody',
           portfolios: [
             {
               id: 'portfolio 1-2-1-1',
@@ -134,7 +134,7 @@ const tradeUser: TradeUser = {
                   balance: 0,
                   currency: 'BTC',
                   alias: 'Crypto 1-2-1-1-1',
-                  custodyAccountId: 'todo - custody',
+                  cryptoCustodyAccountId: 'todo - custody',
                 },
               ],
             },

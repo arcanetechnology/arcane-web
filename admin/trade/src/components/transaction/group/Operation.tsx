@@ -103,7 +103,8 @@ const Operation: React.FC<OperationProps> = ({
           valueAsNumber: true,
           required: true,
           deps: ['account'],
-          validate: (v) => validateBalance(v, getAcc(watch('account')).balance),
+          validate: (v) =>
+            validateBalance(v, getAcc(watch('account')).balance!),
         })}
         error={Boolean(errors.amount)}
         helperText={

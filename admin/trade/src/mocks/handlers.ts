@@ -2,6 +2,7 @@
 
 import { rest } from 'msw';
 import { users } from './services';
+import virtualAccounts from '../assets/virtual-account-option-list.json';
 
 export const handlers = [
   rest.get('/users', (req, res, ctx) => {
@@ -18,5 +19,8 @@ export const handlers = [
     const user = users.entities[id];
     console.log(user);
     return res(ctx.status(200), ctx.json(user));
+  }),
+  rest.get('/accounts/virtual', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(virtualAccounts));
   }),
 ];

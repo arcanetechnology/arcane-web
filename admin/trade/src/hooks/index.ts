@@ -3,7 +3,6 @@
 import {
   accountsSelector,
   currencyGroupsSelector,
-  getOperationsData,
   operationsSelector,
   transactionsSelector,
   useTradeSelector,
@@ -54,3 +53,8 @@ export const useCustodyPopulate = (
 ): Record<string, Array<{ account: string; amount: number }>> => {
   return {};
 };
+
+export const useZeroSum = (
+  accountOptions: AccountOption[],
+  operations: Operation[]
+) => {};

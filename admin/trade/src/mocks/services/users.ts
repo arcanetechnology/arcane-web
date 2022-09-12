@@ -3,13 +3,20 @@
 import { createEntityAdapter, nanoid } from '@reduxjs/toolkit';
 import { faker } from '@faker-js/faker';
 import {
-  Account,
-  CryptoAccount,
+  FiatStakeholderAccount as Account,
+  CryptoStakeholderAccount as CryptoAccount,
   Currency,
   Portfolio,
   Profile,
   TradeUser,
 } from '../../types';
+
+const custodyAccounts: Array<string> = ['custody-1', 'custody-2', 'custody-3'];
+const cryptoCustodyAccounts: Array<string> = [
+  'crypto-custody-1',
+  'crypto-custody-2',
+  'crypto-custody-3',
+];
 
 const createRandomCryptoAccount = (): CryptoAccount[] => {
   const currency = ['BTC', 'ETH', 'LTE', 'DOGE', 'ONE', 'MATIC'];
@@ -20,6 +27,8 @@ const createRandomCryptoAccount = (): CryptoAccount[] => {
         ...getEntities(),
         balance: Number(faker.finance.amount(6)),
         currency: currency[getRandomInt(currency.length - 1)],
+        cryptoCustodyAccountId:
+          cryptoCustodyAccounts[getRandomInt(cryptoCustodyAccounts.length - 1)],
       };
     });
 };
@@ -39,6 +48,8 @@ const getRandomAccount = (): Array<Account> => {
       ...getEntities(),
       currency: faker.finance.currencyCode() as Currency,
       balance: Number(faker.finance.amount(8)),
+      fiatCustodyAccountId:
+        custodyAccounts[getRandomInt(custodyAccounts.length - 1)],
       portfolios: getRandomPortfolios(),
     };
   });

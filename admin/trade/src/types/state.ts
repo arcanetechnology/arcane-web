@@ -71,4 +71,5 @@ export type UserTransaction = {
   groups: Array<string>;
 };
 
-//
+export type StakeholderAccount = {};
+export type CryptoAccount = {};
