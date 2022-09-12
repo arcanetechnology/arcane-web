@@ -13,7 +13,10 @@ import { toast } from 'react-toastify';
 import Action from '../../action/Action';
 import { nanoid } from '@reduxjs/toolkit';
 import { useGroupData } from '@/hooks';
-import { useGetAccountOptionsQuery } from '@/services';
+import {
+  useGetAccountOptionsQuery,
+  useGetAllAccountOptionsQuery,
+} from '@/services';
 import { getAccount, getAccountOptions } from '@/utils';
 
 type AddOperationProps = {
@@ -25,7 +28,7 @@ const AddOperation: React.FC<AddOperationProps> = ({ groupId, userId }) => {
   const dispatch = useTradeDispatch();
   const { operations, group } = useGroupData(groupId);
 
-  const { data: accountOptions, error } = useGetAccountOptionsQuery(userId);
+  const { data: accountOptions, error } = useGetAllAccountOptionsQuery(userId);
 
   // do not let them add operation if they dont have any accounts
   if (error) {

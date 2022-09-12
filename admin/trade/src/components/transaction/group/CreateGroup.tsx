@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 import Action from '../../action/Action';
 import { nanoid } from '@reduxjs/toolkit';
 import { useTransactionData } from '@/hooks';
-import { useGetAccountOptionsQuery } from '@/services';
+import { useGetAccountOptionsQuery, useGetAllAccountOptionsQuery } from '@/services';
 import { getAccount, getAccountOptions } from '@/utils';
 
 type CreateGroupProps = {
@@ -24,7 +24,7 @@ type CreateGroupProps = {
 
 const CreateGroup: React.FC<CreateGroupProps> = ({ id, userId }) => {
   const { operations, transaction, groups } = useTransactionData(id);
-  const { data: accountOptions, error } = useGetAccountOptionsQuery(userId);
+  const { data: accountOptions, error } = useGetAllAccountOptionsQuery(userId);
 
   if (!transaction || error) {
     return null;
