@@ -43,11 +43,25 @@ export const useOperationsData = (operationIds: Array<string>) => {
   return allOperations.filter((o) => operationIds.includes(o.id));
 };
 
-// TODO @vihang
 export const useCustodyPopulate = (
   accountOptions: AccountOption[],
   operations: Operation[]
 ): Record<string, Array<{ account: string; amount: number }>> => {
+  // TODO @joel
+  // Operation := accountId + amount
+  // Lookup Account from accountOptions using accountId
+  // Operation := AccountOption + amount
+  // create a record to be returned
+  // for every operation in operations
+  //    // if account is stakeholder account
+  //    if operation.accountOption.custodyAccountId != null
+  //        if record[operation.accountOption.custodyAccountId] is undefined
+  //            record[operation.accountOption.custodyAccountId] = 0
+  //        record[operation.accountOption.custodyAccountId] += amount
+  // for entry in record
+  //    if entry.value == 0
+  //        record.remove(entry.key)
+  // return record
   return {};
 };
 
