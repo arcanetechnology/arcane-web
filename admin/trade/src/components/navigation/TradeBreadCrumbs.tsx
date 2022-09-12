@@ -6,10 +6,9 @@ import * as React from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 const breadcrumbNameMap: { [key: string]: string } = {
-  user: 'User',
-  rofiles: 'Profiles',
+  users: 'Users',
+  profiles: 'Profiles',
   transactions: 'Transactions',
-  edit: 'Edit',
   groups: 'Groups',
   portfolios: 'Portfolios',
   accounts: 'Accounts',

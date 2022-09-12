@@ -29,7 +29,7 @@ const UserList: React.FC = () => {
         getActions: (params) => [
           <GridLinkAction
             icon={<RemoveRedEye />}
-            to={('/user/' + params.id) as string}
+            to={params.id as string}
             label="View"
           />,
         ],

@@ -1,9 +1,9 @@
 /** @format */
 
 import * as React from 'react';
-import { CreateTransaction, TransactionList } from '../../components';
+import { CreateTransaction, TransactionList } from '../../../components';
 import { toast } from 'react-toastify';
-import { useTradeDispatch, fetchUserAccounts } from '../../state';
+import { useTradeDispatch, fetchUserAccounts } from '../../../state';
 
 const Transactions: React.FC = () => {
   const dispatch = useTradeDispatch();

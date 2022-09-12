@@ -22,8 +22,7 @@ import {
   People,
   AccountBalance,
 } from '@mui/icons-material';
-import Users, { User } from './pages/user';
-import Transactions, { Group, Transaction } from './pages/transactions';
+import Users, { User, Transactions, Transaction, Group } from './pages/users';
 import Home from './pages/Home';
 import { Routes, Route } from 'react-router-dom';
 import { NavigationLink, TradeBreadCrumbs } from './components';
@@ -65,7 +64,7 @@ interface AppBarProps extends MuiAppBarProps {
 }
 
 const icons: Record<string, JSX.Element> = {
-  user: <People />,
+  users: <People />,
   transactions: <AccountBalance />,
 };
 
@@ -146,7 +145,7 @@ export default function App() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['User', 'Transactions'].map((text, index) => (
+          {['Users'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <NavigationLink
                 to={'/' + text.toLowerCase()}
@@ -163,16 +162,17 @@ export default function App() {
         <TradeBreadCrumbs />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="user" element={<User />} />
-          <Route path="user">
+          <Route path="users">
             <Route index element={<Users />} />
-            <Route path=":userId" element={<User />} />
-          </Route>
-          <Route path="transactions">
-            <Route index element={<Transactions />} />
-            <Route path=":transactionId">
-              <Route index element={<Transaction />} />
-              <Route path=":id" element={<Group />} />
+            <Route path=":userId">
+              <Route index element={<User />} />
+              <Route path="transactions">
+                <Route index element={<Transactions />} />
+                <Route path=":transactionId">
+                  <Route index element={<Transaction />} />
+                  <Route path=":id" element={<Group />} />
+                </Route>
+              </Route>
             </Route>
           </Route>
         </Routes>

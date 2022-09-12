@@ -6,11 +6,10 @@ import {
   currencyGroupsSelector,
   transactionsSelector,
   useTradeSelector,
-} from '../../../state';
-import { AddOperation, OperationList } from '../../../components';
+} from '../../../../state';
+import { AddOperation, OperationList } from '../../../../components';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { group } from 'console';
 
 const Group: React.FC = () => {
   const params = useParams();

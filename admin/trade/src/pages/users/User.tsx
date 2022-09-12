@@ -1,13 +1,18 @@
 /** @format */
 
-import { Skeleton, Typography } from '@mui/material';
+import { Button, Skeleton, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
-import { useParams } from 'react-router-dom';
+import {
+  useParams,
+  NavLink as RouterLink,
+  useNavigate,
+} from 'react-router-dom';
 import { useGetUserQuery } from '../../services/users';
 
 const User: React.FC = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const {
     data: user,
     isLoading,
@@ -38,6 +43,13 @@ const User: React.FC = () => {
       {isSuccess && (
         <>
           <Typography variant="h3">{user.email}</Typography>
+          <Button
+            onClick={() => navigate('transactions')}
+            variant="contained"
+            size="large"
+          >
+            Transaction
+          </Button>
         </>
       )}
     </Stack>
