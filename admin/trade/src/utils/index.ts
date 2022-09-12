@@ -92,3 +92,12 @@ export const getAccountOptions = (
       )
   );
 };
+
+export const getAccount = (accounts: Array<AccountOption>, id: string) => {
+  const account = accounts.find((a) => a.id === id);
+  if (account) {
+    return account;
+  } else {
+    throw new Error('account not found');
+  }
+};

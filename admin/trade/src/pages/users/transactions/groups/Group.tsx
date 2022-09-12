@@ -29,7 +29,7 @@ const Group: React.FC = () => {
     <Stack gap={2}>
       <Typography variant="h2">{currencyGroup.currency}</Typography>
       <OperationList status={transaction.status} group={currencyGroup} />
-      <AddOperation groupId={currencyGroup.id} />
+      <AddOperation userId={params.userId!} groupId={currencyGroup.id} />
     </Stack>
   );
 };

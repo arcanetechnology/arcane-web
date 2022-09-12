@@ -9,7 +9,7 @@ import {
   Currency,
   CryptoCurrency,
 } from '../../../types';
-import { getAccount } from '../../../state';
+import { getAccount } from '@/utils';
 
 type OptionalOperationProps = {
   size: 'small' | 'medium';

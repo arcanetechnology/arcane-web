@@ -2,7 +2,6 @@
 
 import operations from './operations';
 import currencyGroups from './currencyGroups';
-import accounts from './accounts';
 import transactions from './transactions';
 import { api } from '../services';
 import { configureStore } from '@reduxjs/toolkit';
@@ -12,7 +11,6 @@ const store = configureStore({
   reducer: {
     operations,
     currencyGroups,
-    accounts,
     transactions,
     [api.reducerPath]: api.reducer,
   },

@@ -4,18 +4,17 @@ import { PointOfSale } from '@mui/icons-material';
 import Operation from './Operation';
 import * as React from 'react';
 import {
-  getAccountOptions,
   useTradeDispatch,
   operationAdded,
-  getAccount,
   currencyGroupOperationAdded,
-} from '../../../state';
-import { Operation as Operationtype } from '../../../types';
+} from '@/state';
+import { Operation as Operationtype } from '@/types';
 import { toast } from 'react-toastify';
 import Action from '../../action/Action';
 import { nanoid } from '@reduxjs/toolkit';
-import { useGroupData } from '../../../hooks';
+import { useGroupData } from '@/hooks';
 import { useGetAccountOptionsQuery } from '@/services';
+import { getAccount, getAccountOptions } from '@/utils';
 
 type AddOperationProps = {
   groupId: string;
