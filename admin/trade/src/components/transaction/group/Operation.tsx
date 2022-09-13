@@ -8,7 +8,7 @@ import {
   OperationFormSchema,
   Currency,
   CryptoCurrency,
-} from '../../../types';
+} from '@/types';
 import { getAccount } from '@/utils';
 
 type OptionalOperationProps = {
@@ -41,7 +41,7 @@ const Operation: React.FC<OperationProps> = ({
 
   const getAccountObj = React.useMemo(() => getAccount, [accountOptions]);
 
-  const getAcc = (id: string) => {
+  const getAcc = (id: string): AccountOption => {
     try {
       const acc = getAccountObj(accountOptions, id);
       return acc;
@@ -49,6 +49,10 @@ const Operation: React.FC<OperationProps> = ({
       return {
         balance: 0,
         currency: '',
+        custodyAccountId: '',
+        type: 'Fiat',
+        id: '',
+        label: '',
       };
     }
   };
@@ -105,13 +109,20 @@ const Operation: React.FC<OperationProps> = ({
           valueAsNumber: true,
           required: true,
           deps: ['account'],
-          validate: (v) =>
-            validateBalance(v, getAcc(watch('account')).balance!),
+          validate: (v) => {
+            const acc = getAcc(watch('account'));
+            return validateBalance(
+              v,
+              acc.balance!,
+              acc.type === 'Virtual',
+              acc.allowNegative
+            );
+          },
         })}
         error={Boolean(errors.amount)}
         helperText={
           errors.amount?.message ||
-          `Balance: ${getAcc(watch('account')).balance}`
+          `Balance: ${getAcc(watch('account')).balance ?? ''}`
         }
       />
 
@@ -125,6 +136,18 @@ const Operation: React.FC<OperationProps> = ({
 
 export default Operation;
 
-const validateBalance = (value: number, balance: number) => {
+const validateBalance = (
+  value: number,
+  balance: number,
+  isVirtual = false,
+  isNegative = true
+) => {
+  if (isVirtual && isNegative) {
+    return true;
+  }
+
+  if (isVirtual && !isNegative) {
+    return 0 + value > 0 || 'amount cannot be negative';
+  }
   return balance + value > 0 || `insufficient balance`;
 };

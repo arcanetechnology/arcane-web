@@ -2,7 +2,7 @@
 
 import { Stack } from '@mui/system';
 import * as React from 'react';
-import { UserList } from '../../components';
+import { UserList } from '@/components';
 
 const Users: React.FC = () => {
   return (

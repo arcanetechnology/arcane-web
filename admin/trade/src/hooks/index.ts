@@ -62,7 +62,29 @@ export const useCustodyPopulate = (
   //    if entry.value == 0
   //        record.remove(entry.key)
   // return record
-  return {};
+  const custody = operations.reduce((prev, curr, index) => {
+    const acc = accountOptions.find(
+      (a) => curr.account === a.id
+    ) as AccountOption;
+
+    if (acc.custodyAccountId) {
+      const custodyAcc = { account: acc.custodyAccountId, amount: curr.amount };
+      const custody = prev[acc.currency];
+
+      if (custody) {
+        return {
+          ...prev,
+          [acc.currency]: [...custody, custodyAcc],
+        };
+      }
+      return {
+        ...prev,
+        [acc.currency]: [custodyAcc],
+      };
+    }
+    return { ...prev };
+  }, {} as Record<string, Array<{ account: string; amount: number }>>);
+  return custody;
 };
 
 export const useZeroSum = (

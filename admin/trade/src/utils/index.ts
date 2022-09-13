@@ -35,6 +35,7 @@ export function getAllProfileAccountOptions(profile: Profile): AccountOption[] {
       type: 'Fiat',
       balance: account.balance,
       currency: account.currency,
+      custodyAccountId: account.fiatCustodyAccountId,
     });
     accountOptions.push(
       ...getAllStakeholderAccountOptions(account).map((accountOption) => ({
@@ -68,6 +69,7 @@ export function getAllPortfolioAccountOptions(
     type: 'Crypto',
     balance: cryptoAccount.balance,
     currency: cryptoAccount.currency,
+    custodyAccountId: cryptoAccount.cryptoCustodyAccountId,
   }));
 }
 

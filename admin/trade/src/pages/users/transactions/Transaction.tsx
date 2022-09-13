@@ -31,7 +31,10 @@ const Transaction: React.FC = () => {
         <Alert>Transaction is in Draft Mode</Alert>
       )}
       {transaction.status === 'draft' && (
-        <TransactionToolbar transactionId={transaction.id} />
+        <TransactionToolbar
+          transactionId={transaction.id}
+          userId={params.userId!}
+        />
       )}
       <GroupList groups={transaction.groups || []} />
       {transaction.status === 'draft' && (

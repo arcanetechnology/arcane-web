@@ -3,12 +3,8 @@
 import { Button, Skeleton, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
-import {
-  useParams,
-  NavLink as RouterLink,
-  useNavigate,
-} from 'react-router-dom';
-import { useGetUserQuery } from '../../services/users';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useGetUserQuery } from '@/services';
 
 const User: React.FC = () => {
   const params = useParams();
@@ -18,16 +14,6 @@ const User: React.FC = () => {
     isLoading,
     isSuccess,
   } = useGetUserQuery(params.userId as string);
-
-  React.useEffect(() => {
-    if (isSuccess) {
-      // create profile entities
-      // create account options
-      // create portfolios
-      // create crypto accounts
-      // create fiat accounts
-    }
-  }, [isSuccess]);
 
   return (
     <Stack gap={2}>
