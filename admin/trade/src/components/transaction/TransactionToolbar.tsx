@@ -63,6 +63,7 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
             id: group.id,
             currency: group.currency,
             operation: custodyOperation.payload.id,
+            amount: 0,
           })
         );
       });

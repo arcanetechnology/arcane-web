@@ -41,6 +41,7 @@ const AddOperation: React.FC<AddOperationProps> = ({ groupId, userId }) => {
           id: groupId,
           operation: o.payload.id,
           currency: account.currency,
+          amount: o.payload.amount,
         })
       );
       toast('new operation added', {

@@ -60,6 +60,7 @@ const OperationList: React.FC<OperationListProps> = ({ group, status }) => {
                 currencyGroupOperationDeleted({
                   id: group.id,
                   operation: params.id as string,
+                  amount: params.row.amount,
                 })
               );
               dispatch(operationDeleted(params.id));
