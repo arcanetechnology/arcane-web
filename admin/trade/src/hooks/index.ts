@@ -43,51 +43,64 @@ export const useOperationsData = (operationIds: Array<string>) => {
   return allOperations.filter((o) => operationIds.includes(o.id));
 };
 
+// record of custody account id and amount
+type CustodyAccountOperation = Record<string, number>;
+
+// record of all possible currencies and custody account operation.
+type CustodyAccountOperations = Record<string, CustodyAccountOperation>;
+
 export const useCustodyPopulate = (
   accountOptions: AccountOption[],
   operations: Operation[]
-): Record<string, Array<{ account: string; amount: number }>> => {
-  // TODO @joel
-  // Operation := accountId + amount
-  // Lookup Account from accountOptions using accountId
-  // Operation := AccountOption + amount
-  // create a record to be returned
-  // for every operation in operations
-  //    // if account is stakeholder account
-  //    if operation.accountOption.custodyAccountId != null
-  //        if record[operation.accountOption.custodyAccountId] is undefined
-  //            record[operation.accountOption.custodyAccountId] = 0
-  //        record[operation.accountOption.custodyAccountId] += amount
-  // for entry in record
-  //    if entry.value == 0
-  //        record.remove(entry.key)
-  // return record
-  const custody = operations.reduce((prev, curr, index) => {
-    const acc = accountOptions.find(
-      (a) => curr.account === a.id
-    ) as AccountOption;
+): CustodyAccountOperations => {
+  const custody = operations.reduce(
+    (custodyAccountOperations, currOperation, index) => {
+      const acc = accountOptions.find(
+        (a) => currOperation.account === a.id
+      ) as AccountOption;
 
-    if (acc.custodyAccountId) {
-      const custodyAcc = { account: acc.custodyAccountId, amount: curr.amount };
-      const custody = prev[acc.currency];
+      if (acc.custodyAccountId) {
+        const oldCustodyAccountOperations =
+          custodyAccountOperations[acc.currency];
+        // todo check new custody with old
+        if (oldCustodyAccountOperations) {
+          const oldNumber =
+            oldCustodyAccountOperations[acc.custodyAccountId] ?? 0;
 
-      if (custody) {
+          const sumAmount = oldNumber + currOperation.amount;
+
+          if (sumAmount === 0) {
+            delete oldCustodyAccountOperations[acc.custodyAccountId];
+            return {
+              ...custodyAccountOperations,
+              [acc.currency]: oldCustodyAccountOperations,
+            };
+          }
+
+          return {
+            ...custodyAccountOperations,
+            [acc.currency]: {
+              [acc.custodyAccountId]: sumAmount,
+            },
+          };
+        }
         return {
-          ...prev,
-          [acc.currency]: [...custody, custodyAcc],
+          ...custodyAccountOperations,
+          [acc.currency]: {
+            [acc.custodyAccountId]: currOperation.amount,
+          },
         };
       }
-      return {
-        ...prev,
-        [acc.currency]: [custodyAcc],
-      };
-    }
-    return { ...prev };
-  }, {} as Record<string, Array<{ account: string; amount: number }>>);
+      return custodyAccountOperations;
+    },
+    {} as CustodyAccountOperations
+  );
   return custody;
 };
 
-export const useZeroSum = (
-  accountOptions: AccountOption[],
-  operations: Operation[]
-) => {};
+export const useZeroSum = (operations: Operation[]) => {
+  return operations.reduce(
+    (sum, currOperation) => sum + currOperation.amount,
+    0
+  );
+};

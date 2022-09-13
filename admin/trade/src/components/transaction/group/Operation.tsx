@@ -69,7 +69,7 @@ const Operation: React.FC<OperationProps> = ({
             value={accountOptions.find((a) => a.id === value) || null}
             groupBy={(option) => option.type}
             options={accountOptions.sort(
-              (a, b) => -a.type.localeCompare(b.type)
+              (a, b) => -b.type.localeCompare(a.type)
             )}
             getOptionLabel={(item) => (item?.label ? item?.label : '')}
             sx={{ mb: 2 }}

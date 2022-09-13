@@ -3,7 +3,12 @@
 import { useGetAllAccountOptionsQuery } from '@/services';
 import { Box, Button } from '@mui/material';
 import * as React from 'react';
-import { useCustodyPopulate, useTransactionData } from '../../hooks';
+import {
+  useCustodyPopulate,
+  useTransactionData,
+  useZeroSum,
+} from '../../hooks';
+import { toast } from 'react-toastify';
 
 type TransactionToolbarProps = {
   transactionId: string;
@@ -22,8 +27,15 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
       // handle errors
       return;
     }
+
+    const sum = useZeroSum(operations);
+    if (sum !== 0) {
+      toast('sum is not equal to zero', { type: 'error' });
+      return;
+    }
+    toast('sum equals to zero', { type: 'success' });
     const custody = useCustodyPopulate(accountOptions ?? [], operations);
-    console.log(custody);
+    // create rows
   };
 
   return (
