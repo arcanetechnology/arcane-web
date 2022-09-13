@@ -25,6 +25,7 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
   transactionId,
   userId,
 }) => {
+  const [disabled, setDisabled] = React.useState(false);
   const { operations, groups } = useTransactionData(transactionId);
   const { data: accountOptions, error } = useGetAllAccountOptionsQuery(userId);
   const dispatch = useTradeDispatch();
@@ -68,12 +69,17 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
         );
       });
     });
-    // create rows
+
+    setDisabled(true);
   };
 
   return (
     <Box>
-      <Button onClick={validateTransaction} variant="contained">
+      <Button
+        disabled={disabled}
+        onClick={validateTransaction}
+        variant="contained"
+      >
         Validate Transaction
       </Button>
     </Box>

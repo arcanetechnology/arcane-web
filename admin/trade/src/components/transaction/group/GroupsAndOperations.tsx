@@ -124,8 +124,15 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
       {
         field: 'amount',
         headerName: 'Stakeholder Amount',
+
         renderHeader: (params) => {
-          return params.colDef.headerName + ` ( ${total} )`;
+          if (total !== 0) {
+            params.colDef.headerClassName = 'operation--error-header';
+          } else {
+            params.colDef.headerClassName = 'operation--success-header';
+          }
+
+          return params.colDef.headerName + ` ( total sum ${total} )`;
         },
         flex: 1,
         minWidth: 300,
@@ -138,7 +145,15 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
         headerName: 'Custody Amount',
         flex: 1,
         minWidth: 300,
-        renderHeader: (params) => params.colDef.headerName + ` ( ${total} )`,
+        renderHeader: (params) => {
+          if (total !== 0) {
+            params.colDef.headerClassName = 'operation--error-header';
+          } else {
+            params.colDef.headerClassName = 'operation--success-header';
+          }
+
+          return params.colDef.headerName + ` ( total sum ${total} )`;
+        },
         renderCell: (params) => {
           return ['Custody', 'Virtual'].includes(params.row.type)
             ? params.row.amount
@@ -233,6 +248,13 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
                       '&:hover': {
                         bgcolor: darken('#f2a900', 0.1),
                       },
+                    },
+                    '& .operation--error-header': {
+                      backgroundColor: '#ff726f',
+                    },
+                    '& .operation--success-header': {
+                      backgroundColor: '#008d90',
+                      color: 'white',
                     },
                   }}
                 >
