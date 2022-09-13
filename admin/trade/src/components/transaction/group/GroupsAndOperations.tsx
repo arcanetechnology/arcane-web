@@ -16,15 +16,8 @@ import {
   Operation as OperationType,
 } from '@/types';
 import { getAccount, getAccountOptions } from '@/utils';
-import { Delete, ExpandMore } from '@mui/icons-material';
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Card,
-  CardContent,
-  Typography,
-} from '@mui/material';
+import { Delete } from '@mui/icons-material';
+import { Card, CardContent, Typography } from '@mui/material';
 import { darken, Stack, Box } from '@mui/system';
 import { DataGrid, GridColumns, GridActionsCellItem } from '@mui/x-data-grid';
 import { nanoid } from '@reduxjs/toolkit';
@@ -121,9 +114,26 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
       },
       {
         field: 'amount',
-        headerName: 'Amount',
+        headerName: 'Stakeholder Amount',
+        renderHeader: (params) => {
+          return params.colDef.headerName;
+        },
         flex: 1,
         minWidth: 300,
+        renderCell: (params) => {
+          return params.row.type !== 'Custody' ? params.value : '';
+        },
+      },
+      {
+        field: 'custodyAmount',
+        headerName: 'Custody Amount',
+        flex: 1,
+        minWidth: 300,
+        renderCell: (params) => {
+          return ['Custody', 'Virtual'].includes(params.row.type)
+            ? params.row.amount
+            : '';
+        },
       },
       {
         field: 'actions',
@@ -138,6 +148,7 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
                 currencyGroupOperationDeleted({
                   id: params.row.groupId,
                   operation: params.id as string,
+                  amount: params.row.amount,
                 })
               );
 
@@ -163,6 +174,7 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
           id: groupId,
           operation: o.payload.id,
           currency: account.currency,
+          amount: o.payload.amount,
         })
       );
       toast('new operation added', {
@@ -180,27 +192,7 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
           <Card key={currency} elevation={0}>
             <CardContent>
               <Stack gap={2}>
-                <Accordion elevation={0}>
-                  <AccordionSummary
-                    expandIcon={<ExpandMore />}
-                    aria-controls={currency + 'operation-form'}
-                    id={currency + 'operation-form'}
-                  >
-                    <Typography variant="h2">{currency}</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Operation
-                      submitOperation={(v) => {
-                        submitOperation(v, data[currency][0].groupId);
-                      }}
-                      accountOptions={getAccountOptions(
-                        accountOptions ?? [],
-                        currency,
-                        data[currency].map((o) => o.account)
-                      )}
-                    />
-                  </AccordionDetails>
-                </Accordion>
+                <Typography variant="h2">{currency}</Typography>
                 <Box
                   sx={{
                     height: 400,
@@ -239,6 +231,20 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
                     }
                   />
                 </Box>
+                <Card>
+                  <CardContent>
+                    <Operation
+                      submitOperation={(v) => {
+                        submitOperation(v, data[currency][0].groupId);
+                      }}
+                      accountOptions={getAccountOptions(
+                        accountOptions ?? [],
+                        currency,
+                        data[currency].map((o) => o.account)
+                      )}
+                    />
+                  </CardContent>
+                </Card>
               </Stack>
             </CardContent>
           </Card>

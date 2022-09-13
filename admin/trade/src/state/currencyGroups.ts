@@ -18,21 +18,30 @@ const currencyGroupsSlice = createSlice({
     currencyGroupUpdated: currencyGroupsAdapter.updateOne,
     currencyGroupOperationAdded: (
       state,
-      action: PayloadAction<{ id: string; currency: string; operation: string }>
+      action: PayloadAction<{
+        id: string;
+        currency: string;
+        operation: string;
+        amount: number;
+      }>
     ) => {
       const operations = [
         ...(state.entities[action.payload.id]?.operations || []),
         action.payload.operation,
       ];
+
+      const total = (state.entities[action.payload.id]!.total +
+        action.payload.amount) as number;
+
       return currencyGroupsAdapter.updateOne(state, {
         id: action.payload.id,
-        changes: { operations, currency: action.payload.currency },
+        changes: { operations, currency: action.payload.currency, total },
       });
     },
 
     currencyGroupOperationDeleted: (
       state,
-      action: PayloadAction<{ id: string; operation: string }>
+      action: PayloadAction<{ id: string; operation: string; amount: number }>
     ) => {
       const operations: string[] =
         state.entities[action.payload.id]?.operations.filter(
@@ -43,9 +52,12 @@ const currencyGroupsSlice = createSlice({
         return currencyGroupsAdapter.removeOne(state, action.payload.id);
       }
 
+      const total = (state.entities[action.payload.id]!.total -
+        action.payload.amount) as number;
+
       return currencyGroupsAdapter.updateOne(state, {
         id: action.payload.id,
-        changes: { operations },
+        changes: { operations, total },
       });
     },
     currencyGroupDeleted: currencyGroupsAdapter.removeOne,

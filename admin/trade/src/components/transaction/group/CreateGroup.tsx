@@ -14,7 +14,10 @@ import { toast } from 'react-toastify';
 import Action from '../../action/Action';
 import { nanoid } from '@reduxjs/toolkit';
 import { useTransactionData } from '@/hooks';
-import { useGetAccountOptionsQuery, useGetAllAccountOptionsQuery } from '@/services';
+import {
+  useGetAccountOptionsQuery,
+  useGetAllAccountOptionsQuery,
+} from '@/services';
 import { getAccount, getAccountOptions } from '@/utils';
 
 type CreateGroupProps = {
@@ -41,6 +44,7 @@ const CreateGroup: React.FC<CreateGroupProps> = ({ id, userId }) => {
           id: nanoid(),
           operations: [o.payload.id],
           currency: account.currency,
+          total: o.payload.amount,
         })
       );
       dispatch(transactionGroupAdded({ id, group: c.payload.id }));

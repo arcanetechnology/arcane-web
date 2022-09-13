@@ -44,6 +44,7 @@ export type CurrencyGroup = {
   id: string;
   operations: Array<string>;
   currency: Currency | CryptoCurrency;
+  total: number;
 };
 
 // type only on frontend to manage accounts for transactions
