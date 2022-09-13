@@ -17,7 +17,7 @@ import {
 } from '@/types';
 import { getAccount, getAccountOptions } from '@/utils';
 import { Delete } from '@mui/icons-material';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Chip, Typography } from '@mui/material';
 import { darken, Stack, Box } from '@mui/system';
 import { DataGrid, GridColumns, GridActionsCellItem } from '@mui/x-data-grid';
 import { nanoid } from '@reduxjs/toolkit';
@@ -79,11 +79,20 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
   accountOptions,
 }) => {
   const data = useGroupsOperationAccounts(groups, accountOptions);
+  const totals: Record<string, number> = useTradeSelector((s) => {
+    return currencyGroupsSelector
+      .selectAll(s)
+      .filter((g) => groups.includes(g.id))
+      .reduce((t, g) => {
+        return { ...t, [g.currency]: g.total };
+      }, {});
+  });
 
   const dispatch = useTradeDispatch();
 
-  const columns = React.useMemo<GridColumns<OperationAccounts>>(
-    () => [
+  const getColumns = (currency: string): GridColumns<OperationAccounts> => {
+    const total = totals[currency];
+    return [
       {
         field: 'id',
         headerName: 'ID',
@@ -116,7 +125,7 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
         field: 'amount',
         headerName: 'Stakeholder Amount',
         renderHeader: (params) => {
-          return params.colDef.headerName;
+          return params.colDef.headerName + ` ( ${total} )`;
         },
         flex: 1,
         minWidth: 300,
@@ -129,6 +138,7 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
         headerName: 'Custody Amount',
         flex: 1,
         minWidth: 300,
+        renderHeader: (params) => params.colDef.headerName + ` ( ${total} )`,
         renderCell: (params) => {
           return ['Custody', 'Virtual'].includes(params.row.type)
             ? params.row.amount
@@ -158,9 +168,12 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
           />,
         ],
       },
-    ],
-    [data]
-  );
+    ];
+  };
+
+  const columns = React.useMemo<
+    (currency: string) => GridColumns<OperationAccounts>
+  >(() => getColumns, [data]);
 
   const submitOperation = (
     data: Omit<OperationType, 'id'>,
@@ -225,7 +238,7 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
                 >
                   <DataGrid
                     rows={data[currency]}
-                    columns={columns}
+                    columns={columns(currency)}
                     getRowClassName={(params) =>
                       `operation--${params.row.type}`
                     }
