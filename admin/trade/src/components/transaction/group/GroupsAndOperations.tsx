@@ -10,20 +10,22 @@ import {
   useTradeDispatch,
   useTradeSelector,
 } from '@/state';
-import { AccountOption, Operation as OperationType } from '@/types';
+import {
+  AccountOption,
+  AccountTypes,
+  Operation as OperationType,
+} from '@/types';
 import { getAccount, getAccountOptions } from '@/utils';
-import { Delete, ExpandMore, Rowing } from '@mui/icons-material';
+import { Delete, ExpandMore } from '@mui/icons-material';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Button,
   Card,
   CardContent,
-  CardHeader,
   Typography,
 } from '@mui/material';
-import { Stack } from '@mui/system';
+import { darken, Stack, Box } from '@mui/system';
 import { DataGrid, GridColumns, GridActionsCellItem } from '@mui/x-data-grid';
 import { nanoid } from '@reduxjs/toolkit';
 import * as React from 'react';
@@ -41,6 +43,7 @@ type OperationAccounts = {
   label: string;
   amount: number;
   account: string;
+  type: AccountTypes;
 };
 
 type GroupOperationRecord = Record<string, Array<OperationAccounts>>;
@@ -66,6 +69,7 @@ const useGroupsOperationAccounts = (
           account: o.account,
           label: accountOption?.label!,
           amount: o.amount,
+          type: accountOption?.type ?? 'Custody',
         };
       }
     );
@@ -109,6 +113,11 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
         headerName: 'Label',
         flex: 2,
         minWidth: 300,
+      },
+      {
+        field: 'type',
+        headerName: 'Type',
+        hide: true,
       },
       {
         field: 'amount',
@@ -192,9 +201,44 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
                     />
                   </AccordionDetails>
                 </Accordion>
-                <div style={{ height: 300, width: '100%' }}>
-                  <DataGrid rows={data[currency]} columns={columns} />
-                </div>
+                <Box
+                  sx={{
+                    height: 400,
+                    width: '100%',
+                    '& .operation--Fiat': {
+                      bgcolor: '#85bb65',
+                      '&:hover': {
+                        bgcolor: darken('#85bb65', 0.2),
+                      },
+                    },
+                    '& .operation--Crypto': {
+                      bgcolor: '#f0ece5',
+                      '&:hover': {
+                        bgcolor: darken('#f0ece5', 0.2),
+                      },
+                    },
+                    '& .operation--Virtual': {
+                      bgcolor: '#afdef2',
+                      '&:hover': {
+                        bgcolor: darken('#afdef2', 0.2),
+                      },
+                    },
+                    '& .operation--Custody': {
+                      bgcolor: '#f2a900',
+                      '&:hover': {
+                        bgcolor: darken('#f2a900', 0.1),
+                      },
+                    },
+                  }}
+                >
+                  <DataGrid
+                    rows={data[currency]}
+                    columns={columns}
+                    getRowClassName={(params) =>
+                      `operation--${params.row.type}`
+                    }
+                  />
+                </Box>
               </Stack>
             </CardContent>
           </Card>

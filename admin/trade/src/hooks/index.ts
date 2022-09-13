@@ -6,7 +6,13 @@ import {
   transactionsSelector,
   useTradeSelector,
 } from '@/state';
-import { AccountOption, Operation } from '@/types';
+import {
+  AccountOption,
+  CurrencyGroup,
+  Transaction,
+  Operation,
+  UserTransaction,
+} from '@/types';
 
 export * from './useEventListener';
 
@@ -46,7 +52,7 @@ export const useOperationsData = (operationIds: Array<string>) => {
 // record of custody account id and amount
 type CustodyAccountOperation = Record<string, number>;
 
-// record of all possible currencies and custody account operation.
+// record of all possible group id and custody account operation.
 type CustodyAccountOperations = Record<string, CustodyAccountOperation>;
 
 export const useCustodyPopulate = (

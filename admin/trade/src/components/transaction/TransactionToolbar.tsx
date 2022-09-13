@@ -9,6 +9,12 @@ import {
   useZeroSum,
 } from '../../hooks';
 import { toast } from 'react-toastify';
+import {
+  currencyGroupOperationAdded,
+  operationAdded,
+  useTradeDispatch,
+} from '@/state';
+import { nanoid } from '@reduxjs/toolkit';
 
 type TransactionToolbarProps = {
   transactionId: string;
@@ -19,8 +25,9 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
   transactionId,
   userId,
 }) => {
-  const { operations } = useTransactionData(transactionId);
+  const { operations, groups } = useTransactionData(transactionId);
   const { data: accountOptions, error } = useGetAllAccountOptionsQuery(userId);
+  const dispatch = useTradeDispatch();
 
   const validateTransaction = () => {
     if (error) {
@@ -35,6 +42,31 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
     }
     toast('sum equals to zero', { type: 'success' });
     const custody = useCustodyPopulate(accountOptions ?? [], operations);
+
+    Object.keys(custody).forEach((curr) => {
+      const group = groups.find((g) => g.currency === curr);
+      if (!group) {
+        return;
+      }
+      const operationRecord = custody[curr];
+      Object.keys(operationRecord).forEach((o) => {
+        const custodyOperation = dispatch(
+          operationAdded({
+            id: nanoid(),
+            amount: operationRecord[o],
+            account: o,
+          })
+        );
+
+        dispatch(
+          currencyGroupOperationAdded({
+            id: group.id,
+            currency: group.currency,
+            operation: custodyOperation.payload.id,
+          })
+        );
+      });
+    });
     // create rows
   };
 

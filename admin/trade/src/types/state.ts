@@ -30,7 +30,7 @@ export type PortfolioState = {
 
 // actions
 
-export type AccountTypes = 'Fiat' | 'Crypto' | 'Virtual';
+export type AccountTypes = 'Fiat' | 'Crypto' | 'Virtual' | 'Custody';
 export type Loading = 'idle' | 'loading' | 'fetched';
 export type Status = 'draft' | 'published';
 
