@@ -205,24 +205,24 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
                   sx={{
                     height: 400,
                     width: '100%',
-                    '& .operation--Fiat': {
-                      bgcolor: '#85bb65',
-                      '&:hover': {
-                        bgcolor: darken('#85bb65', 0.2),
-                      },
-                    },
-                    '& .operation--Crypto': {
-                      bgcolor: '#f0ece5',
-                      '&:hover': {
-                        bgcolor: darken('#f0ece5', 0.2),
-                      },
-                    },
-                    '& .operation--Virtual': {
-                      bgcolor: '#afdef2',
-                      '&:hover': {
-                        bgcolor: darken('#afdef2', 0.2),
-                      },
-                    },
+                    // '& .operation--Fiat': {
+                    //   bgcolor: '#85bb65',
+                    //   '&:hover': {
+                    //     bgcolor: darken('#85bb65', 0.2),
+                    //   },
+                    // },
+                    // '& .operation--Crypto': {
+                    //   bgcolor: '#f0ece5',
+                    //   '&:hover': {
+                    //     bgcolor: darken('#f0ece5', 0.2),
+                    //   },
+                    // },
+                    // '& .operation--Virtual': {
+                    //   bgcolor: '#afdef2',
+                    //   '&:hover': {
+                    //     bgcolor: darken('#afdef2', 0.2),
+                    //   },
+                    // },
                     '& .operation--Custody': {
                       bgcolor: '#f2a900',
                       '&:hover': {
