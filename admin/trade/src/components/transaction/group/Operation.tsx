@@ -121,8 +121,7 @@ const Operation: React.FC<OperationProps> = ({
         })}
         error={Boolean(errors.amount)}
         helperText={
-          errors.amount?.message ||
-          `Balance: ${getAcc(watch('account')).balance ?? ''}`
+          errors.amount?.message || `${getAcc(watch('account')).balance ?? ''}`
         }
       />
 

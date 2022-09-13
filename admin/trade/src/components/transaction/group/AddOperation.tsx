@@ -13,10 +13,7 @@ import { toast } from 'react-toastify';
 import Action from '../../action/Action';
 import { nanoid } from '@reduxjs/toolkit';
 import { useGroupData } from '@/hooks';
-import {
-  useGetAccountOptionsQuery,
-  useGetAllAccountOptionsQuery,
-} from '@/services';
+import { useGetAllAccountOptionsQuery } from '@/services';
 import { getAccount, getAccountOptions } from '@/utils';
 
 type AddOperationProps = {

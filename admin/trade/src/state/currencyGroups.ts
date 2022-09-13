@@ -38,6 +38,11 @@ const currencyGroupsSlice = createSlice({
         state.entities[action.payload.id]?.operations.filter(
           (o) => o !== action.payload.operation
         ) || [];
+
+      if (operations.length === 0) {
+        return currencyGroupsAdapter.removeOne(state, action.payload.id);
+      }
+
       return currencyGroupsAdapter.updateOne(state, {
         id: action.payload.id,
         changes: { operations },

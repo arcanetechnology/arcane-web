@@ -5,7 +5,13 @@ import { Box } from '@mui/system';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import { transactionsSelector, useTradeSelector } from '@/state';
-import { CreateGroup, TransactionToolbar, GroupList } from '@/components';
+import {
+  CreateGroup,
+  TransactionToolbar,
+  GroupList,
+  GroupsAndOperations,
+} from '@/components';
+import { useGetAllAccountOptionsQuery } from '@/services';
 
 const Transaction: React.FC = () => {
   const params = useParams();
@@ -13,7 +19,11 @@ const Transaction: React.FC = () => {
     transactionsSelector.selectById(s, params.transactionId as string)
   );
 
-  if (!transaction) {
+  const { data: accountOptions, error } = useGetAllAccountOptionsQuery(
+    params.userId as string
+  );
+
+  if (!transaction || error) {
     return (
       <Box>
         <Skeleton height={40} />
@@ -36,7 +46,11 @@ const Transaction: React.FC = () => {
           userId={params.userId!}
         />
       )}
-      <GroupList groups={transaction.groups || []} />
+      {/* <GroupList groups={transaction.groups || []} /> */}
+      <GroupsAndOperations
+        groups={transaction.groups || []}
+        accountOptions={accountOptions ?? []}
+      />
       {transaction.status === 'draft' && (
         <CreateGroup userId={params.userId!} id={transaction.id} />
       )}
