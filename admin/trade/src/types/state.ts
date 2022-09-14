@@ -31,6 +31,8 @@ export type PortfolioState = {
 // actions
 
 export type AccountTypes = 'Fiat' | 'Crypto' | 'Virtual' | 'Custody';
+
+export type CurrencyTyps = 'Fiat' | 'Crypto';
 export type Loading = 'idle' | 'loading' | 'fetched';
 export type Status = 'draft' | 'published';
 
@@ -45,6 +47,7 @@ export type CurrencyGroup = {
   operations: Array<string>;
   currency: Currency | CryptoCurrency;
   total: number;
+  custodyTotal: number;
 };
 
 // type only on frontend to manage accounts for transactions

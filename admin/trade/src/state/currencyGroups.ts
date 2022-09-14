@@ -35,13 +35,23 @@ const currencyGroupsSlice = createSlice({
 
       return currencyGroupsAdapter.updateOne(state, {
         id: action.payload.id,
-        changes: { operations, currency: action.payload.currency, total },
+        changes: {
+          operations,
+          currency: action.payload.currency,
+          total,
+          custodyTotal: total,
+        },
       });
     },
 
     currencyGroupOperationDeleted: (
       state,
-      action: PayloadAction<{ id: string; operation: string; amount: number }>
+      action: PayloadAction<{
+        id: string;
+        operation: string;
+        amount: number;
+        isCustody: boolean;
+      }>
     ) => {
       const operations: string[] =
         state.entities[action.payload.id]?.operations.filter(

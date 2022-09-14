@@ -21,7 +21,7 @@ export const handlers = [
     console.log(user);
     return res(ctx.status(200), ctx.json(user));
   }),
-  rest.get('/virtual/accounts/', (req, res, ctx) => {
+  rest.get('/virtual/accounts', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(virtualAccounts));
   }),
   rest.get('/arcane/accounts/custody', (req, res, ctx) => {
