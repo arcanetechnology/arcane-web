@@ -50,7 +50,6 @@ const currencyGroupsSlice = createSlice({
         id: string;
         operation: string;
         amount: number;
-        isCustody: boolean;
       }>
     ) => {
       const operations: string[] =

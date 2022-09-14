@@ -45,6 +45,7 @@ const CreateGroup: React.FC<CreateGroupProps> = ({ id, userId }) => {
           operations: [o.payload.id],
           currency: account.currency,
           total: o.payload.amount,
+          custodyTotal: o.payload.amount,
         })
       );
       dispatch(transactionGroupAdded({ id, group: c.payload.id }));
