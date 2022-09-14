@@ -1,0 +1,14 @@
+[
+  {
+    "id": "real-nok-sp1",
+    "alias": "Real NOK SP1",
+    "balance": 1000000000,
+    "currency": "NOK"
+  },
+  {
+    "id": "real-btc-coinbase",
+    "alias": "Real BTC Coinbase",
+    "balance": 1000000000,
+    "currency": "BTC"
+  }
+]

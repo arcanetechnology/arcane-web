@@ -50,7 +50,7 @@ export const usersApi = api.injectEndpoints({
         }
 
         const user = userResult.data as TradeUser;
-        const result = await fetchWithBQ('accounts/virtual');
+        const result = await fetchWithBQ('virtual/accounts');
         if (result.error) {
           return { error: result.error as FetchBaseQueryError };
         }
@@ -64,6 +64,7 @@ export const usersApi = api.injectEndpoints({
             type: 'Virtual',
           })
         );
+        // TODO @joel call /arcane/accounts/*
         return {
           data: [...getAllUserAccountOptions(user), ...accountOptionVirtual],
         };

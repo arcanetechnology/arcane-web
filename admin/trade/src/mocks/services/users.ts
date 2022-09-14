@@ -18,8 +18,51 @@ const cryptoCustodyAccounts: Array<string> = [
   'crypto-custody-3',
 ];
 
-const cryptoCurrency = ['BTC', 'ETH_ERC20', 'SOL', 'USDC', 'USDT', 'FTT'];
-const currency = ['USD', 'EUR', 'NOK', 'SEK', 'GBP'];
+const cryptoCurrency = [
+  'ALGO',
+  'REP',
+  'BAT',
+  'XBT',
+  'BCH',
+  'ADA',
+  'LINK',
+  'ATOM',
+  'DAI',
+  'XDG',
+  'EOS',
+  'ETH',
+  'ETC',
+  'GNO',
+  'LTC',
+  'NANO',
+  'OMG',
+  'OXT',
+  'PAXG',
+  'XRP',
+  'XLM',
+  'XTZ',
+  'TRX',
+  'DOT',
+  'SOL',
+  'MATIC',
+  'USDT',
+  'USDC',
+  'AAVE',
+  'UNI',
+  'CRV',
+  'COMP',
+  'GRT',
+  'SNX',
+  'YFI',
+  'MANA',
+  'NMR',
+  'SAND',
+  'BUSD',
+  'BNB',
+  'FTT',
+];
+
+const currency = ['USD', 'EUR', 'GBP', 'NOK', 'SEK', 'DKK', 'CHF'];
 
 const createRandomCryptoAccount = (): CryptoAccount[] => {
   return Array(getRandomIntInclusive(2, 5))
@@ -99,15 +142,52 @@ const adapter = createEntityAdapter<TradeUser>({
 let users = adapter.getInitialState();
 users = adapter.setAll(
   users,
-  Array(13)
-    .fill(0)
-    .map((_, index) => {
-      return {
-        id: nanoid(),
-        email: faker.internet.email(),
-        profiles: getRandomProfiles(),
-      };
-    })
+  // Array(13)
+  //   .fill(0)
+  //   .map((_, index) => {
+  //     return {
+  //       id: nanoid(),
+  //       email: faker.internet.email(),
+  //       profiles: getRandomProfiles(),
+  //     };
+  //   })
+  [
+    {
+      id: 'user-id-uuid',
+      email: 'test@arcane.no',
+      profiles: [
+        {
+          id: 'profile-1-1',
+          alias: 'Profile 1-1',
+          type: 'PERSONAL',
+          accounts: [
+            {
+              id: 'account 1-1-1',
+              balance: 10000,
+              currency: 'NOK',
+              alias: 'Account 1-1-1',
+              fiatCustodyAccountId: 'real-nok-sp1',
+              portfolios: [
+                {
+                  id: 'portfolio 1-1-1-1',
+                  alias: 'Portfolio 1-1-1-1',
+                  cryptoAccounts: [
+                    {
+                      id: 'crypto 1-1-1-1-1',
+                      balance: 10000,
+                      currency: 'BTC',
+                      alias: 'Crypto 1-1-1-1-1',
+                      cryptoCustodyAccountId: 'real-btc-coinbase',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ]
 );
 
 export default users;

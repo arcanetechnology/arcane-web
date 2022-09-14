@@ -1,0 +1,9 @@
+[
+  {
+    "id": "arcane-fee-nok-sp1",
+    "alias": "Arcane Fee NOK SP1",
+    "balance": 100000,
+    "currency": "NOK",
+    "custodyAccountId": "real-nok-sp1"
+  }
+]
