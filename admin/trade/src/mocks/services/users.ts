@@ -135,50 +135,72 @@ function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
 
+function getRandomUsers(): Array<TradeUser> {
+  return Array(13)
+    .fill(0)
+    .map((_, index) => {
+      return {
+        id: nanoid(),
+        email: faker.internet.email(),
+        profiles: getRandomProfiles(),
+      };
+    });
+}
+
 const adapter = createEntityAdapter<TradeUser>({
   selectId: (user) => user.id,
 });
 
 let users = adapter.getInitialState();
-const initialData: Array<TradeUser> = import.meta.env.DEV
-  ? Array(13)
-      .fill(0)
-      .map((_, index) => {
-        return {
-          id: nanoid(),
-          email: faker.internet.email(),
-          profiles: getRandomProfiles(),
-        };
-      })
-  : [
+const initialData: Array<TradeUser> = [
+  {
+    id: 'test-user-id',
+    email: 'test@arcane.no',
+    profiles: [
       {
-        id: 'user-id-uuid',
-        email: 'test@arcane.no',
-        profiles: [
+        id: 'test-profile-id',
+        alias: 'Test Profile',
+        type: 'PERSONAL',
+        accounts: [
           {
-            id: 'profile-1-1',
-            alias: 'Profile 1-1',
-            type: 'PERSONAL',
-            accounts: [
+            id: 'test-user-nok-sp1',
+            balance: 10000,
+            currency: 'NOK',
+            alias: 'Test User NOK',
+            fiatCustodyAccountId: 'real-nok-sp1',
+            portfolios: [],
+          },
+          {
+            id: 'test-user-usd-sp1',
+            balance: 10000,
+            currency: 'USD',
+            alias: 'Test User USD SP1',
+            fiatCustodyAccountId: 'real-usd-sp1',
+            portfolios: [
               {
-                id: 'account 1-1-1',
-                balance: 10000,
-                currency: 'NOK',
-                alias: 'Account 1-1-1',
-                fiatCustodyAccountId: 'real-nok-sp1',
-                portfolios: [
+                id: 'test-portfolio',
+                alias: 'Test Portfolio',
+                cryptoAccounts: [
                   {
-                    id: 'portfolio 1-1-1-1',
-                    alias: 'Portfolio 1-1-1-1',
-                    cryptoAccounts: [
-                      {
-                        id: 'crypto 1-1-1-1-1',
-                        balance: 10000,
-                        currency: 'BTC',
-                        alias: 'Crypto 1-1-1-1-1',
-                        cryptoCustodyAccountId: 'real-btc-coinbase',
-                      },
-                    ],
+                    id: 'test-user-eth-metamask',
+                    balance: 10000,
+                    currency: 'ETH',
+                    alias: 'Test User ETH Metamask',
+                    cryptoCustodyAccountId: 'real-eth-metamask',
+                  },
+                  {
+                    id: 'test-user-matic-metamask',
+                    balance: 10000,
+                    currency: 'MATIC',
+                    alias: 'Test User MATIC Metamask',
+                    cryptoCustodyAccountId: 'real-matic-metamask',
+                  },
+                  {
+                    id: 'test-user-matic-ftx',
+                    balance: 10000,
+                    currency: 'MATIC',
+                    alias: 'Test User MATIC FTX',
+                    cryptoCustodyAccountId: 'real-matic-ftx',
                   },
                 ],
               },
@@ -186,7 +208,9 @@ const initialData: Array<TradeUser> = import.meta.env.DEV
           },
         ],
       },
-    ];
+    ],
+  },
+];
 
 users = adapter.setAll(users, initialData);
 
