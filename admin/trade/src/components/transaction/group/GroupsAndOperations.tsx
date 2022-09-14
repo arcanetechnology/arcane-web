@@ -1,6 +1,7 @@
 /** @format */
 
 import {
+  currencyGroupCustodyTotalUpdated,
   currencyGroupOperationAdded,
   currencyGroupOperationDeleted,
   currencyGroupsSelector,
@@ -79,19 +80,26 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
   accountOptions,
 }) => {
   const data = useGroupsOperationAccounts(groups, accountOptions);
-  const totals: Record<string, number> = useTradeSelector((s) => {
-    return currencyGroupsSelector
-      .selectAll(s)
-      .filter((g) => groups.includes(g.id))
-      .reduce((t, g) => {
-        return { ...t, [g.currency]: g.total };
-      }, {});
-  });
+  const groupTotals: Record<string, { total: number; custodyTotal: number }> =
+    useTradeSelector((s) => {
+      return currencyGroupsSelector
+        .selectAll(s)
+        .filter((g) => groups.includes(g.id))
+        .reduce((t, g) => {
+          return {
+            ...t,
+            [g.currency]: {
+              total: g.total,
+              custodyTotal: g.custodyTotal,
+            },
+          };
+        }, {});
+    });
 
   const dispatch = useTradeDispatch();
 
   const getColumns = (currency: string): GridColumns<OperationAccounts> => {
-    const total = totals[currency];
+    const total = groupTotals[currency];
     return [
       {
         field: 'id',
@@ -126,13 +134,13 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
         headerName: 'Stakeholder Amount',
 
         renderHeader: (params) => {
-          if (total !== 0) {
+          if (total.total !== 0) {
             params.colDef.headerClassName = 'operation--error-header';
           } else {
             params.colDef.headerClassName = 'operation--success-header';
           }
 
-          return params.colDef.headerName + ` ( total sum ${total} )`;
+          return params.colDef.headerName + ` ( total sum ${total.total} )`;
         },
         flex: 1,
         minWidth: 300,
@@ -146,13 +154,15 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
         flex: 1,
         minWidth: 300,
         renderHeader: (params) => {
-          if (total !== 0) {
+          if (total.custodyTotal !== 0) {
             params.colDef.headerClassName = 'operation--error-header';
           } else {
             params.colDef.headerClassName = 'operation--success-header';
           }
 
-          return params.colDef.headerName + ` ( total sum ${total} )`;
+          return (
+            params.colDef.headerName + ` ( total sum ${total.custodyTotal} )`
+          );
         },
         renderCell: (params) => {
           return ['Custody', 'Virtual'].includes(params.row.type)
@@ -169,6 +179,7 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
           <GridActionsCellItem
             icon={<Delete />}
             onClick={() => {
+              // check if the type if custody and envoke groupCustodyDeleted function,
               dispatch(
                 currencyGroupOperationDeleted({
                   id: params.row.groupId,
@@ -196,6 +207,7 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
   ) => {
     try {
       const account = getAccount(accountOptions ?? [], data.account);
+
       const o = dispatch(operationAdded({ id: nanoid(), ...data }));
       const c = dispatch(
         currencyGroupOperationAdded({
@@ -205,6 +217,13 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
           amount: o.payload.amount,
         })
       );
+
+      if (account.type === 'Virtual') {
+        currencyGroupCustodyTotalUpdated({
+          id: c.payload.id,
+          amount: c.payload.amount,
+        });
+      }
       toast('new operation added', {
         hideProgressBar: true,
       });

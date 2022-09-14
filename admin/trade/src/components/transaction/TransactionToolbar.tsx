@@ -10,6 +10,7 @@ import {
 } from '../../hooks';
 import { toast } from 'react-toastify';
 import {
+  currencyGroupCustodyAdded,
   currencyGroupOperationAdded,
   operationAdded,
   useTradeDispatch,
@@ -25,7 +26,6 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
   transactionId,
   userId,
 }) => {
-  const [disabled, setDisabled] = React.useState(false);
   const { operations, groups } = useTransactionData(transactionId);
   const { data: accountOptions, error } = useGetAllAccountOptionsQuery(userId);
   const dispatch = useTradeDispatch();
@@ -42,6 +42,10 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
       return;
     }
     toast('sum equals to zero', { type: 'success' });
+
+    // remove existing custody accounts from the group
+    // update the currency group depending on what operation has been removed.
+
     const custody = useCustodyPopulate(accountOptions ?? [], operations);
 
     Object.keys(custody).forEach((curr) => {
@@ -60,26 +64,19 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
         );
 
         dispatch(
-          currencyGroupOperationAdded({
+          currencyGroupCustodyAdded({
             id: group.id,
-            currency: group.currency,
             operation: custodyOperation.payload.id,
-            amount: 0,
+            amount: custodyOperation.payload.amount,
           })
         );
       });
     });
-
-    setDisabled(true);
   };
 
   return (
     <Box>
-      <Button
-        disabled={disabled}
-        onClick={validateTransaction}
-        variant="contained"
-      >
+      <Button onClick={validateTransaction} variant="contained">
         Validate Transaction
       </Button>
     </Box>

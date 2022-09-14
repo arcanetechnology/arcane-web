@@ -140,54 +140,54 @@ const adapter = createEntityAdapter<TradeUser>({
 });
 
 let users = adapter.getInitialState();
-users = adapter.setAll(
-  users,
-  // Array(13)
-  //   .fill(0)
-  //   .map((_, index) => {
-  //     return {
-  //       id: nanoid(),
-  //       email: faker.internet.email(),
-  //       profiles: getRandomProfiles(),
-  //     };
-  //   })
-  [
-    {
-      id: 'user-id-uuid',
-      email: 'test@arcane.no',
-      profiles: [
-        {
-          id: 'profile-1-1',
-          alias: 'Profile 1-1',
-          type: 'PERSONAL',
-          accounts: [
-            {
-              id: 'account 1-1-1',
-              balance: 10000,
-              currency: 'NOK',
-              alias: 'Account 1-1-1',
-              fiatCustodyAccountId: 'real-nok-sp1',
-              portfolios: [
-                {
-                  id: 'portfolio 1-1-1-1',
-                  alias: 'Portfolio 1-1-1-1',
-                  cryptoAccounts: [
-                    {
-                      id: 'crypto 1-1-1-1-1',
-                      balance: 10000,
-                      currency: 'BTC',
-                      alias: 'Crypto 1-1-1-1-1',
-                      cryptoCustodyAccountId: 'real-btc-coinbase',
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ]
-);
+const initialData: Array<TradeUser> = import.meta.env.DEV
+  ? Array(13)
+      .fill(0)
+      .map((_, index) => {
+        return {
+          id: nanoid(),
+          email: faker.internet.email(),
+          profiles: getRandomProfiles(),
+        };
+      })
+  : [
+      {
+        id: 'user-id-uuid',
+        email: 'test@arcane.no',
+        profiles: [
+          {
+            id: 'profile-1-1',
+            alias: 'Profile 1-1',
+            type: 'PERSONAL',
+            accounts: [
+              {
+                id: 'account 1-1-1',
+                balance: 10000,
+                currency: 'NOK',
+                alias: 'Account 1-1-1',
+                fiatCustodyAccountId: 'real-nok-sp1',
+                portfolios: [
+                  {
+                    id: 'portfolio 1-1-1-1',
+                    alias: 'Portfolio 1-1-1-1',
+                    cryptoAccounts: [
+                      {
+                        id: 'crypto 1-1-1-1-1',
+                        balance: 10000,
+                        currency: 'BTC',
+                        alias: 'Crypto 1-1-1-1-1',
+                        cryptoCustodyAccountId: 'real-btc-coinbase',
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ];
+
+users = adapter.setAll(users, initialData);
 
 export default users;

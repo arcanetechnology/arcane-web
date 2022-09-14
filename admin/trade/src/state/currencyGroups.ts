@@ -39,7 +39,6 @@ const currencyGroupsSlice = createSlice({
           operations,
           currency: action.payload.currency,
           total,
-          custodyTotal: total,
         },
       });
     },
@@ -69,6 +68,40 @@ const currencyGroupsSlice = createSlice({
         changes: { operations, total },
       });
     },
+    currencyGroupCustodyAdded: (
+      state,
+      action: PayloadAction<{
+        id: string;
+        operation: string;
+        amount: number;
+      }>
+    ) => {
+      const group = state.entities[action.payload.id];
+      if (!group) return;
+      const operations: string[] = [
+        ...(group.operations ?? []),
+        action.payload.operation,
+      ];
+      const custodyTotal = group.custodyTotal + action.payload.amount;
+      return currencyGroupsAdapter.updateOne(state, {
+        id: action.payload.id,
+        changes: { operations, custodyTotal },
+      });
+    },
+    currencyGroupCustodyTotalUpdated: (
+      state,
+      action: PayloadAction<{ id: string; amount: number }>
+    ) => {
+      const group = state.entities[action.payload.id];
+      if (!group) return;
+      const custodyTotal = group.custodyTotal + action.payload.amount;
+      return currencyGroupsAdapter.updateOne(state, {
+        id: action.payload.id,
+        changes: {
+          custodyTotal,
+        },
+      });
+    },
     currencyGroupDeleted: currencyGroupsAdapter.removeOne,
   },
 });
@@ -81,6 +114,8 @@ export const {
   currencyGroupOperationAdded,
   currencyGroupOperationDeleted,
   currencyGroupUpdated,
+  currencyGroupCustodyAdded,
+  currencyGroupCustodyTotalUpdated,
 } = currencyGroupsSlice.actions;
 
 export const currencyGroupsSelector = currencyGroupsAdapter.getSelectors(
