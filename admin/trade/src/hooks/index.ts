@@ -27,8 +27,10 @@ export const useTransactionData = (transactionId: string) => {
 
   const operations = useTradeSelector((s) => {
     const os = operationsSelector.selectAll(s);
+
     return os.filter((o) => {
-      return groups.filter((g) => g.operations.includes(o.id));
+      const groupOperations = groups.flatMap((g) => g.operations);
+      return groupOperations.includes(o.id);
     });
   });
 

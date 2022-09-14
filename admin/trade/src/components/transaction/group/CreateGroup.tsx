@@ -57,6 +57,13 @@ const CreateGroup: React.FC<CreateGroupProps> = ({ id, userId }) => {
     }
   };
 
+  console.log('operation');
+  console.log(operations);
+  console.log('transaction');
+  console.log(transaction);
+  console.log('groups');
+  console.log(groups);
+
   return (
     <React.Fragment>
       <Action
