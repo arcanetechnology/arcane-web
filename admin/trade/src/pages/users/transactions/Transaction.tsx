@@ -38,9 +38,6 @@ const Transaction: React.FC = () => {
     <Stack gap={2}>
       <Typography variant="h2">{transaction.name}</Typography>
       {transaction.status === 'draft' && (
-        <Alert>Transaction is in Draft Mode</Alert>
-      )}
-      {transaction.status === 'draft' && (
         <TransactionToolbar
           transactionId={transaction.id}
           userId={params.userId!}
@@ -51,9 +48,9 @@ const Transaction: React.FC = () => {
         groups={transaction.groups || []}
         accountOptions={accountOptions ?? []}
       />
-      {transaction.status === 'draft' && (
+      {/* {transaction.status === 'draft' && (
         <CreateGroup userId={params.userId!} id={transaction.id} />
-      )}
+      )} */}
     </Stack>
   );
 };

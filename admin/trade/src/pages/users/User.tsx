@@ -1,6 +1,6 @@
 /** @format */
 
-import { Button, Skeleton, Typography } from '@mui/material';
+import { Box, Button, Skeleton, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -29,13 +29,15 @@ const User: React.FC = () => {
       {isSuccess && (
         <>
           <Typography variant="h3">{user.email}</Typography>
-          <Button
-            onClick={() => navigate('transactions')}
-            variant="contained"
-            size="large"
-          >
-            Transaction
-          </Button>
+          <Box>
+            <Button
+              onClick={() => navigate('transactions')}
+              variant="contained"
+              size="large"
+            >
+              Transaction
+            </Button>
+          </Box>
         </>
       )}
     </Stack>

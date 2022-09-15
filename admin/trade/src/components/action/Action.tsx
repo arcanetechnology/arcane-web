@@ -1,7 +1,7 @@
 /** @format */
 
 import * as React from 'react';
-import { Dialog, DialogContent, Fab, makeStyles } from '@mui/material';
+import { Button, Dialog, DialogContent, Fab, makeStyles } from '@mui/material';
 import { useEventListener } from '../../hooks';
 
 type ActionProps = {
@@ -27,15 +27,14 @@ const Action: React.FC<ActionProps> = ({ children, label }) => {
 
   return (
     <React.Fragment>
-      <Fab
+      <Button
         onClick={handleOpen}
-        variant="extended"
-        sx={{ position: 'absolute', bottom: 16, right: 16 }}
+        variant="contained"
         color="primary"
         aria-label="add new operation"
       >
         {label}
-      </Fab>
+      </Button>
       <Dialog sx={{ height: 500 }} fullWidth open={open} onClose={handleClose}>
         <DialogContent sx={{ overflowY: 'visible' }}>
           {children(handleClose)}

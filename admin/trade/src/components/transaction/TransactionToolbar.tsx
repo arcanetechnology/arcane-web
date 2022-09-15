@@ -16,6 +16,7 @@ import {
 import { nanoid } from '@reduxjs/toolkit';
 import { CurrencyGroup, CustodyAccount, Operation } from '@/types';
 import { useGetCustodyAccountsQuery } from '@/services/accounts';
+import { CreateGroup } from './group';
 
 type TransactionToolbarProps = {
   transactionId: string;
@@ -121,10 +122,13 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
   };
 
   return (
-    <Box>
-      <Button onClick={validateTransaction} variant="contained">
-        Validate Transaction
-      </Button>
+    <Box display="flex" gap={2}>
+      <CreateGroup userId={userId} id={transactionId} />
+      {operations.length > 0 ? (
+        <Button onClick={validateTransaction} variant="contained">
+          Validate Transaction
+        </Button>
+      ) : null}
     </Box>
   );
 };

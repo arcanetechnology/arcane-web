@@ -137,7 +137,7 @@ export default function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      {/* <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
@@ -156,13 +156,13 @@ export default function App() {
             </ListItem>
           ))}
         </List>
-      </Drawer>
+      </Drawer> */}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <TradeBreadCrumbs />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="users">
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/">
             <Route index element={<Users />} />
             <Route path=":userId">
               <Route index element={<User />} />

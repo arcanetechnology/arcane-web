@@ -2,13 +2,17 @@
 
 import * as React from 'react';
 import { CreateTransaction, TransactionList } from '@/components';
+import { Stack } from '@mui/system';
+import { Box } from '@mui/material';
 
 const Transactions: React.FC = () => {
   return (
-    <React.Fragment>
+    <Stack>
+      <Box mb={2}>
+        <CreateTransaction />
+      </Box>
       <TransactionList />
-      <CreateTransaction />
-    </React.Fragment>
+    </Stack>
   );
 };
 
