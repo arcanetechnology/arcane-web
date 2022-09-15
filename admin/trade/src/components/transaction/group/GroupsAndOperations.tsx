@@ -19,7 +19,14 @@ import {
 } from '@/types';
 import { getAccount, getAccountOptions } from '@/utils';
 import { Delete } from '@mui/icons-material';
-import { Card, CardContent, Chip, Typography } from '@mui/material';
+import {
+  Card,
+  CardContent,
+  Chip,
+  Divider,
+  Grid,
+  Typography,
+} from '@mui/material';
 import { darken, Stack, Box } from '@mui/system';
 import { DataGrid, GridColumns, GridActionsCellItem } from '@mui/x-data-grid';
 import { nanoid } from '@reduxjs/toolkit';
@@ -137,9 +144,9 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
 
         renderHeader: (params) => {
           if (total.total !== 0) {
-            params.colDef.headerClassName = 'operation--error-header';
+            params.colDef.cellClassName = 'operation--error-header';
           } else {
-            params.colDef.headerClassName = 'operation--success-header';
+            params.colDef.cellClassName = 'operation--success-header';
           }
 
           return params.colDef.headerName + ` ( total sum ${total.total} )`;
@@ -157,9 +164,9 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
         minWidth: 300,
         renderHeader: (params) => {
           if (total.custodyTotal !== 0) {
-            params.colDef.headerClassName = 'operation--error-header';
+            params.colDef.cellClassName = 'operation--error-header';
           } else {
-            params.colDef.headerClassName = 'operation--success-header';
+            params.colDef.cellClassName = 'operation--success-header';
           }
 
           return (
@@ -175,7 +182,7 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
       {
         field: 'actions',
         type: 'actions',
-        minWidth: 350,
+        minWidth: 200,
         flex: 0.5,
         getActions: (params) => [
           <GridActionsCellItem
@@ -219,6 +226,8 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
     ];
   };
 
+  // TODO: get a be
+
   const columns = React.useMemo<
     (currency: string) => GridColumns<OperationAccounts>
   >(() => getColumns, [data]);
@@ -260,32 +269,17 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
     <React.Fragment>
       {Object.keys(data).map((currency) => {
         return (
-          <Card key={currency} elevation={0}>
+          <Card key={currency} elevation={1}>
             <CardContent>
-              <Stack gap={2}>
-                <Typography variant="h2">{currency}</Typography>
+              <Typography variant="h2">{currency}</Typography>
+              <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+                spacing={{ xs: 1, sm: 2, md: 1 }}
+              >
                 <Box
                   sx={{
-                    height: 400,
+                    height: 300,
                     width: '100%',
-                    // '& .operation--Fiat': {
-                    //   bgcolor: '#85bb65',
-                    //   '&:hover': {
-                    //     bgcolor: darken('#85bb65', 0.2),
-                    //   },
-                    // },
-                    // '& .operation--Crypto': {
-                    //   bgcolor: '#f0ece5',
-                    //   '&:hover': {
-                    //     bgcolor: darken('#f0ece5', 0.2),
-                    //   },
-                    // },
-                    // '& .operation--Virtual': {
-                    //   bgcolor: '#afdef2',
-                    //   '&:hover': {
-                    //     bgcolor: darken('#afdef2', 0.2),
-                    //   },
-                    // },
                     '& .operation--Custody': {
                       bgcolor: '#f2a900',
                       '&:hover': {
@@ -307,9 +301,12 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
                     getRowClassName={(params) =>
                       `operation--${params.row.type}`
                     }
+                    components={{
+                      Footer: () => null,
+                    }}
                   />
                 </Box>
-                <Card>
+                <Card sx={{ minWidth: 600 }} elevation={0}>
                   <CardContent>
                     <Operation
                       submitOperation={(v) => {

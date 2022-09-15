@@ -70,6 +70,7 @@ export const useCustodyPopulate = (
       if (acc.custodyAccountId) {
         const oldCustodyAccountOperations =
           custodyAccountOperations[acc.currency];
+
         // todo check new custody with old
         if (oldCustodyAccountOperations) {
           const oldNumber =

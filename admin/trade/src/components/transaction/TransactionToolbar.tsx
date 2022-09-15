@@ -92,6 +92,8 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
 
     const custody = useCustodyPopulate(accountOptions ?? [], operations);
 
+    console.log(custody);
+
     Object.keys(custody).forEach((curr) => {
       const group = groups.find((g) => g.currency === curr);
       if (!group) {
