@@ -154,52 +154,59 @@ const adapter = createEntityAdapter<TradeUser>({
 let users = adapter.getInitialState();
 const initialData: Array<TradeUser> = [
   {
-    id: 'test-user-id',
+    id: 'user-id',
     email: 'test@arcane.no',
     profiles: [
       {
-        id: 'test-profile-id',
+        id: 'profile-id',
         alias: 'Test Profile',
         type: 'PERSONAL',
         accounts: [
           {
-            id: 'test-user-nok-sp1',
+            id: 'user-nok-sp1',
             balance: 10000,
             currency: 'NOK',
-            alias: 'Test User NOK',
+            alias: 'User NOK SP1',
             fiatCustodyAccountId: 'real-nok-sp1',
             portfolios: [],
           },
           {
-            id: 'test-user-usd-sp1',
+            id: 'user-usd-sp1',
             balance: 10000,
             currency: 'USD',
-            alias: 'Test User USD SP1',
+            alias: 'User USD SP1',
             fiatCustodyAccountId: 'real-usd-sp1',
             portfolios: [
               {
-                id: 'test-portfolio',
+                id: 'portfolio-id',
                 alias: 'Test Portfolio',
                 cryptoAccounts: [
                   {
-                    id: 'test-user-eth-metamask',
+                    id: 'user-eth-coinbase',
                     balance: 10000,
                     currency: 'ETH',
-                    alias: 'Test User ETH Metamask',
+                    alias: 'User ETH Coinbase',
+                    cryptoCustodyAccountId: 'real-eth-coinbase',
+                  },
+                  {
+                    id: 'user-eth-metamask',
+                    balance: 10000,
+                    currency: 'ETH',
+                    alias: 'User ETH Metamask',
                     cryptoCustodyAccountId: 'real-eth-metamask',
                   },
                   {
-                    id: 'test-user-matic-metamask',
+                    id: 'user-matic-metamask',
                     balance: 10000,
                     currency: 'MATIC',
-                    alias: 'Test User MATIC Metamask',
+                    alias: 'User MATIC Metamask',
                     cryptoCustodyAccountId: 'real-matic-metamask',
                   },
                   {
-                    id: 'test-user-matic-ftx',
+                    id: 'user-matic-ftx',
                     balance: 10000,
                     currency: 'MATIC',
-                    alias: 'Test User MATIC FTX',
+                    alias: 'User MATIC FTX',
                     cryptoCustodyAccountId: 'real-matic-ftx',
                   },
                 ],
