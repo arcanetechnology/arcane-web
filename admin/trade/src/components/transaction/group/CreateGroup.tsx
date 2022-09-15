@@ -8,8 +8,9 @@ import {
   operationAdded,
   currencyGroupAdded,
   transactionGroupAdded,
+  currencyGroupCustodyTotalUpdated,
 } from '@/state';
-import { Operation as Operationtype } from '../../../types';
+import { Operation as Operationtype } from '@/types';
 import { toast } from 'react-toastify';
 import Action from '../../action/Action';
 import { nanoid } from '@reduxjs/toolkit';
@@ -45,9 +46,18 @@ const CreateGroup: React.FC<CreateGroupProps> = ({ id, userId }) => {
           operations: [o.payload.id],
           currency: account.currency,
           total: o.payload.amount,
-          custodyTotal: o.payload.amount,
+          custodyTotal: 0,
         })
       );
+
+      if (account.type === 'Virtual') {
+        dispatch(
+          currencyGroupCustodyTotalUpdated({
+            id: c.payload.id,
+            amount: o.payload.amount,
+          })
+        );
+      }
       dispatch(transactionGroupAdded({ id, group: c.payload.id }));
       toast('new currency group is created!', {
         hideProgressBar: true,

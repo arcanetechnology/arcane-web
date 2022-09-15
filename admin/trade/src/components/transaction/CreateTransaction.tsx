@@ -2,13 +2,12 @@
 
 import { AccountBalance } from '@mui/icons-material';
 import { TextField, Typography } from '@mui/material';
-import { Box } from '@mui/system';
 import { nanoid } from '@reduxjs/toolkit';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { transactionAdded, useTradeDispatch } from '../../state';
-import { UserTransaction } from '../../types';
+import { transactionAdded, useTradeDispatch } from '@/state';
+import { UserTransaction } from '@/types';
 import Action from '../action/Action';
 
 const CreateTransaction: React.FC = () => {

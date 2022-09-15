@@ -7,6 +7,7 @@ import {
   useTradeDispatch,
   operationAdded,
   currencyGroupOperationAdded,
+  currencyGroupCustodyTotalUpdated,
 } from '@/state';
 import { Operation as Operationtype } from '@/types';
 import { toast } from 'react-toastify';
@@ -36,6 +37,7 @@ const AddOperation: React.FC<AddOperationProps> = ({ groupId, userId }) => {
     try {
       const account = getAccount(accountOptions ?? [], data.account);
       const o = dispatch(operationAdded({ id: nanoid(), ...data }));
+
       const c = dispatch(
         currencyGroupOperationAdded({
           id: groupId,
@@ -44,6 +46,15 @@ const AddOperation: React.FC<AddOperationProps> = ({ groupId, userId }) => {
           amount: o.payload.amount,
         })
       );
+
+      if (account.type === 'Virtual') {
+        dispatch(
+          currencyGroupCustodyTotalUpdated({
+            id: c.payload.id,
+            amount: o.payload.amount,
+          })
+        );
+      }
       toast('new operation added', {
         hideProgressBar: true,
       });

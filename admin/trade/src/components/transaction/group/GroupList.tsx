@@ -1,9 +1,9 @@
 /** @format */
 
-import { currencyGroupsSelector, useTradeSelector } from '../../../state';
+import { currencyGroupsSelector, useTradeSelector } from '@/state';
 import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
-import { CurrencyGroup } from '../../../types';
+import { CurrencyGroup } from '@/types';
 import { GridLinkAction } from '../../navigation';
 import { Edit } from '@mui/icons-material';
 

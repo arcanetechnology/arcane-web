@@ -1,6 +1,10 @@
 /** @format */
 
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import {
+  createEntityAdapter,
+  createSlice,
+  createAsyncThunk,
+} from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './state';
 import { CurrencyGroup } from '../types';
@@ -88,6 +92,28 @@ const currencyGroupsSlice = createSlice({
         changes: { operations, custodyTotal },
       });
     },
+
+    currencyGroupCustodyDeleted: (
+      state,
+      action: PayloadAction<{ id: string; operation: string; amount: number }>
+    ) => {
+      const group = state.entities[action.payload.id];
+      if (!group) return;
+
+      const operations: string[] =
+        group.operations.filter((o) => o !== action.payload.operation) || [];
+
+      if (operations.length === 0) {
+        return currencyGroupsAdapter.removeOne(state, action.payload.id);
+      }
+
+      const custodyTotal = group.custodyTotal - action.payload.amount;
+
+      return currencyGroupsAdapter.updateOne(state, {
+        id: action.payload.id,
+        changes: { operations, custodyTotal },
+      });
+    },
     currencyGroupCustodyTotalUpdated: (
       state,
       action: PayloadAction<{ id: string; amount: number }>
@@ -116,6 +142,7 @@ export const {
   currencyGroupUpdated,
   currencyGroupCustodyAdded,
   currencyGroupCustodyTotalUpdated,
+  currencyGroupCustodyDeleted,
 } = currencyGroupsSlice.actions;
 
 export const currencyGroupsSelector = currencyGroupsAdapter.getSelectors(

@@ -7,10 +7,10 @@ import { toast } from 'react-toastify';
 import {
   transactionDeleted,
   useTradeDispatch,
+  transactionsSelector,
   useTradeSelector,
-} from '../../state';
-import { transactionsSelector } from '../../state/';
-import { UserTransaction } from '../../types';
+} from '@/state';
+import { UserTransaction } from '@/types';
 import { GridLinkAction } from '../navigation';
 
 const TransactionList: React.FC = () => {

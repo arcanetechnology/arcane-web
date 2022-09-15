@@ -1,6 +1,7 @@
 /** @format */
 
 import {
+  currencyGroupCustodyDeleted,
   currencyGroupCustodyTotalUpdated,
   currencyGroupOperationAdded,
   currencyGroupOperationDeleted,
@@ -22,6 +23,7 @@ import { Card, CardContent, Chip, Typography } from '@mui/material';
 import { darken, Stack, Box } from '@mui/system';
 import { DataGrid, GridColumns, GridActionsCellItem } from '@mui/x-data-grid';
 import { nanoid } from '@reduxjs/toolkit';
+import { group } from 'console';
 import * as React from 'react';
 import { toast } from 'react-toastify';
 import Operation from './Operation';
@@ -180,13 +182,24 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
             icon={<Delete />}
             onClick={() => {
               // check if the type if custody and envoke groupCustodyDeleted function,
-              dispatch(
-                currencyGroupOperationDeleted({
-                  id: params.row.groupId,
-                  operation: params.id as string,
-                  amount: params.row.amount,
-                })
-              );
+
+              if (params.row.type === 'Custody') {
+                dispatch(
+                  currencyGroupCustodyDeleted({
+                    id: params.row.groupId,
+                    operation: params.id as string,
+                    amount: params.row.amount,
+                  })
+                );
+              } else {
+                dispatch(
+                  currencyGroupOperationDeleted({
+                    id: params.row.groupId,
+                    operation: params.id as string,
+                    amount: params.row.amount,
+                  })
+                );
+              }
 
               dispatch(operationDeleted(params.id));
             }}
@@ -219,10 +232,12 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
       );
 
       if (account.type === 'Virtual') {
-        currencyGroupCustodyTotalUpdated({
-          id: c.payload.id,
-          amount: c.payload.amount,
-        });
+        dispatch(
+          currencyGroupCustodyTotalUpdated({
+            id: groupId,
+            amount: o.payload.amount,
+          })
+        );
       }
       toast('new operation added', {
         hideProgressBar: true,

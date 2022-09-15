@@ -3,23 +3,46 @@
 import { useGetAllAccountOptionsQuery } from '@/services';
 import { Box, Button } from '@mui/material';
 import * as React from 'react';
-import {
-  useCustodyPopulate,
-  useTransactionData,
-  useZeroSum,
-} from '../../hooks';
+import { useCustodyPopulate, useTransactionData, useZeroSum } from '@/hooks';
 import { toast } from 'react-toastify';
 import {
   currencyGroupCustodyAdded,
+  currencyGroupCustodyDeleted,
   currencyGroupOperationAdded,
   operationAdded,
+  operationDeleted,
   useTradeDispatch,
 } from '@/state';
 import { nanoid } from '@reduxjs/toolkit';
+import { CurrencyGroup, CustodyAccount, Operation } from '@/types';
+import { useGetCustodyAccountsQuery } from '@/services/accounts';
 
 type TransactionToolbarProps = {
   transactionId: string;
   userId: string;
+};
+
+const removeCustodyAccounts = (
+  operations: Array<Operation>,
+  groups: Array<CurrencyGroup>,
+  custodyAccounts: Array<CustodyAccount>
+) => {
+  const dispatch = useTradeDispatch();
+  custodyAccounts.forEach((a) => {
+    groups.forEach((g) => {
+      const operation = operations.find((o) => o.account === a.id);
+      if (operation) {
+        const o = dispatch(operationDeleted(operation.id));
+        const c = dispatch(
+          currencyGroupCustodyDeleted({
+            id: g.id,
+            operation: o.payload as string,
+            amount: operation.amount,
+          })
+        );
+      }
+    });
+  });
 };
 
 const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
@@ -28,13 +51,34 @@ const TransactionToolbar: React.FC<TransactionToolbarProps> = ({
 }) => {
   const { operations, groups } = useTransactionData(transactionId);
   const { data: accountOptions, error } = useGetAllAccountOptionsQuery(userId);
+  const { data: custodyAccounts, error: custodyError } =
+    useGetCustodyAccountsQuery();
+
   const dispatch = useTradeDispatch();
 
   const validateTransaction = () => {
-    if (error) {
+    if (error || custodyError) {
       // handle errors
       return;
     }
+
+    //    removeCustodyAccounts(operations, groups, custodyAccounts ?? []);
+
+    custodyAccounts!.forEach((a) => {
+      groups.forEach((g) => {
+        const operation = operations.find((o) => o.account === a.id);
+        if (operation) {
+          const o = dispatch(operationDeleted(operation.id));
+          const c = dispatch(
+            currencyGroupCustodyDeleted({
+              id: g.id,
+              operation: o.payload as string,
+              amount: operation.amount,
+            })
+          );
+        }
+      });
+    });
 
     const sum = useZeroSum(operations);
     if (sum !== 0) {

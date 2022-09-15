@@ -85,3 +85,10 @@ export type VirtualAccount = {
   currency: string;
   allowNegative: boolean;
 };
+
+export type CustodyAccount = {
+  id: string;
+  alias: string;
+  balance: number;
+  currency: string;
+};
