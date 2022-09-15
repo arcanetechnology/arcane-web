@@ -68,26 +68,27 @@ export const useCustodyPopulate = (
       ) as AccountOption;
 
       if (acc.custodyAccountId) {
-        const oldCustodyAccountOperations =
+        const currencyCustodyAccountOperations =
           custodyAccountOperations[acc.currency];
         // todo check new custody with old
-        if (oldCustodyAccountOperations) {
-          const oldNumber =
-            oldCustodyAccountOperations[acc.custodyAccountId] ?? 0;
+        if (currencyCustodyAccountOperations) {
+          const previousSum =
+            currencyCustodyAccountOperations[acc.custodyAccountId] ?? 0;
 
-          const sumAmount = oldNumber + currOperation.amount;
+          const sumAmount = previousSum + currOperation.amount;
 
           if (sumAmount === 0) {
-            delete oldCustodyAccountOperations[acc.custodyAccountId];
+            delete currencyCustodyAccountOperations[acc.custodyAccountId];
             return {
               ...custodyAccountOperations,
-              [acc.currency]: oldCustodyAccountOperations,
+              [acc.currency]: currencyCustodyAccountOperations,
             };
           }
 
           return {
             ...custodyAccountOperations,
             [acc.currency]: {
+              ...currencyCustodyAccountOperations,
               [acc.custodyAccountId]: sumAmount,
             },
           };
