@@ -201,6 +201,15 @@ const GroupsAndOperations: React.FC<GroupsAndOperationsProps> = ({
                 );
               }
 
+              if (params.row.type === 'Virtual') {
+                dispatch(
+                  currencyGroupCustodyTotalUpdated({
+                    id: params.row.groupId as string,
+                    amount: -params.row.amount,
+                  })
+                );
+              }
+
               dispatch(operationDeleted(params.id));
             }}
             label="Edit"
