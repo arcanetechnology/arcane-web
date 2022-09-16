@@ -1,6 +1,4 @@
 /** @format */
-
-import exp from 'constants';
 import { Currency, CryptoCurrency, ProfileTypes, User } from './entities';
 
 export type UserState = {
@@ -75,5 +73,3 @@ export type UserTransaction = {
   name: string;
   groups: Array<string>;
 };
-
-
