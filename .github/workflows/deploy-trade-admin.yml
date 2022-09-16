@@ -1,3 +1,5 @@
+# @format
+
 name: Deploy trade-admin
 
 on:
@@ -5,8 +7,6 @@ on:
   push:
     branches:
       - main
-      # TODO remove trade-admin branch from deploy list.
-      - trade-admin
 
 jobs:
   test-build-deploy:
@@ -23,10 +23,10 @@ jobs:
       - name: Firebase hosting deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.GCP_SA_KEY }}"
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.GCP_SA_KEY }}'
           expires: 30d
-          projectId: "${{ secrets.GCP_PROJECT_ID }}"
+          projectId: '${{ secrets.GCP_PROJECT_ID }}'
           channelId: live
           # removing target will deploy all targets defined in .firebaserc
-          target: "arcane-trade-admin"
+          target: 'arcane-trade-admin'
