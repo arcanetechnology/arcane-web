@@ -120,7 +120,7 @@ export default function App() {
       <CssBaseline />
       <AppBar position="fixed" open={open} elevation={0}>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -131,7 +131,7 @@ export default function App() {
             }}
           >
             <Menu />
-          </IconButton>
+          </IconButton> */}
           <Typography variant="h6" noWrap component="div">
             Trade Admin
           </Typography>
