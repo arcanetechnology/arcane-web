@@ -18,16 +18,15 @@ export const handlers = [
   rest.get('/users/:id', (req, res, ctx) => {
     const { id } = req.params as { id: string };
     const user = users.entities[id];
-    console.log(user);
     return res(ctx.status(200), ctx.json(user));
   }),
-  rest.get('/virtual/accounts', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(virtualAccounts));
-  }),
-  rest.get('/arcane/accounts/custody', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(arcaneCustodyAccounts));
-  }),
-  rest.get('/arcane/accounts/stakeholder', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(arcaneStakeholderAccounts));
-  }),
+  // rest.get('/virtual/accounts', (req, res, ctx) => {
+  //   return res(ctx.status(200), ctx.json(virtualAccounts));
+  // }),
+  // rest.get('/arcane/accounts/custody', (req, res, ctx) => {
+  //   return res(ctx.status(200), ctx.json(arcaneCustodyAccounts));
+  // }),
+  // rest.get('/arcane/accounts/stakeholder', (req, res, ctx) => {
+  //   return res(ctx.status(200), ctx.json(arcaneStakeholderAccounts));
+  // }),
 ];

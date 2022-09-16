@@ -6,6 +6,8 @@ import { RemoveRedEye } from '@mui/icons-material';
 import { User } from '../../types';
 import { GridLinkAction } from '../navigation';
 import { useGetUsersQuery } from '../../services/users';
+import { LoadingOverlay, NoRowsOverlays } from '../overlays';
+import CreateUser from './CreateUser';
 
 const UserList: React.FC = () => {
   const { data: users = [], isLoading } = useGetUsersQuery();
@@ -40,7 +42,22 @@ const UserList: React.FC = () => {
 
   return (
     <div style={{ height: 600, width: '100%' }}>
-      <DataGrid loading={isLoading} rows={users} columns={columns} />
+      <DataGrid
+        loading={isLoading}
+        density="comfortable"
+        autoPageSize
+        hideFooter={!isLoading}
+        components={{
+          NoRowsOverlay: () => (
+            <NoRowsOverlays>
+              <CreateUser />
+            </NoRowsOverlays>
+          ),
+          LoadingOverlay: LoadingOverlay,
+        }}
+        rows={users}
+        columns={columns}
+      />
     </div>
   );
 };
