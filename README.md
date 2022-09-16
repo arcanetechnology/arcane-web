@@ -27,6 +27,7 @@ Syntax: `firebase deploy --only hosting:[TARGET]`
 
 ```shell
 firebase deploy --only hosting:arcane-invest-dev
+firebase deploy --only hosting:arcane-trade-admin-dev
 ```
 
 # `@arcane-web`

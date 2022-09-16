@@ -42,3 +42,6 @@ coverage
 
 # firebase
 .firebase
+
+# typscript cache
+*.tsbuildinfo

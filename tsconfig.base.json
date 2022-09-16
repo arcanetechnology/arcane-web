@@ -17,7 +17,6 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
     "types": ["node"]
   },
   "exclude": ["node_modules"]

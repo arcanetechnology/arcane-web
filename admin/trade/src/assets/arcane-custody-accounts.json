@@ -1,0 +1,38 @@
+[
+  {
+    "id": "real-nok-sp1",
+    "alias": "Real NOK SP1",
+    "balance": 1000000000,
+    "currency": "NOK"
+  },
+  {
+    "id": "real-usd-sp1",
+    "alias": "Real USD SP1",
+    "balance": 1000000000,
+    "currency": "USD"
+  },
+  {
+    "id": "real-eth-coinbase",
+    "alias": "Real ETH Coinbase",
+    "balance": 1000000000,
+    "currency": "ETH"
+  },
+  {
+    "id": "real-eth-metamask",
+    "alias": "Real ETH Metamask",
+    "balance": 1000000000,
+    "currency": "ETH"
+  },
+  {
+    "id": "real-matic-ftx",
+    "alias": "Real MATIC FTX",
+    "balance": 1000000000,
+    "currency": "MATIC"
+  },
+  {
+    "id": "real-matic-metamask",
+    "alias": "Real MATIC Metamask",
+    "balance": 1000000000,
+    "currency": "MATIC"
+  }
+]

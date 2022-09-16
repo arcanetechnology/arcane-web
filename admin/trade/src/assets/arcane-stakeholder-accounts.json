@@ -1,0 +1,42 @@
+[
+  {
+    "id": "arcane-fee-usd-sp1",
+    "alias": "Arcane Fee USD SP1",
+    "balance": 100000,
+    "currency": "USD",
+    "type": "Fiat",
+    "custodyAccountId": "real-usd-sp1"
+  },
+  {
+    "id": "arcane-usd-sp1",
+    "alias": "Arcane USD SP1",
+    "balance": 100000,
+    "currency": "USD",
+    "type": "Fiat",
+    "custodyAccountId": "real-usd-sp1"
+  },
+  {
+    "id": "arcane-eth-coinbase",
+    "alias": "Arcane ETH Coinbase",
+    "balance": 100000,
+    "currency": "ETH",
+    "type": "Crypto",
+    "custodyAccountId": "real-eth-coinbase"
+  },
+  {
+    "id": "arcane-matic-ftx",
+    "alias": "Arcane MATIC FTX",
+    "balance": 100000,
+    "currency": "MATIC",
+    "type": "Crypto",
+    "custodyAccountId": "real-matic-ftx"
+  },
+  {
+    "id": "arcane-fee-eth-metamask",
+    "alias": "Arcane Fee ETH Metamask",
+    "balance": 100000,
+    "currency": "ETH",
+    "type": "Crypto",
+    "custodyAccountId": "real-eth-metamask"
+  }
+]
