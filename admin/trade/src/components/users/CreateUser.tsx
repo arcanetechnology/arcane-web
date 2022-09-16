@@ -6,6 +6,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Divider,
 } from '@mui/material';
 import * as React from 'react';
 import UserForm from './UserForm';
@@ -15,6 +16,8 @@ const CreateUser: React.FC = () => {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const submitRef = React.useRef<HTMLButtonElement>(null);
 
   return (
     <React.Fragment>
@@ -34,12 +37,21 @@ const CreateUser: React.FC = () => {
         aria-describedby="create-user-form"
       >
         <DialogTitle id="create-user-title">Create User</DialogTitle>
+        <Divider />
         <DialogContent id="create-user-form">
-          <UserForm />
+          <UserForm submitRef={submitRef} />
         </DialogContent>
         <DialogActions>
-          <Button>Cancel</Button>
-          <Button variant="contained">Confirm</Button>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button
+            onClick={() => {
+              submitRef.current?.click();
+              handleClose();
+            }}
+            variant="contained"
+          >
+            Confirm
+          </Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

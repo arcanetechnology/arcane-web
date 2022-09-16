@@ -8,11 +8,12 @@ import arcaneStakeholderAccounts from '../assets/arcane-stakeholder-accounts.jso
 
 export const handlers = [
   rest.get('/users', (req, res, ctx) => {
-    const newUsers = Object.keys(users.entities).map((u) => ({
-      id: users.entities[u]?.id,
-      email: users.entities[u]?.email,
-    }));
-    return res(ctx.status(200), ctx.json(Object.values(newUsers)));
+    return res(ctx.status(200), ctx.json(Object.values(users.entities)));
+  }),
+
+  rest.post('/users', (req, res, ctx) => {
+    console.log(req);
+    return res(ctx.status(200));
   }),
 
   rest.get('/users/:id', (req, res, ctx) => {
