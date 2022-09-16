@@ -3,9 +3,9 @@
 import * as React from 'react';
 import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import { RemoveRedEye } from '@mui/icons-material';
-import { User } from '../../types';
+import { User } from '@/types';
 import { GridLinkAction } from '../navigation';
-import { useGetUsersQuery } from '../../services/users';
+import { useGetUsersQuery } from '@/services/users';
 import { LoadingOverlay, NoRowsOverlays } from '../overlays';
 import CreateUser from './CreateUser';
 
