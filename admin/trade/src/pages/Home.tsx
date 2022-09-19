@@ -25,6 +25,8 @@ import {
 import Users, { User, Transactions, Transaction, Group } from './users';
 import { Routes, Route } from 'react-router-dom';
 import { NavigationLink, TradeBreadCrumbs } from '@/components';
+import { Container } from '@mui/system';
+import { ReactComponent as Logo } from '@/assets/logo.svg';
 
 const drawerWidth = 240;
 
@@ -117,9 +119,10 @@ const Home: React.FC = () => {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} elevation={0}>
-        <Toolbar>
-          {/* <IconButton
+      <AppBar color="transparent" position="fixed" open={open}>
+        <Toolbar variant="regular">
+          <Container>
+            {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -131,9 +134,8 @@ const Home: React.FC = () => {
           >
             <Menu />
           </IconButton> */}
-          <Typography variant="h6" noWrap component="div">
-            Trade Admin
-          </Typography>
+            <Logo />
+          </Container>
         </Toolbar>
       </AppBar>
       {/* <Drawer variant="permanent" open={open}>
@@ -157,23 +159,25 @@ const Home: React.FC = () => {
         </List>
       </Drawer> */}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        <TradeBreadCrumbs />
-        <Routes>
-          <Route path="/">
-            <Route index element={<Users />} />
-            <Route path=":userId">
-              <Route index element={<User />} />
-              <Route path="transactions">
-                <Route index element={<Transactions />} />
-                <Route path=":transactionId">
-                  <Route index element={<Transaction />} />
-                  <Route path=":id" element={<Group />} />
+        <Container>
+          <DrawerHeader />
+          <TradeBreadCrumbs />
+          <Routes>
+            <Route path="/">
+              <Route index element={<Users />} />
+              <Route path=":userId">
+                <Route index element={<User />} />
+                <Route path="transactions">
+                  <Route index element={<Transactions />} />
+                  <Route path=":transactionId">
+                    <Route index element={<Transaction />} />
+                    <Route path=":id" element={<Group />} />
+                  </Route>
                 </Route>
               </Route>
             </Route>
-          </Route>
-        </Routes>
+          </Routes>
+        </Container>
       </Box>
     </Box>
   );

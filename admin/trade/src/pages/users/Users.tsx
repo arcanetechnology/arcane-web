@@ -2,11 +2,13 @@
 
 import { Stack } from '@mui/system';
 import * as React from 'react';
-import { UserList } from '@/components';
+import { UserList, UsersToolbar } from '@/components';
+import { GAP } from '@/constants';
 
 const Users: React.FC = () => {
   return (
-    <Stack>
+    <Stack gap={GAP}>
+      <UsersToolbar />
       <UserList />
     </Stack>
   );

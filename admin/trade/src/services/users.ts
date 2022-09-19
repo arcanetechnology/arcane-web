@@ -2,20 +2,21 @@
 
 import { api } from './api';
 import {
-  UsersResponse,
   UserResponse,
   AccountOption,
   TradeUser,
   VirtualAccount,
   AccountTypes,
 } from '../types';
+import { GetUsersResponse, User, CreateUserRequest } from '@/types/backend';
 import { getAllUserAccountOptions } from '@/utils';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
+import { USERS_ENDPOINT, USER_ENDPOINT } from '@/constants';
 
 export const usersApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getUsers: build.query<UsersResponse, void>({
-      query: () => ({ url: 'users' }),
+    getUsers: build.query<GetUsersResponse, void>({
+      query: () => ({ url: USERS_ENDPOINT }),
       providesTags: (result = []) => [
         ...result.map(({ id }) => ({ type: 'Users', id } as const)),
         {
@@ -24,12 +25,18 @@ export const usersApi = api.injectEndpoints({
         },
       ],
     }),
-    // TODO getProfiles
-    // TODO getAccounts
-    // TODO getPortfolios
-    // TODO getCryptoAccounts
+    addUser: build.mutation<User, CreateUserRequest>({
+      query(body) {
+        return {
+          url: USERS_ENDPOINT,
+          method: 'POST',
+          body,
+        };
+      },
+      invalidatesTags: [{ type: 'Users' as const, id: 'LIST' }],
+    }),
     getUser: build.query<UserResponse, string>({
-      query: (id) => `users/${id}`,
+      query: (id) => `${USERS_ENDPOINT}/${id}`,
       transformResponse: (response: UserResponse) => {
         return response;
       },
@@ -116,6 +123,7 @@ export const usersApi = api.injectEndpoints({
 
 export const {
   useGetUsersQuery,
+  useAddUserMutation,
   useGetUserQuery,
   useGetAccountOptionsQuery,
   useGetAllAccountOptionsQuery,
