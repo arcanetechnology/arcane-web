@@ -1,13 +1,23 @@
 /** @format */
 
 import * as React from 'react';
-import Home from './pages/Home';
 import ArcaneThemeProvider from './theme';
+import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
+import Root from './routes/root';
+import ErrorPage from './error-page';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Root />,
+    errorElement: <ErrorPage />,
+  },
+]);
 
 const App: React.FC = () => {
   return (
     <ArcaneThemeProvider>
-      <Home />
+      <RouterProvider router={router} />
     </ArcaneThemeProvider>
   );
 };
