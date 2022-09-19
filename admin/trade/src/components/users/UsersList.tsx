@@ -9,6 +9,7 @@ import {
   ListItemText,
   Box,
   Paper,
+  Typography,
 } from '@mui/material';
 import * as React from 'react';
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
@@ -40,6 +41,21 @@ const UsersList: React.FC<UsersListProps> = ({
   loadMore,
 }) => {
   const itemCount = hasNextPage ? users.length + 1 : users.length;
+
+  if (users.length === 0)
+    return (
+      <Box
+        component={Paper}
+        elevation={0}
+        height="100%"
+        sx={{ margin: '0 auto' }}
+      >
+        <Typography variant="h6">
+          <i>No User</i>
+        </Typography>
+      </Box>
+    );
+
   return (
     <Box component={Paper} elevation={0} height="100%">
       <InfiniteLoader
@@ -57,12 +73,15 @@ const UsersList: React.FC<UsersListProps> = ({
             onItemsRendered={onItemsRendered}
             ref={ref}
           >
-            {({ index, style }) => (
-              <NavigationLink
-                to={'users/' + users[index].id}
-                primary={users[index].email}
-              />
-            )}
+            {({ index, style }) => {
+              const user = users[index];
+              return (
+                <NavigationLink
+                  to={'users/' + user.id}
+                  primary={user.email === '' ? 'No Email' : user.email}
+                />
+              );
+            }}
           </FixedSizeList>
         )}
       </InfiniteLoader>

@@ -15,8 +15,8 @@ import { USERS_ENDPOINT, USER_ENDPOINT } from '@/constants';
 
 export const usersApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getUsers: build.query<GetUsersResponse, void>({
-      query: () => ({ url: USERS_ENDPOINT }),
+    getUsers: build.query<GetUsersResponse, string>({
+      query: (args) => ({ url: USERS_ENDPOINT, params: { q: args } }),
       providesTags: (result = []) => [
         ...result.map(({ id }) => ({ type: 'Users', id } as const)),
         {

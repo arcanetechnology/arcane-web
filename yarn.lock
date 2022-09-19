@@ -110,6 +110,7 @@ __metadata:
     "@mui/material": ^5.10.3
     "@mui/x-data-grid": ^5.17.1
     "@reduxjs/toolkit": ^1.8.5
+    "@tanstack/react-query": ^4.3.9
     "@types/eslint": ^8
     "@types/react": ^18.0.18
     "@types/react-dom": ^18.0.6
@@ -117,6 +118,7 @@ __metadata:
     "@types/react-window-infinite-loader": ^1
     "@typescript-eslint/eslint-plugin": ^5.0.0
     "@vitejs/plugin-react": ^2.0.1
+    axios: ^0.27.2
     eslint: ^8.0.1
     eslint-config-airbnb: ^19.0.4
     eslint-config-standard-with-typescript: latest
@@ -4247,6 +4249,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:4.3.8":
+  version: 4.3.8
+  resolution: "@tanstack/query-core@npm:4.3.8"
+  checksum: 25ea16db7632f5acc7c80e60b9f1410cf9df430240ec5077a1607c3ffea14db2c78db800f7bc70efafd7ce26f7216cda767824fa279049cc9c7e40ac1818f38e
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^4.3.9":
+  version: 4.3.9
+  resolution: "@tanstack/react-query@npm:4.3.9"
+  dependencies:
+    "@tanstack/query-core": 4.3.8
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 1f77aadda55722519458185b4db5378d05d95bcbe9f7c4fda0ef82121a975223ede1a56729db6030984b336e533c04b1c7aa8fed344e5c52ec73a0486b65f8e7
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^7.29.4":
   version: 7.31.2
   resolution: "@testing-library/dom@npm:7.31.2"
@@ -5730,6 +5758,7 @@ __metadata:
     rollup: ^2.79.0
     rollup-plugin-dotenv: ^0.3.0
     rollup-preset-solid: ^1.4.0
+    rooks: ^7.1.2
     sass: ^1.53.0
     solid-app-router: ^0.4.1
     solid-icons: ^0.5.0
@@ -6088,7 +6117,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.27.0":
+"axios@npm:^0.27.0, axios@npm:^0.27.2":
   version: 0.27.2
   resolution: "axios@npm:0.27.2"
   dependencies:
@@ -15370,6 +15399,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"raf@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "raf@npm:3.4.1"
+  dependencies:
+    performance-now: ^2.1.0
+  checksum: 50ba284e481c8185dbcf45fc4618ba3aec580bb50c9121385d5698cb6012fe516d2015b1df6dd407a7b7c58d44be8086108236affbce1861edd6b44637c8cd52
+  languageName: node
+  linkType: hard
+
 "randomatic@npm:^3.0.0":
   version: 3.1.1
   resolution: "randomatic@npm:3.1.1"
@@ -16261,6 +16299,19 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: 166f1ffea1898e157003920065b3a328e7012ea6808860ee8fe5d1ce94804fcce9985c95a3c0f7fe9c611aff0d09a70f073f1d6f715c8faba28e4e40f71ee3bb
+  languageName: node
+  linkType: hard
+
+"rooks@npm:^7.1.2":
+  version: 7.1.2
+  resolution: "rooks@npm:7.1.2"
+  dependencies:
+    lodash.debounce: ^4.0.8
+    raf: ^3.4.1
+  peerDependencies:
+    react: ^16.8.0  || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0  || ^17.0.0 || ^18.0.0
+  checksum: b4abe6af90dd64fde1f001c66a20c1e8e9b9d2cc5ec83ccaf8255da0bb570a4269dec501d35d6b6a9bf617ece80df85c36e0fafe8183393e8f4851b9c9667775
   languageName: node
   linkType: hard
 
@@ -18145,7 +18196,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.0.0":
+"use-sync-external-store@npm:^1.0.0, use-sync-external-store@npm:^1.2.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:

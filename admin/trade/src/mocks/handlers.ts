@@ -26,30 +26,43 @@ export { state };
 
 export const handlers = [
   rest.get(`/${USERS_ENDPOINT}`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(Object.values(state.entities)));
-  }),
+    const email = req.url.searchParams.get('q');
 
+    if (!email) {
+      return res(
+        ctx.status(200),
+        ctx.json(Object.values(state.entities)),
+        ctx.delay(400)
+      );
+    }
+
+    const selector = adapter.getSelectors();
+    const filteredUser = selector
+      .selectAll(state)
+      .filter((u) => u.email.includes(email));
+
+    if (filteredUser.length === 0) {
+      return res(
+        ctx.status(200),
+        ctx.json(Object.values(state.entities)),
+        ctx.delay(400)
+      );
+    }
+
+    return res(ctx.status(200), ctx.json(filteredUser), ctx.delay(400));
+  }),
   rest.post(`/${USERS_ENDPOINT}`, async (req, res, ctx) => {
     const { email, profiles } = req.body as CreateUserRequest;
     state = adapter.addOne(state, {
-      email,
+      email: email ?? '',
       id: nanoid(),
       profiles: profiles ?? [],
     });
     return res(ctx.json(Object.values(state.entities)), ctx.delay(400));
   }),
 
-  rest.get('/users/:id', (req, res, ctx) => {
+  rest.get(`/${USERS_ENDPOINT}/:id`, (req, res, ctx) => {
     const { id } = req.params as { id: string };
-    return res(ctx.status(200));
+    return res(ctx.status(200), ctx.json(state.entities[id]), ctx.delay(400));
   }),
-  // rest.get('/virtual/accounts', (req, res, ctx) => {
-  //   return res(ctx.status(200), ctx.json(virtualAccounts));
-  // }),
-  // rest.get('/arcane/accounts/custody', (req, res, ctx) => {
-  //   return res(ctx.status(200), ctx.json(arcaneCustodyAccounts));
-  // }),
-  // rest.get('/arcane/accounts/stakeholder', (req, res, ctx) => {
-  //   return res(ctx.status(200), ctx.json(arcaneStakeholderAccounts));
-  // }),
 ];

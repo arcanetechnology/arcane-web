@@ -1,13 +1,28 @@
 /** @format */
 
 import * as React from 'react';
-import { NavigationBar, TradeBreadCrumbs, UsersView } from '@/components';
+import { NavigationBar, TradeBreadCrumbs, UsersList } from '@/components';
 import { Container } from '@mui/system';
-import { Outlet } from 'react-router-dom';
+import {
+  LoaderFunction,
+  Outlet,
+  useLoaderData,
+  useSubmit,
+} from 'react-router-dom';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import { GAP } from '@/constants';
+import { useAddUserMutation, useGetUsersQuery } from '@/services';
+import { useDebounce } from 'rooks';
+import { Box, Divider, IconButton, InputBase, Paper } from '@mui/material';
+import { Add, Loop } from '@mui/icons-material';
+import { toast } from 'react-toastify';
 
 const Root: React.FC = () => {
+  const { q } = useLoaderData() as { q: string };
+  const { data: users, isLoading, refetch } = useGetUsersQuery(q);
+  const [addUser] = useAddUserMutation();
+  const submit = useSubmit();
+  const debouncedSubmit = useDebounce(submit, 500);
   return (
     <React.Fragment>
       <NavigationBar />
@@ -15,9 +30,59 @@ const Root: React.FC = () => {
         <TradeBreadCrumbs />
         <Grid container spacing={GAP}>
           <Grid xs="auto">
-            <UsersView />
+            <Paper
+              sx={{
+                p: '2px 4px',
+                display: 'flex',
+                alignItems: 'center',
+                mb: 2,
+              }}
+            >
+              <Box
+                component="form"
+                id="search-form"
+                role="search"
+                width={400}
+                sx={{ display: 'flex', alignItems: 'center' }}
+              >
+                <InputBase
+                  sx={{ ml: 1, flex: 1 }}
+                  placeholder="Search Trade Users"
+                  inputProps={{ 'aria-label': 'search trade users' }}
+                  name="q"
+                  type="search"
+                  key={q}
+                  autoFocus
+                  defaultValue={q}
+                  onChange={(event) => {
+                    debouncedSubmit(event.currentTarget.form);
+                  }}
+                />
+                {isLoading && <Loop />}
+              </Box>
+              <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+              <IconButton
+                onClick={async () => {
+                  try {
+                    await addUser({}).unwrap();
+                  } catch {
+                    toast('error in creating user');
+                  }
+                }}
+                color="primary"
+                sx={{ p: '10px' }}
+                aria-label="directions"
+              >
+                <Add />
+              </IconButton>
+            </Paper>
+            <UsersList
+              users={users ?? []}
+              hasNextPage={false}
+              loadMore={refetch}
+            />
           </Grid>
-          <Grid xs="auto">
+          <Grid xs={8}>
             <Outlet />
           </Grid>
         </Grid>
@@ -27,3 +92,9 @@ const Root: React.FC = () => {
 };
 
 export default Root;
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const q = url.searchParams.get('q');
+  return { q };
+};

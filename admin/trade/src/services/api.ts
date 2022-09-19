@@ -1,6 +1,7 @@
 /** @format */
 
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
+import axios from 'axios';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: '/',

@@ -21,6 +21,7 @@ const ArcaneSearch: React.FC = () => {
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Trade Users"
         inputProps={{ 'aria-label': 'search trade users' }}
+        name="q"
       />
       <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
         <Search />
