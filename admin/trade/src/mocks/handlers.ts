@@ -1,7 +1,6 @@
 /** @format */
 
 import { rest } from 'msw';
-import { addUser, getUsers, getUser } from './services';
 import virtualAccounts from '../assets/virtual-account-option-list.json';
 import arcaneCustodyAccounts from '../assets/arcane-custody-accounts.json';
 import arcaneStakeholderAccounts from '../assets/arcane-stakeholder-accounts.json';
@@ -17,7 +16,10 @@ const adapter = createEntityAdapter<User>({
 });
 
 let state = adapter.getInitialState();
-const initialData: Array<User> = [];
+const initialData: Array<User> = [
+  { id: '1', email: 'test@test.com', profiles: [] },
+  { id: '2', email: 'test2@test.com', profiles: [] },
+];
 state = adapter.setAll(state, initialData);
 
 export { state };
@@ -39,7 +41,7 @@ export const handlers = [
 
   rest.get('/users/:id', (req, res, ctx) => {
     const { id } = req.params as { id: string };
-    return res(ctx.status(200), ctx.json(getUser(id)));
+    return res(ctx.status(200));
   }),
   // rest.get('/virtual/accounts', (req, res, ctx) => {
   //   return res(ctx.status(200), ctx.json(virtualAccounts));

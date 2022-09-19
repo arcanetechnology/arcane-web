@@ -9,7 +9,7 @@ const NavigationBar: React.FC = () => {
   return (
     <AppBar color="transparent" position="sticky">
       <Toolbar variant="regular">
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Logo />
         </Container>
       </Toolbar>

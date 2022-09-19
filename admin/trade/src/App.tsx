@@ -5,12 +5,14 @@ import ArcaneThemeProvider from './theme';
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 import Root from './routes/root';
 import ErrorPage from './error-page';
+import User from './routes/user';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
     errorElement: <ErrorPage />,
+    children: [{ path: 'users/:userId', element: <User /> }],
   },
 ]);
 
