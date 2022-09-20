@@ -9,9 +9,6 @@ import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
 
 const store = configureStore({
   reducer: {
-    operations,
-    currencyGroups,
-    transactions,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>

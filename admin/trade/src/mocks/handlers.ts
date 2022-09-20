@@ -4,12 +4,9 @@ import { rest } from 'msw';
 import virtualAccounts from '../assets/virtual-account-option-list.json';
 import arcaneCustodyAccounts from '../assets/arcane-custody-accounts.json';
 import arcaneStakeholderAccounts from '../assets/arcane-stakeholder-accounts.json';
-import { USERS_ENDPOINT, USER_ENDPOINT } from '@/constants';
+import { USERS_ENDPOINT } from '@/constants';
 import { createEntityAdapter, nanoid } from '@reduxjs/toolkit';
 import { User, CreateUserRequest } from '@/types/backend';
-
-let count = 0;
-let startingId = 1;
 
 const adapter = createEntityAdapter<User>({
   selectId: (user) => user.id,
@@ -64,5 +61,11 @@ export const handlers = [
   rest.get(`/${USERS_ENDPOINT}/:id`, (req, res, ctx) => {
     const { id } = req.params as { id: string };
     return res(ctx.status(200), ctx.json(state.entities[id]), ctx.delay(400));
+  }),
+
+  rest.delete(`/${USERS_ENDPOINT}/:id`, (req, res, ctx) => {
+    const { id } = req.params as { id: string };
+    state = adapter.removeOne(state, id);
+    return res(ctx.status(200), ctx.delay(400));
   }),
 ];

@@ -109,8 +109,8 @@ __metadata:
     "@mui/icons-material": ^5.10.3
     "@mui/material": ^5.10.3
     "@mui/x-data-grid": ^5.17.1
+    "@react-firebase/auth": ^0.2.10
     "@reduxjs/toolkit": ^1.8.5
-    "@tanstack/react-query": ^4.3.9
     "@types/eslint": ^8
     "@types/react": ^18.0.18
     "@types/react-dom": ^18.0.6
@@ -3821,6 +3821,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-firebase/auth@npm:^0.2.10":
+  version: 0.2.10
+  resolution: "@react-firebase/auth@npm:0.2.10"
+  dependencies:
+    lodash.get: ^4.4.2
+    render-and-add-props: ^0.5.0
+  peerDependencies:
+    firebase: ">=4"
+  checksum: aca6ced10984c13b9c8d9bca5a9a0f1bbd04f712e80624e6f68599a38a7515b8e1228ed00a232dbbffbfa3ef6a28e9cd8ead2b95eda257f7a8a9927695dd7ebf
+  languageName: node
+  linkType: hard
+
 "@reduxjs/toolkit@npm:^1.8.5":
   version: 1.8.5
   resolution: "@reduxjs/toolkit@npm:1.8.5"
@@ -4246,32 +4258,6 @@ __metadata:
   dependencies:
     defer-to-connect: ^1.0.1
   checksum: 4d9158061c5f397c57b4988cde33a163244e4f02df16364f103971957a32886beb104d6180902cbe8b38cb940e234d9f98a4e486200deca621923f62f50a06fe
-  languageName: node
-  linkType: hard
-
-"@tanstack/query-core@npm:4.3.8":
-  version: 4.3.8
-  resolution: "@tanstack/query-core@npm:4.3.8"
-  checksum: 25ea16db7632f5acc7c80e60b9f1410cf9df430240ec5077a1607c3ffea14db2c78db800f7bc70efafd7ce26f7216cda767824fa279049cc9c7e40ac1818f38e
-  languageName: node
-  linkType: hard
-
-"@tanstack/react-query@npm:^4.3.9":
-  version: 4.3.9
-  resolution: "@tanstack/react-query@npm:4.3.9"
-  dependencies:
-    "@tanstack/query-core": 4.3.8
-    use-sync-external-store: ^1.2.0
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-native: "*"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 1f77aadda55722519458185b4db5378d05d95bcbe9f7c4fda0ef82121a975223ede1a56729db6030984b336e533c04b1c7aa8fed344e5c52ec73a0486b65f8e7
   languageName: node
   linkType: hard
 
@@ -15904,6 +15890,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"render-and-add-props@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "render-and-add-props@npm:0.5.0"
+  peerDependencies:
+    react: ">=15"
+  checksum: 5d61f6b47420a9835a0c6c356c94fec69de3401ebc546757dad08ada077fbf0a57ff9b53612981c8f97cbe6c7c6af5c1a7caffc97de2bbe21f10e69e2cc19666
+  languageName: node
+  linkType: hard
+
 "repeat-element@npm:^1.1.2":
   version: 1.1.4
   resolution: "repeat-element@npm:1.1.4"
@@ -18196,7 +18191,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.0.0, use-sync-external-store@npm:^1.2.0":
+"use-sync-external-store@npm:^1.0.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:

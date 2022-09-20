@@ -7,11 +7,11 @@ import {
   TradeUser,
   VirtualAccount,
   AccountTypes,
-} from '../types';
+} from '@/types';
 import { GetUsersResponse, User, CreateUserRequest } from '@/types/backend';
 import { getAllUserAccountOptions } from '@/utils';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
-import { USERS_ENDPOINT, USER_ENDPOINT } from '@/constants';
+import { USERS_ENDPOINT } from '@/constants';
 
 export const usersApi = api.injectEndpoints({
   endpoints: (build) => ({
@@ -41,6 +41,14 @@ export const usersApi = api.injectEndpoints({
         return response;
       },
       providesTags: (_user, _err, id) => [{ type: 'User', id }],
+    }),
+    deleteUser: build.mutation<void, string>({
+      query: (id) => ({
+        url: `${USERS_ENDPOINT}/${id}`,
+        method: 'DELETE',
+        credentials: 'include',
+      }),
+      invalidatesTags: [{ type: 'Users' as const, id: 'LIST' }],
     }),
     getAccountOptions: build.query<Array<AccountOption>, string>({
       query: (id) => `users/${id}`,

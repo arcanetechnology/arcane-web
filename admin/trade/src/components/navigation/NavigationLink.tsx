@@ -33,6 +33,7 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ primary, to }) => {
       sx={{
         minHeight: 48,
         justifyContent: 'initial',
+        borderRadius: 3,
         px: 2.5,
       }}
       selected={Boolean(match)}
