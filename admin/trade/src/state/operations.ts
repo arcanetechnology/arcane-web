@@ -44,5 +44,5 @@ export const getOperations = (accounts: Array<string>) => {
 
 export const getOperationsData = (operationIds: Array<string>) => {
   const allOperations = useTradeSelector(operationsSelector.selectAll);
-  return allOperations.filter((o) => operationIds.includes(o.id))
+  return allOperations.filter((o) => operationIds.includes(o.id));
 };

@@ -1,19 +1,22 @@
 /** @format */
 
 import {
-  CaseReducer,
   createSlice,
-  PayloadAction,
   SliceCaseReducers,
+  PayloadAction,
 } from '@reduxjs/toolkit';
-import type { User } from 'firebase/auth';
+import { RootState } from './state';
 
-type UserState = {
-  user: User | null;
+type UserData = {
+  email: string;
+  uid: string;
+  displayName: string;
+  photoUrl: string;
 };
 
-type Login = CaseReducer<UserState, PayloadAction<User>>;
-type Logout = CaseReducer<UserState>;
+type UserState = {
+  user: UserData | null;
+};
 
 const userSlice = createSlice<UserState, SliceCaseReducers<UserState>, 'user'>({
   name: 'user',
@@ -21,7 +24,7 @@ const userSlice = createSlice<UserState, SliceCaseReducers<UserState>, 'user'>({
     user: null,
   } as UserState,
   reducers: {
-    login: (state, action) => {
+    login: (state, action: PayloadAction<UserData>) => {
       state.user = action.payload;
     },
     logout: (state) => {
@@ -32,3 +35,5 @@ const userSlice = createSlice<UserState, SliceCaseReducers<UserState>, 'user'>({
 
 export const { login, logout } = userSlice.actions;
 export default userSlice.reducer;
+
+export const selectUser = (s: RootState) => s.user.user;
