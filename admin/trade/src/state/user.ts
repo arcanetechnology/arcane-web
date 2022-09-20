@@ -15,21 +15,20 @@ type UserState = {
 type Login = CaseReducer<UserState, PayloadAction<User>>;
 type Logout = CaseReducer<UserState>;
 
-const login: Login = (state, action) => {
-  state.user = action.payload;
-};
-
-const logout: Logout = (state) => {
-  state.user = null;
-};
-
 const userSlice = createSlice<UserState, SliceCaseReducers<UserState>, 'user'>({
   name: 'user',
   initialState: {
     user: null,
   } as UserState,
   reducers: {
-    login,
-    logout,
+    login: (state, action) => {
+      state.user = action.payload;
+    },
+    logout: (state) => {
+      state.user = null;
+    },
   },
 });
+
+export const { login, logout } = userSlice.actions;
+export default userSlice.reducer;
