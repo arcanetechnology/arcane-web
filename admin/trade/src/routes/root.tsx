@@ -13,14 +13,21 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import { GAP } from '@/constants';
 import { useAddUserMutation, useGetUsersQuery } from '@/services';
 import { useDebounce } from 'rooks';
-import { Box, Divider, IconButton, InputBase, Paper } from '@mui/material';
+import {
+  Box,
+  Divider,
+  IconButton,
+  InputBase,
+  LinearProgress,
+  Paper,
+} from '@mui/material';
 import { Add, Loop } from '@mui/icons-material';
 import { toast } from 'react-toastify';
 
 const Root: React.FC = () => {
   const { q } = useLoaderData() as { q: string };
   const { data: users, isLoading, refetch } = useGetUsersQuery(q);
-  const [addUser] = useAddUserMutation();
+  const [addUser, { isLoading: isAddUserLoading }] = useAddUserMutation();
   const submit = useSubmit();
   const debouncedSubmit = useDebounce(submit, 500);
   return (
@@ -76,6 +83,7 @@ const Root: React.FC = () => {
                 <Add />
               </IconButton>
             </Paper>
+            {isAddUserLoading && <LinearProgress />}
             <UsersList
               users={users ?? []}
               hasNextPage={false}
