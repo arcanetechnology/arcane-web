@@ -12,6 +12,7 @@ import { Box, Container } from '@mui/system';
 import { onAuthStateChanged } from 'firebase/auth';
 import * as React from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import loading from '@/assets/auth.gif';
 
 const Auth: React.FC = () => {
   const dispatch = useTradeDispatch();
@@ -39,17 +40,20 @@ const Auth: React.FC = () => {
       });
   }, []);
   return (
-    <Container component="main">
-      <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        sx={{ margin: '0 auto' }}
-      >
-        <Typography variant="h2">Authenticating...</Typography>
-      </Box>
-    </Container>
+    <Box
+      position={'absolute'}
+      top={'50%'}
+      left={'50%'}
+      sx={{
+        transform: 'translate(-50%,-50%)',
+        textAlign: 'center',
+      }}
+      display="flex"
+      flexDirection="column"
+      gap={2}
+    >
+      <img src={loading} alt="loading" />
+    </Box>
   );
 };
 
