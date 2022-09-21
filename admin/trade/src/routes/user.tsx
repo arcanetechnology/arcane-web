@@ -3,7 +3,16 @@
 import { GAP } from '@/constants';
 import { useGetUserQuery } from '@/services';
 import { UserPath } from '@/types/frontend';
-import { Alert, Box, Button, Skeleton, Typography } from '@mui/material';
+import { Delete, Edit } from '@mui/icons-material';
+import {
+  Alert,
+  Avatar,
+  Box,
+  Button,
+  IconButton,
+  Skeleton,
+  Typography,
+} from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
@@ -31,15 +40,28 @@ const User: React.FC = () => {
     );
   return (
     <Stack gap={GAP}>
-      <Typography variant="h3">
-        {user?.email === '' ? 'No Email' : user?.email}
-      </Typography>
-      <Box gap={GAP} display="flex">
-        <Button variant="contained">Edit</Button>
-        <Button color="secondary" variant="contained">
-          Delete
-        </Button>
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Box display="flex" gap={GAP}>
+          <Avatar></Avatar>
+          <Typography variant="h3" gutterBottom>
+            {user?.email === '' ? 'No Email' : user?.email}
+          </Typography>
+        </Box>
+        <Box gap={GAP} display="flex">
+          <IconButton aria-label="edit-user" color="info">
+            <Edit />
+          </IconButton>
+          <IconButton aria-label="delete-user" color="error">
+            <Delete />
+          </IconButton>
+        </Box>
       </Box>
+
       {user?.profiles.length === 0 && (
         <Alert severity="error" variant="outlined">
           No Profiles attached to this user
