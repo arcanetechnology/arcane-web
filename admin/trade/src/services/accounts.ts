@@ -3,9 +3,24 @@
 
 import { api } from './api';
 import { VirtualAccountResponse, CustodyAccountResponse } from '../types';
+import { GetAccountsResponse } from '../types/backend';
+import { ProfilePath } from '@/types/frontend';
+import { PROFILES_ENDPOINT, USERS_ENDPOINT } from '@/constants';
 
 export const accountsApi = api.injectEndpoints({
   endpoints: (build) => ({
+    getAccounts: build.query<GetAccountsResponse, ProfilePath>({
+      query: (path) => ({
+        url: `${USERS_ENDPOINT}/${path.userId}/${PROFILES_ENDPOINT}/${path.profileId}/accounts`,
+      }),
+      providesTags: (result = []) => [
+        ...result.map(({ id }) => ({ type: 'Accounts', id } as const)),
+        {
+          type: 'Accounts' as const,
+          id: 'LIST',
+        },
+      ],
+    }),
     getVirtualAccounts: build.query<VirtualAccountResponse, void>({
       query: () => ({ url: 'virtual/accounts' }),
       providesTags: (result = []) => [
@@ -29,5 +44,8 @@ export const accountsApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetVirtualAccountsQuery, useGetCustodyAccountsQuery } =
-  accountsApi;
+export const {
+  useGetVirtualAccountsQuery,
+  useGetCustodyAccountsQuery,
+  useGetAccountsQuery,
+} = accountsApi;
