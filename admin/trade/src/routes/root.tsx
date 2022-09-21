@@ -7,6 +7,7 @@ import {
   LoaderFunction,
   Outlet,
   useLoaderData,
+  useNavigation,
   useSubmit,
 } from 'react-router-dom';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
@@ -14,7 +15,9 @@ import { GAP } from '@/constants';
 import { useAddUserMutation, useGetUsersQuery } from '@/services';
 import { useDebounce } from 'rooks';
 import {
+  Backdrop,
   Box,
+  CircularProgress,
   Divider,
   IconButton,
   InputBase,
@@ -30,6 +33,8 @@ const Root: React.FC = () => {
   const [addUser, { isLoading: isAddUserLoading }] = useAddUserMutation();
   const submit = useSubmit();
   const debouncedSubmit = useDebounce(submit, 500);
+  const navigation = useNavigation();
+  console.log(navigation.state);
   return (
     <React.Fragment>
       <NavigationBar />
@@ -83,7 +88,11 @@ const Root: React.FC = () => {
                 <Add />
               </IconButton>
             </Paper>
-            {isAddUserLoading && <LinearProgress />}
+            <Box height={10}>
+              {isAddUserLoading && (
+                <LinearProgress sx={{ height: 10, borderRadius: 3 }} />
+              )}
+            </Box>
             <UsersList
               users={users ?? []}
               hasNextPage={false}
@@ -91,6 +100,12 @@ const Root: React.FC = () => {
             />
           </Grid>
           <Grid xs={8}>
+            <Backdrop
+              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              open={navigation.state === 'loading'}
+            >
+              <CircularProgress color="inherit" />
+            </Backdrop>
             <Outlet />
           </Grid>
         </Grid>

@@ -4,22 +4,35 @@ import { rest } from 'msw';
 import virtualAccounts from '../assets/virtual-account-option-list.json';
 import arcaneCustodyAccounts from '../assets/arcane-custody-accounts.json';
 import arcaneStakeholderAccounts from '../assets/arcane-stakeholder-accounts.json';
-import { USERS_ENDPOINT } from '@/constants';
+import { PROFILES_ENDPOINT, USERS_ENDPOINT } from '@/constants';
 import { createEntityAdapter, nanoid } from '@reduxjs/toolkit';
-import { User, CreateUserRequest } from '@/types/backend';
+import { User, CreateUserRequest, Profile } from '@/types/backend';
 
+/// user state
 const adapter = createEntityAdapter<User>({
   selectId: (user) => user.id,
 });
 
 let state = adapter.getInitialState();
 const initialData: Array<User> = [
-  { id: '1', email: 'test@test.com', profiles: [] },
-  { id: '2', email: 'test2@test.com', profiles: [] },
+  { id: '1', email: 'test@test.com', profiles: ['1', '2'] },
+  { id: '2', email: 'test2@test.com', profiles: ['1', '2'] },
 ];
 state = adapter.setAll(state, initialData);
 
-export { state };
+// profile state
+const profileAdapter = createEntityAdapter<Profile>({
+  selectId: (profile) => profile.id,
+});
+let profileState = profileAdapter.getInitialState();
+const initialProfileState: Array<Profile> = [
+  { id: '1', accounts: [], type: 'BUSINESS' },
+  { id: '2', accounts: [], type: 'PERSONAL' },
+];
+
+profileState = profileAdapter.setAll(profileState, initialProfileState);
+
+export { state, profileState };
 
 export const handlers = [
   rest.get(`/${USERS_ENDPOINT}`, (req, res, ctx) => {
@@ -67,5 +80,15 @@ export const handlers = [
     const { id } = req.params as { id: string };
     state = adapter.removeOne(state, id);
     return res(ctx.status(200), ctx.delay(400));
+  }),
+  rest.get(`/${USERS_ENDPOINT}/:id/${PROFILES_ENDPOINT}`, (req, res, ctx) => {
+    const { id } = req.params as { id: string };
+    console.log('inside profile endpoint');
+    console.log(id);
+    return res(
+      ctx.status(200),
+      ctx.json(Object.values(profileState.entities)),
+      ctx.delay(400)
+    );
   }),
 ];

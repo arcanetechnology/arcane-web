@@ -2,8 +2,7 @@
 
 // api
 export const USERS_ENDPOINT = 'users';
-export const USER_ENDPOINT = 'user';
+export const PROFILES_ENDPOINT = 'profiles';
 
 // UI
-
 export const GAP = 2;

@@ -77,7 +77,7 @@ const UsersList: React.FC<UsersListProps> = ({
               const user = users[index];
               return (
                 <NavigationLink
-                  to={'users/' + user.id}
+                  to={user.id + '/profiles'}
                   primary={user.email === '' ? 'No Email' : user.email}
                 />
               );

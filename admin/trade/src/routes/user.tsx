@@ -1,21 +1,15 @@
 /** @format */
 
+import { ListLoading } from '@/components/loading';
 import { GAP } from '@/constants';
 import { useGetUserQuery } from '@/services';
 import { UserPath } from '@/types/frontend';
+import { stringToAvatar } from '@/utils';
 import { Delete, Edit } from '@mui/icons-material';
-import {
-  Alert,
-  Avatar,
-  Box,
-  Button,
-  IconButton,
-  Skeleton,
-  Typography,
-} from '@mui/material';
+import { Alert, Avatar, Box, IconButton, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 
 const User: React.FC = () => {
   const { userId } = useParams<UserPath>();
@@ -27,17 +21,7 @@ const User: React.FC = () => {
   } = useGetUserQuery(userId!);
 
   if (isError) return <Alert>User not found</Alert>;
-
-  if (isLoading || isFetching)
-    return (
-      <Stack pl={2} pr={2}>
-        <Skeleton height={60} width="100%" />
-        <Skeleton height={60} width="100%" />
-        <Skeleton height={60} width="100%" />
-        <Skeleton height={60} width="100%" />
-        <Skeleton height={60} width="100%" />
-      </Stack>
-    );
+  if (isLoading || isFetching) return <ListLoading />;
   return (
     <Stack gap={GAP}>
       <Box
@@ -46,9 +30,9 @@ const User: React.FC = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Box display="flex" gap={GAP}>
-          <Avatar></Avatar>
-          <Typography variant="h3" gutterBottom>
+        <Box display="flex" gap={GAP} alignItems="center" mb={2}>
+          <Avatar {...stringToAvatar(user?.email)} />
+          <Typography variant="h3">
             {user?.email === '' ? 'No Email' : user?.email}
           </Typography>
         </Box>
@@ -62,11 +46,7 @@ const User: React.FC = () => {
         </Box>
       </Box>
 
-      {user?.profiles.length === 0 && (
-        <Alert severity="error" variant="outlined">
-          No Profiles attached to this user
-        </Alert>
-      )}
+      <Outlet />
     </Stack>
   );
 };

@@ -8,7 +8,12 @@ import {
   VirtualAccount,
   AccountTypes,
 } from '@/types';
-import { GetUsersResponse, User, CreateUserRequest } from '@/types/backend';
+import {
+  GetUsersResponse,
+  User,
+  CreateUserRequest,
+  GetUserResponse,
+} from '@/types/backend';
 import { getAllUserAccountOptions } from '@/utils';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 import { USERS_ENDPOINT } from '@/constants';
@@ -35,11 +40,8 @@ export const usersApi = api.injectEndpoints({
       },
       invalidatesTags: [{ type: 'Users' as const, id: 'LIST' }],
     }),
-    getUser: build.query<UserResponse, string>({
+    getUser: build.query<GetUserResponse, string>({
       query: (id) => `${USERS_ENDPOINT}/${id}`,
-      transformResponse: (response: UserResponse) => {
-        return response;
-      },
       providesTags: (_user, _err, id) => [{ type: 'User', id }],
     }),
     deleteUser: build.mutation<void, string>({

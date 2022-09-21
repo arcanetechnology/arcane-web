@@ -33,3 +33,5 @@ const userSlice = createSlice<UserState, SliceCaseReducers<UserState>, 'user'>({
     logout,
   },
 });
+
+export default userSlice.reducer;
