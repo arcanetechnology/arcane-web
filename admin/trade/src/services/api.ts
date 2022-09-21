@@ -20,6 +20,7 @@ export const api = createApi({
     'Profiles',
     'Profile',
     'Accounts',
+    'Account',
     'Virtual',
     'Custody',
   ],

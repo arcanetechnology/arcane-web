@@ -14,12 +14,13 @@ import {
   Link,
 } from '@mui/material';
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 
 type ProfileCardProps = {
   account: Omit<StakeholderFiatAccount, 'portfolios'>;
 };
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ account }) => {
+const AccountCard: React.FC<ProfileCardProps> = ({ account }) => {
   return (
     <Card component={Box} minWidth={275} mr={GAP} variant="outlined">
       <CardContent>
@@ -35,13 +36,20 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ account }) => {
         <Typography variant="h4" gutterBottom component="div">
           {account.alias}
         </Typography>
-        <Link component={Button}>{account.custodyAccountId}</Link>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button
+          component={NavLink}
+          LinkComponent={NavLink}
+          to={account.id + '/portfolios'}
+          size="small"
+        >
+          Check Details
+        </Button>
+        <Link component={Button}>{account.custodyAccountId}</Link>
       </CardActions>
     </Card>
   );
 };
 
-export default ProfileCard;
+export default AccountCard;
