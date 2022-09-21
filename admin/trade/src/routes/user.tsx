@@ -1,12 +1,20 @@
 /** @format */
 
-import { ListLoading } from '@/components/loading';
+import { TextLoading } from '@/components/loading';
 import { GAP } from '@/constants';
 import { useGetUserQuery } from '@/services';
 import { UserPath } from '@/types/frontend';
 import { stringToAvatar } from '@/utils';
 import { Delete, Edit } from '@mui/icons-material';
-import { Alert, Avatar, Box, IconButton, Typography } from '@mui/material';
+import {
+  Alert,
+  Avatar,
+  Box,
+  Divider,
+  IconButton,
+  Skeleton,
+  Typography,
+} from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
@@ -21,7 +29,7 @@ const User: React.FC = () => {
   } = useGetUserQuery(userId!);
 
   if (isError) return <Alert>User not found</Alert>;
-  if (isLoading || isFetching) return <ListLoading />;
+  if (isLoading || isFetching) return <TextLoading />;
   return (
     <Stack gap={GAP}>
       <Box
@@ -45,7 +53,7 @@ const User: React.FC = () => {
           </IconButton>
         </Box>
       </Box>
-
+      <Divider />
       <Outlet />
     </Stack>
   );

@@ -8,7 +8,10 @@ import ErrorPage from './error-page';
 import User from './routes/user';
 import Edit from './routes/edit';
 import Profiles from './routes/profiles';
-import { Alert, Typography } from '@mui/material';
+import Index from './routes';
+import Profile from './routes/profile';
+import Accounts from './routes/accounts';
+import { GenericError } from './components';
 
 const router = createBrowserRouter([
   {
@@ -17,23 +20,28 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     loader: rootLoader,
     children: [
+      { index: true, element: <Index /> },
       {
         path: ':userId',
         element: <User />,
-        errorElement: (
-          <Alert variant="outlined" severity="error">
-            there was an error
-          </Alert>
-        ),
+        errorElement: <GenericError />,
         children: [
           {
             path: 'profiles',
             element: <Profiles />,
-            errorElement: (
-              <Alert variant="outlined" severity="error">
-                there was an error
-              </Alert>
-            ),
+            errorElement: <GenericError />,
+          },
+          {
+            path: 'profiles/:profileId',
+            element: <Profile />,
+            errorElement: <GenericError />,
+            children: [
+              {
+                path: 'accounts',
+                element: <Accounts />,
+                errorElement: <GenericError />,
+              },
+            ],
           },
         ],
       },

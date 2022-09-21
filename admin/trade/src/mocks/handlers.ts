@@ -4,9 +4,19 @@ import { rest } from 'msw';
 import virtualAccounts from '../assets/virtual-account-option-list.json';
 import arcaneCustodyAccounts from '../assets/arcane-custody-accounts.json';
 import arcaneStakeholderAccounts from '../assets/arcane-stakeholder-accounts.json';
-import { PROFILES_ENDPOINT, USERS_ENDPOINT } from '@/constants';
+import {
+  PROFILES_ENDPOINT,
+  USERS_ENDPOINT,
+  ACCOUNTS_ENDPOINT,
+} from '@/constants';
 import { createEntityAdapter, nanoid } from '@reduxjs/toolkit';
-import { User, CreateUserRequest, Profile } from '@/types/backend';
+import {
+  User,
+  CreateUserRequest,
+  Profile,
+  StakeholderFiatAccount,
+} from '@/types/backend';
+import { AccountPath, ProfilePath, UserPath } from '@/types/frontend';
 
 /// user state
 const adapter = createEntityAdapter<User>({
@@ -32,7 +42,35 @@ const initialProfileState: Array<Profile> = [
 
 profileState = profileAdapter.setAll(profileState, initialProfileState);
 
-export { state, profileState };
+// account state
+
+const accountAdapter = createEntityAdapter<StakeholderFiatAccount>({
+  selectId: (account) => account.id,
+});
+
+let accountState = accountAdapter.getInitialState();
+const initialAccountState: Array<StakeholderFiatAccount> = [
+  {
+    id: '1',
+    custodyAccountId: 'custody-1',
+    alias: 'test-account-alias',
+    balance: 100000,
+    currency: 'USD',
+    portfolio: [],
+  },
+  {
+    id: '2',
+    custodyAccountId: 'custody-2',
+    alias: 'test-account-alias-2',
+    balance: 128192635,
+    currency: 'NOK',
+    portfolio: [],
+  },
+];
+
+accountState = accountAdapter.setAll(accountState, initialAccountState);
+
+export { state, profileState, accountState };
 
 export const handlers = [
   rest.get(`/${USERS_ENDPOINT}`, (req, res, ctx) => {
@@ -71,24 +109,67 @@ export const handlers = [
     return res(ctx.json(Object.values(state.entities)), ctx.delay(400));
   }),
 
-  rest.get(`/${USERS_ENDPOINT}/:id`, (req, res, ctx) => {
-    const { id } = req.params as { id: string };
-    return res(ctx.status(200), ctx.json(state.entities[id]), ctx.delay(400));
-  }),
-
-  rest.delete(`/${USERS_ENDPOINT}/:id`, (req, res, ctx) => {
-    const { id } = req.params as { id: string };
-    state = adapter.removeOne(state, id);
-    return res(ctx.status(200), ctx.delay(400));
-  }),
-  rest.get(`/${USERS_ENDPOINT}/:id/${PROFILES_ENDPOINT}`, (req, res, ctx) => {
-    const { id } = req.params as { id: string };
-    console.log('inside profile endpoint');
-    console.log(id);
+  rest.get(`/${USERS_ENDPOINT}/:userId`, (req, res, ctx) => {
+    const { userId } = req.params as UserPath;
     return res(
       ctx.status(200),
-      ctx.json(Object.values(profileState.entities)),
+      ctx.json(state.entities[userId]),
       ctx.delay(400)
     );
   }),
+
+  rest.delete(`/${USERS_ENDPOINT}/:userId`, (req, res, ctx) => {
+    const { userId } = req.params as UserPath;
+    state = adapter.removeOne(state, userId);
+    return res(ctx.status(200), ctx.delay(400));
+  }),
+  rest.get(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}`,
+    (req, res, ctx) => {
+      const { userId } = req.params as UserPath;
+      return res(
+        ctx.status(200),
+        ctx.json(Object.values(profileState.entities)),
+        ctx.delay(400)
+      );
+    }
+  ),
+  rest.get(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId`,
+    (req, res, ctx) => {
+      const { userId, profileId } = req.params as ProfilePath;
+      console.log('user id', userId);
+      console.log('profile id', profileId);
+      return res(
+        ctx.status(200),
+        ctx.json(profileState.entities['1']),
+        ctx.delay(400)
+      );
+    }
+  ),
+  rest.get(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}`,
+    (req, res, ctx) => {
+      const { userId, profileId } = req.params as ProfilePath;
+      return res(
+        ctx.status(200),
+        ctx.json(Object.values(accountState.entities)),
+        ctx.delay(400)
+      );
+    }
+  ),
+  rest.get(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId`,
+    (req, res, ctx) => {
+      const { userId, profileId, accountId } = req.params as AccountPath;
+      console.log('user id', userId);
+      console.log('profile id', profileId);
+      console.log('account id', accountId);
+      return res(
+        ctx.status(200),
+        ctx.json(accountState.entities['1']),
+        ctx.delay(400)
+      );
+    }
+  ),
 ];

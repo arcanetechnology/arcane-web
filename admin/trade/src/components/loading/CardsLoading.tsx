@@ -8,8 +8,8 @@ import { GAP } from '@/constants';
 const CardsLoading: React.FC = () => {
   return (
     <Grid container spacing={2}>
-      {[...Array(2)].map(() => (
-        <Card component={Box} m={GAP} p={GAP} elevation={0}>
+      {[...Array(2)].map((_, index) => (
+        <Card key={index} component={Box} m={GAP} p={GAP} elevation={0}>
           {/* For variant="text", adjust the height via font-size */}
           <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
           {/* For other variants, adjust the size with `width` and `height` */}

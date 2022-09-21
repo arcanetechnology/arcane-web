@@ -34,7 +34,6 @@ const Root: React.FC = () => {
   const submit = useSubmit();
   const debouncedSubmit = useDebounce(submit, 500);
   const navigation = useNavigation();
-  console.log(navigation.state);
   return (
     <React.Fragment>
       <NavigationBar />

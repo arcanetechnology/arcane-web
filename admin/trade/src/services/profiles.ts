@@ -1,8 +1,9 @@
 /** @format */
 
 import { api } from './api';
-import { GetProfilesResponse } from '@/types/backend';
+import { GetProfilesResponse, GetProfileResponse } from '@/types/backend';
 import { PROFILES_ENDPOINT, USERS_ENDPOINT } from '@/constants';
+import { ProfilePath } from '@/types/frontend';
 
 export const profilesApi = api.injectEndpoints({
   endpoints: (build) => ({
@@ -18,7 +19,14 @@ export const profilesApi = api.injectEndpoints({
         ],
       }),
     }),
+    getProfile: build.query<GetProfileResponse, ProfilePath>({
+      query: (path) =>
+        `${USERS_ENDPOINT}/${path.userId}/${PROFILES_ENDPOINT}/${path.profileId}`,
+      providesTags: (_profile, _err, path) => [
+        { type: 'Profile', id: path.profileId },
+      ],
+    }),
   }),
 });
 
-export const { useGetProfilesQuery } = profilesApi;
+export const { useGetProfilesQuery, useGetProfileQuery } = profilesApi;

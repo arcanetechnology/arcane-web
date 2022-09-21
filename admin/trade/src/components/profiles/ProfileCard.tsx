@@ -11,6 +11,7 @@ import {
   CardMedia,
 } from '@mui/material';
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 
 type ProfileCardProps = {
   profile: Omit<Profile, 'accounts'>;
@@ -18,8 +19,12 @@ type ProfileCardProps = {
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ profile }) => {
   return (
-    <Card component={Box} maxWidth={345} m={GAP}>
-      <CardActionArea>
+    <Card component={Box} maxWidth={345} mr={GAP}>
+      <CardActionArea
+        component={NavLink}
+        LinkComponent={NavLink}
+        to={profile.id + '/accounts'}
+      >
         <CardMedia
           component="img"
           height="140"

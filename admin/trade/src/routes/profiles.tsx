@@ -17,9 +17,10 @@ const Profiles: React.FC = () => {
     isFetching,
   } = useGetProfilesQuery(userId!);
 
-  if (isError) return <Alert>User not found</Alert>;
+  if (isError) throw new Error('some error occured in api call');
   if (isLoading || isFetching) return <CardsLoading />;
   if (!profiles) return null;
+
   return (
     <React.Fragment>
       {profiles.length > 0 ? (
