@@ -14,6 +14,8 @@ import Accounts from './routes/accounts';
 import { GenericError } from './components';
 import Account from './routes/account';
 import Portfolios from './routes/portfolios';
+import Portfolio from './routes/portfolio';
+import Cryptos from './routes/cryptos';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,18 @@ const router = createBrowserRouter([
                     path: 'portfolios',
                     element: <Portfolios />,
                     errorElement: <GenericError />,
+                  },
+                  {
+                    path: 'portfolios/:portfolioId',
+                    element: <Portfolio />,
+                    errorElement: <GenericError />,
+                    children: [
+                      {
+                        path: 'cryptos',
+                        element: <Cryptos />,
+                        errorElement: <GenericError />,
+                      },
+                    ],
                   },
                 ],
               },
