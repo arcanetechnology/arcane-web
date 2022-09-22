@@ -37,7 +37,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profile }) => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {profile.type}
+            {profile.alias}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             some {profile.type} related mumbo jumbo

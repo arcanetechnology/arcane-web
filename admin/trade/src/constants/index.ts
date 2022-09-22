@@ -9,6 +9,10 @@ export const ACCOUNTS_ENDPOINT = 'accounts';
 export const PORTFOLIOS_ENDPOINT = 'portfolios';
 export const CRYPTOS_ENDPOINT = 'cryptos';
 
+// action apis
+
+export const USERS_COUNT_ENDPOINT = 'usercount';
+
 // api util function to create paths
 const endpoints = {
   user: 'users',

@@ -1,12 +1,10 @@
 /** @format */
 
+import * as React from 'react';
 import { useGetProfilesQuery } from '@/services';
 import { UserPath } from '@/types/frontend';
-import { Alert } from '@mui/material';
-import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import Grid from '@mui/material/Unstable_Grid2';
-import { ProfileCard, CardsLoading, CreateProfileCard } from '@/components';
+import { ListLoading, ProfileList } from '@/components';
 
 const Profiles: React.FC = () => {
   const { userId } = useParams<UserPath>();
@@ -18,25 +16,10 @@ const Profiles: React.FC = () => {
   } = useGetProfilesQuery(userId!);
 
   if (isError) throw new Error('some error occured in api call');
-  if (isLoading || isFetching) return <CardsLoading />;
+  if (isLoading || isFetching) return <ListLoading />;
   if (!profiles) return null;
 
-  return (
-    <React.Fragment>
-      {profiles.length > 0 ? (
-        <Grid container spacing={2}>
-          {profiles.map((profile) => (
-            <ProfileCard key={profile.id} profile={profile} />
-          ))}
-          <CreateProfileCard />
-        </Grid>
-      ) : (
-        <Alert variant="outlined" severity="error">
-          user has no profiles
-        </Alert>
-      )}
-    </React.Fragment>
-  );
+  return <ProfileList profiles={profiles} />;
 };
 
 export default Profiles;

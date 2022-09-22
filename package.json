@@ -71,6 +71,7 @@
     "contentful": "^9.1.32",
     "firebase": "^9.8.4",
     "fp-ts": "^2.12.1",
+    "react-spring": "^9.5.4",
     "rich-text-solid-renderer": "^1.7.0",
     "rooks": "^7.1.2",
     "solid-app-router": "^0.4.1",

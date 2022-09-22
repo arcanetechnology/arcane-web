@@ -46,8 +46,18 @@ const profileAdapter = createEntityAdapter<Profile>({
 });
 let profileState = profileAdapter.getInitialState();
 const initialProfileState: Array<Profile> = [
-  { id: '1', accounts: ['1', '2'], type: 'BUSINESS' },
-  { id: '2', accounts: ['1', '2'], type: 'PERSONAL' },
+  {
+    id: '1',
+    accounts: ['1', '2'],
+    type: 'BUSINESS',
+    alias: 'default-profile-1',
+  },
+  {
+    id: '2',
+    accounts: ['1', '2'],
+    type: 'PERSONAL',
+    alias: 'default-personal-profile-2',
+  },
 ];
 
 profileState = profileAdapter.setAll(profileState, initialProfileState);
@@ -157,6 +167,7 @@ export const handlers = [
 
     return res(ctx.status(200), ctx.json(filteredUser), ctx.delay(400));
   }),
+
   rest.post(`/${USERS_ENDPOINT}`, async (req, res, ctx) => {
     const { email, profiles } = req.body as CreateUserRequest;
     state = adapter.addOne(state, {

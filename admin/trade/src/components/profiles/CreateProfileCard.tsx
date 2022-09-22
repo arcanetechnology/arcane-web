@@ -7,7 +7,6 @@ import {
   CardContent,
   Box,
   Typography,
-  CardMedia,
 } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import * as React from 'react';

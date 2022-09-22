@@ -7,6 +7,10 @@ import {
   Profile,
   StakeholderFiatAccount,
   StakeholderCryptoAccount,
+  UserItem,
+  ProfileItem,
+  StakeholderFiatAccountItem,
+  PortfolioItem,
 } from './entities';
 
 // user api types
@@ -14,23 +18,21 @@ export type CreateUserRequest = Omit<
   Optional<User, 'profiles' | 'email'>,
   'id'
 >;
-export type GetUsersResponse = Array<Omit<User, 'profiles'>>;
+export type GetUsersResponse = Array<UserItem>;
 export type GetUserResponse = User;
 
 // profile api types
-export type GetProfilesResponse = Array<Omit<Profile, 'accounts'>>;
+export type GetProfilesResponse = Array<ProfileItem>;
 export type GetProfileResponse = Profile;
 
 // accounts api types
 
-export type GetAccountsResponse = Array<
-  Omit<StakeholderFiatAccount, 'portfolios'>
->;
+export type GetAccountsResponse = Array<StakeholderFiatAccountItem>;
 export type GetAccountResponse = StakeholderFiatAccount;
 
 // portfolio api types
 
-export type GetPortfoliosResponse = Array<Omit<Portfolio, 'accounts'>>;
+export type GetPortfoliosResponse = Array<PortfolioItem>;
 export type GetPortfolioResponse = Portfolio;
 
 // crypto api types
