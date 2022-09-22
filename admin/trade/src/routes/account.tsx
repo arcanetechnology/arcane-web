@@ -5,7 +5,7 @@ import { GAP } from '@/constants';
 import { useGetAccountQuery } from '@/services';
 import { AccountPath } from '@/types/frontend';
 import { Money } from '@mui/icons-material';
-import { Divider, Typography } from '@mui/material';
+import { Divider, Typography, Badge } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
@@ -31,7 +31,9 @@ const Account: React.FC = () => {
         alignItems="center"
       >
         <Box display="flex" gap={GAP} flexDirection="row" alignItems="center">
-          <Money />
+          <Badge badgeContent={account.portfolio.length} color="secondary">
+            <Money />
+          </Badge>
           <Typography variant="h4">{account.currency}</Typography>
           <Typography variant="h4">{account.balance}</Typography>
           <Typography variant="h4">{account.alias}</Typography>

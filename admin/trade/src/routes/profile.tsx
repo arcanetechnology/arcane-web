@@ -5,7 +5,7 @@ import { GAP } from '@/constants';
 import { useGetProfileQuery } from '@/services';
 import { ProfilePath } from '@/types/frontend';
 import { AccountBalance } from '@mui/icons-material';
-import { Divider, Typography } from '@mui/material';
+import { Divider, Typography, Badge } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
@@ -32,7 +32,9 @@ const Profile: React.FC = () => {
         alignItems="center"
       >
         <Box display="flex" gap={GAP} flexDirection="row" alignItems="center">
-          <AccountBalance />
+          <Badge badgeContent={profile.accounts.length} color="secondary">
+            <AccountBalance />
+          </Badge>
           <Typography variant="h4">{profile.type}</Typography>
         </Box>
         <Typography variant="caption">{profile.id}</Typography>

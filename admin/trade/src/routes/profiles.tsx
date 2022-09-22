@@ -6,7 +6,7 @@ import { Alert } from '@mui/material';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import Grid from '@mui/material/Unstable_Grid2';
-import { ProfileCard, CardsLoading } from '@/components';
+import { ProfileCard, CardsLoading, CreateProfileCard } from '@/components';
 
 const Profiles: React.FC = () => {
   const { userId } = useParams<UserPath>();
@@ -28,6 +28,7 @@ const Profiles: React.FC = () => {
           {profiles.map((profile) => (
             <ProfileCard key={profile.id} profile={profile} />
           ))}
+          <CreateProfileCard />
         </Grid>
       ) : (
         <Alert variant="outlined" severity="error">

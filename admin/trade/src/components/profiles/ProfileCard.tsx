@@ -1,6 +1,6 @@
 /** @format */
 
-import { GAP } from '@/constants';
+import { GAP, MAX_CARD_WIDTH } from '@/constants';
 import { Profile } from '@/types/backend';
 import {
   Card,
@@ -19,7 +19,7 @@ type ProfileCardProps = {
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ profile }) => {
   return (
-    <Card component={Box} maxWidth={345} mr={GAP}>
+    <Card component={Box} maxWidth={MAX_CARD_WIDTH} mr={GAP}>
       <CardActionArea
         component={NavLink}
         LinkComponent={NavLink}

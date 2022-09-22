@@ -46,8 +46,8 @@ const profileAdapter = createEntityAdapter<Profile>({
 });
 let profileState = profileAdapter.getInitialState();
 const initialProfileState: Array<Profile> = [
-  { id: '1', accounts: [], type: 'BUSINESS' },
-  { id: '2', accounts: [], type: 'PERSONAL' },
+  { id: '1', accounts: ['1', '2'], type: 'BUSINESS' },
+  { id: '2', accounts: ['1', '2'], type: 'PERSONAL' },
 ];
 
 profileState = profileAdapter.setAll(profileState, initialProfileState);
@@ -66,7 +66,7 @@ const initialAccountState: Array<StakeholderFiatAccount> = [
     alias: 'test-account-alias',
     balance: 100000,
     currency: 'USD',
-    portfolio: [],
+    portfolio: ['1', '2'],
   },
   {
     id: '2',
@@ -74,7 +74,7 @@ const initialAccountState: Array<StakeholderFiatAccount> = [
     alias: 'test-account-alias-2',
     balance: 128192635,
     currency: 'NOK',
-    portfolio: [],
+    portfolio: ['1', '2'],
   },
 ];
 
