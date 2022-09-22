@@ -93,6 +93,11 @@ const initialPortfolioState: Array<Portfolio> = [
     alias: 'portfolio-1',
     accounts: ['crypto-1', 'crypto-2', 'crypto-3', 'crypto-4'],
   },
+  {
+    id: '2',
+    alias: 'portfolio-2',
+    accounts: ['crypto-1', 'crypto-2', 'crypto-3', 'crypto-4'],
+  },
 ];
 
 portfolioState = portfolioAdapter.setAll(portfolioState, initialPortfolioState);
