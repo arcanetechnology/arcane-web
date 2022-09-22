@@ -4,7 +4,7 @@ import { TextLoading } from '@/components';
 import { GAP } from '@/constants';
 import { useGetAccountQuery } from '@/services/accounts';
 import { AccountPath } from '@/types/frontend';
-import { CurrencyBitcoin } from '@mui/icons-material';
+import { Money } from '@mui/icons-material';
 import { Divider, Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import * as React from 'react';
@@ -31,10 +31,10 @@ const Account: React.FC = () => {
         alignItems="center"
       >
         <Box display="flex" gap={GAP} flexDirection="row" alignItems="center">
-          <CurrencyBitcoin />
+          <Money />
           <Typography variant="h4">{account.currency}</Typography>
           <Typography variant="h4">{account.balance}</Typography>
-          <Typography variant="body2">{account.alias}</Typography>
+          <Typography variant="h4">{account.alias}</Typography>
         </Box>
         <Typography variant="caption">{account.id}</Typography>
       </Box>

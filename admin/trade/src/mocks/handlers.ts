@@ -15,6 +15,7 @@ import {
   CreateUserRequest,
   Profile,
   StakeholderFiatAccount,
+  Portfolio,
 } from '@/types/backend';
 import { AccountPath, ProfilePath, UserPath } from '@/types/frontend';
 
@@ -70,7 +71,24 @@ const initialAccountState: Array<StakeholderFiatAccount> = [
 
 accountState = accountAdapter.setAll(accountState, initialAccountState);
 
-export { state, profileState, accountState };
+// portfolio backend state
+const portfolioAdapter = createEntityAdapter<Portfolio>({
+  selectId: (portfolio) => portfolio.id,
+});
+
+let portfolioState = portfolioAdapter.getInitialState();
+
+const initialPortfolioState: Array<Portfolio> = [
+  {
+    id: '1',
+    alias: 'portfolio-1',
+    accounts: ['crypto-1', 'crypto-2', 'crypto-3', 'crypto-4'],
+  },
+];
+
+portfolioState = portfolioAdapter.setAll(portfolioState, initialPortfolioState);
+
+export { state, profileState, accountState, portfolioState };
 
 export const handlers = [
   rest.get(`/${USERS_ENDPOINT}`, (req, res, ctx) => {

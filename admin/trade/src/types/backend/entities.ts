@@ -6,6 +6,8 @@ export const accountTypes = ['stakeholder', 'custody', 'virtual'];
 export type AccountTypes = typeof accountTypes[number];
 export const currency = ['USD', 'EUR', 'GBP', 'NOK', 'SEK', 'DKK', 'CHF'];
 export type Currency = typeof currency[number];
+// perhaps update this with specific crypto types.
+export type CryptoCurrency = string;
 
 export type User = {
   id: string;
@@ -38,3 +40,9 @@ export type Portfolio = {
   alias: string;
   accounts: Array<string>;
 };
+
+type CryptoAccount = {
+  currency: CryptoCurrency;
+};
+
+export type StakeholderCryptoAccount = CryptoAccount;
