@@ -1,6 +1,6 @@
 /** @format */
 
-import { CardsLoading, CryptoCard } from '@/components';
+import { CardsLoading, CryptoCard, CryptoList } from '@/components';
 import { useGetCryptosQuery } from '@/services';
 import { PortfolioPath } from '@/types/frontend';
 import * as React from 'react';
@@ -29,19 +29,9 @@ const Cryptos: React.FC = () => {
   if (isLoading || isFetching) return <CardsLoading />;
   if (!cryptos) return null;
   return (
-    <React.Fragment>
-      {cryptos.length > 0 ? (
-        <Stack gap={GAP}>
-          {cryptos.map((crypto) => (
-            <CryptoCard key={crypto.id} crypto={crypto} />
-          ))}
-        </Stack>
-      ) : (
-        <Alert variant="outlined" severity="error">
-          portfolio has no crypto accounts
-        </Alert>
-      )}
-    </React.Fragment>
+    <Stack gap={GAP}>
+      <CryptoList cryptos={cryptos} />
+    </Stack>
   );
 };
 

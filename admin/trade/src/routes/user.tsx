@@ -1,5 +1,6 @@
 /** @format */
 
+import { UsersToolbar } from '@/components';
 import { TextLoading } from '@/components/loading';
 import { GAP } from '@/constants';
 import { useGetUserQuery } from '@/services';
@@ -17,9 +18,11 @@ import {
 } from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 
 const User: React.FC = () => {
+  const location = useLocation();
+  console.log(location);
   const { userId } = useParams<UserPath>();
   const {
     data: user,
@@ -30,6 +33,7 @@ const User: React.FC = () => {
 
   if (isError) return <Alert>User not found</Alert>;
   if (isLoading || isFetching) return <TextLoading />;
+
   return (
     <Stack gap={GAP}>
       <Box
@@ -53,6 +57,7 @@ const User: React.FC = () => {
           </IconButton>
         </Box>
       </Box>
+      <UsersToolbar />
       <Divider />
       <Outlet />
     </Stack>

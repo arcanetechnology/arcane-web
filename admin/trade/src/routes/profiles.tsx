@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useGetProfilesQuery } from '@/services';
 import { UserPath } from '@/types/frontend';
 import { useParams } from 'react-router-dom';
-import { ListLoading, ProfileList, ProfilesToolbar } from '@/components';
+import { ListLoading, ProfileList } from '@/components';
 import { Stack } from '@mui/system';
 import { GAP } from '@/constants';
 
@@ -23,7 +23,6 @@ const Profiles: React.FC = () => {
 
   return (
     <Stack gap={GAP}>
-      <ProfilesToolbar />
       <ProfileList profiles={profiles} />
     </Stack>
   );
