@@ -4,10 +4,16 @@ import { GAP } from '@/constants';
 import { AccountBalance } from '@mui/icons-material';
 import { Box, Button, ButtonGroup, Paper, Toolbar } from '@mui/material';
 import * as React from 'react';
+import { TransactionCreate } from '../transaction';
 
 const UsersToolbar: React.FC = () => {
   return (
-    <Box display="flex" flexDirection="row" gap={GAP}>
+    <Box
+      display="flex"
+      flexDirection="row"
+      justifyContent="space-between"
+      gap={GAP}
+    >
       <ButtonGroup
         variant="outlined"
         aria-label="outlined primary button group"
@@ -17,6 +23,7 @@ const UsersToolbar: React.FC = () => {
         <Button>Create Portfolio</Button>
         <Button>Add Crypto</Button>
       </ButtonGroup>
+      <TransactionCreate />
     </Box>
   );
 };
