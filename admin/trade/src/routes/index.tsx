@@ -9,14 +9,13 @@ const Index: React.FC = () => {
   return (
     <Stack gap={GAP}>
       <Box>
-        <Typography variant="h4">Welcome to trade admin</Typography>
-        <Typography>Select a user to do transactions</Typography>
+        <Typography variant="h4">Trade Admin</Typography>
       </Box>
       <Box display="flex" flexDirection="row" gap={GAP}>
         <Card sx={{ width: 200 }}>
           <CardContent>
             <Typography variant="subtitle1">Total Users</Typography>
-            <Typography variant="h2">8152</Typography>
+            <Typography variant="h2">81</Typography>
           </CardContent>
         </Card>
         <Card sx={{ width: 200 }}>
@@ -34,7 +33,7 @@ const Index: React.FC = () => {
         <Card sx={{ width: 200 }}>
           <CardContent>
             <Typography variant="subtitle2">Total Virtual Accounts</Typography>
-            <Typography variant="h2">122</Typography>
+            <Typography variant="h2">16</Typography>
           </CardContent>
         </Card>
       </Box>

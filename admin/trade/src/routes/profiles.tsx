@@ -4,7 +4,9 @@ import * as React from 'react';
 import { useGetProfilesQuery } from '@/services';
 import { UserPath } from '@/types/frontend';
 import { useParams } from 'react-router-dom';
-import { ListLoading, ProfileList } from '@/components';
+import { ListLoading, ProfileList, ProfilesToolbar } from '@/components';
+import { Stack } from '@mui/system';
+import { GAP } from '@/constants';
 
 const Profiles: React.FC = () => {
   const { userId } = useParams<UserPath>();
@@ -19,7 +21,12 @@ const Profiles: React.FC = () => {
   if (isLoading || isFetching) return <ListLoading />;
   if (!profiles) return null;
 
-  return <ProfileList profiles={profiles} />;
+  return (
+    <Stack gap={GAP}>
+      <ProfilesToolbar />
+      <ProfileList profiles={profiles} />
+    </Stack>
+  );
 };
 
 export default Profiles;
