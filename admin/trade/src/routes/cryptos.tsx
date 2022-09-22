@@ -1,12 +1,14 @@
 /** @format */
 
-import { CardsLoading } from '@/components';
+import { CardsLoading, CryptoCard } from '@/components';
 import { useGetCryptosQuery } from '@/services';
 import { PortfolioPath } from '@/types/frontend';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import Grid from '@mui/material/Unstable_Grid2';
 import { Alert } from '@mui/material';
+import { Stack } from '@mui/system';
+import { GAP } from '@/constants';
 
 const Cryptos: React.FC = () => {
   const { userId, profileId, accountId, portfolioId } =
@@ -29,11 +31,11 @@ const Cryptos: React.FC = () => {
   return (
     <React.Fragment>
       {cryptos.length > 0 ? (
-        <Grid container spacing={2}>
+        <Stack gap={GAP}>
           {cryptos.map((crypto) => (
-            <h1 key={crypto.id}>{crypto.currency}</h1>
+            <CryptoCard key={crypto.id} crypto={crypto} />
           ))}
-        </Grid>
+        </Stack>
       ) : (
         <Alert variant="outlined" severity="error">
           portfolio has no crypto accounts

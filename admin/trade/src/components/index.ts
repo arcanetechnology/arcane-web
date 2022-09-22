@@ -8,4 +8,5 @@ export * from './loading';
 export * from './errors';
 export * from './accounts';
 export * from './portfolios';
+export * from './cryptos';
 export { default as Action } from './action/Action';
