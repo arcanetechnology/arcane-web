@@ -8,6 +8,8 @@ import {
   PROFILES_ENDPOINT,
   USERS_ENDPOINT,
   ACCOUNTS_ENDPOINT,
+  PORTFOLIOS_ENDPOINT,
+  CRYPTOS_ENDPOINT,
 } from '@/constants';
 import { createEntityAdapter, nanoid } from '@reduxjs/toolkit';
 import {
@@ -16,8 +18,15 @@ import {
   Profile,
   StakeholderFiatAccount,
   Portfolio,
+  StakeholderCryptoAccount,
 } from '@/types/backend';
-import { AccountPath, ProfilePath, UserPath } from '@/types/frontend';
+import {
+  AccountPath,
+  CryptoPath,
+  PortfolioPath,
+  ProfilePath,
+  UserPath,
+} from '@/types/frontend';
 
 /// user state
 const adapter = createEntityAdapter<User>({
@@ -88,7 +97,33 @@ const initialPortfolioState: Array<Portfolio> = [
 
 portfolioState = portfolioAdapter.setAll(portfolioState, initialPortfolioState);
 
-export { state, profileState, accountState, portfolioState };
+// crypto backend state
+const cryptoAdapter = createEntityAdapter<StakeholderCryptoAccount>({
+  selectId: (crypto) => crypto.id,
+});
+
+let cryptoState = cryptoAdapter.getInitialState();
+
+const initialCryptoState: Array<StakeholderCryptoAccount> = [
+  {
+    id: 'crypto-1',
+    alias: 'crypto-alias-1',
+    balance: 12341,
+    currency: 'ETH',
+    custodyAccountId: 'crypto-custody-1',
+  },
+  {
+    id: 'crypto-2',
+    alias: 'crypto-alias-2',
+    balance: 12341,
+    currency: 'BTC',
+    custodyAccountId: 'crypto-custody-2',
+  },
+];
+
+cryptoState = cryptoAdapter.setAll(cryptoState, initialCryptoState);
+
+export { state, profileState, accountState, portfolioState, cryptoState };
 
 export const handlers = [
   rest.get(`/${USERS_ENDPOINT}`, (req, res, ctx) => {
@@ -165,6 +200,7 @@ export const handlers = [
       );
     }
   ),
+  // accounts
   rest.get(
     `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}`,
     (req, res, ctx) => {
@@ -186,6 +222,64 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json(accountState.entities['1']),
+        ctx.delay(400)
+      );
+    }
+  ),
+  // portfolios
+  rest.get(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}`,
+    (req, res, ctx) => {
+      const { userId, profileId, accountId } = req.params as AccountPath;
+      return res(
+        ctx.status(200),
+        ctx.json(Object.values(portfolioState.entities)),
+        ctx.delay(400)
+      );
+    }
+  ),
+  rest.get(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}/:portfolioId`,
+    (req, res, ctx) => {
+      const { userId, profileId, accountId, portfolioId } =
+        req.params as PortfolioPath;
+      console.log('user id', userId);
+      console.log('profile id', profileId);
+      console.log('account id', accountId);
+      console.log('portfolio id', portfolioId);
+      return res(
+        ctx.status(200),
+        ctx.json(portfolioState.entities['1']),
+        ctx.delay(400)
+      );
+    }
+  ),
+  // cryptos
+  rest.get(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}/:portfolioId/${CRYPTOS_ENDPOINT}`,
+    (req, res, ctx) => {
+      const { userId, profileId, accountId, portfolioId } =
+        req.params as PortfolioPath;
+      return res(
+        ctx.status(200),
+        ctx.json(Object.values(cryptoState.entities)),
+        ctx.delay(400)
+      );
+    }
+  ),
+  rest.get(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}/:portfolioId/${CRYPTOS_ENDPOINT}/:cryptoId`,
+    (req, res, ctx) => {
+      const { userId, profileId, accountId, portfolioId, cryptoId } =
+        req.params as CryptoPath;
+      console.log('user id', userId);
+      console.log('profile id', profileId);
+      console.log('account id', accountId);
+      console.log('portfolio id', portfolioId);
+      console.log('crypto id', cryptoId);
+      return res(
+        ctx.status(200),
+        ctx.json(cryptoState.entities['crypto-1']),
         ctx.delay(400)
       );
     }

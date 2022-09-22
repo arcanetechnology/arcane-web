@@ -43,6 +43,6 @@ export type Portfolio = {
 
 type CryptoAccount = {
   currency: CryptoCurrency;
-};
+} & Account;
 
 export type StakeholderCryptoAccount = CryptoAccount;

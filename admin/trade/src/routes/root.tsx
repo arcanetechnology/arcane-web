@@ -11,7 +11,7 @@ import {
   useSubmit,
 } from 'react-router-dom';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
-import { GAP } from '@/constants';
+import { GAP, getPath } from '@/constants';
 import { useAddUserMutation, useGetUsersQuery } from '@/services';
 import { useDebounce } from 'rooks';
 import {
@@ -34,6 +34,7 @@ const Root: React.FC = () => {
   const submit = useSubmit();
   const debouncedSubmit = useDebounce(submit, 500);
   const navigation = useNavigation();
+  getPath({ userId: 'user-1' }, 'profile');
   return (
     <React.Fragment>
       <NavigationBar />
