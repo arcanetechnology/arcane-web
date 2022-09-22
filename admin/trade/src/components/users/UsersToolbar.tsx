@@ -1,7 +1,6 @@
 /** @format */
 
 import { GAP } from '@/constants';
-import { AccountBalance } from '@mui/icons-material';
 import { Box, Button, ButtonGroup, Paper, Toolbar } from '@mui/material';
 import * as React from 'react';
 import { TransactionCreate } from '../transaction';

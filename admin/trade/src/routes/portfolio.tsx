@@ -5,7 +5,7 @@ import { GAP } from '@/constants';
 import { useGetPortfolioQuery } from '@/services';
 import { PortfolioPath } from '@/types/frontend';
 import { Face } from '@mui/icons-material';
-import { Divider, Typography } from '@mui/material';
+import { Divider, Typography, Badge } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
@@ -37,7 +37,9 @@ const Portfolio: React.FC = () => {
         alignItems="center"
       >
         <Box display="flex" gap={GAP} flexDirection="row" alignItems="center">
-          <Face />
+          <Badge badgeContent={portfolio.accounts.length} color="secondary">
+            <Face />
+          </Badge>
           <Typography variant="h4">{portfolio.alias}</Typography>
         </Box>
         <Typography variant="caption">{portfolio.id}</Typography>

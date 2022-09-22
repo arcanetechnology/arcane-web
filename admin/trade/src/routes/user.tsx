@@ -10,6 +10,7 @@ import { Delete, Edit } from '@mui/icons-material';
 import {
   Alert,
   Avatar,
+  Badge,
   Box,
   Divider,
   IconButton,
@@ -43,7 +44,9 @@ const User: React.FC = () => {
         alignItems="center"
       >
         <Box display="flex" gap={GAP} alignItems="center" mb={2}>
-          <Avatar {...stringToAvatar(user?.email)} />
+          <Badge badgeContent={user?.profiles.length} color="secondary">
+            <Avatar {...stringToAvatar(user?.email)} />
+          </Badge>
           <Typography variant="h3">
             {user?.email === '' ? 'No Email' : user?.email}
           </Typography>

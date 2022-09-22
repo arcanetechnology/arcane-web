@@ -29,7 +29,7 @@ export type Profile = {
 export type Portfolio = {
   id: string;
   alias: string;
-  cryptoAccounts: Array<CryptoStakeholderAccount>;
+  accounts: Array<CryptoStakeholderAccount>;
 };
 
 // transaction object
