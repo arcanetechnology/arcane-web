@@ -67,6 +67,7 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles }) => {
             );
           },
         }}
+        autoHeight
         columns={columns}
       />
     </Box>

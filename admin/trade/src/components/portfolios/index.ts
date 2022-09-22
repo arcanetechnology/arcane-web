@@ -1,3 +1,3 @@
 /** @format */
 
-export { default as PortfolioCard } from './PortfolioCard';
+export { default as PortfolioList } from './PortfolioList';

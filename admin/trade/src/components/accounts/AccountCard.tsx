@@ -53,7 +53,7 @@ const AccountCard: React.FC<ProfileCardProps> = ({ account }) => {
           to={account.id + '/portfolios'}
           size="small"
         >
-          Custody Account
+          Custody Details
         </Button>
       </CardActions>
     </Card>

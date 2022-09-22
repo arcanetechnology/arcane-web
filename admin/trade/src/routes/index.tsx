@@ -1,9 +1,16 @@
 /** @format */
 
 import { GAP } from '@/constants';
-import { Card, CardContent, Stack, Typography } from '@mui/material';
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { Box } from '@mui/system';
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Index: React.FC = () => {
   return (
@@ -25,17 +32,25 @@ const Index: React.FC = () => {
           </CardContent>
         </Card>
         <Card sx={{ width: 200 }}>
-          <CardContent>
-            <Typography variant="subtitle2">Total Custody Accounts</Typography>
-            <Typography variant="h2">12</Typography>
-          </CardContent>
+          <CardActionArea
+            LinkComponent={NavLink}
+            component={NavLink}
+            to="custody"
+          >
+            <CardContent>
+              <Typography variant="subtitle2">
+                Total Custody Accounts
+              </Typography>
+              <Typography variant="h2">12</Typography>
+            </CardContent>
+          </CardActionArea>
         </Card>
-        <Card sx={{ width: 200 }}>
+        {/* <Card sx={{ width: 200 }}>
           <CardContent>
             <Typography variant="subtitle2">Total Virtual Accounts</Typography>
             <Typography variant="h2">16</Typography>
           </CardContent>
-        </Card>
+        </Card> */}
       </Box>
       <div
         className="tradingview-widget-container"
