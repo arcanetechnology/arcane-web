@@ -1,6 +1,16 @@
 /** @format */
 
-import { NavigateNext } from '@mui/icons-material';
+import {
+  AccountBalance,
+  CurrencyBitcoin,
+  CurrencyExchange,
+  Face,
+  Group,
+  Home,
+  Money,
+  NavigateNext,
+  PointOfSale,
+} from '@mui/icons-material';
 import { Box, Breadcrumbs, Link, LinkProps, Typography } from '@mui/material';
 import * as React from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
@@ -13,6 +23,16 @@ const breadcrumbNameMap: { [key: string]: string } = {
   portfolios: 'Portfolios',
   accounts: 'Accounts',
   cryptos: 'Cryptos',
+};
+
+const icons: { [key: string]: React.ReactNode } = {
+  users: <Group sx={{ mr: 0.5 }} fontSize="inherit" />,
+  profiles: <AccountBalance sx={{ mr: 0.5 }} fontSize="inherit" />,
+  transactions: <PointOfSale sx={{ mr: 0.5 }} fontSize="inherit" />,
+  groups: <CurrencyExchange sx={{ mr: 0.5 }} fontSize="inherit" />,
+  portfolios: <Face sx={{ mr: 0.5 }} fontSize="inherit" />,
+  accounts: <Money sx={{ mr: 0.5 }} fontSize="inherit" />,
+  cryptos: <CurrencyBitcoin sx={{ mr: 0.5 }} fontSize="inherit" />,
 };
 
 interface LinkRouterProps extends LinkProps {
@@ -29,11 +49,14 @@ const TradeBreadCrumbs: React.FC = () => {
   const pathnames = location.pathname.split('/').filter((x) => x);
   return (
     <Box mt={1} mb={2}>
-      <Breadcrumbs
-        separator={<NavigateNext fontSize="small" />}
-        aria-label="trade admin breadcrumbs"
-      >
-        <LinkRouter underline="hover" color="inherit" to="/">
+      <Breadcrumbs aria-label="trade admin breadcrumbs">
+        <LinkRouter
+          sx={{ display: 'flex', alignItems: 'center' }}
+          underline="hover"
+          color="inherit"
+          to="/"
+        >
+          <Home sx={{ mr: 0.5 }} fontSize="inherit" />
           Home
         </LinkRouter>
         {pathnames.map((value, index) => {
@@ -41,11 +64,23 @@ const TradeBreadCrumbs: React.FC = () => {
           const to = `/${pathnames.slice(0, index + 1).join('/')}`;
 
           return last ? (
-            <Typography color="text.primary" key={to}>
+            <Typography
+              color="text.primary"
+              key={to}
+              sx={{ display: 'flex', alignItems: 'center' }}
+            >
+              {icons[value]}
               {breadcrumbNameMap[value]}
             </Typography>
           ) : (
-            <LinkRouter underline="hover" color="inherit" to={to} key={to}>
+            <LinkRouter
+              sx={{ display: 'flex', alignItems: 'center' }}
+              underline="hover"
+              color="inherit"
+              to={to}
+              key={to}
+            >
+              {icons[value]}
               {breadcrumbNameMap[value] ?? value}
             </LinkRouter>
           );
