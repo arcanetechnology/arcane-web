@@ -1,8 +1,8 @@
 /** @format */
 
 import { AccountCard, CardsLoading } from '@/components';
-import { useGetAccountsQuery } from '@/services/accounts';
-import { AccountPath, ProfilePath } from '@/types/frontend';
+import { useGetAccountsQuery } from '@/services';
+import { ProfilePath } from '@/types/frontend';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import Grid from '@mui/material/Unstable_Grid2';

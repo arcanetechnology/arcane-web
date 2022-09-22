@@ -2,7 +2,7 @@
 
 import { TextLoading } from '@/components';
 import { GAP } from '@/constants';
-import { useGetAccountQuery } from '@/services/accounts';
+import { useGetAccountQuery } from '@/services';
 import { AccountPath } from '@/types/frontend';
 import { Money } from '@mui/icons-material';
 import { Divider, Typography } from '@mui/material';
