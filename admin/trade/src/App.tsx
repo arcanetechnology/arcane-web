@@ -17,6 +17,7 @@ import Portfolios from './routes/portfolios';
 import Portfolio from './routes/portfolio';
 import Cryptos from './routes/cryptos';
 import Custody from './routes/custody';
+import Auth from './routes/auth';
 
 const router = createBrowserRouter([
   {
@@ -84,6 +85,11 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
     ],
+  },
+  {
+    path: '/auth',
+    element: <Auth />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
