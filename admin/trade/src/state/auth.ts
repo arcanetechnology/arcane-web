@@ -1,11 +1,7 @@
 /** @format */
 
-import {
-  CaseReducer,
-  createSlice,
-  PayloadAction,
-  SliceCaseReducers,
-} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from './state';
 
 type Auth = {
   email: string;
@@ -37,3 +33,5 @@ const authSlice = createSlice({
 export const { login, logout } = authSlice.actions;
 
 export default authSlice.reducer;
+
+export const selectAuth = (state: RootState) => state.auth;
