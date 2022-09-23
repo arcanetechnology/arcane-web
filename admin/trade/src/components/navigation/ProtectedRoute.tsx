@@ -1,6 +1,6 @@
 /** @format */
 
-import { useAuthStateChanged, useLogout } from '@/hooks';
+import { useAuthStateChanged, useCheckAuth, useLogout } from '@/hooks';
 import { useTradeSelector } from '@/state';
 import { selectAuth } from '@/state/auth';
 import { Auth } from '@/types/frontend';
@@ -12,7 +12,7 @@ type ProtectedRouteProps = {
 };
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const { auth } = useTradeSelector(selectAuth);
+  const auth = useCheckAuth();
   const logout = useLogout();
 
   if (!auth) {

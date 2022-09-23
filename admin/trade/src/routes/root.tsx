@@ -24,7 +24,7 @@ import {
   LinearProgress,
   Paper,
 } from '@mui/material';
-import { Add, Loop } from '@mui/icons-material';
+import { Add, Loop, Search } from '@mui/icons-material';
 import { toast } from 'react-toastify';
 import { Auth } from '@/types/frontend';
 
@@ -74,23 +74,9 @@ const Root: React.FC<RootProps> = ({ user }) => {
                     debouncedSubmit(event.currentTarget.form);
                   }}
                 />
-                {isLoading && <Loop />}
               </Box>
               <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-              <IconButton
-                onClick={async () => {
-                  try {
-                    await addUser({}).unwrap();
-                  } catch {
-                    toast('error in creating user');
-                  }
-                }}
-                color="primary"
-                sx={{ p: '10px' }}
-                aria-label="directions"
-              >
-                <Add />
-              </IconButton>
+              {isLoading ? <Loop /> : <Search />}
             </Paper>
             <Box height={10}>
               {isAddUserLoading && (
