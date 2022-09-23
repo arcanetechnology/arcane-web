@@ -1,11 +1,15 @@
 /** @format */
 
 import { GAP } from '@/constants';
-import { Box, Button, ButtonGroup, Paper, Toolbar } from '@mui/material';
+import { matchRuleExpl } from '@/utils';
+import { Box, Button, ButtonGroup } from '@mui/material';
 import * as React from 'react';
+import { useMatches } from 'react-router-dom';
 import { TransactionCreate } from '../transaction';
 
 const UsersToolbar: React.FC = () => {
+  const matches = useMatches();
+  const pathname = matches[matches.length - 1].pathname;
   return (
     <Box
       display="flex"
@@ -18,11 +22,17 @@ const UsersToolbar: React.FC = () => {
         aria-label="outlined primary button group"
       >
         <Button>Create Profile</Button>
-        <Button>Add Account</Button>
-        <Button>Create Portfolio</Button>
-        <Button>Add Crypto</Button>
+        {matchRuleExpl(pathname, '*/profiles/*') && (
+          <Button>Add Account</Button>
+        )}
+        {matchRuleExpl(pathname, '*/accounts/*') && (
+          <Button>Create Portfolio</Button>
+        )}
+        {matchRuleExpl(pathname, '*/portfolios/*') && (
+          <Button>Add Crypto</Button>
+        )}
       </ButtonGroup>
-      <TransactionCreate />
+      {matchRuleExpl(pathname, '*/profiles/*') && <TransactionCreate />}
     </Box>
   );
 };

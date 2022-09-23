@@ -22,8 +22,6 @@ import * as React from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 
 const User: React.FC = () => {
-  const location = useLocation();
-  console.log(location);
   const { userId } = useParams<UserPath>();
   const {
     data: user,
