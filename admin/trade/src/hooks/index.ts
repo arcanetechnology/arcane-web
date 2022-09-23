@@ -15,6 +15,8 @@ import {
 } from '@/types';
 
 export * from './useEventListener';
+export * from './useAuth';
+export * from './useFirebase';
 
 export const useTransactionData = (transactionId: string) => {
   const transaction = useTradeSelector((s) =>

@@ -1,14 +1,7 @@
 /** @format */
 
 import type { FirebaseOptions } from 'firebase/app';
-import firebase from 'firebase/app'; // include the Firebase module
-import {
-  getAuth,
-  getRedirectResult,
-  signInWithRedirect,
-  SAMLAuthProvider,
-  signOut,
-} from 'firebase/auth';
+import { initializeApp } from 'firebase/app'; // include the Firebase module
 
 const config: FirebaseOptions = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -20,8 +13,4 @@ const config: FirebaseOptions = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const app = firebase.initializeApp(config);
-const auth = getAuth(app);
-const provider = new SAMLAuthProvider(import.meta.env.VITE_SAML_PROVIDER_ID);
-
-export { auth, provider, signInWithRedirect, getRedirectResult, signOut };
+export const app = initializeApp(config);

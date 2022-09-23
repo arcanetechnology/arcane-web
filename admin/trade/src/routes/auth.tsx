@@ -1,10 +1,12 @@
 /** @format */
 
+import { useRedirectAuth } from '@/hooks';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import * as React from 'react';
 
 const Auth: React.FC = () => {
+  useRedirectAuth(import.meta.env.VITE_GOOGLE_TENANT_ID);
   return (
     <Box
       position={'absolute'}

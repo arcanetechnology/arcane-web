@@ -4,15 +4,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './state';
 
 type Auth = {
-  email: string;
-  name: string;
-  photoUrl: string;
-};
-
-type LoginPayload = {
-  email: string;
-  name: string;
-  photoUrl: string;
+  email: string | null;
+  uid: string;
+  photoUrl: string | null;
+  displayName: string | null;
 };
 
 const authSlice = createSlice({
@@ -21,7 +16,7 @@ const authSlice = createSlice({
     auth: null as Auth | null,
   },
   reducers: {
-    login: (state, action: PayloadAction<LoginPayload>) => {
+    login: (state, action: PayloadAction<Auth>) => {
       state.auth = action.payload;
     },
     logout: (state) => {
