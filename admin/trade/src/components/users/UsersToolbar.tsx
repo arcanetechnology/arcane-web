@@ -2,7 +2,7 @@
 
 import { GAP } from '@/constants';
 import { matchRuleExpl } from '@/utils';
-import { Box, Button, ButtonGroup } from '@mui/material';
+import { Box, Button, ButtonGroup, Grow } from '@mui/material';
 import * as React from 'react';
 import { useMatches } from 'react-router-dom';
 import { TransactionCreate } from '../transaction';
@@ -23,16 +23,29 @@ const UsersToolbar: React.FC = () => {
       >
         <Button>Create Profile</Button>
         {matchRuleExpl(pathname, '*/profiles/*') && (
-          <Button>Add Account</Button>
+          <Grow in={matchRuleExpl(pathname, '*/profiles/*')}>
+            <Button>Add Account</Button>
+          </Grow>
         )}
         {matchRuleExpl(pathname, '*/accounts/*') && (
-          <Button>Create Portfolio</Button>
+          <Grow in={matchRuleExpl(pathname, '*/accounts/*')}>
+            <Button>Create Portfolio</Button>
+          </Grow>
         )}
         {matchRuleExpl(pathname, '*/portfolios/*') && (
-          <Button>Add Crypto</Button>
+          <Grow
+            in={matchRuleExpl(pathname, '*/portfolios/*')}
+            exit={!matchRuleExpl(pathname, '*/portfolios/*')}
+          >
+            <Button>Add Crypto</Button>
+          </Grow>
         )}
       </ButtonGroup>
-      {matchRuleExpl(pathname, '*/profiles/*') && <TransactionCreate />}
+      {matchRuleExpl(pathname, '*/profiles/*') && (
+        <Grow in={matchRuleExpl(pathname, '*/profiles/*')}>
+          <Button variant="contained">Create Transaction</Button>
+        </Grow>
+      )}
     </Box>
   );
 };
