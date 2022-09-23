@@ -1,21 +1,36 @@
 /** @format */
 
-import { AppBar, Box, Toolbar } from '@mui/material';
+import { AppBar, Avatar, Chip, Toolbar } from '@mui/material';
 import * as React from 'react';
 import { ReactComponent as Logo } from '@/assets/logo.svg';
 import { Container } from '@mui/system';
+import { Auth } from '@/types/frontend';
 
-const NavigationBar: React.FC = () => {
+type NavigationBarProps = {
+  user: Auth;
+};
+
+const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
   return (
     <AppBar color="transparent" position="sticky">
       <Toolbar
         variant="regular"
         component={Container}
         maxWidth="xl"
-        sx={{ display: 'flex', flexDirection: 'space-between' }}
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
       >
         <Logo />
-        <Box></Box>
+        <Chip
+          size="medium"
+          avatar={<Avatar alt={user.displayName ?? ''} src={user.photoUrl} />}
+          label={user.email}
+          variant="outlined"
+        />
       </Toolbar>
     </AppBar>
   );

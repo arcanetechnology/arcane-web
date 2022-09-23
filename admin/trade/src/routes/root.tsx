@@ -39,10 +39,9 @@ const Root: React.FC<RootProps> = ({ user }) => {
   const submit = useSubmit();
   const debouncedSubmit = useDebounce(submit, 500);
   const navigation = useNavigation();
-  getPath({ userId: 'user-1' }, 'profile');
   return (
     <React.Fragment>
-      <NavigationBar />
+      <NavigationBar user={user} />
       <Container component="main" maxWidth="xl" sx={{ mt: 5 }}>
         <TradeBreadCrumbs />
         <Grid container spacing={GAP}>
