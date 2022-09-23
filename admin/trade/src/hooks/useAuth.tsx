@@ -8,10 +8,10 @@ export const useLogin = (path: string) => {
   const dispatch = useTradeDispatch();
   const navigate = useNavigate();
   const authorize = (
-    email: string | null,
+    email: string | undefined,
     uid: string,
-    photoUrl: string | null,
-    displayName: string | null
+    photoUrl: string | undefined,
+    displayName: string | undefined
   ) => {
     dispatch(login({ email, uid, photoUrl, displayName }));
     navigate(path);

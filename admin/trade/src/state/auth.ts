@@ -1,14 +1,8 @@
 /** @format */
 
+import { Auth } from '@/types/frontend';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './state';
-
-type Auth = {
-  email: string | null;
-  uid: string;
-  photoUrl: string | null;
-  displayName: string | null;
-};
 
 const authSlice = createSlice({
   name: 'auth',

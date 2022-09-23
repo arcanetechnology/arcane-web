@@ -30,7 +30,12 @@ export const useRedirectAuth = (tenantId: string) => {
           signInWithRedirect(auth, provider);
         } else {
           const { email, uid, photoURL, displayName } = result.user;
-          authorize(email, uid, photoURL, displayName);
+          authorize(
+            email ?? undefined,
+            uid,
+            photoURL ?? undefined,
+            displayName ?? undefined
+          );
         }
       })
       .catch((err) => {

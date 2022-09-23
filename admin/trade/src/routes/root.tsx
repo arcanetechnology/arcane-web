@@ -26,8 +26,13 @@ import {
 } from '@mui/material';
 import { Add, Loop } from '@mui/icons-material';
 import { toast } from 'react-toastify';
+import { Auth } from '@/types/frontend';
 
-const Root: React.FC = () => {
+type RootProps = {
+  user: Auth;
+};
+
+const Root: React.FC<RootProps> = ({ user }) => {
   const { q } = useLoaderData() as { q: string };
   const { data: users, isLoading, refetch } = useGetUsersQuery(q);
   const [addUser, { isLoading: isAddUserLoading }] = useAddUserMutation();

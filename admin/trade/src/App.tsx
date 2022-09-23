@@ -22,11 +22,7 @@ import Auth from './routes/auth';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <ProtectedRoute>
-        <Root />
-      </ProtectedRoute>
-    ),
+    element: <ProtectedRoute>{(user) => <Root user={user} />}</ProtectedRoute>,
     errorElement: <ErrorPage />,
     loader: rootLoader,
     children: [

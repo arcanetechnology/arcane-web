@@ -3,11 +3,12 @@
 import { useAuthStateChanged, useLogout } from '@/hooks';
 import { useTradeSelector } from '@/state';
 import { selectAuth } from '@/state/auth';
+import { Auth } from '@/types/frontend';
 import * as React from 'react';
 import { Navigate } from 'react-router-dom';
 
 type ProtectedRouteProps = {
-  children: React.ReactNode;
+  children: (auth: Auth) => React.ReactNode;
 };
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
@@ -24,7 +25,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     }
   });
 
-  return <React.Fragment>{children}</React.Fragment>;
+  return <React.Fragment>{children(auth)}</React.Fragment>;
 };
 
 export default ProtectedRoute;
