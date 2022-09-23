@@ -19,9 +19,9 @@ import {
 } from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 
-const User: React.FC = () => {
+const ViewUser: React.FC = () => {
   const { userId } = useParams<UserPath>();
   const {
     data: user,
@@ -65,4 +65,4 @@ const User: React.FC = () => {
   );
 };
 
-export default User;
+export default ViewUser;

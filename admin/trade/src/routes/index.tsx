@@ -1,6 +1,7 @@
 /** @format */
 
 import { GAP } from '@/constants';
+import { Add } from '@mui/icons-material';
 import {
   Card,
   CardActionArea,
@@ -45,12 +46,26 @@ const Index: React.FC = () => {
             </CardContent>
           </CardActionArea>
         </Card>
-        {/* <Card sx={{ width: 200 }}>
-          <CardContent>
-            <Typography variant="subtitle2">Total Virtual Accounts</Typography>
-            <Typography variant="h2">16</Typography>
-          </CardContent>
-        </Card> */}
+        <Card
+          sx={{
+            width: 200,
+            textAlign: 'center',
+            height: 140,
+            justifyContent: 'center',
+            display: 'flex',
+          }}
+        >
+          <CardActionArea
+            component={NavLink}
+            to="create"
+            LinkComponent={NavLink}
+          >
+            <CardContent>
+              <Add />
+              <Typography variant="subtitle1">Create New User</Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
       </Box>
       <div
         className="tradingview-widget-container"

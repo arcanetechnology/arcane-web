@@ -5,7 +5,6 @@ import ArcaneThemeProvider from './theme';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root, { loader as rootLoader } from './routes/root';
 import ErrorPage from './error-page';
-import User from './routes/user';
 import Edit from './routes/edit';
 import Profiles from './routes/profiles';
 import Index from './routes';
@@ -18,6 +17,7 @@ import Portfolio from './routes/portfolio';
 import Cryptos from './routes/cryptos';
 import Custody from './routes/custody';
 import Auth from './routes/auth';
+import { CreateUser, ViewUser } from './routes/user';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       { index: true, element: <Index /> },
       {
         path: ':userId',
-        element: <User />,
+        element: <ViewUser />,
         errorElement: <GenericError />,
         children: [
           {
@@ -83,6 +83,11 @@ const router = createBrowserRouter([
         path: 'custody',
         element: <Custody />,
         errorElement: <ErrorPage />,
+      },
+      {
+        path: 'create',
+        element: <CreateUser />,
+        errorElement: <GenericError />,
       },
     ],
   },
