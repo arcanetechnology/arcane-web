@@ -11,7 +11,7 @@ import Profiles from './routes/profiles';
 import Index from './routes';
 import Profile from './routes/profile';
 import Accounts from './routes/accounts';
-import { GenericError } from './components';
+import { GenericError, ProtectedRoute } from './components';
 import Account from './routes/account';
 import Portfolios from './routes/portfolios';
 import Portfolio from './routes/portfolio';
@@ -22,7 +22,11 @@ import Auth from './routes/auth';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
+    element: (
+      <ProtectedRoute>
+        <Root />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
     loader: rootLoader,
     children: [
