@@ -22,6 +22,7 @@ import {
   StakeholderCryptoAccount,
   CreateProfileRequest,
   CustodyAccount,
+  CreateAccountRequest,
 } from '@/types/backend';
 import {
   AccountPath,
@@ -286,20 +287,50 @@ export const handlers = [
       return res(ctx.status(200), ctx.json(accounts), ctx.delay(400));
     }
   ),
-  rest.get(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId`,
+
+  rest.post(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}`,
     (req, res, ctx) => {
-      const { userId, profileId, accountId } = req.params as AccountPath;
-      console.log('user id', userId);
-      console.log('profile id', profileId);
-      console.log('account id', accountId);
+      const { userId, profileId } = req.params as ProfilePath;
+      const { alias, id, portfolios, balance, currency, custodyAccountId } =
+        req.body as CreateAccountRequest;
+
+      accountState = accountAdapter.addOne(accountState, {
+        alias,
+        id,
+        balance,
+        currency,
+        custodyAccountId,
+        portfolios: portfolios ?? [],
+      });
+
+      const profile = profileState.entities[profileId];
+
+      profileState = profileAdapter.updateOne(profileState, {
+        id: profileId,
+        changes: {
+          accounts: [...(profile?.accounts ?? []), id],
+        },
+      });
+
       return res(
-        ctx.status(200),
-        ctx.json(accountState.entities['1']),
+        ctx.json(Object.values(accountState.entities)),
         ctx.delay(400)
       );
     }
   ),
+  rest.get(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId`,
+    (req, res, ctx) => {
+      const { accountId } = req.params as AccountPath;
+      return res(
+        ctx.status(200),
+        ctx.json(accountState.entities[accountId]),
+        ctx.delay(400)
+      );
+    }
+  ),
+
   // portfolios
   rest.get(
     `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}`,

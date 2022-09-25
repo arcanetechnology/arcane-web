@@ -8,14 +8,17 @@ import ErrorPage from './error-page';
 import Edit from './routes/edit';
 import Index from './routes';
 import { GenericError, ProtectedRoute } from './components';
-import Portfolios from './routes/portfolios';
-import Portfolio from './routes/portfolio';
 import Cryptos from './routes/cryptos';
 import Auth from './routes/auth';
 import { CreateUser, ViewUser } from './routes/user';
 import { CreateProfile, ViewProfile, ViewProfiles } from './routes/profiles';
 import { ViewAccounts, ViewAccount, CreateAccount } from './routes/accounts';
 import { ViewCustody, ViewCustodies } from './routes/custodies';
+import {
+  CreatePortfolio,
+  ViewPortfolio,
+  ViewPortfolios,
+} from './routes/portfolios/index';
 
 const router = createBrowserRouter([
   {
@@ -69,12 +72,19 @@ const router = createBrowserRouter([
                 children: [
                   {
                     path: 'portfolios',
-                    element: <Portfolios />,
+                    element: <ViewPortfolios />,
                     errorElement: <GenericError />,
+                    children: [
+                      {
+                        path: 'create',
+                        element: <CreatePortfolio />,
+                        errorElement: <GenericError />,
+                      },
+                    ],
                   },
                   {
                     path: 'portfolios/:portfolioId',
-                    element: <Portfolio />,
+                    element: <ViewPortfolio />,
                     errorElement: <GenericError />,
                     children: [
                       {

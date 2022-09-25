@@ -20,7 +20,6 @@ const ViewAccount: React.FC = () => {
   } = useGetAccountQuery({ userId, profileId, accountId } as AccountPath);
 
   if (isError) throw new Error('some error occured in api call');
-  if (isLoading || isFetching) return <TextLoading />;
   if (!account) return null;
   return (
     <Stack gap={GAP}>

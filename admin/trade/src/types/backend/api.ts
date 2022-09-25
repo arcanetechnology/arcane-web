@@ -28,6 +28,10 @@ export type CreateProfileRequest = Omit<Optional<Profile, 'accounts'>, 'id'>;
 
 export type GetAccountsResponse = Array<StakeholderFiatAccountItem>;
 export type GetAccountResponse = StakeholderFiatAccount;
+export type CreateAccountRequest = Optional<
+  StakeholderFiatAccount,
+  'portfolios'
+>;
 
 // portfolio api types
 

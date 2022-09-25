@@ -23,6 +23,8 @@ const ViewProfile: React.FC = () => {
   // if (isLoading || isFetching) return <TextLoading />;
   if (!profile) return null;
   // box is same as user box
+
+  console.log(profile.accounts.length);
   return (
     <Stack gap={GAP}>
       <Box

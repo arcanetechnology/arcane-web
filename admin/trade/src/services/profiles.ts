@@ -24,7 +24,6 @@ export const profilesApi = api.injectEndpoints({
         url: getProfilesUrl(args),
       }),
       providesTags: (result) => {
-        console.log(result);
         return result
           ? [
               ...result.map(({ id }) => ({ type: 'Profiles', id } as const)),

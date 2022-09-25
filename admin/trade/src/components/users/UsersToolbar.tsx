@@ -19,6 +19,10 @@ const UsersToolbar: React.FC = () => {
   const createAccount = () => {
     navigate(pathname + '/create');
   };
+
+  const createPortfolio = () => {
+    navigate(pathname + '/create');
+  };
   return (
     <Box
       display="flex"
@@ -38,7 +42,7 @@ const UsersToolbar: React.FC = () => {
         )}
         {matchRuleExpl(pathname, '*/accounts/*') && (
           <Grow in={matchRuleExpl(pathname, '*/accounts/*')}>
-            <Button>Create Portfolio</Button>
+            <Button onClick={createPortfolio}>Create Portfolio</Button>
           </Grow>
         )}
         {matchRuleExpl(pathname, '*/portfolios/*') && (
