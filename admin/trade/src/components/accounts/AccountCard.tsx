@@ -1,7 +1,10 @@
 /** @format */
 
 import { GAP } from '@/constants';
-import { StakeholderFiatAccount } from '@/types/backend';
+import {
+  StakeholderFiatAccount,
+  StakeholderFiatAccountItem,
+} from '@/types/backend';
 import {
   Card,
   CardContent,
@@ -15,7 +18,7 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 
 type ProfileCardProps = {
-  account: Omit<StakeholderFiatAccount, 'portfolios'>;
+  account: StakeholderFiatAccountItem;
 };
 
 const AccountCard: React.FC<ProfileCardProps> = ({ account }) => {

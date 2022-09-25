@@ -4,12 +4,21 @@ import { GAP } from '@/constants';
 import { matchRuleExpl } from '@/utils';
 import { Box, Button, ButtonGroup, Grow } from '@mui/material';
 import * as React from 'react';
-import { useMatches } from 'react-router-dom';
+import { useMatches, NavLink, useNavigate } from 'react-router-dom';
 import { TransactionCreate } from '../transaction';
 
 const UsersToolbar: React.FC = () => {
   const matches = useMatches();
   const pathname = matches[matches.length - 1].pathname;
+  const navigate = useNavigate();
+
+  const createProfile = () => {
+    navigate('profiles/create');
+  };
+
+  const createAccount = () => {
+    navigate(pathname + '/create');
+  };
   return (
     <Box
       display="flex"
@@ -21,10 +30,10 @@ const UsersToolbar: React.FC = () => {
         variant="outlined"
         aria-label="outlined primary button group"
       >
-        <Button>Create Profile</Button>
+        <Button onClick={createProfile}>Create Profile</Button>
         {matchRuleExpl(pathname, '*/profiles/*') && (
           <Grow in={matchRuleExpl(pathname, '*/profiles/*')}>
-            <Button>Add Account</Button>
+            <Button onClick={createAccount}>Add Account</Button>
           </Grow>
         )}
         {matchRuleExpl(pathname, '*/accounts/*') && (

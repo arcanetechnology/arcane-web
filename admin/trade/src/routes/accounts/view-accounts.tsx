@@ -4,9 +4,10 @@ import { AccountCard, CardsLoading } from '@/components';
 import { useGetAccountsQuery } from '@/services';
 import { ProfilePath } from '@/types/frontend';
 import * as React from 'react';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import Grid from '@mui/material/Unstable_Grid2';
 import { Alert } from '@mui/material';
+import { Stack } from '@mui/system';
 
 const Accounts: React.FC = () => {
   const { userId, profileId } = useParams<ProfilePath>();
@@ -22,7 +23,8 @@ const Accounts: React.FC = () => {
   if (!accounts) return null;
 
   return (
-    <React.Fragment>
+    <Stack>
+      <Outlet />
       {accounts.length > 0 ? (
         <Grid container spacing={2}>
           {accounts.map((account) => (
@@ -34,7 +36,7 @@ const Accounts: React.FC = () => {
           profile has no accounts
         </Alert>
       )}
-    </React.Fragment>
+    </Stack>
   );
 };
 

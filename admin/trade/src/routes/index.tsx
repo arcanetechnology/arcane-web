@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const Index: React.FC = () => {
   return (

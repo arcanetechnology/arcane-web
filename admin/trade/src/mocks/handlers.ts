@@ -19,6 +19,7 @@ import {
   StakeholderFiatAccount,
   Portfolio,
   StakeholderCryptoAccount,
+  CreateProfileRequest,
 } from '@/types/backend';
 import {
   AccountPath,
@@ -35,8 +36,8 @@ const adapter = createEntityAdapter<User>({
 
 let state = adapter.getInitialState();
 const initialData: Array<User> = [
-  { id: '1', email: 'test@test.com', profiles: ['1', '2'] },
-  { id: '2', email: 'test2@test.com', profiles: ['1', '2'] },
+  { id: '1', email: 'test@test.com', profiles: [] },
+  { id: '2', email: 'test2@test.com', profiles: [] },
 ];
 state = adapter.setAll(state, initialData);
 
@@ -45,20 +46,7 @@ const profileAdapter = createEntityAdapter<Profile>({
   selectId: (profile) => profile.id,
 });
 let profileState = profileAdapter.getInitialState();
-const initialProfileState: Array<Profile> = [
-  {
-    id: '1',
-    accounts: ['1', '2'],
-    type: 'BUSINESS',
-    alias: 'default-profile-1',
-  },
-  {
-    id: '2',
-    accounts: ['1', '2'],
-    type: 'PERSONAL',
-    alias: 'default-personal-profile-2',
-  },
-];
+const initialProfileState: Array<Profile> = [];
 
 profileState = profileAdapter.setAll(profileState, initialProfileState);
 
@@ -69,24 +57,7 @@ const accountAdapter = createEntityAdapter<StakeholderFiatAccount>({
 });
 
 let accountState = accountAdapter.getInitialState();
-const initialAccountState: Array<StakeholderFiatAccount> = [
-  {
-    id: '1',
-    custodyAccountId: 'custody-1',
-    alias: 'test-account-alias',
-    balance: 100000,
-    currency: 'USD',
-    portfolio: ['1', '2'],
-  },
-  {
-    id: '2',
-    custodyAccountId: 'custody-2',
-    alias: 'test-account-alias-2',
-    balance: 128192635,
-    currency: 'NOK',
-    portfolio: ['1', '2'],
-  },
-];
+const initialAccountState: Array<StakeholderFiatAccount> = [];
 
 accountState = accountAdapter.setAll(accountState, initialAccountState);
 
@@ -142,7 +113,7 @@ export { state, profileState, accountState, portfolioState, cryptoState };
 
 export const handlers = [
   rest.get(`/${USERS_ENDPOINT}`, (req, res, ctx) => {
-    const email = req.url.searchParams.get('q');
+    const email = req.url.searchParams.get('q') as string;
 
     if (!email) {
       return res(
@@ -171,7 +142,7 @@ export const handlers = [
   rest.post(`/${USERS_ENDPOINT}`, async (req, res, ctx) => {
     const { email, profiles } = req.body as CreateUserRequest;
     state = adapter.addOne(state, {
-      email: email ?? '',
+      email: email,
       id: nanoid(),
       profiles: profiles ?? [],
     });
@@ -192,12 +163,43 @@ export const handlers = [
     state = adapter.removeOne(state, userId);
     return res(ctx.status(200), ctx.delay(400));
   }),
+  // profiles
   rest.get(
     `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}`,
     (req, res, ctx) => {
       const { userId } = req.params as UserPath;
+
+      const user = state.entities[userId];
+
+      const profiles = user?.profiles.map((p) => profileState.entities[p]);
+
+      return res(ctx.status(200), ctx.json(profiles), ctx.delay(400));
+    }
+  ),
+  rest.post(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}`,
+    (req, res, ctx) => {
+      const { userId } = req.params as UserPath;
+      const { alias, type, accounts } = req.body as CreateProfileRequest;
+      const profileId = nanoid();
+      profileState = profileAdapter.addOne(profileState, {
+        alias: alias,
+        type: type,
+        id: profileId,
+        accounts: accounts ?? [],
+      });
+
+      const userSelector = adapter.getSelectors();
+      const user = userSelector.selectById(state, userId);
+
+      state = adapter.updateOne(state, {
+        id: userId,
+        changes: {
+          profiles: [...(user?.profiles ?? []), profileId],
+        },
+      });
+
       return res(
-        ctx.status(200),
         ctx.json(Object.values(profileState.entities)),
         ctx.delay(400)
       );
@@ -207,11 +209,10 @@ export const handlers = [
     `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId`,
     (req, res, ctx) => {
       const { userId, profileId } = req.params as ProfilePath;
-      console.log('user id', userId);
-      console.log('profile id', profileId);
+
       return res(
         ctx.status(200),
-        ctx.json(profileState.entities['1']),
+        ctx.json(profileState.entities[profileId]),
         ctx.delay(400)
       );
     }
@@ -221,11 +222,9 @@ export const handlers = [
     `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}`,
     (req, res, ctx) => {
       const { userId, profileId } = req.params as ProfilePath;
-      return res(
-        ctx.status(200),
-        ctx.json(Object.values(accountState.entities)),
-        ctx.delay(400)
-      );
+      const profiles = profileState.entities[profileId];
+      const accounts = profiles?.accounts.map((a) => accountState.entities[a]);
+      return res(ctx.status(200), ctx.json(accounts), ctx.delay(400));
     }
   ),
   rest.get(

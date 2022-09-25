@@ -10,7 +10,7 @@ import { Box, Stack } from '@mui/system';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 
-const Account: React.FC = () => {
+const ViewAccount: React.FC = () => {
   const { userId, profileId, accountId } = useParams<AccountPath>();
   const {
     data: account,
@@ -46,4 +46,4 @@ const Account: React.FC = () => {
   );
 };
 
-export default Account;
+export default ViewAccount;

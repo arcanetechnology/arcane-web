@@ -18,11 +18,7 @@ type UserFormProps = {
 };
 
 const UserForm: React.FC<UserFormProps> = ({ handleSubmit }) => {
-  const {
-    register,
-    handleSubmit: onSubmit,
-    formState: { errors },
-  } = useForm<CreateUserForm>({
+  const { register, handleSubmit: onSubmit } = useForm<CreateUserForm>({
     resolver: zodResolver(schema as any),
   });
 
@@ -42,7 +38,6 @@ const UserForm: React.FC<UserFormProps> = ({ handleSubmit }) => {
         label="Email"
         {...register('email')}
       />
-      {errors.email?.message && <p>{errors.email?.message}</p>}
       <Box width="100%" display="flex" flexDirection="row" gap={GAP}>
         <Button variant="contained" type="submit" id="create-user-submit">
           Submit

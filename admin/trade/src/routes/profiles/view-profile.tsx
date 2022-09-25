@@ -5,12 +5,12 @@ import { GAP } from '@/constants';
 import { useGetProfileQuery } from '@/services';
 import { ProfilePath } from '@/types/frontend';
 import { AccountBalance } from '@mui/icons-material';
-import { Divider, Typography, Badge } from '@mui/material';
+import { Divider, Typography, Badge, Chip } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 
-const Profile: React.FC = () => {
+const ViewProfile: React.FC = () => {
   const { profileId, userId } = useParams<ProfilePath>();
   const {
     data: profile,
@@ -20,7 +20,7 @@ const Profile: React.FC = () => {
   } = useGetProfileQuery({ userId, profileId } as ProfilePath);
 
   if (isError) throw new Error('some error occured in api call');
-  if (isLoading || isFetching) return <TextLoading />;
+  // if (isLoading || isFetching) return <TextLoading />;
   if (!profile) return null;
   // box is same as user box
   return (
@@ -35,7 +35,11 @@ const Profile: React.FC = () => {
           <Badge badgeContent={profile.accounts.length} color="secondary">
             <AccountBalance />
           </Badge>
-          <Typography variant="h4">{profile.type}</Typography>
+          <Typography variant="h4">{profile.alias}</Typography>
+          <Chip
+            label={profile.type}
+            color={profile.type === 'BUSINESS' ? 'success' : 'info'}
+          />
         </Box>
         <Typography variant="caption">{profile.id}</Typography>
       </Box>
@@ -45,4 +49,4 @@ const Profile: React.FC = () => {
   );
 };
 
-export default Profile;
+export default ViewProfile;

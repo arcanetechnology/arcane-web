@@ -14,16 +14,14 @@ import {
 } from './entities';
 
 // user api types
-export type CreateUserRequest = Omit<
-  Optional<User, 'profiles' | 'email'>,
-  'id'
->;
+export type CreateUserRequest = Omit<Optional<User, 'profiles'>, 'id'>;
 export type GetUsersResponse = Array<UserItem>;
 export type GetUserResponse = User;
 
 // profile api types
 export type GetProfilesResponse = Array<ProfileItem>;
 export type GetProfileResponse = Profile;
+export type CreateProfileRequest = Omit<Optional<Profile, 'accounts'>, 'id'>;
 
 // accounts api types
 

@@ -3,12 +3,13 @@
 import * as React from 'react';
 import { useGetProfilesQuery } from '@/services';
 import { UserPath } from '@/types/frontend';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { ListLoading, ProfileList } from '@/components';
 import { Stack } from '@mui/system';
 import { GAP } from '@/constants';
+import { Box, LinearProgress } from '@mui/material';
 
-const Profiles: React.FC = () => {
+const ViewProfiles: React.FC = () => {
   const { userId } = useParams<UserPath>();
   const {
     data: profiles,
@@ -18,14 +19,15 @@ const Profiles: React.FC = () => {
   } = useGetProfilesQuery(userId!);
 
   if (isError) throw new Error('some error occured in api call');
-  if (isLoading || isFetching) return <ListLoading />;
   if (!profiles) return null;
 
   return (
     <Stack gap={GAP}>
+      <Outlet />
+      <Box height={10}>{(isLoading || isFetching) && <LinearProgress />}</Box>
       <ProfileList profiles={profiles} />
     </Stack>
   );
 };
 
-export default Profiles;
+export default ViewProfiles;

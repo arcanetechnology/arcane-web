@@ -6,18 +6,16 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root, { loader as rootLoader } from './routes/root';
 import ErrorPage from './error-page';
 import Edit from './routes/edit';
-import Profiles from './routes/profiles';
 import Index from './routes';
-import Profile from './routes/profile';
-import Accounts from './routes/accounts';
 import { GenericError, ProtectedRoute } from './components';
-import Account from './routes/account';
 import Portfolios from './routes/portfolios';
 import Portfolio from './routes/portfolio';
 import Cryptos from './routes/cryptos';
 import Custody from './routes/custody';
 import Auth from './routes/auth';
 import { CreateUser, ViewUser } from './routes/user';
+import { CreateProfile, ViewProfile, ViewProfiles } from './routes/profiles';
+import { ViewAccounts, ViewAccount, CreateAccount } from './routes/accounts';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +24,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     loader: rootLoader,
     children: [
-      { index: true, element: <Index /> },
+      {
+        index: true,
+        element: <Index />,
+      },
       {
         path: ':userId',
         element: <ViewUser />,
@@ -34,22 +35,36 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'profiles',
-            element: <Profiles />,
+            element: <ViewProfiles />,
             errorElement: <GenericError />,
+            children: [
+              {
+                path: 'create',
+                element: <CreateProfile />,
+                errorElement: <GenericError />,
+              },
+            ],
           },
           {
             path: 'profiles/:profileId',
-            element: <Profile />,
+            element: <ViewProfile />,
             errorElement: <GenericError />,
             children: [
               {
                 path: 'accounts',
-                element: <Accounts />,
+                element: <ViewAccounts />,
                 errorElement: <GenericError />,
+                children: [
+                  {
+                    path: 'create',
+                    element: <CreateAccount />,
+                    errorElement: <GenericError />,
+                  },
+                ],
               },
               {
                 path: 'accounts/:accountId',
-                element: <Account />,
+                element: <ViewAccount />,
                 errorElement: <GenericError />,
                 children: [
                   {
@@ -88,6 +103,7 @@ const router = createBrowserRouter([
         path: 'create',
         element: <CreateUser />,
         errorElement: <GenericError />,
+        children: [{ path: 'profiles' }],
       },
     ],
   },
