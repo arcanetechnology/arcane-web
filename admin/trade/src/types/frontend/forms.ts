@@ -2,4 +2,4 @@
 
 import { User } from '../backend';
 
-export type UserForm = Omit<User, 'profiles' | 'id'>;
+export type CreateUserForm = Omit<User, 'profiles' | 'id'>;

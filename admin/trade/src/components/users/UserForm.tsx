@@ -1,32 +1,40 @@
 /** @format */
 
-import { TextField } from '@mui/material';
+import { Button, FormControl, TextField } from '@mui/material';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import { UserForm as UserFormType } from '@/types/frontend';
+import { CreateUserForm } from '@/types/frontend';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { Box } from '@mui/system';
+import { GAP } from '@/constants';
 
 const schema = z.object({
   email: z.string().email(),
 });
 
 type UserFormProps = {
-  submitRef: React.LegacyRef<HTMLButtonElement>;
-  userSubmit: (data: UserFormType) => void;
+  handleSubmit: (data: CreateUserForm) => void;
 };
 
-const UserForm: React.FC<UserFormProps> = ({ submitRef, userSubmit }) => {
+const UserForm: React.FC<UserFormProps> = ({ handleSubmit }) => {
   const {
     register,
-    handleSubmit,
+    handleSubmit: onSubmit,
     formState: { errors },
-  } = useForm<UserFormType>({
+  } = useForm<CreateUserForm>({
     resolver: zodResolver(schema as any),
   });
 
   return (
-    <form id="create-user-form" onSubmit={handleSubmit(userSubmit)}>
+    <Box
+      id="create-user-form"
+      display="flex"
+      flexDirection="column"
+      gap={GAP}
+      component="form"
+      onSubmit={onSubmit(handleSubmit)}
+    >
       <TextField
         type="email"
         size="medium"
@@ -35,8 +43,15 @@ const UserForm: React.FC<UserFormProps> = ({ submitRef, userSubmit }) => {
         {...register('email')}
       />
       {errors.email?.message && <p>{errors.email?.message}</p>}
-      <button ref={submitRef} type="submit" style={{ display: 'none' }} />
-    </form>
+      <Box width="100%" display="flex" flexDirection="row" gap={GAP}>
+        <Button variant="contained" type="submit" id="create-user-submit">
+          Submit
+        </Button>
+        <Button type="reset" id="create-user-reset">
+          Reset
+        </Button>
+      </Box>
+    </Box>
   );
 };
 

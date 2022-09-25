@@ -50,7 +50,6 @@ const Index: React.FC = () => {
           sx={{
             width: 200,
             textAlign: 'center',
-            height: 140,
             justifyContent: 'center',
             display: 'flex',
           }}
