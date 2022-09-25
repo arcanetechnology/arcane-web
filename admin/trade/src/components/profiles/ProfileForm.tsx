@@ -15,8 +15,13 @@ import {
   Radio,
   TextField,
   Button,
+  IconButton,
+  Card,
+  CardContent,
+  Stack,
 } from '@mui/material';
 import { profileTypes } from '@/types/backend';
+import { Add } from '@mui/icons-material';
 
 const schema = z.object({
   type: z.enum(profileTypes),
@@ -39,47 +44,50 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ handleSubmit }) => {
     },
   });
   return (
-    <Box
-      id="create-user-form"
-      display="flex"
-      flexDirection="column"
-      gap={GAP}
-      component="form"
-      onSubmit={onSubmit(handleSubmit)}
-    >
-      <FormControl required component="fieldset">
-        <FormLabel id="profile-type-radio-button-group" component="legend">
-          Profile Type
-        </FormLabel>
-        <Controller
-          rules={{ required: true }}
-          control={control}
-          aria-labelledby="profile-type-radio-button-group"
-          name="type"
-          render={({ field }) => (
-            <RadioGroup row {...field}>
-              <FormControlLabel
-                value="BUSINESS"
-                control={<Radio />}
-                label="Business"
-              />
-              <FormControlLabel
-                value="PERSONAL"
-                control={<Radio />}
-                label="Personal"
-              />
-            </RadioGroup>
-          )}
-        />
-      </FormControl>
-      <TextField label="Alias" required {...register('alias')} />
-      <Box gap={GAP} display="flex" flexDirection="row">
-        <Button type="submit" variant="contained">
-          Submit
-        </Button>
-        <Button type="reset">Reset</Button>
-      </Box>
-    </Box>
+    <Card>
+      <CardContent
+        id="create-user-form"
+        component="form"
+        onSubmit={onSubmit(handleSubmit)}
+      >
+        <Stack gap={GAP}>
+          <FormControl required component="fieldset">
+            <Controller
+              rules={{ required: true }}
+              control={control}
+              aria-labelledby="profile-type-radio-button-group"
+              name="type"
+              render={({ field }) => (
+                <RadioGroup row {...field}>
+                  <FormControlLabel
+                    value="BUSINESS"
+                    control={<Radio />}
+                    label="Business"
+                  />
+                  <FormControlLabel
+                    value="PERSONAL"
+                    control={<Radio />}
+                    label="Personal"
+                  />
+                </RadioGroup>
+              )}
+            />
+          </FormControl>
+          <Box gap={GAP} display="flex" flexDirection="row">
+            <TextField
+              size="small"
+              label="Alias"
+              required
+              {...register('alias')}
+              fullWidth
+            />
+            <IconButton size="large" type="submit">
+              <Add />
+            </IconButton>
+          </Box>
+        </Stack>
+      </CardContent>
+    </Card>
   );
 };
 

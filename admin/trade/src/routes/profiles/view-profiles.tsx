@@ -4,10 +4,9 @@ import * as React from 'react';
 import { useGetProfilesQuery } from '@/services';
 import { UserPath } from '@/types/frontend';
 import { Outlet, useParams } from 'react-router-dom';
-import { ListLoading, ProfileList } from '@/components';
+import { ListLoading, Loading, ProfileList } from '@/components';
 import { Stack } from '@mui/system';
 import { GAP } from '@/constants';
-import { Box, LinearProgress } from '@mui/material';
 
 const ViewProfiles: React.FC = () => {
   const { userId } = useParams<UserPath>();
@@ -24,8 +23,8 @@ const ViewProfiles: React.FC = () => {
   return (
     <Stack gap={GAP}>
       <Outlet />
-      <Box height={10}>{(isLoading || isFetching) && <LinearProgress />}</Box>
       <ProfileList profiles={profiles} />
+      <Loading open={isLoading || isFetching} />
     </Stack>
   );
 };

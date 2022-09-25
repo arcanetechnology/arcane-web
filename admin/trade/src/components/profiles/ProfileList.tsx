@@ -51,26 +51,22 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles }) => {
     [profiles]
   );
   return (
-    <Box height={600}>
-      <DataGrid
-        hideFooter
-        rowSpacingType="margin"
-        rows={profiles}
-        components={{
-          NoRowsOverlay: () => {
-            return (
-              <NoRowsOverlays>
-                <Typography gutterBottom variant="subtitle1">
-                  User has no Profiles
-                </Typography>
-              </NoRowsOverlays>
-            );
-          },
-        }}
-        autoHeight
-        columns={columns}
-      />
-    </Box>
+    <DataGrid
+      hideFooter
+      rowSpacingType="margin"
+      rows={profiles}
+      components={{
+        NoRowsOverlay: () => {
+          return (
+            <NoRowsOverlays>
+              <Typography variant="subtitle1">No Profiles</Typography>
+            </NoRowsOverlays>
+          );
+        },
+      }}
+      autoHeight
+      columns={columns}
+    />
   );
 };
 
