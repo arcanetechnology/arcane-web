@@ -24,6 +24,7 @@ import {
   CustodyAccount,
   CreateAccountRequest,
   CreatePortfolioRequest,
+  CreateCryptoRequest,
 } from '@/types/backend';
 import {
   AccountPath,
@@ -73,18 +74,7 @@ const portfolioAdapter = createEntityAdapter<Portfolio>({
 
 let portfolioState = portfolioAdapter.getInitialState();
 
-const initialPortfolioState: Array<Portfolio> = [
-  {
-    id: '1',
-    alias: 'portfolio-1',
-    accounts: ['crypto-1', 'crypto-2', 'crypto-3', 'crypto-4'],
-  },
-  {
-    id: '2',
-    alias: 'portfolio-2',
-    accounts: ['crypto-1', 'crypto-2', 'crypto-3', 'crypto-4'],
-  },
-];
+const initialPortfolioState: Array<Portfolio> = [];
 
 portfolioState = portfolioAdapter.setAll(portfolioState, initialPortfolioState);
 
@@ -95,22 +85,7 @@ const cryptoAdapter = createEntityAdapter<StakeholderCryptoAccount>({
 
 let cryptoState = cryptoAdapter.getInitialState();
 
-const initialCryptoState: Array<StakeholderCryptoAccount> = [
-  {
-    id: 'crypto-1',
-    alias: 'crypto-alias-1',
-    balance: 12341,
-    currency: 'ETH',
-    custodyAccountId: 'crypto-custody-1',
-  },
-  {
-    id: 'crypto-2',
-    alias: 'crypto-alias-2',
-    balance: 12341,
-    currency: 'BTC',
-    custodyAccountId: 'crypto-custody-2',
-  },
-];
+const initialCryptoState: Array<StakeholderCryptoAccount> = [];
 
 cryptoState = cryptoAdapter.setAll(cryptoState, initialCryptoState);
 
@@ -382,7 +357,7 @@ export const handlers = [
         req.params as PortfolioPath;
       return res(
         ctx.status(200),
-        ctx.json(portfolioState.entities['1']),
+        ctx.json(portfolioState.entities[portfolioId]),
         ctx.delay(400)
       );
     }
@@ -393,6 +368,37 @@ export const handlers = [
     (req, res, ctx) => {
       const { userId, profileId, accountId, portfolioId } =
         req.params as PortfolioPath;
+
+      const portfolio = portfolioState.entities[portfolioId];
+      const cryptos = portfolio?.accounts.map((c) => cryptoState.entities[c]);
+      return res(ctx.status(200), ctx.json(cryptos), ctx.delay(400));
+    }
+  ),
+  rest.post(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}/:portfolioId/${CRYPTOS_ENDPOINT}`,
+    (req, res, ctx) => {
+      const { portfolioId } = req.params as PortfolioPath;
+
+      const { alias, id, balance, currency, custodyAccountId } =
+        req.body as CreateCryptoRequest;
+
+      cryptoState = cryptoAdapter.addOne(cryptoState, {
+        alias,
+        id,
+        balance,
+        currency,
+        custodyAccountId,
+      });
+
+      const portfolio = portfolioState.entities[portfolioId];
+
+      portfolioState = portfolioAdapter.updateOne(portfolioState, {
+        id: portfolioId,
+        changes: {
+          accounts: [...(portfolio?.accounts ?? []), id],
+        },
+      });
+
       return res(
         ctx.status(200),
         ctx.json(Object.values(cryptoState.entities)),
@@ -405,14 +411,9 @@ export const handlers = [
     (req, res, ctx) => {
       const { userId, profileId, accountId, portfolioId, cryptoId } =
         req.params as CryptoPath;
-      console.log('user id', userId);
-      console.log('profile id', profileId);
-      console.log('account id', accountId);
-      console.log('portfolio id', portfolioId);
-      console.log('crypto id', cryptoId);
       return res(
         ctx.status(200),
-        ctx.json(cryptoState.entities['crypto-1']),
+        ctx.json(cryptoState.entities[cryptoId]),
         ctx.delay(400)
       );
     }

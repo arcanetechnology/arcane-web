@@ -23,6 +23,10 @@ const UsersToolbar: React.FC = () => {
   const createPortfolio = () => {
     navigate(pathname + '/create');
   };
+
+  const createCrypto = () => {
+    navigate(pathname + '/create');
+  };
   return (
     <Box
       display="flex"
@@ -50,7 +54,7 @@ const UsersToolbar: React.FC = () => {
             in={matchRuleExpl(pathname, '*/portfolios/*')}
             exit={!matchRuleExpl(pathname, '*/portfolios/*')}
           >
-            <Button>Add Crypto</Button>
+            <Button onClick={createCrypto}>Add Crypto</Button>
           </Grow>
         )}
       </ButtonGroup>

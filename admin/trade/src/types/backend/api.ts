@@ -46,6 +46,7 @@ export type CreatePortfolioRequest = Omit<
 
 export type GetCryptosResponse = Array<StakeholderCryptoAccount>;
 export type GetCryptoResponse = StakeholderCryptoAccount;
+export type CreateCryptoRequest = StakeholderCryptoAccount;
 
 // --------------- global apis ----------------- //
 

@@ -5,10 +5,8 @@ import ArcaneThemeProvider from './theme';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root, { loader as rootLoader } from './routes/root';
 import ErrorPage from './error-page';
-import Edit from './routes/edit';
 import Index from './routes';
 import { GenericError, ProtectedRoute } from './components';
-import Cryptos from './routes/cryptos';
 import Auth from './routes/auth';
 import { CreateUser, ViewUser } from './routes/user';
 import { CreateProfile, ViewProfile, ViewProfiles } from './routes/profiles';
@@ -18,7 +16,8 @@ import {
   CreatePortfolio,
   ViewPortfolio,
   ViewPortfolios,
-} from './routes/portfolios/index';
+} from './routes/portfolios';
+import { ViewCryptos, CreateCrypto } from './routes/cryptos';
 
 const router = createBrowserRouter([
   {
@@ -89,8 +88,15 @@ const router = createBrowserRouter([
                     children: [
                       {
                         path: 'cryptos',
-                        element: <Cryptos />,
+                        element: <ViewCryptos />,
                         errorElement: <GenericError />,
+                        children: [
+                          {
+                            path: 'create',
+                            element: <CreateCrypto />,
+                            errorElement: <GenericError />,
+                          },
+                        ],
                       },
                     ],
                   },
@@ -99,10 +105,6 @@ const router = createBrowserRouter([
             ],
           },
         ],
-      },
-      {
-        path: ':userId/edit',
-        element: <Edit />,
       },
       {
         path: 'custody',
