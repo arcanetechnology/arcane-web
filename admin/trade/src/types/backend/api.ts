@@ -1,6 +1,5 @@
 /** @format */
 
-import { Portfolio } from '../entities';
 import { Optional } from '../util';
 import {
   User,
@@ -11,6 +10,8 @@ import {
   ProfileItem,
   StakeholderFiatAccountItem,
   PortfolioItem,
+  CustodyAccount,
+  Portfolio,
 } from './entities';
 
 // user api types
@@ -37,3 +38,8 @@ export type GetPortfolioResponse = Portfolio;
 
 export type GetCryptosResponse = Array<StakeholderCryptoAccount>;
 export type GetCryptoResponse = StakeholderCryptoAccount;
+
+// --------------- global apis ----------------- //
+
+export type GetCustodiesResponse = Array<CustodyAccount>;
+export type GetCustodyResponse = CustodyAccount;

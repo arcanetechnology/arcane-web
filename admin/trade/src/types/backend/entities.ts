@@ -33,20 +33,23 @@ type Account = {
   id: string;
   alias: string;
   balance: number;
+};
+
+type StakeholderAccount = {
   custodyAccountId: string;
 };
 
 type FiatAccount = {
-  portfolio: Array<string>;
   currency: Currency;
 } & Account;
 
-export type StakeholderFiatAccount = FiatAccount;
+export type StakeholderFiatAccount = FiatAccount &
+  StakeholderAccount & { portfolios: Array<string> };
 
 // the way accounts api gives me each account
 export type StakeholderFiatAccountItem = Omit<
   StakeholderFiatAccount,
-  'portfolio'
+  'portfolios'
 >;
 
 export type Portfolio = {
@@ -62,4 +65,8 @@ type CryptoAccount = {
   currency: CryptoCurrency;
 } & Account;
 
-export type StakeholderCryptoAccount = CryptoAccount;
+export type StakeholderCryptoAccount = CryptoAccount & StakeholderAccount;
+
+export type CustodyFiatAccount = FiatAccount;
+export type CustodyCryptoAccount = CryptoAccount;
+export type CustodyAccount = CustodyFiatAccount | CustodyCryptoAccount;

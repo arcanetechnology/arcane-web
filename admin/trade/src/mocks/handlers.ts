@@ -10,6 +10,7 @@ import {
   ACCOUNTS_ENDPOINT,
   PORTFOLIOS_ENDPOINT,
   CRYPTOS_ENDPOINT,
+  CUSTODY_ENDPOINT,
 } from '@/constants';
 import { createEntityAdapter, nanoid } from '@reduxjs/toolkit';
 import {
@@ -20,10 +21,12 @@ import {
   Portfolio,
   StakeholderCryptoAccount,
   CreateProfileRequest,
+  CustodyAccount,
 } from '@/types/backend';
 import {
   AccountPath,
   CryptoPath,
+  CustodyPath,
   PortfolioPath,
   ProfilePath,
   UserPath,
@@ -109,7 +112,63 @@ const initialCryptoState: Array<StakeholderCryptoAccount> = [
 
 cryptoState = cryptoAdapter.setAll(cryptoState, initialCryptoState);
 
-export { state, profileState, accountState, portfolioState, cryptoState };
+// custody accounts
+
+const custodyAdapter = createEntityAdapter<CustodyAccount>({
+  selectId: (crypto) => crypto.id,
+});
+
+let custodyState = custodyAdapter.getInitialState();
+
+const initialCustodyState: Array<CustodyAccount> = [
+  {
+    id: 'real-nok-sp1',
+    alias: 'Real NOK SP1',
+    balance: 1000000000,
+    currency: 'NOK',
+  },
+  {
+    id: 'real-usd-sp1',
+    alias: 'Real USD SP1',
+    balance: 1000000000,
+    currency: 'USD',
+  },
+  {
+    id: 'real-eth-coinbase',
+    alias: 'Real ETH Coinbase',
+    balance: 1000000000,
+    currency: 'ETH',
+  },
+  {
+    id: 'real-eth-metamask',
+    alias: 'Real ETH Metamask',
+    balance: 1000000000,
+    currency: 'ETH',
+  },
+  {
+    id: 'real-matic-ftx',
+    alias: 'Real MATIC FTX',
+    balance: 1000000000,
+    currency: 'MATIC',
+  },
+  {
+    id: 'real-matic-metamask',
+    alias: 'Real MATIC Metamask',
+    balance: 1000000000,
+    currency: 'MATIC',
+  },
+];
+
+custodyState = custodyAdapter.setAll(custodyState, initialCustodyState);
+
+export {
+  state,
+  profileState,
+  accountState,
+  portfolioState,
+  cryptoState,
+  custodyState,
+};
 
 export const handlers = [
   rest.get(`/${USERS_ENDPOINT}`, (req, res, ctx) => {
@@ -299,4 +358,21 @@ export const handlers = [
       );
     }
   ),
+
+  // custody stuff
+  rest.get(`/${CUSTODY_ENDPOINT}`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json(Object.values(custodyState.entities)),
+      ctx.delay(400)
+    );
+  }),
+  rest.get(`/${CUSTODY_ENDPOINT}/:custodyId`, (req, res, ctx) => {
+    const { custodyId } = req.params as CustodyPath;
+    return res(
+      ctx.status(200),
+      ctx.json(custodyState.entities[custodyId]),
+      ctx.delay(400)
+    );
+  }),
 ];

@@ -1,5 +1,4 @@
 /** @format */
-/** @format */
 
 import { api } from './api';
 import { VirtualAccountResponse, CustodyAccountResponse } from '../types';

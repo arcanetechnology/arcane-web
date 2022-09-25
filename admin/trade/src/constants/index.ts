@@ -8,10 +8,7 @@ export const PROFILES_ENDPOINT = 'profiles';
 export const ACCOUNTS_ENDPOINT = 'accounts';
 export const PORTFOLIOS_ENDPOINT = 'portfolios';
 export const CRYPTOS_ENDPOINT = 'cryptos';
-
-// action apis
-
-export const USERS_COUNT_ENDPOINT = 'usercount';
+export const CUSTODY_ENDPOINT = 'custodies';
 
 // api util function to create paths
 const endpoints = {

@@ -8,6 +8,7 @@ import { Outlet, useParams } from 'react-router-dom';
 import Grid from '@mui/material/Unstable_Grid2';
 import { Alert } from '@mui/material';
 import { Stack } from '@mui/system';
+import { GAP } from '@/constants';
 
 const Accounts: React.FC = () => {
   const { userId, profileId } = useParams<ProfilePath>();
@@ -19,11 +20,10 @@ const Accounts: React.FC = () => {
   } = useGetAccountsQuery({ userId, profileId } as ProfilePath);
 
   if (isError) throw new Error('some error occured in api call');
-  if (isLoading || isFetching) return <CardsLoading />;
   if (!accounts) return null;
 
   return (
-    <Stack>
+    <Stack gap={GAP}>
       <Outlet />
       {accounts.length > 0 ? (
         <Grid container spacing={2}>

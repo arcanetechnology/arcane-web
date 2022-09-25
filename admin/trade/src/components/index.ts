@@ -9,4 +9,5 @@ export * from './errors';
 export * from './accounts';
 export * from './portfolios';
 export * from './cryptos';
+export * from './custodies';
 export { default as Action } from './action/Action';

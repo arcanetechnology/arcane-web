@@ -31,7 +31,7 @@ const ViewAccount: React.FC = () => {
         alignItems="center"
       >
         <Box display="flex" gap={GAP} flexDirection="row" alignItems="center">
-          <Badge badgeContent={account.portfolio.length} color="secondary">
+          <Badge badgeContent={account.portfolios.length} color="secondary">
             <Money />
           </Badge>
           <Typography variant="h4">{account.currency}</Typography>

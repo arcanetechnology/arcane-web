@@ -26,6 +26,7 @@ export const api = createApi({
     'Cryptos',
     'Crypto',
     'Virtual',
+    'Custodies',
     'Custody',
   ],
   // enpoints are injected later

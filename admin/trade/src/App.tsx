@@ -11,11 +11,11 @@ import { GenericError, ProtectedRoute } from './components';
 import Portfolios from './routes/portfolios';
 import Portfolio from './routes/portfolio';
 import Cryptos from './routes/cryptos';
-import Custody from './routes/custody';
 import Auth from './routes/auth';
 import { CreateUser, ViewUser } from './routes/user';
 import { CreateProfile, ViewProfile, ViewProfiles } from './routes/profiles';
 import { ViewAccounts, ViewAccount, CreateAccount } from './routes/accounts';
+import { ViewCustody, ViewCustodies } from './routes/custodies';
 
 const router = createBrowserRouter([
   {
@@ -96,8 +96,15 @@ const router = createBrowserRouter([
       },
       {
         path: 'custody',
-        element: <Custody />,
+        element: <ViewCustodies />,
         errorElement: <ErrorPage />,
+        children: [
+          {
+            path: ':custodyId',
+            element: <ViewCustody />,
+            errorElement: <GenericError />,
+          },
+        ],
       },
       {
         path: 'create',

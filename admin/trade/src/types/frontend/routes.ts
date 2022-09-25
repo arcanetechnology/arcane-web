@@ -20,3 +20,9 @@ export type PortfolioPath = {
 export type CryptoPath = {
   cryptoId: string;
 } & PortfolioPath;
+
+// global
+
+export type CustodyPath = {
+  custodyId: string;
+};
