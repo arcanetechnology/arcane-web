@@ -4,7 +4,15 @@ export const profileTypes = ['BUSINESS', 'PERSONAL'] as const;
 export type ProfileTypes = typeof profileTypes[number];
 export const accountTypes = ['stakeholder', 'custody', 'virtual'];
 export type AccountTypes = typeof accountTypes[number];
-export const currency = ['USD', 'EUR', 'GBP', 'NOK', 'SEK', 'DKK', 'CHF'];
+export const currency = [
+  'USD',
+  'EUR',
+  'GBP',
+  'NOK',
+  'SEK',
+  'DKK',
+  'CHF',
+] as const;
 export type Currency = typeof currency[number];
 // perhaps update this with specific crypto types.
 export type CryptoCurrency = string;
