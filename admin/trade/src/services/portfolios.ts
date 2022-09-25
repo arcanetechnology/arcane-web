@@ -1,7 +1,12 @@
 /** @format */
 
 import { api } from './api';
-import { GetPortfoliosResponse, GetPortfolioResponse } from '@/types/backend';
+import {
+  GetPortfoliosResponse,
+  GetPortfolioResponse,
+  Portfolio,
+  CreatePortfolioRequest,
+} from '@/types/backend';
 import {
   ACCOUNTS_ENDPOINT,
   PORTFOLIOS_ENDPOINT,
@@ -10,23 +15,42 @@ import {
 } from '@/constants';
 import { AccountPath, PortfolioPath } from '@/types/frontend';
 
+const getPortfolios = (path: AccountPath) =>
+  `${USERS_ENDPOINT}/${path.userId}/${PROFILES_ENDPOINT}/${path.profileId}/${ACCOUNTS_ENDPOINT}/${path.accountId}/${PORTFOLIOS_ENDPOINT}`;
+
+const getPortfolio = ({ portfolioId, ...path }: PortfolioPath) =>
+  getPortfolios(path) + '/' + portfolioId;
+
 export const portfoliosApi = api.injectEndpoints({
   endpoints: (build) => ({
     getPortfolios: build.query<GetPortfoliosResponse, AccountPath>({
       query: (path) => ({
-        url: `${USERS_ENDPOINT}/${path.userId}/${PROFILES_ENDPOINT}/${path.profileId}/${ACCOUNTS_ENDPOINT}/${path.accountId}/${PORTFOLIOS_ENDPOINT}`,
-        providesTags: (result = []) => [
-          ...result.map(({ id }) => ({ type: 'Portfolios', id } as const)),
-          {
-            type: 'Portfolios' as const,
-            id: 'LIST',
-          },
-        ],
+        url: getPortfolios(path),
       }),
+      providesTags: (result) => {
+        return result
+          ? [
+              ...result.map(({ id }) => ({ type: 'Portfolios', id } as const)),
+              { type: 'Portfolios', id: 'LIST' },
+            ]
+          : [{ type: 'Portfolios', id: 'LIST' }];
+      },
+    }),
+    addPortfolio: build.mutation<
+      Portfolio,
+      CreatePortfolioRequest & AccountPath
+    >({
+      query({ userId, profileId, accountId, ...body }) {
+        return {
+          url: getPortfolios({ userId, profileId, accountId }),
+          method: 'POST',
+          body,
+        };
+      },
+      invalidatesTags: ['Account', 'Portfolios'],
     }),
     getPortfolio: build.query<GetPortfolioResponse, PortfolioPath>({
-      query: (path) =>
-        `${USERS_ENDPOINT}/${path.userId}/${PROFILES_ENDPOINT}/${path.profileId}/${ACCOUNTS_ENDPOINT}/${path.accountId}/${PORTFOLIOS_ENDPOINT}/${path.portfolioId}`,
+      query: (path) => getPortfolio(path),
       providesTags: (_portfolio, _err, path) => [
         { type: 'Portfolio' as const, id: path.portfolioId },
       ],
@@ -34,4 +58,8 @@ export const portfoliosApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetPortfoliosQuery, useGetPortfolioQuery } = portfoliosApi;
+export const {
+  useGetPortfoliosQuery,
+  useGetPortfolioQuery,
+  useAddPortfolioMutation,
+} = portfoliosApi;

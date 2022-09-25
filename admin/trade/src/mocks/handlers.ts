@@ -23,6 +23,7 @@ import {
   CreateProfileRequest,
   CustodyAccount,
   CreateAccountRequest,
+  CreatePortfolioRequest,
 } from '@/types/backend';
 import {
   AccountPath,
@@ -335,23 +336,50 @@ export const handlers = [
   rest.get(
     `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}`,
     (req, res, ctx) => {
-      const { userId, profileId, accountId } = req.params as AccountPath;
+      const { accountId } = req.params as AccountPath;
+      const account = accountState.entities[accountId];
+      const portfolios = account?.portfolios.map(
+        (p) => portfolioState.entities[p]
+      );
+      return res(ctx.status(200), ctx.json(portfolios), ctx.delay(400));
+    }
+  ),
+
+  rest.post(
+    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}`,
+    (req, res, ctx) => {
+      const { accountId } = req.params as AccountPath;
+      const { alias, accounts } = req.body as CreatePortfolioRequest;
+
+      const portfolioId = nanoid();
+
+      portfolioState = portfolioAdapter.addOne(portfolioState, {
+        id: portfolioId,
+        alias,
+        accounts: accounts ?? [],
+      });
+
+      const account = accountState.entities[accountId];
+
+      accountState = accountAdapter.updateOne(accountState, {
+        id: accountId,
+        changes: {
+          portfolios: [...(account?.portfolios ?? []), portfolioId],
+        },
+      });
+
       return res(
-        ctx.status(200),
         ctx.json(Object.values(portfolioState.entities)),
         ctx.delay(400)
       );
     }
   ),
+
   rest.get(
     `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}/:portfolioId`,
     (req, res, ctx) => {
       const { userId, profileId, accountId, portfolioId } =
         req.params as PortfolioPath;
-      console.log('user id', userId);
-      console.log('profile id', profileId);
-      console.log('account id', accountId);
-      console.log('portfolio id', portfolioId);
       return res(
         ctx.status(200),
         ctx.json(portfolioState.entities['1']),

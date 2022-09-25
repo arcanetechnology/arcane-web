@@ -6,6 +6,7 @@ import { AccountPath } from '@/types/frontend';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { Stack } from '@mui/material';
+import { GAP } from '@/constants';
 
 const ViewPortfolios: React.FC = () => {
   const { userId, profileId, accountId } = useParams<AccountPath>();
@@ -19,7 +20,7 @@ const ViewPortfolios: React.FC = () => {
   if (isError) throw new Error('some error occured in portfolios api call');
   if (!portfolios) return null;
   return (
-    <Stack>
+    <Stack gap={GAP}>
       <Outlet />
       <PortfolioList portfolios={portfolios} />
     </Stack>

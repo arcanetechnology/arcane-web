@@ -37,6 +37,10 @@ export type CreateAccountRequest = Optional<
 
 export type GetPortfoliosResponse = Array<PortfolioItem>;
 export type GetPortfolioResponse = Portfolio;
+export type CreatePortfolioRequest = Omit<
+  Optional<Portfolio, 'accounts'>,
+  'id'
+>;
 
 // crypto api types
 
