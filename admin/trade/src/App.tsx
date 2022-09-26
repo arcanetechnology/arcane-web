@@ -3,7 +3,7 @@
 import * as React from 'react';
 import ArcaneThemeProvider from './theme';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Root, { loader as rootLoader } from './routes/root';
+import Root from './routes/root';
 import ErrorPage from './error-page';
 import Index from './routes';
 import { GenericError, ProtectedRoute } from './components';
@@ -24,7 +24,6 @@ const router = createBrowserRouter([
     path: '/',
     element: <ProtectedRoute>{(user) => <Root user={user} />}</ProtectedRoute>,
     errorElement: <ErrorPage />,
-    loader: rootLoader,
     children: [
       {
         index: true,
