@@ -152,27 +152,19 @@ export const handlers = [
     const email = req.url.searchParams.get('q') as string;
 
     if (!email) {
-      return res(
-        ctx.status(200),
-        ctx.json(Object.values(state.entities)),
-        ctx.delay(400)
-      );
+      return res(ctx.status(300), ctx.json([]), ctx.delay(400));
     }
 
     const selector = adapter.getSelectors();
     const filteredUser = selector
       .selectAll(state)
-      .filter((u) => u.email.includes(email));
+      .find((u) => u.email === email);
 
-    if (filteredUser.length === 0) {
-      return res(
-        ctx.status(200),
-        ctx.json(Object.values(state.entities)),
-        ctx.delay(400)
-      );
+    if (!filteredUser) {
+      return res(ctx.status(300), ctx.json('user not found'), ctx.delay(400));
     }
 
-    return res(ctx.status(200), ctx.json(filteredUser), ctx.delay(400));
+    return res(ctx.status(200), ctx.json([filteredUser]), ctx.delay(400));
   }),
 
   rest.post(`/${USERS_ENDPOINT}`, async (req, res, ctx) => {

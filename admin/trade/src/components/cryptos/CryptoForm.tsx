@@ -46,7 +46,7 @@ const CryptoForm: React.FC<CryptoFormProps> = ({ handleSubmit }) => {
       id="create-account-form"
     >
       <TextField
-        label="Alais"
+        label="Alias"
         {...register('alias')}
         error={Boolean(errors['alias'])}
         helperText={errors['alias']?.message}

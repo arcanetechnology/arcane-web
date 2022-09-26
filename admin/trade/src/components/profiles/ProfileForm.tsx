@@ -73,7 +73,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ handleSubmit }) => {
               )}
             />
           </FormControl>
-          <Box gap={GAP} display="flex" flexDirection="row">
+          <Box gap={GAP} display="flex" flexDirection="row" alignItems="center">
             <TextField
               size="small"
               label="Alias"

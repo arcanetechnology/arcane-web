@@ -65,7 +65,7 @@ const UsersList: React.FC<UsersListProps> = ({
       >
         {({ onItemsRendered, ref }) => (
           <FixedSizeList
-            height={700}
+            height={200}
             width={'inherit'}
             itemCount={itemCount}
             itemSize={60}

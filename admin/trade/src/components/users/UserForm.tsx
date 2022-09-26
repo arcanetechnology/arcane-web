@@ -1,6 +1,6 @@
 /** @format */
 
-import { Button, FormControl, TextField } from '@mui/material';
+import { Button, FormControl, IconButton, TextField } from '@mui/material';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { CreateUserForm } from '@/types/frontend';
@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Box } from '@mui/system';
 import { GAP } from '@/constants';
+import { Add } from '@mui/icons-material';
 
 const schema = z.object({
   email: z.string().email(),
@@ -26,26 +27,22 @@ const UserForm: React.FC<UserFormProps> = ({ handleSubmit }) => {
     <Box
       id="create-user-form"
       display="flex"
-      flexDirection="column"
+      alignItems="center"
       gap={GAP}
       component="form"
       onSubmit={onSubmit(handleSubmit)}
     >
       <TextField
         type="email"
-        size="medium"
+        size="small"
+        required
         fullWidth
         label="Email"
         {...register('email')}
       />
-      <Box width="100%" display="flex" flexDirection="row" gap={GAP}>
-        <Button variant="contained" type="submit" id="create-user-submit">
-          Submit
-        </Button>
-        <Button type="reset" id="create-user-reset">
-          Reset
-        </Button>
-      </Box>
+      <IconButton type="submit">
+        <Add />
+      </IconButton>
     </Box>
   );
 };

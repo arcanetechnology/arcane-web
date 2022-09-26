@@ -6,8 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { GAP } from '@/constants';
 import { Box } from '@mui/system';
-import { Button, TextField } from '@mui/material';
+import { Button, IconButton, TextField } from '@mui/material';
 import { CreatePortfolioForm } from '@/types/frontend';
+import { Add } from '@mui/icons-material';
 
 type PortfolioFormProps = {
   handleSubmit: (portfolio: CreatePortfolioForm) => void;
@@ -31,17 +32,22 @@ const PortfolioForm: React.FC<PortfolioFormProps> = ({ handleSubmit }) => {
       component="form"
       gap={GAP}
       display="flex"
-      flexDirection="column"
+      width="100%"
+      flexDirection="row"
       onSubmit={onSubmit(handleSubmit)}
       id="create-account-form"
+      alignItems="center"
     >
-      <TextField label="Alias" required {...register('alias')} />
-      <Box display="flex" flexDirection="row" gap={GAP}>
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
-        <Button type="reset">Reset</Button>
-      </Box>
+      <TextField
+        size="small"
+        fullWidth
+        label="New Portfolio Label"
+        required
+        {...register('alias')}
+      />
+      <IconButton size="large" type="submit">
+        <Add />
+      </IconButton>
     </Box>
   );
 };

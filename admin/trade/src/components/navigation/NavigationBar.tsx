@@ -12,7 +12,7 @@ type NavigationBarProps = {
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
   return (
-    <AppBar color="transparent" position="sticky">
+    <AppBar color="inherit" position="sticky">
       <Toolbar
         variant="regular"
         component={Container}

@@ -16,9 +16,6 @@ import { NavLink, Outlet } from 'react-router-dom';
 const Index: React.FC = () => {
   return (
     <Stack gap={GAP}>
-      <Box>
-        <Typography variant="h4">Trade Admin</Typography>
-      </Box>
       <Box display="flex" flexDirection="row" gap={GAP}>
         <Card sx={{ width: 200 }}>
           <CardContent>
