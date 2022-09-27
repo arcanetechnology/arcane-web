@@ -5,7 +5,7 @@ import currencyGroups from './currencyGroups';
 import transactions from './transactions';
 import { api } from '../services';
 import auth from './auth';
-import listenerMiddleware from './middlewares';
+import listenerMiddleware, { rtkQueryErrorLogger } from './middlewares';
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
 
@@ -17,7 +17,8 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(api.middleware)
-      .concat(listenerMiddleware.middleware),
+      .concat(listenerMiddleware.middleware)
+      .concat(rtkQueryErrorLogger),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

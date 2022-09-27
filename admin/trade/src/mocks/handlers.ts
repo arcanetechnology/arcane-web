@@ -152,7 +152,11 @@ export const handlers = [
     const email = req.url.searchParams.get('q') as string;
 
     if (!email) {
-      return res(ctx.status(300), ctx.json([]), ctx.delay(400));
+      return res(
+        ctx.status(404),
+        ctx.json('email is not present'),
+        ctx.delay(400)
+      );
     }
 
     const selector = adapter.getSelectors();
@@ -161,7 +165,7 @@ export const handlers = [
       .find((u) => u.email === email);
 
     if (!filteredUser) {
-      return res(ctx.status(300), ctx.json('user not found'), ctx.delay(400));
+      return res(ctx.status(404), ctx.json('user not found'), ctx.delay(400));
     }
 
     return res(ctx.status(200), ctx.json([filteredUser]), ctx.delay(400));

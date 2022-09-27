@@ -22,13 +22,9 @@ export const usersApi = api.injectEndpoints({
   endpoints: (build) => ({
     getUsers: build.query<GetUsersResponse, string>({
       query: (args) => ({ url: USERS_ENDPOINT, params: { q: args } }),
-      providesTags: (result = []) => [
-        ...result.map(({ id }) => ({ type: 'Users', id } as const)),
-        {
-          type: 'Users' as const,
-          id: 'LIST',
-        },
-      ],
+      extraOptions: {
+        maxRetries: 0,
+      },
     }),
     addUser: build.mutation<User, CreateUserRequest>({
       query(body) {
@@ -38,7 +34,6 @@ export const usersApi = api.injectEndpoints({
           body,
         };
       },
-      invalidatesTags: [{ type: 'Users' as const, id: 'LIST' }],
     }),
     getUser: build.query<GetUserResponse, string>({
       query: (id) => `${USERS_ENDPOINT}/${id}`,
@@ -50,7 +45,6 @@ export const usersApi = api.injectEndpoints({
         method: 'DELETE',
         credentials: 'include',
       }),
-      invalidatesTags: [{ type: 'Users' as const, id: 'LIST' }],
     }),
     getAccountOptions: build.query<Array<AccountOption>, string>({
       query: (id) => `users/${id}`,

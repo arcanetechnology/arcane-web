@@ -1,8 +1,12 @@
 /** @format */
 
 import { GAP } from '@/constants';
-import { useGetUsersQuery, useLazyGetUsersQuery } from '@/services';
-import { Search } from '@mui/icons-material';
+import {
+  profilesApi,
+  useGetUsersQuery,
+  useLazyGetUsersQuery,
+} from '@/services';
+import { Loop, Search, SipOutlined } from '@mui/icons-material';
 import {
   Card,
   CardActionArea,
@@ -17,33 +21,72 @@ import {
 import { Box } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as React from 'react';
+import { useForm } from 'react-hook-form';
+import { SearchUserForm } from '@/types/frontend';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+
+const schema = z.object({
+  email: z.string().email('please enter an email'),
+});
 
 const SearchUsers: React.FC = () => {
-  const [user, setUser] = React.useState('');
-  const [getUsers, users] = useLazyGetUsersQuery();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SearchUserForm>({
+    resolver: zodResolver(schema as any),
+  });
+
   const navigate = useNavigate();
-  const searchUser = () => {
-    getUsers(user)
-      .unwrap()
-      .then((d) => {
-        if (d[0]) {
-          setUser('');
+
+  const [addUser, { data, isFetching, isLoading, isError, error }] =
+    useLazyGetUsersQuery();
+
+  const handleSearch = async (value: SearchUserForm) => {
+    try {
+      await addUser(value.email)
+        .unwrap()
+        .then((d) => {
           navigate(d[0].id + '/profiles');
-        }
-      });
+        });
+    } catch (err) {}
   };
 
   return (
-    <Stack gap={GAP} mb={5} mt={5}>
+    <Stack
+      gap={GAP}
+      mb={GAP}
+      mt={GAP}
+      component="form"
+      onSubmit={handleSubmit(handleSearch)}
+    >
       <TextField
         autoFocus
-        label="Search Trade User"
-        value={user}
-        onChange={(e) => setUser(e.target.value)}
+        error={Boolean(errors['email']) || isError}
+        label="Search User"
+        {...register('email')}
+        InputLabelProps={{
+          style: {
+            fontSize: 30,
+            top: -2,
+          },
+        }}
+        FormHelperTextProps={{
+          style: {
+            fontSize: 20,
+          },
+        }}
         InputProps={{
+          sx: { fontSize: 30, borderRadius: 6 },
           endAdornment: (
-            <IconButton size="large" onClick={searchUser}>
-              <Search />
+            <IconButton sx={{ fontSize: 30 }} size="large" type="submit">
+              {isFetching || isLoading ? (
+                <Loop fontSize="inherit" />
+              ) : (
+                <Search fontSize="inherit" />
+              )}
             </IconButton>
           ),
         }}
