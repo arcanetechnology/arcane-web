@@ -19,33 +19,26 @@ const UsersToolbar: React.FC = () => {
   ];
 
   return (
-    <AppBar
-      position="relative"
-      color="inherit"
-      elevation={0}
-      sx={{ borderRadius: 3 }}
-    >
-      <Tabs value={location.pathname}>
-        <Tab
-          icon={<PointOfSale />}
-          value={routes[1]}
-          component={RouterLink}
-          iconPosition="start"
-          label="transactions"
-          LinkComponent={RouterLink}
-          to={routes[1]}
-        />
-        <Tab
-          icon={<PointOfSale />}
-          LinkComponent={RouterLink}
-          value={routes[0]}
-          to={routes[0]}
-          component={RouterLink}
-          iconPosition="start"
-          label="accounts"
-        />
-      </Tabs>
-    </AppBar>
+    <Tabs value={location.pathname} variant="standard">
+      <Tab
+        icon={<PointOfSale />}
+        value={routes[1]}
+        component={RouterLink}
+        iconPosition="start"
+        label="transactions"
+        LinkComponent={RouterLink}
+        to={routes[1]}
+      />
+      <Tab
+        icon={<PointOfSale />}
+        LinkComponent={RouterLink}
+        value={routes[0]}
+        to={routes[0]}
+        component={RouterLink}
+        iconPosition="start"
+        label="accounts"
+      />
+    </Tabs>
   );
 };
 

@@ -3,13 +3,7 @@ import { createBrowserRouter, Params } from 'react-router-dom';
 import Root from './routes/root';
 import ErrorPage from './error-page';
 import Index from './routes';
-import {
-  GenericError,
-  NavigationLink,
-  ProfileToolbar,
-  ProtectedRoute,
-  UsersToolbar,
-} from './components';
+import { GenericError, NavigationLink, ProtectedRoute } from './components';
 import Auth from './routes/auth';
 import { CreateUser, ViewUser } from './routes/user';
 import { CreateProfile, ViewProfile, ViewProfiles } from './routes/profiles';
@@ -21,9 +15,10 @@ import {
   ViewPortfolios,
 } from './routes/portfolios';
 import { ViewCryptos, CreateCrypto } from './routes/cryptos';
-import { Button, Tab } from '@mui/material';
+
 import React from 'react';
-import { Add, Delete, Group, Money, PointOfSale } from '@mui/icons-material';
+import { Add, Delete } from '@mui/icons-material';
+import { ViewTransactions } from './routes/transactions';
 
 const router = createBrowserRouter([
   {
@@ -88,6 +83,11 @@ const router = createBrowserRouter([
                     errorElement: <GenericError />,
                   },
                 ],
+              },
+              {
+                path: 'transactions',
+                element: <ViewTransactions />,
+                errorElement: <GenericError />,
               },
               {
                 path: 'accounts/:accountId',
