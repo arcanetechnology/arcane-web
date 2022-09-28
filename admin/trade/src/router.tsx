@@ -3,7 +3,12 @@ import { createBrowserRouter, Params } from 'react-router-dom';
 import Root from './routes/root';
 import ErrorPage from './error-page';
 import Index from './routes';
-import { GenericError, ProtectedRoute } from './components';
+import {
+  GenericError,
+  NavigationLink,
+  ProtectedRoute,
+  UsersToolbar,
+} from './components';
 import Auth from './routes/auth';
 import { CreateUser, ViewUser } from './routes/user';
 import { CreateProfile, ViewProfile, ViewProfiles } from './routes/profiles';
@@ -15,6 +20,9 @@ import {
   ViewPortfolios,
 } from './routes/portfolios';
 import { ViewCryptos, CreateCrypto } from './routes/cryptos';
+import { Tab } from '@mui/material';
+import React from 'react';
+import { Add, Delete, Group, Money, PointOfSale } from '@mui/icons-material';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +38,16 @@ const router = createBrowserRouter([
         path: ':userId',
         element: <ViewUser />,
         errorElement: <GenericError />,
+        handle: {
+          setting: (key: string) => (
+            <NavigationLink
+              key={key}
+              to="profiles/create"
+              primary="Create New Profile"
+              icon={<Add />}
+            />
+          ),
+        },
         children: [
           {
             path: 'profiles',
@@ -47,6 +65,23 @@ const router = createBrowserRouter([
             path: 'profiles/:profileId',
             element: <ViewProfile />,
             errorElement: <GenericError />,
+            handle: {
+              tab: () => (
+                <Tab
+                  icon={<PointOfSale />}
+                  iconPosition="start"
+                  label="transaction"
+                />
+              ),
+              setting: (key: string) => (
+                <NavigationLink
+                  key={key}
+                  to=""
+                  primary="Delete Profile"
+                  icon={<Delete />}
+                />
+              ),
+            },
             children: [
               {
                 path: 'accounts',

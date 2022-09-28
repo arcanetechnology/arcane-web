@@ -43,7 +43,7 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({
     <ListItemButton
       sx={{
         borderRadius: 3,
-        background: grey[300],
+        mb: 0.5,
       }}
       selected={Boolean(match)}
       component={renderLink}

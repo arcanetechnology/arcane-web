@@ -21,9 +21,15 @@ import {
   Stack,
   Switch,
   Grid,
+  ToggleButtonGroup,
+  ToggleButton,
+  InputBase,
+  Paper,
+  Divider,
+  InputAdornment,
 } from '@mui/material';
 import { profileTypes } from '@/types/backend';
-import { Add } from '@mui/icons-material';
+import { Add, BusinessCenter, Person } from '@mui/icons-material';
 
 const schema = z.object({
   type: z.enum(profileTypes),
@@ -51,52 +57,48 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ handleSubmit }) => {
         id="create-user-form"
         component="form"
         onSubmit={onSubmit(handleSubmit)}
+        sx={{ display: 'flex' }}
       >
-        <Grid container spacing={2}>
-          <Grid item xs={6} md={4}>
-            <FormControl required component="fieldset">
-              <Controller
-                rules={{ required: true }}
-                control={control}
-                aria-labelledby="profile-type-radio-button-group"
-                name="type"
-                render={({ field }) => (
-                  <RadioGroup row {...field}>
-                    <FormControlLabel
-                      value="BUSINESS"
-                      control={<Radio />}
-                      label="Business"
-                    />
-                    <FormControlLabel
-                      value="PERSONAL"
-                      control={<Radio />}
-                      label="Personal"
-                    />
-                  </RadioGroup>
-                )}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={6} md={8}>
-            <TextField
-              size="medium"
-              label="Alias"
-              required
-              {...register('alias')}
-              fullWidth
-              InputProps={{
-                sx: {
-                  borderRadius: 3,
-                },
-                endAdornment: (
-                  <IconButton type="submit">
-                    <Add />
-                  </IconButton>
-                ),
-              }}
-            />
-          </Grid>
-        </Grid>
+        <FormControl required component="fieldset">
+          <Controller
+            rules={{ required: true }}
+            control={control}
+            aria-labelledby="profile-type-radio-button-group"
+            name="type"
+            render={({ field }) => (
+              <RadioGroup row {...field} sx={{ minWidth: 300 }}>
+                <FormControlLabel
+                  value="BUSINESS"
+                  control={<Radio />}
+                  label="Business"
+                />
+                <FormControlLabel
+                  value="PERSONAL"
+                  control={<Radio />}
+                  label="Personal"
+                />
+              </RadioGroup>
+            )}
+          />
+        </FormControl>
+        <TextField
+          size="medium"
+          label="Alias"
+          required
+          {...register('alias')}
+          fullWidth
+          InputLabelProps={{}}
+          InputProps={{
+            sx: {
+              borderRadius: 3,
+            },
+            endAdornment: (
+              <IconButton type="submit">
+                <Add />
+              </IconButton>
+            ),
+          }}
+        />
       </CardContent>
     </Card>
   );

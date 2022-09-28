@@ -20,6 +20,8 @@ import * as React from 'react';
 import { GAP } from '@/constants';
 import { ExpandMore, Group } from '@mui/icons-material';
 import { NavigationLink } from '../navigation';
+import { useMatches } from 'react-router-dom';
+import { TradeMatches } from '@/types/frontend';
 
 type UserMenuProps = {
   user: User;
@@ -27,6 +29,11 @@ type UserMenuProps = {
 };
 
 const UserMenu: React.FC<UserMenuProps> = ({ user, loading = false }) => {
+  const matches = useMatches() as TradeMatches[];
+  const settings = matches
+    .filter((match) => Boolean(match.handle?.setting))
+    .map((match) => match.handle.setting);
+
   return (
     <Accordion elevation={0}>
       <AccordionSummary expandIcon={<ExpandMore />}>
@@ -55,11 +62,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, loading = false }) => {
       </AccordionSummary>
       <AccordionDetails>
         <List component="nav" aria-label="user-settings-navigation">
-          <NavigationLink
-            to="profiles/create"
-            primary="Create Profile"
-            icon={<Group />}
-          />
+          {settings.map((s, i) => s(s.toString()))}
         </List>
       </AccordionDetails>
     </Accordion>
