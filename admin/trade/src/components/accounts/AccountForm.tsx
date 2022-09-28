@@ -14,19 +14,12 @@ type AccountFormProps = {
   handleSubmit: (account: CreateAccountForm) => void;
 };
 
-const schema = z
-  .object({
-    alias: z.string().nonempty(),
-    currency: z.enum(currency),
-    balance: z.number().nonnegative(),
-    custodyAccountId: z.string().nonempty('please specify a custodyId'),
-    id: z.string().nonempty('please specify an account id'),
-    confirmId: z.string().nonempty(),
-  })
-  .refine((data) => data.id === data.confirmId, {
-    message: "account numbers don't match",
-    path: ['confirmId'],
-  });
+const schema = z.object({
+  alias: z.string().nonempty(),
+  currency: z.enum(currency),
+
+  custodyAccountId: z.string().nonempty('please specify a custodyId'),
+});
 
 const AccountForm: React.FC<AccountFormProps> = ({ handleSubmit }) => {
   const {
@@ -52,27 +45,7 @@ const AccountForm: React.FC<AccountFormProps> = ({ handleSubmit }) => {
         error={Boolean(errors['alias'])}
         helperText={errors['alias']?.message}
       />
-      <Box display="flex" flexDirection="row" gap={GAP} width="100%">
-        <TextField
-          required
-          label="Account Number"
-          type="password"
-          fullWidth
-          error={Boolean(errors['id'])}
-          helperText={errors['id']?.message}
-          {...register('id', { required: true })}
-        />
-        <TextField
-          label="Re-Enter Account Number"
-          fullWidth
-          required
-          error={Boolean(errors['confirmId'])}
-          helperText={errors['confirmId']?.message}
-          {...register('confirmId', {
-            required: true,
-          })}
-        />
-      </Box>
+
       <Box display="flex" flexDirection="row" gap={GAP}>
         <TextField
           label="Currency"
@@ -81,15 +54,6 @@ const AccountForm: React.FC<AccountFormProps> = ({ handleSubmit }) => {
           required
           error={Boolean(errors['currency'])}
           helperText={errors['currency']?.message}
-        />
-        <TextField
-          label="Balance"
-          type="number"
-          required
-          fullWidth
-          error={Boolean(errors['balance'])}
-          helperText={errors['balance']?.message}
-          {...register('balance', { valueAsNumber: true })}
         />
       </Box>
       <Box display="flex" flexDirection="row" gap={GAP} width="100%">

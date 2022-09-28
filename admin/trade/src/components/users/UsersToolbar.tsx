@@ -13,13 +13,16 @@ const UsersToolbar: React.FC = () => {
   if (!profile.params.profileId) return null;
 
   const location = useLocation();
-  const routes = [
-    profile?.pathnameBase + '/' + 'accounts',
-    profile?.pathnameBase + '/' + 'transactions',
-  ];
+
+  const basePath =
+    '/' + profile.params.userId + '/profiles/' + profile.params.profileId;
+  const routes = [basePath + '/accounts', basePath + '/transactions'];
 
   return (
-    <Tabs value={location.pathname} variant="standard">
+    <Tabs
+      value={location.pathname !== basePath ? location.pathname : false}
+      variant="standard"
+    >
       <Tab
         icon={<PointOfSale />}
         value={routes[1]}

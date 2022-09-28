@@ -264,13 +264,13 @@ export const handlers = [
     `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}`,
     (req, res, ctx) => {
       const { userId, profileId } = req.params as ProfilePath;
-      const { alias, id, portfolios, balance, currency, custodyAccountId } =
+      const { alias, portfolios, currency, custodyAccountId } =
         req.body as CreateAccountRequest;
-
+      const id = nanoid();
       accountState = accountAdapter.addOne(accountState, {
         alias,
         id,
-        balance,
+        balance: 0,
         currency,
         custodyAccountId,
         portfolios: portfolios ?? [],

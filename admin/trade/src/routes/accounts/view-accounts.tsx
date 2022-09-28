@@ -1,14 +1,13 @@
 /** @format */
 
-import { AccountCard, CardsLoading } from '@/components';
+import { AccountCard, AccountsList, CardsLoading } from '@/components';
 import { useGetAccountsQuery } from '@/services';
 import { ProfilePath } from '@/types/frontend';
 import * as React from 'react';
-import { Outlet, useParams } from 'react-router-dom';
-import Grid from '@mui/material/Unstable_Grid2';
-import { Alert } from '@mui/material';
+import { Outlet, useParams, Link as RouterLink } from 'react-router-dom';
 import { Stack } from '@mui/system';
 import { GAP } from '@/constants';
+import { Box, Button } from '@mui/material';
 
 const Accounts: React.FC = () => {
   const { userId, profileId } = useParams<ProfilePath>();
@@ -24,18 +23,18 @@ const Accounts: React.FC = () => {
 
   return (
     <Stack gap={GAP}>
+      <Box>
+        <Button
+          LinkComponent={RouterLink}
+          component={RouterLink}
+          to="create"
+          variant="contained"
+        >
+          Create Account
+        </Button>
+      </Box>
       <Outlet />
-      {accounts.length > 0 ? (
-        <Grid container spacing={2}>
-          {accounts.map((account) => (
-            <AccountCard key={account.id} account={account} />
-          ))}
-        </Grid>
-      ) : (
-        <Alert variant="outlined" severity="error">
-          profile has no accounts
-        </Alert>
-      )}
+      <AccountsList accounts={accounts} />
     </Stack>
   );
 };

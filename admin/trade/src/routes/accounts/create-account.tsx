@@ -12,9 +12,12 @@ import { toast } from 'react-toastify';
 const CreateAccount: React.FC = () => {
   const params = useParams<ProfilePath>();
   const [addAccount] = useAddAccountMutation();
-  const handleSubmit = async ({ confirmId, ...account }: CreateAccountForm) => {
+  const handleSubmit = async (account: CreateAccountForm) => {
     try {
-      await addAccount({ ...(params as ProfilePath), ...account }).unwrap();
+      await addAccount({
+        ...(params as ProfilePath),
+        ...account,
+      }).unwrap();
     } catch (err) {
       toast('error in creating an account');
     }
