@@ -19,6 +19,8 @@ import {
   Card,
   CardContent,
   Stack,
+  Switch,
+  Grid,
 } from '@mui/material';
 import { profileTypes } from '@/types/backend';
 import { Add } from '@mui/icons-material';
@@ -44,48 +46,57 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ handleSubmit }) => {
     },
   });
   return (
-    <Card>
+    <Card elevation={0}>
       <CardContent
         id="create-user-form"
         component="form"
         onSubmit={onSubmit(handleSubmit)}
       >
-        <Stack gap={GAP}>
-          <FormControl required component="fieldset">
-            <Controller
-              rules={{ required: true }}
-              control={control}
-              aria-labelledby="profile-type-radio-button-group"
-              name="type"
-              render={({ field }) => (
-                <RadioGroup row {...field}>
-                  <FormControlLabel
-                    value="BUSINESS"
-                    control={<Radio />}
-                    label="Business"
-                  />
-                  <FormControlLabel
-                    value="PERSONAL"
-                    control={<Radio />}
-                    label="Personal"
-                  />
-                </RadioGroup>
-              )}
-            />
-          </FormControl>
-          <Box gap={GAP} display="flex" flexDirection="row" alignItems="center">
+        <Grid container spacing={2}>
+          <Grid item xs={6} md={4}>
+            <FormControl required component="fieldset">
+              <Controller
+                rules={{ required: true }}
+                control={control}
+                aria-labelledby="profile-type-radio-button-group"
+                name="type"
+                render={({ field }) => (
+                  <RadioGroup row {...field}>
+                    <FormControlLabel
+                      value="BUSINESS"
+                      control={<Radio />}
+                      label="Business"
+                    />
+                    <FormControlLabel
+                      value="PERSONAL"
+                      control={<Radio />}
+                      label="Personal"
+                    />
+                  </RadioGroup>
+                )}
+              />
+            </FormControl>
+          </Grid>
+          <Grid item xs={6} md={8}>
             <TextField
-              size="small"
+              size="medium"
               label="Alias"
               required
               {...register('alias')}
               fullWidth
+              InputProps={{
+                sx: {
+                  borderRadius: 3,
+                },
+                endAdornment: (
+                  <IconButton type="submit">
+                    <Add />
+                  </IconButton>
+                ),
+              }}
             />
-            <IconButton size="large" type="submit">
-              <Add />
-            </IconButton>
-          </Box>
-        </Stack>
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );

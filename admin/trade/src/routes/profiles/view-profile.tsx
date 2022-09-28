@@ -45,7 +45,6 @@ const ViewProfile: React.FC = () => {
         </Box>
         <Typography variant="caption">{profile.id}</Typography>
       </Box>
-      <Divider />
       <Outlet />
     </Stack>
   );

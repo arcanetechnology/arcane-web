@@ -52,6 +52,9 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles }) => {
   );
   return (
     <DataGrid
+      getRowClassName={(params) =>
+        `trade-app-profile-${params.row.type.toLowerCase()}`
+      }
       hideFooter
       rowSpacingType="margin"
       rows={profiles}

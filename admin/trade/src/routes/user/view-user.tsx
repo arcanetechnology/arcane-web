@@ -25,21 +25,7 @@ const ViewUser: React.FC = () => {
     <Stack gap={GAP}>
       <Grid container spacing={2}>
         <Grid item xs={6} md={8}>
-          <AppBar
-            position="relative"
-            color="inherit"
-            elevation={0}
-            sx={{ borderRadius: 3 }}
-          >
-            <Tabs>
-              <Tab
-                icon={<PointOfSale />}
-                iconPosition="start"
-                label="transaction"
-              />
-              <Tab icon={<Money />} iconPosition="start" label="account" />
-            </Tabs>
-          </AppBar>
+          <UsersToolbar />
         </Grid>
         <Grid item xs={6} md={4}>
           <UserMenu user={user} loading={isLoading || isFetching} />

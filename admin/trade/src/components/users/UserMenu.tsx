@@ -39,13 +39,13 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, loading = false }) => {
         >
           <Badge badgeContent={user.profiles.length} color="secondary">
             {loading ? (
-              <Skeleton variant="circular" />
+              <Skeleton variant="circular" width={60} height={60} />
             ) : (
               <Avatar {...stringToAvatar(user?.email)} />
             )}
           </Badge>
           {loading ? (
-            <Skeleton variant="text" />
+            <Skeleton variant="text" sx={{ fontSize: '1.5rem' }} width={300} />
           ) : (
             <Typography variant="h3">
               {user.email === '' ? 'No Email' : user?.email}

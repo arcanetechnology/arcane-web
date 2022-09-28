@@ -7,6 +7,7 @@ import { Outlet, useParams } from 'react-router-dom';
 import { ListLoading, Loading, ProfileList } from '@/components';
 import { Stack } from '@mui/system';
 import { GAP } from '@/constants';
+import { getBackgroundColor, getHoverBackgroundColor } from '@/utils';
 
 const ViewProfiles: React.FC = () => {
   const { userId } = useParams<UserPath>();
@@ -21,7 +22,33 @@ const ViewProfiles: React.FC = () => {
   if (!profiles) return null;
 
   return (
-    <Stack gap={GAP}>
+    <Stack
+      gap={GAP}
+      sx={{
+        '& .trade-app-profile-business': {
+          bgcolor: (theme) =>
+            getBackgroundColor(theme.palette.success.main, theme.palette.mode),
+          '&:hover': {
+            bgcolor: (theme) =>
+              getHoverBackgroundColor(
+                theme.palette.success.main,
+                theme.palette.mode
+              ),
+          },
+        },
+        '& .trade-app-profile-personal': {
+          bgcolor: (theme) =>
+            getBackgroundColor(theme.palette.info.main, theme.palette.mode),
+          '&:hover': {
+            bgcolor: (theme) =>
+              getHoverBackgroundColor(
+                theme.palette.info.main,
+                theme.palette.mode
+              ),
+          },
+        },
+      }}
+    >
       <Outlet />
       <ProfileList profiles={profiles} />
       <Loading open={isLoading || isFetching} />
