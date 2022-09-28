@@ -1,40 +1,50 @@
 /** @format */
 
-import { UsersToolbar } from '@/components';
+import { ListLoading, UserMenu, UsersToolbar } from '@/components';
 import { GAP } from '@/constants';
 import { useGetUserQuery } from '@/services';
 import { UserPath } from '@/types/frontend';
-import { stringToAvatar } from '@/utils';
-import { Delete, Edit } from '@mui/icons-material';
-import { Alert, Avatar, Badge, Box, Divider, Typography } from '@mui/material';
+import { Money, PointOfSale } from '@mui/icons-material';
+import { Alert, AppBar, Grid, Tab, Tabs } from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 
 const ViewUser: React.FC = () => {
   const { userId } = useParams<UserPath>();
-  const { data: user, isError } = useGetUserQuery(userId!);
+  const {
+    data: user,
+    isError,
+    isLoading,
+    isFetching,
+  } = useGetUserQuery(userId!);
   if (isError) return <Alert>User not found</Alert>;
+  if (!user) return null;
 
   return (
     <Stack gap={GAP}>
-      <Box
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Box display="flex" gap={GAP} alignItems="center" mb={2}>
-          <Badge badgeContent={user?.profiles.length} color="secondary">
-            <Avatar {...stringToAvatar(user?.email)} />
-          </Badge>
-          <Typography variant="h3">
-            {user?.email === '' ? 'No Email' : user?.email}
-          </Typography>
-        </Box>
-      </Box>
-      <UsersToolbar />
-      <Divider />
+      <Grid container spacing={2}>
+        <Grid item xs={6} md={8}>
+          <AppBar
+            position="relative"
+            color="inherit"
+            elevation={0}
+            sx={{ borderRadius: 3 }}
+          >
+            <Tabs>
+              <Tab
+                icon={<PointOfSale />}
+                iconPosition="start"
+                label="transaction"
+              />
+              <Tab icon={<Money />} iconPosition="start" label="account" />
+            </Tabs>
+          </AppBar>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <UserMenu user={user} loading={isLoading || isFetching} />
+        </Grid>
+      </Grid>
       <Outlet />
     </Stack>
   );

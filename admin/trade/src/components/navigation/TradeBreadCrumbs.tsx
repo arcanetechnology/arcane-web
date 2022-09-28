@@ -8,12 +8,12 @@ import {
   Group,
   Home,
   Money,
-  NavigateNext,
   PointOfSale,
 } from '@mui/icons-material';
-import { Box, Breadcrumbs, Link, LinkProps, Typography } from '@mui/material';
+import { Box, Breadcrumbs, Typography } from '@mui/material';
 import * as React from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import LinkRouter from './LinkRouter';
 
 const breadcrumbNameMap: { [key: string]: string } = {
   users: 'Users',
@@ -35,17 +35,9 @@ const icons: { [key: string]: React.ReactNode } = {
   cryptos: <CurrencyBitcoin sx={{ mr: 0.5 }} fontSize="inherit" />,
 };
 
-interface LinkRouterProps extends LinkProps {
-  to: string;
-  replace?: boolean;
-}
-
-const LinkRouter = (props: LinkRouterProps) => (
-  <Link {...props} component={RouterLink as any} />
-);
-
 const TradeBreadCrumbs: React.FC = () => {
   const location = useLocation();
+
   const pathnames = location.pathname.split('/').filter((x) => x);
   return (
     <Box mt={1} mb={2}>

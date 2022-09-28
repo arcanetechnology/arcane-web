@@ -1,5 +1,8 @@
 /** @format */
 
+import React from 'react';
+import { Params } from 'react-router-dom';
+
 // url path that goes on increasing as we traverse the db
 
 export type UserPath = {
@@ -25,4 +28,16 @@ export type CryptoPath = {
 
 export type CustodyPath = {
   custodyId: string;
+};
+
+// breadcrumb matches
+
+export type TradeMatches = {
+  id: string;
+  pathname: string;
+  params: Params<string>;
+  data: unknown;
+  handle: {
+    crumb: (data: Params<string>) => React.ReactNode;
+  };
 };

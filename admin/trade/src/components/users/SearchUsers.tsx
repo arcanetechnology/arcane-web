@@ -35,6 +35,7 @@ const SearchUsers: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<SearchUserForm>({
     resolver: zodResolver(schema as any),
   });
@@ -51,13 +52,14 @@ const SearchUsers: React.FC = () => {
         .then((d) => {
           navigate(d[0].id + '/profiles');
         });
+      reset();
     } catch (err) {}
   };
 
   return (
     <Stack
       gap={GAP}
-      mb={GAP}
+      mb={5}
       mt={GAP}
       component="form"
       onSubmit={handleSubmit(handleSearch)}

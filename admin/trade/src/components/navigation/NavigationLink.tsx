@@ -6,14 +6,25 @@ import {
   NavLinkProps as RouterLinkProps,
   useMatch,
 } from 'react-router-dom';
-import { ListItem, ListItemText } from '@mui/material';
+import {
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material';
+import { grey } from '@mui/material/colors';
 
 type NavigationLinkProps = {
   primary: string;
   to: string;
+  icon: React.ReactNode;
 };
 
-const NavigationLink: React.FC<NavigationLinkProps> = ({ primary, to }) => {
+const NavigationLink: React.FC<NavigationLinkProps> = ({
+  primary,
+  to,
+  icon,
+}) => {
   const renderLink = React.useMemo(
     () =>
       React.forwardRef<HTMLAnchorElement, Omit<RouterLinkProps, 'to'>>(
@@ -29,18 +40,20 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ primary, to }) => {
   const match = useMatch(to);
 
   return (
-    <ListItem
+    <ListItemButton
       sx={{
-        minHeight: 48,
-        justifyContent: 'initial',
         borderRadius: 3,
-        px: 2.5,
+        background: grey[300],
       }}
       selected={Boolean(match)}
       component={renderLink}
     >
-      <ListItemText sx={{ opacity: 1 }} primary={primary} />
-    </ListItem>
+      <ListItemIcon sx={{ color: 'inherit' }}>{icon}</ListItemIcon>
+      <ListItemText
+        primaryTypographyProps={{ fontWeight: 'medium' }}
+        primary={primary}
+      />
+    </ListItemButton>
   );
 };
 
