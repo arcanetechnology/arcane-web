@@ -38,7 +38,6 @@ export type TradeMatches = {
   params: Params<string>;
   data: unknown;
   handle: {
-    tab: () => React.ReactNode;
     setting: (key: string) => React.ReactNode;
   };
 };

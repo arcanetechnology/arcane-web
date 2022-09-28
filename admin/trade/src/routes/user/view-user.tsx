@@ -1,11 +1,10 @@
 /** @format */
 
-import { ListLoading, UserMenu, UsersToolbar } from '@/components';
+import { UserMenu, UsersToolbar } from '@/components';
 import { GAP } from '@/constants';
 import { useGetUserQuery } from '@/services';
 import { UserPath } from '@/types/frontend';
-import { Money, PointOfSale } from '@mui/icons-material';
-import { Alert, AppBar, Grid, Tab, Tabs } from '@mui/material';
+import { Alert, Grid } from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';

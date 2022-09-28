@@ -6,6 +6,7 @@ import Index from './routes';
 import {
   GenericError,
   NavigationLink,
+  ProfileToolbar,
   ProtectedRoute,
   UsersToolbar,
 } from './components';
@@ -20,7 +21,7 @@ import {
   ViewPortfolios,
 } from './routes/portfolios';
 import { ViewCryptos, CreateCrypto } from './routes/cryptos';
-import { Tab } from '@mui/material';
+import { Button, Tab } from '@mui/material';
 import React from 'react';
 import { Add, Delete, Group, Money, PointOfSale } from '@mui/icons-material';
 
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
               key={key}
               to="profiles/create"
               primary="Create New Profile"
-              icon={<Add />}
+              icon={<Add color="success" />}
             />
           ),
         },
@@ -66,19 +67,12 @@ const router = createBrowserRouter([
             element: <ViewProfile />,
             errorElement: <GenericError />,
             handle: {
-              tab: () => (
-                <Tab
-                  icon={<PointOfSale />}
-                  iconPosition="start"
-                  label="transaction"
-                />
-              ),
               setting: (key: string) => (
                 <NavigationLink
                   key={key}
                   to=""
                   primary="Delete Profile"
-                  icon={<Delete />}
+                  icon={<Delete color="error" />}
                 />
               ),
             },

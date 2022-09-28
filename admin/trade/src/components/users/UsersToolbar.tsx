@@ -4,13 +4,20 @@ import { TradeMatches } from '@/types/frontend';
 import { PointOfSale, Money } from '@mui/icons-material';
 import { AppBar, Tabs, Tab } from '@mui/material';
 import * as React from 'react';
-import { useMatches } from 'react-router-dom';
+import { useMatch, Link as RouterLink, useLocation } from 'react-router-dom';
 
 const UsersToolbar: React.FC = () => {
-  const matches = useMatches() as TradeMatches[];
-  const tabs = matches
-    .filter((match) => Boolean(match.handle?.tab))
-    .map((match) => match.handle.tab());
+  const profile = useMatch({ path: '/:userId/profiles/:profileId/*' });
+
+  if (!profile) return null;
+  if (!profile.params.profileId) return null;
+
+  const location = useLocation();
+  const routes = [
+    profile?.pathnameBase + '/' + 'accounts',
+    profile?.pathnameBase + '/' + 'transactions',
+  ];
+
   return (
     <AppBar
       position="relative"
@@ -18,7 +25,26 @@ const UsersToolbar: React.FC = () => {
       elevation={0}
       sx={{ borderRadius: 3 }}
     >
-      <Tabs>{tabs.map((t) => t)}</Tabs>
+      <Tabs value={location.pathname}>
+        <Tab
+          icon={<PointOfSale />}
+          value={routes[1]}
+          component={RouterLink}
+          iconPosition="start"
+          label="transactions"
+          LinkComponent={RouterLink}
+          to={routes[1]}
+        />
+        <Tab
+          icon={<PointOfSale />}
+          LinkComponent={RouterLink}
+          value={routes[0]}
+          to={routes[0]}
+          component={RouterLink}
+          iconPosition="start"
+          label="accounts"
+        />
+      </Tabs>
     </AppBar>
   );
 };
