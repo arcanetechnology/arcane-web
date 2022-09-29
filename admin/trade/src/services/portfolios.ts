@@ -6,14 +6,15 @@ import {
   GetPortfolioResponse,
   Portfolio,
   CreatePortfolioRequest,
-} from '@/types/backend';
+  AccountPath,
+  PortfolioPath,
+} from '@/types';
 import {
   ACCOUNTS_ENDPOINT,
   PORTFOLIOS_ENDPOINT,
   PROFILES_ENDPOINT,
   USERS_ENDPOINT,
 } from '@/constants';
-import { AccountPath, PortfolioPath } from '@/types/frontend';
 
 const getPortfolios = (path: AccountPath) =>
   `${USERS_ENDPOINT}/${path.userId}/${PROFILES_ENDPOINT}/${path.profileId}/${ACCOUNTS_ENDPOINT}/${path.accountId}/${PORTFOLIOS_ENDPOINT}`;

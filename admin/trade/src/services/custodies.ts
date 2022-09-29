@@ -1,7 +1,7 @@
 /** @format */
 
 import { api } from './api';
-import { GetCustodiesResponse, GetCustodyResponse } from '../types/backend';
+import { GetCustodiesResponse, GetCustodyResponse } from '@/types';
 import { CUSTODY_ENDPOINT } from '@/constants';
 
 export const custodyApi = api.injectEndpoints({

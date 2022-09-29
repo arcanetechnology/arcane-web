@@ -1,9 +1,8 @@
 /** @format */
 
-import { TextLoading } from '@/components';
 import { GAP } from '@/constants';
 import { useGetAccountQuery } from '@/services';
-import { AccountPath } from '@/types/frontend';
+import { AccountPath } from '@/types';
 import { Money } from '@mui/icons-material';
 import { Divider, Typography, Badge } from '@mui/material';
 import { Box, Stack } from '@mui/system';

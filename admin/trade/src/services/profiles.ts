@@ -6,10 +6,10 @@ import {
   GetProfileResponse,
   Profile,
   CreateProfileRequest,
-  ProfileItem,
-} from '@/types/backend';
+  ProfilePath,
+  UserPath,
+} from '@/types';
 import { PROFILES_ENDPOINT, USERS_ENDPOINT } from '@/constants';
-import { ProfilePath, UserPath } from '@/types/frontend';
 
 const getProfilesUrl = (userId: string) =>
   `${USERS_ENDPOINT}/${userId}/${PROFILES_ENDPOINT}`;

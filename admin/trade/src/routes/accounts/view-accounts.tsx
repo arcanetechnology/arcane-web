@@ -2,7 +2,7 @@
 
 import { AccountCard, AccountsList, CardsLoading } from '@/components';
 import { useGetAccountsQuery } from '@/services';
-import { ProfilePath } from '@/types/frontend';
+import { ProfilePath } from '@/types';
 import * as React from 'react';
 import { Outlet, useParams, Link as RouterLink } from 'react-router-dom';
 import { Stack } from '@mui/system';

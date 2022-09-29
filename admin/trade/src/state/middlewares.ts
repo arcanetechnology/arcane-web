@@ -4,7 +4,6 @@ import {
   isRejectedWithValue,
   Middleware,
   MiddlewareAPI,
-  isRejected,
 } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { login, logout } from './auth';

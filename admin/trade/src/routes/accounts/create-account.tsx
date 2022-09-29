@@ -3,7 +3,7 @@
 import { AccountForm } from '@/components';
 import { GAP } from '@/constants';
 import { useAddAccountMutation } from '@/services';
-import { CreateAccountForm, ProfilePath } from '@/types/frontend';
+import { CreateAccountForm, ProfilePath } from '@/types';
 import { Stack } from '@mui/system';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';

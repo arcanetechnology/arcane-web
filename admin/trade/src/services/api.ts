@@ -1,7 +1,6 @@
 /** @format */
 
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
-import { fail } from 'assert';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: '/',

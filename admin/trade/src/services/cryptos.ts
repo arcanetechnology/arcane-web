@@ -6,7 +6,9 @@ import {
   GetCryptoResponse,
   StakeholderCryptoAccount,
   CreateCryptoRequest,
-} from '@/types/backend';
+  CryptoPath,
+  PortfolioPath,
+} from '@/types';
 import {
   ACCOUNTS_ENDPOINT,
   CRYPTOS_ENDPOINT,
@@ -14,7 +16,6 @@ import {
   PROFILES_ENDPOINT,
   USERS_ENDPOINT,
 } from '@/constants';
-import { CryptoPath, PortfolioPath } from '@/types/frontend';
 
 const getCryptos = (path: PortfolioPath) =>
   `${USERS_ENDPOINT}/${path.userId}/${PROFILES_ENDPOINT}/${path.profileId}/${ACCOUNTS_ENDPOINT}/${path.accountId}/${PORTFOLIOS_ENDPOINT}/${path.portfolioId}/${CRYPTOS_ENDPOINT}`;

@@ -3,7 +3,7 @@
 import { CryptoForm } from '@/components';
 import { GAP } from '@/constants';
 import { useAddCryptoMutation } from '@/services';
-import { CreateCryptoForm, PortfolioPath } from '@/types/frontend';
+import { CreateCryptoForm, PortfolioPath } from '@/types';
 import { Stack } from '@mui/system';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 const CreateCrypto: React.FC = () => {
   const params = useParams<PortfolioPath>();
   const [addCrypto] = useAddCryptoMutation();
-  const handleSubmit = async ({ confirmId, ...account }: CreateCryptoForm) => {
+  const handleSubmit = async ({ ...account }: CreateCryptoForm) => {
     try {
       await addCrypto({ ...(params as PortfolioPath), ...account }).unwrap();
     } catch (err) {
