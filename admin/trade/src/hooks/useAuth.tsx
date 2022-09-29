@@ -2,7 +2,7 @@
 
 import { useTradeDispatch } from '@/state';
 import { login, logout } from '@/state/auth';
-import { Auth } from '@/types/frontend';
+import { Auth } from '@/types';
 import { useNavigate } from 'react-router-dom';
 
 export const useLogin = (path: string) => {

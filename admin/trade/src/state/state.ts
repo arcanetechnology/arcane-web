@@ -1,5 +1,5 @@
 /** @format */
-import { api } from '../services';
+import { api } from '@/services';
 import auth from './auth';
 import listenerMiddleware, { rtkQueryErrorLogger } from './middlewares';
 import { configureStore } from '@reduxjs/toolkit';
