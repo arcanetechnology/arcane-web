@@ -8,6 +8,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     auth: null as Auth | null,
+    token: null as string | null,
   },
   reducers: {
     login: (state, action: PayloadAction<Auth>) => {

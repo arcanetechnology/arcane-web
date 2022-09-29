@@ -1,9 +1,9 @@
 /** @format */
 
 import { rest } from 'msw';
-import virtualAccounts from '../assets/virtual-account-option-list.json';
-import arcaneCustodyAccounts from '../assets/arcane-custody-accounts.json';
-import arcaneStakeholderAccounts from '../assets/arcane-stakeholder-accounts.json';
+// import virtualAccounts from '../assets/virtual-account-option-list.json';
+// import arcaneCustodyAccounts from '../assets/arcane-custody-accounts.json';
+// import arcaneStakeholderAccounts from '../assets/arcane-stakeholder-accounts.json';
 import {
   PROFILES_ENDPOINT,
   USERS_ENDPOINT,
@@ -147,10 +147,12 @@ export {
   custodyState,
 };
 
-export const handlers = [
-  rest.get(`/${USERS_ENDPOINT}`, (req, res, ctx) => {
-    const email = req.url.searchParams.get('q') as string;
+const getEntireUrlEndpoint = (url: string) =>
+  `/${import.meta.env.BASE_URL}/${url}`;
 
+export const handlers = [
+  rest.get(getEntireUrlEndpoint(USERS_ENDPOINT), (req, res, ctx) => {
+    const email = req.url.searchParams.get('q') as string;
     if (!email) {
       return res(
         ctx.status(404),
@@ -171,7 +173,7 @@ export const handlers = [
     return res(ctx.status(200), ctx.json([filteredUser]), ctx.delay(400));
   }),
 
-  rest.post(`/${USERS_ENDPOINT}`, async (req, res, ctx) => {
+  rest.post(getEntireUrlEndpoint(USERS_ENDPOINT), async (req, res, ctx) => {
     const { email, profiles } = req.body as CreateUserRequest;
     state = adapter.addOne(state, {
       email: email,
@@ -181,20 +183,26 @@ export const handlers = [
     return res(ctx.json(Object.values(state.entities)), ctx.delay(400));
   }),
 
-  rest.get(`/${USERS_ENDPOINT}/:userId`, (req, res, ctx) => {
-    const { userId } = req.params as UserPath;
-    return res(
-      ctx.status(200),
-      ctx.json(state.entities[userId]),
-      ctx.delay(400)
-    );
-  }),
+  rest.get(
+    getEntireUrlEndpoint(`${USERS_ENDPOINT}/:userId`),
+    (req, res, ctx) => {
+      const { userId } = req.params as UserPath;
+      return res(
+        ctx.status(200),
+        ctx.json(state.entities[userId]),
+        ctx.delay(400)
+      );
+    }
+  ),
 
-  rest.delete(`/${USERS_ENDPOINT}/:userId`, (req, res, ctx) => {
-    const { userId } = req.params as UserPath;
-    state = adapter.removeOne(state, userId);
-    return res(ctx.status(200), ctx.delay(400));
-  }),
+  rest.delete(
+    getEntireUrlEndpoint(`${USERS_ENDPOINT}/:userId`),
+    (req, res, ctx) => {
+      const { userId } = req.params as UserPath;
+      state = adapter.removeOne(state, userId);
+      return res(ctx.status(200), ctx.delay(400));
+    }
+  ),
   // profiles
   rest.get(
     `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}`,
@@ -375,13 +383,14 @@ export const handlers = [
     (req, res, ctx) => {
       const { portfolioId } = req.params as PortfolioPath;
 
-      const { alias, id, balance, currency, custodyAccountId } =
+      const { alias, currency, custodyAccountId } =
         req.body as CreateCryptoRequest;
 
+      const id = nanoid();
       cryptoState = cryptoAdapter.addOne(cryptoState, {
         alias,
         id,
-        balance,
+        balance: 0,
         currency,
         custodyAccountId,
       });
@@ -416,19 +425,22 @@ export const handlers = [
   ),
 
   // custody stuff
-  rest.get(`/${CUSTODY_ENDPOINT}`, (req, res, ctx) => {
+  rest.get(getEntireUrlEndpoint(CUSTODY_ENDPOINT), (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json(Object.values(custodyState.entities)),
       ctx.delay(400)
     );
   }),
-  rest.get(`/${CUSTODY_ENDPOINT}/:custodyId`, (req, res, ctx) => {
-    const { custodyId } = req.params as CustodyPath;
-    return res(
-      ctx.status(200),
-      ctx.json(custodyState.entities[custodyId]),
-      ctx.delay(400)
-    );
-  }),
+  rest.get(
+    getEntireUrlEndpoint(`${CUSTODY_ENDPOINT}/:custodyId`),
+    (req, res, ctx) => {
+      const { custodyId } = req.params as CustodyPath;
+      return res(
+        ctx.status(200),
+        ctx.json(custodyState.entities[custodyId]),
+        ctx.delay(400)
+      );
+    }
+  ),
 ];
