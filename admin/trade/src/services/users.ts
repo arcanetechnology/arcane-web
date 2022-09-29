@@ -9,8 +9,11 @@ import {
 } from '@/types';
 import { USERS_ENDPOINT } from '@/constants';
 
+// TODO : refactor the admin searchUsers/getUser to its own admin app
+
 export const usersApi = api.injectEndpoints({
   endpoints: (build) => ({
+    
     getUsers: build.query<GetUsersResponse, string>({
       query: (args) => ({ url: USERS_ENDPOINT, params: { q: args } }),
       extraOptions: {
