@@ -13,6 +13,10 @@ interface ImportMetaEnv {
   readonly VITE_FIREBASE_MEASUREMENT_ID: string;
   readonly VITE_GOOGLE_TENANT_ID: string;
   readonly VITE_SAML_PROVIDER_ID: string;
+
+  // application specific environment variables
+  readonly VITE_BASE_URL: string;
+  readonly VITE_ADMIN_ENDPOINT: string;
 }
 
 interface ImportMeta {
