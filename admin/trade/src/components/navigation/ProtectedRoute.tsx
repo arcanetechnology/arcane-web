@@ -1,7 +1,7 @@
 /** @format */
 
 import { useTradeDispatch, useTradeSelector } from '@/state';
-import { logout, selectAuth } from '@/state';
+import { logout, selectAuth, updateToken } from '@/state';
 import { getAuth, onAuthStateChanged, onIdTokenChanged } from 'firebase/auth';
 import * as React from 'react';
 import { Navigate } from 'react-router-dom';
@@ -19,22 +19,19 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   }
 
   // listen to user being logged in
+
+  // debounce updateToken dispatch
   React.useEffect(() => {
     onAuthStateChanged(getAuth(), (user) => {
       if (!user) {
         dispatch(logout());
+      } else {
+        user.getIdToken().then((v) => dispatch(updateToken(v)));
       }
     });
   }, []);
 
   // update the token when token changes
-
-  React.useEffect(() => {
-    onIdTokenChanged(getAuth(), (user) => {
-      console.log('token listener');
-      console.log(user);
-    });
-  }, []);
 
   return <React.Fragment>{children}</React.Fragment>;
 };

@@ -1,6 +1,6 @@
 /** @format */
 
-import { login, useTradeDispatch } from '@/state';
+import { login, useTradeDispatch, updateToken } from '@/state';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import {
@@ -30,7 +30,10 @@ const Auth: React.FC = () => {
         } else {
           const { email, uid, photoURL, displayName } = result.user;
           dispatch(login({ email, uid, photoURL, displayName }));
-          navigate('/');
+          result.user.getIdToken(true).then((v) => {
+            dispatch(updateToken(v));
+            navigate('/');
+          });
         }
       })
       .catch((err) => {
