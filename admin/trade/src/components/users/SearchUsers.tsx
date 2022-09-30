@@ -26,6 +26,7 @@ import { SearchUserForm } from '@/types/frontend';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import CheckUser from './CheckUser';
+import { stringToAvatar } from '@/utils';
 
 const schema = z.object({
   email: z.string().email('please enter an email').nonempty(),
@@ -53,8 +54,6 @@ const SearchUsers: React.FC = () => {
       reset();
     }
   };
-
-  console.log(errors);
 
   return (
     <Stack
@@ -100,15 +99,17 @@ const SearchUsers: React.FC = () => {
               component={CardContent}
               display="flex"
               justifyContent="space-between"
+              alignContent="center"
             >
               <Box
                 display="flex"
                 flexDirection="row"
                 gap={GAP}
                 alignContent="center"
+                justifyContent="center"
               >
-                <Avatar />
-                <Typography variant="h4">{users![0].email}</Typography>
+                <Avatar {...stringToAvatar(users![0].email)} />
+                <Typography variant="h3">{users![0].email}</Typography>
               </Box>
               <CheckUser userId={users![0].id} />
             </Box>
