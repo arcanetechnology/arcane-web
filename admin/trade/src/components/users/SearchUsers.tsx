@@ -1,22 +1,22 @@
 /** @format */
 
 import { GAP, users } from '@/constants';
-import {
-  profilesApi,
-  useGetUsersQuery,
-  useLazyGetUsersQuery,
-} from '@/services';
+import { useLazyGetUsersQuery } from '@/services';
 import { Loop, Search, SipOutlined } from '@mui/icons-material';
 import {
+  Alert,
+  Avatar,
   Card,
   CardActionArea,
   CardContent,
   Divider,
+  Fade,
   IconButton,
   InputBase,
   Paper,
   Stack,
   TextField,
+  Typography,
 } from '@mui/material';
 import { Box } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -25,9 +25,10 @@ import { useForm } from 'react-hook-form';
 import { SearchUserForm } from '@/types/frontend';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import CheckUser from './CheckUser';
 
 const schema = z.object({
-  email: z.string().email('please enter an email'),
+  email: z.string().email('please enter an email').nonempty(),
 });
 
 const SearchUsers: React.FC = () => {
@@ -53,7 +54,7 @@ const SearchUsers: React.FC = () => {
     }
   };
 
-  console.log(error);
+  console.log(errors);
 
   return (
     <Stack
@@ -92,18 +93,34 @@ const SearchUsers: React.FC = () => {
           ),
         }}
       />
-      {users && (
-        <Card variant="outlined" sx={{ borderRadius: 3 }}>
-          <CardContent>{users[0].email}</CardContent>
-        </Card>
+      {Boolean(users) && (
+        <Fade in={Boolean(users)}>
+          <Card variant="outlined" sx={{ borderRadius: 3 }}>
+            <Box
+              component={CardContent}
+              display="flex"
+              justifyContent="space-between"
+            >
+              <Box
+                display="flex"
+                flexDirection="row"
+                gap={GAP}
+                alignContent="center"
+              >
+                <Avatar />
+                <Typography variant="h4">{users![0].email}</Typography>
+              </Box>
+              <CheckUser userId={users![0].id} />
+            </Box>
+          </Card>
+        </Fade>
       )}
-
-      {error && (
-        <Card variant="outlined" sx={{ borderRadius: 3 }}>
-          {/* 
-          // @ts-ignore */}
-          <CardContent>{error['data']}</CardContent>
-        </Card>
+      {Boolean(errors.email?.message) && (
+        <Fade in={Boolean(errors.email?.message)}>
+          <Alert variant="outlined" severity="error" sx={{ borderRadius: 3 }}>
+            {errors.email?.message}
+          </Alert>
+        </Fade>
       )}
     </Stack>
   );

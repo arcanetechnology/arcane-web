@@ -43,25 +43,6 @@ const Index: React.FC = () => {
             </CardContent>
           </CardActionArea>
         </Card>
-        <Card
-          sx={{
-            width: 200,
-            textAlign: 'center',
-            justifyContent: 'center',
-            display: 'flex',
-          }}
-        >
-          <CardActionArea
-            component={NavLink}
-            to="create"
-            LinkComponent={NavLink}
-          >
-            <CardContent>
-              <Add />
-              <Typography variant="subtitle1">Create New User</Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
       </Box>
       <div
         className="tradingview-widget-container"

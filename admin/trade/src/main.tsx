@@ -17,7 +17,15 @@ const render = async () => {
   ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <Provider store={store}>
       <App />
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        pauseOnFocusLoss
+        pauseOnHover
+        draggable
+        newestOnTop={false}
+        autoClose={5000}
+        hideProgressBar
+      />
     </Provider>
   );
 };
