@@ -5,12 +5,12 @@ import { rest } from 'msw';
 // import arcaneCustodyAccounts from '../assets/arcane-custody-accounts.json';
 // import arcaneStakeholderAccounts from '../assets/arcane-stakeholder-accounts.json';
 import {
-  PROFILES_ENDPOINT,
-  USERS_ENDPOINT,
-  ACCOUNTS_ENDPOINT,
-  PORTFOLIOS_ENDPOINT,
-  CRYPTOS_ENDPOINT,
-  CUSTODY_ENDPOINT,
+  profiles,
+  users,
+  accounts,
+  portfolios,
+  cryptos,
+  custodies,
 } from '@/constants';
 import { createEntityAdapter, nanoid } from '@reduxjs/toolkit';
 import {
@@ -25,15 +25,14 @@ import {
   CreateAccountRequest,
   CreatePortfolioRequest,
   CreateCryptoRequest,
-} from '@/types/backend';
-import {
   AccountPath,
   CryptoPath,
   CustodyPath,
   PortfolioPath,
   ProfilePath,
   UserPath,
-} from '@/types/frontend';
+} from '@/types';
+import { getEntireUrl } from '@/utils';
 
 /// user state
 const adapter = createEntityAdapter<User>({
@@ -147,11 +146,10 @@ export {
   custodyState,
 };
 
-const getEntireUrlEndpoint = (url: string) =>
-  `/${import.meta.env.BASE_URL}/${url}`;
+const getBackendUrl = getEntireUrl(import.meta.env.VITE_BASE_URL);
 
 export const handlers = [
-  rest.get(getEntireUrlEndpoint(USERS_ENDPOINT), (req, res, ctx) => {
+  rest.get(getBackendUrl(users), (req, res, ctx) => {
     const email = req.url.searchParams.get('q') as string;
     if (!email) {
       return res(
@@ -173,7 +171,7 @@ export const handlers = [
     return res(ctx.status(200), ctx.json([filteredUser]), ctx.delay(400));
   }),
 
-  rest.post(getEntireUrlEndpoint(USERS_ENDPOINT), async (req, res, ctx) => {
+  rest.post(getBackendUrl(users), async (req, res, ctx) => {
     const { email, profiles } = req.body as CreateUserRequest;
     state = adapter.addOne(state, {
       email: email,
@@ -183,70 +181,55 @@ export const handlers = [
     return res(ctx.json(Object.values(state.entities)), ctx.delay(400));
   }),
 
-  rest.get(
-    getEntireUrlEndpoint(`${USERS_ENDPOINT}/:userId`),
-    (req, res, ctx) => {
-      const { userId } = req.params as UserPath;
-      return res(
-        ctx.status(200),
-        ctx.json(state.entities[userId]),
-        ctx.delay(400)
-      );
-    }
-  ),
+  rest.get(getBackendUrl(users, ':userId'), (req, res, ctx) => {
+    const { userId } = req.params as UserPath;
+    return res(
+      ctx.status(200),
+      ctx.json(state.entities[userId]),
+      ctx.delay(400)
+    );
+  }),
 
-  rest.delete(
-    getEntireUrlEndpoint(`${USERS_ENDPOINT}/:userId`),
-    (req, res, ctx) => {
-      const { userId } = req.params as UserPath;
-      state = adapter.removeOne(state, userId);
-      return res(ctx.status(200), ctx.delay(400));
-    }
-  ),
+  rest.delete(getBackendUrl(users, ':userId'), (req, res, ctx) => {
+    const { userId } = req.params as UserPath;
+    state = adapter.removeOne(state, userId);
+    return res(ctx.status(200), ctx.delay(400));
+  }),
   // profiles
+  rest.get(getBackendUrl(users, ':userId', profiles), (req, res, ctx) => {
+    const { userId } = req.params as UserPath;
+
+    const user = state.entities[userId];
+
+    const profiles = user?.profiles.map((p) => profileState.entities[p]);
+
+    return res(ctx.status(200), ctx.json(profiles), ctx.delay(400));
+  }),
+  rest.post(getBackendUrl(users, ':userId', profiles), (req, res, ctx) => {
+    const { userId } = req.params as UserPath;
+    const { alias, type, accounts } = req.body as CreateProfileRequest;
+    const profileId = nanoid();
+    profileState = profileAdapter.addOne(profileState, {
+      alias: alias,
+      type: type,
+      id: profileId,
+      accounts: accounts ?? [],
+    });
+
+    const userSelector = adapter.getSelectors();
+    const user = userSelector.selectById(state, userId);
+
+    state = adapter.updateOne(state, {
+      id: userId,
+      changes: {
+        profiles: [...(user?.profiles ?? []), profileId],
+      },
+    });
+
+    return res(ctx.json(Object.values(profileState.entities)), ctx.delay(400));
+  }),
   rest.get(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}`,
-    (req, res, ctx) => {
-      const { userId } = req.params as UserPath;
-
-      const user = state.entities[userId];
-
-      const profiles = user?.profiles.map((p) => profileState.entities[p]);
-
-      return res(ctx.status(200), ctx.json(profiles), ctx.delay(400));
-    }
-  ),
-  rest.post(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}`,
-    (req, res, ctx) => {
-      const { userId } = req.params as UserPath;
-      const { alias, type, accounts } = req.body as CreateProfileRequest;
-      const profileId = nanoid();
-      profileState = profileAdapter.addOne(profileState, {
-        alias: alias,
-        type: type,
-        id: profileId,
-        accounts: accounts ?? [],
-      });
-
-      const userSelector = adapter.getSelectors();
-      const user = userSelector.selectById(state, userId);
-
-      state = adapter.updateOne(state, {
-        id: userId,
-        changes: {
-          profiles: [...(user?.profiles ?? []), profileId],
-        },
-      });
-
-      return res(
-        ctx.json(Object.values(profileState.entities)),
-        ctx.delay(400)
-      );
-    }
-  ),
-  rest.get(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId`,
+    getBackendUrl(users, ':userId', profiles, ':profileId'),
     (req, res, ctx) => {
       const { userId, profileId } = req.params as ProfilePath;
 
@@ -259,7 +242,7 @@ export const handlers = [
   ),
   // accounts
   rest.get(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}`,
+    getBackendUrl(users, ':userId', profiles, ':profileId', accounts),
     (req, res, ctx) => {
       const { userId, profileId } = req.params as ProfilePath;
       const profiles = profileState.entities[profileId];
@@ -269,7 +252,7 @@ export const handlers = [
   ),
 
   rest.post(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}`,
+    getBackendUrl(users, ':userId', profiles, ':profileId', accounts),
     (req, res, ctx) => {
       const { userId, profileId } = req.params as ProfilePath;
       const { alias, portfolios, currency, custodyAccountId } =
@@ -300,7 +283,14 @@ export const handlers = [
     }
   ),
   rest.get(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId`,
+    getBackendUrl(
+      users,
+      ':userId',
+      profiles,
+      ':profileId',
+      accounts,
+      ':accountId'
+    ),
     (req, res, ctx) => {
       const { accountId } = req.params as AccountPath;
       return res(
@@ -313,7 +303,15 @@ export const handlers = [
 
   // portfolios
   rest.get(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}`,
+    getBackendUrl(
+      users,
+      ':userId',
+      profiles,
+      ':profileId',
+      accounts,
+      ':accountId',
+      portfolios
+    ),
     (req, res, ctx) => {
       const { accountId } = req.params as AccountPath;
       const account = accountState.entities[accountId];
@@ -325,7 +323,15 @@ export const handlers = [
   ),
 
   rest.post(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}`,
+    getBackendUrl(
+      users,
+      ':userId',
+      profiles,
+      ':profileId',
+      accounts,
+      ':accountId',
+      portfolios
+    ),
     (req, res, ctx) => {
       const { accountId } = req.params as AccountPath;
       const { alias, accounts } = req.body as CreatePortfolioRequest;
@@ -355,7 +361,16 @@ export const handlers = [
   ),
 
   rest.get(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}/:portfolioId`,
+    getBackendUrl(
+      users,
+      ':userId',
+      profiles,
+      ':profileId',
+      accounts,
+      ':accountId',
+      portfolios,
+      ':portfolioId'
+    ),
     (req, res, ctx) => {
       const { userId, profileId, accountId, portfolioId } =
         req.params as PortfolioPath;
@@ -368,7 +383,17 @@ export const handlers = [
   ),
   // cryptos
   rest.get(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}/:portfolioId/${CRYPTOS_ENDPOINT}`,
+    getBackendUrl(
+      users,
+      ':userId',
+      profiles,
+      ':profileId',
+      accounts,
+      ':accountId',
+      portfolios,
+      ':portfolioId',
+      cryptos
+    ),
     (req, res, ctx) => {
       const { userId, profileId, accountId, portfolioId } =
         req.params as PortfolioPath;
@@ -379,7 +404,17 @@ export const handlers = [
     }
   ),
   rest.post(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}/:portfolioId/${CRYPTOS_ENDPOINT}`,
+    getBackendUrl(
+      users,
+      ':userId',
+      profiles,
+      ':profileId',
+      accounts,
+      ':accountId',
+      portfolios,
+      ':portfolioId',
+      cryptos
+    ),
     (req, res, ctx) => {
       const { portfolioId } = req.params as PortfolioPath;
 
@@ -412,7 +447,18 @@ export const handlers = [
     }
   ),
   rest.get(
-    `/${USERS_ENDPOINT}/:userId/${PROFILES_ENDPOINT}/:profileId/${ACCOUNTS_ENDPOINT}/:accountId/${PORTFOLIOS_ENDPOINT}/:portfolioId/${CRYPTOS_ENDPOINT}/:cryptoId`,
+    getBackendUrl(
+      users,
+      ':userId',
+      profiles,
+      ':profileId',
+      accounts,
+      ':accountId',
+      portfolios,
+      ':portfolioId',
+      cryptos,
+      ':cryptoId'
+    ),
     (req, res, ctx) => {
       const { userId, profileId, accountId, portfolioId, cryptoId } =
         req.params as CryptoPath;
@@ -425,22 +471,19 @@ export const handlers = [
   ),
 
   // custody stuff
-  rest.get(getEntireUrlEndpoint(CUSTODY_ENDPOINT), (req, res, ctx) => {
+  rest.get(getBackendUrl(custodies), (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json(Object.values(custodyState.entities)),
       ctx.delay(400)
     );
   }),
-  rest.get(
-    getEntireUrlEndpoint(`${CUSTODY_ENDPOINT}/:custodyId`),
-    (req, res, ctx) => {
-      const { custodyId } = req.params as CustodyPath;
-      return res(
-        ctx.status(200),
-        ctx.json(custodyState.entities[custodyId]),
-        ctx.delay(400)
-      );
-    }
-  ),
+  rest.get(getBackendUrl(custodies, ':custodyId'), (req, res, ctx) => {
+    const { custodyId } = req.params as CustodyPath;
+    return res(
+      ctx.status(200),
+      ctx.json(custodyState.entities[custodyId]),
+      ctx.delay(400)
+    );
+  }),
 ];

@@ -1,12 +1,12 @@
 /** @format */
 
 // api
-export const USERS_ENDPOINT = 'users';
-export const PROFILES_ENDPOINT = 'profiles';
-export const ACCOUNTS_ENDPOINT = 'accounts';
-export const PORTFOLIOS_ENDPOINT = 'portfolios';
-export const CRYPTOS_ENDPOINT = 'cryptos';
-export const CUSTODY_ENDPOINT = 'custodies';
+export const users = 'users';
+export const profiles = 'profiles';
+export const accounts = 'accounts';
+export const portfolios = 'portfolios';
+export const cryptos = 'cryptos';
+export const custodies = 'custodies';
 
 // UI
 export const GAP = 2;

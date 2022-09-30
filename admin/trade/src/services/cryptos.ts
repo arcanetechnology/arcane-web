@@ -1,6 +1,6 @@
 /** @format */
 
-import { api } from './api';
+import { api, getFrontendUrl } from './api';
 import {
   GetCryptosResponse,
   GetCryptoResponse,
@@ -9,16 +9,20 @@ import {
   CryptoPath,
   PortfolioPath,
 } from '@/types';
-import {
-  ACCOUNTS_ENDPOINT,
-  CRYPTOS_ENDPOINT,
-  PORTFOLIOS_ENDPOINT,
-  PROFILES_ENDPOINT,
-  USERS_ENDPOINT,
-} from '@/constants';
+import { accounts, cryptos, portfolios, profiles, users } from '@/constants';
 
 const getCryptos = (path: PortfolioPath) =>
-  `${USERS_ENDPOINT}/${path.userId}/${PROFILES_ENDPOINT}/${path.profileId}/${ACCOUNTS_ENDPOINT}/${path.accountId}/${PORTFOLIOS_ENDPOINT}/${path.portfolioId}/${CRYPTOS_ENDPOINT}`;
+  getFrontendUrl(
+    users,
+    path.userId,
+    profiles,
+    path.profileId,
+    accounts,
+    path.accountId,
+    portfolios,
+    path.portfolioId,
+    cryptos
+  );
 
 const getCrypto = ({ cryptoId, ...path }: CryptoPath) =>
   getCryptos(path) + '/' + cryptoId;

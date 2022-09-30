@@ -2,12 +2,12 @@
 
 import { api } from './api';
 import { GetCustodiesResponse, GetCustodyResponse } from '@/types';
-import { CUSTODY_ENDPOINT } from '@/constants';
+import { custodies } from '@/constants';
 
 export const custodyApi = api.injectEndpoints({
   endpoints: (build) => ({
     getCustodies: build.query<GetCustodiesResponse, void>({
-      query: () => CUSTODY_ENDPOINT,
+      query: () => custodies,
       providesTags: (result = []) => [
         ...result.map(({ id }) => ({ type: 'Custodies', id } as const)),
         {
@@ -18,7 +18,7 @@ export const custodyApi = api.injectEndpoints({
     }),
 
     getCustody: build.query<GetCustodyResponse, string>({
-      query: (path) => `${CUSTODY_ENDPOINT}/${path}`,
+      query: (path) => `${custodies}/${path}`,
       providesTags: (_custody, _err, path) => [
         { type: 'Custody' as const, id: path },
       ],

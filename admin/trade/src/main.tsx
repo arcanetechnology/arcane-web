@@ -10,7 +10,9 @@ import { worker } from './mocks/browser';
 import App from './App';
 
 const render = async () => {
-  await worker.start();
+  if (import.meta.env.DEV) {
+    await worker.start();
+  }
 
   ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <Provider store={store}>

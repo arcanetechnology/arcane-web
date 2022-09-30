@@ -1,6 +1,6 @@
 /** @format */
 
-import { GAP } from '@/constants';
+import { GAP, users } from '@/constants';
 import {
   profilesApi,
   useGetUsersQuery,
@@ -40,21 +40,20 @@ const SearchUsers: React.FC = () => {
     resolver: zodResolver(schema as any),
   });
 
-  const navigate = useNavigate();
-
-  const [addUser, { data, isFetching, isLoading, isError, error }] =
+  const [addUser, { data: users, isFetching, isLoading, isError, error }] =
     useLazyGetUsersQuery();
 
   const handleSearch = async (value: SearchUserForm) => {
     try {
       await addUser(value.email)
         .unwrap()
-        .then((d) => {
-          navigate(d[0].id + '/profiles');
-        });
+        .then(() => reset());
+    } catch (err) {
       reset();
-    } catch (err) {}
+    }
   };
+
+  console.log(error);
 
   return (
     <Stack
@@ -93,6 +92,19 @@ const SearchUsers: React.FC = () => {
           ),
         }}
       />
+      {users && (
+        <Card variant="outlined" sx={{ borderRadius: 3 }}>
+          <CardContent>{users[0].email}</CardContent>
+        </Card>
+      )}
+
+      {error && (
+        <Card variant="outlined" sx={{ borderRadius: 3 }}>
+          {/* 
+          // @ts-ignore */}
+          <CardContent>{error['data']}</CardContent>
+        </Card>
+      )}
     </Stack>
   );
 };

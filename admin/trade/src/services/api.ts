@@ -1,10 +1,16 @@
 /** @format */
 
+import { RootState } from '@/state';
+import { getEntireUrl } from '@/utils';
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_BASE_URL,
-  prepareHeaders: (headers) => {
+  prepareHeaders: (headers, { getState, endpoint, extra }) => {
+    console.log(endpoint);
+    console.log(extra);
+    const token = (getState() as RootState).auth;
+    console.log(token);
     headers.set('Content-Type', 'application/json');
     return headers;
   },
@@ -31,3 +37,5 @@ export const api = createApi({
   // enpoints are injected later
   endpoints: () => ({}),
 });
+
+export const getFrontendUrl = getEntireUrl();

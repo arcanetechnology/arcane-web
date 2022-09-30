@@ -1,6 +1,6 @@
 /** @format */
 
-import { api } from './api';
+import { api, getFrontendUrl } from './api';
 import {
   GetPortfoliosResponse,
   GetPortfolioResponse,
@@ -9,15 +9,18 @@ import {
   AccountPath,
   PortfolioPath,
 } from '@/types';
-import {
-  ACCOUNTS_ENDPOINT,
-  PORTFOLIOS_ENDPOINT,
-  PROFILES_ENDPOINT,
-  USERS_ENDPOINT,
-} from '@/constants';
+import { accounts, portfolios, profiles, users } from '@/constants';
 
 const getPortfolios = (path: AccountPath) =>
-  `${USERS_ENDPOINT}/${path.userId}/${PROFILES_ENDPOINT}/${path.profileId}/${ACCOUNTS_ENDPOINT}/${path.accountId}/${PORTFOLIOS_ENDPOINT}`;
+  getFrontendUrl(
+    users,
+    path.userId,
+    profiles,
+    path.profileId,
+    accounts,
+    path.accountId,
+    portfolios
+  );
 
 const getPortfolio = ({ portfolioId, ...path }: PortfolioPath) =>
   getPortfolios(path) + '/' + portfolioId;

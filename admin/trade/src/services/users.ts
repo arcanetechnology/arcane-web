@@ -7,15 +7,14 @@ import {
   CreateUserRequest,
   GetUserResponse,
 } from '@/types';
-import { USERS_ENDPOINT } from '@/constants';
+import { users } from '@/constants';
 
 // TODO : refactor the admin searchUsers/getUser to its own admin app
 
 export const usersApi = api.injectEndpoints({
   endpoints: (build) => ({
-    
     getUsers: build.query<GetUsersResponse, string>({
-      query: (args) => ({ url: USERS_ENDPOINT, params: { q: args } }),
+      query: (args) => ({ url: users, params: { q: args } }),
       extraOptions: {
         maxRetries: 0,
       },
@@ -23,19 +22,19 @@ export const usersApi = api.injectEndpoints({
     addUser: build.mutation<User, CreateUserRequest>({
       query(body) {
         return {
-          url: USERS_ENDPOINT,
+          url: users,
           method: 'POST',
           body,
         };
       },
     }),
     getUser: build.query<GetUserResponse, string>({
-      query: (id) => `${USERS_ENDPOINT}/${id}`,
+      query: (id) => `${users}/${id}`,
       providesTags: (_user, _err, id) => [{ type: 'User', id }],
     }),
     deleteUser: build.mutation<void, string>({
       query: (id) => ({
-        url: `${USERS_ENDPOINT}/${id}`,
+        url: `${users}/${id}`,
         method: 'DELETE',
         credentials: 'include',
       }),

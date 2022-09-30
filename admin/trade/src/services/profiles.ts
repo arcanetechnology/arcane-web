@@ -1,6 +1,6 @@
 /** @format */
 
-import { api } from './api';
+import { api, getFrontendUrl } from './api';
 import {
   GetProfilesResponse,
   GetProfileResponse,
@@ -9,10 +9,10 @@ import {
   ProfilePath,
   UserPath,
 } from '@/types';
-import { PROFILES_ENDPOINT, USERS_ENDPOINT } from '@/constants';
+import { profiles, users } from '@/constants';
 
 const getProfilesUrl = (userId: string) =>
-  `${USERS_ENDPOINT}/${userId}/${PROFILES_ENDPOINT}`;
+  getFrontendUrl(users, userId, profiles);
 
 const getProfileUrl = (userId: string, profileId: string) =>
   getProfilesUrl(userId) + '/' + profileId;

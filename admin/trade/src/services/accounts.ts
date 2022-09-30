@@ -1,6 +1,6 @@
 /** @format */
 
-import { api } from './api';
+import { api, getFrontendUrl } from './api';
 import {
   GetAccountsResponse,
   GetAccountResponse,
@@ -8,10 +8,10 @@ import {
   StakeholderFiatAccount,
 } from '../types/backend';
 import { ProfilePath, AccountPath } from '@/types';
-import { PROFILES_ENDPOINT, USERS_ENDPOINT } from '@/constants';
+import { accounts, profiles, users } from '@/constants';
 
 const getAccounts = (path: ProfilePath) =>
-  `${USERS_ENDPOINT}/${path.userId}/${PROFILES_ENDPOINT}/${path.profileId}/accounts`;
+  getFrontendUrl(users, path.userId, profiles, path.profileId, accounts);
 
 const getAccount = ({ accountId, ...path }: AccountPath) =>
   getAccounts(path) + `/${accountId}`;
