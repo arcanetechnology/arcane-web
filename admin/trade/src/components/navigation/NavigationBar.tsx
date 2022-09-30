@@ -1,13 +1,13 @@
 /** @format */
 
-import { AppBar, Avatar, Chip, Toolbar } from '@mui/material';
+import { AppBar, Avatar, Chip, Skeleton, Toolbar } from '@mui/material';
 import * as React from 'react';
 import { ReactComponent as Logo } from '@/assets/logo.svg';
 import { Container } from '@mui/system';
-import { Auth } from '@/types/frontend';
+import { UserState } from '@/types/frontend';
 
 type NavigationBarProps = {
-  user: Auth;
+  user: UserState | null;
 };
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
@@ -25,12 +25,16 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
         }}
       >
         <Logo />
-        <Chip
-          size="medium"
-          avatar={<Avatar alt={user.displayName ?? ''} src={user.photoUrl} />}
-          label={user.email}
-          variant="outlined"
-        />
+        {user ? (
+          <Chip
+            size="medium"
+            avatar={<Avatar alt={user.displayName ?? ''} src={user.photoUrl} />}
+            label={user.email}
+            variant="outlined"
+          />
+        ) : (
+          <Skeleton variant="text" sx={{ fontSize: 20 }} />
+        )}
       </Toolbar>
     </AppBar>
   );

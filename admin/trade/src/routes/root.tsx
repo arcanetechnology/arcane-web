@@ -4,18 +4,15 @@ import * as React from 'react';
 import { NavigationBar, SearchUsers, TradeBreadCrumbs } from '@/components';
 import { Container } from '@mui/system';
 import { Outlet } from 'react-router-dom';
-import { Auth } from '@/types/frontend';
 import { Stack } from '@mui/material';
 import { GAP } from '@/constants';
+import { selectAuth, useTradeSelector } from '@/state';
 
-type RootProps = {
-  user: Auth;
-};
-
-const Root: React.FC<RootProps> = ({ user }) => {
+const Root: React.FC = () => {
+  const auth = useTradeSelector(selectAuth);
   return (
     <React.Fragment>
-      <NavigationBar user={user} />
+      <NavigationBar user={auth.user} />
       <Container component="main" maxWidth="xl" sx={{ mt: 5 }}>
         <Stack gap={GAP}>
           <TradeBreadCrumbs />

@@ -1,5 +1,5 @@
 /** @format */
-import { createBrowserRouter, Params } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import Root from './routes/root';
 import ErrorPage from './error-page';
 import Index from './routes';
@@ -23,7 +23,11 @@ import { ViewTransactions } from './routes/transactions';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <ProtectedRoute>{(user) => <Root user={user} />}</ProtectedRoute>,
+    element: (
+      <ProtectedRoute>
+        <Root />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {

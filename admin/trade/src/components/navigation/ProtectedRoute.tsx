@@ -1,31 +1,42 @@
 /** @format */
 
-import { useAuthStateChanged, useCheckAuth, useLogout } from '@/hooks';
-import { useTradeSelector } from '@/state';
-import { selectAuth } from '@/state/auth';
-import { Auth } from '@/types/frontend';
+import { useTradeDispatch, useTradeSelector } from '@/state';
+import { logout, selectAuth } from '@/state';
+import { getAuth, onAuthStateChanged, onIdTokenChanged } from 'firebase/auth';
 import * as React from 'react';
 import { Navigate } from 'react-router-dom';
 
 type ProtectedRouteProps = {
-  children: (auth: Auth) => React.ReactNode;
+  children: React.ReactNode;
 };
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const auth = useCheckAuth();
-  const logout = useLogout();
+  const auth = useTradeSelector(selectAuth);
+  const dispatch = useTradeDispatch();
 
-  if (!auth) {
+  if (!auth.user) {
     return <Navigate to="/auth" replace />;
   }
 
-  useAuthStateChanged(import.meta.env.VITE_GOOGLE_TENANT_ID, (user) => {
-    if (!user) {
-      logout();
-    }
-  });
+  // listen to user being logged in
+  React.useEffect(() => {
+    onAuthStateChanged(getAuth(), (user) => {
+      if (!user) {
+        dispatch(logout());
+      }
+    });
+  }, []);
 
-  return <React.Fragment>{children(auth)}</React.Fragment>;
+  // update the token when token changes
+
+  React.useEffect(() => {
+    onIdTokenChanged(getAuth(), (user) => {
+      console.log('token listener');
+      console.log(user);
+    });
+  }, []);
+
+  return <React.Fragment>{children}</React.Fragment>;
 };
 
 export default ProtectedRoute;
