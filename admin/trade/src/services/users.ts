@@ -28,9 +28,9 @@ export const usersApi = api.injectEndpoints({
     }),
     // trade-admin
     addUser: build.mutation<User, CreateUserRequest>({
-      query(body) {
+      query({ id, ...body }) {
         return {
-          url: users,
+          url: users + '/' + id,
           method: 'POST',
           body,
         };
@@ -39,6 +39,9 @@ export const usersApi = api.injectEndpoints({
     getUser: build.query<GetUserResponse, string>({
       query: (id) => `${users}/${id}`,
       providesTags: (_user, _err, id) => [{ type: 'User', id }],
+      extraOptions: {
+        maxRetries: 0,
+      },
     }),
     deleteUser: build.mutation<void, string>({
       query: (id) => ({
