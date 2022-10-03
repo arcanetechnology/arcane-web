@@ -35,6 +35,8 @@ export default function App() {
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         dispatch(logout({}));
+      } else {
+        user.getIdToken(true).then((v) => console.log(v));
       }
     });
   }, []);
