@@ -4,10 +4,10 @@ import { AppBar, Avatar, Chip, Skeleton, Toolbar } from '@mui/material';
 import * as React from 'react';
 import { ReactComponent as Logo } from '@/assets/logo.svg';
 import { Container } from '@mui/system';
-import { UserState } from '@/types/frontend';
+import { Admin } from '@/types/';
 
 type NavigationBarProps = {
-  user: UserState | null;
+  user: Admin | null;
 };
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
@@ -28,7 +28,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
         {user ? (
           <Chip
             size="medium"
-            avatar={<Avatar alt={user.displayName ?? ''} src={user.photoUrl} />}
+            avatar={
+              <Avatar alt={user.displayName ?? ''} src={user.photoURL!} />
+            }
             label={user.email}
             variant="outlined"
           />

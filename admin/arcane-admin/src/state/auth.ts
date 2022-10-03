@@ -1,11 +1,11 @@
 /** @format */
 
-import { UserState } from '@/types';
+import { Admin } from '@/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './state';
 
 type Auth = {
-  user: UserState | null;
+  user: Admin | null;
   token: string | null;
 };
 
@@ -18,7 +18,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<UserState>) => {
+    login: (state, action: PayloadAction<Admin>) => {
       state.user = action.payload;
     },
     logout: (state) => {

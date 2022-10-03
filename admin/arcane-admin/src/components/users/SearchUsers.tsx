@@ -1,7 +1,7 @@
 /** @format */
 
 import { GAP, users } from '@/constants';
-import { useLazyGetUsersQuery } from '@/services';
+import { useLazyGetUserQuery } from '@/services';
 import { Loop, Search, SipOutlined } from '@mui/icons-material';
 import {
   Alert,
@@ -22,7 +22,7 @@ import { Box } from '@mui/system';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import { SearchUserForm } from '@/types/frontend';
+import { SearchUserForm } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import CheckUser from './CheckUser';
@@ -37,23 +37,24 @@ const SearchUsers: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
     reset,
   } = useForm<SearchUserForm>({
     resolver: zodResolver(schema as any),
   });
 
-  const [addUser, { data: users, isFetching, isLoading, isError, error }] =
-    useLazyGetUsersQuery();
+  const [getUser, { data: user, isFetching, isLoading, isError, error }] =
+    useLazyGetUserQuery();
 
   const handleSearch = async (value: SearchUserForm) => {
     try {
-      await addUser(value.email)
+      await getUser(value.email)
         .unwrap()
         .then(() => reset());
-    } catch (err) {
-      reset();
-    }
+    } catch (err) {}
   };
+
+  console.log(user);
 
   return (
     <Stack
@@ -92,8 +93,8 @@ const SearchUsers: React.FC = () => {
           ),
         }}
       />
-      {Boolean(users) && (
-        <Fade in={Boolean(users)}>
+      {Boolean(user) && (
+        <Fade in={Boolean(user)}>
           <Card variant="outlined" sx={{ borderRadius: 3 }}>
             <Box
               component={CardContent}
@@ -108,10 +109,10 @@ const SearchUsers: React.FC = () => {
                 alignContent="center"
                 justifyContent="center"
               >
-                <Avatar {...stringToAvatar(users![0].email)} />
-                <Typography variant="h3">{users![0].email}</Typography>
+                <Avatar {...stringToAvatar(watch('email'))} />
+                <Typography variant="h3">{watch('email')}</Typography>
               </Box>
-              <CheckUser userId={users![0].id} />
+              <CheckUser userId={user?.userId} />
             </Box>
           </Card>
         </Fade>

@@ -16,34 +16,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 const Index: React.FC = () => {
   return (
     <Stack gap={GAP}>
-      <Box display="flex" flexDirection="row" gap={GAP}>
-        <Card sx={{ width: 200 }}>
-          <CardContent>
-            <Typography variant="subtitle1">Total Users</Typography>
-            <Typography variant="h2">81</Typography>
-          </CardContent>
-        </Card>
-        <Card sx={{ width: 200 }}>
-          <CardContent>
-            <Typography variant="subtitle1">Total Accounts</Typography>
-            <Typography variant="h2">233</Typography>
-          </CardContent>
-        </Card>
-        <Card sx={{ width: 200 }}>
-          <CardActionArea
-            LinkComponent={NavLink}
-            component={NavLink}
-            to="custody"
-          >
-            <CardContent>
-              <Typography variant="subtitle2">
-                Total Custody Accounts
-              </Typography>
-              <Typography variant="h2">12</Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      </Box>
+      <Box display="flex" flexDirection="row" gap={GAP}></Box>
       <div
         className="tradingview-widget-container"
         dangerouslySetInnerHTML={{

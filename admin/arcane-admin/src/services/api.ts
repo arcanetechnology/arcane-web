@@ -1,12 +1,14 @@
 /** @format */
 
 import { RootState } from '@/state';
-import { getEntireUrl } from '@/utils';
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
+import { GetUserResponse } from '@/types';
+import { users } from '@/constants';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: import.meta.env.VITE_BASE_URL,
-  mode: 'cors',
+  baseUrl:
+    import.meta.env.VITE_BASE_URL + import.meta.env.VITE_BACKEND_ENDPOINT,
+  mode: import.meta.env.DEV ? 'no-cors' : 'cors',
   prepareHeaders: (headers, { getState }) => {
     const { token } = (getState() as RootState).auth;
     headers.set('Content-Type', 'application/json');
@@ -20,22 +22,15 @@ const baseQueryWithRetry = retry(baseQuery, { maxRetries: 6 });
 
 export const api = createApi({
   baseQuery: baseQueryWithRetry,
-  tagTypes: [
-    'User',
-    'Profiles',
-    'Profile',
-    'Accounts',
-    'Account',
-    'Portfolios',
-    'Portfolio',
-    'Cryptos',
-    'Crypto',
-    'Virtual',
-    'Custodies',
-    'Custody',
-  ],
   // enpoints are injected later
-  endpoints: () => ({}),
+  endpoints: (build) => ({
+    getUser: build.query<GetUserResponse, string>({
+      query: (args) => ({ url: users, params: { email: args } }),
+      extraOptions: {
+        maxRetries: 0,
+      },
+    }),
+  }),
 });
 
-export const getFrontendUrl = getEntireUrl();
+export const { useLazyGetUserQuery } = api;
