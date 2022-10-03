@@ -1,0 +1,3464 @@
+[
+  {
+    "id": "user-external-usd",
+    "label": "User External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-eur",
+    "label": "User External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-gbp",
+    "label": "User External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-nok",
+    "label": "User External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-sek",
+    "label": "User External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-dkk",
+    "label": "User External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-chf",
+    "label": "User External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-algo",
+    "label": "User External ALGO",
+    "currency": "ALGO",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-rep",
+    "label": "User External REP",
+    "currency": "REP",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-bat",
+    "label": "User External BAT",
+    "currency": "BAT",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-xbt",
+    "label": "User External XBT",
+    "currency": "XBT",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-bch",
+    "label": "User External BCH",
+    "currency": "BCH",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-ada",
+    "label": "User External ADA",
+    "currency": "ADA",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-link",
+    "label": "User External LINK",
+    "currency": "LINK",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-atom",
+    "label": "User External ATOM",
+    "currency": "ATOM",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-dai",
+    "label": "User External DAI",
+    "currency": "DAI",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-xdg",
+    "label": "User External XDG",
+    "currency": "XDG",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-eos",
+    "label": "User External EOS",
+    "currency": "EOS",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-eth",
+    "label": "User External ETH",
+    "currency": "ETH",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-etc",
+    "label": "User External ETC",
+    "currency": "ETC",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-gno",
+    "label": "User External GNO",
+    "currency": "GNO",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-ltc",
+    "label": "User External LTC",
+    "currency": "LTC",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-nano",
+    "label": "User External NANO",
+    "currency": "NANO",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-omg",
+    "label": "User External OMG",
+    "currency": "OMG",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-oxt",
+    "label": "User External OXT",
+    "currency": "OXT",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-paxg",
+    "label": "User External PAXG",
+    "currency": "PAXG",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-xrp",
+    "label": "User External XRP",
+    "currency": "XRP",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-xlm",
+    "label": "User External XLM",
+    "currency": "XLM",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-xtz",
+    "label": "User External XTZ",
+    "currency": "XTZ",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-trx",
+    "label": "User External TRX",
+    "currency": "TRX",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-dot",
+    "label": "User External DOT",
+    "currency": "DOT",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-sol",
+    "label": "User External SOL",
+    "currency": "SOL",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-matic",
+    "label": "User External MATIC",
+    "currency": "MATIC",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-usdt",
+    "label": "User External USDT",
+    "currency": "USDT",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-usdc",
+    "label": "User External USDC",
+    "currency": "USDC",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-aave",
+    "label": "User External AAVE",
+    "currency": "AAVE",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-uni",
+    "label": "User External UNI",
+    "currency": "UNI",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-crv",
+    "label": "User External CRV",
+    "currency": "CRV",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-comp",
+    "label": "User External COMP",
+    "currency": "COMP",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-grt",
+    "label": "User External GRT",
+    "currency": "GRT",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-snx",
+    "label": "User External SNX",
+    "currency": "SNX",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-yfi",
+    "label": "User External YFI",
+    "currency": "YFI",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-mana",
+    "label": "User External MANA",
+    "currency": "MANA",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-nmr",
+    "label": "User External NMR",
+    "currency": "NMR",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-sand",
+    "label": "User External SAND",
+    "currency": "SAND",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-busd",
+    "label": "User External BUSD",
+    "currency": "BUSD",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-bnb",
+    "label": "User External BNB",
+    "currency": "BNB",
+    "allowNegative": true
+  },
+  {
+    "id": "user-external-ftt",
+    "label": "User External FTT",
+    "currency": "FTT",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-usd",
+    "label": "Arcane External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-eur",
+    "label": "Arcane External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-gbp",
+    "label": "Arcane External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-nok",
+    "label": "Arcane External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-sek",
+    "label": "Arcane External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-dkk",
+    "label": "Arcane External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-chf",
+    "label": "Arcane External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-algo",
+    "label": "Arcane External ALGO",
+    "currency": "ALGO",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-rep",
+    "label": "Arcane External REP",
+    "currency": "REP",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-bat",
+    "label": "Arcane External BAT",
+    "currency": "BAT",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-xbt",
+    "label": "Arcane External XBT",
+    "currency": "XBT",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-bch",
+    "label": "Arcane External BCH",
+    "currency": "BCH",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-ada",
+    "label": "Arcane External ADA",
+    "currency": "ADA",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-link",
+    "label": "Arcane External LINK",
+    "currency": "LINK",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-atom",
+    "label": "Arcane External ATOM",
+    "currency": "ATOM",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-dai",
+    "label": "Arcane External DAI",
+    "currency": "DAI",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-xdg",
+    "label": "Arcane External XDG",
+    "currency": "XDG",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-eos",
+    "label": "Arcane External EOS",
+    "currency": "EOS",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-eth",
+    "label": "Arcane External ETH",
+    "currency": "ETH",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-etc",
+    "label": "Arcane External ETC",
+    "currency": "ETC",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-gno",
+    "label": "Arcane External GNO",
+    "currency": "GNO",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-ltc",
+    "label": "Arcane External LTC",
+    "currency": "LTC",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-nano",
+    "label": "Arcane External NANO",
+    "currency": "NANO",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-omg",
+    "label": "Arcane External OMG",
+    "currency": "OMG",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-oxt",
+    "label": "Arcane External OXT",
+    "currency": "OXT",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-paxg",
+    "label": "Arcane External PAXG",
+    "currency": "PAXG",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-xrp",
+    "label": "Arcane External XRP",
+    "currency": "XRP",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-xlm",
+    "label": "Arcane External XLM",
+    "currency": "XLM",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-xtz",
+    "label": "Arcane External XTZ",
+    "currency": "XTZ",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-trx",
+    "label": "Arcane External TRX",
+    "currency": "TRX",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-dot",
+    "label": "Arcane External DOT",
+    "currency": "DOT",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-sol",
+    "label": "Arcane External SOL",
+    "currency": "SOL",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-matic",
+    "label": "Arcane External MATIC",
+    "currency": "MATIC",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-usdt",
+    "label": "Arcane External USDT",
+    "currency": "USDT",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-usdc",
+    "label": "Arcane External USDC",
+    "currency": "USDC",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-aave",
+    "label": "Arcane External AAVE",
+    "currency": "AAVE",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-uni",
+    "label": "Arcane External UNI",
+    "currency": "UNI",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-crv",
+    "label": "Arcane External CRV",
+    "currency": "CRV",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-comp",
+    "label": "Arcane External COMP",
+    "currency": "COMP",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-grt",
+    "label": "Arcane External GRT",
+    "currency": "GRT",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-snx",
+    "label": "Arcane External SNX",
+    "currency": "SNX",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-yfi",
+    "label": "Arcane External YFI",
+    "currency": "YFI",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-mana",
+    "label": "Arcane External MANA",
+    "currency": "MANA",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-nmr",
+    "label": "Arcane External NMR",
+    "currency": "NMR",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-sand",
+    "label": "Arcane External SAND",
+    "currency": "SAND",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-busd",
+    "label": "Arcane External BUSD",
+    "currency": "BUSD",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-bnb",
+    "label": "Arcane External BNB",
+    "currency": "BNB",
+    "allowNegative": true
+  },
+  {
+    "id": "arcane-external-ftt",
+    "label": "Arcane External FTT",
+    "currency": "FTT",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-usd",
+    "label": "SP1 Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-eur",
+    "label": "SP1 Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-gbp",
+    "label": "SP1 Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-nok",
+    "label": "SP1 Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-sek",
+    "label": "SP1 Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-dkk",
+    "label": "SP1 Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-fee-external-chf",
+    "label": "SP1 Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-usd",
+    "label": "Clearjunction Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-eur",
+    "label": "Clearjunction Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-gbp",
+    "label": "Clearjunction Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-nok",
+    "label": "Clearjunction Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-sek",
+    "label": "Clearjunction Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-dkk",
+    "label": "Clearjunction Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "clearjunction-fee-external-chf",
+    "label": "Clearjunction Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-usd",
+    "label": "SBanken Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-eur",
+    "label": "SBanken Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-gbp",
+    "label": "SBanken Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-nok",
+    "label": "SBanken Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-sek",
+    "label": "SBanken Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-dkk",
+    "label": "SBanken Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "sbanken-fee-external-chf",
+    "label": "SBanken Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "sp1-tax-external-usd",
+    "label": "SP1 Tax External USD",
+    "currency": "USD",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-eur",
+    "label": "SP1 Tax External EUR",
+    "currency": "EUR",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-gbp",
+    "label": "SP1 Tax External GBP",
+    "currency": "GBP",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-nok",
+    "label": "SP1 Tax External NOK",
+    "currency": "NOK",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-sek",
+    "label": "SP1 Tax External SEK",
+    "currency": "SEK",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-dkk",
+    "label": "SP1 Tax External DKK",
+    "currency": "DKK",
+    "allowNegative": false
+  },
+  {
+    "id": "sp1-tax-external-chf",
+    "label": "SP1 Tax External CHF",
+    "currency": "CHF",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-usd",
+    "label": "Clearjunction Tax External USD",
+    "currency": "USD",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-eur",
+    "label": "Clearjunction Tax External EUR",
+    "currency": "EUR",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-gbp",
+    "label": "Clearjunction Tax External GBP",
+    "currency": "GBP",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-nok",
+    "label": "Clearjunction Tax External NOK",
+    "currency": "NOK",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-sek",
+    "label": "Clearjunction Tax External SEK",
+    "currency": "SEK",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-dkk",
+    "label": "Clearjunction Tax External DKK",
+    "currency": "DKK",
+    "allowNegative": false
+  },
+  {
+    "id": "clearjunction-tax-external-chf",
+    "label": "Clearjunction Tax External CHF",
+    "currency": "CHF",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-usd",
+    "label": "SBanken Tax External USD",
+    "currency": "USD",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-eur",
+    "label": "SBanken Tax External EUR",
+    "currency": "EUR",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-gbp",
+    "label": "SBanken Tax External GBP",
+    "currency": "GBP",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-nok",
+    "label": "SBanken Tax External NOK",
+    "currency": "NOK",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-sek",
+    "label": "SBanken Tax External SEK",
+    "currency": "SEK",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-dkk",
+    "label": "SBanken Tax External DKK",
+    "currency": "DKK",
+    "allowNegative": false
+  },
+  {
+    "id": "sbanken-tax-external-chf",
+    "label": "SBanken Tax External CHF",
+    "currency": "CHF",
+    "allowNegative": false
+  },
+  {
+    "id": "blockchain-fee-external-algo",
+    "label": "Blockchain Fee External ALGO",
+    "currency": "ALGO",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-rep",
+    "label": "Blockchain Fee External REP",
+    "currency": "REP",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-bat",
+    "label": "Blockchain Fee External BAT",
+    "currency": "BAT",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-xbt",
+    "label": "Blockchain Fee External XBT",
+    "currency": "XBT",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-bch",
+    "label": "Blockchain Fee External BCH",
+    "currency": "BCH",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-ada",
+    "label": "Blockchain Fee External ADA",
+    "currency": "ADA",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-link",
+    "label": "Blockchain Fee External LINK",
+    "currency": "LINK",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-atom",
+    "label": "Blockchain Fee External ATOM",
+    "currency": "ATOM",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-dai",
+    "label": "Blockchain Fee External DAI",
+    "currency": "DAI",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-xdg",
+    "label": "Blockchain Fee External XDG",
+    "currency": "XDG",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-eos",
+    "label": "Blockchain Fee External EOS",
+    "currency": "EOS",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-eth",
+    "label": "Blockchain Fee External ETH",
+    "currency": "ETH",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-etc",
+    "label": "Blockchain Fee External ETC",
+    "currency": "ETC",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-gno",
+    "label": "Blockchain Fee External GNO",
+    "currency": "GNO",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-ltc",
+    "label": "Blockchain Fee External LTC",
+    "currency": "LTC",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-nano",
+    "label": "Blockchain Fee External NANO",
+    "currency": "NANO",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-omg",
+    "label": "Blockchain Fee External OMG",
+    "currency": "OMG",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-oxt",
+    "label": "Blockchain Fee External OXT",
+    "currency": "OXT",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-paxg",
+    "label": "Blockchain Fee External PAXG",
+    "currency": "PAXG",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-xrp",
+    "label": "Blockchain Fee External XRP",
+    "currency": "XRP",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-xlm",
+    "label": "Blockchain Fee External XLM",
+    "currency": "XLM",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-xtz",
+    "label": "Blockchain Fee External XTZ",
+    "currency": "XTZ",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-trx",
+    "label": "Blockchain Fee External TRX",
+    "currency": "TRX",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-dot",
+    "label": "Blockchain Fee External DOT",
+    "currency": "DOT",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-sol",
+    "label": "Blockchain Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-matic",
+    "label": "Blockchain Fee External MATIC",
+    "currency": "MATIC",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-usdt",
+    "label": "Blockchain Fee External USDT",
+    "currency": "USDT",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-usdc",
+    "label": "Blockchain Fee External USDC",
+    "currency": "USDC",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-aave",
+    "label": "Blockchain Fee External AAVE",
+    "currency": "AAVE",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-uni",
+    "label": "Blockchain Fee External UNI",
+    "currency": "UNI",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-crv",
+    "label": "Blockchain Fee External CRV",
+    "currency": "CRV",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-comp",
+    "label": "Blockchain Fee External COMP",
+    "currency": "COMP",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-grt",
+    "label": "Blockchain Fee External GRT",
+    "currency": "GRT",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-snx",
+    "label": "Blockchain Fee External SNX",
+    "currency": "SNX",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-yfi",
+    "label": "Blockchain Fee External YFI",
+    "currency": "YFI",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-mana",
+    "label": "Blockchain Fee External MANA",
+    "currency": "MANA",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-nmr",
+    "label": "Blockchain Fee External NMR",
+    "currency": "NMR",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-sand",
+    "label": "Blockchain Fee External SAND",
+    "currency": "SAND",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-busd",
+    "label": "Blockchain Fee External BUSD",
+    "currency": "BUSD",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-bnb",
+    "label": "Blockchain Fee External BNB",
+    "currency": "BNB",
+    "allowNegative": true
+  },
+  {
+    "id": "blockchain-fee-external-ftt",
+    "label": "Blockchain Fee External FTT",
+    "currency": "FTT",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-algo",
+    "label": "Coinbase Withdrawal Fee External ALGO",
+    "currency": "ALGO",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-rep",
+    "label": "Coinbase Withdrawal Fee External REP",
+    "currency": "REP",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-bat",
+    "label": "Coinbase Withdrawal Fee External BAT",
+    "currency": "BAT",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-xbt",
+    "label": "Coinbase Withdrawal Fee External XBT",
+    "currency": "XBT",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-bch",
+    "label": "Coinbase Withdrawal Fee External BCH",
+    "currency": "BCH",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-ada",
+    "label": "Coinbase Withdrawal Fee External ADA",
+    "currency": "ADA",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-link",
+    "label": "Coinbase Withdrawal Fee External LINK",
+    "currency": "LINK",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-atom",
+    "label": "Coinbase Withdrawal Fee External ATOM",
+    "currency": "ATOM",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-dai",
+    "label": "Coinbase Withdrawal Fee External DAI",
+    "currency": "DAI",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-xdg",
+    "label": "Coinbase Withdrawal Fee External XDG",
+    "currency": "XDG",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-eos",
+    "label": "Coinbase Withdrawal Fee External EOS",
+    "currency": "EOS",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-eth",
+    "label": "Coinbase Withdrawal Fee External ETH",
+    "currency": "ETH",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-etc",
+    "label": "Coinbase Withdrawal Fee External ETC",
+    "currency": "ETC",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-gno",
+    "label": "Coinbase Withdrawal Fee External GNO",
+    "currency": "GNO",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-ltc",
+    "label": "Coinbase Withdrawal Fee External LTC",
+    "currency": "LTC",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-nano",
+    "label": "Coinbase Withdrawal Fee External NANO",
+    "currency": "NANO",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-omg",
+    "label": "Coinbase Withdrawal Fee External OMG",
+    "currency": "OMG",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-oxt",
+    "label": "Coinbase Withdrawal Fee External OXT",
+    "currency": "OXT",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-paxg",
+    "label": "Coinbase Withdrawal Fee External PAXG",
+    "currency": "PAXG",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-xrp",
+    "label": "Coinbase Withdrawal Fee External XRP",
+    "currency": "XRP",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-xlm",
+    "label": "Coinbase Withdrawal Fee External XLM",
+    "currency": "XLM",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-xtz",
+    "label": "Coinbase Withdrawal Fee External XTZ",
+    "currency": "XTZ",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-trx",
+    "label": "Coinbase Withdrawal Fee External TRX",
+    "currency": "TRX",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-dot",
+    "label": "Coinbase Withdrawal Fee External DOT",
+    "currency": "DOT",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-sol",
+    "label": "Coinbase Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-matic",
+    "label": "Coinbase Withdrawal Fee External MATIC",
+    "currency": "MATIC",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-usdt",
+    "label": "Coinbase Withdrawal Fee External USDT",
+    "currency": "USDT",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-usdc",
+    "label": "Coinbase Withdrawal Fee External USDC",
+    "currency": "USDC",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-aave",
+    "label": "Coinbase Withdrawal Fee External AAVE",
+    "currency": "AAVE",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-uni",
+    "label": "Coinbase Withdrawal Fee External UNI",
+    "currency": "UNI",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-crv",
+    "label": "Coinbase Withdrawal Fee External CRV",
+    "currency": "CRV",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-comp",
+    "label": "Coinbase Withdrawal Fee External COMP",
+    "currency": "COMP",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-grt",
+    "label": "Coinbase Withdrawal Fee External GRT",
+    "currency": "GRT",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-snx",
+    "label": "Coinbase Withdrawal Fee External SNX",
+    "currency": "SNX",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-yfi",
+    "label": "Coinbase Withdrawal Fee External YFI",
+    "currency": "YFI",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-mana",
+    "label": "Coinbase Withdrawal Fee External MANA",
+    "currency": "MANA",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-nmr",
+    "label": "Coinbase Withdrawal Fee External NMR",
+    "currency": "NMR",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-sand",
+    "label": "Coinbase Withdrawal Fee External SAND",
+    "currency": "SAND",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-busd",
+    "label": "Coinbase Withdrawal Fee External BUSD",
+    "currency": "BUSD",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-bnb",
+    "label": "Coinbase Withdrawal Fee External BNB",
+    "currency": "BNB",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-withdrawal-fee-external-ftt",
+    "label": "Coinbase Withdrawal Fee External FTT",
+    "currency": "FTT",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-algo",
+    "label": "FTX Withdrawal Fee External ALGO",
+    "currency": "ALGO",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-rep",
+    "label": "FTX Withdrawal Fee External REP",
+    "currency": "REP",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-bat",
+    "label": "FTX Withdrawal Fee External BAT",
+    "currency": "BAT",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-xbt",
+    "label": "FTX Withdrawal Fee External XBT",
+    "currency": "XBT",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-bch",
+    "label": "FTX Withdrawal Fee External BCH",
+    "currency": "BCH",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-ada",
+    "label": "FTX Withdrawal Fee External ADA",
+    "currency": "ADA",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-link",
+    "label": "FTX Withdrawal Fee External LINK",
+    "currency": "LINK",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-atom",
+    "label": "FTX Withdrawal Fee External ATOM",
+    "currency": "ATOM",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-dai",
+    "label": "FTX Withdrawal Fee External DAI",
+    "currency": "DAI",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-xdg",
+    "label": "FTX Withdrawal Fee External XDG",
+    "currency": "XDG",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-eos",
+    "label": "FTX Withdrawal Fee External EOS",
+    "currency": "EOS",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-eth",
+    "label": "FTX Withdrawal Fee External ETH",
+    "currency": "ETH",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-etc",
+    "label": "FTX Withdrawal Fee External ETC",
+    "currency": "ETC",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-gno",
+    "label": "FTX Withdrawal Fee External GNO",
+    "currency": "GNO",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-ltc",
+    "label": "FTX Withdrawal Fee External LTC",
+    "currency": "LTC",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-nano",
+    "label": "FTX Withdrawal Fee External NANO",
+    "currency": "NANO",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-omg",
+    "label": "FTX Withdrawal Fee External OMG",
+    "currency": "OMG",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-oxt",
+    "label": "FTX Withdrawal Fee External OXT",
+    "currency": "OXT",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-paxg",
+    "label": "FTX Withdrawal Fee External PAXG",
+    "currency": "PAXG",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-xrp",
+    "label": "FTX Withdrawal Fee External XRP",
+    "currency": "XRP",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-xlm",
+    "label": "FTX Withdrawal Fee External XLM",
+    "currency": "XLM",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-xtz",
+    "label": "FTX Withdrawal Fee External XTZ",
+    "currency": "XTZ",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-trx",
+    "label": "FTX Withdrawal Fee External TRX",
+    "currency": "TRX",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-dot",
+    "label": "FTX Withdrawal Fee External DOT",
+    "currency": "DOT",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-sol",
+    "label": "FTX Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-matic",
+    "label": "FTX Withdrawal Fee External MATIC",
+    "currency": "MATIC",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-usdt",
+    "label": "FTX Withdrawal Fee External USDT",
+    "currency": "USDT",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-usdc",
+    "label": "FTX Withdrawal Fee External USDC",
+    "currency": "USDC",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-aave",
+    "label": "FTX Withdrawal Fee External AAVE",
+    "currency": "AAVE",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-uni",
+    "label": "FTX Withdrawal Fee External UNI",
+    "currency": "UNI",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-crv",
+    "label": "FTX Withdrawal Fee External CRV",
+    "currency": "CRV",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-comp",
+    "label": "FTX Withdrawal Fee External COMP",
+    "currency": "COMP",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-grt",
+    "label": "FTX Withdrawal Fee External GRT",
+    "currency": "GRT",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-snx",
+    "label": "FTX Withdrawal Fee External SNX",
+    "currency": "SNX",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-yfi",
+    "label": "FTX Withdrawal Fee External YFI",
+    "currency": "YFI",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-mana",
+    "label": "FTX Withdrawal Fee External MANA",
+    "currency": "MANA",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-nmr",
+    "label": "FTX Withdrawal Fee External NMR",
+    "currency": "NMR",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-sand",
+    "label": "FTX Withdrawal Fee External SAND",
+    "currency": "SAND",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-busd",
+    "label": "FTX Withdrawal Fee External BUSD",
+    "currency": "BUSD",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-bnb",
+    "label": "FTX Withdrawal Fee External BNB",
+    "currency": "BNB",
+    "allowNegative": false
+  },
+  {
+    "id": "ftx-withdrawal-fee-external-ftt",
+    "label": "FTX Withdrawal Fee External FTT",
+    "currency": "FTT",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-algo",
+    "label": "Binance Withdrawal Fee External ALGO",
+    "currency": "ALGO",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-rep",
+    "label": "Binance Withdrawal Fee External REP",
+    "currency": "REP",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-bat",
+    "label": "Binance Withdrawal Fee External BAT",
+    "currency": "BAT",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-xbt",
+    "label": "Binance Withdrawal Fee External XBT",
+    "currency": "XBT",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-bch",
+    "label": "Binance Withdrawal Fee External BCH",
+    "currency": "BCH",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-ada",
+    "label": "Binance Withdrawal Fee External ADA",
+    "currency": "ADA",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-link",
+    "label": "Binance Withdrawal Fee External LINK",
+    "currency": "LINK",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-atom",
+    "label": "Binance Withdrawal Fee External ATOM",
+    "currency": "ATOM",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-dai",
+    "label": "Binance Withdrawal Fee External DAI",
+    "currency": "DAI",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-xdg",
+    "label": "Binance Withdrawal Fee External XDG",
+    "currency": "XDG",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-eos",
+    "label": "Binance Withdrawal Fee External EOS",
+    "currency": "EOS",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-eth",
+    "label": "Binance Withdrawal Fee External ETH",
+    "currency": "ETH",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-etc",
+    "label": "Binance Withdrawal Fee External ETC",
+    "currency": "ETC",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-gno",
+    "label": "Binance Withdrawal Fee External GNO",
+    "currency": "GNO",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-ltc",
+    "label": "Binance Withdrawal Fee External LTC",
+    "currency": "LTC",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-nano",
+    "label": "Binance Withdrawal Fee External NANO",
+    "currency": "NANO",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-omg",
+    "label": "Binance Withdrawal Fee External OMG",
+    "currency": "OMG",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-oxt",
+    "label": "Binance Withdrawal Fee External OXT",
+    "currency": "OXT",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-paxg",
+    "label": "Binance Withdrawal Fee External PAXG",
+    "currency": "PAXG",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-xrp",
+    "label": "Binance Withdrawal Fee External XRP",
+    "currency": "XRP",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-xlm",
+    "label": "Binance Withdrawal Fee External XLM",
+    "currency": "XLM",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-xtz",
+    "label": "Binance Withdrawal Fee External XTZ",
+    "currency": "XTZ",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-trx",
+    "label": "Binance Withdrawal Fee External TRX",
+    "currency": "TRX",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-dot",
+    "label": "Binance Withdrawal Fee External DOT",
+    "currency": "DOT",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-sol",
+    "label": "Binance Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-matic",
+    "label": "Binance Withdrawal Fee External MATIC",
+    "currency": "MATIC",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-usdt",
+    "label": "Binance Withdrawal Fee External USDT",
+    "currency": "USDT",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-usdc",
+    "label": "Binance Withdrawal Fee External USDC",
+    "currency": "USDC",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-aave",
+    "label": "Binance Withdrawal Fee External AAVE",
+    "currency": "AAVE",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-uni",
+    "label": "Binance Withdrawal Fee External UNI",
+    "currency": "UNI",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-crv",
+    "label": "Binance Withdrawal Fee External CRV",
+    "currency": "CRV",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-comp",
+    "label": "Binance Withdrawal Fee External COMP",
+    "currency": "COMP",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-grt",
+    "label": "Binance Withdrawal Fee External GRT",
+    "currency": "GRT",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-snx",
+    "label": "Binance Withdrawal Fee External SNX",
+    "currency": "SNX",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-yfi",
+    "label": "Binance Withdrawal Fee External YFI",
+    "currency": "YFI",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-mana",
+    "label": "Binance Withdrawal Fee External MANA",
+    "currency": "MANA",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-nmr",
+    "label": "Binance Withdrawal Fee External NMR",
+    "currency": "NMR",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-sand",
+    "label": "Binance Withdrawal Fee External SAND",
+    "currency": "SAND",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-busd",
+    "label": "Binance Withdrawal Fee External BUSD",
+    "currency": "BUSD",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-bnb",
+    "label": "Binance Withdrawal Fee External BNB",
+    "currency": "BNB",
+    "allowNegative": false
+  },
+  {
+    "id": "binance-withdrawal-fee-external-ftt",
+    "label": "Binance Withdrawal Fee External FTT",
+    "currency": "FTT",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-algo",
+    "label": "Kraken Withdrawal Fee External ALGO",
+    "currency": "ALGO",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-rep",
+    "label": "Kraken Withdrawal Fee External REP",
+    "currency": "REP",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-bat",
+    "label": "Kraken Withdrawal Fee External BAT",
+    "currency": "BAT",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-xbt",
+    "label": "Kraken Withdrawal Fee External XBT",
+    "currency": "XBT",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-bch",
+    "label": "Kraken Withdrawal Fee External BCH",
+    "currency": "BCH",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-ada",
+    "label": "Kraken Withdrawal Fee External ADA",
+    "currency": "ADA",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-link",
+    "label": "Kraken Withdrawal Fee External LINK",
+    "currency": "LINK",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-atom",
+    "label": "Kraken Withdrawal Fee External ATOM",
+    "currency": "ATOM",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-dai",
+    "label": "Kraken Withdrawal Fee External DAI",
+    "currency": "DAI",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-xdg",
+    "label": "Kraken Withdrawal Fee External XDG",
+    "currency": "XDG",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-eos",
+    "label": "Kraken Withdrawal Fee External EOS",
+    "currency": "EOS",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-eth",
+    "label": "Kraken Withdrawal Fee External ETH",
+    "currency": "ETH",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-etc",
+    "label": "Kraken Withdrawal Fee External ETC",
+    "currency": "ETC",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-gno",
+    "label": "Kraken Withdrawal Fee External GNO",
+    "currency": "GNO",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-ltc",
+    "label": "Kraken Withdrawal Fee External LTC",
+    "currency": "LTC",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-nano",
+    "label": "Kraken Withdrawal Fee External NANO",
+    "currency": "NANO",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-omg",
+    "label": "Kraken Withdrawal Fee External OMG",
+    "currency": "OMG",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-oxt",
+    "label": "Kraken Withdrawal Fee External OXT",
+    "currency": "OXT",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-paxg",
+    "label": "Kraken Withdrawal Fee External PAXG",
+    "currency": "PAXG",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-xrp",
+    "label": "Kraken Withdrawal Fee External XRP",
+    "currency": "XRP",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-xlm",
+    "label": "Kraken Withdrawal Fee External XLM",
+    "currency": "XLM",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-xtz",
+    "label": "Kraken Withdrawal Fee External XTZ",
+    "currency": "XTZ",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-trx",
+    "label": "Kraken Withdrawal Fee External TRX",
+    "currency": "TRX",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-dot",
+    "label": "Kraken Withdrawal Fee External DOT",
+    "currency": "DOT",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-sol",
+    "label": "Kraken Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-matic",
+    "label": "Kraken Withdrawal Fee External MATIC",
+    "currency": "MATIC",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-usdt",
+    "label": "Kraken Withdrawal Fee External USDT",
+    "currency": "USDT",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-usdc",
+    "label": "Kraken Withdrawal Fee External USDC",
+    "currency": "USDC",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-aave",
+    "label": "Kraken Withdrawal Fee External AAVE",
+    "currency": "AAVE",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-uni",
+    "label": "Kraken Withdrawal Fee External UNI",
+    "currency": "UNI",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-crv",
+    "label": "Kraken Withdrawal Fee External CRV",
+    "currency": "CRV",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-comp",
+    "label": "Kraken Withdrawal Fee External COMP",
+    "currency": "COMP",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-grt",
+    "label": "Kraken Withdrawal Fee External GRT",
+    "currency": "GRT",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-snx",
+    "label": "Kraken Withdrawal Fee External SNX",
+    "currency": "SNX",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-yfi",
+    "label": "Kraken Withdrawal Fee External YFI",
+    "currency": "YFI",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-mana",
+    "label": "Kraken Withdrawal Fee External MANA",
+    "currency": "MANA",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-nmr",
+    "label": "Kraken Withdrawal Fee External NMR",
+    "currency": "NMR",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-sand",
+    "label": "Kraken Withdrawal Fee External SAND",
+    "currency": "SAND",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-busd",
+    "label": "Kraken Withdrawal Fee External BUSD",
+    "currency": "BUSD",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-bnb",
+    "label": "Kraken Withdrawal Fee External BNB",
+    "currency": "BNB",
+    "allowNegative": false
+  },
+  {
+    "id": "kraken-withdrawal-fee-external-ftt",
+    "label": "Kraken Withdrawal Fee External FTT",
+    "currency": "FTT",
+    "allowNegative": false
+  },
+  {
+    "id": "coinbase-fee-external-usd",
+    "label": "Coinbase Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-eur",
+    "label": "Coinbase Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-gbp",
+    "label": "Coinbase Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-nok",
+    "label": "Coinbase Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-sek",
+    "label": "Coinbase Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-dkk",
+    "label": "Coinbase Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "coinbase-fee-external-chf",
+    "label": "Coinbase Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-usd",
+    "label": "FTX Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-eur",
+    "label": "FTX Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-gbp",
+    "label": "FTX Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-nok",
+    "label": "FTX Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-sek",
+    "label": "FTX Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-dkk",
+    "label": "FTX Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "ftx-fee-external-chf",
+    "label": "FTX Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-usd",
+    "label": "Binance Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-eur",
+    "label": "Binance Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-gbp",
+    "label": "Binance Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-nok",
+    "label": "Binance Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-sek",
+    "label": "Binance Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-dkk",
+    "label": "Binance Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "binance-fee-external-chf",
+    "label": "Binance Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "kraken-fee-external-usd",
+    "label": "Kraken Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "kraken-fee-external-eur",
+    "label": "Kraken Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "kraken-fee-external-gbp",
+    "label": "Kraken Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "kraken-fee-external-nok",
+    "label": "Kraken Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "kraken-fee-external-sek",
+    "label": "Kraken Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "kraken-fee-external-dkk",
+    "label": "Kraken Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "kraken-fee-external-chf",
+    "label": "Kraken Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-algo",
+    "label": "B2C2 Withdrawal Fee External ALGO",
+    "currency": "ALGO",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-rep",
+    "label": "B2C2 Withdrawal Fee External REP",
+    "currency": "REP",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-bat",
+    "label": "B2C2 Withdrawal Fee External BAT",
+    "currency": "BAT",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-xbt",
+    "label": "B2C2 Withdrawal Fee External XBT",
+    "currency": "XBT",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-bch",
+    "label": "B2C2 Withdrawal Fee External BCH",
+    "currency": "BCH",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-ada",
+    "label": "B2C2 Withdrawal Fee External ADA",
+    "currency": "ADA",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-link",
+    "label": "B2C2 Withdrawal Fee External LINK",
+    "currency": "LINK",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-atom",
+    "label": "B2C2 Withdrawal Fee External ATOM",
+    "currency": "ATOM",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-dai",
+    "label": "B2C2 Withdrawal Fee External DAI",
+    "currency": "DAI",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-xdg",
+    "label": "B2C2 Withdrawal Fee External XDG",
+    "currency": "XDG",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-eos",
+    "label": "B2C2 Withdrawal Fee External EOS",
+    "currency": "EOS",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-eth",
+    "label": "B2C2 Withdrawal Fee External ETH",
+    "currency": "ETH",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-etc",
+    "label": "B2C2 Withdrawal Fee External ETC",
+    "currency": "ETC",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-gno",
+    "label": "B2C2 Withdrawal Fee External GNO",
+    "currency": "GNO",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-ltc",
+    "label": "B2C2 Withdrawal Fee External LTC",
+    "currency": "LTC",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-nano",
+    "label": "B2C2 Withdrawal Fee External NANO",
+    "currency": "NANO",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-omg",
+    "label": "B2C2 Withdrawal Fee External OMG",
+    "currency": "OMG",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-oxt",
+    "label": "B2C2 Withdrawal Fee External OXT",
+    "currency": "OXT",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-paxg",
+    "label": "B2C2 Withdrawal Fee External PAXG",
+    "currency": "PAXG",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-xrp",
+    "label": "B2C2 Withdrawal Fee External XRP",
+    "currency": "XRP",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-xlm",
+    "label": "B2C2 Withdrawal Fee External XLM",
+    "currency": "XLM",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-xtz",
+    "label": "B2C2 Withdrawal Fee External XTZ",
+    "currency": "XTZ",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-trx",
+    "label": "B2C2 Withdrawal Fee External TRX",
+    "currency": "TRX",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-dot",
+    "label": "B2C2 Withdrawal Fee External DOT",
+    "currency": "DOT",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-sol",
+    "label": "B2C2 Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-matic",
+    "label": "B2C2 Withdrawal Fee External MATIC",
+    "currency": "MATIC",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-usdt",
+    "label": "B2C2 Withdrawal Fee External USDT",
+    "currency": "USDT",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-usdc",
+    "label": "B2C2 Withdrawal Fee External USDC",
+    "currency": "USDC",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-aave",
+    "label": "B2C2 Withdrawal Fee External AAVE",
+    "currency": "AAVE",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-uni",
+    "label": "B2C2 Withdrawal Fee External UNI",
+    "currency": "UNI",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-crv",
+    "label": "B2C2 Withdrawal Fee External CRV",
+    "currency": "CRV",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-comp",
+    "label": "B2C2 Withdrawal Fee External COMP",
+    "currency": "COMP",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-grt",
+    "label": "B2C2 Withdrawal Fee External GRT",
+    "currency": "GRT",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-snx",
+    "label": "B2C2 Withdrawal Fee External SNX",
+    "currency": "SNX",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-yfi",
+    "label": "B2C2 Withdrawal Fee External YFI",
+    "currency": "YFI",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-mana",
+    "label": "B2C2 Withdrawal Fee External MANA",
+    "currency": "MANA",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-nmr",
+    "label": "B2C2 Withdrawal Fee External NMR",
+    "currency": "NMR",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-sand",
+    "label": "B2C2 Withdrawal Fee External SAND",
+    "currency": "SAND",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-busd",
+    "label": "B2C2 Withdrawal Fee External BUSD",
+    "currency": "BUSD",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-bnb",
+    "label": "B2C2 Withdrawal Fee External BNB",
+    "currency": "BNB",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-withdrawal-fee-external-ftt",
+    "label": "B2C2 Withdrawal Fee External FTT",
+    "currency": "FTT",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-algo",
+    "label": "Interactive Brokers Withdrawal Fee External ALGO",
+    "currency": "ALGO",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-rep",
+    "label": "Interactive Brokers Withdrawal Fee External REP",
+    "currency": "REP",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-bat",
+    "label": "Interactive Brokers Withdrawal Fee External BAT",
+    "currency": "BAT",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-xbt",
+    "label": "Interactive Brokers Withdrawal Fee External XBT",
+    "currency": "XBT",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-bch",
+    "label": "Interactive Brokers Withdrawal Fee External BCH",
+    "currency": "BCH",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-ada",
+    "label": "Interactive Brokers Withdrawal Fee External ADA",
+    "currency": "ADA",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-link",
+    "label": "Interactive Brokers Withdrawal Fee External LINK",
+    "currency": "LINK",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-atom",
+    "label": "Interactive Brokers Withdrawal Fee External ATOM",
+    "currency": "ATOM",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-dai",
+    "label": "Interactive Brokers Withdrawal Fee External DAI",
+    "currency": "DAI",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-xdg",
+    "label": "Interactive Brokers Withdrawal Fee External XDG",
+    "currency": "XDG",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-eos",
+    "label": "Interactive Brokers Withdrawal Fee External EOS",
+    "currency": "EOS",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-eth",
+    "label": "Interactive Brokers Withdrawal Fee External ETH",
+    "currency": "ETH",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-etc",
+    "label": "Interactive Brokers Withdrawal Fee External ETC",
+    "currency": "ETC",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-gno",
+    "label": "Interactive Brokers Withdrawal Fee External GNO",
+    "currency": "GNO",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-ltc",
+    "label": "Interactive Brokers Withdrawal Fee External LTC",
+    "currency": "LTC",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-nano",
+    "label": "Interactive Brokers Withdrawal Fee External NANO",
+    "currency": "NANO",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-omg",
+    "label": "Interactive Brokers Withdrawal Fee External OMG",
+    "currency": "OMG",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-oxt",
+    "label": "Interactive Brokers Withdrawal Fee External OXT",
+    "currency": "OXT",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-paxg",
+    "label": "Interactive Brokers Withdrawal Fee External PAXG",
+    "currency": "PAXG",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-xrp",
+    "label": "Interactive Brokers Withdrawal Fee External XRP",
+    "currency": "XRP",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-xlm",
+    "label": "Interactive Brokers Withdrawal Fee External XLM",
+    "currency": "XLM",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-xtz",
+    "label": "Interactive Brokers Withdrawal Fee External XTZ",
+    "currency": "XTZ",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-trx",
+    "label": "Interactive Brokers Withdrawal Fee External TRX",
+    "currency": "TRX",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-dot",
+    "label": "Interactive Brokers Withdrawal Fee External DOT",
+    "currency": "DOT",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-sol",
+    "label": "Interactive Brokers Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-matic",
+    "label": "Interactive Brokers Withdrawal Fee External MATIC",
+    "currency": "MATIC",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-usdt",
+    "label": "Interactive Brokers Withdrawal Fee External USDT",
+    "currency": "USDT",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-usdc",
+    "label": "Interactive Brokers Withdrawal Fee External USDC",
+    "currency": "USDC",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-aave",
+    "label": "Interactive Brokers Withdrawal Fee External AAVE",
+    "currency": "AAVE",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-uni",
+    "label": "Interactive Brokers Withdrawal Fee External UNI",
+    "currency": "UNI",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-crv",
+    "label": "Interactive Brokers Withdrawal Fee External CRV",
+    "currency": "CRV",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-comp",
+    "label": "Interactive Brokers Withdrawal Fee External COMP",
+    "currency": "COMP",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-grt",
+    "label": "Interactive Brokers Withdrawal Fee External GRT",
+    "currency": "GRT",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-snx",
+    "label": "Interactive Brokers Withdrawal Fee External SNX",
+    "currency": "SNX",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-yfi",
+    "label": "Interactive Brokers Withdrawal Fee External YFI",
+    "currency": "YFI",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-mana",
+    "label": "Interactive Brokers Withdrawal Fee External MANA",
+    "currency": "MANA",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-nmr",
+    "label": "Interactive Brokers Withdrawal Fee External NMR",
+    "currency": "NMR",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-sand",
+    "label": "Interactive Brokers Withdrawal Fee External SAND",
+    "currency": "SAND",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-busd",
+    "label": "Interactive Brokers Withdrawal Fee External BUSD",
+    "currency": "BUSD",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-bnb",
+    "label": "Interactive Brokers Withdrawal Fee External BNB",
+    "currency": "BNB",
+    "allowNegative": false
+  },
+  {
+    "id": "interactive-brokers-withdrawal-fee-external-ftt",
+    "label": "Interactive Brokers Withdrawal Fee External FTT",
+    "currency": "FTT",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-algo",
+    "label": "Enigma Withdrawal Fee External ALGO",
+    "currency": "ALGO",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-rep",
+    "label": "Enigma Withdrawal Fee External REP",
+    "currency": "REP",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-bat",
+    "label": "Enigma Withdrawal Fee External BAT",
+    "currency": "BAT",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-xbt",
+    "label": "Enigma Withdrawal Fee External XBT",
+    "currency": "XBT",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-bch",
+    "label": "Enigma Withdrawal Fee External BCH",
+    "currency": "BCH",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-ada",
+    "label": "Enigma Withdrawal Fee External ADA",
+    "currency": "ADA",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-link",
+    "label": "Enigma Withdrawal Fee External LINK",
+    "currency": "LINK",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-atom",
+    "label": "Enigma Withdrawal Fee External ATOM",
+    "currency": "ATOM",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-dai",
+    "label": "Enigma Withdrawal Fee External DAI",
+    "currency": "DAI",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-xdg",
+    "label": "Enigma Withdrawal Fee External XDG",
+    "currency": "XDG",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-eos",
+    "label": "Enigma Withdrawal Fee External EOS",
+    "currency": "EOS",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-eth",
+    "label": "Enigma Withdrawal Fee External ETH",
+    "currency": "ETH",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-etc",
+    "label": "Enigma Withdrawal Fee External ETC",
+    "currency": "ETC",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-gno",
+    "label": "Enigma Withdrawal Fee External GNO",
+    "currency": "GNO",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-ltc",
+    "label": "Enigma Withdrawal Fee External LTC",
+    "currency": "LTC",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-nano",
+    "label": "Enigma Withdrawal Fee External NANO",
+    "currency": "NANO",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-omg",
+    "label": "Enigma Withdrawal Fee External OMG",
+    "currency": "OMG",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-oxt",
+    "label": "Enigma Withdrawal Fee External OXT",
+    "currency": "OXT",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-paxg",
+    "label": "Enigma Withdrawal Fee External PAXG",
+    "currency": "PAXG",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-xrp",
+    "label": "Enigma Withdrawal Fee External XRP",
+    "currency": "XRP",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-xlm",
+    "label": "Enigma Withdrawal Fee External XLM",
+    "currency": "XLM",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-xtz",
+    "label": "Enigma Withdrawal Fee External XTZ",
+    "currency": "XTZ",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-trx",
+    "label": "Enigma Withdrawal Fee External TRX",
+    "currency": "TRX",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-dot",
+    "label": "Enigma Withdrawal Fee External DOT",
+    "currency": "DOT",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-sol",
+    "label": "Enigma Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-matic",
+    "label": "Enigma Withdrawal Fee External MATIC",
+    "currency": "MATIC",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-usdt",
+    "label": "Enigma Withdrawal Fee External USDT",
+    "currency": "USDT",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-usdc",
+    "label": "Enigma Withdrawal Fee External USDC",
+    "currency": "USDC",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-aave",
+    "label": "Enigma Withdrawal Fee External AAVE",
+    "currency": "AAVE",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-uni",
+    "label": "Enigma Withdrawal Fee External UNI",
+    "currency": "UNI",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-crv",
+    "label": "Enigma Withdrawal Fee External CRV",
+    "currency": "CRV",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-comp",
+    "label": "Enigma Withdrawal Fee External COMP",
+    "currency": "COMP",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-grt",
+    "label": "Enigma Withdrawal Fee External GRT",
+    "currency": "GRT",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-snx",
+    "label": "Enigma Withdrawal Fee External SNX",
+    "currency": "SNX",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-yfi",
+    "label": "Enigma Withdrawal Fee External YFI",
+    "currency": "YFI",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-mana",
+    "label": "Enigma Withdrawal Fee External MANA",
+    "currency": "MANA",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-nmr",
+    "label": "Enigma Withdrawal Fee External NMR",
+    "currency": "NMR",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-sand",
+    "label": "Enigma Withdrawal Fee External SAND",
+    "currency": "SAND",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-busd",
+    "label": "Enigma Withdrawal Fee External BUSD",
+    "currency": "BUSD",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-bnb",
+    "label": "Enigma Withdrawal Fee External BNB",
+    "currency": "BNB",
+    "allowNegative": false
+  },
+  {
+    "id": "enigma-withdrawal-fee-external-ftt",
+    "label": "Enigma Withdrawal Fee External FTT",
+    "currency": "FTT",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-algo",
+    "label": "Sparebank 1 Markets Withdrawal Fee External ALGO",
+    "currency": "ALGO",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-rep",
+    "label": "Sparebank 1 Markets Withdrawal Fee External REP",
+    "currency": "REP",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-bat",
+    "label": "Sparebank 1 Markets Withdrawal Fee External BAT",
+    "currency": "BAT",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-xbt",
+    "label": "Sparebank 1 Markets Withdrawal Fee External XBT",
+    "currency": "XBT",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-bch",
+    "label": "Sparebank 1 Markets Withdrawal Fee External BCH",
+    "currency": "BCH",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-ada",
+    "label": "Sparebank 1 Markets Withdrawal Fee External ADA",
+    "currency": "ADA",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-link",
+    "label": "Sparebank 1 Markets Withdrawal Fee External LINK",
+    "currency": "LINK",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-atom",
+    "label": "Sparebank 1 Markets Withdrawal Fee External ATOM",
+    "currency": "ATOM",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-dai",
+    "label": "Sparebank 1 Markets Withdrawal Fee External DAI",
+    "currency": "DAI",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-xdg",
+    "label": "Sparebank 1 Markets Withdrawal Fee External XDG",
+    "currency": "XDG",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-eos",
+    "label": "Sparebank 1 Markets Withdrawal Fee External EOS",
+    "currency": "EOS",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-eth",
+    "label": "Sparebank 1 Markets Withdrawal Fee External ETH",
+    "currency": "ETH",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-etc",
+    "label": "Sparebank 1 Markets Withdrawal Fee External ETC",
+    "currency": "ETC",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-gno",
+    "label": "Sparebank 1 Markets Withdrawal Fee External GNO",
+    "currency": "GNO",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-ltc",
+    "label": "Sparebank 1 Markets Withdrawal Fee External LTC",
+    "currency": "LTC",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-nano",
+    "label": "Sparebank 1 Markets Withdrawal Fee External NANO",
+    "currency": "NANO",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-omg",
+    "label": "Sparebank 1 Markets Withdrawal Fee External OMG",
+    "currency": "OMG",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-oxt",
+    "label": "Sparebank 1 Markets Withdrawal Fee External OXT",
+    "currency": "OXT",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-paxg",
+    "label": "Sparebank 1 Markets Withdrawal Fee External PAXG",
+    "currency": "PAXG",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-xrp",
+    "label": "Sparebank 1 Markets Withdrawal Fee External XRP",
+    "currency": "XRP",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-xlm",
+    "label": "Sparebank 1 Markets Withdrawal Fee External XLM",
+    "currency": "XLM",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-xtz",
+    "label": "Sparebank 1 Markets Withdrawal Fee External XTZ",
+    "currency": "XTZ",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-trx",
+    "label": "Sparebank 1 Markets Withdrawal Fee External TRX",
+    "currency": "TRX",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-dot",
+    "label": "Sparebank 1 Markets Withdrawal Fee External DOT",
+    "currency": "DOT",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-sol",
+    "label": "Sparebank 1 Markets Withdrawal Fee External SOL",
+    "currency": "SOL",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-matic",
+    "label": "Sparebank 1 Markets Withdrawal Fee External MATIC",
+    "currency": "MATIC",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-usdt",
+    "label": "Sparebank 1 Markets Withdrawal Fee External USDT",
+    "currency": "USDT",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-usdc",
+    "label": "Sparebank 1 Markets Withdrawal Fee External USDC",
+    "currency": "USDC",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-aave",
+    "label": "Sparebank 1 Markets Withdrawal Fee External AAVE",
+    "currency": "AAVE",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-uni",
+    "label": "Sparebank 1 Markets Withdrawal Fee External UNI",
+    "currency": "UNI",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-crv",
+    "label": "Sparebank 1 Markets Withdrawal Fee External CRV",
+    "currency": "CRV",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-comp",
+    "label": "Sparebank 1 Markets Withdrawal Fee External COMP",
+    "currency": "COMP",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-grt",
+    "label": "Sparebank 1 Markets Withdrawal Fee External GRT",
+    "currency": "GRT",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-snx",
+    "label": "Sparebank 1 Markets Withdrawal Fee External SNX",
+    "currency": "SNX",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-yfi",
+    "label": "Sparebank 1 Markets Withdrawal Fee External YFI",
+    "currency": "YFI",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-mana",
+    "label": "Sparebank 1 Markets Withdrawal Fee External MANA",
+    "currency": "MANA",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-nmr",
+    "label": "Sparebank 1 Markets Withdrawal Fee External NMR",
+    "currency": "NMR",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-sand",
+    "label": "Sparebank 1 Markets Withdrawal Fee External SAND",
+    "currency": "SAND",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-busd",
+    "label": "Sparebank 1 Markets Withdrawal Fee External BUSD",
+    "currency": "BUSD",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-bnb",
+    "label": "Sparebank 1 Markets Withdrawal Fee External BNB",
+    "currency": "BNB",
+    "allowNegative": false
+  },
+  {
+    "id": "sparebank-1-markets-withdrawal-fee-external-ftt",
+    "label": "Sparebank 1 Markets Withdrawal Fee External FTT",
+    "currency": "FTT",
+    "allowNegative": false
+  },
+  {
+    "id": "b2c2-fee-external-usd",
+    "label": "B2C2 Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-eur",
+    "label": "B2C2 Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-gbp",
+    "label": "B2C2 Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-nok",
+    "label": "B2C2 Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-sek",
+    "label": "B2C2 Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-dkk",
+    "label": "B2C2 Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "b2c2-fee-external-chf",
+    "label": "B2C2 Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "interactive-brokers-fee-external-usd",
+    "label": "Interactive Brokers Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "interactive-brokers-fee-external-eur",
+    "label": "Interactive Brokers Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "interactive-brokers-fee-external-gbp",
+    "label": "Interactive Brokers Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "interactive-brokers-fee-external-nok",
+    "label": "Interactive Brokers Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "interactive-brokers-fee-external-sek",
+    "label": "Interactive Brokers Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "interactive-brokers-fee-external-dkk",
+    "label": "Interactive Brokers Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "interactive-brokers-fee-external-chf",
+    "label": "Interactive Brokers Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "enigma-fee-external-usd",
+    "label": "Enigma Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "enigma-fee-external-eur",
+    "label": "Enigma Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "enigma-fee-external-gbp",
+    "label": "Enigma Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "enigma-fee-external-nok",
+    "label": "Enigma Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "enigma-fee-external-sek",
+    "label": "Enigma Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "enigma-fee-external-dkk",
+    "label": "Enigma Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "enigma-fee-external-chf",
+    "label": "Enigma Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "sparebank-1-markets-fee-external-usd",
+    "label": "Sparebank 1 Markets Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "sparebank-1-markets-fee-external-eur",
+    "label": "Sparebank 1 Markets Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "sparebank-1-markets-fee-external-gbp",
+    "label": "Sparebank 1 Markets Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "sparebank-1-markets-fee-external-nok",
+    "label": "Sparebank 1 Markets Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "sparebank-1-markets-fee-external-sek",
+    "label": "Sparebank 1 Markets Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "sparebank-1-markets-fee-external-dkk",
+    "label": "Sparebank 1 Markets Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "sparebank-1-markets-fee-external-chf",
+    "label": "Sparebank 1 Markets Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-usd",
+    "label": "Fireblocks Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-eur",
+    "label": "Fireblocks Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-gbp",
+    "label": "Fireblocks Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-nok",
+    "label": "Fireblocks Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-sek",
+    "label": "Fireblocks Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-dkk",
+    "label": "Fireblocks Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "fireblocks-fee-external-chf",
+    "label": "Fireblocks Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-usd",
+    "label": "Metamask Fee External USD",
+    "currency": "USD",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-eur",
+    "label": "Metamask Fee External EUR",
+    "currency": "EUR",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-gbp",
+    "label": "Metamask Fee External GBP",
+    "currency": "GBP",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-nok",
+    "label": "Metamask Fee External NOK",
+    "currency": "NOK",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-sek",
+    "label": "Metamask Fee External SEK",
+    "currency": "SEK",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-dkk",
+    "label": "Metamask Fee External DKK",
+    "currency": "DKK",
+    "allowNegative": true
+  },
+  {
+    "id": "metamask-fee-external-chf",
+    "label": "Metamask Fee External CHF",
+    "currency": "CHF",
+    "allowNegative": true
+  }
+]
