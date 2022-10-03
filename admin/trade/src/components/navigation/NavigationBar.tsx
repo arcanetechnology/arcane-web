@@ -28,7 +28,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
         {user ? (
           <Chip
             size="medium"
-            avatar={<Avatar alt={user.displayName ?? ''} src={user.photoUrl} />}
+            avatar={
+              <Avatar alt={user.displayName ?? ''} src={user.photoURL!} />
+            }
             label={user.email}
             variant="outlined"
           />

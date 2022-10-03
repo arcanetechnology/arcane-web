@@ -6,6 +6,7 @@ import { Box } from '@mui/system';
 import {
   getAuth,
   getRedirectResult,
+  onAuthStateChanged,
   SAMLAuthProvider,
   signInWithRedirect,
 } from 'firebase/auth';

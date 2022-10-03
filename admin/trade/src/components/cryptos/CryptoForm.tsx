@@ -51,27 +51,7 @@ const CryptoForm: React.FC<CryptoFormProps> = ({ handleSubmit }) => {
         error={Boolean(errors['alias'])}
         helperText={errors['alias']?.message}
       />
-      <Box display="flex" flexDirection="row" gap={GAP} width="100%">
-        <TextField
-          required
-          label="Account Number"
-          type="password"
-          fullWidth
-          error={Boolean(errors['id'])}
-          helperText={errors['id']?.message}
-          {...register('id', { required: true })}
-        />
-        <TextField
-          label="Re-Enter Account Number"
-          fullWidth
-          required
-          error={Boolean(errors['confirmId'])}
-          helperText={errors['confirmId']?.message}
-          {...register('confirmId', {
-            required: true,
-          })}
-        />
-      </Box>
+
       <Box display="flex" flexDirection="row" gap={GAP}>
         <TextField
           label="Currency"
@@ -80,15 +60,6 @@ const CryptoForm: React.FC<CryptoFormProps> = ({ handleSubmit }) => {
           required
           error={Boolean(errors['currency'])}
           helperText={errors['currency']?.message}
-        />
-        <TextField
-          label="Balance"
-          type="number"
-          required
-          fullWidth
-          error={Boolean(errors['balance'])}
-          helperText={errors['balance']?.message}
-          {...register('balance', { valueAsNumber: true })}
         />
       </Box>
       <Box display="flex" flexDirection="row" gap={GAP} width="100%">
