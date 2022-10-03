@@ -2,7 +2,12 @@
 
 import { useTradeDispatch, useTradeSelector } from '@/state';
 import { logout, selectAuth, updateToken } from '@/state';
-import { getAuth, onAuthStateChanged, onIdTokenChanged } from 'firebase/auth';
+import {
+  getAuth,
+  onAuthStateChanged,
+  onIdTokenChanged,
+  getIdToken,
+} from 'firebase/auth';
 import * as React from 'react';
 import { Navigate } from 'react-router-dom';
 
