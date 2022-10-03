@@ -1,15 +1,11 @@
 /** @format */
-import {
-  isRejectedWithValue,
-  Middleware,
-  MiddlewareAPI,
-} from '@reduxjs/toolkit';
+import { isRejected, Middleware, MiddlewareAPI } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-export const rtkQueryErrorLogger: Middleware =
+export const errorLogger: Middleware =
   (api: MiddlewareAPI) => (next) => (action) => {
-    if (isRejectedWithValue(action)) {
-      toast(action.payload.data, { type: 'error' });
+    if (isRejected(action)) {
+      toast('User not found', { type: 'error' });
     }
     return next(action);
   };

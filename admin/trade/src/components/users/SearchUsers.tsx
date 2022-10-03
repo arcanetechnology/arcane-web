@@ -2,24 +2,19 @@
 
 import { GAP, users } from '@/constants';
 import { useLazyGetUsersQuery } from '@/services';
-import { Loop, Search, SipOutlined } from '@mui/icons-material';
+import { Loop, Search } from '@mui/icons-material';
 import {
   Alert,
   Avatar,
   Card,
-  CardActionArea,
   CardContent,
-  Divider,
   Fade,
   IconButton,
-  InputBase,
-  Paper,
   Stack,
   TextField,
   Typography,
 } from '@mui/material';
 import { Box } from '@mui/system';
-import { NavLink, useNavigate } from 'react-router-dom';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { SearchUserForm } from '@/types/frontend';
@@ -36,23 +31,20 @@ const SearchUsers: React.FC = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
     reset,
   } = useForm<SearchUserForm>({
     resolver: zodResolver(schema as any),
   });
 
-  const [addUser, { data: users, isFetching, isLoading, isError, error }] =
+  const [getUser, { data: user, isFetching, isLoading, isError, error }] =
     useLazyGetUsersQuery();
 
   const handleSearch = async (value: SearchUserForm) => {
     try {
-      await addUser(value.email)
-        .unwrap()
-        .then(() => reset());
-    } catch (err) {
-      reset();
-    }
+      await getUser(value.email).unwrap();
+    } catch (err) {}
   };
 
   return (
@@ -92,8 +84,8 @@ const SearchUsers: React.FC = () => {
           ),
         }}
       />
-      {Boolean(users) && (
-        <Fade in={Boolean(users)}>
+      {Boolean(user) && (
+        <Fade in={Boolean(user)}>
           <Card variant="outlined" sx={{ borderRadius: 3 }}>
             <Box
               component={CardContent}
@@ -108,10 +100,10 @@ const SearchUsers: React.FC = () => {
                 alignContent="center"
                 justifyContent="center"
               >
-                <Avatar {...stringToAvatar(users![0].email)} />
-                <Typography variant="h3">{users![0].email}</Typography>
+                <Avatar {...stringToAvatar(watch('email'))} />
+                <Typography variant="h3">{watch('email')}</Typography>
               </Box>
-              <CheckUser userId={users![0].id} />
+              <CheckUser userId={user!} />
             </Box>
           </Card>
         </Fade>

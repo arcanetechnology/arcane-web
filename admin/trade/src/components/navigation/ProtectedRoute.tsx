@@ -2,6 +2,7 @@
 
 import { useTradeDispatch, useTradeSelector } from '@/state';
 import { logout, selectAuth, updateToken } from '@/state';
+import { ConstructionOutlined } from '@mui/icons-material';
 import { getAuth, onAuthStateChanged, onIdTokenChanged } from 'firebase/auth';
 import * as React from 'react';
 import { Navigate } from 'react-router-dom';
@@ -26,12 +27,26 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
       if (!user) {
         dispatch(logout());
       } else {
-        user.getIdToken().then((v) => dispatch(updateToken(v)));
+        user.getIdToken().then((v) => {
+          dispatch(updateToken(v));
+        });
       }
     });
   }, []);
 
   // update the token when token changes
+
+  React.useEffect(() => {
+    onIdTokenChanged(getAuth(), (user) => {
+      if (!user) {
+        dispatch(logout());
+      } else {
+        user.getIdToken().then((v) => {
+          dispatch(updateToken(v));
+        });
+      }
+    });
+  }, []);
 
   return <React.Fragment>{children}</React.Fragment>;
 };

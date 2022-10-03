@@ -14,6 +14,10 @@ import {
   Portfolio,
 } from './entities';
 
+// admin api type
+
+export type SearchUserResponse = string;
+
 // user api types
 export type CreateUserRequest = Omit<Optional<User, 'profiles'>, 'id'>;
 export type GetUsersResponse = Array<UserItem>;

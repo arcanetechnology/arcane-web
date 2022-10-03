@@ -1,7 +1,7 @@
 /** @format */
 import { api } from '@/services';
 import auth from './auth';
-import { rtkQueryErrorLogger } from './middlewares';
+import { errorLogger } from './middlewares';
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
 
@@ -15,7 +15,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage/session';
 
 const persistConfig = {
   key: 'auth',
@@ -37,7 +37,7 @@ const store = configureStore({
       },
     })
       .concat(api.middleware)
-      .concat(rtkQueryErrorLogger),
+      .concat(errorLogger),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

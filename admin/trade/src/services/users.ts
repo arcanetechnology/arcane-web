@@ -2,7 +2,7 @@
 
 import { api } from './api';
 import {
-  GetUsersResponse,
+  SearchUserResponse,
   User,
   CreateUserRequest,
   GetUserResponse,
@@ -13,8 +13,12 @@ import { users } from '@/constants';
 
 export const usersApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getUsers: build.query<GetUsersResponse, string>({
-      query: (args) => ({ url: 'admin/user', params: { email: args } }),
+    getUsers: build.query<SearchUserResponse, string>({
+      query: (args) => ({
+        url: 'admin/user',
+        params: { email: args },
+        responseHandler: (res) => res.text(),
+      }),
       extraOptions: {
         maxRetries: 0,
       },
