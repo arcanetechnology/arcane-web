@@ -11,7 +11,6 @@ const baseQuery = fetchBaseQuery({
     const { token } = (getState() as RootState).auth;
     headers.set('Content-Type', 'application/json');
     headers.set('Authorization', `Bearer ${token}`);
-    headers.set('Access-Control-Allow-Origin', '*');
     return headers;
   },
 });

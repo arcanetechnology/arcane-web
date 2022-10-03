@@ -1,19 +1,42 @@
 /** @format */
 import { api } from '@/services';
 import auth from './auth';
-import listenerMiddleware, { rtkQueryErrorLogger } from './middlewares';
+import { rtkQueryErrorLogger } from './middlewares';
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
 
+// redux persist
+import {
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+const persistConfig = {
+  key: 'auth',
+  version: 1,
+  storage,
+};
+
+const persistedAuth = persistReducer(persistConfig, auth);
+
 const store = configureStore({
   reducer: {
-    auth,
+    auth: persistedAuth,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    })
       .concat(api.middleware)
-      .concat(listenerMiddleware.middleware)
       .concat(rtkQueryErrorLogger),
 });
 

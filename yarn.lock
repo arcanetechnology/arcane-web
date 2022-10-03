@@ -190,6 +190,7 @@ __metadata:
     react-window: ^1.8.7
     react-window-infinite-loader: ^1.0.8
     redux: ^4.2.0
+    redux-persist: ^6.0.0
     typescript: ^4.8.4
     vite: ^3.0.9
     vite-plugin-svgr: ^2.2.1
@@ -15986,6 +15987,15 @@ __metadata:
   dependencies:
     esprima: ~4.0.0
   checksum: 39a1426e377727cfb47a0e24e95c1cf78d969fbc388dc1e0fa1e2ef8a8756450cefb8b0c2598f63b85f1a331986fca7604c0db798427a5775a1dbdb9c1291979
+  languageName: node
+  linkType: hard
+
+"redux-persist@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "redux-persist@npm:6.0.0"
+  peerDependencies:
+    redux: ">4.0.0"
+  checksum: edaf10dbf17351ce8058d0802357adae8665b3a1ff39371834e37838ddbe1a79cccbc717b8ba54acb5307651ccf51d0f7dc1cbc8dbae0726ff952d11ef61c6b8
   languageName: node
   linkType: hard
 
