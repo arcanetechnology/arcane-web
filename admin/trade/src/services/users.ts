@@ -7,7 +7,7 @@ import {
   CreateUserRequest,
   GetUserResponse,
 } from '@/types';
-import { users } from '@/constants';
+import { user, users } from '@/constants';
 
 // TODO : refactor the admin searchUsers/getUser to its own admin app
 
@@ -15,7 +15,10 @@ export const usersApi = api.injectEndpoints({
   endpoints: (build) => ({
     getUsers: build.query<SearchUserResponse, string>({
       query: (args) => ({
-        url: 'admin/user',
+        url:
+          import.meta.env.VITE_BASE_URL +
+          import.meta.env.VITE_ADMIN_ENDPOINT +
+          user,
         params: { email: args },
         responseHandler: (res) => res.text(),
       }),
@@ -23,6 +26,7 @@ export const usersApi = api.injectEndpoints({
         maxRetries: 0,
       },
     }),
+    // trade-admin
     addUser: build.mutation<User, CreateUserRequest>({
       query(body) {
         return {

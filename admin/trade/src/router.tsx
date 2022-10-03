@@ -5,7 +5,7 @@ import ErrorPage from './error-page';
 import Index from './routes';
 import { GenericError, NavigationLink, ProtectedRoute } from './components';
 import Auth from './routes/auth';
-import { CreateUser, ViewUser } from './routes/user';
+import { ViewUser } from './routes/user';
 import { CreateProfile, ViewProfile, ViewProfiles } from './routes/profiles';
 import { ViewAccounts, ViewAccount, CreateAccount } from './routes/accounts';
 import { ViewCustody, ViewCustodies } from './routes/custodies';
@@ -146,12 +146,6 @@ const router = createBrowserRouter([
             errorElement: <GenericError />,
           },
         ],
-      },
-      {
-        path: 'create',
-        element: <CreateUser />,
-        errorElement: <GenericError />,
-        children: [{ path: 'profiles' }],
       },
     ],
   },

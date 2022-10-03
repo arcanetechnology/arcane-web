@@ -41,8 +41,8 @@ const adapter = createEntityAdapter<User>({
 
 let state = adapter.getInitialState();
 const initialData: Array<User> = [
-  { id: '1', email: 'test@test.com', profiles: [] },
-  { id: '2', email: 'test2@test.com', profiles: [] },
+  { id: '1', createdOn: '2022-10-03T13:05:20.375Z' },
+  { id: '2', createdOn: '2022-10-03T13:05:20.375Z' },
 ];
 state = adapter.setAll(state, initialData);
 
@@ -155,28 +155,18 @@ export const handlers = [
       return res(
         ctx.status(404),
         ctx.json('email is not present'),
-        ctx.delay(400)
+        ctx.delay(400),
       );
     }
 
-    const selector = adapter.getSelectors();
-    const filteredUser = selector
-      .selectAll(state)
-      .find((u) => u.email === email);
-
-    if (!filteredUser) {
-      return res(ctx.status(404), ctx.json('user not found'), ctx.delay(400));
-    }
-
-    return res(ctx.status(200), ctx.json([filteredUser]), ctx.delay(400));
+    return res(ctx.status(200), ctx.json(state.entities[0]), ctx.delay(400));
   }),
 
   rest.post(getBackendUrl(users), async (req, res, ctx) => {
-    const { email, profiles } = req.body as CreateUserRequest;
+    const { id } = req.body as CreateUserRequest;
     state = adapter.addOne(state, {
-      email: email,
       id: nanoid(),
-      profiles: profiles ?? [],
+      createdOn: new Date().getDate().toString(),
     });
     return res(ctx.json(Object.values(state.entities)), ctx.delay(400));
   }),
@@ -186,7 +176,7 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json(state.entities[userId]),
-      ctx.delay(400)
+      ctx.delay(400),
     );
   }),
 
@@ -195,13 +185,11 @@ export const handlers = [
     state = adapter.removeOne(state, userId);
     return res(ctx.status(200), ctx.delay(400));
   }),
-  // profiles
+  // profiles update it accordingly
   rest.get(getBackendUrl(users, ':userId', profiles), (req, res, ctx) => {
     const { userId } = req.params as UserPath;
 
     const user = state.entities[userId];
-
-    const profiles = user?.profiles.map((p) => profileState.entities[p]);
 
     return res(ctx.status(200), ctx.json(profiles), ctx.delay(400));
   }),
@@ -219,13 +207,6 @@ export const handlers = [
     const userSelector = adapter.getSelectors();
     const user = userSelector.selectById(state, userId);
 
-    state = adapter.updateOne(state, {
-      id: userId,
-      changes: {
-        profiles: [...(user?.profiles ?? []), profileId],
-      },
-    });
-
     return res(ctx.json(Object.values(profileState.entities)), ctx.delay(400));
   }),
   rest.get(
@@ -236,9 +217,9 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json(profileState.entities[profileId]),
-        ctx.delay(400)
+        ctx.delay(400),
       );
-    }
+    },
   ),
   // accounts
   rest.get(
@@ -248,7 +229,7 @@ export const handlers = [
       const profiles = profileState.entities[profileId];
       const accounts = profiles?.accounts.map((a) => accountState.entities[a]);
       return res(ctx.status(200), ctx.json(accounts), ctx.delay(400));
-    }
+    },
   ),
 
   rest.post(
@@ -278,9 +259,9 @@ export const handlers = [
 
       return res(
         ctx.json(Object.values(accountState.entities)),
-        ctx.delay(400)
+        ctx.delay(400),
       );
-    }
+    },
   ),
   rest.get(
     getBackendUrl(
@@ -289,16 +270,16 @@ export const handlers = [
       profiles,
       ':profileId',
       accounts,
-      ':accountId'
+      ':accountId',
     ),
     (req, res, ctx) => {
       const { accountId } = req.params as AccountPath;
       return res(
         ctx.status(200),
         ctx.json(accountState.entities[accountId]),
-        ctx.delay(400)
+        ctx.delay(400),
       );
-    }
+    },
   ),
 
   // portfolios
@@ -310,16 +291,16 @@ export const handlers = [
       ':profileId',
       accounts,
       ':accountId',
-      portfolios
+      portfolios,
     ),
     (req, res, ctx) => {
       const { accountId } = req.params as AccountPath;
       const account = accountState.entities[accountId];
       const portfolios = account?.portfolios.map(
-        (p) => portfolioState.entities[p]
+        (p) => portfolioState.entities[p],
       );
       return res(ctx.status(200), ctx.json(portfolios), ctx.delay(400));
-    }
+    },
   ),
 
   rest.post(
@@ -330,7 +311,7 @@ export const handlers = [
       ':profileId',
       accounts,
       ':accountId',
-      portfolios
+      portfolios,
     ),
     (req, res, ctx) => {
       const { accountId } = req.params as AccountPath;
@@ -355,9 +336,9 @@ export const handlers = [
 
       return res(
         ctx.json(Object.values(portfolioState.entities)),
-        ctx.delay(400)
+        ctx.delay(400),
       );
-    }
+    },
   ),
 
   rest.get(
@@ -369,7 +350,7 @@ export const handlers = [
       accounts,
       ':accountId',
       portfolios,
-      ':portfolioId'
+      ':portfolioId',
     ),
     (req, res, ctx) => {
       const { userId, profileId, accountId, portfolioId } =
@@ -377,9 +358,9 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json(portfolioState.entities[portfolioId]),
-        ctx.delay(400)
+        ctx.delay(400),
       );
-    }
+    },
   ),
   // cryptos
   rest.get(
@@ -392,7 +373,7 @@ export const handlers = [
       ':accountId',
       portfolios,
       ':portfolioId',
-      cryptos
+      cryptos,
     ),
     (req, res, ctx) => {
       const { userId, profileId, accountId, portfolioId } =
@@ -401,7 +382,7 @@ export const handlers = [
       const portfolio = portfolioState.entities[portfolioId];
       const cryptos = portfolio?.accounts.map((c) => cryptoState.entities[c]);
       return res(ctx.status(200), ctx.json(cryptos), ctx.delay(400));
-    }
+    },
   ),
   rest.post(
     getBackendUrl(
@@ -413,7 +394,7 @@ export const handlers = [
       ':accountId',
       portfolios,
       ':portfolioId',
-      cryptos
+      cryptos,
     ),
     (req, res, ctx) => {
       const { portfolioId } = req.params as PortfolioPath;
@@ -442,9 +423,9 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json(Object.values(cryptoState.entities)),
-        ctx.delay(400)
+        ctx.delay(400),
       );
-    }
+    },
   ),
   rest.get(
     getBackendUrl(
@@ -457,7 +438,7 @@ export const handlers = [
       portfolios,
       ':portfolioId',
       cryptos,
-      ':cryptoId'
+      ':cryptoId',
     ),
     (req, res, ctx) => {
       const { userId, profileId, accountId, portfolioId, cryptoId } =
@@ -465,9 +446,9 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json(cryptoState.entities[cryptoId]),
-        ctx.delay(400)
+        ctx.delay(400),
       );
-    }
+    },
   ),
 
   // custody stuff
@@ -475,7 +456,7 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json(Object.values(custodyState.entities)),
-      ctx.delay(400)
+      ctx.delay(400),
     );
   }),
   rest.get(getBackendUrl(custodies, ':custodyId'), (req, res, ctx) => {
@@ -483,7 +464,7 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json(custodyState.entities[custodyId]),
-      ctx.delay(400)
+      ctx.delay(400),
     );
   }),
 ];

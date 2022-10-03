@@ -28,10 +28,10 @@ const schema = z.object({
 });
 
 const SearchUsers: React.FC = () => {
+  const [email, setEmail] = React.useState<string | null>(null);
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
   } = useForm<SearchUserForm>({
@@ -43,8 +43,40 @@ const SearchUsers: React.FC = () => {
 
   const handleSearch = async (value: SearchUserForm) => {
     try {
-      await getUser(value.email).unwrap();
+      await getUser(value.email)
+        .unwrap()
+        .then((id) => setEmail(value.email));
     } catch (err) {}
+  };
+
+  const getUserInfo = () => {
+    if (Boolean(user) && email) {
+      return (
+        <Fade in={Boolean(user)}>
+          <Card variant="outlined" sx={{ borderRadius: 3 }}>
+            <Box
+              component={CardContent}
+              display="flex"
+              justifyContent="space-between"
+              alignContent="center"
+            >
+              <Box
+                display="flex"
+                flexDirection="row"
+                gap={GAP}
+                alignContent="center"
+                justifyContent="center"
+              >
+                <Avatar {...stringToAvatar(email)} />
+                <Typography variant="h3">{email}</Typography>
+              </Box>
+              <CheckUser userId={user!} />
+            </Box>
+          </Card>
+        </Fade>
+      );
+    }
+    return null;
   };
 
   return (
@@ -84,30 +116,8 @@ const SearchUsers: React.FC = () => {
           ),
         }}
       />
-      {Boolean(user) && (
-        <Fade in={Boolean(user)}>
-          <Card variant="outlined" sx={{ borderRadius: 3 }}>
-            <Box
-              component={CardContent}
-              display="flex"
-              justifyContent="space-between"
-              alignContent="center"
-            >
-              <Box
-                display="flex"
-                flexDirection="row"
-                gap={GAP}
-                alignContent="center"
-                justifyContent="center"
-              >
-                <Avatar {...stringToAvatar(watch('email'))} />
-                <Typography variant="h3">{watch('email')}</Typography>
-              </Box>
-              <CheckUser userId={user!} />
-            </Box>
-          </Card>
-        </Fade>
-      )}
+
+      {getUserInfo()}
       {Boolean(errors.email?.message) && (
         <Fade in={Boolean(errors.email?.message)}>
           <Alert variant="outlined" severity="error" sx={{ borderRadius: 3 }}>

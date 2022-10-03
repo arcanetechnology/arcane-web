@@ -44,7 +44,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, loading = false }) => {
           flexDirection="row"
           gap={GAP}
         >
-          <Badge badgeContent={user.profiles.length} color="secondary">
+          {/* <Badge badgeContent={user.profiles.length} color="secondary">
             {loading ? (
               <Skeleton variant="circular" width={60} height={60} />
             ) : (
@@ -57,7 +57,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, loading = false }) => {
             <Typography variant="h3">
               {user.email === '' ? 'No Email' : user?.email}
             </Typography>
-          )}
+          )} */}
         </Box>
       </AccordionSummary>
       <AccordionDetails>

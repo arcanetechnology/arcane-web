@@ -9,7 +9,7 @@ import {
 } from '../backend';
 
 // creation form types
-export type CreateUserForm = Omit<User, 'profiles' | 'id'>;
+export type CreateUserForm = Omit<User, 'createdOn'>;
 export type CreateProfileForm = Omit<Profile, 'accounts' | 'id'>;
 export type CreateAccountForm = Omit<
   StakeholderFiatAccount,
@@ -20,4 +20,6 @@ export type CreateCryptoForm = Omit<StakeholderCryptoAccount, 'id' | 'balance'>;
 
 // miscellaneous
 
-export type SearchUserForm = Omit<User, 'profiles' | 'id'>;
+export type SearchUserForm = Omit<User, 'profiles' | 'id' | 'createdOn'> & {
+  email: string;
+};

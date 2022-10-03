@@ -17,6 +17,7 @@ interface ImportMetaEnv {
   // application specific environment variables
   readonly VITE_BASE_URL: string;
   readonly VITE_ADMIN_ENDPOINT: string;
+  readonly VITE_TRADE_ADMIN_ENDPOINT: string;
 }
 
 interface ImportMeta {

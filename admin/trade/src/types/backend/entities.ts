@@ -20,8 +20,7 @@ export type CryptoCurrency = string;
 // actual entity
 export type User = {
   id: string;
-  email: string;
-  profiles: Array<string>;
+  createdOn: string;
 };
 
 // the way list api gives me each user

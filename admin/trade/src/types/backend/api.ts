@@ -19,7 +19,7 @@ import {
 export type SearchUserResponse = string;
 
 // user api types
-export type CreateUserRequest = Omit<Optional<User, 'profiles'>, 'id'>;
+export type CreateUserRequest = Omit<User, 'createdOn'>;
 export type GetUsersResponse = Array<UserItem>;
 export type GetUserResponse = User;
 

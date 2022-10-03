@@ -2,6 +2,7 @@
 
 // api
 export const users = 'users';
+export const user = 'user';
 export const profiles = 'profiles';
 export const accounts = 'accounts';
 export const portfolios = 'portfolios';

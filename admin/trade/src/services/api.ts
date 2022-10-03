@@ -5,7 +5,8 @@ import { getEntireUrl } from '@/utils';
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: import.meta.env.VITE_BASE_URL,
+  baseUrl:
+    import.meta.env.VITE_BASE_URL + import.meta.env.VITE_TRADE_ADMIN_ENDPOINT,
   mode: 'cors',
   prepareHeaders: (headers, { getState }) => {
     const { token } = (getState() as RootState).auth;
