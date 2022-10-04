@@ -1,10 +1,10 @@
 /** @format */
 
-import { UserMenu, UsersToolbar } from '@/components';
+import { UserInfo, UserMenu, UsersToolbar } from '@/components';
 import { GAP } from '@/constants';
 import { useGetUserQuery } from '@/services';
 import { UserPath } from '@/types/frontend';
-import { Alert, Grid } from '@mui/material';
+import { Alert, Grid, Skeleton, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
@@ -14,20 +14,21 @@ const ViewUser: React.FC = () => {
   const {
     data: user,
     isError,
-    isLoading,
     isFetching,
+    isLoading,
   } = useGetUserQuery(userId!);
-  if (isError) return <Alert>User not found</Alert>;
-  if (!user) return null;
-
   return (
     <Stack gap={GAP}>
       <Grid container spacing={2}>
         <Grid item xs={6} md={8}>
-          <UsersToolbar />
+          <UserInfo
+            user={user!}
+            isError={isError}
+            isLoading={isLoading || isFetching}
+          />
         </Grid>
         <Grid item xs={6} md={4}>
-          <UserMenu user={user} loading={isLoading || isFetching} />
+          <UserMenu user={user!} isError={isError} />
         </Grid>
       </Grid>
       <Outlet />

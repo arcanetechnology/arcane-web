@@ -18,17 +18,17 @@ import {
 } from '@mui/material';
 import * as React from 'react';
 import { GAP } from '@/constants';
-import { ExpandMore, Group } from '@mui/icons-material';
+import { ExpandMore, Group, Settings } from '@mui/icons-material';
 import { NavigationLink } from '../navigation';
 import { useMatches } from 'react-router-dom';
 import { TradeMatches } from '@/types/frontend';
 
 type UserMenuProps = {
   user: User;
-  loading?: boolean;
+  isError?: boolean;
 };
 
-const UserMenu: React.FC<UserMenuProps> = ({ user, loading = false }) => {
+const UserMenu: React.FC<UserMenuProps> = ({ user, isError = false }) => {
   const matches = useMatches() as TradeMatches[];
   const settings = matches
     .filter((match) => Boolean(match.handle?.setting))
@@ -42,22 +42,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, loading = false }) => {
           id="user-menu-header"
           display="flex"
           flexDirection="row"
+          alignItems="center"
           gap={GAP}
         >
-          {/* <Badge badgeContent={user.profiles.length} color="secondary">
-            {loading ? (
-              <Skeleton variant="circular" width={60} height={60} />
-            ) : (
-              <Avatar {...stringToAvatar(user?.email)} />
-            )}
-          </Badge>
-          {loading ? (
-            <Skeleton variant="text" sx={{ fontSize: '1.5rem' }} width={300} />
-          ) : (
-            <Typography variant="h3">
-              {user.email === '' ? 'No Email' : user?.email}
-            </Typography>
-          )} */}
+          <Settings />
+          <Typography>Settings</Typography>
         </Box>
       </AccordionSummary>
       <AccordionDetails>

@@ -38,7 +38,6 @@ export const usersApi = api.injectEndpoints({
     }),
     getUser: build.query<GetUserResponse, string>({
       query: (id) => `${users}/${id}`,
-      providesTags: (_user, _err, id) => [{ type: 'User', id }],
       extraOptions: {
         maxRetries: 0,
       },

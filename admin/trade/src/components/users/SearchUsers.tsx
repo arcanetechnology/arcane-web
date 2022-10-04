@@ -3,32 +3,22 @@
 import { GAP, users } from '@/constants';
 import { useLazyGetUsersQuery } from '@/services';
 import { Loop, Search } from '@mui/icons-material';
-import {
-  Alert,
-  Avatar,
-  Card,
-  CardContent,
-  Fade,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
-import { Box } from '@mui/system';
+import { Alert, Fade, IconButton, Stack, TextField } from '@mui/material';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { SearchUserForm } from '@/types/frontend';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import CheckUser from './CheckUser';
 import { stringToAvatar } from '@/utils';
+import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
   email: z.string().email('please enter an email').nonempty(),
 });
 
 const SearchUsers: React.FC = () => {
-  const [email, setEmail] = React.useState<string | null>(null);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -45,38 +35,8 @@ const SearchUsers: React.FC = () => {
     try {
       await getUser(value.email)
         .unwrap()
-        .then((id) => setEmail(value.email));
+        .then((id) => navigate(id, { replace: true }));
     } catch (err) {}
-  };
-
-  const getUserInfo = () => {
-    if (Boolean(user) && email) {
-      return (
-        <Fade in={Boolean(user)}>
-          <Card variant="outlined" sx={{ borderRadius: 3 }}>
-            <Box
-              component={CardContent}
-              display="flex"
-              justifyContent="space-between"
-              alignContent="center"
-            >
-              <Box
-                display="flex"
-                flexDirection="row"
-                gap={GAP}
-                alignContent="center"
-                justifyContent="center"
-              >
-                <Avatar {...stringToAvatar(email)} />
-                <Typography variant="h3">{email}</Typography>
-              </Box>
-              <CheckUser userId={user!} />
-            </Box>
-          </Card>
-        </Fade>
-      );
-    }
-    return null;
   };
 
   return (
@@ -117,7 +77,6 @@ const SearchUsers: React.FC = () => {
         }}
       />
 
-      {getUserInfo()}
       {Boolean(errors.email?.message) && (
         <Fade in={Boolean(errors.email?.message)}>
           <Alert variant="outlined" severity="error" sx={{ borderRadius: 3 }}>
