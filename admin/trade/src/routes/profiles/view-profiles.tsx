@@ -19,7 +19,6 @@ const ViewProfiles: React.FC = () => {
   } = useGetProfilesQuery(userId!);
 
   if (isError) throw new Error('some error occured in api call');
-  if (!profiles) return null;
 
   return (
     <Stack
@@ -32,7 +31,7 @@ const ViewProfiles: React.FC = () => {
             bgcolor: (theme) =>
               getHoverBackgroundColor(
                 theme.palette.success.main,
-                theme.palette.mode
+                theme.palette.mode,
               ),
           },
         },
@@ -43,14 +42,17 @@ const ViewProfiles: React.FC = () => {
             bgcolor: (theme) =>
               getHoverBackgroundColor(
                 theme.palette.info.main,
-                theme.palette.mode
+                theme.palette.mode,
               ),
           },
         },
       }}
     >
       <Outlet />
-      <ProfileList profiles={profiles} />
+      <ProfileList
+        profiles={profiles ?? []}
+        isLoading={isFetching || isLoading}
+      />
       <Loading open={isLoading || isFetching} />
     </Stack>
   );

@@ -39,5 +39,6 @@ export type TradeMatches = {
   data: unknown;
   handle: {
     setting: (key: string) => React.ReactNode;
+    unregister: (key: string) => React.ReactNode;
   };
 };

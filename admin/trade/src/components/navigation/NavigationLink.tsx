@@ -32,22 +32,15 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({
           return (
             <RouterLink to={to} ref={ref} {...itemProps} role={undefined} />
           );
-        }
+        },
       ),
-    [to]
+    [to],
   );
 
   const match = useMatch(to);
 
   return (
-    <ListItemButton
-      sx={{
-        borderRadius: 3,
-        mb: 0.5,
-      }}
-      selected={Boolean(match)}
-      component={renderLink}
-    >
+    <ListItemButton selected={Boolean(match)} component={renderLink}>
       <ListItemIcon sx={{ color: 'inherit' }}>{icon}</ListItemIcon>
       <ListItemText
         primaryTypographyProps={{ fontWeight: 'medium' }}

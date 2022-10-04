@@ -17,8 +17,8 @@ const UserInfo: React.FC<UserInfoProps> = ({ user, isError, isLoading }) => {
   if (isLoading)
     return (
       <Box display="flex" flexDirection="row" alignItems="center" gap={GAP}>
-        <Skeleton variant="rounded" width={200} height={50} />
-        <Skeleton variant="rounded" width={200} height={50} />
+        <Skeleton variant="rounded" width={200} height={40} />
+        <Skeleton variant="rounded" width={200} height={40} />
       </Box>
     );
 
@@ -32,7 +32,11 @@ const UserInfo: React.FC<UserInfoProps> = ({ user, isError, isLoading }) => {
   return (
     <Box display="flex" flexDirection="row" alignItems="center" gap={GAP}>
       <Chip variant="outlined" label={user.id} icon={<PermIdentity />} />
-      <Chip variant="outlined" label={user.createdOn} icon={<DateRange />} />
+      <Chip
+        variant="outlined"
+        label={new Date(user.createdOn).toLocaleString()}
+        icon={<DateRange />}
+      />
     </Box>
   );
 };

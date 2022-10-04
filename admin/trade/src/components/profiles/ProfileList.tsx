@@ -12,9 +12,10 @@ import { NoRowsOverlays } from '../overlays';
 
 type ProfileListProps = {
   profiles: Array<ProfileItem>;
+  isLoading: boolean;
 };
 
-const ProfileList: React.FC<ProfileListProps> = ({ profiles }) => {
+const ProfileList: React.FC<ProfileListProps> = ({ profiles, isLoading }) => {
   const columns = React.useMemo<GridColumns<ProfileItem>>(
     () => [
       {
@@ -48,7 +49,7 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles }) => {
         ],
       },
     ],
-    [profiles]
+    [profiles],
   );
   return (
     <DataGrid
@@ -57,6 +58,7 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles }) => {
       }
       hideFooter
       rowSpacingType="margin"
+      loading={isLoading}
       rows={profiles}
       components={{
         NoRowsOverlay: () => {

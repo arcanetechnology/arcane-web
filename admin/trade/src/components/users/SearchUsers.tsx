@@ -1,6 +1,6 @@
 /** @format */
 
-import { GAP, users } from '@/constants';
+import { GAP, profiles, users } from '@/constants';
 import { useLazyGetUsersQuery } from '@/services';
 import { Loop, Search } from '@mui/icons-material';
 import { Alert, Fade, IconButton, Stack, TextField } from '@mui/material';
@@ -35,7 +35,7 @@ const SearchUsers: React.FC = () => {
     try {
       await getUser(value.email)
         .unwrap()
-        .then((id) => navigate(id, { replace: true }));
+        .then((id) => navigate(id + '/' + profiles, { replace: true }));
     } catch (err) {}
   };
 
