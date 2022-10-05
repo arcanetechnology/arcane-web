@@ -42,7 +42,10 @@ export const accountsApi = api.injectEndpoints({
           body,
         };
       },
-      invalidatesTags: ['Profile', 'Accounts'],
+      extraOptions: {
+        maxRetries: 0,
+      },
+      invalidatesTags: ['Accounts'],
     }),
     getAccount: build.query<GetAccountResponse, AccountPath>({
       query: (path) => getAccount(path),

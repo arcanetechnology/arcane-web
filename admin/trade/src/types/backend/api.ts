@@ -26,15 +26,15 @@ export type GetUserResponse = User;
 // profile api types
 export type GetProfilesResponse = Array<ProfileItem>;
 export type GetProfileResponse = Profile;
-export type CreateProfileRequest = Omit<Optional<Profile, 'accounts'>, 'id'>;
+export type CreateProfileRequest = Omit<Profile, 'id'>;
 
 // accounts api types
 
 export type GetAccountsResponse = Array<StakeholderFiatAccountItem>;
 export type GetAccountResponse = StakeholderFiatAccount;
-export type CreateAccountRequest = Optional<
-  Omit<StakeholderFiatAccount, 'id' | 'balance'>,
-  'portfolios'
+export type CreateAccountRequest = Omit<
+  StakeholderFiatAccount,
+  'id' | 'balance' | 'reservedBalance'
 >;
 
 // portfolio api types

@@ -17,13 +17,14 @@ const ViewCustodies: React.FC = () => {
   } = useGetCustodiesQuery();
 
   if (isError) throw new Error('some error occured in api call');
-  if (!custodies) return null;
 
   return (
     <Stack gap={GAP}>
       <Outlet />
-      <CustodyList custodies={custodies} />
-      <Box height={10}>{(isLoading || isFetching) && <LinearProgress />}</Box>
+      <CustodyList
+        custodies={custodies ?? []}
+        isLoading={isLoading || isFetching}
+      />
     </Stack>
   );
 };

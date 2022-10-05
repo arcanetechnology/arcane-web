@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 
 const CreateAccount: React.FC = () => {
   const params = useParams<ProfilePath>();
-  const [addAccount] = useAddAccountMutation();
+  const [addAccount, { isLoading }] = useAddAccountMutation();
   const handleSubmit = async (account: CreateAccountForm) => {
     try {
       await addAccount({
@@ -24,7 +24,7 @@ const CreateAccount: React.FC = () => {
   };
   return (
     <Stack gap={GAP}>
-      <AccountForm handleSubmit={handleSubmit} />
+      <AccountForm handleSubmit={handleSubmit} isLoading={isLoading} />
     </Stack>
   );
 };

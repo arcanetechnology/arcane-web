@@ -9,22 +9,28 @@ import { Box } from '@mui/system';
 import { Button, TextField } from '@mui/material';
 import { currency } from '@/types/backend';
 import { CreateAccountForm } from '@/types/frontend';
+import LoadingButton from '@mui/lab/LoadingButton';
+import { CustodyDropDown } from '../custodies';
 
 type AccountFormProps = {
   handleSubmit: (account: CreateAccountForm) => void;
+  isLoading?: boolean;
 };
 
 const schema = z.object({
   alias: z.string().nonempty(),
   currency: z.enum(currency),
-
   custodyAccountId: z.string().nonempty('please specify a custodyId'),
 });
 
-const AccountForm: React.FC<AccountFormProps> = ({ handleSubmit }) => {
+const AccountForm: React.FC<AccountFormProps> = ({
+  handleSubmit,
+  isLoading,
+}) => {
   const {
     register,
     handleSubmit: onSubmit,
+    control,
     formState: { errors },
   } = useForm<CreateAccountForm>({
     resolver: zodResolver(schema as any),
@@ -39,14 +45,14 @@ const AccountForm: React.FC<AccountFormProps> = ({ handleSubmit }) => {
       onSubmit={onSubmit(handleSubmit)}
       id="create-account-form"
     >
-      <TextField
-        label="Alias"
-        {...register('alias')}
-        error={Boolean(errors['alias'])}
-        helperText={errors['alias']?.message}
-      />
-
       <Box display="flex" flexDirection="row" gap={GAP}>
+        <TextField
+          label="Alias"
+          fullWidth
+          {...register('alias')}
+          error={Boolean(errors['alias'])}
+          helperText={errors['alias']?.message}
+        />
         <TextField
           label="Currency"
           fullWidth
@@ -56,20 +62,19 @@ const AccountForm: React.FC<AccountFormProps> = ({ handleSubmit }) => {
           helperText={errors['currency']?.message}
         />
       </Box>
-      <Box display="flex" flexDirection="row" gap={GAP} width="100%">
-        <TextField
-          label="Custody Account Id"
-          fullWidth
-          {...register('custodyAccountId')}
-          error={Boolean(errors['custodyAccountId'])}
-          helperText={errors['custodyAccountId']?.message}
-        />
-      </Box>
+      <CustodyDropDown
+        defaultValue={''}
+        name="custodyAccountId"
+        rule={{
+          required: true,
+        }}
+        control={control}
+      />
 
       <Box display="flex" flexDirection="row" gap={GAP}>
-        <Button variant="contained" type="submit">
+        <LoadingButton loading={isLoading} variant="contained" type="submit">
           Submit
-        </Button>
+        </LoadingButton>
         <Button type="reset">Reset</Button>
       </Box>
     </Box>

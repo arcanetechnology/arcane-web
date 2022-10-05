@@ -29,9 +29,7 @@ const ViewAccount: React.FC = () => {
         alignItems="center"
       >
         <Box display="flex" gap={GAP} flexDirection="row" alignItems="center">
-          <Badge badgeContent={account.portfolios.length} color="secondary">
-            <Money />
-          </Badge>
+          <Money />
           <Typography variant="h4">{account.currency}</Typography>
           <Typography variant="h4">{account.balance}</Typography>
           <Typography variant="h4">{account.alias}</Typography>

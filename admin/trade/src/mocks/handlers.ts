@@ -101,29 +101,34 @@ const initialCustodyState: Array<CustodyAccount> = [
     id: 'real-nok-sp1',
     alias: 'Real NOK SP1',
     balance: 1000000000,
+    reservedBalance: 0,
     currency: 'NOK',
   },
   {
     id: 'real-usd-sp1',
     alias: 'Real USD SP1',
     balance: 1000000000,
+    reservedBalance: 0,
     currency: 'USD',
   },
   {
     id: 'real-eth-coinbase',
     alias: 'Real ETH Coinbase',
     balance: 1000000000,
+    reservedBalance: 0,
     currency: 'ETH',
   },
   {
     id: 'real-eth-metamask',
     alias: 'Real ETH Metamask',
     balance: 1000000000,
+    reservedBalance: 0,
     currency: 'ETH',
   },
   {
     id: 'real-matic-ftx',
     alias: 'Real MATIC FTX',
+    reservedBalance: 0,
     balance: 1000000000,
     currency: 'MATIC',
   },
@@ -131,6 +136,7 @@ const initialCustodyState: Array<CustodyAccount> = [
     id: 'real-matic-metamask',
     alias: 'Real MATIC Metamask',
     balance: 1000000000,
+    reservedBalance: 0,
     currency: 'MATIC',
   },
 ];
@@ -195,13 +201,12 @@ export const handlers = [
   }),
   rest.post(getBackendUrl(users, ':userId', profiles), (req, res, ctx) => {
     const { userId } = req.params as UserPath;
-    const { alias, type, accounts } = req.body as CreateProfileRequest;
+    const { alias, type } = req.body as CreateProfileRequest;
     const profileId = nanoid();
     profileState = profileAdapter.addOne(profileState, {
       alias: alias,
       type: type,
       id: profileId,
-      accounts: accounts ?? [],
     });
 
     const userSelector = adapter.getSelectors();
@@ -227,7 +232,7 @@ export const handlers = [
     (req, res, ctx) => {
       const { userId, profileId } = req.params as ProfilePath;
       const profiles = profileState.entities[profileId];
-      const accounts = profiles?.accounts.map((a) => accountState.entities[a]);
+
       return res(ctx.status(200), ctx.json(accounts), ctx.delay(400));
     },
   ),
@@ -236,7 +241,7 @@ export const handlers = [
     getBackendUrl(users, ':userId', profiles, ':profileId', accounts),
     (req, res, ctx) => {
       const { userId, profileId } = req.params as ProfilePath;
-      const { alias, portfolios, currency, custodyAccountId } =
+      const { alias, currency, custodyAccountId } =
         req.body as CreateAccountRequest;
       const id = nanoid();
       accountState = accountAdapter.addOne(accountState, {
@@ -245,16 +250,7 @@ export const handlers = [
         balance: 0,
         currency,
         custodyAccountId,
-        portfolios: portfolios ?? [],
-      });
-
-      const profile = profileState.entities[profileId];
-
-      profileState = profileAdapter.updateOne(profileState, {
-        id: profileId,
-        changes: {
-          accounts: [...(profile?.accounts ?? []), id],
-        },
+        reservedBalance: 0,
       });
 
       return res(
@@ -296,10 +292,11 @@ export const handlers = [
     (req, res, ctx) => {
       const { accountId } = req.params as AccountPath;
       const account = accountState.entities[accountId];
-      const portfolios = account?.portfolios.map(
-        (p) => portfolioState.entities[p],
+      return res(
+        ctx.status(200),
+        ctx.json(portfolioState.entities),
+        ctx.delay(400),
       );
-      return res(ctx.status(200), ctx.json(portfolios), ctx.delay(400));
     },
   ),
 
@@ -326,13 +323,6 @@ export const handlers = [
       });
 
       const account = accountState.entities[accountId];
-
-      accountState = accountAdapter.updateOne(accountState, {
-        id: accountId,
-        changes: {
-          portfolios: [...(account?.portfolios ?? []), portfolioId],
-        },
-      });
 
       return res(
         ctx.json(Object.values(portfolioState.entities)),
@@ -409,6 +399,7 @@ export const handlers = [
         balance: 0,
         currency,
         custodyAccountId,
+        reservedBalance: 0,
       });
 
       const portfolio = portfolioState.entities[portfolioId];

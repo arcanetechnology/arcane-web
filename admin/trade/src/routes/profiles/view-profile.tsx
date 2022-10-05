@@ -5,7 +5,7 @@ import { GAP } from '@/constants';
 import { useGetProfileQuery } from '@/services';
 import { ProfilePath } from '@/types/frontend';
 import { AccountBalance } from '@mui/icons-material';
-import { Divider, Typography, Badge, Chip } from '@mui/material';
+import { Divider, Typography, Badge, Chip, Skeleton } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
@@ -20,11 +20,7 @@ const ViewProfile: React.FC = () => {
   } = useGetProfileQuery({ userId, profileId } as ProfilePath);
 
   if (isError) throw new Error('some error occured in api call');
-  // if (isLoading || isFetching) return <TextLoading />;
-  if (!profile) return null;
-  // box is same as user box
 
-  console.log(profile.accounts.length);
   return (
     <Stack gap={GAP}>
       <Box
@@ -34,16 +30,28 @@ const ViewProfile: React.FC = () => {
         alignItems="center"
       >
         <Box display="flex" gap={GAP} flexDirection="row" alignItems="center">
-          <Badge badgeContent={profile.accounts.length} color="secondary">
-            <AccountBalance />
-          </Badge>
-          <Typography variant="h4">{profile.alias}</Typography>
-          <Chip
-            label={profile.type}
-            color={profile.type === 'BUSINESS' ? 'success' : 'info'}
-          />
+          <AccountBalance />
+          {isLoading || isFetching ? (
+            <Skeleton width={400} height={50} />
+          ) : (
+            <Typography variant="h4">{profile!.alias}</Typography>
+          )}
+
+          {isLoading || isFetching ? (
+            <Skeleton width={400} height={50} />
+          ) : (
+            <Chip
+              label={profile!.type}
+              color={profile!.type === 'BUSINESS' ? 'success' : 'info'}
+            />
+          )}
         </Box>
-        <Typography variant="caption">{profile.id}</Typography>
+
+        {isLoading || isFetching ? (
+          <Skeleton width={400} height={50} />
+        ) : (
+          <Typography variant="caption">{profile!.id}</Typography>
+        )}
       </Box>
       <Outlet />
     </Stack>

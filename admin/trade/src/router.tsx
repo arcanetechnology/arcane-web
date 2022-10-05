@@ -19,6 +19,13 @@ import { ViewCryptos, CreateCrypto } from './routes/cryptos';
 import React from 'react';
 import { Add, Delete } from '@mui/icons-material';
 import { ViewTransactions } from './routes/transactions';
+import {
+  accounts,
+  cryptos,
+  custodies,
+  portfolios,
+  profiles,
+} from './constants';
 
 const router = createBrowserRouter([
   {
@@ -50,7 +57,7 @@ const router = createBrowserRouter([
         },
         children: [
           {
-            path: 'profiles',
+            path: profiles,
             element: <ViewProfiles />,
             errorElement: <GenericError />,
             children: [
@@ -62,7 +69,7 @@ const router = createBrowserRouter([
             ],
           },
           {
-            path: 'profiles/:profileId',
+            path: profiles + '/:profileId',
             element: <ViewProfile />,
             errorElement: <GenericError />,
             handle: {
@@ -77,7 +84,7 @@ const router = createBrowserRouter([
             },
             children: [
               {
-                path: 'accounts',
+                path: accounts,
                 element: <ViewAccounts />,
                 errorElement: <GenericError />,
                 children: [
@@ -94,12 +101,12 @@ const router = createBrowserRouter([
                 errorElement: <GenericError />,
               },
               {
-                path: 'accounts/:accountId',
+                path: accounts + '/:accountId',
                 element: <ViewAccount />,
                 errorElement: <GenericError />,
                 children: [
                   {
-                    path: 'portfolios',
+                    path: portfolios,
                     element: <ViewPortfolios />,
                     errorElement: <GenericError />,
                     children: [
@@ -111,12 +118,12 @@ const router = createBrowserRouter([
                     ],
                   },
                   {
-                    path: 'portfolios/:portfolioId',
+                    path: portfolios + '/:portfolioId',
                     element: <ViewPortfolio />,
                     errorElement: <GenericError />,
                     children: [
                       {
-                        path: 'cryptos',
+                        path: cryptos,
                         element: <ViewCryptos />,
                         errorElement: <GenericError />,
                         children: [
@@ -136,7 +143,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: 'custody',
+        path: custodies,
         element: <ViewCustodies />,
         errorElement: <ErrorPage />,
         children: [

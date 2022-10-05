@@ -1,6 +1,6 @@
 /** @format */
 
-import { GAP } from '@/constants';
+import { custodies, GAP } from '@/constants';
 import { Add } from '@mui/icons-material';
 import {
   Card,
@@ -33,7 +33,7 @@ const Index: React.FC = () => {
           <CardActionArea
             LinkComponent={NavLink}
             component={NavLink}
-            to="custody"
+            to={custodies}
           >
             <CardContent>
               <Typography variant="subtitle2">

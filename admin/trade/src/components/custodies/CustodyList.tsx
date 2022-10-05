@@ -2,7 +2,7 @@
 
 import { CustodyAccount } from '@/types/backend';
 import { RemoveRedEye } from '@mui/icons-material';
-import { Typography } from '@mui/material';
+import { LinearProgress, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
@@ -11,9 +11,13 @@ import { NoRowsOverlays } from '../overlays';
 
 type ProfileListProps = {
   custodies: Array<CustodyAccount>;
+  isLoading?: boolean;
 };
 
-const CustodyList: React.FC<ProfileListProps> = ({ custodies }) => {
+const CustodyList: React.FC<ProfileListProps> = ({
+  custodies,
+  isLoading = false,
+}) => {
   const columns = React.useMemo<GridColumns<CustodyAccount>>(
     () => [
       {
@@ -53,15 +57,17 @@ const CustodyList: React.FC<ProfileListProps> = ({ custodies }) => {
         ],
       },
     ],
-    [custodies]
+    [custodies],
   );
   return (
     <Box height={600}>
       <DataGrid
         hideFooter
         rowSpacingType="margin"
+        loading={isLoading}
         rows={custodies}
         components={{
+          LoadingOverlay: LinearProgress,
           NoRowsOverlay: () => {
             return (
               <NoRowsOverlays>

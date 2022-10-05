@@ -7,7 +7,7 @@ export const profiles = 'profiles';
 export const accounts = 'accounts';
 export const portfolios = 'portfolios';
 export const cryptos = 'cryptos';
-export const custodies = 'custodies';
+export const custodies = 'custody-accounts';
 
 // UI
 export const GAP = 2;

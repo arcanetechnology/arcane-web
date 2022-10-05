@@ -23,7 +23,7 @@ export const usersApi = api.injectEndpoints({
         responseHandler: (res) => res.text(),
       }),
       extraOptions: {
-        maxRetries: 0,
+        maxRetries: 2,
       },
     }),
     // trade-admin
@@ -40,7 +40,7 @@ export const usersApi = api.injectEndpoints({
       query: (id) => `${users}/${id}`,
       providesTags: (_user, _err, path) => [{ type: 'User', id: _user?.id }],
       extraOptions: {
-        maxRetries: 0,
+        maxRetries: 2,
       },
     }),
     deleteUser: build.mutation<void, string>({

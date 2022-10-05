@@ -8,7 +8,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { GAP } from '@/constants';
 import {
   FormControl,
-  FormLabel,
   RadioGroup,
   FormControlLabel,
   Radio,
@@ -50,7 +49,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({
         id="create-user-form"
         component="form"
         onSubmit={onSubmit(handleSubmit)}
-        sx={{ display: 'flex', gap: GAP }}
+        sx={{ display: 'flex', gap: GAP, alignItems: 'center' }}
       >
         <FormControl required component="fieldset">
           <Controller
@@ -89,10 +88,10 @@ const ProfileForm: React.FC<ProfileFormProps> = ({
         />
         <Box>
           <LoadingButton
-            size="small"
+            size="medium"
             loading={isLoading}
             type="submit"
-            variant="outlined"
+            variant="contained"
           >
             Submit
           </LoadingButton>

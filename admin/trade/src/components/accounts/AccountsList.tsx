@@ -1,16 +1,20 @@
 /** @format */
 
 import { StakeholderFiatAccountItem } from '@/types/backend';
-import { Button, Typography } from '@mui/material';
+import { Button, LinearProgress, Typography } from '@mui/material';
 import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
 import { NoRowsOverlays } from '../overlays';
 
 type AccountsListProps = {
   accounts: Array<StakeholderFiatAccountItem>;
+  isLoading?: boolean;
 };
 
-const AccountsList: React.FC<AccountsListProps> = ({ accounts }) => {
+const AccountsList: React.FC<AccountsListProps> = ({
+  accounts,
+  isLoading = false,
+}) => {
   const columns = React.useMemo<GridColumns<StakeholderFiatAccountItem>>(
     () => [
       {
@@ -44,14 +48,16 @@ const AccountsList: React.FC<AccountsListProps> = ({ accounts }) => {
         minWidth: 100,
       },
     ],
-    [accounts]
+    [accounts],
   );
   return (
     <DataGrid
       hideFooter
       rowSpacingType="margin"
       rows={accounts}
+      loading={isLoading}
       components={{
+        LoadingOverlay: LinearProgress,
         NoRowsOverlay: () => {
           return (
             <NoRowsOverlays>

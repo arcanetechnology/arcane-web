@@ -26,4 +26,8 @@ export const custodyApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetCustodiesQuery, useGetCustodyQuery } = custodyApi;
+export const {
+  useGetCustodiesQuery,
+  useGetCustodyQuery,
+  useLazyGetCustodiesQuery,
+} = custodyApi;

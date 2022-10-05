@@ -30,16 +30,16 @@ export type Profile = {
   id: string;
   alias: string;
   type: ProfileTypes;
-  accounts: Array<string>;
 };
 
 // the way profiles api gives me each user
-export type ProfileItem = Omit<Profile, 'accounts'>;
+export type ProfileItem = Profile;
 
 type Account = {
   id: string;
   alias: string;
   balance: number;
+  reservedBalance: number;
 };
 
 type StakeholderAccount = {
@@ -50,8 +50,7 @@ type FiatAccount = {
   currency: Currency;
 } & Account;
 
-export type StakeholderFiatAccount = FiatAccount &
-  StakeholderAccount & { portfolios: Array<string> };
+export type StakeholderFiatAccount = FiatAccount & StakeholderAccount;
 
 // the way accounts api gives me each account
 export type StakeholderFiatAccountItem = Omit<

@@ -12,14 +12,13 @@ import { Box, Button } from '@mui/material';
 const Accounts: React.FC = () => {
   const { userId, profileId } = useParams<ProfilePath>();
   const {
-    data: accounts,
+    data: accounts = [],
     isLoading,
     isError,
     isFetching,
   } = useGetAccountsQuery({ userId, profileId } as ProfilePath);
 
   if (isError) throw new Error('some error occured in api call');
-  if (!accounts) return null;
 
   return (
     <Stack gap={GAP}>
@@ -34,7 +33,7 @@ const Accounts: React.FC = () => {
         </Button>
       </Box>
       <Outlet />
-      <AccountsList accounts={accounts} />
+      <AccountsList accounts={accounts} isLoading={isLoading || isFetching} />
     </Stack>
   );
 };
