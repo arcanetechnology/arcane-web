@@ -1,7 +1,6 @@
 /** @format */
 
 import * as React from 'react';
-import { Box } from '@mui/system';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { CreateProfileForm } from '@/types/frontend';
@@ -14,22 +13,12 @@ import {
   FormControlLabel,
   Radio,
   TextField,
-  Button,
-  IconButton,
   Card,
   CardContent,
-  Stack,
-  Switch,
-  Grid,
-  ToggleButtonGroup,
-  ToggleButton,
-  InputBase,
-  Paper,
-  Divider,
-  InputAdornment,
+  Box,
 } from '@mui/material';
 import { profileTypes } from '@/types/backend';
-import { Add, BusinessCenter, Person } from '@mui/icons-material';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const schema = z.object({
   type: z.enum(profileTypes),
@@ -38,9 +27,13 @@ const schema = z.object({
 
 type ProfileFormProps = {
   handleSubmit: (data: CreateProfileForm) => void;
+  isLoading?: boolean;
 };
 
-const ProfileForm: React.FC<ProfileFormProps> = ({ handleSubmit }) => {
+const ProfileForm: React.FC<ProfileFormProps> = ({
+  handleSubmit,
+  isLoading = false,
+}) => {
   const {
     register,
     handleSubmit: onSubmit,
@@ -57,7 +50,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ handleSubmit }) => {
         id="create-user-form"
         component="form"
         onSubmit={onSubmit(handleSubmit)}
-        sx={{ display: 'flex' }}
+        sx={{ display: 'flex', gap: GAP }}
       >
         <FormControl required component="fieldset">
           <Controller
@@ -92,13 +85,18 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ handleSubmit }) => {
             sx: {
               borderRadius: 3,
             },
-            endAdornment: (
-              <IconButton type="submit">
-                <Add />
-              </IconButton>
-            ),
           }}
         />
+        <Box>
+          <LoadingButton
+            size="small"
+            loading={isLoading}
+            type="submit"
+            variant="outlined"
+          >
+            Submit
+          </LoadingButton>
+        </Box>
       </CardContent>
     </Card>
   );

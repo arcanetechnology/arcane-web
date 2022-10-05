@@ -2,7 +2,7 @@
 
 import { ProfileItem } from '@/types/backend';
 import { RemoveRedEye } from '@mui/icons-material';
-import { Button, Typography } from '@mui/material';
+import { Button, LinearProgress, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
@@ -61,6 +61,7 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, isLoading }) => {
       loading={isLoading}
       rows={profiles}
       components={{
+        LoadingOverlay: LinearProgress,
         NoRowsOverlay: () => {
           return (
             <NoRowsOverlays>

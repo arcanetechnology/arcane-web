@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 
 const CreateProfile: React.FC = () => {
   const { userId } = useParams<UserPath>();
-  const [addProfile] = useAddProfileMutation();
+  const [addProfile, { isLoading }] = useAddProfileMutation();
   const handleSubmit = async (profile: CreateProfileForm) => {
     try {
       await addProfile({ userId: userId!, ...profile }).unwrap();
@@ -21,7 +21,7 @@ const CreateProfile: React.FC = () => {
   };
   return (
     <Stack gap={GAP}>
-      <ProfileForm handleSubmit={handleSubmit} />
+      <ProfileForm handleSubmit={handleSubmit} isLoading={isLoading} />
     </Stack>
   );
 };

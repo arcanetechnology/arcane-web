@@ -53,7 +53,6 @@ const ViewProfiles: React.FC = () => {
         profiles={profiles ?? []}
         isLoading={isFetching || isLoading}
       />
-      <Loading open={isLoading || isFetching} />
     </Stack>
   );
 };
