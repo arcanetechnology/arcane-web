@@ -1,6 +1,6 @@
 /** @format */
 
-import { useLazyGetCustodiesQuery } from '@/services';
+import { useGetCustodiesQuery, useLazyGetCustodiesQuery } from '@/services';
 import { Autocomplete, CircularProgress, TextField } from '@mui/material';
 import * as React from 'react';
 import { CustodyAccount } from '@/types';
@@ -27,8 +27,11 @@ const CustodyDropDown = <T extends FieldValues>({
   control,
   rule = {},
 }: CustodyDropDownProps<T>) => {
-  const [getCustodies, { data: custodies = [], isFetching, isLoading }] =
-    useLazyGetCustodiesQuery();
+  const {
+    data: custodies = [],
+    isFetching,
+    isLoading,
+  } = useGetCustodiesQuery();
   return (
     <Controller
       name={name}
@@ -39,9 +42,6 @@ const CustodyDropDown = <T extends FieldValues>({
         <Autocomplete
           loading={isLoading || isFetching}
           options={custodies}
-          onOpen={async () => {
-            await getCustodies().unwrap();
-          }}
           // @ts-ignore
           getOptionLabel={(custody) => custody.alias ?? custody}
           {...field}
@@ -62,6 +62,10 @@ const CustodyDropDown = <T extends FieldValues>({
               }}
             />
           )}
+          onChange={(e, v) => {
+            // @ts-ignore
+            field.onChange(v.id as CustodyAccount);
+          }}
         />
       )}
     />
