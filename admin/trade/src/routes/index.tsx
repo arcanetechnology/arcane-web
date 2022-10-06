@@ -1,48 +1,23 @@
 /** @format */
 
+import { Highlight } from '@/components';
+import NavigationHighlight from '@/components/dashboard/NavigationHighlight';
 import { custodies, GAP } from '@/constants';
-import { Add } from '@mui/icons-material';
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Stack } from '@mui/material';
 import { Box } from '@mui/system';
 import * as React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
 
 const Index: React.FC = () => {
   return (
     <Stack gap={GAP}>
       <Box display="flex" flexDirection="row" gap={GAP}>
-        <Card sx={{ width: 200 }}>
-          <CardContent>
-            <Typography variant="subtitle1">Total Users</Typography>
-            <Typography variant="h2">81</Typography>
-          </CardContent>
-        </Card>
-        <Card sx={{ width: 200 }}>
-          <CardContent>
-            <Typography variant="subtitle1">Total Accounts</Typography>
-            <Typography variant="h2">233</Typography>
-          </CardContent>
-        </Card>
-        <Card sx={{ width: 200 }}>
-          <CardActionArea
-            LinkComponent={NavLink}
-            component={NavLink}
-            to={custodies}
-          >
-            <CardContent>
-              <Typography variant="subtitle2">
-                Total Custody Accounts
-              </Typography>
-              <Typography variant="h2">12</Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+        <Highlight title="Total Users" value="20" />
+        <Highlight title="Total Accounts" value="233" />
+        <NavigationHighlight
+          title="Total Custody Accounts"
+          value="12"
+          to={custodies}
+        />
       </Box>
       <div
         className="tradingview-widget-container"

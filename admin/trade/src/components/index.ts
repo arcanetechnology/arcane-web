@@ -9,3 +9,4 @@ export * from './accounts';
 export * from './portfolios';
 export * from './cryptos';
 export * from './custodies';
+export * from './dashboard';
