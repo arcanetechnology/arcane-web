@@ -67,5 +67,8 @@ export const cryptoAccountsApi = api.injectEndpoints({
   }),
 });
 
-export const { useCreateCryptoAccountMutation, useGetCryptoAccountsQuery } =
-  cryptoAccountsApi;
+export const {
+  useCreateCryptoAccountMutation,
+  useGetCryptoAccountsQuery,
+  useUpdateCryptoAccountMutation,
+} = cryptoAccountsApi;

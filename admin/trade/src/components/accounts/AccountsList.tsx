@@ -1,6 +1,6 @@
 /** @format */
 
-import { StakeholderFiatAccountItem } from '@/types/backend';
+import { UpdateAccountForm, StakeholderFiatAccountItem } from '@/types';
 import { Button, LinearProgress, Typography } from '@mui/material';
 import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
@@ -9,10 +9,12 @@ import { NoRowsOverlays } from '../overlays';
 type AccountsListProps = {
   accounts: Array<StakeholderFiatAccountItem>;
   isLoading?: boolean;
+  handleUpdate: (body: UpdateAccountForm, accountId: string) => Promise<void>;
 };
 
 const AccountsList: React.FC<AccountsListProps> = ({
   accounts,
+  handleUpdate,
   isLoading = false,
 }) => {
   const columns = React.useMemo<GridColumns<StakeholderFiatAccountItem>>(
@@ -46,16 +48,37 @@ const AccountsList: React.FC<AccountsListProps> = ({
         headerName: 'Alias',
         flex: 1,
         minWidth: 100,
+        editable: true,
       },
     ],
     [accounts],
   );
+
+  const processRowUpdate = React.useCallback(
+    async (
+      newRow: StakeholderFiatAccountItem,
+      oldRow: StakeholderFiatAccountItem,
+    ) => {
+      try {
+        await handleUpdate({ alias: newRow.alias }, newRow.id);
+        return newRow;
+      } catch (err) {
+        // return old row incase the update does not happen
+        return oldRow;
+      }
+    },
+    [accounts],
+  );
+
   return (
     <DataGrid
       hideFooter
       rowSpacingType="margin"
       rows={accounts}
       loading={isLoading}
+      editMode={'row'}
+      experimentalFeatures={{ newEditingApi: true }}
+      processRowUpdate={processRowUpdate}
       components={{
         LoadingOverlay: LinearProgress,
         NoRowsOverlay: () => {

@@ -7,8 +7,7 @@ import * as z from 'zod';
 import { GAP } from '@/constants';
 import { Box } from '@mui/system';
 import { Button, TextField } from '@mui/material';
-import { currency } from '@/types/backend';
-import { CreateAccountForm } from '@/types/frontend';
+import { currency, CreateAccountForm } from '@/types';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { CustodyDropDown } from '../custodies';
 

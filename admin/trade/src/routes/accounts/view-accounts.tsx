@@ -1,8 +1,8 @@
 /** @format */
 
 import { AccountsList } from '@/components';
-import { useGetAccountsQuery } from '@/services';
-import { ProfilePath } from '@/types';
+import { useGetAccountsQuery, useUpdateAccountMutation } from '@/services';
+import { ProfilePath, UpdateAccountForm } from '@/types';
 import * as React from 'react';
 import { Outlet, useParams, Link as RouterLink } from 'react-router-dom';
 import { Stack } from '@mui/system';
@@ -18,7 +18,26 @@ const Accounts: React.FC = () => {
     isFetching,
   } = useGetAccountsQuery({ userId, profileId } as ProfilePath);
 
+  const [updateAccount, { isLoading: updateAccountLoading }] =
+    useUpdateAccountMutation();
+
   if (isError) throw new Error('some error occured in api call');
+
+  const handleAccountUpdate = async (
+    body: UpdateAccountForm,
+    accountId: string,
+  ) => {
+    try {
+      await updateAccount({
+        userId: userId!,
+        profileId: profileId!,
+        accountId,
+        ...body,
+      }).unwrap();
+    } catch (err) {
+      //! figure out a way, what should I do? @vihang?
+    }
+  };
 
   return (
     <Stack gap={GAP}>
@@ -33,7 +52,11 @@ const Accounts: React.FC = () => {
         </Button>
       </Box>
       <Outlet />
-      <AccountsList accounts={accounts} isLoading={isLoading || isFetching} />
+      <AccountsList
+        accounts={accounts}
+        isLoading={isLoading || isFetching || updateAccountLoading}
+        handleUpdate={handleAccountUpdate}
+      />
     </Stack>
   );
 };

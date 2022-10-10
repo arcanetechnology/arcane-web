@@ -1,8 +1,11 @@
 /** @format */
 
 import { CryptoAccountsList } from '@/components';
-import { useGetCryptoAccountsQuery } from '@/services';
-import { ProfilePath } from '@/types';
+import {
+  useGetCryptoAccountsQuery,
+  useUpdateCryptoAccountMutation,
+} from '@/services';
+import { ProfilePath, UpdateCryptoForm } from '@/types';
 import * as React from 'react';
 import { Outlet, useParams, Link as RouterLink } from 'react-router-dom';
 import { Stack } from '@mui/system';
@@ -18,7 +21,27 @@ const ViewCryptoAccounts: React.FC = () => {
     isFetching,
   } = useGetCryptoAccountsQuery({ userId, profileId } as ProfilePath);
 
+  const [updateCryptoAccount, { isLoading: cryptoAccountLoading }] =
+    useUpdateCryptoAccountMutation();
+
   if (isError) throw new Error('some error occured in api call');
+
+  const handleCryptoAccountUpdate = async (
+    body: UpdateCryptoForm,
+    cryptoId: string,
+  ) => {
+    try {
+      await updateCryptoAccount({
+        userId: userId!,
+        profileId: profileId!,
+        cryptoId,
+        ...body,
+      }).unwrap();
+    } catch (err) {
+      // ! @osin, @vihang should know what should we do incase it fails
+    }
+  };
+
   return (
     <Stack gap={GAP}>
       <Box>
@@ -34,7 +57,8 @@ const ViewCryptoAccounts: React.FC = () => {
       <Outlet />
       <CryptoAccountsList
         accounts={accounts}
-        isLoading={isLoading || isFetching}
+        isLoading={isLoading || isFetching || cryptoAccountLoading}
+        handleUpdate={handleCryptoAccountUpdate}
       />
     </Stack>
   );

@@ -1,6 +1,6 @@
 /** @format */
 
-import { StakeholderCryptoAccount } from '@/types';
+import { StakeholderCryptoAccount, UpdateCryptoForm } from '@/types';
 import { LinearProgress, Typography } from '@mui/material';
 import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
@@ -9,10 +9,12 @@ import { NoRowsOverlays } from '../overlays';
 type CryptoAccountsListProps = {
   accounts: Array<StakeholderCryptoAccount>;
   isLoading?: boolean;
+  handleUpdate: (body: UpdateCryptoForm, cryptoId: string) => Promise<void>;
 };
 
 const CryptoAccountsList: React.FC<CryptoAccountsListProps> = ({
   accounts,
+  handleUpdate,
   isLoading = false,
 }) => {
   const columns = React.useMemo<GridColumns<StakeholderCryptoAccount>>(
@@ -46,16 +48,37 @@ const CryptoAccountsList: React.FC<CryptoAccountsListProps> = ({
         headerName: 'Alias',
         flex: 1,
         minWidth: 100,
+        editable: true,
       },
     ],
     [accounts],
   );
+
+  const processRowUpdate = React.useCallback(
+    async (
+      newRow: StakeholderCryptoAccount,
+      oldRow: StakeholderCryptoAccount,
+    ) => {
+      try {
+        await handleUpdate({ alias: newRow.alias }, newRow.id);
+        return newRow;
+      } catch (err) {
+        // return old row incase the update does not happen
+        return oldRow;
+      }
+    },
+    [accounts],
+  );
+
   return (
     <DataGrid
       hideFooter
       rowSpacingType="margin"
       rows={accounts}
       loading={isLoading}
+      editMode={'row'}
+      experimentalFeatures={{ newEditingApi: true }}
+      processRowUpdate={processRowUpdate}
       components={{
         LoadingOverlay: LinearProgress,
         NoRowsOverlay: () => {
