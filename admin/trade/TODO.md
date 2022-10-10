@@ -1,9 +1,9 @@
 
 
 # TODO
-- [] - update profile alias api
-- [] - update account alias api
-- [] - update crypto-account alias api
+- [] ability to update profile on profile view page
+- [] fix the token refresh problem
+- [] custodies for crypto accounts
 
 
 # Transaction Templates

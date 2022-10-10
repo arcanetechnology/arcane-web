@@ -1,9 +1,9 @@
 /** @format */
-
+/**
+ * TODO: NEED TO  UPDATE THESE HANDLERS
+ * SINCE THE BACKEND IMPLEMENTATION HAS CHANGED A BIT :D
+ */
 import { rest } from 'msw';
-// import virtualAccounts from '../assets/virtual-account-option-list.json';
-// import arcaneCustodyAccounts from '../assets/arcane-custody-accounts.json';
-// import arcaneStakeholderAccounts from '../assets/arcane-stakeholder-accounts.json';
 import {
   profiles,
   users,
