@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { CreateProfileForm } from '@/types/frontend';
+import { CreateProfileForm, profileTypes } from '@/types';
 import { useForm, Controller } from 'react-hook-form';
 import { GAP } from '@/constants';
 import {
@@ -16,7 +16,6 @@ import {
   CardContent,
   Box,
 } from '@mui/material';
-import { profileTypes } from '@/types/backend';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 const schema = z.object({

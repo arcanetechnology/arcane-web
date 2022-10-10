@@ -1,27 +1,21 @@
 /** @format */
-
-import { Card, CardActionArea, CardContent, Typography } from '@mui/material';
 import * as React from 'react';
+import { Card, CardActionArea } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import HighlightBase, { HighlightBaseProps } from './HighlightBase';
 
 type NavigationHighlightProps = {
-  title: string;
-  value: string;
   to: string;
-};
+} & HighlightBaseProps;
 
 const NavigationHighlight: React.FC<NavigationHighlightProps> = ({
-  title,
-  value,
   to,
+  ...props
 }) => {
   return (
     <Card sx={{ width: 200 }}>
       <CardActionArea LinkComponent={NavLink} component={NavLink} to={to}>
-        <CardContent>
-          <Typography variant="subtitle2">{title}</Typography>
-          <Typography variant="h2">{value}</Typography>
-        </CardContent>
+        <HighlightBase {...props} />
       </CardActionArea>
     </Card>
   );

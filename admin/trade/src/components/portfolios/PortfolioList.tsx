@@ -1,9 +1,8 @@
 /** @format */
 
-import { PortfolioItem } from '@/types/backend';
+import { PortfolioItem } from '@/types';
 import { RemoveRedEye } from '@mui/icons-material';
 import { Typography } from '@mui/material';
-import { Box } from '@mui/system';
 import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
 import { GridLinkAction } from '../navigation';
@@ -41,7 +40,7 @@ const PortfolioList: React.FC<PortfolioListProps> = ({ portfolios }) => {
         ],
       },
     ],
-    [portfolios]
+    [portfolios],
   );
 
   return (

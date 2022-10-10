@@ -35,6 +35,7 @@ export const usersApi = api.injectEndpoints({
           body,
         };
       },
+      invalidatesTags: ['User'],
     }),
     getUser: build.query<GetUserResponse, string>({
       query: (id) => `${users}/${id}`,

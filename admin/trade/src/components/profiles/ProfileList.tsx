@@ -1,12 +1,15 @@
 /** @format */
 
-import { ProfileItem } from '@/types/backend';
+import { ProfileItem } from '@/types';
 import { RemoveRedEye } from '@mui/icons-material';
-import { Button, LinearProgress, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import { DataGrid, GridColumns } from '@mui/x-data-grid';
+import { LinearProgress, Typography } from '@mui/material';
+import {
+  DataGrid,
+  GridCellModesModel,
+  GridCellParams,
+  GridColumns,
+} from '@mui/x-data-grid';
 import * as React from 'react';
-import { Navigate } from 'react-router-dom';
 import { GridLinkAction } from '../navigation';
 import { NoRowsOverlays } from '../overlays';
 
@@ -16,6 +19,8 @@ type ProfileListProps = {
 };
 
 const ProfileList: React.FC<ProfileListProps> = ({ profiles, isLoading }) => {
+  const [cellModesModel, setCellModesModel] =
+    React.useState<GridCellModesModel>({});
   const columns = React.useMemo<GridColumns<ProfileItem>>(
     () => [
       {
@@ -35,6 +40,7 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, isLoading }) => {
         headerName: 'Alias',
         flex: 1,
         minWidth: 300,
+        editable: true,
       },
       {
         field: 'actions',
@@ -43,7 +49,7 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, isLoading }) => {
         getActions: (params) => [
           <GridLinkAction
             icon={<RemoveRedEye />}
-            to={params.id + '/accounts'}
+            to={params.id as string}
             label="View"
           />,
         ],
@@ -51,6 +57,23 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, isLoading }) => {
     ],
     [profiles],
   );
+
+  const handleCellClick = React.useCallback((params: GridCellParams) => {
+    setCellModesModel((prevModel) => {
+      console.log(params);
+      console.log(prevModel);
+      return {};
+    });
+  }, []);
+
+  const handleCellModesModelChange = React.useCallback(
+    (newModel: GridCellModesModel) => {
+      console.log(newModel);
+      setCellModesModel(newModel);
+    },
+    [],
+  );
+
   return (
     <DataGrid
       getRowClassName={(params) =>
@@ -60,6 +83,11 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, isLoading }) => {
       rowSpacingType="margin"
       loading={isLoading}
       rows={profiles}
+      experimentalFeatures={{ newEditingApi: true }}
+      editMode="cell"
+      cellModesModel={cellModesModel}
+      onCellModesModelChange={handleCellModesModelChange}
+      onCellClick={handleCellClick}
       components={{
         LoadingOverlay: LinearProgress,
         NoRowsOverlay: () => {

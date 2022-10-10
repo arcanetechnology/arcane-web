@@ -2,12 +2,13 @@
 
 import { api, getFrontendUrl } from './api';
 import {
+  ProfilePath,
+  AccountPath,
   GetAccountsResponse,
   GetAccountResponse,
   CreateAccountRequest,
   StakeholderFiatAccount,
-} from '../types/backend';
-import { ProfilePath, AccountPath } from '@/types';
+} from '@/types';
 import { accounts, profiles, users } from '@/constants';
 
 const getAccounts = (path: ProfilePath) =>

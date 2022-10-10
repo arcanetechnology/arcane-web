@@ -1,13 +1,13 @@
 /** @format */
 
 import * as React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { GAP } from '@/constants';
 import { Box } from '@mui/system';
 import { Button, IconButton, TextField } from '@mui/material';
-import { CreatePortfolioForm } from '@/types/frontend';
+import { CreatePortfolioForm } from '@/types';
 import { Add } from '@mui/icons-material';
 
 type PortfolioFormProps = {

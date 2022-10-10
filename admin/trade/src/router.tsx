@@ -6,7 +6,16 @@ import Index from './routes';
 import { GenericError, NavigationLink, ProtectedRoute } from './components';
 import Auth from './routes/auth';
 import { ViewUser } from './routes/user';
-import { CreateProfile, ViewProfile, ViewProfiles } from './routes/profiles';
+import {
+  CreateProfile,
+  ProfileDashboard,
+  ViewProfile,
+  ViewProfiles,
+} from './routes/profiles';
+import {
+  ViewCryptoAccounts,
+  CreateCryptoAccount,
+} from './routes/crypto-accounts';
 import { ViewAccounts, ViewAccount, CreateAccount } from './routes/accounts';
 import { ViewCustody, ViewCustodies } from './routes/custodies';
 import {
@@ -21,6 +30,7 @@ import { Add, Delete } from '@mui/icons-material';
 import { ViewTransactions } from './routes/transactions';
 import {
   accounts,
+  cryptoAccounts,
   cryptos,
   custodies,
   portfolios,
@@ -83,6 +93,7 @@ const router = createBrowserRouter([
               ),
             },
             children: [
+              { index: true, element: <ProfileDashboard /> },
               {
                 path: accounts,
                 element: <ViewAccounts />,
@@ -96,48 +107,60 @@ const router = createBrowserRouter([
                 ],
               },
               {
+                path: cryptoAccounts,
+                element: <ViewCryptoAccounts />,
+                errorElement: <GenericError />,
+                children: [
+                  {
+                    path: 'create',
+                    element: <CreateCryptoAccount />,
+                    errorElement: <GenericError />,
+                  },
+                ],
+              },
+              {
                 path: 'transactions',
                 element: <ViewTransactions />,
                 errorElement: <GenericError />,
               },
-              {
-                path: accounts + '/:accountId',
-                element: <ViewAccount />,
-                errorElement: <GenericError />,
-                children: [
-                  {
-                    path: portfolios,
-                    element: <ViewPortfolios />,
-                    errorElement: <GenericError />,
-                    children: [
-                      {
-                        path: 'create',
-                        element: <CreatePortfolio />,
-                        errorElement: <GenericError />,
-                      },
-                    ],
-                  },
-                  {
-                    path: portfolios + '/:portfolioId',
-                    element: <ViewPortfolio />,
-                    errorElement: <GenericError />,
-                    children: [
-                      {
-                        path: cryptos,
-                        element: <ViewCryptos />,
-                        errorElement: <GenericError />,
-                        children: [
-                          {
-                            path: 'create',
-                            element: <CreateCrypto />,
-                            errorElement: <GenericError />,
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                ],
-              },
+              // {
+              //   path: accounts + '/:accountId',
+              //   element: <ViewAccount />,
+              //   errorElement: <GenericError />,
+              //   children: [
+              //     {
+              //       path: portfolios,
+              //       element: <ViewPortfolios />,
+              //       errorElement: <GenericError />,
+              //       children: [
+              //         {
+              //           path: 'create',
+              //           element: <CreatePortfolio />,
+              //           errorElement: <GenericError />,
+              //         },
+              //       ],
+              //     },
+              // {
+              //   path: portfolios + '/:portfolioId',
+              //   element: <ViewPortfolio />,
+              //   errorElement: <GenericError />,
+              //   children: [
+              //     {
+              //       path: cryptos,
+              //       element: <ViewCryptos />,
+              //       errorElement: <GenericError />,
+              //       children: [
+              //         {
+              //           path: 'create',
+              //           element: <CreateCrypto />,
+              //           errorElement: <GenericError />,
+              //         },
+              //       ],
+              //     },
+              //   ],
+              // },
+              //   ],
+              // },
             ],
           },
         ],

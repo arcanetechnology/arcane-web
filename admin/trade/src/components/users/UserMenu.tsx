@@ -6,6 +6,7 @@ import { AppRegistration, Settings } from '@mui/icons-material';
 import { useMatches } from 'react-router-dom';
 import { TradeMatches } from '@/types/frontend';
 import { useAddUserMutation } from '@/services';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 type UserMenuProps = {
   userId: string;
@@ -40,14 +41,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ userId, isError = false }) => {
 
   if (isError)
     return (
-      <Button
+      <LoadingButton
+        loading={isLoading}
         startIcon={<AppRegistration />}
         onClick={handleUserRegistration}
         variant="contained"
         size="small"
       >
         Register User
-      </Button>
+      </LoadingButton>
     );
 
   return (

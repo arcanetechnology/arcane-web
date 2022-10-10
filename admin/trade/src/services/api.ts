@@ -26,6 +26,7 @@ export const api = createApi({
     'Profile',
     'Accounts',
     'Account',
+    'CryptoAccounts',
     'Portfolios',
     'Portfolio',
     'Cryptos',

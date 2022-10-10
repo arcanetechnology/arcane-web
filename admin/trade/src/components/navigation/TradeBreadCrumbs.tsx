@@ -23,6 +23,7 @@ const breadcrumbNameMap: { [key: string]: string } = {
   portfolios: 'Portfolios',
   accounts: 'Accounts',
   cryptos: 'Cryptos',
+  'crypto-accounts': 'Crypto Accounts',
 };
 
 const icons: { [key: string]: React.ReactNode } = {
@@ -33,6 +34,7 @@ const icons: { [key: string]: React.ReactNode } = {
   portfolios: <Face sx={{ mr: 0.5 }} fontSize="inherit" />,
   accounts: <Money sx={{ mr: 0.5 }} fontSize="inherit" />,
   cryptos: <CurrencyBitcoin sx={{ mr: 0.5 }} fontSize="inherit" />,
+  'crypto-accounts': <CurrencyBitcoin sx={{ mr: 0.5 }} fontSize="inherit" />,
 };
 
 const TradeBreadCrumbs: React.FC = () => {

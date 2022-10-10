@@ -1,21 +1,20 @@
 /** @format */
 
-import { Highlight } from '@/components';
-import NavigationHighlight from '@/components/dashboard/NavigationHighlight';
+import * as React from 'react';
+import { Highlight, NavigationHighlight } from '@/components';
 import { custodies, GAP } from '@/constants';
 import { Stack } from '@mui/material';
 import { Box } from '@mui/system';
-import * as React from 'react';
 
 const Index: React.FC = () => {
   return (
     <Stack gap={GAP}>
       <Box display="flex" flexDirection="row" gap={GAP}>
-        <Highlight title="Total Users" value="20" />
-        <Highlight title="Total Accounts" value="233" />
+        <Highlight title="Total Users" value={20} />
+        <Highlight title="Total Accounts" value={233} />
         <NavigationHighlight
-          title="Total Custody Accounts"
-          value="12"
+          title="Total Fiat Custody Accounts"
+          value={12}
           to={custodies}
         />
       </Box>

@@ -8,6 +8,7 @@ import {
   CreateProfileRequest,
   ProfilePath,
   UserPath,
+  UpdateProfileRequest,
 } from '@/types';
 import { profiles, users } from '@/constants';
 
@@ -48,6 +49,16 @@ export const profilesApi = api.injectEndpoints({
         };
       },
       invalidatesTags: ['Profiles'],
+    }),
+    updateProfile: build.mutation<Profile, UpdateProfileRequest & UserPath>({
+      query({ userId, ...body }) {
+        return {
+          url: getProfilesUrl(userId),
+          method: 'PUT',
+          body,
+        };
+      },
+      invalidatesTags: ['Profiles', 'Profile'],
     }),
   }),
 });

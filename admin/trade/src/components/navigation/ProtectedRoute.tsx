@@ -20,7 +20,6 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   }
 
   // listen to user being logged in
-
   // debounce updateToken dispatch
   React.useEffect(() => {
     onAuthStateChanged(getAuth(), (user) => {
@@ -35,7 +34,6 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   }, []);
 
   // update the token when token changes
-
   React.useEffect(() => {
     onIdTokenChanged(getAuth(), (user) => {
       if (!user) {

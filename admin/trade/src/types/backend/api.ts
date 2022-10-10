@@ -27,6 +27,7 @@ export type GetUserResponse = User;
 export type GetProfilesResponse = Array<ProfileItem>;
 export type GetProfileResponse = Profile;
 export type CreateProfileRequest = Omit<Profile, 'id'>;
+export type UpdateProfileRequest = Pick<Profile, 'alias'>;
 
 // accounts api types
 
@@ -34,6 +35,14 @@ export type GetAccountsResponse = Array<StakeholderFiatAccountItem>;
 export type GetAccountResponse = StakeholderFiatAccount;
 export type CreateAccountRequest = Omit<
   StakeholderFiatAccount,
+  'id' | 'balance' | 'reservedBalance'
+>;
+
+// ! crypto-account and crypto entities are the same but they are different in heirarchy.
+// crypto-accounts api types
+export type GetCryptoAccountsResponse = Array<StakeholderCryptoAccount>;
+export type CreateCryptoAccountRequest = Omit<
+  StakeholderCryptoAccount,
   'id' | 'balance' | 'reservedBalance'
 >;
 

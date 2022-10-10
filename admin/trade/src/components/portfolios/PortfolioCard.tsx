@@ -1,7 +1,7 @@
 /** @format */
 
 import { GAP } from '@/constants';
-import { Portfolio } from '@/types/backend';
+import { Portfolio } from '@/types';
 import {
   Card,
   Box,

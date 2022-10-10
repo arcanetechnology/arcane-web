@@ -1,5 +1,26 @@
 
 
 # TODO
-- [] - create custody auto complete for account creation form
-- [] - create currency auto complete for account creation form
+- [] - update profile alias api
+- [] - update account alias api
+- [] - update crypto-account alias api
+
+
+# Transaction Templates
+
+## Domain
+- Account = StakeholderFiatAccount | StakeholderCryptoAccount
+- CustodyAcount
+- VirtualAccount
+
+## Compound
+- AnyAccount = Account | CustodyAccount | VirtualAccount
+
+## operation
+- Operation = {account: AnyAccount, amount: number}
+
+-----------------
+Fundin(Account) => [CustodyAccount, VirtualAccount, Account]
+Fundout(Account) => [CustodyAccount, VirtualAccount, Account]
+FX(Account1, Account2, Fee) => [CustodyAccount1, CustodyAccount2, CustodyAccount3, VirtualAccount1, VirtualAccount2, VirtualAccount3, Account1, Account2, Fee]
+

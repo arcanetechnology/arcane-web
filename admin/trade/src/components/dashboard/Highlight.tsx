@@ -1,20 +1,15 @@
 /** @format */
 
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card } from '@mui/material';
 import * as React from 'react';
+import HighlightBase, { HighlightBaseProps } from './HighlightBase';
 
-type HighlightProps = {
-  title: string;
-  value: string;
-};
+type HighlightProps = {} & HighlightBaseProps;
 
-const Highlight: React.FC<HighlightProps> = ({ title, value }) => {
+const Highlight: React.FC<HighlightProps> = (props) => {
   return (
     <Card sx={{ width: 200 }}>
-      <CardContent>
-        <Typography variant="subtitle1">{title}</Typography>
-        <Typography variant="h2">{value}</Typography>
-      </CardContent>
+      <HighlightBase {...props} />
     </Card>
   );
 };
