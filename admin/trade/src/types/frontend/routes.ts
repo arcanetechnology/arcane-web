@@ -16,6 +16,11 @@ export type AccountPath = {
   accountId: string;
 } & ProfilePath;
 
+// phase 1 crypto account which is not tied to portfolio and is on the same level as "fiat" accounts
+export type CryptoAccountPath = {
+  cryptoId: string;
+} & ProfilePath;
+
 export type PortfolioPath = {
   portfolioId: string;
 } & AccountPath;

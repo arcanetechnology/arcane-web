@@ -8,6 +8,7 @@ import {
   GetAccountResponse,
   CreateAccountRequest,
   StakeholderFiatAccount,
+  UpdateAccountRequest,
 } from '@/types';
 import { accounts, profiles, users } from '@/constants';
 
@@ -54,6 +55,19 @@ export const accountsApi = api.injectEndpoints({
         { type: 'Account' as const, id: path.accountId },
       ],
     }),
+    updateAccount: build.mutation<
+      StakeholderFiatAccount,
+      UpdateAccountRequest & AccountPath
+    >({
+      query({ userId, profileId, accountId, ...body }) {
+        return {
+          url: getAccount({ accountId, userId, profileId }),
+          method: 'PUT',
+          body,
+        };
+      },
+      invalidatesTags: ['Accounts', 'Account'],
+    }),
   }),
 });
 
@@ -61,4 +75,5 @@ export const {
   useGetAccountsQuery,
   useGetAccountQuery,
   useAddAccountMutation,
+  useUpdateAccountMutation,
 } = accountsApi;
