@@ -76,3 +76,17 @@ export type StakeholderCryptoAccount = CryptoAccount & StakeholderAccount;
 export type CustodyFiatAccount = FiatAccount;
 export type CustodyCryptoAccount = CryptoAccount;
 export type CustodyAccount = CustodyFiatAccount | CustodyCryptoAccount;
+
+/**
+ *  LEDGER TYPES
+ */
+
+export type Operation = {
+  id: string;
+  accountId: string;
+  amount: number;
+};
+
+export type Transaction = {
+  operations: Array<Operation>;
+};

@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { stringToAvatar } from '@/utils';
 import { useNavigate } from 'react-router-dom';
+import { useSpring, animated } from 'react-spring';
 
 const schema = z.object({
   email: z.string().email('please enter an email').nonempty(),
@@ -18,6 +19,12 @@ const schema = z.object({
 
 const SearchUsers: React.FC = () => {
   const navigate = useNavigate();
+
+  const styles = useSpring({
+    loop: true,
+    from: { rotateZ: 0 },
+    to: { rotateZ: 180 },
+  });
 
   const {
     register,
@@ -71,7 +78,9 @@ const SearchUsers: React.FC = () => {
           endAdornment: (
             <IconButton sx={{ fontSize: 30 }} size="large" type="submit">
               {isFetching || isLoading ? (
-                <Loop fontSize="inherit" />
+                <animated.div style={styles}>
+                  <Loop fontSize="inherit" />
+                </animated.div>
               ) : (
                 <Search fontSize="inherit" />
               )}
