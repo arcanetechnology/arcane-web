@@ -1,10 +1,10 @@
 /** @format */
 
 import * as React from 'react';
-import { useGetProfilesQuery } from '@/services';
-import { UserPath } from '@/types/frontend';
+import { useGetProfilesQuery, useUpdateProfileMutation } from '@/services';
+import { UpdateProfileForm, UserPath } from '@/types';
 import { Outlet, useParams } from 'react-router-dom';
-import { ListLoading, Loading, ProfileList } from '@/components';
+import { ProfileList } from '@/components';
 import { Stack } from '@mui/system';
 import { GAP } from '@/constants';
 import { getBackgroundColor, getHoverBackgroundColor } from '@/utils';
@@ -17,6 +17,24 @@ const ViewProfiles: React.FC = () => {
     isError,
     isFetching,
   } = useGetProfilesQuery(userId!);
+
+  const [updateProfile, { isLoading: updateProfileLoading }] =
+    useUpdateProfileMutation();
+
+  const handleProfileUpdate = async (
+    data: UpdateProfileForm,
+    profileId: string,
+  ) => {
+    try {
+      await updateProfile({
+        profileId,
+        userId: userId!,
+        ...data,
+      }).unwrap();
+    } catch (err) {
+      // ! will think of this usecase.
+    }
+  };
 
   if (isError) throw new Error('some error occured in api call');
 
@@ -51,7 +69,8 @@ const ViewProfiles: React.FC = () => {
       <Outlet />
       <ProfileList
         profiles={profiles ?? []}
-        isLoading={isFetching || isLoading}
+        isLoading={isFetching || isLoading || updateProfileLoading}
+        handleUpdate={handleProfileUpdate}
       />
     </Stack>
   );

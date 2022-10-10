@@ -11,9 +11,14 @@ import LoadingButton from '@mui/lab/LoadingButton';
 type UserMenuProps = {
   userId: string;
   isError?: boolean;
+  isSuccess?: boolean;
 };
 // * checks handle and populates the menu depending on wether the user is a trade user of not.
-const UserMenu: React.FC<UserMenuProps> = ({ userId, isError = false }) => {
+const UserMenu: React.FC<UserMenuProps> = ({
+  userId,
+  isError = false,
+  isSuccess = false,
+}) => {
   const matches = useMatches() as TradeMatches[];
   const [registerUser, { isLoading }] = useAddUserMutation();
   // * get the settings menu items
@@ -54,18 +59,20 @@ const UserMenu: React.FC<UserMenuProps> = ({ userId, isError = false }) => {
 
   return (
     <Box>
-      <Tooltip title="User Account Settings">
-        <IconButton
-          onClick={handleClick}
-          size="small"
-          sx={{ ml: 2 }}
-          aria-controls={open ? 'account-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-        >
-          <Settings sx={{ width: 32, height: 32 }} />
-        </IconButton>
-      </Tooltip>
+      {isSuccess && (
+        <Tooltip title="User Account Settings">
+          <IconButton
+            onClick={handleClick}
+            size="small"
+            sx={{ ml: 2 }}
+            aria-controls={open ? 'account-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+          >
+            <Settings sx={{ width: 32, height: 32 }} />
+          </IconButton>
+        </Tooltip>
+      )}
       <Menu
         anchorEl={anchorEl}
         id="account-menu"

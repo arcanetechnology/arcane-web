@@ -3,7 +3,7 @@
 import { UserInfo, UserMenu, UsersToolbar } from '@/components';
 import { GAP } from '@/constants';
 import { useGetUserQuery } from '@/services';
-import { UserPath } from '@/types/frontend';
+import { UserPath } from '@/types';
 import { Box } from '@mui/material';
 import { Stack } from '@mui/system';
 import * as React from 'react';
@@ -15,6 +15,7 @@ const ViewUser: React.FC = () => {
     data: user,
     isError,
     isFetching,
+    isSuccess,
     isLoading,
   } = useGetUserQuery(userId!);
   return (
@@ -30,7 +31,7 @@ const ViewUser: React.FC = () => {
           isError={isError}
           isLoading={isLoading || isFetching}
         />
-        <UserMenu userId={userId!} isError={isError} />
+        <UserMenu userId={userId!} isError={isError} isSuccess={isSuccess} />
       </Box>
       <Outlet />
     </Stack>

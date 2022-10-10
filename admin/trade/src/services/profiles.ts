@@ -50,10 +50,10 @@ export const profilesApi = api.injectEndpoints({
       },
       invalidatesTags: ['Profiles'],
     }),
-    updateProfile: build.mutation<Profile, UpdateProfileRequest & UserPath>({
-      query({ userId, ...body }) {
+    updateProfile: build.mutation<Profile, UpdateProfileRequest & ProfilePath>({
+      query({ userId, profileId, ...body }) {
         return {
-          url: getProfilesUrl(userId),
+          url: getProfileUrl(userId, profileId),
           method: 'PUT',
           body,
         };
@@ -67,4 +67,5 @@ export const {
   useGetProfilesQuery,
   useGetProfileQuery,
   useAddProfileMutation,
+  useUpdateProfileMutation,
 } = profilesApi;

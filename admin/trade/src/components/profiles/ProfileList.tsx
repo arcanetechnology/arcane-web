@@ -1,6 +1,7 @@
 /** @format */
 
-import { ProfileItem } from '@/types';
+import { useUpdateProfileMutation } from '@/services';
+import { ProfileItem, UpdateProfileForm } from '@/types';
 import { RemoveRedEye } from '@mui/icons-material';
 import { LinearProgress, Typography } from '@mui/material';
 import {
@@ -8,6 +9,7 @@ import {
   GridCellModesModel,
   GridCellParams,
   GridColumns,
+  GridRowModel,
 } from '@mui/x-data-grid';
 import * as React from 'react';
 import { GridLinkAction } from '../navigation';
@@ -15,12 +17,15 @@ import { NoRowsOverlays } from '../overlays';
 
 type ProfileListProps = {
   profiles: Array<ProfileItem>;
+  handleUpdate: (data: UpdateProfileForm, profileId: string) => void;
   isLoading: boolean;
 };
 
-const ProfileList: React.FC<ProfileListProps> = ({ profiles, isLoading }) => {
-  const [cellModesModel, setCellModesModel] =
-    React.useState<GridCellModesModel>({});
+const ProfileList: React.FC<ProfileListProps> = ({
+  profiles,
+  isLoading,
+  handleUpdate,
+}) => {
   const columns = React.useMemo<GridColumns<ProfileItem>>(
     () => [
       {
@@ -58,20 +63,17 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, isLoading }) => {
     [profiles],
   );
 
-  const handleCellClick = React.useCallback((params: GridCellParams) => {
-    setCellModesModel((prevModel) => {
-      console.log(params);
-      console.log(prevModel);
-      return {};
-    });
-  }, []);
-
-  const handleCellModesModelChange = React.useCallback(
-    (newModel: GridCellModesModel) => {
-      console.log(newModel);
-      setCellModesModel(newModel);
+  const processRowUpdate = React.useCallback(
+    async (newRow: ProfileItem, oldRow: ProfileItem) => {
+      try {
+        await handleUpdate({ alias: newRow.alias }, newRow.id);
+        return newRow;
+      } catch (err) {
+        // return old row incase the update does not happen
+        return oldRow;
+      }
     },
-    [],
+    [profiles],
   );
 
   return (
@@ -84,10 +86,8 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, isLoading }) => {
       loading={isLoading}
       rows={profiles}
       experimentalFeatures={{ newEditingApi: true }}
-      editMode="cell"
-      cellModesModel={cellModesModel}
-      onCellModesModelChange={handleCellModesModelChange}
-      onCellClick={handleCellClick}
+      editMode="row"
+      processRowUpdate={processRowUpdate}
       components={{
         LoadingOverlay: LinearProgress,
         NoRowsOverlay: () => {

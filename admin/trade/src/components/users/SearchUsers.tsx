@@ -36,7 +36,10 @@ const SearchUsers: React.FC = () => {
       await getUser(value.email)
         .unwrap()
         .then((id) => navigate(id + '/' + profiles, { replace: true }));
-    } catch (err) {}
+    } catch (err) {
+      // TODO: check if the user is not in home page and navigate him back :D
+      navigate('/');
+    }
   };
 
   return (
