@@ -50,6 +50,7 @@ type FiatAccount = {
   currency: Currency;
 } & Account;
 
+// schema for stakeholder fiat account
 export type StakeholderFiatAccount = FiatAccount & StakeholderAccount;
 
 // the way accounts api gives me each account
@@ -71,10 +72,14 @@ type CryptoAccount = {
   currency: CryptoCurrency;
 } & Account;
 
+// schema for crypto account
 export type StakeholderCryptoAccount = CryptoAccount & StakeholderAccount;
 
+// schema for custody fiat
 export type CustodyFiatAccount = FiatAccount;
+// schema for custody crypto
 export type CustodyCryptoAccount = CryptoAccount;
+
 export type CustodyAccount = CustodyFiatAccount | CustodyCryptoAccount;
 
 /**
