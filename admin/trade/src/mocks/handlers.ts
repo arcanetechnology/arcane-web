@@ -171,7 +171,7 @@ export const handlers = [
   rest.post(getBackendUrl(users), async (req, res, ctx) => {
     const { id } = req.body as CreateUserRequest;
     state = adapter.addOne(state, {
-      id: nanoid(),
+      id,
       createdOn: new Date().getDate().toString(),
     });
     return res(ctx.json(Object.values(state.entities)), ctx.delay(400));

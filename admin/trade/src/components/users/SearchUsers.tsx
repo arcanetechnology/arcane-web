@@ -17,13 +17,15 @@ const schema = z.object({
   email: z.string().email('please enter an email').nonempty(),
 });
 
+const AnimatedLoop = animated(Loop);
+
 const SearchUsers: React.FC = () => {
   const navigate = useNavigate();
 
   const styles = useSpring({
     loop: true,
-    from: { rotateZ: 0 },
-    to: { rotateZ: 180 },
+    from: { rotate: 0 },
+    to: { rotate: 360 },
   });
 
   const {
@@ -78,9 +80,7 @@ const SearchUsers: React.FC = () => {
           endAdornment: (
             <IconButton sx={{ fontSize: 30 }} size="large" type="submit">
               {isFetching || isLoading ? (
-                <animated.div style={styles}>
-                  <Loop fontSize="inherit" />
-                </animated.div>
+                <AnimatedLoop fontSize="inherit" style={styles} />
               ) : (
                 <Search fontSize="inherit" />
               )}

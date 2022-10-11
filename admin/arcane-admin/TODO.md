@@ -1,4 +1,0 @@
-
-
-# TODO
-- [] only admin app
