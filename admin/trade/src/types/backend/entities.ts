@@ -2,7 +2,7 @@
 
 export const profileTypes = ['BUSINESS', 'PERSONAL'] as const;
 export type ProfileTypes = typeof profileTypes[number];
-export const accountTypes = ['stakeholder', 'custody', 'virtual'];
+export const accountTypes = ['stakeholder', 'custody', 'virtual'] as const;
 export type AccountTypes = typeof accountTypes[number];
 export const currency = [
   'USD',
@@ -87,11 +87,11 @@ export type CustodyAccount = CustodyFiatAccount | CustodyCryptoAccount;
  */
 
 export type Operation = {
-  id: string;
   accountId: string;
   amount: number;
 };
 
 export type Transaction = {
+  id: string;
   operations: Array<Operation>;
 };

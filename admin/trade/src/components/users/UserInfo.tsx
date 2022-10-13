@@ -19,6 +19,7 @@ const UserInfo: React.FC<UserInfoProps> = ({ user, isError, isLoading }) => {
       <Box display="flex" flexDirection="row" alignItems="center" gap={GAP}>
         <Skeleton variant="rounded" width={200} height={40} />
         <Skeleton variant="rounded" width={200} height={40} />
+        <Skeleton variant="rounded" width={200} height={40} />
       </Box>
     );
 

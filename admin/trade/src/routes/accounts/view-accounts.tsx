@@ -1,6 +1,6 @@
 /** @format */
 
-import { AccountsList } from '@/components';
+import { AccountsList, TemplateMenu } from '@/components';
 import { useGetAccountsQuery, useUpdateAccountMutation } from '@/services';
 import { ProfilePath, UpdateAccountForm } from '@/types';
 import * as React from 'react';
@@ -41,7 +41,7 @@ const Accounts: React.FC = () => {
 
   return (
     <Stack gap={GAP}>
-      <Box>
+      <Box gap={GAP} display="flex">
         <Button
           LinkComponent={RouterLink}
           component={RouterLink}
@@ -50,6 +50,7 @@ const Accounts: React.FC = () => {
         >
           Create Account
         </Button>
+        <TemplateMenu />
       </Box>
       <Outlet />
       <AccountsList
