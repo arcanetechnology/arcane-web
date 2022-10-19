@@ -12,6 +12,8 @@ import {
   PortfolioItem,
   CustodyAccount,
   Portfolio,
+  Transaction,
+  Operation,
 } from './entities';
 
 // admin api type
@@ -72,3 +74,8 @@ export type CreateCryptoRequest = Omit<
 
 export type GetCustodiesResponse = Array<CustodyAccount>;
 export type GetCustodyResponse = CustodyAccount;
+
+// ---------------- transaction types --------- //
+export type GetTransactionResponse = Omit<Transaction, 'operations'>;
+export type GetTransactionsResponse = Array<GetTransactionResponse>;
+export type CreateTransactionRequest = Array<Operation>;

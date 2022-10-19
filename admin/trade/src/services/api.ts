@@ -34,6 +34,7 @@ export const api = createApi({
     'Virtual',
     'Custodies',
     'Custody',
+    'Transactions',
   ],
   // enpoints are injected later
   endpoints: () => ({}),

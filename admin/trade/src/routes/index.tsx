@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Highlight, NavigationHighlight } from '@/components';
-import { custodies, GAP } from '@/constants';
+import { custodies, GAP, transactions } from '@/constants';
 import { Stack } from '@mui/material';
 import { Box } from '@mui/system';
 
@@ -16,6 +16,11 @@ const Index: React.FC = () => {
           title="Total Fiat Custody Accounts"
           value={12}
           to={custodies}
+        />
+        <NavigationHighlight
+          title="Total Transactions"
+          value={10}
+          to={transactions}
         />
       </Box>
       <div

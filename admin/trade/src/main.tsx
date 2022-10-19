@@ -30,7 +30,7 @@ const render = async () => {
           hideProgressBar
         />
       </PersistGate>
-    </Provider>
+    </Provider>,
   );
 };
 

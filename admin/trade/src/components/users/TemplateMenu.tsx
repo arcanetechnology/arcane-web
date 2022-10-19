@@ -1,6 +1,7 @@
 /** @format */
 
 import { templates } from '@/constants';
+import { StakeholderCryptoAccount, StakeholderFiatAccount } from '@/types';
 import { ArrowDropDown } from '@mui/icons-material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import {
@@ -17,6 +18,7 @@ import {
   MenuList,
   Paper,
   Popper,
+  Skeleton,
 } from '@mui/material';
 import * as React from 'react';
 import TemplateForm from './TemplateForm';
@@ -29,7 +31,15 @@ import TemplateForm from './TemplateForm';
 
 // get accounts
 // accounts get fiat or crypto accounts, but always has custodyId account too :)
-const TemplateMenu: React.FC = () => {
+type TemplateMenuProps = {
+  accounts: Array<StakeholderFiatAccount> | Array<StakeholderCryptoAccount>;
+  isLoading?: boolean;
+};
+
+const TemplateMenu: React.FC<TemplateMenuProps> = ({
+  accounts,
+  isLoading = false,
+}) => {
   // template form dialog box
   const [isTemplateFormOpen, setTemplateForm] = React.useState(false);
 
@@ -64,7 +74,9 @@ const TemplateMenu: React.FC = () => {
     setOpen(false);
   };
 
-  console.log(templates);
+  if (isLoading) return <Skeleton height={60} width={300} />;
+
+  const handleTemplateSubmit = () => {};
 
   return (
     <React.Fragment>
@@ -76,51 +88,56 @@ const TemplateMenu: React.FC = () => {
         <Button onClick={handleClick} size="small">
           {templates[selectedIndex].name}
         </Button>
-        <Button
-          size="small"
-          aria-controls={open ? 'transaction-template-menu' : undefined}
-          aria-expanded={open ? 'true' : undefined}
-          aira-label="select-transaction-templates"
-          aira-haspopup="menu"
-          onClick={handleToggle}
-        >
-          <ArrowDropDown />
-        </Button>
-      </ButtonGroup>
-      <Popper
-        sx={{ zIndex: 1, minWidth: 200 }}
-        open={open}
-        anchorEl={anchorRef.current}
-        role={undefined}
-        transition
-        disablePortal
-      >
-        {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            style={{
-              transformOrigin:
-                placement === 'bottom' ? 'center top' : 'center bottom',
-            }}
+        {templates.length > 1 && (
+          <Button
+            size="small"
+            aria-controls={open ? 'transaction-template-menu' : undefined}
+            aria-expanded={open ? 'true' : undefined}
+            aira-label="select-transaction-templates"
+            aira-haspopup="menu"
+            onClick={handleToggle}
           >
-            <Paper>
-              <ClickAwayListener onClickAway={handleClose}>
-                <MenuList id="transaction-template-menu" autoFocusItem>
-                  {templates.map((option, index) => (
-                    <MenuItem
-                      key={option.id}
-                      selected={index === selectedIndex}
-                      onClick={(e) => handleTemplateClick(e, index)}
-                    >
-                      {option.name}
-                    </MenuItem>
-                  ))}
-                </MenuList>
-              </ClickAwayListener>
-            </Paper>
-          </Grow>
+            <ArrowDropDown />
+          </Button>
         )}
-      </Popper>
+      </ButtonGroup>
+      {templates.length > 1 && (
+        <Popper
+          sx={{ zIndex: 1, minWidth: 200 }}
+          open={open}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          transition
+          disablePortal
+        >
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin:
+                  placement === 'bottom' ? 'center top' : 'center bottom',
+              }}
+            >
+              <Paper>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList id="transaction-template-menu" autoFocusItem>
+                    {templates.map((option, index) => (
+                      <MenuItem
+                        key={option.id}
+                        selected={index === selectedIndex}
+                        onClick={(e) => handleTemplateClick(e, index)}
+                      >
+                        {option.name}
+                      </MenuItem>
+                    ))}
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
+      )}
+
       <Dialog
         open={isTemplateFormOpen}
         onClose={() => setTemplateForm(false)}

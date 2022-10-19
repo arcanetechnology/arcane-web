@@ -27,7 +27,7 @@ import { ViewCryptos, CreateCrypto } from './routes/cryptos';
 
 import React from 'react';
 import { Add, Delete } from '@mui/icons-material';
-import { ViewTransactions } from './routes/transactions';
+import { CreateTransactions, ViewTransactions } from './routes/transactions';
 import {
   accounts,
   cryptoAccounts,
@@ -35,6 +35,7 @@ import {
   custodies,
   portfolios,
   profiles,
+  transactions,
 } from './constants';
 
 const router = createBrowserRouter([
@@ -173,6 +174,18 @@ const router = createBrowserRouter([
           {
             path: ':custodyId',
             element: <ViewCustody />,
+            errorElement: <GenericError />,
+          },
+        ],
+      },
+      {
+        path: transactions,
+        element: <ViewTransactions />,
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            path: 'create',
+            element: <CreateTransactions />,
             errorElement: <GenericError />,
           },
         ],

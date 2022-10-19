@@ -50,7 +50,10 @@ const Accounts: React.FC = () => {
         >
           Create Account
         </Button>
-        <TemplateMenu />
+        <TemplateMenu
+          accounts={accounts}
+          isLoading={isLoading || isFetching || updateAccountLoading}
+        />
       </Box>
       <Outlet />
       <AccountsList

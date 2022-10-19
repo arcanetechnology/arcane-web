@@ -92,6 +92,7 @@ export type Operation = {
 };
 
 export type Transaction = {
-  id: string;
+  transactionId: string;
   operations: Array<Operation>;
+  createdOn: string;
 };

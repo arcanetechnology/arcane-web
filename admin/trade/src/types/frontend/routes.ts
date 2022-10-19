@@ -35,6 +35,15 @@ export type CustodyPath = {
   custodyId: string;
 };
 
+// transaction
+export type TransactionPath = {
+  transactionId: string;
+};
+
+export type OperationPath = {
+  operationId: string;
+} & TransactionPath;
+
 // breadcrumb matches
 
 export type TradeMatches = {
