@@ -8,11 +8,8 @@ import * as React from 'react';
 import { Outlet } from 'react-router-dom';
 
 const ViewTransactions: React.FC = () => {
-  const { data, isLoading, isFetching, isError } = useGetTransactionsQuery();
-  if (isError) throw new Error('error occured in fetching transactions');
   return (
     <Stack gap={GAP}>
-      {/* <ListTransaction transactions={data!} loading={isLoading || isFetching} /> */}
       <Outlet />
     </Stack>
   );

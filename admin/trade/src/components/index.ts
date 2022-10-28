@@ -11,3 +11,4 @@ export * from './cryptos';
 export * from './crypto-accounts';
 export * from './custodies';
 export * from './dashboard';
+export * from './transactions';
