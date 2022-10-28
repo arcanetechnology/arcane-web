@@ -6,7 +6,11 @@ import * as React from 'react';
 const CreateTransactions: React.FC = () => {
   const [transact, { data, isLoading }] = useTransactionMutation();
 
-  React.useEffect(() => {}, [transact([{ accountId: 'random', amount: 100 }])]);
+  transact([
+    { accountId: 'random', amount: 100 },
+    { accountId: 'random2', amount: -100 },
+  ]);
+
   return <h1>Create Transaction</h1>;
 };
 

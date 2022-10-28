@@ -20,7 +20,7 @@ const Index: React.FC = () => {
         <NavigationHighlight
           title="Total Transactions"
           value={10}
-          to={transactions}
+          to={transactions + '/create'}
         />
       </Box>
       <div
