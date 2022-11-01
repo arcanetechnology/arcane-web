@@ -2,8 +2,12 @@
 
 import { OperationList, TransactionForm } from '@/components';
 import { GAP } from '@/constants';
-import { useTransactionMutation } from '@/services';
-import { AccountPath, Operation } from '@/types';
+import {
+  useGetAccountsQuery,
+  useGetCryptoAccountsQuery,
+  useTransactionMutation,
+} from '@/services';
+import { AccountPath, Operation, ProfilePath } from '@/types';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Box } from '@mui/material';
 import { Stack } from '@mui/system';
@@ -32,21 +36,32 @@ const transactionReducer = (
   }
 };
 
+/**
+ * Should be shown profile level and up.
+ * @returns
+ */
 const CreateTransactions: React.FC = () => {
-  const params = useParams<AccountPath>();
+  const { userId, profileId } = useParams<ProfilePath>();
 
-  console.log('params context');
-  console.log(params);
+  // get fiat accounts for this profile.
+  const {
+    data: accounts = [],
+    isLoading,
+    isError,
+    isFetching,
+  } = useGetAccountsQuery({ userId, profileId } as ProfilePath);
 
-  // TODO: depending on the params that are available, get that data.
+  // get crypto accounts for this profile
+  const {
+    data: cryptos = [],
+    isLoading: isCryptosLoading,
+    isFetching: isCryptoFetching,
+  } = useGetCryptoAccountsQuery({ userId, profileId } as ProfilePath);
 
-  const [transact, { data, isLoading }] = useTransactionMutation();
+  const [transact, { data, isLoading: transactLoading }] =
+    useTransactionMutation();
 
   const [state, dispatch] = React.useReducer(transactionReducer, initialState);
-
-  // TODO: function to find the custody Id
-
-  const getCustodyId = () => {};
 
   const submitTransaction = (data: Operation) => {
     dispatch({ type: 'ADD_OPERATION', payload: data });
@@ -65,7 +80,10 @@ const CreateTransactions: React.FC = () => {
           Submit Transaction
         </LoadingButton>
       </Box>
-      <TransactionForm submitTransaction={submitTransaction} />
+      <TransactionForm
+        submitTransaction={submitTransaction}
+        accounts={[...accounts, ...cryptos]}
+      />
       <OperationList operations={state} />
     </Stack>
   );
@@ -74,5 +92,3 @@ const CreateTransactions: React.FC = () => {
 export default CreateTransactions;
 
 // TODO: get virtual account data dropdown
-// TODO; get crypto account data dropdown
-// TODO: get fiat account data dropdown

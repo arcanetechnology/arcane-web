@@ -1,7 +1,12 @@
 /** @format */
 
 import { GAP } from '@/constants';
-import { Operation, OperationForm } from '@/types';
+import {
+  Operation,
+  OperationForm,
+  StakeholderCryptoAccounts,
+  StakeholderFiatAccounts,
+} from '@/types';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -16,6 +21,7 @@ const schema = z.object({
 
 type TransactionFormProps = {
   submitTransaction: (data: Operation) => void;
+  accounts: StakeholderFiatAccounts | StakeholderCryptoAccounts;
 };
 
 const TransactionForm: React.FC<TransactionFormProps> = ({
@@ -57,3 +63,5 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
 };
 
 export default TransactionForm;
+
+// TODO: build an accounts dropdown
