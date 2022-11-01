@@ -1,6 +1,7 @@
 /** @format */
 
 import {
+  Operation,
   Portfolio,
   Profile,
   StakeholderCryptoAccount,
@@ -31,10 +32,14 @@ export type CreatePortfolioForm = Omit<Portfolio, 'id' | 'accounts'>;
 // crypto portfolio types
 // this one is reused for crypto-accounts and portfolio/cryptos
 export type CreateCryptoForm = Omit<StakeholderCryptoAccount, 'id' | 'balance'>;
-export type UpdateCryptoForm = Pick<StakeholderCryptoAccount,"alias">;
+export type UpdateCryptoForm = Pick<StakeholderCryptoAccount, 'alias'>;
 
 // miscellaneous
 
 export type SearchUserForm = Omit<User, 'profiles' | 'id' | 'createdOn'> & {
   email: string;
 };
+
+// add operation form
+
+export type OperationForm = Operation;
