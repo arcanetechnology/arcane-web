@@ -1,11 +1,10 @@
 /** @format */
 
-import { TextLoading } from '@/components';
 import { GAP } from '@/constants';
 import { useGetProfileQuery } from '@/services';
 import { ProfilePath } from '@/types/frontend';
 import { AccountBalance } from '@mui/icons-material';
-import { Divider, Typography, Badge, Chip, Skeleton } from '@mui/material';
+import { Typography, Chip, Skeleton } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import * as React from 'react';
 import { Outlet, useParams } from 'react-router-dom';

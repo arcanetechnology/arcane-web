@@ -120,9 +120,16 @@ const router = createBrowserRouter([
                 ],
               },
               {
-                path: 'transactions',
+                path: transactions,
                 element: <ViewTransactions />,
-                errorElement: <GenericError />,
+                errorElement: <ErrorPage />,
+                children: [
+                  {
+                    path: 'create',
+                    element: <CreateTransactions />,
+                    errorElement: <GenericError />,
+                  },
+                ],
               },
               // {
               //   path: accounts + '/:accountId',

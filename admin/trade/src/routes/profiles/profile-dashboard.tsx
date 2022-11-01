@@ -22,7 +22,7 @@ const ProfileDashboard: React.FC = () => {
         <NavigationHighlight
           title="Total Transactions"
           value={20}
-          to={transactions}
+          to={transactions + '/create'}
         />
       </Box>
     </Stack>
