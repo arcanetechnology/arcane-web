@@ -10,9 +10,11 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Button, TextField } from '@mui/material';
+import { Button, IconButton, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import * as React from 'react';
+import { AccountsAutoComplete } from '../accounts';
+import { Add } from '@mui/icons-material';
 
 const schema = z.object({
   accountId: z.string().nonempty(),
@@ -22,15 +24,17 @@ const schema = z.object({
 type TransactionFormProps = {
   submitTransaction: (data: Operation) => void;
   accounts: StakeholderFiatAccounts | StakeholderCryptoAccounts;
+  isLoading: boolean;
 };
 
 const TransactionForm: React.FC<TransactionFormProps> = ({
   submitTransaction,
+  accounts,
+  isLoading = false,
 }) => {
-  // TODO: add react-hook-forms here
-
   const {
     register,
+    control,
     handleSubmit: onSubmit,
     formState: { errors },
   } = useForm<OperationForm>({
@@ -44,24 +48,29 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
       id="create-transaction-form"
     >
       <Box display="flex" flexDirection="row" gap={GAP}>
-        <TextField
-          label="Acount ID"
-          {...register('accountId')}
-          error={Boolean(errors['accountId'])}
-          helperText={errors['accountId']?.message}
+        <AccountsAutoComplete
+          isLoading={isLoading}
+          accounts={accounts}
+          defaultValue={''}
+          name="accountId"
+          rule={{
+            required: true,
+          }}
+          control={control}
         />
         <TextField
           label="Amount"
+          fullWidth
           {...register('amount', { valueAsNumber: true })}
           error={Boolean(errors['amount'])}
           helperText={errors['amount']?.message}
         />
-        <Button type="submit">Add</Button>
+        <IconButton type="submit">
+          <Add />
+        </IconButton>
       </Box>
     </Box>
   );
 };
 
 export default TransactionForm;
-
-// TODO: build an accounts dropdown

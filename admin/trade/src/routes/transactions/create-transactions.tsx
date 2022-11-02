@@ -68,19 +68,22 @@ const CreateTransactions: React.FC = () => {
   };
 
   // TODO: submit transaction connection with submit transaction
-
+  // TODO: filter out the accounts depending on the operation accountId we got (I meant the currency type.)
   return (
     <Stack gap={GAP}>
       <Box>
-        <LoadingButton
+        {/* <LoadingButton
           variant="contained"
           loading={isLoading}
           id="submit-transaction"
         >
           Submit Transaction
-        </LoadingButton>
+        </LoadingButton> */}
       </Box>
       <TransactionForm
+        isLoading={
+          isLoading || isFetching || isCryptosLoading || isCryptoFetching
+        }
         submitTransaction={submitTransaction}
         accounts={[...accounts, ...cryptos]}
       />
