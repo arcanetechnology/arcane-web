@@ -65,7 +65,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
           error={Boolean(errors['amount'])}
           helperText={errors['amount']?.message}
         />
-        <IconButton type="submit">
+        <IconButton type="submit" size="large">
           <Add />
         </IconButton>
       </Box>
