@@ -1,13 +1,13 @@
 /** @format */
 
 import { OperationList, TransactionForm } from '@/components';
-import { GAP } from '@/constants';
+import { accounts, GAP } from '@/constants';
 import {
   useGetAccountsQuery,
   useGetCryptoAccountsQuery,
   useTransactionMutation,
 } from '@/services';
-import { AccountPath, Operation, ProfilePath } from '@/types';
+import { AccountPath, Currency, Operation, ProfilePath } from '@/types';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Box } from '@mui/material';
 import { Stack } from '@mui/system';
@@ -19,10 +19,18 @@ const DELETE_OPERATION = 'DELETE_OPERATION';
 
 interface TransactionAction {
   type: typeof ADD_OPERATION | typeof DELETE_OPERATION;
-  payload: Operation;
+  payload: { operation: Operation; currency: string | null };
 }
 
-const initialState: Operation[] = [];
+interface TransactionState {
+  operations: Operation[];
+  currency: string | null;
+}
+
+const initialState: TransactionState = {
+  operations: [],
+  currency: null,
+};
 
 const transactionReducer = (
   state = initialState,
@@ -30,7 +38,10 @@ const transactionReducer = (
 ) => {
   switch (action.type) {
     case 'ADD_OPERATION':
-      return [...state, action.payload];
+      return {
+        operations: [...state.operations, action.payload.operation],
+        currency: action.payload.currency ?? null,
+      };
     default:
       return state;
   }
@@ -61,14 +72,30 @@ const CreateTransactions: React.FC = () => {
   const [transact, { data, isLoading: transactLoading }] =
     useTransactionMutation();
 
-  const [state, dispatch] = React.useReducer(transactionReducer, initialState);
+  const [state, dispatch] = React.useReducer<
+    React.Reducer<TransactionState, TransactionAction>
+  >(transactionReducer, initialState);
 
-  const submitTransaction = (data: Operation) => {
-    dispatch({ type: 'ADD_OPERATION', payload: data });
+  const submitTransaction = (data: Operation, currency: string | null) => {
+    dispatch({
+      type: 'ADD_OPERATION',
+      payload: { operation: data, currency: currency ?? null },
+    });
   };
 
   // TODO: submit transaction connection with submit transaction
-  // TODO: filter out the accounts depending on the operation accountId we got (I meant the currency type.)
+
+  const getAccountsList = () => {
+    if (state.operations.length > 0) {
+      return [...accounts, ...cryptos]
+        .filter((a) => a.currency === state.currency)
+        .filter((a) => !state.operations.some((o) => a.id === o.accountId));
+    }
+    return [...accounts, ...cryptos];
+  };
+
+  React.useEffect(() => {},  [state]);
+
   return (
     <Stack gap={GAP}>
       <Box>
@@ -85,9 +112,9 @@ const CreateTransactions: React.FC = () => {
           isLoading || isFetching || isCryptosLoading || isCryptoFetching
         }
         submitTransaction={submitTransaction}
-        accounts={[...accounts, ...cryptos]}
+        accounts={getAccountsList()}
       />
-      <OperationList operations={state} />
+      <OperationList operations={state.operations} />
     </Stack>
   );
 };

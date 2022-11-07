@@ -22,7 +22,7 @@ const schema = z.object({
 });
 
 type TransactionFormProps = {
-  submitTransaction: (data: Operation) => void;
+  submitTransaction: (data: Operation, currency: string | null) => void;
   accounts: StakeholderFiatAccounts | StakeholderCryptoAccounts;
   isLoading: boolean;
 };
@@ -36,6 +36,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
     register,
     control,
     handleSubmit: onSubmit,
+    reset,
     formState: { errors },
   } = useForm<OperationForm>({
     resolver: zodResolver(schema as any),
@@ -44,7 +45,13 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
   return (
     <Box
       component="form"
-      onSubmit={onSubmit(submitTransaction)}
+      onSubmit={onSubmit((data) => {
+        submitTransaction(
+          data,
+          accounts.find((a) => a.id === data.accountId)?.currency ?? null,
+        );
+        reset();
+      })}
       id="create-transaction-form"
     >
       <Box display="flex" flexDirection="row" gap={GAP}>
