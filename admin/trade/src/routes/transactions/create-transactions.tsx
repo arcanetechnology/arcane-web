@@ -7,7 +7,14 @@ import {
   useGetCryptoAccountsQuery,
   useTransactionMutation,
 } from '@/services';
-import { AccountPath, Currency, Operation, ProfilePath } from '@/types';
+import {
+  AccountPath,
+  Currency,
+  Operation,
+  ProfilePath,
+  StakeholderCryptoAccounts,
+  StakeholderFiatAccounts,
+} from '@/types';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Box } from '@mui/material';
 import { Stack } from '@mui/system';
@@ -83,8 +90,6 @@ const CreateTransactions: React.FC = () => {
     });
   };
 
-  // TODO: submit transaction connection with submit transaction
-
   const getAccountsList = () => {
     if (state.operations.length > 0) {
       return [...accounts, ...cryptos]
@@ -94,7 +99,11 @@ const CreateTransactions: React.FC = () => {
     return [...accounts, ...cryptos];
   };
 
-  React.useEffect(() => {},  [state]);
+  const getCustodyId = () => {
+    // TODO: get custody id and add the amount to them.
+    // TODO: add the custody to the array with operation and return it.
+    return state.operations;
+  };
 
   return (
     <Stack gap={GAP}>
@@ -114,7 +123,7 @@ const CreateTransactions: React.FC = () => {
         submitTransaction={submitTransaction}
         accounts={getAccountsList()}
       />
-      <OperationList operations={state.operations} />
+      <OperationList operations={getCustodyId()} />
     </Stack>
   );
 };
